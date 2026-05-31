@@ -1,0 +1,134 @@
+"""Merge-on-receive orchestration (architecture A.1/A.2).
+
+A receiving brain does NOT blindly apply an incoming delta. For each incoming
+Claim it finds the best local candidate, computes the four signals + Context
+gate, runs the four-way classifier, and emits exactly ONE Patch carrying which
+gates fired and the resulting deltas:
+
+    MERGE     -> a claim-status UPDATE (the claim is admitted/merged)
+    RELATE    -> a Mapping (ASSOCIATES) link, the two claims stay distinct
+    CONFLICT  -> a first-class CONTRADICTS link, NO silent winner
+    REJECT    -> a recorded no-op
+
+A novel incoming concept with no local candidate is admitted as a MERGE (insert).
+The Patch -- not the raw delta -- is what the brain later applies to mutate state.
+"""
+from __future__ import annotations
+
+from typing import List, Optional
+
+from smp.config import Thresholds
+from smp.merge.classifier import classify
+from smp.merge.context_gate import Context, context_compatible
+from smp.merge.signals import EmbeddingSimilarity, chi, epsilon, kappa
+from smp.proto import Claim, Endpoint, MemoryLink, MemoryUnit
+from smp.protocol.messages import Patch
+
+
+def _claims(unit: MemoryUnit) -> List[Claim]:
+    return list(unit.claims)
+
+
+def _context_of(unit: MemoryUnit, claim: Claim) -> Context:
+    # frame derived from the unit's scope (here a single default cell for sim);
+    # real wiring reads Endpoint cell/ACL + StalenessTag.
+    return Context(cell="agent.public", valid_from=0, valid_until=None,
+                   is_fresh=(unit.status == "ACTIVE"))
+
+
+def merge_on_receive(
+    incoming: MemoryUnit,
+    local_units: List[MemoryUnit],
+    *,
+    cfg: Thresholds,
+    es: EmbeddingSimilarity,
+    nli: str,
+    sign: bytes = b"sig",
+    version: int = 1,
+) -> List[Patch]:
+    """Return one Patch per incoming claim."""
+    patches: List[Patch] = []
+    local_claims: List[tuple] = [
+        (lu, lc) for lu in local_units for lc in _claims(lu)
+    ]
+
+    for ic in _claims(incoming):
+        best = _best_candidate(ic, local_claims, es)
+        if best is None:
+            # novel concept, no local candidate -> admit as insert (MERGE)
+            patches.append(_make_patch(
+                "MERGE", incoming, ic, gates=["novel"], sign=sign, version=version,
+            ))
+            continue
+
+        lu, lc, sigma_val = best
+        k = kappa(ic, lc)
+        chi_val = chi(ic.text, lc.text, model=nli)
+        ctx_ok = context_compatible(_context_of(incoming, ic), _context_of(lu, lc))
+        retention_below = (incoming.relevance_magnitude < cfg.r_min
+                           and incoming.relevance_magnitude > 0)
+
+        decision = classify(
+            cfg=cfg, kappa=k, sigma=sigma_val, chi=chi_val, ctx_ok=ctx_ok,
+            retention_below_min=retention_below, status=incoming.status,
+        )
+        gates = _gates_for(decision, k, sigma_val, chi_val, ctx_ok)
+        patches.append(_make_patch(
+            decision, incoming, ic, peer_claim=lc, sigma=sigma_val,
+            gates=gates, sign=sign, version=version,
+        ))
+    return patches
+
+
+def _best_candidate(ic: Claim, local_claims, es: EmbeddingSimilarity):
+    best = None
+    best_sigma = -1.0
+    for lu, lc in local_claims:
+        if kappa(ic, lc) == 1:
+            return (lu, lc, 1.0)
+        s = es.sigma(ic.text, lc.text)
+        if s > best_sigma:
+            best_sigma, best = s, (lu, lc, s)
+    return best
+
+
+def _gates_for(decision, k, sigma_val, chi_val, ctx_ok) -> List[str]:
+    g: List[str] = []
+    if k == 1:
+        g.append("kappa")
+    else:
+        g.append("sigma")
+    if decision == "CONFLICT":
+        g.append("chi")
+    if decision in ("MERGE", "RELATE"):
+        g.append("context")
+    return g
+
+
+def _make_patch(decision, incoming, claim, peer_claim: Optional[Claim] = None,
+                sigma: float = 0.0, gates=None, sign=b"sig", version=1) -> Patch:
+    target = Endpoint(node_id=incoming.id, claim_key=claim.claim_key)
+    emitted: list = []
+    if decision == "MERGE":
+        emitted.append(incoming)
+        emitted.append(("STATUS", claim.claim_key, (incoming.id.hex() or "v", "ACTIVE")))
+    elif decision == "RELATE":
+        emitted.append(MemoryLink(
+            type="ASSOCIATES", weight=float(sigma), version=version,
+            signature=sign, provenance="INFERRED",
+            src=Endpoint(node_id=incoming.id, claim_key=claim.claim_key),
+            dst=Endpoint(claim_key=peer_claim.claim_key if peer_claim else b""),
+        ))
+    elif decision == "CONFLICT":
+        emitted.append(MemoryLink(
+            type="CONTRADICTS", weight=1.0, version=version, signature=sign,
+            provenance="INFERRED",
+            src=Endpoint(node_id=incoming.id, claim_key=claim.claim_key),
+            dst=Endpoint(claim_key=peer_claim.claim_key if peer_claim else b""),
+        ))
+    # REJECT: emitted stays empty (recorded no-op)
+    return Patch(decision=decision, target=target, emitted=emitted,
+                 gates_that_fired=gates or [], version=version, signature=sign)
+
+
+__all__ = ["merge_on_receive"]
