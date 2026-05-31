@@ -1,0 +1,24 @@
+#!/bin/sh
+# pre-commit hook for a PUBLIC-bound repo.
+# Refuses any commit that introduces internal vocabulary into tracked
+# files, by running the repo's own hygiene guard. Stdlib-only (no
+# pytest/venv) so it never wedges a commit on an environment issue.
+#
+# Install in a clone with:  git config core.hooksPath scripts/git-hooks
+ROOT="$(git rev-parse --show-toplevel)" || exit 0
+cd "$ROOT" || exit 0
+python3 - <<'PY'
+import sys
+sys.path.insert(0, "tests")
+import test_repo_hygiene as t
+t.test_no_internal_vocabulary_in_tracked_files()
+t.test_data_and_plan_not_tracked()
+print("[pre-commit] public-safety hygiene guard: OK")
+PY
+if [ "$?" -ne 0 ]; then
+    echo "" >&2
+    echo "COMMIT BLOCKED -- public-safety hygiene guard failed:" >&2
+    echo "  internal vocabulary detected in tracked files." >&2
+    echo "  inspect: python3 -m pytest tests/test_repo_hygiene.py -q" >&2
+    exit 1
+fi

@@ -1,0 +1,102 @@
+// VENDORED -- REUSE-PENDING-RESTRUCTURE; the upstream firmament memory.proto
+// upgrade lands later. This is the SMP-owned copy of the links-first-class
+// memory model: MemoryLink is promoted to a first-class typed/versioned/signed/
+// weighted object with an entailment score; a unit exposes addressable Claims;
+// Endpoints may target a claim within a unit; a StalenessTag carries web-source
+// freshness. The node-centric `citations` field is kept only as a deprecated
+// alias (reserved on the wire). SMP does NOT modify the upstream firmament proto.
+syntax = "proto3";
+package smp.fusilli.v1;
+
+import "google/protobuf/timestamp.proto";
+
+// ---- NODES ----
+message MemoryUnit {
+  bytes id = 1;                       // content-addressable hash
+  bytes owner_did = 2;
+  google.protobuf.Timestamp created_at = 3;
+  google.protobuf.Timestamp last_modified = 4;
+  Envelope content = 5;
+  OriginTag origin = 6;
+  AuthorityLevel authority = 7;
+  float confidence = 9;
+  bytes signature = 10;
+  float relevance_magnitude = 11;
+  uint64 access_count = 12;
+  google.protobuf.Timestamp last_accessed = 13;
+  uint32 contradictions_received = 14;
+  PrecedentStatus status = 15;        // whole-unit status (a JOIN over claims)
+  AccessControl acl = 16;
+
+  repeated Claim claims = 17;         // addressable claims within the unit
+  StalenessTag staleness = 18;        // for externally-sourced units
+  reserved 8;                          // 'citations' deprecated -> MemoryLink
+}
+
+message Claim {
+  bytes claim_key = 1;                // content-addressable key of the assertion
+  string text = 2;
+  float confidence = 3;
+  google.protobuf.Timestamp valid_from = 4;
+  google.protobuf.Timestamp valid_until = 5;   // optional sunset
+  PrecedentStatus claim_status = 6;             // per-claim status
+}
+
+// ---- LINKS: first-class, addressable, signed, versioned, retained ----
+message MemoryLink {
+  bytes id = 1;                        // hash(src,dst,type,version,provenance)
+  Endpoint src = 2;
+  Endpoint dst = 3;
+  LinkType type = 4;
+  float weight = 5;                    // strength of the relation in [0,1]
+
+  bytes owner_did = 6;
+  OriginTag origin = 7;                // echo origin of the edge itself
+  LinkProvenance provenance = 8;
+  uint64 version = 9;                  // monotone; edits append, never destroy
+  bytes signature = 10;
+
+  AuthorityLevel authority = 11;
+  PrecedentStatus status = 12;
+  float entailment_score = 13;         // for grounding/citation edges
+
+  float relevance_magnitude = 14;
+  uint64 traversal_count = 15;
+  google.protobuf.Timestamp last_traversed = 16;
+  StalenessTag staleness = 17;
+  AccessControl acl = 18;
+}
+
+message Endpoint { bytes node_id = 1; bytes claim_key = 2; }  // claim_key optional
+
+message StalenessTag {
+  bytes content_hash = 1;
+  google.protobuf.Timestamp fetched_at = 2;
+  float source_volatility = 3;          // phi: staleness rate (1/s)
+  bool is_latest = 4;
+}
+
+enum LinkType {
+  ASSOCIATES = 0; CITES = 1; GROUNDS = 2; ENTITY_LINK = 3;
+  PRECEDENT_OF = 4; OVERRULES = 5; DISTINGUISHES = 6;
+  CONTRADICTS = 7; DERIVED_FROM = 8; CONSOLIDATED_FROM = 9;
+  TEMPORAL_SUCCESSION = 10; SUPERSEDES = 11; PARTIALLY_OVERRULES = 12;
+}
+enum LinkProvenance { FOUNDING_ACT = 0; CONSOLIDATION = 1; EXTERNAL_FETCH = 2; USER = 3; INFERRED = 4; }
+enum OriginTag { L0_ECHO_FREE = 0; L3V_ECHO_MANAGED = 1; DERIVED = 2; AGGREGATED = 3; }
+enum AuthorityLevel { PRECEDENT = 0; OBSERVATION = 1; CLAIM = 2; SPECULATION = 3; }
+enum PrecedentStatus { ACTIVE = 0; DEPRECATED = 1; REVOKED = 2; OVERRULED = 3; }
+
+message AccessControl {
+  enum Scope { PRIVATE = 0; SHARED_WITH = 1; PUBLIC = 2; }
+  Scope scope = 1;
+  repeated bytes authorised_readers = 2;
+  bytes encryption_key_ref = 3;
+  bool write_once = 4;
+}
+
+message Envelope {
+  bytes ciphertext = 1;
+  bytes encrypted_key = 2;
+  string cipher = 3;
+}

@@ -1,0 +1,27 @@
+# Raw data, downloaded corpora, embedding caches, large artifacts
+data/
+**/emb_cache/
+*.npy
+*.npz
+*.parquet
+*.arrow
+
+# HuggingFace / datasets cache
+.cache/
+hf_cache/
+
+# Internal-only artifacts (operational plan, readiness reports, run/ops logs):
+# infra/process/billing context that must never enter public history.
+plan/
+SMOKE-REPORT.md
+*.log
+outputs/*-status.log
+*-LOG.md
+OPSLOG.md
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.benchmarks/
+.ipynb_checkpoints/

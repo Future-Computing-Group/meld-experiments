@@ -1,0 +1,12 @@
+{
+  "longmemeval": {
+    "name": "LongMemEval",
+    "arxiv_id": "2410.10813",
+    "identity_sha256": "197f92666535668c5993ea664adac01044190fc7920942b12ee4c3065cab41a7"
+  },
+  "gaia": {
+    "name": "GAIA",
+    "arxiv_id": "2311.12983",
+    "identity_sha256": "9ed8cb4bbd06a32de3734c0590d8cfd870685c34c41fc441560dd578e7d78744"
+  }
+}
