@@ -19,6 +19,11 @@ outputs/*-status.log
 *-LOG.md
 OPSLOG.md
 
+# Regenerable smoke/run outputs (figures are produced by run_local_smoke.py;
+# paper-final figures, if any, are committed deliberately, not the smoke ones).
+figures/
+outputs/
+
 # Python
 __pycache__/
 *.pyc

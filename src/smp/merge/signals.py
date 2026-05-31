@@ -175,36 +175,78 @@ def sigma(text_a: str, text_b: str, *, encoder: str, cache_dir: str | None = Non
 # Minimal antonym/negation lexicon for the deterministic offline backend. This
 # is a heuristic for tests + local smoke; the cross-encoder backend is the
 # stronger rung. Pairs are symmetric.
+# Known antonym/incompatible pairs (lemma-form). Used in addition to the
+# general "single differing slot on otherwise-overlapping text" heuristic.
 _ANTONYM_PAIRS = [
-    {"france", "italy"}, {"france", "germany"}, {"italy", "germany"},
     {"true", "false"}, {"on", "off"}, {"active", "revoked"},
     {"increase", "decrease"}, {"up", "down"}, {"hot", "cold"},
-    {"monday", "tuesday"}, {"open", "closed"},
+    {"open", "closed"}, {"increased", "decreased"}, {"rose", "fell"},
 ]
+
+_STOP = {"is", "are", "in", "the", "a", "an", "of", "to", "make", "makes",
+         "all", "some", "do", "does", "lies", "this", "named", "called",
+         "has", "have", "owns", "own", "scheduled", "for", "went", "daily"}
+
+_NEG = {"not", "no", "never", "nt"}
+
+
+def _stem(tok: str) -> str:
+    for suf in ("ed", "es", "s"):
+        if len(tok) > len(suf) + 2 and tok.endswith(suf):
+            return tok[: -len(suf)]
+    return tok
+
+
+def _content(tokens) -> set:
+    return {_stem(t) for t in tokens if t not in _STOP and t not in _NEG}
 
 
 def _lexical_nli(a: str, b: str) -> str:
+    """Deterministic offline NLI heuristic (for tests + local smoke; the
+    cross-encoder is the stronger rung for real data).
+
+    Contradiction is detected by either (i) an explicit negation flip on
+    otherwise-overlapping content, (ii) a known antonym swap, or (iii) the
+    GENERAL pattern: two texts share most content but differ in exactly one
+    content slot (a swapped entity/value) -- "X is in France" vs "X is in
+    Italy", "owns a dog" vs "owns a cat", "budget increased" vs "budget
+    decreased". This generalises beyond an enumerated antonym list.
+    """
     ta, tb = set(_tokenize(a)), set(_tokenize(b))
     if not ta or not tb:
         return "neutral"
-    # contradiction: shared subject tokens but a known antonym swap, OR explicit
-    # negation flip on otherwise-overlapping text.
+
+    # (i) explicit negation flip on otherwise-overlapping content
+    if (ta & _NEG) ^ (tb & _NEG):
+        if len(_content(ta) & _content(tb)) >= 2:
+            return "contradicts"
+
+    ca, cb = _content(ta), _content(tb)
+    shared = ca & cb
+    only_a, only_b = ca - cb, cb - ca
+
+    # (ii) known antonym swap on otherwise-overlapping content
     for pair in _ANTONYM_PAIRS:
-        if pair & ta and pair & tb and (pair & ta) != (pair & tb):
-            # both texts mention opposite members of an antonym pair
-            if len(pair & ta) == 1 and len(pair & tb) == 1 and (pair & ta) != (pair & tb):
+        sa, sb = pair & (only_a | shared), pair & (only_b | shared)
+        if (pair & only_a) and (pair & only_b) and (pair & only_a) != (pair & only_b):
+            if len(shared) >= 1:
                 return "contradicts"
-    neg = {"not", "no", "never", "n't"}
-    if (ta & neg) ^ (tb & neg) and len((ta - neg) & (tb - neg)) >= 2:
-        return "contradicts"
-    # entailment: hypothesis tokens largely covered by / overlap premise (after
-    # dropping stopwords), high lexical containment.
-    stop = {"is", "are", "in", "the", "a", "an", "of", "to", "make", "makes",
-            "all", "some", "do", "does", "lies"}
-    ca, cb = ta - stop, tb - stop
-    if cb and len(ca & cb) / len(cb) >= 0.5:
+
+    # entailment FIRST: pure containment (one side adds no new content token)
+    # is sound lexical entailment and must not be read as a value swap.
+    if shared and (not only_a or not only_b):
         return "entails"
-    if ca and len(ca & cb) / len(ca) >= 0.5:
+
+    # (iii) single differing content slot on shared content -> an incompatible
+    # value swap (contradiction): "X in France" vs "X in Italy", "owns a dog"
+    # vs "owns a cat", "budget increased" vs "budget decreased".
+    if len(shared) >= 1 and len(only_a) == 1 and len(only_b) == 1:
+        return "contradicts"
+
+    # weaker containment -> entailment
+    if cb and len(shared) / len(cb) >= 0.6:
+        return "entails"
+    if ca and len(shared) / len(ca) >= 0.6:
         return "entails"
     return "neutral"
 
