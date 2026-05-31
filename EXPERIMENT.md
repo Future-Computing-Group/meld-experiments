@@ -32,6 +32,13 @@ model, retention law, and CRDT correctness are cited, not re-derived here.
 - The CRDT gives convergence of **status, not truth**. The four-way classifier
   represents conflict (a first-class CONTRADICTS edge); it does not silently resolve it.
 
+## Proto build env — load-bearing
+SMP's proto build/runtime uses a local `.venv` (`python3 -m venv .venv`) with
+`protobuf` 6.x + `grpcio-tools`; recompile the vendored proto and run pytest in
+it (`.venv/bin/python -m pytest -q`). Do NOT compile the vendored proto against
+the GLOBAL env: grpc_tools' `protobuf<7` pin downgrades the global protobuf and
+breaks other proto-users (e.g. firmament). SMP's 6.x deps live ONLY in `.venv`.
+
 ## Smoke ladder — STRICT ascent
 
 1. Unit/integration tests (`tests/`) — must be green (G1).
