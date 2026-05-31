@@ -53,9 +53,12 @@ def merge_on_receive(
     ]
 
     for ic in _claims(incoming):
-        best = _best_candidate(ic, local_claims, es)
+        best = _best_candidate(ic, local_claims, es, sigma_lo=cfg.sigma_lo)
         if best is None:
-            # novel concept, no local candidate -> admit as insert (MERGE)
+            # no real local candidate (best similarity below sigma_lo, or no
+            # local claims at all) -> the incoming concept is NOVEL; admit it as
+            # an insert (MERGE). The four-way classifier only governs the case
+            # where an actual candidate match exists.
             patches.append(_make_patch(
                 "MERGE", incoming, ic, gates=["novel"], sign=sign, version=version,
             ))
@@ -80,7 +83,10 @@ def merge_on_receive(
     return patches
 
 
-def _best_candidate(ic: Claim, local_claims, es: EmbeddingSimilarity):
+def _best_candidate(ic: Claim, local_claims, es: EmbeddingSimilarity, sigma_lo: float):
+    """Return the best local candidate (lu, lc, sigma) only if it is a REAL
+    match: an exact claim-key hit, or a similarity at/above sigma_lo. Below the
+    floor there is no candidate (the incoming claim is novel)."""
     best = None
     best_sigma = -1.0
     for lu, lc in local_claims:
@@ -89,6 +95,8 @@ def _best_candidate(ic: Claim, local_claims, es: EmbeddingSimilarity):
         s = es.sigma(ic.text, lc.text)
         if s > best_sigma:
             best_sigma, best = s, (lu, lc, s)
+    if best is None or best_sigma < sigma_lo:
+        return None
     return best
 
 
