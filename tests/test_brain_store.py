@@ -79,3 +79,48 @@ def test_status_state_per_claim():
     u = MemoryUnit(id=b"u7", claims=[Claim(claim_key=b"k7", text="t")])
     b.apply(_patch_merge(u))
     assert isinstance(b.claim_status(b"k7"), StatusState)
+
+
+def test_graph_walk_read_excludes_deprecated_units():
+    # recall must respect the status CRDT: a unit whose every claim has been
+    # superseded (DEPRECATED) is no longer live and must NOT be returned. A
+    # status-blind read that still surfaces a deprecated duplicate is the defect
+    # that made distributed_merge identical to naive_union at recall.
+    b = Brain()
+    live = MemoryUnit(id=b"live", claims=[Claim(claim_key=b"kk",
+                      text="the capital of France is Paris")])
+    dead = MemoryUnit(id=b"dead", claims=[Claim(claim_key=b"kd",
+                      text="Paris is the capital city of France")])
+    b.apply(_patch_merge(live))
+    b.apply(_patch_merge(dead))
+    b.apply(Patch(decision="MERGE", target=Endpoint(node_id=b"dead"),
+                  emitted=[("STATUS", b"kd", ("dead", "DEPRECATED"))],
+                  gates_that_fired=["sigma"], version=1, signature=b"s"))
+    ids = [h[0] for h in b.graph_walk_read("France capital Paris",
+                                           encoder="hashing", k=5)]
+    assert b"live" in ids
+    assert b"dead" not in ids
+
+
+def test_paraphrase_duplicate_is_deduped_at_recall_after_merge():
+    # end-to-end: a canonical claim, then a paraphrase fed through
+    # merge_on_receive. The sigma-MERGE deprecates the paraphrase, so recall
+    # returns ONE unit (the canonical), not two -- the property that makes
+    # distributed_merge differ from naive_union.
+    from smp.config import load_thresholds
+    from smp.merge.signals import EmbeddingSimilarity
+    from smp.protocol.merge_on_receive import merge_on_receive
+    b = Brain()
+    canon = MemoryUnit(id=b"canon", claims=[Claim(claim_key=b"kc",
+                       text="Paris is the capital of France")])
+    b.apply(_patch_merge(canon))
+    para = MemoryUnit(id=b"para", claims=[Claim(claim_key=b"kp",
+                      text="Paris is the capital city of France")])
+    for patch in merge_on_receive(para, [canon], cfg=load_thresholds(),
+                                  es=EmbeddingSimilarity(encoder="hashing"),
+                                  nli="lexical"):
+        b.apply(patch)
+    ids = [h[0] for h in b.graph_walk_read("capital of France Paris",
+                                           encoder="hashing", k=5)]
+    assert b"canon" in ids
+    assert b"para" not in ids

@@ -25,6 +25,17 @@ class Thresholds:
     r_min: float
     tau: float
 
+    def __post_init__(self) -> None:
+        # The RELATE band is [sigma_lo, theta_merge); it is only reachable when
+        # sigma_lo < theta_merge. An inverted or equal pair (the _calibrated_cfg
+        # 0.5/0.55 bug) leaves RELATE dead and forces every candidate to MERGE.
+        if not (0.0 <= self.sigma_lo < self.theta_merge <= 1.0):
+            raise ValueError(
+                f"thresholds must satisfy 0 <= sigma_lo ({self.sigma_lo}) < "
+                f"theta_merge ({self.theta_merge}) <= 1; an inverted/equal pair "
+                "leaves the RELATE band [sigma_lo, theta_merge) empty (Section 4)"
+            )
+
 
 def load_thresholds(path: str | None = None) -> Thresholds:
     path = path or DEFAULT_PATH

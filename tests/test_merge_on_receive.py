@@ -74,3 +74,59 @@ def test_no_local_match_yields_a_patch_per_incoming_claim():
     # with no local claim, a novel concept is admitted as a MERGE (insert)
     assert len(patches) == 1
     assert patches[0].decision in {"MERGE", "RELATE"}
+
+
+def test_sigma_paraphrase_merge_deprecates_incoming_and_supersedes_local():
+    # same-enough by SIMILARITY (kappa=0, sigma>=theta_merge, not contradicting):
+    # the incoming is a redundant paraphrase of an existing local canonical claim.
+    # The merge keeps it for provenance/audit but marks ITS claim status
+    # DEPRECATED (superseded) and records a SUPERSEDES link to the canonical, so a
+    # later status-aware recall surfaces ONE representative, not both. This is the
+    # "status, not truth" consolidation that distinguishes merge from naive union.
+    inc = _incoming("Paris is the capital city of France", key=b"ki")
+    loc = _local("Paris is the capital of France", key=b"kl")
+    patches = merge_on_receive(inc, [loc], cfg=CFG, es=_es(), nli="lexical")
+    assert len(patches) == 1
+    p = patches[0]
+    assert p.decision == "MERGE"
+    assert "sigma" in p.gates_that_fired          # paraphrase path, not kappa/novel
+    status_updates = [x for x in p.emitted
+                      if isinstance(x, tuple) and x and x[0] == "STATUS"]
+    assert status_updates, "a MERGE must emit a claim-status update"
+    _, ck, (_lid, eff) = status_updates[0]
+    assert ck == inc.claims[0].claim_key
+    assert eff == "DEPRECATED"                    # superseded, NOT left ACTIVE
+    links = [x for x in p.emitted if isinstance(x, MemoryLink)]
+    assert any(l.type == "SUPERSEDES" for l in links)
+
+
+def test_relate_retains_the_incoming_claim_as_a_unit():
+    # Section 4: a RELATE ("overlaps") keeps the two claims DISTINCT -- BOTH must
+    # remain retrievable. The incoming claim must be stored as a unit AND linked
+    # (ASSOCIATES), not dropped. The drop was collapsing the centralized store
+    # (37 of 40 claims RELATEd away -> recall@5 0.056), caught on the minilm smoke.
+    inc = _incoming("Mount Everest is located in the Himalayas", key=b"ki")
+    loc = _local("Mount Everest is the tallest mountain", key=b"kl")
+    p = merge_on_receive(inc, [loc], cfg=CFG, es=_es(), nli="lexical")[0]
+    assert p.decision == "RELATE"
+    units = [x for x in p.emitted if isinstance(x, MemoryUnit)]
+    links = [x for x in p.emitted if isinstance(x, MemoryLink)]
+    assert any(u.id == inc.id for u in units), "RELATE must retain the incoming unit"
+    assert any(l.type == "ASSOCIATES" for l in links)
+
+
+def test_exact_key_and_novel_merges_stay_active():
+    # the deprecation applies ONLY to the sigma-paraphrase path; an exact-key
+    # merge and a novel insert remain ACTIVE (they are canonical, not redundant).
+    exact = merge_on_receive(_incoming("Paris is in France", key=b"same"),
+                             [_local("Paris is in France", key=b"same")],
+                             cfg=CFG, es=_es(), nli="lexical")[0]
+    novel = merge_on_receive(_incoming("quantum chromodynamics is hard", key=b"a"),
+                             [_local("the cat sat on the mat", key=b"b")],
+                             cfg=CFG, es=_es(), nli="lexical")[0]
+    for p in (exact, novel):
+        effs = [x[2][1] for x in p.emitted
+                if isinstance(x, tuple) and x and x[0] == "STATUS"]
+        assert all(e == "ACTIVE" for e in effs)
+        assert not any(isinstance(x, MemoryLink) and x.type == "SUPERSEDES"
+                       for x in p.emitted)

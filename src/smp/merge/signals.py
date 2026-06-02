@@ -105,7 +105,15 @@ class _SentenceTransformerEncoder:
         if self._model is None:
             from sentence_transformers import SentenceTransformer
 
-            self._model = SentenceTransformer(self._MODEL_IDS[self.rung])
+            # Pin to CPU: this is a tiny encoder, and on a shared GPU the LLM
+            # (vLLM at gpu_memory_utilization~0.90) already owns almost all VRAM,
+            # so loading minilm on CUDA OOMs (caught on the minilm smoke:
+            # naive_union, the most units to embed, failed with 46 MiB short).
+            # Honor an explicit override via SMP_ST_DEVICE if ever needed.
+            import os
+            device = os.environ.get("SMP_ST_DEVICE", "cpu")
+            self._model = SentenceTransformer(self._MODEL_IDS[self.rung],
+                                              device=device)
         emb = self._model.encode([text], normalize_embeddings=True,
                                  show_progress_bar=False)
         return np.asarray(emb[0], dtype=np.float64)

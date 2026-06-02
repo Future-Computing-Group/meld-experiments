@@ -1,0 +1,17 @@
+# SMP merge thresholds CALIBRATED for the minilm encoder (all-MiniLM-L6-v2).
+#
+# Provenance (reproducible): derived by smp.merge.calibration.calibrate_thresholds
+# over smp.merge.calibration.CALIBRATION_PAIRS (a labeled MERGE/RELATE/REJECT
+# claim-pair set), max-accuracy then max-margin. On minilm the classes separate
+# cleanly (MERGE ~0.98, RELATE 0.63-0.81, REJECT ~0), so this pair classifies the
+# fixture at accuracy 1.0 with a reachable RELATE band. Re-derivation is checked by
+# tests/test_threshold_calibration.py::test_calibrated_minilm_config_matches_calibration.
+#
+# Replaces the inverted hardcoded _calibrated_cfg pair (theta_merge=0.5 <
+# sigma_lo=0.55), which left the RELATE band empty and forced every candidate to
+# MERGE. No silent defaults: every key is required by the loader.
+
+theta_merge: 0.90
+sigma_lo: 0.12
+r_min: 0.10
+tau: 0.50

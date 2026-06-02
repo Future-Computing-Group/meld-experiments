@@ -18,7 +18,7 @@ from __future__ import annotations
 from typing import Dict, List, Optional, Tuple
 
 from smp.merge.signals import EmbeddingSimilarity, _tokenize
-from smp.merge.status_crdt import StatusState
+from smp.merge.status_crdt import StatusState, effective_status
 from smp.proto import Claim, MemoryLink, MemoryUnit
 from smp.protocol.messages import Patch
 
@@ -79,23 +79,43 @@ class Brain:
         return list(self._units.values()) + list(self.links)
 
     # -- graph-walk read (Def. 2/3 fusion) ------------------------------
+    def _unit_is_live(self, unit: MemoryUnit) -> bool:
+        """A unit is live for recall iff at least one of its claims is still
+        ACTIVE under the status CRDT. A unit whose every claim has been superseded
+        (DEPRECATED/OVERRULED/REVOKED) -- e.g. a paraphrase consolidated by a
+        same-enough merge -- is no longer surfaced; this is what dedups the merged
+        store at read time without destroying the unit (status, not truth)."""
+        claims = list(unit.claims)
+        if not claims:
+            return True
+        return any(effective_status(self._status.get(c.claim_key, StatusState()))
+                   == "ACTIVE" for c in claims)
+
+    def live_unit_count(self) -> int:
+        """Number of status-live (recallable) units -- the storage/compactness
+        signal: a merged store deprecates redundant duplicates, so its live count
+        is below its stored count (len(self._units)) and below a naive union's."""
+        return sum(1 for u in self._units.values() if self._unit_is_live(u))
+
     def graph_walk_read(self, query: str, *, encoder: str, k: int = 5,
                         beta_lex: float = 0.3, beta_dense: float = 0.5,
                         beta_graph: float = 0.2) -> List[Tuple[bytes, float]]:
         """Fuse lexical (token overlap), dense (cosine), and graph-relevance
         channels into a ranked list of (unit_id, score). The graph channel adds
-        one hop of typed-link propagation from seed units (active links only)."""
+        one hop of typed-link propagation from seed units (active links only).
+        Only status-live units are eligible (superseded duplicates are skipped)."""
         es = self._es if encoder == self._encoder_name else EmbeddingSimilarity(encoder=encoder)
+        live = {uid: u for uid, u in self._units.items() if self._unit_is_live(u)}
         q_tokens = set(_tokenize(query))
         dense: Dict[bytes, float] = {}
         lex: Dict[bytes, float] = {}
-        for uid, unit in self._units.items():
+        for uid, unit in live.items():
             text = " ".join(c.text for c in unit.claims)
             dense[uid] = es.sigma(query, text) if text else 0.0
             u_tokens = set(_tokenize(text))
             lex[uid] = (len(q_tokens & u_tokens) / len(q_tokens)) if q_tokens else 0.0
-        # one-hop graph propagation over ACTIVE links
-        graph: Dict[bytes, float] = {uid: 0.0 for uid in self._units}
+        # one-hop graph propagation over ACTIVE links (live units only)
+        graph: Dict[bytes, float] = {uid: 0.0 for uid in live}
         for ln in self.links:
             if ln.status != "ACTIVE":
                 continue
@@ -103,7 +123,7 @@ class Brain:
             if src in dense and dst in graph:
                 graph[dst] = max(graph[dst], dense[src] * ln.weight)
         scored = []
-        for uid in self._units:
+        for uid in live:
             score = (beta_lex * lex[uid] + beta_dense * dense[uid]
                      + beta_graph * graph.get(uid, 0.0))
             scored.append((uid, score))

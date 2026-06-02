@@ -119,8 +119,33 @@ def _make_patch(decision, incoming, claim, peer_claim: Optional[Claim] = None,
     emitted: list = []
     if decision == "MERGE":
         emitted.append(incoming)
-        emitted.append(("STATUS", claim.claim_key, (incoming.id.hex() or "v", "ACTIVE")))
+        # A same-enough merge via SIMILARITY (kappa=0, sigma>=theta_merge) means the
+        # incoming claim is a redundant paraphrase of an existing local canonical.
+        # Keep it for provenance/audit, but mark ITS status DEPRECATED (superseded)
+        # and record a SUPERSEDES consolidation link, so a status-aware recall
+        # surfaces one representative -- this is what makes merge differ from naive
+        # union, and it converges STATUS, not truth. An exact-key (kappa=1) or novel
+        # insert is canonical and stays ACTIVE.
+        paraphrase = peer_claim is not None and "sigma" in (gates or [])
+        if paraphrase:
+            emitted.append(("STATUS", claim.claim_key,
+                            (incoming.id.hex() or "v", "DEPRECATED")))
+            emitted.append(MemoryLink(
+                type="SUPERSEDES", weight=float(sigma), version=version,
+                signature=sign, provenance="CONSOLIDATION",
+                src=Endpoint(node_id=incoming.id, claim_key=claim.claim_key),
+                dst=Endpoint(claim_key=peer_claim.claim_key),
+            ))
+        else:
+            emitted.append(("STATUS", claim.claim_key,
+                            (incoming.id.hex() or "v", "ACTIVE")))
     elif decision == "RELATE":
+        # "overlaps": the two claims STAY DISTINCT (Section 4) -- so the incoming
+        # claim is RETAINED as a retrievable unit AND an ASSOCIATES link records the
+        # relation. Emitting only the link (the prior behavior) dropped the claim
+        # from the store, collapsing any store fed related content (centralized
+        # RELATEd ~37/40 claims away -> recall@5 0.056).
+        emitted.append(incoming)
         emitted.append(MemoryLink(
             type="ASSOCIATES", weight=float(sigma), version=version,
             signature=sign, provenance="INFERRED",

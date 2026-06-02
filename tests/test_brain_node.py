@@ -1,0 +1,69 @@
+"""Integration kernel: a BrainNode ties the SMP brain + merge-on-receive into a
+networked node. ingest() writes a local observation; extract_delta() yields the
+claims to publish (new since last publish); receive() merges a peer's delta into the
+local brain via merge-on-receive; live_claim_texts() reports the status-live claims
+(for the convergence/agreement metric). This is the unit the orchestration deploys
+per node; the transport (PatchTransport) carries extract_delta() output between nodes.
+"""
+from __future__ import annotations
+
+
+def _cfg():
+    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    return _calibrated_cfg("hashing")
+
+
+def _node(nid):
+    from smp.sync.node import BrainNode
+    return BrainNode(nid, encoder="hashing", nli="lexical", cfg=_cfg())
+
+
+def test_node_receives_peer_delta_and_claim_becomes_live():
+    a, b = _node("A"), _node("B")
+    a.ingest("Paris is the capital of France")
+    delta = a.extract_delta()
+    assert delta                                   # non-empty: A has something to publish
+    b.receive(delta)
+    assert any("Paris" in t for t in b.live_claim_texts())   # B converged to include it
+
+
+def test_extract_delta_does_not_republish(a_nid="A"):
+    a = _node(a_nid)
+    a.ingest("Paris is the capital of France")
+    first = a.extract_delta()
+    assert first
+    assert a.extract_delta() == []                 # already published -> empty delta
+
+
+def test_two_nodes_converge_after_bidirectional_exchange():
+    a, b = _node("A"), _node("B")
+    a.ingest("Paris is the capital of France")
+    b.ingest("Mount Everest is the tallest mountain")
+    da, db = a.extract_delta(), b.extract_delta()
+    b.receive(da)
+    a.receive(db)
+    at, bt = a.live_claim_texts(), b.live_claim_texts()
+    for texts in (at, bt):
+        assert any("Paris" in t for t in texts)
+        assert any("Everest" in t for t in texts)
+
+
+def test_received_claims_are_not_re_published():
+    # a node must not echo a peer's claim back as its own delta (gossip loop guard).
+    a, b = _node("A"), _node("B")
+    a.ingest("Paris is the capital of France")
+    b.receive(a.extract_delta())
+    assert b.extract_delta() == []                 # B publishes nothing it only received
+
+
+def test_full_state_returns_all_live_claims_for_anti_entropy():
+    # full_state() is the anti-entropy payload: the ENTIRE live set, independent of the
+    # publish-once delta guard, so a peer that missed claims (e.g. during a partition) can
+    # be brought up to date after heal.
+    a = _node("A")
+    a.ingest("Paris is the capital of France")
+    a.ingest("Mount Everest is the tallest mountain")
+    a.extract_delta()                              # publish-once consumes the delta...
+    fs = a.full_state()                            # ...but full_state still returns everything
+    assert len(fs) == 2
+    assert any("Paris" in t for t in fs) and any("Everest" in t for t in fs)

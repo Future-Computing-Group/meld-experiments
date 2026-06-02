@@ -66,9 +66,10 @@ _PROJECT_NEEDLES: list[tuple[str, str, bool, bool]] = [
 # (verified at source). These are documented benchmark vocabulary, not lessons.
 _LESSON_ALLOWLIST = {chr(0x4C) + d for d in ("1", "2", "3")}  # {"L1","L2","L3"}
 
-# Files whose JOB is to name excluded artifacts: a .gitignore listing an
-# ops-log filename is the leak-prevention mechanism, not a leak.
-_FILENAME_NEEDLE_LABELS = {"ops-log-1", "ops-log-2"}
+# Files whose JOB is to name excluded artifacts: a .gitignore listing an excluded
+# ops-log filename OR the edge-testbed dir/script glob is the leak-prevention
+# mechanism, not a leak (the ignore patterns MUST name the artifact to exclude it).
+_FILENAME_NEEDLE_LABELS = {"ops-log-1", "ops-log-2", "edge-testbed"}
 _FILENAME_NEEDLE_EXEMPT_FILES = {".gitignore"}
 
 

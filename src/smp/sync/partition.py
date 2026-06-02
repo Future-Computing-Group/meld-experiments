@@ -1,0 +1,89 @@
+"""Real, healable network partition via tc (C-1 multi-host).
+
+Installs a symmetric `tc netem loss 100%` toward the PEER IP only (a prio qdisc +
+a netem-loss band + a u32 dst filter), so the two hosts cannot exchange Patches but
+all OTHER traffic (incl. the orchestrator's SSH) is untouched -- never a blanket
+loss. Verifies the rule landed, heals by removing it, and RAISES on any failure
+(inject-must-raise; avoids a fake-partition that swallows errors).
+iptables is off-limits on the testbed; tc only.
+
+Mirrors a proven tc pattern (deploy/setup-wan.sh, multi_vm_runner): the VMs'
+enp1s0 carries the kernel-default `fq_codel` root, so the root is first `del`'d (a prio
+root cannot be ADDED over an existing root), then the prio root + netem band + u32
+filter are added; heal `del root`s, restoring the default. ``runner(host, argv) ->
+result`` with ``.returncode``/``.stdout``/``.stderr`` is the exec seam (real = ssh +
+`sudo tc`; mocked in tests).
+"""
+from __future__ import annotations
+
+from typing import Callable, List
+
+_LOSS_BAND = "1:3"
+_LOSS_HANDLE = "30:"
+
+
+class PartitionController:
+    def __init__(self, runner: Callable, *, iface: str = "enp1s0"):
+        self._run = runner
+        self.iface = iface
+
+    def _check(self, host: str, argv: List[str]):
+        r = self._run(host, argv)
+        if getattr(r, "returncode", 0) != 0:
+            raise RuntimeError(
+                f"tc failed on {host}: {' '.join(argv)} "
+                f"(rc={getattr(r, 'returncode', '?')} {getattr(r, 'stderr', '')})")
+        return r
+
+    def _del_root(self, host: str, *, check: bool) -> None:
+        argv = ["tc", "qdisc", "del", "dev", self.iface, "root"]
+        if check:
+            self._check(host, argv)
+        else:
+            self._run(host, argv)        # clear-before-setup: ignore (|| true), root may be default-only
+
+    def _add_loss(self, host: str, peer_ip: str) -> None:
+        # clear the default fq_codel root first, THEN add the prio tree.
+        self._del_root(host, check=False)
+        self._check(host, ["tc", "qdisc", "add", "dev", self.iface,
+                           "root", "handle", "1:", "prio"])
+        self._check(host, ["tc", "qdisc", "add", "dev", self.iface,
+                           "parent", _LOSS_BAND, "handle", _LOSS_HANDLE,
+                           "netem", "loss", "100%"])
+        self._check(host, ["tc", "filter", "add", "dev", self.iface,
+                           "protocol", "ip", "parent", "1:0", "prio", "3",
+                           "u32", "match", "ip", "dst", f"{peer_ip}/32",
+                           "flowid", _LOSS_BAND])
+
+    def verify_partition(self, host: str, peer_ip: str) -> bool:
+        r = self._run(host, ["tc", "qdisc", "show", "dev", self.iface])
+        return "loss 100%" in (getattr(r, "stdout", "") or "")
+
+    def isolate_egress(self, host: str, peer_ip: str) -> None:
+        """One-sided: drop ``host``'s egress toward ``peer_ip`` (breaks the bidirectional
+        TCP of an HTTP publish without touching the remote host). Verifies + raises."""
+        self._add_loss(host, peer_ip)
+        if not self.verify_partition(host, peer_ip):
+            raise RuntimeError(f"egress isolation not active on {host} after apply")
+
+    def heal_egress(self, host: str, peer_ip: str) -> None:
+        """Undo isolate_egress: del root -> kernel default; VERIFY is authoritative. The del
+        is best-effort: on an unshaped host (default-only root) `tc qdisc del root` returns
+        nonzero ("No such file"), which is not a failure (nothing to remove). Raise only if
+        the loss actually persists."""
+        self._del_root(host, check=False)
+        if self.verify_partition(host, peer_ip):
+            raise RuntimeError(f"egress isolation still active on {host} after heal")
+
+    def partition(self, host_a: str, host_b: str, *, ip_a: str, ip_b: str) -> None:
+        """Symmetrically isolate host_a and host_b (each drops egress to the other)."""
+        self.isolate_egress(host_a, ip_b)
+        self.isolate_egress(host_b, ip_a)
+
+    def heal(self, host_a: str, host_b: str, *, ip_a: str, ip_b: str) -> None:
+        """Remove the prio tree (del root -> kernel default) and confirm connectivity."""
+        self.heal_egress(host_a, ip_b)
+        self.heal_egress(host_b, ip_a)
+
+
+__all__ = ["PartitionController"]

@@ -109,6 +109,10 @@ def calibrate_and_write(n_conversations: int, encoder: str, nli: str) -> Dict:
     base = load_thresholds()
     best = None
     for theta in [0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95]:
+        # a theta at/below sigma_lo leaves the RELATE band [sigma_lo, theta) empty
+        # (an invalid calibration point); skip it rather than trip the invariant.
+        if theta <= base.sigma_lo:
+            continue
         cfg = Thresholds(theta_merge=theta, sigma_lo=base.sigma_lo,
                          r_min=base.r_min, tau=base.tau)
         res = run_m2(n_conversations, encoder, nli, cfg=cfg)
