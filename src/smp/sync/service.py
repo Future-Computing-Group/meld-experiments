@@ -79,7 +79,17 @@ class BrainService:
             delivered[peer] = d.get(peer, False)
         return 200, json.dumps({"resynced": len(state), "delivered": delivered}).encode("utf-8")
 
+    def _reset(self) -> Tuple[int, bytes]:
+        """Per-cell isolation: drop the node's brain state + the latency records, so a
+        campaign cell starts fresh (independent seeds; each RTT regime re-measured)."""
+        self.node.reset()
+        if self.meter is not None:
+            self.meter.reset()
+        return 200, json.dumps({"reset": True}).encode("utf-8")
+
     def handle(self, method: str, path: str, body: bytes = b"") -> Tuple[int, bytes]:
+        if method == "POST" and path == "/reset":
+            return self._reset()
         if method == "POST" and path == "/resync":
             return self._resync()
         if method == "POST" and path == "/ingest":

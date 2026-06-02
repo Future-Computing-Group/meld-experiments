@@ -20,6 +20,11 @@ class SyncLatencyMeter:
         self._published: Dict[str, float] = {}
         self._consistent: Dict[str, float] = {}
 
+    def reset(self) -> None:
+        """Clear all records (per-cell isolation: each campaign cell measures fresh)."""
+        self._published.clear()
+        self._consistent.clear()
+
     def mark_published(self, patch_id: str) -> None:
         self._published[patch_id] = self._clock()
 

@@ -56,6 +56,21 @@ def test_received_claims_are_not_re_published():
     assert b.extract_delta() == []                 # B publishes nothing it only received
 
 
+def test_reset_clears_brain_and_published_for_cell_isolation():
+    # per-cell isolation: a campaign cell must start from a FRESH brain so seeds are
+    # independent replicates and each RTT regime is actually re-measured (without reset,
+    # publish-once means later cells publish nothing and the regime effect is invisible).
+    a = _node("A")
+    a.ingest("Paris is the capital of France")
+    a.extract_delta()                              # consume the delta (publish-once)
+    assert a.live_claim_texts()                    # has state
+    a.reset()
+    assert a.live_claim_texts() == set()           # brain cleared
+    a.ingest("Mount Everest is the tallest mountain")
+    assert a.extract_delta()                       # publishes again post-reset (fresh _published)
+    assert any("Everest" in t for t in a.live_claim_texts())
+
+
 def test_full_state_returns_all_live_claims_for_anti_entropy():
     # full_state() is the anti-entropy payload: the ENTIRE live set, independent of the
     # publish-once delta guard, so a peer that missed claims (e.g. during a partition) can

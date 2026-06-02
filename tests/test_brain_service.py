@@ -94,6 +94,19 @@ def test_publish_without_transport_is_503_not_silent_ok():
     assert status == 503
 
 
+def test_post_reset_clears_node_state_and_latency():
+    from smp.sync.latency import SyncLatencyMeter
+    svc = _service()
+    svc.meter = SyncLatencyMeter(clock=lambda: 0.0)
+    svc.node.ingest("Paris is the capital of France")
+    svc.meter.mark_published("p1"); svc.meter.mark_globally_consistent("p1")
+    status, body = svc.handle("POST", "/reset")
+    assert status == 200
+    assert svc.node.live_claim_texts() == set()              # brain cleared
+    assert svc.handle("GET", "/metrics")[1] and json.loads(svc.handle("GET", "/metrics")[1])["live_count"] == 0
+    assert svc.meter.summary()["n"] == 0                     # latency meter reset
+
+
 def test_build_from_env_requires_explicit_core_config():
     # no-silent-default: NODE_ID / PORT / ENCODER / NLI must be set
     import pytest

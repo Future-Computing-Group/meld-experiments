@@ -29,8 +29,16 @@ class BrainNode:
     def __init__(self, node_id: str, *, encoder: str, nli: str,
                  cfg: Optional[Thresholds] = None, cache_dir: Optional[str] = None):
         self.node_id = node_id
-        self.mem = SMPMemory(encoder=encoder, nli=nli, cfg=cfg, cache_dir=cache_dir)
+        self._mem_kw = dict(encoder=encoder, nli=nli, cfg=cfg, cache_dir=cache_dir)
+        self.mem = SMPMemory(**self._mem_kw)
         self._published: Set[str] = set()   # claim texts already published OR received
+
+    def reset(self) -> None:
+        """Drop all state -> a fresh brain + empty published-set, so a campaign cell starts
+        isolated (seeds are independent replicates; each RTT regime is actually re-measured
+        rather than masked by publish-once leftover state from the previous cell)."""
+        self.mem = SMPMemory(**self._mem_kw)
+        self._published.clear()
 
     # -- local observation ---------------------------------------------------
     def ingest(self, text: str) -> None:
