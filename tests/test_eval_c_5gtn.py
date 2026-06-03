@@ -78,6 +78,24 @@ def test_per_seed_identical_effects_never_diverge():
     assert r["crdt_healed"] == 1.0 and r["lww_healed"] == 1.0
 
 
+# --- partition composition (the 2|2 split plan) ----------------------------------------
+
+def test_partition_plan_every_host_drops_all_opposite_side_ips():
+    # the 2|2 split: each host on one side must drop egress to EVERY host on the other side
+    # (one multi-peer tc tree per host), never to its own side. A per-PAIR plan would
+    # del-root-wipe earlier peers; this per-HOST plan lists all opposite IPs at once.
+    side_a = [("A", "10.0.0.1"), ("B", "10.0.0.2")]
+    side_b = [("C", "10.0.0.3"), ("D", "10.0.0.4")]
+    plan = dict(M.partition_plan(side_a, side_b))
+    assert set(plan) == {"A", "B", "C", "D"}          # one entry per host
+    assert plan["A"] == ["10.0.0.3", "10.0.0.4"]      # side_a hosts drop both side_b IPs
+    assert plan["B"] == ["10.0.0.3", "10.0.0.4"]
+    assert plan["C"] == ["10.0.0.1", "10.0.0.2"]      # side_b hosts drop both side_a IPs
+    assert plan["D"] == ["10.0.0.1", "10.0.0.2"]
+    # never shape a same-side peer
+    assert "10.0.0.2" not in plan["A"] and "10.0.0.4" not in plan["C"]
+
+
 # --- aggregation -----------------------------------------------------------------------
 
 def test_aggregate_shape_and_full_reconvergence():

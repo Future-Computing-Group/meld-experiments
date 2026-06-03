@@ -29,6 +29,7 @@ class FakeRunner:
         self._initial_root = initial_root
         self.root = {}      # host -> "fq_codel" | "prio" | None
         self.loss = {}      # host -> bool
+        self.filters = {}   # host -> set of dst IPs currently dropped (del root clears them)
 
     def _root(self, host):
         return self.root.get(host, self._initial_root)
@@ -41,6 +42,7 @@ class FakeRunner:
         if "qdisc" in cmd and "del" in cmd and "root" in cmd:
             self.root[host] = None          # del root -> back to no qdisc (kernel reinstalls default)
             self.loss[host] = False
+            self.filters[host] = set()      # del root removes ALL u32 filters at once
             return SimpleNamespace(returncode=0, stdout="", stderr="")
         if "qdisc" in cmd and "add" in cmd and "root" in cmd and "prio" in cmd:
             if self._root(host) is not None:    # a root already exists -> add fails
@@ -53,6 +55,9 @@ class FakeRunner:
             self.loss[host] = True
             return SimpleNamespace(returncode=0, stdout="", stderr="")
         if "filter" in cmd and "add" in cmd:
+            if "dst" in argv:                       # record the dropped dst IP (strip /32)
+                dst = argv[argv.index("dst") + 1].split("/")[0]
+                self.filters.setdefault(host, set()).add(dst)
             return SimpleNamespace(returncode=0, stdout="", stderr="")
         if "show" in cmd:
             r = self._root(host)
@@ -155,6 +160,64 @@ def test_heal_egress_tolerates_default_only_root_del_failure():
 
     pc = PartitionController(DefaultOnlyRunner(initial_root="fq_codel"), iface="enp1s0")
     pc.heal_egress("hostA", "10.0.0.2")     # must NOT raise (no loss present -> verify clean)
+
+
+def test_isolate_egress_multi_one_del_root_filters_every_peer():
+    # the 2|2 split-brain case: ONE host must drop egress to SEVERAL peers at once. Repeated
+    # single-peer isolate_egress would del-root each call and WIPE the prior peer's filter
+    # (leaving only the last) -- the bug this primitive fixes. One del-root, N filters.
+    from smp.sync.partition import PartitionController
+    r = FakeRunner(initial_root="fq_codel")
+    pc = PartitionController(r, iface="enp1s0")
+    pc.isolate_egress_multi("hostA", ["10.0.0.3", "10.0.0.4"])
+    a = _seq(r.calls, "hostA")
+    assert sum(1 for c in a if "del" in c and "root" in c) == 1     # del root EXACTLY once
+    assert sum(1 for c in a if "add" in c and "root" in c and "prio" in c) == 1
+    assert r.filters["hostA"] == {"10.0.0.3", "10.0.0.4"}          # BOTH peers dropped
+    assert r.loss["hostA"] is True
+
+
+def test_repeated_single_isolate_would_wipe_but_multi_does_not():
+    # regression guard documenting the bug: two single-peer isolates leave only the LAST
+    # filter (each del-roots); the multi primitive retains both.
+    from smp.sync.partition import PartitionController
+    r1 = FakeRunner(initial_root="fq_codel")
+    pc1 = PartitionController(r1, iface="enp1s0")
+    pc1.isolate_egress("hostA", "10.0.0.3")
+    pc1.isolate_egress("hostA", "10.0.0.4")
+    assert r1.filters["hostA"] == {"10.0.0.4"}                     # only the last survived (the bug)
+    r2 = FakeRunner(initial_root="fq_codel")
+    pc2 = PartitionController(r2, iface="enp1s0")
+    pc2.isolate_egress_multi("hostA", ["10.0.0.3", "10.0.0.4"])
+    assert r2.filters["hostA"] == {"10.0.0.3", "10.0.0.4"}         # the fix keeps both
+
+
+def test_heal_host_clears_whole_tree_and_verifies_clean():
+    from smp.sync.partition import PartitionController
+    r = FakeRunner(initial_root="fq_codel")
+    pc = PartitionController(r, iface="enp1s0")
+    pc.isolate_egress_multi("hostA", ["10.0.0.3", "10.0.0.4"])
+    pc.heal_host("hostA")
+    assert r.loss["hostA"] is False and r.root["hostA"] is None
+    assert r.filters["hostA"] == set()                            # all peer filters gone
+    assert any("del" in c and "root" in c for c in _seq(r.calls, "hostA"))
+
+
+def test_heal_host_tolerates_unshaped_default_only_root():
+    # heal a host that was never shaped (default-only root): del returns nonzero harmlessly,
+    # verify is authoritative -> must NOT raise.
+    from smp.sync.partition import PartitionController
+
+    class DefaultOnlyRunner(FakeRunner):
+        def __call__(self, host, argv):
+            cmd = " ".join(argv)
+            if "del" in cmd and "root" in cmd:
+                return SimpleNamespace(returncode=2, stdout="",
+                                       stderr="RTNETLINK answers: No such file or directory")
+            return super().__call__(host, argv)
+
+    pc = PartitionController(DefaultOnlyRunner(initial_root="fq_codel"), iface="enp1s0")
+    pc.heal_host("hostA")           # must not raise
 
 
 def test_heal_raises_if_partition_persists():

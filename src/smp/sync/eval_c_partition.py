@@ -49,6 +49,20 @@ def seeded_delivery_orders(brains: List[str], links: List[Tuple[str, str]], *,
     return orders
 
 
+def partition_plan(side_a: List[Tuple[str, str]],
+                   side_b: List[Tuple[str, str]]) -> List[Tuple[str, List[str]]]:
+    """Per-host egress-drop plan for a 2|2 (or N/2) split: every host on one side drops egress
+    to EVERY host on the other side, never to its own side. ``side_a``/``side_b`` are lists of
+    (host, ip); returns ``[(host, [opposite_side_ips...]), ...]`` -- one entry per host. Applied
+    with one multi-peer tc tree per host this gives a real bidirectional partition; a per-PAIR
+    plan would del-root-wipe earlier peers (each pair rebuilds the host's root)."""
+    a_ips = [ip for _h, ip in side_a]
+    b_ips = [ip for _h, ip in side_b]
+    plan = [(h, list(b_ips)) for h, _ip in side_a]
+    plan += [(h, list(a_ips)) for h, _ip in side_b]
+    return plan
+
+
 def per_seed_result(*, during_statuses: Dict[str, str],
                     delivery_orders: Dict[str, List[Tuple[str, str]]],
                     effect_a: str, effect_b: str) -> Dict[str, float]:
@@ -91,5 +105,5 @@ def aggregate_results(per_seed: List[Dict[str, float]]) -> Dict:
     return out
 
 
-__all__ = ["agreement", "seeded_delivery_orders", "per_seed_result", "aggregate_results",
-           "LINK_A", "LINK_B"]
+__all__ = ["agreement", "seeded_delivery_orders", "partition_plan", "per_seed_result",
+           "aggregate_results", "LINK_A", "LINK_B"]

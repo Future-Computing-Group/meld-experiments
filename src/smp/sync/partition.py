@@ -42,18 +42,21 @@ class PartitionController:
         else:
             self._run(host, argv)        # clear-before-setup: ignore (|| true), root may be default-only
 
-    def _add_loss(self, host: str, peer_ip: str) -> None:
-        # clear the default fq_codel root first, THEN add the prio tree.
+    def _add_loss(self, host: str, peer_ips: List[str]) -> None:
+        # clear the default fq_codel root ONCE, add the prio + netem tree ONCE, then add a
+        # u32 dst filter per peer. del-root is done once so several peers can be dropped on the
+        # same host without each call wiping the previous peer's filter (the 2|2-split case).
         self._del_root(host, check=False)
         self._check(host, ["tc", "qdisc", "add", "dev", self.iface,
                            "root", "handle", "1:", "prio"])
         self._check(host, ["tc", "qdisc", "add", "dev", self.iface,
                            "parent", _LOSS_BAND, "handle", _LOSS_HANDLE,
                            "netem", "loss", "100%"])
-        self._check(host, ["tc", "filter", "add", "dev", self.iface,
-                           "protocol", "ip", "parent", "1:0", "prio", "3",
-                           "u32", "match", "ip", "dst", f"{peer_ip}/32",
-                           "flowid", _LOSS_BAND])
+        for peer_ip in peer_ips:
+            self._check(host, ["tc", "filter", "add", "dev", self.iface,
+                               "protocol", "ip", "parent", "1:0", "prio", "3",
+                               "u32", "match", "ip", "dst", f"{peer_ip}/32",
+                               "flowid", _LOSS_BAND])
 
     def verify_partition(self, host: str, peer_ip: str) -> bool:
         r = self._run(host, ["tc", "qdisc", "show", "dev", self.iface])
@@ -62,9 +65,30 @@ class PartitionController:
     def isolate_egress(self, host: str, peer_ip: str) -> None:
         """One-sided: drop ``host``'s egress toward ``peer_ip`` (breaks the bidirectional
         TCP of an HTTP publish without touching the remote host). Verifies + raises."""
-        self._add_loss(host, peer_ip)
+        self._add_loss(host, [peer_ip])
         if not self.verify_partition(host, peer_ip):
             raise RuntimeError(f"egress isolation not active on {host} after apply")
+
+    def isolate_egress_multi(self, host: str, peer_ips: List[str]) -> None:
+        """Drop ``host``'s egress toward EVERY ``peer_ip`` under a single prio root (one
+        del-root, one netem band, one u32 filter per peer). Repeated single-peer
+        ``isolate_egress`` would del-root each call and wipe the prior peer's filter -- this
+        is the primitive for a 2|2 (or N/2) split where a host must be cut from several peers
+        at once. Verifies the loss landed + raises."""
+        if not peer_ips:
+            return
+        self._add_loss(host, peer_ips)
+        if not self.verify_partition(host, peer_ips[0]):
+            raise RuntimeError(f"egress isolation not active on {host} after multi-apply")
+
+    def heal_host(self, host: str) -> None:
+        """Remove the whole prio tree on ``host`` (del root -> kernel default), clearing every
+        peer filter at once. del is best-effort (default-only root del returns nonzero
+        harmlessly); verify is authoritative -- raise only if loss actually persists."""
+        self._del_root(host, check=False)
+        r = self._run(host, ["tc", "qdisc", "show", "dev", self.iface])
+        if "loss 100%" in (getattr(r, "stdout", "") or ""):
+            raise RuntimeError(f"egress isolation still active on {host} after heal")
 
     def heal_egress(self, host: str, peer_ip: str) -> None:
         """Undo isolate_egress: del root -> kernel default; VERIFY is authoritative. The del
