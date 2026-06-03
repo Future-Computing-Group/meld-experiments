@@ -42,11 +42,16 @@ class BrainService:
         self.transport = PatchTransport(send, latency_meter=latency_meter) if send else None
         self._peer_live = peer_live          # for semantic routing over the wire
 
-    def _targets(self, claim: str) -> List[str]:
+    def _fetch_peer_content(self) -> dict:
+        """Pull each peer's live claim set ONCE per publish (not per claim) -- the content
+        semantic routing scores against. Empty if no peer_live is wired."""
+        return {p: (self._peer_live(p) if self._peer_live else []) for p in self.peers}
+
+    def _targets(self, claim: str, peer_content: Optional[dict] = None) -> List[str]:
         if self.routing_mode == "broadcast":
             return list(self.peers)
         if self.routing_mode == "semantic":
-            brains = {p: (self._peer_live(p) if self._peer_live else []) for p in self.peers}
+            brains = peer_content if peer_content is not None else self._fetch_peer_content()
             return sorted(semantic_route(claim, brains, encoder=self.node.mem.encoder,
                                          sigma_lo=self.sigma_lo, top_k=self.top_k))
         raise ValueError(f"unknown routing_mode: {self.routing_mode!r}")   # no silent default
@@ -55,10 +60,11 @@ class BrainService:
         if self.transport is None:
             return 503, json.dumps({"error": "no send seam configured"}).encode("utf-8")
         delta = self.node.extract_delta()
+        peer_content = self._fetch_peer_content() if self.routing_mode == "semantic" else None
         delivered = {}
         for claim in delta:
             d = self.transport.publish(f"{self.node.node_id}:{claim}",
-                                       claim.encode("utf-8"), self._targets(claim))
+                                       claim.encode("utf-8"), self._targets(claim, peer_content))
             delivered[claim] = [p for p, ok in d.items() if ok]
         return 200, json.dumps({
             "published": len(delta), "delivered": delivered,
@@ -151,6 +157,8 @@ def build_service_from_env(env) -> Tuple["BrainService", int]:
     (node id / port / encoder / nli) has NO silent default -- a missing
     one raises. Experiment knobs (peers, routing, sigma_lo, top_k) carry documented
     baselines. Returns (service, port)."""
+    import requests
+
     from smp.config import load_thresholds
     from smp.sync.latency import SyncLatencyMeter
     from smp.sync.wire import make_http_send
@@ -171,10 +179,18 @@ def build_service_from_env(env) -> Tuple["BrainService", int]:
     top_k = int(env["SMP_TOP_K"]) if env.get("SMP_TOP_K") else None
     timeout = float(env.get("SMP_HTTP_TIMEOUT", "10.0"))
 
+    def _peer_live(peer_url):
+        """Fetch a peer's live claim set for semantic routing to score against."""
+        try:
+            r = requests.get(peer_url.rstrip("/") + "/metrics", timeout=timeout)
+            return r.json().get("live", []) if r.status_code == 200 else []
+        except Exception:
+            return []
+
     node = BrainNode(node_id, encoder=encoder, nli=nli, cfg=load_thresholds())
     svc = BrainService(node, peers=peers, routing_mode=routing_mode, sigma_lo=sigma_lo,
                        top_k=top_k, send=make_http_send(timeout=timeout),
-                       latency_meter=SyncLatencyMeter())
+                       latency_meter=SyncLatencyMeter(), peer_live=_peer_live)
     return svc, port
 
 

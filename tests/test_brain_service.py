@@ -107,6 +107,40 @@ def test_post_reset_clears_node_state_and_latency():
     assert svc.meter.summary()["n"] == 0                     # latency meter reset
 
 
+def test_semantic_publish_fetches_peer_content_once_per_publish():
+    # the eval-r fix: semantic routing must score against REAL peer content, fetched ONCE
+    # per publish (not per claim, and not never). Previously peer_live was unwired -> empty
+    # content + sigma_lo=0 -> every peer passed -> semantic degenerated to broadcast.
+    from types import SimpleNamespace
+    from smp.sync.node import BrainNode
+    from smp.sync.service import BrainService
+    calls = []
+
+    def peer_live(p):
+        calls.append(p)
+        return ["a peer's topical content"]
+
+    def send(peer, payload):
+        return SimpleNamespace(status_code=200)
+
+    node = BrainNode("A", encoder="hashing", nli="lexical", cfg=_cfg())
+    node.ingest("Paris is the capital of France")
+    node.ingest("Mount Everest is the tallest mountain")     # 2 claims to publish
+    svc = BrainService(node, peers=["p1", "p2"], routing_mode="semantic",
+                       sigma_lo=0.0, send=send, peer_live=peer_live)
+    svc.handle("POST", "/publish")
+    assert calls.count("p1") == 1 and calls.count("p2") == 1  # once per peer, NOT per claim
+
+
+def test_build_from_env_wires_peer_live_for_semantic_routing():
+    from smp.sync.service import build_service_from_env
+    svc, _port = build_service_from_env({
+        "SMP_NODE_ID": "A", "SMP_PORT": "8080", "SMP_ENCODER": "hashing", "SMP_NLI": "lexical",
+        "SMP_PEERS": "http://b:8080", "SMP_ROUTING_MODE": "semantic", "SMP_SIGMA_LO": "0.12"})
+    assert svc._peer_live is not None         # a real peer-content fetch is wired (not None)
+    assert svc.sigma_lo == 0.12               # calibrated threshold honored
+
+
 def test_build_from_env_requires_explicit_core_config():
     # no-silent-default: NODE_ID / PORT / ENCODER / NLI must be set
     import pytest
