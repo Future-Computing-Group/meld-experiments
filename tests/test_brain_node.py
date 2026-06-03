@@ -71,6 +71,27 @@ def test_reset_clears_brain_and_published_for_cell_isolation():
     assert any("Everest" in t for t in a.live_claim_texts())
 
 
+def test_apply_status_overrules_a_claim():
+    a = _node("A")
+    a.ingest("Paris is the capital of France")
+    assert a.status_of("Paris is the capital of France") == "ACTIVE"
+    a.apply_status("Paris is the capital of France", link_id="L1", effect="OVERRULED")
+    assert a.status_of("Paris is the capital of France") == "OVERRULED"
+
+
+def test_status_crdt_converges_order_independently_across_nodes():
+    # the eval-c core: two nodes apply the SAME two overrule links in DIFFERENT orders
+    # (as a partition would reorder delivery) -> identical effective status (lattice join).
+    a, b = _node("A"), _node("B")
+    for n in (a, b):
+        n.ingest("the policy is X")
+    a.apply_status("the policy is X", link_id="L1", effect="DEPRECATED")
+    a.apply_status("the policy is X", link_id="L2", effect="OVERRULED")
+    b.apply_status("the policy is X", link_id="L2", effect="OVERRULED")
+    b.apply_status("the policy is X", link_id="L1", effect="DEPRECATED")
+    assert a.status_of("the policy is X") == b.status_of("the policy is X") == "OVERRULED"
+
+
 def test_full_state_returns_all_live_claims_for_anti_entropy():
     # full_state() is the anti-entropy payload: the ENTIRE live set, independent of the
     # publish-once delta guard, so a peer that missed claims (e.g. during a partition) can

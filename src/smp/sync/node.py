@@ -62,6 +62,24 @@ class BrainNode:
         a partition) is brought fully up to date on the next re-sync after heal."""
         return sorted(self._live_claim_texts())
 
+    # -- status-CRDT (eval-c: concurrent overrules + partition heal) ----------
+    def _claim_key(self, claim_text: str) -> bytes:
+        from smp.agent.memory import _cid
+        return _cid(claim_text + "::claim")
+
+    def apply_status(self, claim_text: str, *, link_id: str, effect: str) -> None:
+        """Apply one overrule/supersede status link to a claim (the status-CRDT add).
+        Order-independent + idempotent: re-applying the same link id is a no-op, and the
+        same set of links yields the same effective status regardless of arrival order."""
+        b = self.mem.brain
+        ck = self._claim_key(claim_text)
+        b._status[ck] = b.claim_status(ck).add(link_id, effect)
+
+    def status_of(self, claim_text: str) -> str:
+        """Effective per-claim status (lattice-join of all its links; ACTIVE if none)."""
+        from smp.merge.status_crdt import effective_status
+        return effective_status(self.mem.brain.claim_status(self._claim_key(claim_text)))
+
     def extract_delta(self) -> List[str]:
         """Claim texts to publish: live claims not yet published or received.
         Each claim is emitted at most once over the node's lifetime."""
