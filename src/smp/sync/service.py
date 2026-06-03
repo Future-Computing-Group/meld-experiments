@@ -47,24 +47,28 @@ class BrainService:
         semantic routing scores against. Empty if no peer_live is wired."""
         return {p: (self._peer_live(p) if self._peer_live else []) for p in self.peers}
 
-    def _targets(self, claim: str, peer_content: Optional[dict] = None) -> List[str]:
+    def _targets(self, claim: str, peer_content: Optional[dict] = None, es=None) -> List[str]:
         if self.routing_mode == "broadcast":
             return list(self.peers)
         if self.routing_mode == "semantic":
             brains = peer_content if peer_content is not None else self._fetch_peer_content()
             return sorted(semantic_route(claim, brains, encoder=self.node.mem.encoder,
-                                         sigma_lo=self.sigma_lo, top_k=self.top_k))
+                                         sigma_lo=self.sigma_lo, top_k=self.top_k, es=es))
         raise ValueError(f"unknown routing_mode: {self.routing_mode!r}")   # no silent default
 
     def _publish(self) -> Tuple[int, bytes]:
         if self.transport is None:
             return 503, json.dumps({"error": "no send seam configured"}).encode("utf-8")
         delta = self.node.extract_delta()
-        peer_content = self._fetch_peer_content() if self.routing_mode == "semantic" else None
+        peer_content = es = None
+        if self.routing_mode == "semantic":
+            from smp.merge.signals import EmbeddingSimilarity
+            peer_content = self._fetch_peer_content()
+            es = EmbeddingSimilarity(encoder=self.node.mem.encoder)   # ONE cache across all claims
         delivered = {}
         for claim in delta:
-            d = self.transport.publish(f"{self.node.node_id}:{claim}",
-                                       claim.encode("utf-8"), self._targets(claim, peer_content))
+            d = self.transport.publish(f"{self.node.node_id}:{claim}", claim.encode("utf-8"),
+                                       self._targets(claim, peer_content, es))
             delivered[claim] = [p for p, ok in d.items() if ok]
         return 200, json.dumps({
             "published": len(delta), "delivered": delivered,

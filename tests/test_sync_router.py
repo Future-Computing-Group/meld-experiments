@@ -26,6 +26,20 @@ def test_semantic_route_delivers_to_relevant_brain_only():
     assert delivered == {"b_paris"}
 
 
+def test_semantic_route_reuses_shared_es_to_avoid_reencoding():
+    # perf: scoring many claims against peer content must NOT re-encode per claim. A shared
+    # EmbeddingSimilarity caches peer-content (and the claim) so the 2nd route hits the cache.
+    from smp.merge.signals import EmbeddingSimilarity
+    from smp.sync.router import semantic_route
+    es = EmbeddingSimilarity(encoder="hashing")
+    semantic_route("Paris is the capital of France", _brains(),
+                   encoder="hashing", sigma_lo=0.0, es=es)
+    hits = es.cache_hits
+    semantic_route("Paris is the capital of France", _brains(),
+                   encoder="hashing", sigma_lo=0.0, es=es)
+    assert es.cache_hits > hits          # second route hits the cache (no re-encode)
+
+
 def test_score_brains_exposes_ranked_relevance():
     # the scoring seam NR never built: per-brain relevance score, not a bare set.
     from smp.sync.router import score_brains

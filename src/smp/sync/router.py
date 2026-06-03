@@ -16,23 +16,25 @@ from smp.merge.signals import EmbeddingSimilarity
 
 
 def score_brains(patch_claim: str, brains: Dict[str, List[str]], *,
-                 encoder: str) -> Dict[str, float]:
+                 encoder: str, es: "EmbeddingSimilarity" = None) -> Dict[str, float]:
     """Per-brain relevance score = the brain's most-similar held claim to the Patch
-    (sigma over ``encoder``). This is the scoring seam the NR router never exposed:
-    selection is score-RANKED, not a positional slice of an opaque match list."""
-    es = EmbeddingSimilarity(encoder=encoder)
+    (sigma over ``encoder``). Selection is score-RANKED. Pass a shared ``es`` to reuse its
+    embedding cache across many claims in one publish (else peer content is re-encoded per
+    claim -> O(claims x peer-content) encodings, which times out at scale)."""
+    es = es or EmbeddingSimilarity(encoder=encoder)
     return {bid: (max(es.sigma(patch_claim, t) for t in texts) if texts else 0.0)
             for bid, texts in brains.items()}
 
 
 def semantic_route(patch_claim: str, brains: Dict[str, List[str]], *,
                    encoder: str, sigma_lo: float,
-                   top_k: Optional[int] = None) -> Set[str]:
+                   top_k: Optional[int] = None,
+                   es: "EmbeddingSimilarity" = None) -> Set[str]:
     """Deliver the Patch only to brains scoring at/above ``sigma_lo`` (the relatedness
     floor) -- i.e. brains that would find it relevant. If ``top_k`` is set, keep only
     the ``top_k`` highest-scoring of those (score-ranked, never a positional slice).
     A Patch relevant to no brain is delivered to none (no force-route fallback)."""
-    scores = score_brains(patch_claim, brains, encoder=encoder)
+    scores = score_brains(patch_claim, brains, encoder=encoder, es=es)
     eligible = [(bid, s) for bid, s in scores.items() if s >= sigma_lo]
     eligible.sort(key=lambda kv: kv[1], reverse=True)
     if top_k is not None:
