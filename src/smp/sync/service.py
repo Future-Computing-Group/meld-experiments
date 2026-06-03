@@ -113,11 +113,18 @@ class BrainService:
             return 200, json.dumps({"received": len(claims)}).encode("utf-8")
         if method == "POST" and path == "/publish":
             return self._publish()
+        if method == "POST" and path == "/status":
+            d = json.loads(body.decode("utf-8") or "{}")
+            self.node.apply_status(d["claim"], link_id=d["link_id"], effect=d["effect"])
+            return 200, json.dumps({"applied": True}).encode("utf-8")
         if method == "GET" and path == "/metrics":
             live = sorted(self.node.live_claim_texts())
+            # per-claim effective status over ALL claims (incl. overruled, which are not live)
+            all_texts = {c.text for u in self.node.mem.brain._units.values() for c in u.claims}
+            status = {t: self.node.status_of(t) for t in all_texts}
             return 200, json.dumps(
                 {"node_id": self.node.node_id, "live_count": len(live), "live": live,
-                 "latency": self.meter.summary() if self.meter else None}
+                 "status": status, "latency": self.meter.summary() if self.meter else None}
             ).encode("utf-8")
         if method == "GET" and path == "/healthz":
             return 200, json.dumps({"status": "ok"}).encode("utf-8")

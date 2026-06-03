@@ -58,6 +58,17 @@ def test_get_metrics_reports_live_claims():
     assert any("Paris" in t for t in m["live"])
 
 
+def test_post_status_overrules_claim_and_metrics_reports_it():
+    svc = _service()
+    svc.node.ingest("Paris is the capital of France")
+    assert json.loads(svc.handle("GET", "/metrics")[1])["status"]["Paris is the capital of France"] == "ACTIVE"
+    status, _ = svc.handle("POST", "/status", json.dumps(
+        {"claim": "Paris is the capital of France", "link_id": "L1", "effect": "OVERRULED"}).encode())
+    assert status == 200
+    m = json.loads(svc.handle("GET", "/metrics")[1])
+    assert m["status"]["Paris is the capital of France"] == "OVERRULED"   # status visible over the wire
+
+
 def test_get_healthz_ok():
     svc = _service()
     status, body = svc.handle("GET", "/healthz")
