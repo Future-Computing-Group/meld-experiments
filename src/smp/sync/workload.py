@@ -9,9 +9,12 @@ unit, STATS-C1). HotpotQA loading (datasets-gated) lives in load_hotpot_claims()
 """
 from __future__ import annotations
 
+import json
+import os
 import random
 from dataclasses import dataclass
-from typing import Dict, FrozenSet, List, Tuple
+from pathlib import Path
+from typing import Callable, Dict, FrozenSet, List, Optional, Tuple
 
 
 @dataclass
@@ -44,13 +47,35 @@ def build_workload(claims: List[Tuple[str, str]], brain_ids: List[str], *,
     return WorkloadCell(assignments=assignments, needed=needed, topic_home=topic_home)
 
 
-def load_hotpot_claims(n: int, *, split: str = "validation",
-                       config: str = "distractor"):  # pragma: no cover - datasets-gated (VM runtime)
-    """Load ~n HotpotQA supporting-fact sentences as (claim_text, topic) pairs, topic =
-    the source paragraph TITLE (so claims sharing a title share a topic -> a meaningful
-    eval-r needed-set). Streams the open `hotpotqa/hotpot_qa` distractor split (no full
-    download, no brain/protobuf import -> the orchestrator venv stays numpy+datasets).
-    Handles both HF schema forms (dict of parallel lists, or list of tuples)."""
+def load_hotpot_claims(n: int, *, split: str = "validation", config: str = "distractor",
+                       cache_dir: Optional[str] = None,
+                       _fetch: Optional[Callable] = None) -> List[Tuple[str, str]]:
+    """Load ~n HotpotQA supporting-fact sentences as (claim_text, topic) pairs.
+
+    The campaign calls this once PER CELL. To avoid re-streaming the full HotpotQA parquet
+    over the network every cell (which wedged the grid when HF throttled the resolve
+    endpoint), the result is cached to a local JSON keyed by (n, split, config): the first
+    cell fetches + stores, every later cell reads from disk (zero network). Override the
+    directory with ``cache_dir`` or ``$SMP_WORKLOAD_CACHE`` (default ~/.cache/smp-workload).
+    ``_fetch`` is injectable for tests; production uses the streaming HF fetch below."""
+    cdir = Path(cache_dir or os.environ.get("SMP_WORKLOAD_CACHE")
+                or Path.home() / ".cache" / "smp-workload")
+    cache_path = cdir / f"hotpot_{config}_{split}_n{n}.json"
+    if cache_path.exists():
+        return [tuple(x) for x in json.loads(cache_path.read_text())]
+    fetch = _fetch or _stream_hotpot
+    claims = [tuple(c) for c in fetch(n, split=split, config=config)]
+    cdir.mkdir(parents=True, exist_ok=True)
+    cache_path.write_text(json.dumps(claims))
+    return claims
+
+
+def _stream_hotpot(n: int, *, split: str,
+                   config: str) -> List[Tuple[str, str]]:  # pragma: no cover - datasets-gated (VM runtime)
+    """Stream the open `hotpotqa/hotpot_qa` split; topic = the source paragraph TITLE (so
+    claims sharing a title share a topic -> a meaningful eval-r needed-set). No brain/protobuf
+    import -> the orchestrator venv stays numpy+datasets. Handles both HF schema forms (dict
+    of parallel lists, or list of tuples)."""
     from datasets import load_dataset
     ds = load_dataset("hotpotqa/hotpot_qa", config, split=split, streaming=True)
     claims = []

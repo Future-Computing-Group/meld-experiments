@@ -54,3 +54,41 @@ def test_deterministic_under_seed():
     # but the function must accept distinct seeds and stay self-consistent)
     for text, topic in CLAIMS:
         assert c.needed[text] == frozenset(c.topic_home[topic])
+
+
+# --- load_hotpot_claims local-disk cache (the per-cell re-stream fix) -------------------
+# The campaign calls load_hotpot_claims once PER CELL; with streaming=True that re-fetched
+# the full HotpotQA parquet over the network every cell (360x), which wedged the grid when
+# HF throttled the resolve endpoint. The cache makes the first cell fetch-and-store and
+# every later cell read from local disk (zero network), keyed by (n, split, config).
+
+def test_hotpot_cache_fetches_once_then_reads_disk(tmp_path):
+    from smp.sync.workload import load_hotpot_claims
+    calls = {"n": 0}
+
+    def fake_fetch(n, *, split, config):
+        calls["n"] += 1
+        return [(f"claim {i}", f"topic{i}") for i in range(n)]
+
+    a = load_hotpot_claims(3, cache_dir=tmp_path, _fetch=fake_fetch)
+    b = load_hotpot_claims(3, cache_dir=tmp_path, _fetch=fake_fetch)
+    assert calls["n"] == 1                       # second call served from disk, no re-fetch
+    assert a == b
+    assert all(isinstance(c, tuple) and len(c) == 2 for c in a)   # tuples survive the round-trip
+
+
+def test_hotpot_cache_keyed_by_n_split_config(tmp_path):
+    from smp.sync.workload import load_hotpot_claims
+    calls = {"n": 0}
+
+    def fake_fetch(n, *, split, config):
+        calls["n"] += 1
+        return [(f"{config}/{split} {i}", "t") for i in range(n)]
+
+    load_hotpot_claims(3, cache_dir=tmp_path, _fetch=fake_fetch)
+    load_hotpot_claims(5, cache_dir=tmp_path, _fetch=fake_fetch)          # different n -> re-fetch
+    load_hotpot_claims(3, split="train", cache_dir=tmp_path, _fetch=fake_fetch)  # diff split -> re-fetch
+    assert calls["n"] == 3
+    # but the original (n=3, validation, distractor) is still a cache hit
+    load_hotpot_claims(3, cache_dir=tmp_path, _fetch=fake_fetch)
+    assert calls["n"] == 3
