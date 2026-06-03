@@ -26,6 +26,7 @@ class GaiaTask:
     gold: str
     level: str               # "L1" | "L2" | "L3"
     clues: List[str] = field(default_factory=list)
+    file_path: str = ""      # local path to a real GAIA attachment (empty for text-only / fixture)
 
 
 def _tid(s: str) -> str:
@@ -90,18 +91,39 @@ def load_gaia_fixture(n: int = 4) -> List[GaiaTask]:
     return tasks
 
 
-def load_gaia_real(*args, **kwargs):  # pragma: no cover - gated path
-    """Gated hook for the REAL GAIA validation slice (CSC run only).
+def _row_to_task(row: dict) -> GaiaTask:
+    """Map one HF GAIA row -> GaiaTask. Pure (no dataset/token) so it is unit-testable.
+    clues stay empty -- on GAIA the agent GATHERS evidence (via tools/files) rather than
+    being handed clues; the file attachment, if any, is carried in file_path."""
+    return GaiaTask(
+        task_id=str(row["task_id"]),
+        question=row["Question"],
+        gold=str(row.get("Final answer", "")),
+        level=f"L{row['Level']}",
+        clues=[],
+        file_path=(row.get("file_path") or ""),
+    )
 
-    Refuses locally: the GAIA dataset is gated on Hugging Face and must not be
-    wired before the identity gate (G0) is green and the run is on the approved
-    GPU host. The gated run uses ``huggingface_hub.snapshot_download`` +
-    ``datasets.load_dataset(..., '2023_level2', split='validation')`` after
-    accepting the dataset terms with an authenticated HF token.
-    """
-    raise RuntimeError(
-        "GAIA real corpus is gated (HF login + terms + no-reshare) and runs only "
-        "on the approved GPU host after G0; use load_gaia_fixture() locally.")
+
+def load_gaia_real(n: int | None = None, *, level: str = "2",
+                   split: str = "validation"):  # pragma: no cover - gated (token + cached data)
+    """Load the REAL GAIA ``2023_level{level}`` ``split`` slice as GaiaTasks. Gated: needs an
+    authenticated HF token (HUGGING_FACE_HUB_TOKEN/HF_TOKEN) + accepted dataset terms. The
+    validation split carries gold answers (for the mem-delta); test has none."""
+    import os
+
+    from datasets import load_dataset
+    tok = os.environ.get("HUGGING_FACE_HUB_TOKEN") or os.environ.get("HF_TOKEN")
+    if not tok:
+        raise RuntimeError(
+            "GAIA is gated: set HUGGING_FACE_HUB_TOKEN (and accept the dataset terms).")
+    ds = load_dataset("gaia-benchmark/GAIA", f"2023_level{level}", split=split, token=tok)
+    out: List[GaiaTask] = []
+    for row in ds:
+        out.append(_row_to_task(row))
+        if n is not None and len(out) >= n:
+            break
+    return out
 
 
-__all__ = ["GaiaTask", "load_gaia_fixture", "load_gaia_real"]
+__all__ = ["GaiaTask", "load_gaia_fixture", "load_gaia_real", "_row_to_task"]

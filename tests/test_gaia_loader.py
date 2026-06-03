@@ -33,3 +33,18 @@ def test_fixture_is_deterministic():
     b = load_gaia_fixture(n=4)
     assert [t.task_id for t in a] == [t.task_id for t in b]
     assert [t.gold for t in a] == [t.gold for t in b]
+
+
+def test_row_to_task_maps_real_gaia_fields():
+    from smp.agent.gaia_loader import _row_to_task
+    row = {"task_id": "t1", "Question": "What year?", "Final answer": "1999",
+           "Level": 2, "file_path": "/tmp/x.pdf", "file_name": "x.pdf"}
+    t = _row_to_task(row)
+    assert (t.task_id, t.question, t.gold, t.level, t.file_path, t.clues) == \
+        ("t1", "What year?", "1999", "L2", "/tmp/x.pdf", [])
+
+
+def test_row_to_task_handles_missing_file_and_answer():
+    from smp.agent.gaia_loader import _row_to_task
+    t = _row_to_task({"task_id": "t2", "Question": "Q", "Level": 1})
+    assert t.gold == "" and t.file_path == "" and t.level == "L1"
