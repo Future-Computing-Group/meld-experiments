@@ -131,7 +131,21 @@ def m2_classification():
               f"n={m['n']}")
         print(f"  confusion: {json.dumps(m['confusion'])}")
         return {"dense_available": False, "hashing_gold": m}
-    # dense rung present: sweep theta_merge for an ROC.
+    # dense rung present: report the OPERATING-POINT classification at the calibrated
+    # theta_merge (the manuscript Section 7-m2 numbers), then sweep for an ROC.
+    m = evaluate_m2(M2_GOLD, encoder="minilm", nli="mnli-cross-encoder",
+                    cfg=_calibrated_cfg("minilm"))
+    print(f"  dense rung (minilm + cross-encoder NLI), {m['n']}-pair gold set, "
+          f"calibrated theta_merge")
+    print(f"  false_merge_rate={m['false_merge_rate']:.3f} "
+          f"({m['n_false_merges']} of {sum(1 for g,_,_ in M2_GOLD if g!='MERGE')} non-mergeable)  "
+          f"macro_f1={m['macro_f1']:.3f}")
+    for c in ("MERGE", "RELATE", "CONFLICT", "REJECT"):
+        pc = m["per_class"][c]
+        print(f"    {c:<9} P={pc['precision']:.2f} R={pc['recall']:.2f} "
+              f"F1={pc['f1']:.2f}  (support={int(pc['support'])})")
+    print(f"  confusion (gold->pred): {json.dumps(m['confusion'])}")
+
     import numpy as np
     from smp.config import Thresholds
     from smp.merge.classifier import classify
