@@ -177,6 +177,48 @@ def test_fixed_recall_run_is_deterministic_with_fixed_llm():
     assert r1["n_overlap_merges"] == r2["n_overlap_merges"]
 
 
+# -- (3b) deterministic-rebuild faithfulness (cross-size F1 validity) -------
+
+
+def test_rebuild_is_byte_identical_across_two_builds_distributed_merge():
+    """The cross-SIZE F1 comparison is only valid if a newly-added model sees the
+    EXACT context the 7B arm saw. The per-cell build (split + merge + recall +
+    prompt) is deterministic (CPU, model-independent), so building twice with the
+    same task/seed/params must yield a BYTE-IDENTICAL assembled evidence + prompt.
+    """
+    t = _task()
+    kw = dict(encoder=ENC, nli=NLI, cfg=CFG, n_brains=DEFAULT_N_BRAINS,
+              overlap_fraction=0.6, inject_conflict=False)
+    b1 = build_condition(t, "distributed_merge", **kw)
+    b2 = build_condition(t, "distributed_merge", **kw)
+    ev1 = assemble_recall(b1, t.question, encoder=ENC, k=5)
+    ev2 = assemble_recall(b2, t.question, encoder=ENC, k=5)
+    assert ev1 == ev2, "distributed_merge recall is NOT reproducible across builds"
+    p1 = fixed_recall_prompt(t.question, ev1)
+    p2 = fixed_recall_prompt(t.question, ev2)
+    assert p1.encode("utf-8") == p2.encode("utf-8"), "prompt not byte-identical"
+    # the store footprint / merge audit must also be identical (model-independent)
+    assert (b1.stored_units, b1.live_units, b1.n_overlap_merges) == \
+           (b2.stored_units, b2.live_units, b2.n_overlap_merges)
+
+
+def test_rebuild_byte_identical_across_all_store_conditions():
+    """Faithfulness across EVERY store-backed condition (centralized,
+    distributed_merge, naive_union) -- each is a model-independent CPU build, so
+    re-running it must reproduce the exact evidence/prompt a prior model saw."""
+    t = _task()
+    for cond in ("centralized", "distributed_merge", "naive_union"):
+        kw = dict(encoder=ENC, nli=NLI, cfg=CFG, overlap_fraction=0.6)
+        b1 = build_condition(t, cond, **kw)
+        b2 = build_condition(t, cond, **kw)
+        ev1 = assemble_recall(b1, t.question, encoder=ENC, k=5)
+        ev2 = assemble_recall(b2, t.question, encoder=ENC, k=5)
+        assert ev1 == ev2, f"{cond}: recall not reproducible across builds"
+        assert fixed_recall_prompt(t.question, ev1).encode("utf-8") == \
+               fixed_recall_prompt(t.question, ev2).encode("utf-8"), \
+               f"{cond}: prompt not byte-identical"
+
+
 # -- (4) scorer integration through run_one ---------------------------------
 
 
@@ -209,6 +251,53 @@ def test_run_one_records_recall_at_k_and_footprint():
     assert 0.0 <= r["recall_at_k"] <= 1.0
     assert 0.0 <= r["mrr"] <= 1.0
     assert r["live_units"] <= r["stored_units"]
+
+
+def test_run_one_persists_evidence_and_prompt():
+    # the durable row must carry the assembled recall evidence + the full answer
+    # prompt, so a future model-add is a true zero-build REPLAY and the context is
+    # auditable. evidence is the list of recalled context strings; prompt is the
+    # exact string fed to llm.complete().
+    t = _task()
+    r = run_one(t, "distributed_merge", "fixed_recall",
+                MockLLM([f"FINAL ANSWER: {t.answer}"]),
+                encoder=ENC, nli=NLI, cfg=CFG, overlap_fraction=0.6, k=5)
+    assert "evidence" in r and "prompt" in r
+    assert isinstance(r["evidence"], list)
+    assert all(isinstance(e, str) for e in r["evidence"])
+    assert isinstance(r["prompt"], str) and r["prompt"]
+    # the persisted evidence is exactly what assemble_recall produced for this build
+    b = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, cfg=CFG,
+                        overlap_fraction=0.6)
+    assert r["evidence"] == assemble_recall(b, t.question, encoder=ENC, k=5)
+    # and the persisted prompt is exactly the fixed_recall answer prompt over it
+    assert r["prompt"] == fixed_recall_prompt(t.question, r["evidence"])
+
+
+def test_run_one_persists_prompt_for_agentic_mode():
+    # agentic mode has no single deterministic answer prompt; the persisted prompt
+    # is the assembled-evidence context prompt (same assemble_recall), so the keys
+    # are always present and summarize() never KeyErrors on mode.
+    t = _task()
+    r = run_one(t, "centralized", "agentic",
+                MockLLM([f"FINAL ANSWER: {t.answer}"]),
+                encoder=ENC, nli=NLI, cfg=CFG)
+    assert "evidence" in r and "prompt" in r
+    assert isinstance(r["evidence"], list) and isinstance(r["prompt"], str)
+
+
+def test_summarize_does_not_break_on_evidence_prompt_keys():
+    # the new durable keys must not perturb aggregation (no KeyError, deltas intact).
+    t = _task()
+    rows = [run_one(t, c, "fixed_recall", MockLLM([f"FINAL ANSWER: {t.answer}"]),
+                    encoder=ENC, nli=NLI, cfg=CFG, overlap_fraction=0.6)
+            for c in MEMORY_CONDITIONS]
+    for r in rows:
+        assert "evidence" in r and "prompt" in r
+    summary = summarize(rows, modes=["fixed_recall"], n_boot=100)
+    fr = summary["per_mode"]["fixed_recall"]
+    assert len(fr["headline_f1"]) == 3
+    assert "means_recall" in fr
 
 
 def test_run_one_omits_recall_for_no_store_conditions():

@@ -29,9 +29,18 @@ DEFAULT_OPEN_WEIGHT_LICENSE = "Apache-2.0"
 # EXCLUDED (open-weight-quirks lesson: its JSON-output-prompt code-emission quirk
 # is avoided structurally by the plain ReAct text contract, but we still prefer
 # the Qwen/Mistral/Gemma families for cross-family validation).
+#
+# The MODEL-SIZE sub-axis (M-1 F1 corroboration) brackets the 7B primary with a
+# smaller and a larger member of the SAME Qwen2.5 family (Apache-2.0), so model
+# SIZE is the only varied factor in the cross-size answer-F1 comparison; recall
+# /merge/summarize are model-independent and unchanged.
 OPEN_MODEL_AXIS = {
     "qwen2.5-7b": {"model": "Qwen/Qwen2.5-7B-Instruct", "license": "Apache-2.0",
                    "role": "primary"},
+    "qwen2.5-1.5b": {"model": "Qwen/Qwen2.5-1.5B-Instruct",
+                     "license": "Apache-2.0", "role": "size-small"},
+    "qwen2.5-32b": {"model": "Qwen/Qwen2.5-32B-Instruct",
+                    "license": "Apache-2.0", "role": "size-large"},
     "mistral-7b": {"model": "mistralai/Mistral-7B-Instruct-v0.3",
                    "license": "Apache-2.0", "role": "cross-family"},
     "gemma-2-9b": {"model": "google/gemma-2-9b-it",

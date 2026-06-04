@@ -29,14 +29,88 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "src"))
 
 from smp.agent.hotpot_loader import load_hotpot_fixture                    # noqa: E402
-from smp.agent.llm import MockLLM, OpenWeightLLM                           # noqa: E402
+from smp.agent.llm import (MockLLM, OPEN_MODEL_AXIS, OpenWeightLLM,        # noqa: E402
+                           open_model)
 from smp.agent.mem_conditions import MEMORY_CONDITIONS                     # noqa: E402
 from smp.agent.run_hotpot_gate import _calibrated_cfg                      # noqa: E402
 from smp.agent.run_hotpot_memdelta import (format_delta_table, run_one,    # noqa: E402
                                            summarize)
 
 
+def _model_axis_smoke() -> int:
+    """SMP_MODELS axis-loop smoke (0-BU, offline). For each named OPEN_MODEL_AXIS
+    key: resolve it via open_model() (axis lookup -> exact HF id, import-light),
+    then run the full per-cell pipeline (build -> recall -> row schema incl. the
+    new evidence/prompt -> summarize -> headline_f1) with a deterministic MockLLM.
+
+    MockLLM ignores the weights (compute is offline), but this exercises EXACTLY
+    the new wiring an added size-axis model touches: axis resolution + the
+    model-independent CPU build + the persisted evidence/prompt + the per-model
+    summary. The gated CSC run swaps MockLLM for the served OpenWeightLLM.
+    """
+    keys = [k for k in os.environ["SMP_MODELS"].split() if k]
+    n = int(os.environ.get("SMP_N", "4"))
+    overlap = float(os.environ.get("SMP_OVERLAP", "0.6"))
+    enc, nli, cfg = "hashing", "lexical", _calibrated_cfg()
+    tasks = load_hotpot_fixture(n=n)
+
+    print("== M-1 model-SIZE axis LOCAL smoke (offline, 0 BU) ==")
+    print(f"   SMP_MODELS={keys} n={n} overlap={overlap} "
+          f"(MockLLM answers; axis lookup + build + row schema exercised)\n")
+
+    ok = True
+    for key in keys:
+        # axis lookup: resolve the key to its OpenWeightLLM (exact HF id), proving
+        # the new size-axis entries round-trip exactly as the 7B does.
+        if key not in OPEN_MODEL_AXIS:
+            print(f"   [{key}] FAIL: not on OPEN_MODEL_AXIS ({list(OPEN_MODEL_AXIS)})")
+            ok = False
+            continue
+        client = open_model(key)
+        assert isinstance(client, OpenWeightLLM)
+        assert client.model == OPEN_MODEL_AXIS[key]["model"]
+        print(f"   [{key}] resolves -> {client.model} "
+              f"(role={OPEN_MODEL_AXIS[key]['role']})")
+
+        rows = []
+        for cond in MEMORY_CONDITIONS:
+            for t in tasks:
+                row = run_one(t, cond, "fixed_recall",
+                              MockLLM([f"FINAL ANSWER: {t.answer}"]),
+                              encoder=enc, nli=nli, cfg=cfg, baseline="react",
+                              n_brains=3, overlap_fraction=overlap, k=5)
+                row["model_key"] = key       # mirrors the CSC driver's row stamp
+                rows.append(row)
+
+        # row-schema invariants: model_key + the persisted evidence/prompt present.
+        missing = [kk for kk in ("model_key", "evidence", "prompt")
+                   if any(kk not in r for r in rows)]
+        if missing:
+            print(f"   [{key}] FAIL: rows missing keys {missing}")
+            ok = False
+            continue
+
+        summary = summarize(rows, modes=["fixed_recall"], n_boot=200, seed=0)
+        fr = summary["per_mode"]["fixed_recall"]
+        hf1 = fr["headline_f1"]
+        f1_populated = all(isinstance(d.get("delta"), float) for d in hf1)
+        means = {c: round(fr["means_f1"][c]["mean"], 3) for c in MEMORY_CONDITIONS
+                 if c in fr["means_f1"]}
+        print(f"      rows={len(rows)} model_key+evidence+prompt OK | "
+              f"headline_f1 deltas={len(hf1)} populated={f1_populated} | "
+              f"means_f1={means}")
+        if not (len(hf1) == 3 and f1_populated):
+            ok = False
+
+    print("\nLOCAL M-1 MODEL-AXIS SMOKE:", "OK" if ok else "CHECK ABOVE")
+    return 0 if ok else 1
+
+
 def main() -> int:
+    # SMP_MODELS set -> the offline model-SIZE axis smoke (0 BU); else the
+    # ollama/oracle delta-signal validation.
+    if os.environ.get("SMP_MODELS"):
+        return _model_axis_smoke()
     backend = os.environ.get("SMP_LLM", "ollama")
     model = os.environ.get("SMP_REALMODEL", "qwen2.5:7b")
     endpoint = os.environ.get("SMP_ENDPOINT",

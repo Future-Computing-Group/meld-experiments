@@ -40,12 +40,17 @@ QID = "task_id"
 
 
 def _answer_fixed_recall(llm, build: ConditionBuild, question: str, *,
-                         encoder: str, k: int = 5) -> str:
-    """One deterministic LLM call over the top-k recalled evidence -> answer."""
+                         encoder: str, k: int = 5):
+    """One deterministic LLM call over the top-k recalled evidence -> answer.
+
+    Returns ``(prediction, evidence, prompt)``: the assembled recall context and
+    the exact answer prompt are returned (not discarded) so ``run_one`` can
+    PERSIST them in the durable row -- making a future model-add a true zero-build
+    replay and the context auditable."""
     evidence = assemble_recall(build, question, encoder=encoder, k=k)
     prompt = fixed_recall_prompt(question, evidence)
     raw = llm.complete(prompt)
-    return extract_prediction(raw)
+    return extract_prediction(raw), evidence, prompt
 
 
 def _answer_agentic(llm, build: ConditionBuild, question: str, *, baseline: str,
@@ -85,16 +90,25 @@ def run_one(task: HotpotTask, condition: str, mode: str, llm, *, encoder: str,
                             n_brains=n_brains, overlap_fraction=overlap_fraction,
                             inject_conflict=inject_conflict)
     if mode == "fixed_recall":
-        pred = _answer_fixed_recall(llm, build, task.question, encoder=encoder, k=k)
+        pred, evidence, prompt = _answer_fixed_recall(
+            llm, build, task.question, encoder=encoder, k=k)
     else:
         pred = _answer_agentic(llm, build, task.question, baseline=baseline,
                                encoder=encoder, nli=nli, cfg=cfg,
                                max_steps=max_steps)
+        # agentic mode has no single deterministic answer prompt; persist the
+        # assembled recall context (same model-independent build) + the prompt the
+        # fixed-recall path WOULD use, so the durable keys are always present and a
+        # replay/audit has the exact context the agent was given.
+        evidence = assemble_recall(build, task.question, encoder=encoder, k=k)
+        prompt = fixed_recall_prompt(task.question, evidence)
     row = {
         "question_id": task.task_id, "task_id": task.task_id,
         "condition": condition, "mode": mode, "baseline": baseline,
         "level": task.level, "prediction": pred, "gold": task.answer,
         "em": em_score(pred, task.answer), "f1": f1_score(pred, task.answer),
+        # persisted recall context + answer prompt (zero-build replay + audit).
+        "evidence": evidence, "prompt": prompt,
         # store footprint (the overhead/compactness claim).
         "stored_units": build.stored_units, "live_units": build.live_units,
         # the merge audit (load-bearing: distributed_merge must show overlap merges)
