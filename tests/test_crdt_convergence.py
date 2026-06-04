@@ -67,3 +67,63 @@ def test_lww_baseline_diverges_where_crdt_converges():
     lww = converge_across_orderings(events, n_orderings=24, seed=0, mode="lww")
     assert crdt["agreement_fraction"] == 1.0
     assert lww["agreement_fraction"] < 1.0
+
+
+# --- modal-agreement + n_distinct (symmetric order-independence measure) ----------
+
+def test_modal_agreement_and_n_distinct_reported():
+    # The symmetric measure backing the manuscript (Section 7-c, in-process): the
+    # agreement fraction is the size of the LARGEST cluster of identical per-claim
+    # status maps over all orderings, divided by n_orderings (does not depend on
+    # which ordering happens to be first). CRDT: one cluster (n_distinct==1,
+    # modal==1.0); LWW: many clusters (n_distinct>1, modal<1.0).
+    from smp.eval.crdt_convergence import converge_across_orderings
+    events = [("c1", "lk1", "DEPRECATED"), ("c1", "lk2", "OVERRULED"),
+              ("c2", "lk3", "DEPRECATED"), ("c2", "lk4", "REVOKED")]
+    crdt = converge_across_orderings(events, n_orderings=200, seed=0, mode="crdt")
+    lww = converge_across_orderings(events, n_orderings=200, seed=0, mode="lww")
+    assert crdt["n_distinct"] == 1
+    assert crdt["modal_agreement"] == 1.0
+    assert lww["n_distinct"] >= 2          # reordering reaches multiple outcomes
+    assert lww["modal_agreement"] < 1.0    # no single outcome dominates all orders
+
+
+def test_canonical_c1_scenario_crdt_order_independent_lww_not():
+    # The fixed canonical contested-lifecycle scenario the manuscript reports, run
+    # at the manuscript's n_orderings=200, seed=0. CRDT is order-independent by
+    # construction (one outcome); LWW diverges across orders.
+    from smp.eval.crdt_convergence import run_inprocess_c1, CANONICAL_C1_SCENARIO
+    rep = run_inprocess_c1(n_orderings=200, seed=0)
+    assert rep["n_orderings"] == 200
+    # CRDT: every ordering computes the SAME per-claim statuses
+    assert rep["crdt"]["modal_agreement"] == 1.0
+    assert rep["crdt"]["n_distinct"] == 1
+    # the converged statuses are the lattice joins of each claim's effects
+    assert rep["crdt"]["status"] == CANONICAL_C1_SCENARIO["expected_crdt_status"]
+    # LWW: order picks the survivor -> diverges across orderings
+    assert rep["lww"]["n_distinct"] >= 2
+    assert rep["lww"]["modal_agreement"] < 1.0
+
+
+def test_canonical_c1_scenario_includes_idempotent_redelivery():
+    # the canonical event list re-delivers at least one link id (OR-set idempotence);
+    # the CRDT result must be invariant to that re-delivery (n_distinct stays 1).
+    from smp.eval.crdt_convergence import CANONICAL_C1_SCENARIO
+    events = CANONICAL_C1_SCENARIO["events"]
+    seen = {}
+    duplicated = False
+    for ck, lid, eff in events:
+        if (ck, lid) in seen:
+            assert seen[(ck, lid)] == eff   # same effect re-delivered (idempotent)
+            duplicated = True
+        seen[(ck, lid)] = eff
+    assert duplicated, "canonical scenario must exercise idempotent re-delivery"
+
+
+def test_run_inprocess_c1_is_reproducible():
+    # same seed -> identical report (deterministic manuscript number).
+    from smp.eval.crdt_convergence import run_inprocess_c1
+    a = run_inprocess_c1(n_orderings=200, seed=0)
+    b = run_inprocess_c1(n_orderings=200, seed=0)
+    assert a["lww"]["modal_agreement"] == b["lww"]["modal_agreement"]
+    assert a["lww"]["n_distinct"] == b["lww"]["n_distinct"]

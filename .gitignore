@@ -43,3 +43,7 @@ __pycache__/
 scripts/*5gtn*
 scripts/setup_vm1_orchestrator.sh
 scripts/watchdog_daemon.py
+
+# Root-level edge-testbed orchestrator + run scripts (host IPs/SSH; internal infra)
+5gtn-npubsub
+val_c_run.sh
