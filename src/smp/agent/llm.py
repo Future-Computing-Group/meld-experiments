@@ -34,27 +34,46 @@ DEFAULT_OPEN_WEIGHT_LICENSE = "Apache-2.0"
 # smaller and a larger member of the SAME Qwen2.5 family (Apache-2.0), so model
 # SIZE is the only varied factor in the cross-size answer-F1 comparison; recall
 # /merge/summarize are model-independent and unchanged.
+# Each entry carries the HF repo (for the transformers transport) AND the Ollama
+# tag (for the ollama transport, which serves quantized open weights over an
+# OpenAI-compatible endpoint -- used for the larger members of the size ladder).
+# recall/merge/summarize are model-independent; this axis only varies the answer-F1
+# corroboration: a size ladder 1.5B->72B across three families (Qwen/Mistral/Gemma).
 OPEN_MODEL_AXIS = {
-    "qwen2.5-7b": {"model": "Qwen/Qwen2.5-7B-Instruct", "license": "Apache-2.0",
-                   "role": "primary"},
-    "qwen2.5-1.5b": {"model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "qwen2.5-1.5b": {"model": "Qwen/Qwen2.5-1.5B-Instruct", "ollama": "qwen2.5:1.5b",
                      "license": "Apache-2.0", "role": "size-small"},
-    "qwen2.5-32b": {"model": "Qwen/Qwen2.5-32B-Instruct",
+    "qwen2.5-7b": {"model": "Qwen/Qwen2.5-7B-Instruct", "ollama": "qwen2.5:7b",
+                   "license": "Apache-2.0", "role": "primary"},
+    "qwen2.5-32b": {"model": "Qwen/Qwen2.5-32B-Instruct", "ollama": "qwen2.5:32b",
                     "license": "Apache-2.0", "role": "size-large"},
-    "mistral-7b": {"model": "mistralai/Mistral-7B-Instruct-v0.3",
+    "qwen2.5-72b": {"model": "Qwen/Qwen2.5-72B-Instruct", "ollama": "qwen2.5:72b",
+                    "license": "Apache-2.0", "role": "size-xlarge"},
+    "mistral-7b": {"model": "mistralai/Mistral-7B-Instruct-v0.3", "ollama": "mistral:7b",
                    "license": "Apache-2.0", "role": "cross-family"},
-    "gemma-2-9b": {"model": "google/gemma-2-9b-it",
+    "gemma-4-12b": {"model": "google/gemma-4-12B-it", "ollama": "gemma4:12b",
+                    "license": "Gemma (open-weights, gated accept)",
+                    "role": "cross-family-midsize"},
+    "gemma-2-9b": {"model": "google/gemma-2-9b-it", "ollama": "gemma2:9b",
                    "license": "Gemma (open-weights, gated accept)",
                    "role": "fallback"},
 }
 
 
-def open_model(key: str = "qwen2.5-7b", **kwargs) -> "OpenWeightLLM":
+def open_model(key: str = "qwen2.5-7b", *, transport: str = "transformers",
+               **kwargs) -> "OpenWeightLLM":
     """Construct an ``OpenWeightLLM`` for a named model on the open-model axis.
-    Import-light: no heavy dep is loaded until the model actually generates."""
+    For the ``ollama`` transport the request uses the Ollama tag; otherwise the HF
+    repo. Import-light: no heavy dep is loaded until the model actually generates."""
     if key not in OPEN_MODEL_AXIS:
         raise KeyError(f"unknown open model {key!r}; axis: {list(OPEN_MODEL_AXIS)}")
-    return OpenWeightLLM(model=OPEN_MODEL_AXIS[key]["model"], **kwargs)
+    entry = OPEN_MODEL_AXIS[key]
+    if transport == "ollama":
+        model = entry.get("ollama")
+        if not model:
+            raise KeyError(f"no ollama tag for {key!r}")
+    else:
+        model = entry["model"]
+    return OpenWeightLLM(model=model, transport=transport, **kwargs)
 
 
 class MockLLM:
@@ -98,16 +117,38 @@ class OpenWeightLLM:
     def complete(self, prompt: str) -> str:
         if self.transport == "transformers":
             return self._complete_transformers(prompt)
-        if self.transport == "vllm-openai":
+        # ollama exposes the same OpenAI /v1/completions contract as vLLM, so the
+        # same POST path serves both (self.model is the ollama tag for ollama).
+        if self.transport in ("vllm-openai", "ollama"):
             return self._complete_vllm(prompt)
         raise ValueError(f"unknown transport {self.transport!r}")
 
     def _complete_transformers(self, prompt: str) -> str:
         if self._pipe is None:
-            from transformers import pipeline  # lazy, gated path only
+            import os
+            from transformers import (AutoModelForCausalLM,  # lazy, gated path
+                                      AutoTokenizer, pipeline)
 
-            self._pipe = pipeline("text-generation", model=self.model,
-                                  device_map="auto")
+            # Force local-only loading when offline is set: pipeline(model=name)
+            # otherwise hits the HF API to RESOLVE the repo and dies under
+            # HF_HUB_OFFLINE/TRANSFORMERS_OFFLINE even with the weights cached.
+            # Loading model+tokenizer explicitly with local_files_only resolves
+            # straight from $HF_HOME (the pattern that loads cleanly offline).
+            local_only = (os.environ.get("TRANSFORMERS_OFFLINE", "0") == "1"
+                          or os.environ.get("HF_HUB_OFFLINE", "0") == "1")
+            # Resolve to the cached snapshot DIRECTORY so from_pretrained loads a
+            # local path with no name resolution / API call at all (passing the
+            # repo NAME still triggers an offline-mode API probe).
+            model_ref = self.model
+            if local_only:
+                from huggingface_hub import snapshot_download
+                model_ref = snapshot_download(self.model, local_files_only=True)
+            tok = AutoTokenizer.from_pretrained(
+                model_ref, local_files_only=local_only)
+            mdl = AutoModelForCausalLM.from_pretrained(
+                model_ref, local_files_only=local_only,
+                device_map="auto", torch_dtype="auto")
+            self._pipe = pipeline("text-generation", model=mdl, tokenizer=tok)
         out = self._pipe(prompt, max_new_tokens=self.max_new_tokens,
                          do_sample=self.temperature > 0,
                          temperature=max(self.temperature, 1e-3),
