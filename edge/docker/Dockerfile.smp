@@ -1,0 +1,22 @@
+# SMP-brain node image for the multi-host sync smoke + the edge testbed.
+# python:3.11-slim + iproute2 (for `tc` netem / partition) + curl (compose
+# healthcheck). Build context = repo root:
+#   docker build -f edge/docker/Dockerfile.smp -t smp-brain:smoke .
+FROM python:3.11-slim
+WORKDIR /app
+
+# iproute2 -> tc (latency / partition primitives); curl -> healthcheck. tc only, never iptables.
+RUN apt-get update && apt-get install -y --no-install-recommends iproute2 curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY edge/docker/requirements-smoke.txt .
+RUN pip install --no-cache-dir -r requirements-smoke.txt
+
+COPY src/ src/
+ENV PYTHONPATH=/app/src
+ENV SMP_PORT=8800
+EXPOSE 8800
+
+# serve_main reads SMP_NODE_ID / SMP_PORT / SMP_ENCODER / SMP_NLI / SMP_PEERS /
+# SMP_ROUTING_MODE from env (no silent default on the core four).
+ENTRYPOINT ["python", "-m", "smp.sync.service"]

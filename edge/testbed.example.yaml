@@ -1,0 +1,56 @@
+# SMP edge-testbed topology — EXAMPLE config.
+#
+# Copy this file to `testbed.yaml` (gitignored) and fill in YOUR nodes. The
+# generic orchestrators (run_campaign.py, deploy.sh, run_eval_c.py) read the
+# topology, ports, image tags, and the netem RTT/partition grid from here — so
+# the committed scripts carry no host aliases, IPs, or SSH targets.
+#
+#   cp testbed.example.yaml testbed.yaml
+#   $EDITOR testbed.yaml
+#
+# NONE of the values below are real. Replace every hostname / IP with your own
+# multi-host testbed (bare-metal, VMs, or containers reachable by SSH).
+
+# Network interface the brains expose + that `tc` netem shapes on each host.
+iface: eth0
+
+# Brain ports.
+brain_port: 8080          # the SMP-brain HTTP service (publish / ingest / status / metrics)
+watchdog_port: 8090       # the per-host watchdog the orchestrator heartbeats
+
+# Container image tags (built from edge/docker; see edge/README.md).
+images:
+  smoke: smp-brain:smoke      # hashing encoder, light/fast (smoke rungs)
+  campaign: smp-brain:minilm  # real MiniLM encoder (campaign rungs)
+
+# The orchestrator host: the node co-located with this driver (commands run
+# locally there, every other node is reached by SSH). Must match a `nodes` id.
+orchestrator: A
+
+# Nodes. `id` is the logical brain id (A,B,C,...); `host` is the SSH target
+# (alias from your ~/.ssh/config or user@host); `ip` is the address peers reach
+# it at on `iface`. Add as many as your testbed has; n_nodes in the grid selects
+# a prefix of this list.
+nodes:
+  - {id: A, host: node-a.example.invalid, ip: 10.0.0.1}
+  - {id: B, host: node-b.example.invalid, ip: 10.0.0.2}
+  - {id: C, host: node-c.example.invalid, ip: 10.0.0.3}
+  - {id: D, host: node-d.example.invalid, ip: 10.0.0.4}
+
+# eval-s (sync latency) + eval-r (routing) grid.
+grid:
+  rtt_ms: [0, 10, 25, 50]            # netem one-way RTT regimes
+  n_nodes: [2, 3, 4]                 # brains per cell (prefix of `nodes`)
+  routings: [broadcast, semantic]    # delivery policy (semantic = top-k peer)
+  seeds: 15                          # seeds per condition
+  heartbeat_s: 30                    # orchestrator -> watchdog heartbeat period
+  publish_timeout_s: 120             # per-cell publish timeout
+
+# eval-c (partition -> heal -> CRDT agreement) cell.
+partition:
+  mode: tc                  # "tc" = real healable network partition; "delivery" = withhold cross-side delivery
+  seeds: 15
+  partition_s: 0            # optional dwell time before healing
+  claim: "the sky is blue"  # the single claim both partition sides overrule
+  effect_a: ACTIVE          # status side A asserts during the partition
+  effect_b: RETRACTED       # status side B asserts during the partition

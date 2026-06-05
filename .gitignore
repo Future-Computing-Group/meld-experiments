@@ -53,3 +53,6 @@ EXPERIMENT.md
 
 # HPC runner: the real site config is gitignored; site.example.env is committed.
 hpc/site.env
+
+# Edge testbed: the real topology is gitignored; testbed.example.yaml is committed.
+edge/testbed.yaml
