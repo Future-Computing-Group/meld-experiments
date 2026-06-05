@@ -214,6 +214,57 @@ def _persist_m2(result):
     print(f"  [persisted] {path}")
 
 
+def e2_perturbation():
+    # E2 (AE #4): exercise the adaptive mechanisms under perturbation.
+    import datetime
+    import os as _os
+    from smp.eval.crdt_convergence import partition_reorder_sweep
+    print("== E2(a) partition-duration x reorder-rate (status-CRDT vs LWW) ==")
+    cells = partition_reorder_sweep(durations=[2, 4, 8, 16],
+                                    reorder_rates=[0.0, 0.25, 0.5, 0.75, 1.0],
+                                    n_claims=6, n_orderings=200, seed=0)
+    crdt_all_one = all(c["crdt_modal_agreement"] == 1.0 for c in cells)
+    lww_min = min(c["lww_modal_agreement"] for c in cells)
+    lww_maxd = max(c["lww_n_distinct"] for c in cells)
+    print(f"  {len(cells)} cells: CRDT modal-agreement==1.0 everywhere: {crdt_all_one} "
+          f"(n_distinct=1); LWW min agreement={lww_min:.3f}, up to {lww_maxd} distinct outcomes")
+
+    robustness = None
+    try:
+        from smp.merge.signals import EmbeddingSimilarity
+        EmbeddingSimilarity(encoder="minilm").sigma("a", "b")
+        from smp.merge.m2_gold import M2_GOLD_V2
+        from smp.merge.m2_eval import score_pairs
+        from smp.eval.robustness import robustness_sweep
+        base = _calibrated_cfg("minilm")
+        scored = score_pairs(M2_GOLD_V2, encoder="minilm", nli="mnli-cross-encoder")
+        robustness = robustness_sweep(scored, theta=base.theta_merge, sigma_lo=base.sigma_lo,
+                                      noise_sds=[0.0, 0.05, 0.10, 0.20, 0.30],
+                                      flip_rates=[0.0, 0.10, 0.25, 0.50], n_trials=50, seed=0)
+        print("== E2(b) decision-procedure robustness (dense rung, V2 gold) ==")
+        print("  embedding-noise sd -> macro_f1 / FMR: " + "  ".join(
+            f"{sd:.2f}:{m['macro_f1']:.3f}/{m['false_merge_rate']:.3f}"
+            for sd, m in robustness["noise"].items()))
+        print("  degraded-NLI flip  -> macro_f1 / FMR: " + "  ".join(
+            f"{fr:.2f}:{m['macro_f1']:.3f}/{m['false_merge_rate']:.3f}"
+            for fr, m in robustness["flip"].items()))
+    except Exception as e:
+        print(f"  E2(b) dense rung unavailable: {type(e).__name__}: {e}")
+
+    HERE = _os.path.dirname(_os.path.abspath(__file__))
+    outdir = _os.path.join(_os.path.dirname(HERE), "data", "e2-sweeps")
+    _os.makedirs(outdir, exist_ok=True)
+    payload = {"timestamp_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               "partition_reorder_sweep": cells,
+               "crdt_modal_agreement_all_one": crdt_all_one,
+               "lww_min_agreement": lww_min, "lww_max_distinct": lww_maxd,
+               "robustness": robustness}
+    with open(_os.path.join(outdir, "e2_sweeps.json"), "w", encoding="utf-8") as fh:
+        json.dump(payload, fh, indent=2)
+    print(f"  [persisted] {_os.path.join(outdir, 'e2_sweeps.json')}")
+    return payload
+
+
 def main():
     a1_gate_ablation()
     print()
@@ -224,6 +275,8 @@ def main():
     a3_token_economics()
     print()
     m2_classification()
+    print()
+    e2_perturbation()
 
 
 if __name__ == "__main__":
