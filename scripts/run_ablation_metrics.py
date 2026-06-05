@@ -110,9 +110,17 @@ def a3_token_economics():
 
 
 def m2_classification():
-    from smp.merge.m2_eval import M2_GOLD, evaluate_m2
+    # E1 (AE #2): the enlarged, balanced 104-pair V2 gold set replaces the
+    # round-1 16-pair set. Reports the operating point with bootstrap CIs, the
+    # theta_merge ROC (open-interval sweep -> no m-E-1 crash), the easy/hard
+    # CONFLICT split (the round-1 blind spot, honestly), and the key-only /
+    # embedding-only baselines (what each component buys).
+    from smp.merge.m2_gold import M2_GOLD_V2, build_gold_set
+    from smp.merge.m2_eval import (evaluate_m2, score_pairs, decisions_full,
+                                   classification_metrics, roc_over_theta,
+                                   bootstrap_metric_ci, evaluate_baseline)
     from smp.merge.signals import EmbeddingSimilarity
-    print("== M-2 merge-classification / ROC ==")
+    print("== M-2 merge-classification / ROC (V2 gold set) ==")
     dense_ok = True
     try:
         EmbeddingSimilarity(encoder="minilm").sigma("a", "b")
@@ -120,68 +128,90 @@ def m2_classification():
         dense_ok = False
         print(f"  dense encoder (minilm) UNAVAILABLE locally: {type(e).__name__}: {e}")
     if not dense_ok:
-        # Report what IS available: the hashing-rung classification on the gold set,
-        # with an explicit caveat. A real ROC over theta_merge requires the dense rung.
         cfg = _calibrated_cfg("hashing")
-        m = evaluate_m2(M2_GOLD, encoder="hashing", nli="lexical", cfg=cfg)
-        print("  No dense rung -> NO real ROC reported (hashing cannot separate")
-        print("  paraphrase/related/distinct; lexical chi cannot adjudicate contradiction).")
-        print(f"  hashing-rung gold-set accuracy (caveated, NOT an ROC): "
-              f"macro_f1={m['macro_f1']:.3f}  false_merge_rate={_pct(m['false_merge_rate'])}  "
-              f"n={m['n']}")
-        print(f"  confusion: {json.dumps(m['confusion'])}")
+        m = evaluate_m2(M2_GOLD_V2, encoder="hashing", nli="lexical", cfg=cfg)
+        print("  No dense rung -> NO real ROC (hashing cannot separate paraphrase/")
+        print("  related/distinct; lexical chi cannot adjudicate contradiction).")
+        print(f"  hashing-rung accuracy (caveated, NOT an ROC): macro_f1={m['macro_f1']:.3f} "
+              f"false_merge_rate={_pct(m['false_merge_rate'])} n={m['n']}")
         return {"dense_available": False, "hashing_gold": m}
-    # dense rung present: report the OPERATING-POINT classification at the calibrated
-    # theta_merge (the manuscript Section 7-m2 numbers), then sweep for an ROC.
-    m = evaluate_m2(M2_GOLD, encoder="minilm", nli="mnli-cross-encoder",
-                    cfg=_calibrated_cfg("minilm"))
-    print(f"  dense rung (minilm + cross-encoder NLI), {m['n']}-pair gold set, "
-          f"calibrated theta_merge")
-    print(f"  false_merge_rate={m['false_merge_rate']:.3f} "
-          f"({m['n_false_merges']} of {sum(1 for g,_,_ in M2_GOLD if g!='MERGE')} non-mergeable)  "
-          f"macro_f1={m['macro_f1']:.3f}")
+
+    base = _calibrated_cfg("minilm")
+    theta, sigma_lo = base.theta_merge, base.sigma_lo
+    rows = build_gold_set()
+    scored = score_pairs(M2_GOLD_V2, encoder="minilm", nli="mnli-cross-encoder")
+    gold = [g for g, _, _ in scored]
+    pred = decisions_full(scored, theta=theta, sigma_lo=sigma_lo)
+    m = classification_metrics(gold, pred)
+    n_neg = sum(1 for g in gold if g != "MERGE")
+    f1_lo, f1_hi = bootstrap_metric_ci(gold, pred, metric="macro_f1", n_boot=2000, seed=0)
+    fmr_lo, fmr_hi = bootstrap_metric_ci(gold, pred, metric="false_merge_rate", n_boot=2000, seed=0)
+    pts, auc = roc_over_theta(scored, sigma_lo=sigma_lo, n_points=51)
+
+    print(f"  dense rung (minilm + cross-encoder NLI), {m['n']}-pair balanced gold set, "
+          f"theta_merge={theta:.3f} sigma_lo={sigma_lo:.3f}")
+    print(f"  macro_f1={m['macro_f1']:.3f} [{f1_lo:.3f},{f1_hi:.3f}]  "
+          f"false_merge_rate={m['false_merge_rate']:.3f} [{fmr_lo:.3f},{fmr_hi:.3f}] "
+          f"({m['n_false_merges']}/{n_neg} non-mergeable)")
     for c in ("MERGE", "RELATE", "CONFLICT", "REJECT"):
         pc = m["per_class"][c]
         print(f"    {c:<9} P={pc['precision']:.2f} R={pc['recall']:.2f} "
               f"F1={pc['f1']:.2f}  (support={int(pc['support'])})")
-    print(f"  confusion (gold->pred): {json.dumps(m['confusion'])}")
-
-    import numpy as np
-    from smp.config import Thresholds
-    from smp.merge.classifier import classify
-    from smp.merge.signals import chi as chi_fn
-    base = _calibrated_cfg("minilm")
-    es = EmbeddingSimilarity(encoder="minilm")
-    sig = [(g, es.sigma(a, b), chi_fn(a, b, model="mnli-cross-encoder"))
-           for g, a, b in M2_GOLD]
-    n_pos = sum(1 for g, _, _ in M2_GOLD if g == "MERGE")
-    n_neg = len(M2_GOLD) - n_pos
-    pts = []
-    for th in np.linspace(0.0, 1.0, 51):
-        cfg = Thresholds(theta_merge=float(th), sigma_lo=base.sigma_lo,
-                         r_min=base.r_min, tau=base.tau)
-        tp = fp = 0
-        for g, s, c in sig:
-            dec = classify(cfg=cfg, kappa=0, sigma=s, chi=c, ctx_ok=True)
-            is_merge = dec == "MERGE"
-            if is_merge and g == "MERGE":
-                tp += 1
-            elif is_merge and g != "MERGE":
-                fp += 1
-        tpr = tp / n_pos if n_pos else 0.0
-        fpr = fp / n_neg if n_neg else 0.0
-        pts.append((float(th), fpr, tpr))
-    # AUC via trapezoid over fpr-sorted unique points
-    uniq = sorted({(fpr, tpr) for _, fpr, tpr in pts})
-    auc = 0.0
-    for (x0, y0), (x1, y1) in zip(uniq, uniq[1:]):
-        auc += (x1 - x0) * (y0 + y1) / 2.0
-    print(f"  dense rung (minilm + cross-encoder), {len(M2_GOLD)}-pair gold set")
+    # easy/hard CONFLICT recall (the round-1 lexically-divergent blind spot)
+    diff_recall = {}
+    for strat in ("easy", "hard"):
+        idx = [i for i, r in enumerate(rows) if r["difficulty"] == strat and r["label"] == "CONFLICT"]
+        rec = sum(1 for i in idx if pred[i] == "CONFLICT") / len(idx) if idx else float("nan")
+        diff_recall[strat] = rec
+        print(f"    CONFLICT recall [{strat:<4}] = {rec:.2f}  (n={len(idx)})")
     print(f"  ROC over theta_merge (MERGE-vs-rest), AUC={auc:.3f}")
-    for th, fpr, tpr in pts:
-        if th in (0.0, 0.2, 0.4, 0.5, 0.6, 0.8, 0.9, 1.0) or abs(th - base.theta_merge) < 1e-9:
-            print(f"    theta_merge={th:.2f}  FPR={fpr:.3f}  TPR={tpr:.3f}")
-    return {"dense_available": True, "auc": auc, "points": pts}
+    # baselines
+    ko = evaluate_baseline(M2_GOLD_V2, mode="key_only")
+    eo = evaluate_baseline(M2_GOLD_V2, mode="embedding_only", encoder="minilm", theta=theta)
+    print(f"  baseline key-only:       macro_f1={ko['macro_f1']:.3f} "
+          f"MERGE_recall={ko['per_class']['MERGE']['recall']:.2f} FMR={ko['false_merge_rate']:.3f}")
+    print(f"  baseline embedding-only: macro_f1={eo['macro_f1']:.3f} "
+          f"FMR={eo['false_merge_rate']:.3f} ({eo['n_false_merges']} false merges)")
+
+    result = {"dense_available": True, "n": m["n"], "theta_merge": theta,
+              "sigma_lo": sigma_lo, "macro_f1": m["macro_f1"],
+              "macro_f1_ci": [f1_lo, f1_hi], "false_merge_rate": m["false_merge_rate"],
+              "false_merge_rate_ci": [fmr_lo, fmr_hi], "n_false_merges": m["n_false_merges"],
+              "n_non_mergeable": n_neg, "per_class": m["per_class"], "auc": auc,
+              "conflict_recall_by_difficulty": diff_recall, "roc_points": pts,
+              "baseline_key_only": {"macro_f1": ko["macro_f1"],
+                                    "merge_recall": ko["per_class"]["MERGE"]["recall"],
+                                    "false_merge_rate": ko["false_merge_rate"]},
+              "baseline_embedding_only": {"macro_f1": eo["macro_f1"],
+                                          "false_merge_rate": eo["false_merge_rate"],
+                                          "n_false_merges": eo["n_false_merges"]}}
+    _persist_m2(result)
+    return result
+
+
+def _persist_m2(result):
+    """Persist the M-2 V2 result + provenance to gitignored data/m2-eval/."""
+    import datetime
+    import os
+    import platform
+    import subprocess
+    HERE = os.path.dirname(os.path.abspath(__file__))
+    ROOT = os.path.dirname(HERE)
+    outdir = os.path.join(ROOT, "data", "m2-eval")
+    os.makedirs(outdir, exist_ok=True)
+    try:
+        sha = subprocess.check_output(["git", "-C", ROOT, "rev-parse", "--short", "HEAD"],
+                                      text=True).strip()
+    except Exception:
+        sha = "unknown"
+    prov = {"git_sha": sha, "python": platform.python_version(),
+            "timestamp_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "encoder": "all-MiniLM-L6-v2", "nli": "cross-encoder/nli-deberta-v3 (mnli)"}
+    payload = {"provenance": prov, "result": result}
+    path = os.path.join(outdir, "m2_v2_dense.json")
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(payload, fh, indent=2)
+    print(f"  [persisted] {path}")
 
 
 def main():
