@@ -75,7 +75,7 @@ throughout); calibrated values live in `src/smp/config/`.
 
 ## License
 
-See `LICENSE`.
+Apache License 2.0; see `LICENSE`.
 
 ## Citation
 
