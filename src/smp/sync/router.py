@@ -47,6 +47,25 @@ def broadcast_route(brains: Dict[str, List[str]]) -> Set[str]:
     return set(brains)
 
 
+def random_route(brains: Dict[str, List[str]], *, k: int, rng) -> Set[str]:
+    """Baseline (NPS ``random`` placement): deliver to a random k-subset of brains,
+    blind to relevance. ``k`` is the delivery budget (typically the needed-count, so
+    the comparison to semantic routing is at a matched budget)."""
+    bids = list(brains)
+    k = max(0, min(k, len(bids)))
+    return set(rng.sample(bids, k))
+
+
+def round_robin_route(brains: Dict[str, List[str]], *, k: int, offset: int) -> Set[str]:
+    """Baseline (NPS ``round-robin`` placement): deliver to k brains in rotation from
+    ``offset``, blind to relevance. Deterministic given the offset sequence."""
+    bids = sorted(brains)
+    if not bids:
+        return set()
+    k = max(0, min(k, len(bids)))
+    return {bids[(offset + i) % len(bids)] for i in range(k)}
+
+
 def routing_metrics(*, delivered: List[Set[str]],
                     needed: List[Set[str]]) -> Dict[str, float]:
     """Aggregate routing quality over a list of per-Patch (delivered, needed) sets.
@@ -65,4 +84,5 @@ def routing_metrics(*, delivered: List[Set[str]],
     }
 
 
-__all__ = ["score_brains", "semantic_route", "broadcast_route", "routing_metrics"]
+__all__ = ["score_brains", "semantic_route", "broadcast_route", "random_route",
+           "round_robin_route", "routing_metrics"]

@@ -10,3 +10,4 @@ pytest>=7.4
 # encoder and the cross-encoder NLI). NOT required by the deterministic
 # experiments, the ablations, or the test suite. To enable it:
 #   pip install "sentence-transformers>=3.0" "torch>=2.0"
+kafka-python>=2.0
