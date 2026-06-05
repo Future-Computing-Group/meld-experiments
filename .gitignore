@@ -50,3 +50,6 @@ val_c_run.sh
 
 # Internal experiment-protocol doc (dev-facing; the public overview is README.md)
 EXPERIMENT.md
+
+# HPC runner: the real site config is gitignored; site.example.env is committed.
+hpc/site.env
