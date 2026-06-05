@@ -45,8 +45,8 @@ def classify(
     # --- CONFLICT: a contradiction between claims that are at all RELATED
     # (sigma >= sigma_lo) or share a key. Gated on sigma_lo, the actionable-
     # relation floor, NOT theta_merge: a contradiction need not be near-identical
-    # in surface form to be a contradiction. Gating it on theta_merge (the round-1
-    # design) routed lexically divergent contradictions (sigma in
+    # in surface form to be a contradiction. Gating it on theta_merge instead
+    # would route lexically divergent contradictions (sigma in
     # [sigma_lo, theta_merge)) silently to REJECT -- the conflict-recall blind
     # spot. No silent winner; the contradiction is surfaced. ---
     conflict_actionable = (kappa == 1) or (sigma >= cfg.sigma_lo)

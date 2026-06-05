@@ -1,9 +1,9 @@
-"""E2(b) (AE #4): merge decision-procedure robustness under degraded signals.
+"""E2(b): merge decision-procedure robustness under degraded signals.
 
 The decision procedure consumes two upstream signals: the dense similarity
-``sigma`` (an embedding cosine) and the NLI verdict ``chi``. The panel
-(TAAS-2) noted the procedure is only ever evaluated on clean inputs. This
-module stresses it: inject Gaussian noise into sigma (a degraded / out-of-domain
+``sigma`` (an embedding cosine) and the NLI verdict ``chi``. The procedure is
+otherwise evaluated only on clean inputs; this module stresses it under
+degraded signals: inject Gaussian noise into sigma (a degraded / out-of-domain
 encoder) and randomly flip a fraction of chi verdicts (a degraded NLI), and
 report how macro-F1 and the safety-critical false-merge-rate respond. Pure
 functions over pre-scored (gold, sigma, chi) rows; deterministic in ``seed``.

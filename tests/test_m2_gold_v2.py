@@ -1,10 +1,9 @@
-"""E1 (AE #2): the enlarged, balanced M-2 gold set + ROC + baselines.
+"""E1: the enlarged, balanced M-2 gold set + ROC + baselines.
 
-RED-first tests for the round-2 revision. The round-1 M-2 claim rested on 16
-pairs (12 non-mergeable); the AE required either a >=100-pair balanced gold set
-with an ROC and CIs, or a down-scope. This suite specifies the enlarged set and
-the new evaluation surface; it must FAIL before m2_gold.py / the m2_eval
-additions exist, then pass.
+RED-first tests for the enlarged benchmark: a >=100-pair balanced gold set with
+an ROC and CIs, replacing a smaller hand-built smoke set. This suite specifies
+the enlarged set and the new evaluation surface; it must FAIL before m2_gold.py
+/ the m2_eval additions exist, then pass.
 
 These tests are encoder-free (structure + the pure metric/ROC math on synthetic
 predictions); the real dense-rung numbers come from the smoke ladder + the
@@ -52,7 +51,8 @@ def test_gold_labels_valid_and_pairs_unique():
 
 def test_gold_set_has_easy_and_hard_strata():
     # The set must include HARD cases (e.g. lexically-divergent contradictions,
-    # low-overlap paraphrases) -- the round-1 blind spot -- not just clear ones.
+    # low-overlap paraphrases) -- the hardest case for a similarity gate --
+    # not just clear ones.
     from smp.merge.m2_gold import build_gold_set
     rows = build_gold_set()
     diffs = {r["difficulty"] for r in rows}

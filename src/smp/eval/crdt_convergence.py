@@ -166,7 +166,7 @@ def run_inprocess_c1(*, n_orderings: int = 200, seed: int = 0) -> Dict:
 
 
 # ---------------------------------------------------------------------------
-# E2(a) (AE #4): partition-duration x reorder-rate perturbation sweep
+# E2(a): partition-duration x reorder-rate perturbation sweep
 # ---------------------------------------------------------------------------
 _EFFECTS = ("DEPRECATED", "OVERRULED", "REVOKED")  # the status join order
 
@@ -247,7 +247,7 @@ def partition_reorder_sweep(*, durations: List[int], reorder_rates: List[float],
 
 
 # ---------------------------------------------------------------------------
-# E3 (AE #7, SYS-1): reject gate placement -- admission-time vs materialization
+# E3: reject gate placement -- admission-time vs materialization
 # ---------------------------------------------------------------------------
 # A "reject races a status transition" scenario for ONE claim: two peers issue
 # competing overrule/revoke links, plus one stale link the staleness gate must

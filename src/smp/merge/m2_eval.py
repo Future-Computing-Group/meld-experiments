@@ -106,7 +106,7 @@ def evaluate_m2(pairs, *, encoder: str, nli: str, cfg: Thresholds) -> Dict:
 
 
 # --------------------------------------------------------------------------- #
-# E1 (AE #2): scoring, ROC over theta_merge, baselines, bootstrap CIs
+# E1: scoring, ROC over theta_merge, baselines, bootstrap CIs
 # --------------------------------------------------------------------------- #
 import random as _random
 import re as _re

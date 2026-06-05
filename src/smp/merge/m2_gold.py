@@ -1,10 +1,8 @@
-"""E1 (AE #2): the enlarged, balanced M-2 gold set.
+"""E1: the enlarged, balanced M-2 gold set.
 
-The round-1 M-2 claim rested on 16 hand-built "deliberately clear" pairs
-(12 non-mergeable), which the panel rightly called a smoke test rather than a
-benchmark. This module replaces it with a larger, balanced, REPRODUCIBLE gold
-set built from a curated seed bank of facts. Each seed contributes one pair to
-each of the four decision classes:
+A reproducible 104-pair benchmark (26 seeds x 4 classes) replacing a smaller
+hand-built smoke set. Built from a curated seed bank of facts, balanced across
+the four decision classes; each seed contributes one pair to each class:
 
   MERGE    canonical vs a paraphrase (same claim, reworded)
   RELATE   canonical vs an overlapping but distinct, non-contradicting fact
@@ -12,8 +10,8 @@ each of the four decision classes:
   REJECT   canonical vs an unrelated fact (deterministic cross-domain pairing)
 
 Each seed carries a difficulty tag. ``hard`` seeds have low-lexical-overlap
-paraphrases and/or lexically-divergent contradictions -- the round-1 blind
-spot (conflict recall 0.25 on lexically divergent pairs). The set is balanced
+paraphrases and/or lexically-divergent contradictions -- the hardest case for
+a similarity gate (low conflict recall on lexically divergent pairs). The set is balanced
 (26 per class) and deterministic; no model is invoked here.
 
 This is a controlled DIAGNOSTIC benchmark (a calibration / sensitivity

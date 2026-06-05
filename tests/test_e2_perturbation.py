@@ -1,9 +1,8 @@
-"""E2 (AE #4): perturbation sweeps that exercise the adaptive mechanisms.
+"""E2: perturbation sweeps that exercise the adaptive mechanisms.
 
-The panel (TAAS-1/TAAS-2, AE #4) noted the evaluation never sweeps the
-partition-duration / reorder-rate axes it names, and never stresses the merge
-decision procedure under noisy embeddings or degraded NLI. These RED-first
-tests specify the two sweeps:
+These tests sweep the partition-duration / reorder-rate axes and stress the
+merge decision procedure under noisy embeddings or degraded NLI, instead of
+evaluating only on clean inputs. They specify the two sweeps:
 
   E2(a) partition_reorder_sweep -- CRDT vs LWW reconvergence over
         (partition-duration x reorder-rate). The CRDT must stay order-independent

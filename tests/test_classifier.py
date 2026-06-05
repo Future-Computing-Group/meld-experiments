@@ -64,13 +64,13 @@ def test_reject_dominates_even_with_exact_key():
     assert classify(kappa=1, retention_below_min=True, chi="neutral", cfg=CFG) == "REJECT"
 
 
-# --- sec.9 fix: gate CONFLICT on sigma_lo, not theta_merge (round-2, AE #2/#6) ---
+# --- Gate CONFLICT on sigma_lo (the relatedness floor), not theta_merge, so
+# lexically-divergent contradictions are surfaced rather than dropped. ---
 def test_midsigma_lexically_divergent_contradiction_conflicts():
     # A clearly contradictory pair (chi=contradicts) that is related but NOT
-    # near-identical in surface form (sigma in [sigma_lo, theta_merge)). The
-    # round-1 procedure gated CONFLICT on theta_merge, so these fell through to
-    # REJECT and were silently dropped (the conflict-recall 0.25 blind spot,
-    # flagged by reviewers). Gating CONFLICT on sigma_lo flags them.
+    # near-identical in surface form (sigma in [sigma_lo, theta_merge)). Gating
+    # CONFLICT on theta_merge would route these to REJECT and drop them silently
+    # (the conflict-recall blind spot). Gating CONFLICT on sigma_lo flags them.
     sigma = (CFG.sigma_lo + CFG.theta_merge) / 2.0
     assert classify(kappa=0, sigma=sigma, chi="contradicts", ctx_ok=True,
                     cfg=CFG) == "CONFLICT"

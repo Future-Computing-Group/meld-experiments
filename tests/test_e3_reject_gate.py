@@ -1,9 +1,9 @@
-"""E3 (AE #7, SYS-1): the reject gate must not break status-CRDT convergence.
+"""E3: the reject gate must not break status-CRDT convergence.
 
-SYS-1's concern: if the staleness/overrule reject gate filters G-Set ADMISSION
+The concern: if the staleness/overrule reject gate filters G-Set ADMISSION
 based on receipt-time local state, two replicas that receive the same links in
-different orders can admit different subsets and diverge -- violating the SEC
-premise sec.5 rests on.
+different orders can admit different subsets and diverge -- violating the
+convergence premise the security argument rests on.
 
 The resolution SMP adopts (and these RED-first tests pin down): admit every link
 unconditionally into the grow-only set, and apply the staleness/overrule gate at

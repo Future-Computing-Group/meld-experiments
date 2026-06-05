@@ -61,6 +61,20 @@ _PROJECT_NEEDLES: list[tuple[str, str, bool, bool]] = [
 ]
 
 
+# REVIEW-NARRATIVE needles: peer-review / revision-process detail must never enter
+# the public repo (the public/internal boundary covers decision narrative, not just
+# hosts). Stored base64 so this guard embeds no literal forbidden token.
+_REVIEW_NEEDLES: list[tuple[str, str, bool, bool]] = [
+    ("review-panel", "dGhlIHBhbmVs", False, False),
+    ("peer-review-a", "cGVlciByZXZpZXc=", False, False),
+    ("peer-review-b", "cGVlci1yZXZpZXc=", False, False),
+    ("associate-editor", "YXNzb2NpYXRlIGVkaXRvcg==", False, False),
+    ("revision-round-1", "cm91bmQtMQ==", True, False),
+    ("revision-round-2", "cm91bmQtMg==", True, False),
+    ("referee-report", "cmVmZXJlZSByZXBvcnQ=", False, False),
+]
+
+
 # Legit public domain tokens that collide with the lesson-number shape but are
 # NOT internal references. GAIA's published difficulty levels are L1/L2/L3
 # (verified at source). These are documented benchmark vocabulary, not lessons.
@@ -83,7 +97,14 @@ def _build_patterns() -> list[tuple[str, "re.Pattern[str]"]]:
     lesson_re = r"(?<![\w-])" + re.escape(prefix) + r"[0-9]{1,3}(?![\w-])"
     patterns.append(("internal-lesson-reference", re.compile(lesson_re)))
 
-    for label, b64, boundaried, is_regex in _GENERIC_NEEDLES + _PROJECT_NEEDLES:
+    # Associate-editor issue reference (e.g. "AE #2"): review-process detail.
+    # Built via chr() so this file embeds no literal token.
+    ae_re = r"(?<![\w])" + chr(0x41) + chr(0x45) + r"\s?#\s?[0-9]"
+    patterns.append(("associate-editor-issue", re.compile(ae_re)))
+
+    for label, b64, boundaried, is_regex in (
+        _GENERIC_NEEDLES + _PROJECT_NEEDLES + _REVIEW_NEEDLES
+    ):
         needle = _d(b64)
         body = needle if is_regex else re.escape(needle)
         if boundaried:

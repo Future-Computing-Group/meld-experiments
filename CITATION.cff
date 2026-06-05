@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying paper."
+title: "The Semantic Merge Protocol (SMP): reference implementation and experiments"
+authors:
+  - family-names: "Lovén"
+    given-names: "Lauri"
+    orcid: "https://orcid.org/0000-0001-9475-4839"
+  - family-names: "Sauvola"
+    given-names: "Jaakko"
+  - family-names: "Riekki"
+    given-names: "Jukka"
+  - family-names: "Tarkoma"
+    given-names: "Sasu"
+preferred-citation:
+  type: article
+  title: "The Semantic Merge Protocol: A Protocol for Merging Knowledge Across Distributed Agent Memories"
+  authors:
+    - family-names: "Lovén"
+      given-names: "Lauri"
+    - family-names: "Sauvola"
+      given-names: "Jaakko"
+    - family-names: "Riekki"
+      given-names: "Jukka"
+    - family-names: "Tarkoma"
+      given-names: "Sasu"
+  year: 2026

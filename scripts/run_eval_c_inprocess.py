@@ -37,7 +37,7 @@ def main(n_orderings: int = 200, seed: int = 0) -> dict:
     assert crdt["status"] == CANONICAL_C1_SCENARIO["expected_crdt_status"], \
         "CRDT converged status must equal the per-claim lattice joins"
 
-    # E3 (AE #7): reject-gate placement -- the staleness/overrule gate at
+    # E3: reject-gate placement -- the staleness/overrule gate at
     # materialization-read is order-independent; the naive admission-time gate
     # diverges on the same reject-race scenario.
     rr = reject_race_convergence(n_orderings=n_orderings, seed=seed)

@@ -116,11 +116,12 @@ def a3_token_economics():
 
 
 def m2_classification():
-    # E1 (AE #2): the enlarged, balanced 104-pair V2 gold set replaces the
-    # round-1 16-pair set. Reports the operating point with bootstrap CIs, the
-    # theta_merge ROC (open-interval sweep -> no m-E-1 crash), the easy/hard
-    # CONFLICT split (the round-1 blind spot, honestly), and the key-only /
-    # embedding-only baselines (what each component buys).
+    # E1: the enlarged, balanced 104-pair V2 gold set (a reproducible
+    # benchmark replacing a smaller hand-built smoke set). Reports the
+    # operating point with bootstrap CIs, the theta_merge ROC (open-interval
+    # sweep -> no m-E-1 crash), the easy/hard CONFLICT split (the
+    # lexically-divergent contradictions are the hardest case), and the
+    # key-only / embedding-only baselines (what each component buys).
     from smp.merge.m2_gold import M2_GOLD_V2, build_gold_set
     from smp.merge.m2_eval import (evaluate_m2, score_pairs, decisions_full,
                                    classification_metrics, roc_over_theta,
@@ -163,7 +164,8 @@ def m2_classification():
         pc = m["per_class"][c]
         print(f"    {c:<9} P={pc['precision']:.2f} R={pc['recall']:.2f} "
               f"F1={pc['f1']:.2f}  (support={int(pc['support'])})")
-    # easy/hard CONFLICT recall (the round-1 lexically-divergent blind spot)
+    # easy/hard CONFLICT recall (lexically-divergent contradictions are the
+    # hardest case for a similarity gate)
     diff_recall = {}
     for strat in ("easy", "hard"):
         idx = [i for i, r in enumerate(rows) if r["difficulty"] == strat and r["label"] == "CONFLICT"]
@@ -221,7 +223,7 @@ def _persist_m2(result):
 
 
 def e2_perturbation():
-    # E2 (AE #4): exercise the adaptive mechanisms under perturbation.
+    # E2: exercise the adaptive mechanisms under perturbation.
     import datetime
     import os as _os
     from smp.eval.crdt_convergence import partition_reorder_sweep
