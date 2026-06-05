@@ -19,14 +19,15 @@ def _cases(cfg):
         # Context gate: high-sigma, non-contradicting, ctx_ok=False -> RELATE (NOT merge).
         {"gold": "RELATE", "kappa": 0, "sigma": hi, "chi": "neutral",
          "ctx_ok": False, "retention_below_min": False, "status": "ACTIVE", "stale": False},
-        # inference gate: contradiction about the same thing -> CONFLICT (NOT merge).
-        {"gold": "CONFLICT", "kappa": 1, "sigma": hi, "chi": "contradicts",
+        # inference gate: distinct-key (kappa=0) high-sigma contradiction -> CONFLICT
+        # (NOT merge); dropping the gate flips it via the dangerous SEMANTIC path.
+        {"gold": "CONFLICT", "kappa": 0, "sigma": hi, "chi": "contradicts",
          "ctx_ok": True, "retention_below_min": False, "status": "ACTIVE", "stale": False},
-        # staleness gate: a non-ACTIVE local -> REJECT (must not propagate).
-        {"gold": "REJECT", "kappa": 1, "sigma": hi, "chi": "neutral",
+        # staleness gate: a distinct-key non-ACTIVE local -> REJECT (must not propagate).
+        {"gold": "REJECT", "kappa": 0, "sigma": hi, "chi": "neutral",
          "ctx_ok": True, "retention_below_min": False, "status": "DEPRECATED", "stale": True},
-        # clean MERGE control: exact key -> MERGE (unaffected by the gates).
-        {"gold": "MERGE", "kappa": 1, "sigma": hi, "chi": "neutral",
+        # clean MERGE control: high-sigma, compatible, fresh -> MERGE (semantic path).
+        {"gold": "MERGE", "kappa": 0, "sigma": hi, "chi": "neutral",
          "ctx_ok": True, "retention_below_min": False, "status": "ACTIVE", "stale": False},
     ]
 

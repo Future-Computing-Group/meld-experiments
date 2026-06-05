@@ -29,14 +29,20 @@ def a1_gate_ablation():
     from smp.merge.gate_ablation import gate_ablation_metrics, GATES
     cfg = load_thresholds()
     hi = min(cfg.theta_merge + 0.05, 1.0)
+    # All probes use kappa=0 (distinct claim keys): each gate is exercised on the
+    # DANGEROUS distinct-key / high-sigma semantic path it actually guards, not the
+    # trivial exact-key MERGE shortcut. Each non-MERGE probe is constructed so that
+    # exactly one gate's input blocks the merge -> dropping that gate is necessary
+    # AND sufficient to flip it. This is a per-gate necessity check, not an
+    # empirical rate (the measured false-merge rate is the M-2 result).
     cases = [
         {"gold": "RELATE", "kappa": 0, "sigma": hi, "chi": "neutral",
          "ctx_ok": False, "retention_below_min": False, "status": "ACTIVE", "stale": False},
-        {"gold": "CONFLICT", "kappa": 1, "sigma": hi, "chi": "contradicts",
+        {"gold": "CONFLICT", "kappa": 0, "sigma": hi, "chi": "contradicts",
          "ctx_ok": True, "retention_below_min": False, "status": "ACTIVE", "stale": False},
-        {"gold": "REJECT", "kappa": 1, "sigma": hi, "chi": "neutral",
+        {"gold": "REJECT", "kappa": 0, "sigma": hi, "chi": "neutral",
          "ctx_ok": True, "retention_below_min": False, "status": "DEPRECATED", "stale": True},
-        {"gold": "MERGE", "kappa": 1, "sigma": hi, "chi": "neutral",
+        {"gold": "MERGE", "kappa": 0, "sigma": hi, "chi": "neutral",
          "ctx_ok": True, "retention_below_min": False, "status": "ACTIVE", "stale": False},
     ]
     m = gate_ablation_metrics(cases, cfg)
