@@ -17,7 +17,8 @@ from __future__ import annotations
 
 import json
 
-from smp.eval.crdt_convergence import run_inprocess_c1, CANONICAL_C1_SCENARIO
+from smp.eval.crdt_convergence import (run_inprocess_c1, CANONICAL_C1_SCENARIO,
+                                       reject_race_convergence)
 
 
 def main(n_orderings: int = 200, seed: int = 0) -> dict:
@@ -35,6 +36,17 @@ def main(n_orderings: int = 200, seed: int = 0) -> dict:
           f"{json.dumps(crdt['status'])}")
     assert crdt["status"] == CANONICAL_C1_SCENARIO["expected_crdt_status"], \
         "CRDT converged status must equal the per-claim lattice joins"
+
+    # E3 (AE #7): reject-gate placement -- the staleness/overrule gate at
+    # materialization-read is order-independent; the naive admission-time gate
+    # diverges on the same reject-race scenario.
+    rr = reject_race_convergence(n_orderings=n_orderings, seed=seed)
+    print("== C-1b reject-gate placement (reject races a status transition) ==")
+    print(f"  materialization-read gate: modal_agreement={rr['materialization']['modal_agreement']:.3f} "
+          f"distinct_outcomes={rr['materialization']['n_distinct']} {rr['materialization']['outcomes']}")
+    print(f"  admission-time gate:       modal_agreement={rr['admission']['modal_agreement']:.3f} "
+          f"distinct_outcomes={rr['admission']['n_distinct']} {rr['admission']['outcomes']}")
+    rep["reject_race"] = rr
     return rep
 
 

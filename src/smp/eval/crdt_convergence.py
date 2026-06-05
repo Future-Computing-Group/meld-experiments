@@ -246,6 +246,81 @@ def partition_reorder_sweep(*, durations: List[int], reorder_rates: List[float],
     return cells
 
 
+# ---------------------------------------------------------------------------
+# E3 (AE #7, SYS-1): reject gate placement -- admission-time vs materialization
+# ---------------------------------------------------------------------------
+# A "reject races a status transition" scenario for ONE claim: two peers issue
+# competing overrule/revoke links, plus one stale link the staleness gate must
+# drop. Under an ADMISSION-TIME gate ("reject a delta whose target status is no
+# longer ACTIVE before it propagates") a link is dropped iff it arrives after the
+# claim already went non-active -- so the admitted SET depends on delivery order
+# and the materialized status diverges (OVERRULED vs REVOKED here). Under SMP's
+# MATERIALIZATION-READ gate every (non-stale) link is admitted and the gate is
+# applied at read: a pure function of the converged set -> order-independent.
+REJECT_RACE_SCENARIO = {
+    # (link_id, effect, fresh): fresh=False is stale (retention < R_min).
+    "links": [
+        ("L.overrule", "OVERRULED", True),
+        ("L.revoke", "REVOKED", True),
+        ("L.deprecate_stale", "DEPRECATED", False),
+    ],
+}
+
+
+def _materialization_status(links, order):
+    """SMP gate: admit every link into the G-Set; drop stale links at READ."""
+    from smp.merge.status_crdt import StatusState, effective_status_gated
+    st = StatusState()
+    stale = set()
+    for i in order:
+        lid, eff, fresh = links[i]
+        st = st.add(lid, eff)          # unconditional admission (grow-only set)
+        if not fresh:
+            stale.add(lid)
+    return effective_status_gated(st, stale=frozenset(stale))
+
+
+def _admission_status(links, order):
+    """Naive gate: reject a link at admission if the claim is already non-ACTIVE
+    (or the link is stale). The admitted set is order-dependent."""
+    from smp.merge.status_crdt import StatusState, effective_status
+    st = StatusState()
+    for i in order:
+        lid, eff, fresh = links[i]
+        if not fresh:
+            continue                                  # staleness reject
+        if effective_status(st) != "ACTIVE":
+            continue                                  # "status no longer active" reject
+        st = st.add(lid, eff)
+    return effective_status(st)
+
+
+def reject_race_convergence(*, n_orderings: int = 200, seed: int = 0) -> Dict:
+    """Run REJECT_RACE_SCENARIO in many delivery orders under both gate
+    placements; report each one's order-independence (modal agreement +
+    distinct outcomes). Materialization-read converges (1 outcome); the naive
+    admission-time gate diverges. Deterministic in ``seed``."""
+    links = REJECT_RACE_SCENARIO["links"]
+    n = len(links)
+    rng = random.Random(seed)
+    mat, adm = [], []
+    for _ in range(n_orderings):
+        order = list(range(n))
+        rng.shuffle(order)
+        mat.append(_materialization_status(links, order))
+        adm.append(_admission_status(links, order))
+
+    def _summ(outcomes):
+        c = Counter(outcomes)
+        modal = c.most_common(1)[0][1]
+        return {"modal_agreement": modal / len(outcomes), "n_distinct": len(c),
+                "outcomes": dict(c)}
+
+    return {"n_orderings": n_orderings, "seed": seed,
+            "materialization": _summ(mat), "admission": _summ(adm)}
+
+
 __all__ = ["converge_across_orderings", "agreement_over_time",
            "run_inprocess_c1", "CANONICAL_C1_SCENARIO",
-           "partition_reorder_sweep", "_partial_shuffle"]
+           "partition_reorder_sweep", "_partial_shuffle",
+           "reject_race_convergence", "REJECT_RACE_SCENARIO"]

@@ -68,4 +68,24 @@ def effective_status(state: StatusState) -> str:
     return status
 
 
-__all__ = ["StatusState", "join", "merge", "effective_status"]
+def effective_status_gated(state: StatusState, *, stale=frozenset()) -> str:
+    """Lattice-join of the effects of the links NOT in ``stale`` -- the
+    staleness/overrule reject gate applied at MATERIALIZATION-READ.
+
+    This is the SEC-preserving placement of the reject gate (E3 / Section 5.2):
+    every link is admitted into the grow-only set unconditionally, and the gate
+    drops stale/overruled links only when the effective status is COMPUTED. Since
+    it is a pure function of the converged link set and the (replicated) stale
+    set, it is order-independent -- unlike an admission-time gate that drops a
+    link based on receipt-time local state. Empty effective set -> ACTIVE.
+    """
+    status = "ACTIVE"
+    for lid, eff in state.links.items():
+        if lid in stale:
+            continue
+        status = join(status, eff)
+    return status
+
+
+__all__ = ["StatusState", "join", "merge", "effective_status",
+           "effective_status_gated"]
