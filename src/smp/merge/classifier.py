@@ -9,7 +9,7 @@ Decision procedure (A.2), with the wire-admission (REJECT) gate taking
 precedence over everything (Cor. 2.1):
 
     REJECT    if  stale/overruled gate fails
-    CONFLICT  if  chi == contradicts  AND  (kappa == 1 OR sigma >= theta_merge)
+    CONFLICT  if  chi == contradicts  AND  (kappa == 1 OR sigma >= sigma_lo)
     MERGE     if  kappa == 1
               OR  (sigma >= theta_merge AND chi != contradicts AND ctx_ok)
     RELATE    if  sigma_lo <= sigma < theta_merge          (related, not identical)
@@ -42,10 +42,15 @@ def classify(
     if retention_below_min or status != "ACTIVE":
         return "REJECT"
 
-    same_thing = (kappa == 1) or (sigma >= cfg.theta_merge)
-
-    # --- CONFLICT: contradiction about the same thing, no silent winner ---
-    if chi == "contradicts" and same_thing:
+    # --- CONFLICT: a contradiction between claims that are at all RELATED
+    # (sigma >= sigma_lo) or share a key. Gated on sigma_lo, the actionable-
+    # relation floor, NOT theta_merge: a contradiction need not be near-identical
+    # in surface form to be a contradiction. Gating it on theta_merge (the round-1
+    # design) routed lexically divergent contradictions (sigma in
+    # [sigma_lo, theta_merge)) silently to REJECT -- the conflict-recall blind
+    # spot. No silent winner; the contradiction is surfaced. ---
+    conflict_actionable = (kappa == 1) or (sigma >= cfg.sigma_lo)
+    if chi == "contradicts" and conflict_actionable:
         return "CONFLICT"
 
     # --- MERGE: exact key, OR high-sigma non-contradicting in a shared frame ---

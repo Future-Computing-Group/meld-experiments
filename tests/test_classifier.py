@@ -62,3 +62,29 @@ def test_false_merge_zero_on_dangerous_gold_case():
 def test_reject_dominates_even_with_exact_key():
     # a stale exact-key match still rejects (gate precedence)
     assert classify(kappa=1, retention_below_min=True, chi="neutral", cfg=CFG) == "REJECT"
+
+
+# --- sec.9 fix: gate CONFLICT on sigma_lo, not theta_merge (round-2, AE #2/#6) ---
+def test_midsigma_lexically_divergent_contradiction_conflicts():
+    # A clearly contradictory pair (chi=contradicts) that is related but NOT
+    # near-identical in surface form (sigma in [sigma_lo, theta_merge)). The
+    # round-1 procedure gated CONFLICT on theta_merge, so these fell through to
+    # REJECT and were silently dropped (the conflict-recall 0.25 blind spot,
+    # flagged by reviewers). Gating CONFLICT on sigma_lo flags them.
+    sigma = (CFG.sigma_lo + CFG.theta_merge) / 2.0
+    assert classify(kappa=0, sigma=sigma, chi="contradicts", ctx_ok=True,
+                    cfg=CFG) == "CONFLICT"
+
+
+def test_unrelated_spurious_contradiction_still_rejects():
+    # Below sigma_lo there is no actionable relation; even a (spurious)
+    # contradiction verdict must not manufacture a CONFLICT out of nothing.
+    assert classify(kappa=0, sigma=CFG.sigma_lo / 2.0, chi="contradicts",
+                    ctx_ok=True, cfg=CFG) == "REJECT"
+
+
+def test_midsigma_noncontradiction_routing_unchanged():
+    # The fix must not change non-contradiction routing: mid-band neutral still RELATEs.
+    sigma = (CFG.sigma_lo + CFG.theta_merge) / 2.0
+    assert classify(kappa=0, sigma=sigma, chi="neutral", ctx_ok=True,
+                    cfg=CFG) == "RELATE"
