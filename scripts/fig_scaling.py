@@ -60,10 +60,13 @@ def main():
     axA.plot(rates, rates, color=BASE, lw=0.9, ls=(0, (4, 3)))      # ideal y=x
     axA.plot(rates, achieved, color=ACCENT, lw=1.6, marker="o", ms=3)
     axA.axhline(knee, color=ACCENT, lw=0.6, ls=":")
-    axA.text(rates[-1], knee + 2, f"knee {knee:.0f}/s", color=ACCENT, fontsize=ANNO,
+    axA.text(rates[-1], knee + 2.5, f"knee {knee:.0f}/s", color=ACCENT, fontsize=ANNO,
              ha="right", va="bottom")
-    axA.text(rates[1], rates[1] + 6, "ideal (track offer)", color=BASE, fontsize=ANNO,
-             rotation=32, ha="left", va="bottom")
+    # "ideal" label sits just ABOVE the dashed line in the upper-right, where the ideal
+    # line has separated from the (plateaued) achieved curve, so it labels the dashed line
+    # unambiguously and clears both the knee label and the x-axis title. Gloss in caption.
+    axA.text(rates[3] + 1.0, rates[3] + 9.0, "ideal", color=BASE, fontsize=ANNO,
+             ha="left", va="bottom")
     axA.set_xlabel("offered claim rate (claims/s)")
     axA.set_ylabel("sink throughput (merges/s)")
     axA.set_title("(a) message rate", fontsize=13)
