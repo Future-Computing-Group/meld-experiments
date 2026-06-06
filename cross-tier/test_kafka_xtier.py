@@ -17,9 +17,13 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
 def _skip_if_no_broker():
+    import pytest
+    # kafka-python may be absent (e.g. laptop without the Kafka kit): skip, not fail.
+    # Importing kafka_xtier pulls in kafka_transport -> `from kafka import ...`, so the
+    # module check must precede the import or it raises ModuleNotFoundError at collection.
+    pytest.importorskip("kafka")
     import kafka_xtier
     if not kafka_xtier.broker_up():
-        import pytest
         pytest.skip("no Kafka broker at %s" % kafka_xtier.BOOTSTRAP)
 
 

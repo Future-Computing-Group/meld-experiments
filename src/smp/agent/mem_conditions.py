@@ -257,8 +257,12 @@ def _footprint(mem: SMPMemory) -> Dict[str, int]:
     return {"stored": len(mem.brain._units), "live": mem.brain.live_unit_count()}
 
 
-def _new_memory(encoder: str, nli: str, cfg: Thresholds) -> SMPMemory:
-    return SMPMemory(encoder=encoder, nli=nli, cfg=cfg)
+def _new_memory(encoder: str, nli: str, cfg: Thresholds,
+                cache_dir: Optional[str] = None) -> SMPMemory:
+    # A shared cache_dir lets every brain (sovereign + global) and every condition reuse the
+    # same on-disk sentence embeddings, so a sweep embeds each sentence once instead of
+    # re-embedding it per build (a redundant-load slowness).
+    return SMPMemory(encoder=encoder, nli=nli, cfg=cfg, cache_dir=cache_dir)
 
 
 def _audit_counts(mem: SMPMemory) -> Dict[str, int]:
@@ -276,7 +280,8 @@ def _audit_counts(mem: SMPMemory) -> Dict[str, int]:
 def build_condition(task: HotpotTask, condition: str, *, encoder: str, nli: str,
                     cfg: Thresholds, n_brains: int = DEFAULT_N_BRAINS,
                     overlap_fraction: float = 0.5,
-                    inject_conflict: bool = False) -> ConditionBuild:
+                    inject_conflict: bool = False,
+                    cache_dir: Optional[str] = None) -> ConditionBuild:
     """Materialize the memory state for ONE (task, condition).
 
     - ``none``: no brain, no inline context.
@@ -304,7 +309,7 @@ def build_condition(task: HotpotTask, condition: str, *, encoder: str, nli: str,
                               inline_context=inline)
 
     if condition == "centralized":
-        mem = _new_memory(encoder, nli, cfg)
+        mem = _new_memory(encoder, nli, cfg, cache_dir)
         for title, sentences in task.context:
             for sent in sentences:
                 mem.write(f"{title}: {sent}".strip())
@@ -327,23 +332,24 @@ def build_condition(task: HotpotTask, condition: str, *, encoder: str, nli: str,
         # NO merge decision procedure. We bypass merge-on-receive by writing each
         # text into a brain that has been emptied between writes, so each becomes a
         # standalone novel unit -- i.e. a raw union, never a merge/relate/conflict.
-        return _build_naive_union(split, encoder, nli, cfg)
+        return _build_naive_union(split, encoder, nli, cfg, cache_dir)
 
     # distributed_merge: each sovereign brain ingests its own observations, then
     # PUBLISHes its delta to a GLOBAL brain that runs merge-on-receive on it.
-    return _build_distributed_merge(split, encoder, nli, cfg)
+    return _build_distributed_merge(split, encoder, nli, cfg, cache_dir)
 
 
 def _build_distributed_merge(split: SplitPlan, encoder: str, nli: str,
-                             cfg: Thresholds) -> ConditionBuild:
+                             cfg: Thresholds,
+                             cache_dir: Optional[str] = None) -> ConditionBuild:
     sovereign: List[SMPMemory] = []
     for obs_list in split.per_brain:
-        mem = _new_memory(encoder, nli, cfg)
+        mem = _new_memory(encoder, nli, cfg, cache_dir)
         for text in obs_list:
             mem.write(text)
         sovereign.append(mem)
 
-    global_brain = _new_memory(encoder, nli, cfg)
+    global_brain = _new_memory(encoder, nli, cfg, cache_dir)
     # each sovereign brain PUBLISHes its extracted delta; the global brain runs
     # merge_on_receive on every received claim (SMPMemory.write does exactly the
     # merge-on-receive -> Patch -> apply path). Receiving the duplicated,
@@ -364,13 +370,14 @@ def _build_distributed_merge(split: SplitPlan, encoder: str, nli: str,
 
 
 def _build_naive_union(split: SplitPlan, encoder: str, nli: str,
-                       cfg: Thresholds) -> ConditionBuild:
+                       cfg: Thresholds,
+                       cache_dir: Optional[str] = None) -> ConditionBuild:
     """The global store = raw union of per-brain observations, NO merge. Each
     observation is admitted as an independent unit (we clear the brain's local
     candidate set before each write so merge-on-receive always sees an empty local
     set -> a novel insert -> no MERGE-via-overlap / RELATE / CONFLICT ever fires).
     """
-    global_brain = _new_memory(encoder, nli, cfg)
+    global_brain = _new_memory(encoder, nli, cfg, cache_dir)
     for obs_list in split.per_brain:
         for text in obs_list:
             text = (text or "").strip()

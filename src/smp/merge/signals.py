@@ -95,7 +95,9 @@ class _SentenceTransformerEncoder:
     not exercised in the offline test path.
     """
 
-    _MODEL_IDS = {"minilm": "sentence-transformers/all-MiniLM-L6-v2"}
+    _MODEL_IDS = {"minilm": "sentence-transformers/all-MiniLM-L6-v2",
+                  "mpnet": "sentence-transformers/all-mpnet-base-v2",
+                  "minilm-l12": "sentence-transformers/all-MiniLM-L12-v2"}
 
     def __init__(self, rung: str):
         self.rung = rung
@@ -122,8 +124,8 @@ class _SentenceTransformerEncoder:
 def _make_encoder(name: str):
     if name == "hashing":
         return _HashingEncoder()
-    if name == "minilm":
-        return _SentenceTransformerEncoder("minilm")
+    if name in _SentenceTransformerEncoder._MODEL_IDS:
+        return _SentenceTransformerEncoder(name)
     raise ValueError(f"unknown encoder rung {name!r}")
 
 
@@ -260,39 +262,47 @@ def _lexical_nli(a: str, b: str) -> str:
 
 
 class _CrossEncoderNLI:
-    """Stronger NLI rung via a cross-encoder (downloads weights once)."""
+    """Stronger NLI rung via a cross-encoder (downloads weights once). The model id is
+    a constructor argument so a sweep can swap NLI models (R5)."""
 
-    _MODEL_ID = "cross-encoder/nli-deberta-v3-small"
     _LABELS = ("contradicts", "entails", "neutral")
 
-    def __init__(self):
+    def __init__(self, model_id: str = "cross-encoder/nli-deberta-v3-small"):
+        self._model_id = model_id
         self._model = None
 
     def __call__(self, a: str, b: str) -> str:
         if self._model is None:
             from sentence_transformers import CrossEncoder
 
-            self._model = CrossEncoder(self._MODEL_ID)
+            self._model = CrossEncoder(self._model_id)
         scores = self._model.predict([(a, b)])[0]
         # cross-encoder NLI label order is [contradiction, entailment, neutral]
         idx = int(np.argmax(scores))
         return ("contradicts", "entails", "neutral")[idx]
 
 
-_CROSS_ENCODER: "_CrossEncoderNLI | None" = None
+# Alias -> HuggingFace cross-encoder NLI model id. Adding an NLI is data, not a branch.
+_NLI_MODEL_IDS = {
+    "mnli-cross-encoder": "cross-encoder/nli-deberta-v3-small",
+    "deberta-base-nli": "cross-encoder/nli-deberta-v3-base",
+    "roberta-nli": "cross-encoder/nli-roberta-base",
+}
+_CROSS_ENCODERS: "dict[str, _CrossEncoderNLI]" = {}
 
 
 def chi(a: str, b: str, *, model: str) -> str:
     """Three-way NLI: 'entails' | 'neutral' | 'contradicts'. ``model`` required
-    (no silent default): 'lexical' (offline, deterministic) or
-    'mnli-cross-encoder' (stronger)."""
+    (no silent default): 'lexical' (offline, deterministic) or a cross-encoder alias
+    from ``_NLI_MODEL_IDS`` (stronger; weights download once and the instance is cached)."""
     if model == "lexical":
         return _lexical_nli(a, b)
-    if model == "mnli-cross-encoder":
-        global _CROSS_ENCODER
-        if _CROSS_ENCODER is None:
-            _CROSS_ENCODER = _CrossEncoderNLI()
-        return _CROSS_ENCODER(a, b)
+    if model in _NLI_MODEL_IDS:
+        ce = _CROSS_ENCODERS.get(model)
+        if ce is None:
+            ce = _CrossEncoderNLI(_NLI_MODEL_IDS[model])
+            _CROSS_ENCODERS[model] = ce
+        return ce(a, b)
     raise ValueError(f"unknown NLI model {model!r}")
 
 
