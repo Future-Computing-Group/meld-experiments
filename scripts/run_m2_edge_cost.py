@@ -22,9 +22,13 @@ from smp.eval.per_delta_cost import measure_per_delta_cost  # noqa: E402
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=200)
+    ap.add_argument("--device", default=os.environ.get("SMP_ST_DEVICE", "cpu"),
+                    help="cpu (edge proxy) or cuda (HPC GPU node, the Tier-C half)")
     ap.add_argument("--out", default=os.path.join(REPO, "outputs", "m2-edge-cost.json"))
     a = ap.parse_args()
 
+    # The encoder reads SMP_ST_DEVICE; the cross-encoder auto-selects the same device.
+    os.environ["SMP_ST_DEVICE"] = a.device
     es = EmbeddingSimilarity(encoder="minilm")
     pairs = [(g, x, y) for g, x, y in M2_GOLD_V2]
     cyc = itertools.cycle(pairs)
@@ -40,11 +44,11 @@ def main():
         a_, b_ = state["cur"][1], state["cur"][2]
         chi(a_, b_, model="mnli-cross-encoder")
 
-    print(f"[run] timing embed + NLI over n={a.n} pairs (CPU) ...", flush=True)
+    print(f"[run] timing embed + NLI over n={a.n} pairs (device={a.device}) ...", flush=True)
     res = measure_per_delta_cost(embed_fn, nli_fn, n=a.n, warmup=8)
     res["encoder"] = "all-MiniLM-L6-v2"
     res["nli"] = "cross-encoder/nli-deberta-v3-small"
-    res["device"] = "cpu"
+    res["device"] = a.device
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
     with open(a.out, "w", encoding="utf-8") as fh:
         json.dump(res, fh, indent=2)
