@@ -10,4 +10,9 @@ pytest>=7.4
 # encoder and the cross-encoder NLI). NOT required by the deterministic
 # experiments, the ablations, or the test suite. To enable it:
 #   pip install "sentence-transformers>=3.0" "torch>=2.0"
-kafka-python>=2.0
+
+# Optional -- the cross-tier Kafka transport only (kafka_xtier, kafka_partition_heal
+# / M3a). NOT required by the deterministic experiments, ablations, or core suite:
+# those Kafka tests skip cleanly without this client and a reachable broker. The
+# maintained fork installs on Python 3.11+; the classic `kafka-python` does not.
+kafka-python-ng>=2.2
