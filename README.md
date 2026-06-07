@@ -4,14 +4,15 @@ Reference implementation and experiments for the Semantic Merge Protocol, a wire
 protocol that lets many sovereign agent memories *merge knowledge* rather than only
 exchange tools. A "brain" is a versioned, typed-link agent-memory store; agents
 PUBLISH graph deltas; a receiving brain runs a merge-on-receive decision procedure
-(four signals — claim-key identity, embedding similarity, evidence overlap, and an
-inference verdict, plus a Context gate) and emits an auditable Patch. Per-claim status
-converges through a state-based status conflict-free replicated data type (CRDT).
+(three core signals — claim-key identity, embedding similarity, and an inference
+verdict — plus a Context gate, and an optional evidence-overlap signal that is
+disabled by default) and emits an auditable Patch. Per-claim status converges
+through a state-based status conflict-free replicated data type (CRDT).
 
 This repository contains the protocol implementation, the merge engine, the status
 CRDT, and the drivers for the deterministic experiments and ablations. It accompanies
-the paper; section labels in the code (e.g. "Section 7-c") point to the corresponding
-results.
+the paper; comments in the code reference the corresponding paper sections (e.g. the
+evaluation and consistency sections) by topic.
 
 ## Install
 
@@ -31,7 +32,7 @@ the test suite; to enable it, additionally `pip install "sentence-transformers>=
 ```
 src/smp/
   proto/        vendored typed-link wire schema (MemoryUnit / MemoryLink / Claim / ...)
-  merge/        the four-signal decision procedure, the status CRDT, the M-2 evaluation
+  merge/        the three-signal decision procedure (+ optional evidence overlap), the status CRDT, the M-2 evaluation
   sync/         binding onto a publish/subscribe transport; semantic-routing ablation
   eval/         convergence (CRDT order-independence, reject-gate) and robustness sweeps
   agent/        memory-delta metrics, token economics, the QA harness

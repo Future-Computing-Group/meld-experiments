@@ -1,7 +1,8 @@
 """The four-way merge decision procedure (architecture A.2).
 
-The genuinely NEW contribution: an executable classifier over the four signals
-(kappa/sigma/epsilon/chi) + the Context gate, emitting exactly one of
+The genuinely NEW contribution: an executable classifier over three core signals
+(kappa/sigma/chi) + the Context gate -- plus an optional, off-by-default
+evidence-overlap signal (epsilon) -- emitting exactly one of
 MERGE / RELATE / CONFLICT / REJECT. Thresholds (theta_merge, sigma_lo) come from
 config (CFG), NEVER hardcoded; they are calibrated in M-2, not derived.
 
@@ -27,6 +28,7 @@ def classify(
     cfg: Thresholds,
     kappa: int = 0,
     sigma: float = 0.0,
+    epsilon: float = 0.0,
     chi: str = "neutral",
     ctx_ok: bool = True,
     retention_below_min: bool = False,
@@ -34,9 +36,11 @@ def classify(
 ) -> str:
     """Return the merge decision for an (incoming, local) claim pair.
 
-    ``kappa`` exact claim-key identity (0/1); ``sigma`` dense cosine; ``chi``
-    NLI label; ``ctx_ok`` Context-gate result; ``retention_below_min`` / ``status``
-    drive the wire-admission REJECT gate.
+    ``kappa`` exact claim-key identity (0/1); ``sigma`` dense cosine;
+    ``epsilon`` grounding-evidence Jaccard overlap; ``chi`` NLI label;
+    ``ctx_ok`` Context-gate result; ``retention_below_min`` / ``status`` drive
+    the wire-admission REJECT gate. ``epsilon`` defaults to 0 so existing call
+    sites (and ungrounded datasets, where eps_hi=0) are unchanged.
     """
     # --- Gate precedence: stale or non-ACTIVE never propagates (Cor. 2.1) ---
     if retention_below_min or status != "ACTIVE":
@@ -57,6 +61,22 @@ def classify(
     if kappa == 1:
         return "MERGE"
     if sigma >= cfg.theta_merge and chi != "contradicts" and ctx_ok:
+        return "MERGE"
+
+    # --- MERGE (epsilon-corroborated): a BORDERLINE-similarity pair
+    # (sigma in [sigma_lo, theta_merge)) whose claims share grounding evidence
+    # (epsilon >= eps_hi) AND positively entail (chi == entails) is promoted from
+    # RELATE to MERGE -- shared provenance is independent evidence of sameness,
+    # complementary to surface similarity. The entailment requirement (not the
+    # weaker chi != contradicts) is deliberate: it stops an NLI-MISSED
+    # contradiction (labelled neutral) from being silently epsilon-merged, so
+    # epsilon's recall gain does not come at a false-merge cost. Gated so it NEVER
+    # (a) merges a non-entailing pair, (b) merges below the actionable floor
+    # sigma_lo, or (c) crosses an incompatible frame (ctx_ok). With eps_hi=0
+    # (ungrounded default) this path is dead, so M-1/M-2 are unaffected. ---
+    if (cfg.eps_hi > 0.0 and chi == "entails" and ctx_ok
+            and cfg.sigma_lo <= sigma < cfg.theta_merge
+            and epsilon >= cfg.eps_hi):
         return "MERGE"
 
     # --- RELATE: same meaning in a different frame, or mid-band similarity ---

@@ -24,6 +24,11 @@ class Thresholds:
     sigma_lo: float
     r_min: float
     tau: float
+    # epsilon (evidence-overlap) promotion threshold. OPT-IN: eps_hi=0.0 disables
+    # the epsilon-corroborated MERGE path entirely (the ungrounded default, so
+    # HotpotQA / M-2 are unaffected). On grounded data it is calibrated, not
+    # derived, like the other thresholds.
+    eps_hi: float = 0.0
 
     def __post_init__(self) -> None:
         # The RELATE band is [sigma_lo, theta_merge); it is only reachable when
@@ -34,6 +39,11 @@ class Thresholds:
                 f"thresholds must satisfy 0 <= sigma_lo ({self.sigma_lo}) < "
                 f"theta_merge ({self.theta_merge}) <= 1; an inverted/equal pair "
                 "leaves the RELATE band [sigma_lo, theta_merge) empty (Section 4)"
+            )
+        if not (0.0 <= self.eps_hi <= 1.0):
+            raise ValueError(
+                f"eps_hi ({self.eps_hi}) must be in [0, 1]; it is an evidence-"
+                "overlap (Jaccard) threshold. eps_hi=0 disables epsilon promotion."
             )
 
 
@@ -52,6 +62,9 @@ def load_thresholds(path: str | None = None) -> Thresholds:
         sigma_lo=float(raw["sigma_lo"]),
         r_min=float(raw["r_min"]),
         tau=float(raw["tau"]),
+        # eps_hi is OPTIONAL (default 0.0 = epsilon promotion off); not in
+        # _REQUIRED so existing 4-key configs load unchanged and stay ungrounded.
+        eps_hi=float(raw.get("eps_hi", 0.0)),
     )
 
 

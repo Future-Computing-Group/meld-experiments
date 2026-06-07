@@ -1,4 +1,4 @@
-"""The four merge signals: kappa / sigma / epsilon / chi.
+"""The merge signals: three core (kappa / sigma / chi) plus an optional epsilon.
 
 REUSE posture
 -------------
@@ -9,7 +9,9 @@ REUSE posture
   stronger sweeps). NO silent default: the encoder must be named.
 - kappa is a one-line content-addressed claim-key identity over the vendored
   proto Claim.
-- epsilon is a set Jaccard over shared grounding (GROUNDS) endpoints.
+- epsilon is a set Jaccard over shared grounding (GROUNDS) endpoints. It is an
+  OPTIONAL signal, disabled by default (eps_hi=0): the three core signals drive
+  the evaluated decision procedure; epsilon only participates when eps_hi>0.
 - chi is a three-way NLI; the model is config-driven (no silent default). A
   deterministic 'lexical' backend keeps tests/local-smoke offline and fast; a
   cross-encoder backend ('mnli-cross-encoder') is available for stronger runs.

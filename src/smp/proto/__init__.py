@@ -53,6 +53,11 @@ class Claim:
     text: str = ""
     confidence: float = 0.0
     claim_status: str = "ACTIVE"
+    # Grounding-evidence endpoints (e.g. "doc:sentence" provenance) the claim is
+    # derived from; the source of the OPTIONAL epsilon (evidence-overlap) signal,
+    # which is disabled by default (eps_hi=0). Empty on ungrounded corpora
+    # (HotpotQA) -> epsilon=0 -> the epsilon path is inert regardless.
+    grounding: tuple = ()
 
 
 @dataclass

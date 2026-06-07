@@ -13,7 +13,7 @@ authors:
     given-names: "Sasu"
 preferred-citation:
   type: article
-  title: "The Semantic Merge Protocol: A Protocol for Merging Knowledge Across Distributed Agent Memories"
+  title: "The Semantic Merge Protocol: A Protocol for Merging Knowledge Across Distributed Agentic Memories"
   authors:
     - family-names: "Lovén"
       given-names: "Lauri"

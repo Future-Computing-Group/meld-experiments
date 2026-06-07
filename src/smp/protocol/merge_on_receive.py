@@ -1,9 +1,10 @@
 """Merge-on-receive orchestration (architecture A.1/A.2).
 
 A receiving brain does NOT blindly apply an incoming delta. For each incoming
-Claim it finds the best local candidate, computes the four signals + Context
-gate, runs the four-way classifier, and emits exactly ONE Patch carrying which
-gates fired and the resulting deltas:
+Claim it finds the best local candidate, computes the three core signals (plus an
+optional, off-by-default evidence-overlap signal) + Context gate, runs the
+four-way classifier, and emits exactly ONE Patch carrying which gates fired and
+the resulting deltas:
 
     MERGE     -> a claim-status UPDATE (the claim is admitted/merged)
     RELATE    -> a Mapping (ASSOCIATES) link, the two claims stay distinct
@@ -67,13 +68,18 @@ def merge_on_receive(
         lu, lc, sigma_val = best
         k = kappa(ic, lc)
         chi_val = chi(ic.text, lc.text, model=nli)
+        # epsilon: grounding-evidence overlap of the two claims. Empty grounding
+        # (ungrounded corpora) -> 0.0 -> the epsilon path is inert (and disabled
+        # outright when cfg.eps_hi=0), so HotpotQA / M-2 are unaffected.
+        eps_val = epsilon(set(ic.grounding), set(lc.grounding))
         ctx_ok = context_compatible(_context_of(incoming, ic), _context_of(lu, lc))
         retention_below = (incoming.relevance_magnitude < cfg.r_min
                            and incoming.relevance_magnitude > 0)
 
         decision = classify(
-            cfg=cfg, kappa=k, sigma=sigma_val, chi=chi_val, ctx_ok=ctx_ok,
-            retention_below_min=retention_below, status=incoming.status,
+            cfg=cfg, kappa=k, sigma=sigma_val, epsilon=eps_val, chi=chi_val,
+            ctx_ok=ctx_ok, retention_below_min=retention_below,
+            status=incoming.status,
         )
         gates = _gates_for(decision, k, sigma_val, chi_val, ctx_ok)
         patches.append(_make_patch(

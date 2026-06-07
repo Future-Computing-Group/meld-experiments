@@ -4,8 +4,8 @@ This is the load-bearing G3 integration. The agent does NOT keep a private
 scratchpad; every observation it writes goes through the SMP wire path:
 
     text -> MemoryUnit (Concept + Claim)  [PUBLISH a delta]
-         -> merge_on_receive(incoming, local)  [the four-signal + Context-gate
-            decision procedure]
+         -> merge_on_receive(incoming, local)  [the three-signal (+ optional
+            evidence overlap) + Context-gate decision procedure]
          -> Patch  [MERGE / RELATE / CONFLICT / REJECT, auditable]
          -> brain.apply(Patch)  [the ONLY thing that mutates the brain]
 

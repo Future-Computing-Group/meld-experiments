@@ -112,7 +112,7 @@ def converge_across_orderings(events: List[Event], *, n_orderings: int = 24,
 
 
 # ---------------------------------------------------------------------------
-# Canonical in-process C-1 scenario (Section 7-c, paragraph 1)
+# Canonical in-process convergence scenario (the order-independence demonstration)
 # ---------------------------------------------------------------------------
 # A FIXED, principled contested-lifecycle event set: four claims, each overruled
 # or superseded by MORE THAN ONE peer issuing a DIFFERENT status effect (the exact
@@ -121,8 +121,9 @@ def converge_across_orderings(events: List[Event], *, n_orderings: int = 24,
 # every claim converges to the join of its effects regardless of delivery order;
 # under last-writer-wins the surviving status is whichever link was applied LAST,
 # so it changes with the ordering. This is the in-process demonstration of the
-# order-independence Section 5.1 establishes by construction; the multi-host
-# version (real partition heal) is the strong form (Section 7-c, paragraph 2).
+# order-independence the consistency section establishes by construction; the
+# multi-host version (real partition heal) is the strong form reported in the
+# evaluation.
 CANONICAL_C1_SCENARIO: Dict = {
     "events": [
         # c1: deprecated by one peer, overruled by another (+ idempotent re-delivery)
