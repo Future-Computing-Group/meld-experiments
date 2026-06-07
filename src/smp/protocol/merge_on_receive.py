@@ -22,7 +22,7 @@ from smp.config import Thresholds
 from smp.merge.classifier import classify
 from smp.merge.context_gate import Context, context_compatible
 from smp.merge.signals import EmbeddingSimilarity, chi, epsilon, kappa
-from smp.proto import Claim, Endpoint, MemoryLink, MemoryUnit
+from smp.proto import AUTHORITY_LEVELS, Claim, Endpoint, MemoryLink, MemoryUnit
 from smp.protocol.messages import Patch
 
 
@@ -30,10 +30,26 @@ def _claims(unit: MemoryUnit) -> List[Claim]:
     return list(unit.claims)
 
 
+def _authority_ok(incoming: MemoryUnit, local: MemoryUnit) -> bool:
+    """§5.3 admission: True unless the incoming SOURCE is strictly LESS
+    authoritative than the more-canonical local TARGET. In the proto authority
+    ranking PRECEDENT is most authoritative (smallest enum number); OBSERVATION,
+    CLAIM, SPECULATION descend from there. So a SMALLER rank number == MORE
+    authoritative, and "incoming less authoritative" == incoming rank number
+    GREATER than local's. Equal authority (both default OBSERVATION) -> True ->
+    no downgrade, so M-2/headline are unchanged."""
+    inc_rank = AUTHORITY_LEVELS[incoming.authority]
+    loc_rank = AUTHORITY_LEVELS[local.authority]
+    return not (inc_rank > loc_rank)
+
+
 def _context_of(unit: MemoryUnit, claim: Claim) -> Context:
-    # frame derived from the unit's scope (here a single default cell for sim);
-    # real wiring reads Endpoint cell/ACL; freshness is the status field.
-    return Context(cell="agent.public", valid_from=0, valid_until=None,
+    # frame derived from the unit's own cell/scope (no longer a hardcoded
+    # constant), so two units in different cells are Context-incompatible and a
+    # high-similarity cross-cell pair RELATEs on the LIVE path. Default cell
+    # ("agent.public") keeps single-frame runs (M-2/headline) unchanged. Freshness
+    # is the status field.
+    return Context(cell=unit.cell, valid_from=0, valid_until=None,
                    is_fresh=(unit.status == "ACTIVE"))
 
 
@@ -73,12 +89,16 @@ def merge_on_receive(
         # outright when cfg.eps_hi=0), so HotpotQA / M-2 are unaffected.
         eps_val = epsilon(set(ic.grounding), set(lc.grounding))
         ctx_ok = context_compatible(_context_of(incoming, ic), _context_of(lu, lc))
+        # §5.3: a similarity PUBLISH from a low-authority brain into a more-
+        # canonical local brain is admitted as a candidate (RELATE), not a silent
+        # rewrite. Equal/default authority -> True -> no downgrade (M-2 unchanged).
+        auth_ok = _authority_ok(incoming, lu)
         retention_below = (incoming.relevance_magnitude < cfg.r_min
                            and incoming.relevance_magnitude > 0)
 
         decision = classify(
             cfg=cfg, kappa=k, sigma=sigma_val, epsilon=eps_val, chi=chi_val,
-            ctx_ok=ctx_ok, retention_below_min=retention_below,
+            ctx_ok=ctx_ok, authority_ok=auth_ok, retention_below_min=retention_below,
             status=incoming.status,
         )
         gates = _gates_for(decision, k, sigma_val, chi_val, ctx_ok)

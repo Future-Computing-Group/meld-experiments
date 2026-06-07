@@ -31,6 +31,7 @@ def classify(
     epsilon: float = 0.0,
     chi: str = "neutral",
     ctx_ok: bool = True,
+    authority_ok: bool = True,
     retention_below_min: bool = False,
     status: str = "ACTIVE",
 ) -> str:
@@ -41,6 +42,14 @@ def classify(
     ``ctx_ok`` Context-gate result; ``retention_below_min`` / ``status`` drive
     the wire-admission REJECT gate. ``epsilon`` defaults to 0 so existing call
     sites (and ungrounded datasets, where eps_hi=0) are unchanged.
+
+    ``authority_ok`` (§5.3) admits a SIMILARITY merge only when the incoming
+    source is at least as authoritative as the more-canonical local target. When
+    False, a similarity-merge (kappa=0) is downgraded from MERGE to a candidate
+    RELATE, so a canonical brain is never silently rewritten by a low-authority
+    peer. An EXACT-KEY (kappa=1) match is the SAME claim (no rewrite risk) and is
+    unaffected. Defaults True ⇒ existing callers and M-2 (equal default authority)
+    are byte-for-byte unchanged.
     """
     # --- Gate precedence: stale or non-ACTIVE never propagates (Cor. 2.1) ---
     if retention_below_min or status != "ACTIVE":
@@ -58,9 +67,14 @@ def classify(
         return "CONFLICT"
 
     # --- MERGE: exact key, OR high-sigma non-contradicting in a shared frame ---
+    # An EXACT-KEY match is the SAME claim (no silent-rewrite risk), so it merges
+    # regardless of authority. A SIMILARITY merge requires authority_ok: a
+    # low-authority source into a more-canonical local is downgraded to a candidate
+    # RELATE below (§5.3), not auto-merged. authority_ok defaults True ⇒ unchanged.
     if kappa == 1:
         return "MERGE"
-    if sigma >= cfg.theta_merge and chi != "contradicts" and ctx_ok:
+    if (sigma >= cfg.theta_merge and chi != "contradicts" and ctx_ok
+            and authority_ok):
         return "MERGE"
 
     # --- MERGE (epsilon-corroborated): a BORDERLINE-similarity pair
@@ -79,9 +93,11 @@ def classify(
             and epsilon >= cfg.eps_hi):
         return "MERGE"
 
-    # --- RELATE: same meaning in a different frame, or mid-band similarity ---
+    # --- RELATE: same meaning in a different frame, or mid-band similarity, or a
+    # high-sigma similarity merge withheld because the source is less authoritative
+    # than the canonical local (§5.3) -- admitted as a candidate, not a rewrite. ---
     if chi != "contradicts":
-        if sigma >= cfg.theta_merge and not ctx_ok:
+        if sigma >= cfg.theta_merge and (not ctx_ok or not authority_ok):
             return "RELATE"
         if cfg.sigma_lo <= sigma < cfg.theta_merge:
             return "RELATE"

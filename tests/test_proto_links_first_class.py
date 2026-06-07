@@ -78,6 +78,23 @@ def test_memoryunit_carries_addressable_claims():
     assert not hasattr(u, "citations")
 
 
+def test_memoryunit_cell_round_trips_through_dict():
+    # The per-claim Context cell (frame) is carried on the unit and survives the
+    # wire-delta to_dict/from_dict round trip; default preserves current behavior.
+    from smp.proto import Claim, MemoryUnit
+
+    u = MemoryUnit(id=b"u", cell="geo",
+                   claims=[Claim(claim_key=b"k", text="t")])
+    assert u.cell == "geo"
+    d = u.to_dict()
+    assert d["cell"] == "geo"
+    u2 = MemoryUnit.from_dict(d)
+    assert u2.cell == "geo"
+    # default cell when absent (back-compat with older serialized units)
+    assert MemoryUnit.from_dict({"id": ""}).cell == "agent.public"
+    assert MemoryUnit().cell == "agent.public"
+
+
 def test_linktype_taxonomy_complete():
     from smp.proto import LINK_TYPES
 

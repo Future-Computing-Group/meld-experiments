@@ -171,6 +171,12 @@ class MemoryUnit:
     contradictions_received: int = 0
     access_count: int = 0
     signature: bytes = b""
+    # The Context cell/scope frame the unit's claims live in. The Context gate
+    # (architecture A.2) reads this on the live federation path: two claims in
+    # DIFFERENT cells are frame-incompatible and RELATE rather than MERGE, even at
+    # high similarity. Defaults to the single shared frame, preserving existing
+    # behavior (M-2/headline use one cell).
+    cell: str = "agent.public"
     claims: List[Claim] = field(default_factory=list)
 
     def to_dict(self) -> dict:
@@ -181,6 +187,7 @@ class MemoryUnit:
                 "contradictions_received": self.contradictions_received,
                 "access_count": self.access_count,
                 "signature": _b2h(self.signature),
+                "cell": self.cell,
                 "claims": [c.to_dict() for c in self.claims]}
 
     @classmethod
@@ -194,6 +201,7 @@ class MemoryUnit:
             contradictions_received=d.get("contradictions_received", 0),
             access_count=d.get("access_count", 0),
             signature=_h2b(d.get("signature", "")),
+            cell=d.get("cell", "agent.public"),
             claims=[Claim.from_dict(c) for c in d.get("claims", [])])
 
 

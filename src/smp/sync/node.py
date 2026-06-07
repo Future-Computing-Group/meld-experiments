@@ -32,6 +32,14 @@ class BrainNode:
         self._mem_kw = dict(encoder=encoder, nli=nli, cfg=cfg, cache_dir=cache_dir)
         self.mem = SMPMemory(**self._mem_kw)
         self._published: Set[str] = set()   # claim texts already published OR received
+        # Read-time staleness set (§5.2): link_ids whose OWN carried fields mark
+        # them stale (non-active carried status, or retention below floor). It is a
+        # pure function of the converged link set (each link_id's membership depends
+        # only on that link's carried fields, not arrival order), so the read-time
+        # gate stays order-independent. Empty unless a link is explicitly applied
+        # with stale carried fields -> the gated read is then identical to the
+        # ungated one (default no-op).
+        self._stale_links: Set[str] = set()
 
     def reset(self) -> None:
         """Drop all state -> a fresh brain + empty published-set, so a campaign cell starts
@@ -39,6 +47,7 @@ class BrainNode:
         rather than masked by publish-once leftover state from the previous cell)."""
         self.mem = SMPMemory(**self._mem_kw)
         self._published.clear()
+        self._stale_links.clear()
 
     # -- local observation ---------------------------------------------------
     def ingest(self, text: str) -> None:
@@ -67,18 +76,38 @@ class BrainNode:
         from smp.agent.memory import _cid
         return _cid(claim_text + "::claim")
 
-    def apply_status(self, claim_text: str, *, link_id: str, effect: str) -> None:
+    def apply_status(self, claim_text: str, *, link_id: str, effect: str,
+                     link_status: str = "ACTIVE", retention=None,
+                     retention_floor: float = 0.0) -> None:
         """Apply one overrule/supersede status link to a claim (the status-CRDT add).
         Order-independent + idempotent: re-applying the same link id is a no-op, and the
-        same set of links yields the same effective status regardless of arrival order."""
+        same set of links yields the same effective status regardless of arrival order.
+
+        ``link_status`` is the link's OWN carried lifecycle status (NOT its
+        ``effect``); ``retention``/``retention_floor`` are the link's carried
+        retention vs the floor. A link whose carried status is non-active OR whose
+        retention is below the floor is recorded as stale and dropped at READ
+        (effective_status_gated, §5.2). Defaults (active link, retention None) keep
+        the link non-stale, so the read-time gate is a no-op for every existing
+        caller (the eval-c convergence runs apply only active links)."""
         b = self.mem.brain
         ck = self._claim_key(claim_text)
         b._status[ck] = b.claim_status(ck).add(link_id, effect)
+        is_stale = (link_status != "ACTIVE") or (
+            retention is not None and retention < retention_floor)
+        if is_stale:
+            self._stale_links.add(link_id)
+        else:
+            self._stale_links.discard(link_id)
 
     def status_of(self, claim_text: str) -> str:
-        """Effective per-claim status (lattice-join of all its links; ACTIVE if none)."""
-        from smp.merge.status_crdt import effective_status
-        return effective_status(self.mem.brain.claim_status(self._claim_key(claim_text)))
+        """Effective per-claim status under the SEC-preserving read-time gate
+        (§5.2): the lattice-join of all the claim's links EXCEPT those whose carried
+        fields mark them stale. ACTIVE if no (non-stale) links. With no stale links
+        (the default) this is identical to the ungated effective_status."""
+        from smp.merge.status_crdt import effective_status_gated
+        state = self.mem.brain.claim_status(self._claim_key(claim_text))
+        return effective_status_gated(state, stale=frozenset(self._stale_links))
 
     def extract_delta(self) -> List[str]:
         """Claim texts to publish: live claims not yet published or received.
