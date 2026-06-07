@@ -2,8 +2,9 @@
 
 The SMP-vendored proto promotes MemoryLink to a first-class object (typed,
 versioned, signed, weighted, with an entailment score), adds an addressable
-Claim with status + validity, an Endpoint that may target a claim within a unit,
-and a StalenessTag. The node-centric Citation alias is kept deprecated.
+Claim with status + validity, and an Endpoint that may target a claim within a
+unit. Freshness is a derived property of the ``status`` field, so there is no
+standalone staleness type.
 
 This exercises the Python facade over the vendored proto (the wire types the
 merge engine reasons over), not protobuf wire compatibility with firmament --
@@ -55,23 +56,26 @@ def test_endpoint_may_target_a_claim_within_a_unit():
     assert ep.claim_key == b"k"
 
 
-def test_staleness_tag_fields():
-    from smp.proto import StalenessTag
+def test_freshness_is_derived_from_status_not_a_standalone_type():
+    # There is no StalenessTag: freshness is read off the status field
+    # (is_fresh == status == "ACTIVE"). Assert the removed symbol is gone.
+    import smp.proto as proto
 
-    st = StalenessTag(content_hash=b"h", phi=0.01, is_latest=True)
-    assert st.content_hash == b"h"
-    assert st.phi == pytest.approx(0.01)
-    assert st.is_latest is True
+    assert not hasattr(proto, "StalenessTag")
+    assert "StalenessTag" not in proto.__all__
 
 
-def test_memoryunit_keeps_deprecated_citation_alias():
-    # node-centric citations kept only as a deprecated alias; the first-class
-    # path is MemoryLink. The unit still carries addressable claims.
+def test_memoryunit_carries_addressable_claims():
+    # The first-class path is MemoryLink + addressable Claims; the node-centric
+    # Citation alias has been removed.
+    import smp.proto as proto
     from smp.proto import Claim, MemoryUnit
 
     u = MemoryUnit(id=b"u", claims=[Claim(claim_key=b"k", text="t")])
     assert u.id == b"u"
     assert u.claims[0].claim_key == b"k"
+    assert not hasattr(proto, "Citation")
+    assert not hasattr(u, "citations")
 
 
 def test_linktype_taxonomy_complete():

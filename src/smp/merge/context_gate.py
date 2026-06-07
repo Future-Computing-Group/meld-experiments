@@ -8,8 +8,8 @@ RELATEs them instead of MERGEing.
 
 A Context is the frame in which a claim is valid: its cell/scope, its validity
 interval, and freshness. Derived from the vendored proto Endpoint (cell/ACL
-scope) + StalenessTag (freshness/validity). REUSE the proto frame fields; NEW =
-the compatibility predicate.
+scope); freshness is the status field (is_fresh == status == "ACTIVE"). REUSE
+the proto frame fields; NEW = the compatibility predicate.
 """
 from __future__ import annotations
 

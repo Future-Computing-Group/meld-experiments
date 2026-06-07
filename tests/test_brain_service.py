@@ -4,8 +4,9 @@ The request handling is a PURE function -- handle(method, path, body) -> (status
 -- so it is unit-testable with no socket; a thin stdlib ThreadingHTTPServer wraps it
 (exercised at the docker smoke). Endpoints:
 
-  * POST /patch    body = newline-separated claim texts (a published delta) -> the node
-                   merges each via merge-on-receive; returns the received count.
+  * POST /patch    body = ONE signed, typed delta (a serialized MemoryUnit) -> the node
+                   VERIFIES the signature, reconstructs the typed unit, and merges it via
+                   merge-on-receive; 403 if the signature does not verify.
   * GET  /metrics  -> the node's live claim set + count (the eval-c convergence probe
                    the orchestrator polls across nodes).
   * GET  /healthz  -> liveness (the orchestrator's peer-health + transport probe).
@@ -29,22 +30,38 @@ def _service(nid="A"):
     return BrainService(BrainNode(nid, encoder="hashing", nli="lexical", cfg=_cfg()))
 
 
-def test_post_patch_merges_claim_into_node():
+def _signed(svc, text):
+    """A signed, typed delta payload for ``text`` under the service's group key."""
+    from smp.sync.wire_delta import serialize_signed_delta
+    unit = svc.node.mem.build_unit(text)
+    return serialize_signed_delta("peer", unit, svc.group_key)
+
+
+def test_post_patch_merges_signed_typed_delta_into_node():
     svc = _service()
-    status, body = svc.handle("POST", "/patch", b"Paris is the capital of France")
+    status, body = svc.handle("POST", "/patch", _signed(svc, "Paris is the capital of France"))
     assert status == 200
     assert json.loads(body)["received"] == 1
     assert any("Paris" in t for t in svc.node.live_claim_texts())
 
 
-def test_post_patch_accepts_multi_claim_delta():
+def test_post_patch_two_signed_deltas_both_merge():
     svc = _service()
-    payload = b"Paris is the capital of France\nMount Everest is the tallest mountain"
-    status, body = svc.handle("POST", "/patch", payload)
-    assert status == 200
-    assert json.loads(body)["received"] == 2
+    for text in ("Paris is the capital of France", "Mount Everest is the tallest mountain"):
+        status, body = svc.handle("POST", "/patch", _signed(svc, text))
+        assert status == 200
+        assert json.loads(body)["received"] == 1
     live = svc.node.live_claim_texts()
     assert any("Paris" in t for t in live) and any("Everest" in t for t in live)
+
+
+def test_post_patch_rejects_forged_delta_before_admission():
+    svc = _service()
+    payload = _signed(svc, "Paris is the capital of France")
+    tampered = payload.replace(b"Paris", b"Berlin")
+    status, _ = svc.handle("POST", "/patch", tampered)
+    assert status == 403                              # verification failed -> non-delivery
+    assert svc.node.live_claim_texts() == set()       # nothing merged
 
 
 def test_get_metrics_reports_live_claims():
@@ -82,11 +99,12 @@ def test_unknown_route_is_404_not_a_silent_200():
     assert status == 404            # never a silent success (delivery contract integrity)
 
 
-def test_empty_patch_body_receives_nothing():
+def test_empty_or_malformed_patch_body_is_rejected_not_a_silent_merge():
+    # an unsigned / malformed body fails verification -> 403, nothing merged
+    # (never a silent 200 that pretends to have admitted a delta).
     svc = _service()
-    status, body = svc.handle("POST", "/patch", b"   \n  ")
-    assert status == 200
-    assert json.loads(body)["received"] == 0
+    status, _ = svc.handle("POST", "/patch", b"   \n  ")
+    assert status == 403
     assert svc.node.live_claim_texts() == set()
 
 

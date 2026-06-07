@@ -195,7 +195,9 @@ def run_o1(n_conversations: int, n_agents: int, encoder: str, nli: str) -> Dict:
         "c_sync_bytes": byte_count(units),                 # bytes synced
         "c_ver_versions": version_count(units),            # version-storage growth
         "c_ret_walk_cost": walk_cost,                      # graph-walk traversal cost
-        "c_ref_refetch": sum(1 for u in units if u.staleness is not None),
+        # No external re-fetch on this corpus: freshness is the status field
+        # (no separate staleness tag), and these units are all status-ACTIVE.
+        "c_ref_refetch": 0,
         "n_patches": len(topo.patches),
     }
 

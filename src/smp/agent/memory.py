@@ -65,13 +65,25 @@ class SMPMemory:
         text = (text or "").strip()
         if not text:
             return []
-        incoming = _unit_from_text(text)
+        return self.write_unit(_unit_from_text(text))
+
+    def write_unit(self, incoming: MemoryUnit) -> List[Patch]:
+        """Merge an already-typed incoming MemoryUnit through the SAME decision
+        procedure ``write`` uses. The wire path deserializes a typed delta and
+        calls this, so a received typed delta merges identically to a local
+        text write (the only difference is where the unit was constructed)."""
         local = [u for u in self.brain.extract_delta() if isinstance(u, MemoryUnit)]
         patches = merge_on_receive(
             incoming, local, cfg=self.cfg, es=self._es, nli=self.nli)
         for p in patches:
             self.brain.apply(p)
         return patches
+
+    def build_unit(self, text: str) -> MemoryUnit:
+        """The typed Concept (MemoryUnit) a local observation publishes -- the
+        same unit ``write`` would merge, exposed so the sync layer can serialize
+        a TYPED delta on the wire instead of bare text."""
+        return _unit_from_text((text or "").strip())
 
     # -- read: graph-walk fusion --------------------------------------------
     def recall(self, query: str, k: int = 3) -> List[str]:

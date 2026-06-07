@@ -32,7 +32,8 @@ class BrainService:
                  routing_mode: str = "broadcast", sigma_lo: float = 0.0,
                  top_k: Optional[int] = None, send: Optional[Callable] = None,
                  latency_meter=None,
-                 peer_live: Optional[Callable[[str], List[str]]] = None):
+                 peer_live: Optional[Callable[[str], List[str]]] = None,
+                 group_key: Optional[bytes] = None):
         self.node = node
         self.peers = list(peers or [])
         self.routing_mode = routing_mode
@@ -41,6 +42,12 @@ class BrainService:
         self.meter = latency_meter
         self.transport = PatchTransport(send, latency_meter=latency_meter) if send else None
         self._peer_live = peer_live          # for semantic routing over the wire
+        # Shared group HMAC key: the wire carries a signed, typed delta and the
+        # receiver verifies before admission. Defaults to the labelled test key.
+        if group_key is None:
+            from smp.sync.wire_delta import group_key as _gk
+            group_key = _gk({})
+        self.group_key = group_key
 
     def _fetch_peer_content(self) -> dict:
         """Pull each peer's live claim set ONCE per publish (not per claim) -- the content
@@ -59,6 +66,7 @@ class BrainService:
     def _publish(self) -> Tuple[int, bytes]:
         if self.transport is None:
             return 503, json.dumps({"error": "no send seam configured"}).encode("utf-8")
+        from smp.sync.wire_delta import serialize_signed_delta
         delta = self.node.extract_delta()
         peer_content = es = None
         if self.routing_mode == "semantic":
@@ -67,7 +75,11 @@ class BrainService:
             es = EmbeddingSimilarity(encoder=self.node.mem.encoder)   # ONE cache across all claims
         delivered = {}
         for claim in delta:
-            d = self.transport.publish(f"{self.node.node_id}:{claim}", claim.encode("utf-8"),
+            # ship a SIGNED, TYPED delta (MemoryUnit), not bare text; the peer
+            # verifies + reconstructs + runs the same merge path.
+            unit = self.node.mem.build_unit(claim)
+            payload = serialize_signed_delta(self.node.node_id, unit, self.group_key)
+            d = self.transport.publish(f"{self.node.node_id}:{claim}", payload,
                                        self._targets(claim, peer_content, es))
             delivered[claim] = [p for p, ok in d.items() if ok]
         return 200, json.dumps({
@@ -81,12 +93,19 @@ class BrainService:
         latency-measured -- it is a catch-up round, not a steady-state publish."""
         if self.transport is None:
             return 503, json.dumps({"error": "no send seam configured"}).encode("utf-8")
+        from smp.sync.wire_delta import serialize_signed_delta
         state = self.node.full_state()
-        payload = "\n".join(state).encode("utf-8")
         delivered = {}
         for peer in self.peers:
-            d = self.transport.publish(f"{self.node.node_id}:resync", payload, [peer])
-            delivered[peer] = d.get(peer, False)
+            # re-send the FULL live set as signed, typed deltas (one per claim);
+            # delivered iff every claim's payload was accepted.
+            oks = []
+            for claim in state:
+                unit = self.node.mem.build_unit(claim)
+                payload = serialize_signed_delta(self.node.node_id, unit, self.group_key)
+                d = self.transport.publish(f"{self.node.node_id}:resync:{claim}", payload, [peer])
+                oks.append(d.get(peer, False))
+            delivered[peer] = bool(oks) and all(oks)
         return 200, json.dumps({"resynced": len(state), "delivered": delivered}).encode("utf-8")
 
     def _reset(self) -> Tuple[int, bytes]:
@@ -108,9 +127,12 @@ class BrainService:
                 self.node.ingest(text)
             return 200, json.dumps({"ingested": 1 if text else 0}).encode("utf-8")
         if method == "POST" and path == "/patch":
-            claims = [c for c in body.decode("utf-8").split("\n") if c.strip()]
-            self.node.receive(claims)
-            return 200, json.dumps({"received": len(claims)}).encode("utf-8")
+            # the wire carries a SIGNED, TYPED delta; verify before admission.
+            admitted = self.node.receive_wire(body, self.group_key)
+            if not admitted:
+                return 403, json.dumps(
+                    {"error": "signature verification failed"}).encode("utf-8")
+            return 200, json.dumps({"received": 1}).encode("utf-8")
         if method == "POST" and path == "/publish":
             return self._publish()
         if method == "POST" and path == "/status":
@@ -173,6 +195,7 @@ def build_service_from_env(env) -> Tuple["BrainService", int]:
     from smp.config import load_thresholds
     from smp.sync.latency import SyncLatencyMeter
     from smp.sync.wire import make_http_send
+    from smp.sync.wire_delta import group_key
 
     def _req(key):
         v = env.get(key)
@@ -201,7 +224,8 @@ def build_service_from_env(env) -> Tuple["BrainService", int]:
     node = BrainNode(node_id, encoder=encoder, nli=nli, cfg=load_thresholds())
     svc = BrainService(node, peers=peers, routing_mode=routing_mode, sigma_lo=sigma_lo,
                        top_k=top_k, send=make_http_send(timeout=timeout),
-                       latency_meter=SyncLatencyMeter(), peer_live=_peer_live)
+                       latency_meter=SyncLatencyMeter(), peer_live=_peer_live,
+                       group_key=group_key(env))
     return svc, port
 
 

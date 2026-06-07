@@ -32,7 +32,7 @@ def _claims(unit: MemoryUnit) -> List[Claim]:
 
 def _context_of(unit: MemoryUnit, claim: Claim) -> Context:
     # frame derived from the unit's scope (here a single default cell for sim);
-    # real wiring reads Endpoint cell/ACL + StalenessTag.
+    # real wiring reads Endpoint cell/ACL; freshness is the status field.
     return Context(cell="agent.public", valid_from=0, valid_until=None,
                    is_fresh=(unit.status == "ACTIVE"))
 

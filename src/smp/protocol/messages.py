@@ -4,7 +4,7 @@ Five primitives REUSE the vendored proto types:
     Concept  -> MemoryUnit (node)
     Claim    -> Claim (addressable assertion)
     Evidence -> a GROUNDS MemoryLink (+ grounded unit)
-    Context  -> Endpoint + StalenessTag (the frame a claim is valid in)
+    Context  -> Endpoint + status-derived freshness (the frame a claim is valid in)
     Mapping  -> a typed MemoryLink (ASSOCIATES/ENTITY_LINK/SUPERSEDES/...)
 
 The sixth, Patch (a MergeResult), is the NEW wire object: the reified output of
@@ -27,7 +27,7 @@ PRIMITIVE_PROTO_MAP = {
     "Concept": "MemoryUnit",
     "Claim": "Claim",
     "Evidence": "MemoryLink(type=GROUNDS)",
-    "Context": "Endpoint+StalenessTag",
+    "Context": "Endpoint+status-freshness",
     "Mapping": "MemoryLink(typed)",
 }
 
@@ -37,15 +37,18 @@ class Patch:
     """Signed, append-only MergeResult. The verb's response; what mutates state.
 
     ``gates_that_fired`` records the justification (e.g. ["kappa","context"],
-    ["chi"]) so other brains can audit/replay the merge.
+    ["chi"]) so other brains can audit/replay the merge. ``version`` is the
+    Patch SCHEMA/format version (a wire-format constant, NOT a per-claim CRDT
+    version: per-claim status convergence is owned by the status-CRDT, and the
+    emitted MemoryLinks carry their own per-link versions). Provenance is NOT a
+    Patch-level field -- each emitted MemoryLink carries its own ``provenance``.
     """
 
     decision: str
     target: Endpoint
     emitted: List[Any] = field(default_factory=list)        # units/links/status UPDATEs
     gates_that_fired: List[str] = field(default_factory=list)
-    provenance: str = ""
-    version: int = 0
+    version: int = 0                                          # schema/format version (constant)
     signature: bytes = b""
 
     def __post_init__(self):
@@ -60,7 +63,6 @@ class Patch:
             "target": {"node_id": self.target.node_id, "claim_key": self.target.claim_key},
             "emitted": list(self.emitted),
             "gates_that_fired": list(self.gates_that_fired),
-            "provenance": self.provenance,
             "version": self.version,
             "signature": self.signature,
         }
@@ -73,7 +75,6 @@ class Patch:
             target=Endpoint(node_id=t["node_id"], claim_key=t["claim_key"]),
             emitted=list(d.get("emitted", [])),
             gates_that_fired=list(d.get("gates_that_fired", [])),
-            provenance=d.get("provenance", ""),
             version=d.get("version", 0),
             signature=d.get("signature", b""),
         )

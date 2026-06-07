@@ -41,6 +41,7 @@ def test_publish_delivers_over_real_http_and_records_latency():
     from smp.sync.latency import SyncLatencyMeter
     from smp.sync.transport import PatchTransport
     from smp.sync.wire import make_http_send
+    from smp.sync.wire_delta import group_key, serialize_signed_delta
 
     b = _node("B")
     port = _free_port()
@@ -52,7 +53,11 @@ def test_publish_delivers_over_real_http_and_records_latency():
 
         meter = SyncLatencyMeter()
         transport = PatchTransport(make_http_send(timeout=5), latency_meter=meter)
-        delivered = transport.publish("p1", b"Paris is the capital of France", [url])
+        # a SIGNED, TYPED delta on the wire (the same default group key both ends use)
+        key = group_key({})
+        unit = b.mem.build_unit("Paris is the capital of France")
+        payload = serialize_signed_delta("A", unit, key)
+        delivered = transport.publish("p1", payload, [url])
 
         assert delivered[url] is True                       # 200 -> delivered
         m = requests.get(url + "/metrics", timeout=5).json()
