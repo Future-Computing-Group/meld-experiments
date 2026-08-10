@@ -26,10 +26,8 @@ import matplotlib.pyplot as plt  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-ARCHIVE = os.path.join(ROOT, "data", "csc-m1-archive")
-# ROOT=.../FCG/Experiments/2026-SMP -> vault root is two dirnames up (Experiments, FCG)
-FIGDIR = os.path.join(os.path.dirname(os.path.dirname(ROOT)),
-                      "Manuscripts", "2026-SMP — Semantic Merge Protocol", "figures")
+ARCHIVE = os.path.join(ROOT, "data", "csc-m1-archive-rerun")
+FIGDIR = os.path.join(ROOT, "figures")  # repo-local; copy to the manuscript tree manually
 
 # size-ordered for the F1 ladder; labels are display names
 MODELS = [
