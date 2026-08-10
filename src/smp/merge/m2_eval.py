@@ -1,10 +1,14 @@
 """M-2: merge-classification quality on a labeled claim-pair gold set.
 
-The four-way decision procedure (kappa/sigma/chi + Context gate -> MERGE / RELATE /
-CONFLICT / REJECT) is the paper's Contribution 2. M-2 measures it: per-class
-precision/recall/F1 and the load-bearing FALSE-MERGE RATE (the dangerous error a
-merge protocol must avoid, Section 4.3) -- the fraction of pairs that should NOT
-merge (RELATE/CONFLICT/REJECT gold) that the procedure nonetheless classified MERGE.
+The four-way PAIR-ADJUDICATION classifier (kappa/sigma/chi + Context gate ->
+MERGE / RELATE / CONFLICT / NO_RELATION) is the paper's Contribution 2. M-2
+measures it: per-class precision/recall/F1 and the load-bearing FALSE-MERGE RATE
+(the dangerous error a merge protocol must avoid, Section 4.3) -- the fraction of
+pairs that should NOT merge (RELATE/CONFLICT/NO_RELATION gold) that the procedure
+nonetheless classified MERGE. The protocol-level outcomes INSERT (novel, no pair
+to score) and REJECT (the admission gate) are NOT scored here; INSERT is out of
+this experiment's scope by construction, REJECT is exercised separately in the
+gate ablation.
 
 The gold set is a small, deliberately CLEAR set of same-frame claim pairs spanning
 the four outcomes (the full M-2 set should expand it). All pairs have distinct
@@ -20,7 +24,11 @@ from smp.config import Thresholds
 from smp.merge.classifier import classify
 from smp.merge.signals import EmbeddingSimilarity, chi
 
-DECISIONS = ("MERGE", "RELATE", "CONFLICT", "REJECT")
+# The pair-adjudication classifier's four verdicts (NOT the protocol's five
+# outcomes: INSERT and REJECT are not scored here). A fifth class here would
+# silently divide macro-F1 by 5 instead of 4 (0.845 -> ~0.676) with no change
+# in behaviour -- len(DECISIONS) must stay 4; do NOT add INSERT here.
+DECISIONS = ("MERGE", "RELATE", "CONFLICT", "NO_RELATION")
 
 # (gold_decision, claim_a, claim_b) -- same frame (ctx_ok=True), distinct keys.
 M2_GOLD: List[Tuple[str, str, str]] = [
@@ -49,14 +57,14 @@ M2_GOLD: List[Tuple[str, str, str]] = [
      "The novel 1984 was written by Aldous Huxley"),
     ("CONFLICT", "Water boils at 100 degrees Celsius at sea level",
      "Water boils at 90 degrees Celsius at sea level"),
-    # REJECT: unrelated (no actionable relation)
-    ("REJECT", "Paris is the capital of France",
+    # NO_RELATION: unrelated (no actionable relation)
+    ("NO_RELATION", "Paris is the capital of France",
      "The cat slept on the warm windowsill"),
-    ("REJECT", "Mount Everest is the tallest mountain",
+    ("NO_RELATION", "Mount Everest is the tallest mountain",
      "I enjoy a strong cup of coffee in the morning"),
-    ("REJECT", "George Orwell wrote the book 1984",
+    ("NO_RELATION", "George Orwell wrote the book 1984",
      "Photosynthesis converts sunlight into chemical energy"),
-    ("REJECT", "Water boils at 100 degrees Celsius",
+    ("NO_RELATION", "Water boils at 100 degrees Celsius",
      "The stock market closed higher today"),
 ]
 
@@ -142,7 +150,7 @@ def decisions_full(scored, *, theta: float, sigma_lo: float) -> List[str]:
 def decisions_embedding_only(scored, *, theta: float) -> List[str]:
     """Embedding-only baseline: MERGE iff sigma>=theta, with NO contradiction
     (chi/NLI) guard -- so high-similarity contradictions leak through as merges."""
-    return ["MERGE" if s >= theta else "REJECT" for _, s, _ in scored]
+    return ["MERGE" if s >= theta else "NO_RELATION" for _, s, _ in scored]
 
 
 def roc_over_theta(scored, *, sigma_lo: float, n_points: int = 51):
@@ -208,7 +216,7 @@ def evaluate_baseline(pairs, *, mode: str, encoder: str = "minilm",
     """
     gold = [g for g, _, _ in pairs]
     if mode == "key_only":
-        pred = ["MERGE" if _kappa_textual(a, b) else "REJECT"
+        pred = ["MERGE" if _kappa_textual(a, b) else "NO_RELATION"
                 for _, a, b in pairs]
     elif mode == "embedding_only":
         scored = score_pairs(pairs, encoder=encoder, nli="lexical")

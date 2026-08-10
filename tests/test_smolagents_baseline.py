@@ -69,7 +69,7 @@ def test_smolagents_baseline_writes_through_the_smp_brain():
                        tools=[RecallTool(mem), FinalAnswerTool()], max_steps=6)
     agent.run("What is the capital of France?")
     assert len(mem.brain.audit_log) >= 1, "smolagents wrote no Patch"
-    assert any(p.decision in ("MERGE", "RELATE", "CONFLICT")
+    assert any(p.decision in ("INSERT", "MERGE", "RELATE", "CONFLICT")
                for p in mem.brain.audit_log)
 
 

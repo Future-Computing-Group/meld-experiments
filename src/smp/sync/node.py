@@ -73,8 +73,8 @@ class BrainNode:
 
     # -- status-CRDT (eval-c: concurrent overrules + partition heal) ----------
     def _claim_key(self, claim_text: str) -> bytes:
-        from smp.agent.memory import _cid
-        return _cid(claim_text + "::claim")
+        from smp.agent.memory import claim_key
+        return claim_key(claim_text)   # ponytail: default cell; BrainNode is single-cell
 
     def apply_status(self, claim_text: str, *, link_id: str, effect: str,
                      link_status: str = "ACTIVE", retention=None,

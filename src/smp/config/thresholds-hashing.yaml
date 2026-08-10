@@ -1,7 +1,8 @@
 # SMP merge thresholds CALIBRATED for the hashing (bag-of-tokens) encoder.
 #
 # Provenance (reproducible): smp.merge.calibration.calibrate_thresholds over
-# CALIBRATION_PAIRS, encoder="hashing", max-accuracy then max-margin. The hashing
+# CALIBRATION_PAIRS (a labeled MERGE/RELATE/NO_RELATION claim-pair set),
+# encoder="hashing", max-accuracy then max-margin. The hashing
 # encoder's similarity is compressed and does NOT cleanly separate paraphrases
 # from related-distinct pairs, so the best achievable accuracy is ~0.89 (< minilm's
 # 1.0) -- this config is for the fast unit-test path only; the headline experiment

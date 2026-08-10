@@ -9,9 +9,9 @@ The fixture below is a small, deliberately CLEAR starter set spanning the three
 similarity-driven outcomes (CONFLICT is a separate chi overlay, not a
 sigma-threshold question, so the pairs are all non-contradicting):
 
-    MERGE   -- genuine paraphrases (same claim, different surface form)
-    RELATE  -- related but distinct claims (overlap, not identity)
-    REJECT  -- unrelated claims (no actionable relation)
+    MERGE       -- genuine paraphrases (same claim, different surface form)
+    RELATE      -- related but distinct claims (overlap, not identity)
+    NO_RELATION -- unrelated claims (no actionable relation)
 
 The full M-2 experiment should expand this set; the routine and the property
 tests (tests/test_threshold_calibration.py) are the reproducible provenance for
@@ -41,11 +41,11 @@ CALIBRATION_PAIRS: List[Tuple[str, str, str]] = [
      "Mount Everest is located in the Himalayas"),
     ("RELATE", "George Orwell wrote the book 1984",
      "The book 1984 is a dystopian novel"),
-    ("REJECT", "Paris is the capital of France",
+    ("NO_RELATION", "Paris is the capital of France",
      "The cat sat quietly on the mat"),
-    ("REJECT", "Mount Everest is the tallest mountain",
+    ("NO_RELATION", "Mount Everest is the tallest mountain",
      "I really enjoy playing tennis outdoors"),
-    ("REJECT", "George Orwell wrote the book 1984",
+    ("NO_RELATION", "George Orwell wrote the book 1984",
      "Photosynthesis occurs in green plants"),
 ]
 

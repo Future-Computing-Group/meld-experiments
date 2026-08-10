@@ -72,7 +72,7 @@ def _synthetic_scored():
     for i in range(25):
         rows.append(("CONFLICT", 0.70, "contradicts"))
     for i in range(25):
-        rows.append(("REJECT", 0.10, "neutral"))
+        rows.append(("NO_RELATION", 0.10, "neutral"))
     return rows
 
 

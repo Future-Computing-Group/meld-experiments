@@ -39,12 +39,12 @@ def test_memory_backend_is_an_smp_brain():
 
 def test_write_goes_through_merge_on_receive_and_emits_a_patch():
     """A written observation must reach the brain as a Patch (auditable),
-    never as a raw delta. Writing one novel fact yields exactly one MERGE
+    never as a raw delta. Writing one novel fact yields exactly one INSERT
     Patch and one unit in the brain."""
     mem = SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
     patches = mem.write("Paris is the capital of France")
     assert len(patches) == 1
-    assert patches[0].decision == "MERGE"
+    assert patches[0].decision == "INSERT"
     # the brain mutated ONLY via the Patch audit log
     assert len(mem.brain.audit_log) == 1
     units = [u for u in mem.brain.extract_delta()]
@@ -98,7 +98,7 @@ def test_agent_runs_a_task_end_to_end_against_mock_llm():
     # the brain must have received merged knowledge via a Patch (not a no-op).
     assert result.n_steps >= 2
     assert len(mem.brain.audit_log) >= 1
-    assert any(p.decision in ("MERGE", "RELATE", "CONFLICT")
+    assert any(p.decision in ("INSERT", "MERGE", "RELATE", "CONFLICT")
                for p in mem.brain.audit_log)
 
 

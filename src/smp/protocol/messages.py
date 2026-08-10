@@ -19,8 +19,12 @@ from typing import Any, Dict, List
 
 from smp.proto import Endpoint
 
-# the merge decision procedure's outputs (architecture A.2)
-DECISIONS = ("MERGE", "RELATE", "CONFLICT", "REJECT")
+# the merge decision procedure's outputs (architecture A.2 / manuscript Sec. 4.2)
+# NO_RELATION is deliberately NOT here: it is a pair-adjudication CLASSIFIER
+# verdict (smp.merge.classifier), never a Patch decision -- the protocol layer
+# (merge_on_receive) maps an unreached NO_RELATION to INSERT before a Patch is
+# ever constructed, and __post_init__ below enforces exactly these five.
+DECISIONS = ("INSERT", "MERGE", "RELATE", "CONFLICT", "REJECT")
 
 # the five primitive names that REUSE proto types (Patch is the sixth, NEW)
 PRIMITIVE_PROTO_MAP = {

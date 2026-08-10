@@ -269,7 +269,8 @@ def _audit_counts(mem: SMPMemory) -> Dict[str, int]:
     """Count Patch decisions in a brain's audit log, separating a MERGE that fired
     via the SIGMA (same-enough/overlap) gate from a MERGE that was a plain novel
     insert -- the former is the load-bearing 'the merge actually did something'."""
-    n = {"MERGE": 0, "RELATE": 0, "CONFLICT": 0, "REJECT": 0, "overlap_merge": 0}
+    n = {"INSERT": 0, "MERGE": 0, "RELATE": 0, "CONFLICT": 0, "REJECT": 0,
+         "overlap_merge": 0}
     for p in mem.brain.audit_log:
         n[p.decision] = n.get(p.decision, 0) + 1
         if p.decision == "MERGE" and "sigma" in p.gates_that_fired:
@@ -399,14 +400,14 @@ def _build_naive_union(split: SplitPlan, encoder: str, nli: str,
 def _raw_insert(mem: SMPMemory, text: str) -> None:
     """Insert ``text`` as a standalone unit WITHOUT the merge decision procedure
     relating it to existing claims -- the naive-union ablation. We construct the
-    unit and a 'novel' MERGE Patch directly (mirroring merge_on_receive's
-    no-candidate branch) and apply it, so EVERY naive-union write is a plain insert
-    and ``overlap_merge``/RELATE/CONFLICT counts stay zero by construction."""
+    unit and a novel INSERT Patch directly (mirroring merge_on_receive's
+    no-candidate branch, D1) and apply it, so EVERY naive-union write is a plain
+    insert and ``overlap_merge``/RELATE/CONFLICT counts stay zero by construction."""
     from smp.agent.memory import _unit_from_text
     from smp.protocol.merge_on_receive import _make_patch
     unit = _unit_from_text(text)
     for claim in unit.claims:
-        patch = _make_patch("MERGE", unit, claim, gates=["novel"])
+        patch = _make_patch("INSERT", unit, claim, gates=["novel"])
         mem.brain.apply(patch)
 
 

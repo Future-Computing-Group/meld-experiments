@@ -23,7 +23,7 @@ def _cases(cfg):
         # (NOT merge); dropping the gate flips it via the dangerous SEMANTIC path.
         {"gold": "CONFLICT", "kappa": 0, "sigma": hi, "chi": "contradicts",
          "ctx_ok": True, "retention_below_min": False, "status": "ACTIVE", "stale": False},
-        # staleness gate: a distinct-key non-ACTIVE local -> REJECT (must not propagate).
+        # staleness gate: a distinct-key non-ACTIVE incoming -> REJECT (must not propagate).
         {"gold": "REJECT", "kappa": 0, "sigma": hi, "chi": "neutral",
          "ctx_ok": True, "retention_below_min": False, "status": "DEPRECATED", "stale": True},
         # clean MERGE control: high-sigma, compatible, fresh -> MERGE (semantic path).

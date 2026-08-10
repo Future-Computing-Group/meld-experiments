@@ -87,7 +87,7 @@ def test_each_baseline_is_nondegenerate_and_writes_a_patch(name):
     result = agent.run("What is the capital of France?")
     assert result.n_steps >= 2, f"{name} did not step"
     assert len(mem.brain.audit_log) >= 1, f"{name} wrote no Patch"
-    assert any(p.decision in ("MERGE", "RELATE", "CONFLICT")
+    assert any(p.decision in ("INSERT", "MERGE", "RELATE", "CONFLICT")
                for p in mem.brain.audit_log), f"{name} wrote no real merge"
 
 

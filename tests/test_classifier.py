@@ -50,8 +50,9 @@ def test_overruled_status_rejects():
 def test_low_sigma_unrelated_relates_floor():
     # below sigma_lo and no key match: nothing to merge or relate strongly ->
     # the procedure returns RELATE only within [sigma_lo, theta_merge); below
-    # sigma_lo it is REJECT (no actionable relation).
-    assert classify(kappa=0, sigma=0.1, chi="neutral", ctx_ok=True, cfg=CFG) == "REJECT"
+    # sigma_lo it is NO_RELATION (no actionable relation) -- NOT REJECT, which
+    # is the admission gate alone (D1).
+    assert classify(kappa=0, sigma=0.1, chi="neutral", ctx_ok=True, cfg=CFG) == "NO_RELATION"
 
 
 def test_false_merge_zero_on_dangerous_gold_case():
@@ -76,11 +77,19 @@ def test_midsigma_lexically_divergent_contradiction_conflicts():
                     cfg=CFG) == "CONFLICT"
 
 
-def test_unrelated_spurious_contradiction_still_rejects():
+def test_below_floor_pair_is_no_relation():
+    # D1 (S1 memo sec 1): the classifier's below-floor verdict is NO_RELATION,
+    # never REJECT -- REJECT is the admission gate alone. The protocol layer
+    # (merge_on_receive) maps an unreached NO_RELATION to INSERT.
+    assert classify(kappa=0, sigma=0.05, chi="neutral", ctx_ok=True,
+                    cfg=CFG) == "NO_RELATION"
+
+
+def test_unrelated_spurious_contradiction_still_no_relation():
     # Below sigma_lo there is no actionable relation; even a (spurious)
     # contradiction verdict must not manufacture a CONFLICT out of nothing.
     assert classify(kappa=0, sigma=CFG.sigma_lo / 2.0, chi="contradicts",
-                    ctx_ok=True, cfg=CFG) == "REJECT"
+                    ctx_ok=True, cfg=CFG) == "NO_RELATION"
 
 
 def test_midsigma_noncontradiction_routing_unchanged():

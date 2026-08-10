@@ -45,8 +45,11 @@ class Brain:
 
     # -- mutation: ONLY via Patch ---------------------------------------
     def apply(self, patch: Patch) -> None:
-        """Apply a Patch. REJECT is a recorded no-op; MERGE/RELATE/CONFLICT
-        emit their deltas. The Patch (not the raw delta) mutates state."""
+        """Apply a Patch: one of INSERT/MERGE/RELATE/CONFLICT/REJECT (manuscript
+        Sec. 4.2). REJECT is the ONLY no-op; INSERT/MERGE/RELATE/CONFLICT each
+        emit their deltas (INSERT's payload is byte-identical to a novel MERGE's:
+        the unit plus an ACTIVE status tuple). The Patch (not the raw delta) is
+        the only thing that mutates state."""
         self.audit_log.append(patch)
         if patch.decision == "REJECT":
             return

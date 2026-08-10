@@ -34,7 +34,7 @@ CALIBRATED_CONFIG = os.path.join(REPO_ROOT, "data", "thresholds_calibrated.yaml"
 # Map a classifier decision to the M-2 label space.
 #   coreferent   -> MERGE or RELATE   (same/related, not a conflict)
 #   contradiction-> CONFLICT
-#   unrelated    -> REJECT
+#   unrelated    -> NO_RELATION / REJECT
 _LABELS = ("coreferent", "contradiction", "unrelated")
 
 
@@ -43,7 +43,8 @@ def _decision_to_label(decision: str) -> str:
         return "coreferent"
     if decision == "CONFLICT":
         return "contradiction"
-    return "unrelated"  # REJECT
+    return "unrelated"  # NO_RELATION / REJECT (this driver calls classify()
+    # directly with kappa=0, so it can never see the protocol-level INSERT)
 
 
 def _classify_pair(text_a: str, text_b: str, cfg: Thresholds,

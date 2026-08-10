@@ -1,17 +1,18 @@
-"""Merge-on-receive orchestration (architecture A.1/A.2).
+"""Merge-on-receive orchestration (architecture A.1/A.2, manuscript Sec. 4.2).
 
 A receiving brain does NOT blindly apply an incoming delta. For each incoming
 Claim it finds the best local candidate, computes the three core signals (plus an
 optional, off-by-default evidence-overlap signal) + Context gate, runs the
-four-way classifier, and emits exactly ONE Patch carrying which gates fired and
-the resulting deltas:
+four-way pair-adjudication classifier, and emits exactly ONE Patch carrying
+which gates fired and the resulting deltas -- one of five outcomes:
 
+    INSERT    -> a new node admitted ACTIVE (no local candidate at/above the
+                 relatedness floor -- the claim is novel, not rejected)
     MERGE     -> a claim-status UPDATE (the claim is admitted/merged)
     RELATE    -> a Mapping (ASSOCIATES) link, the two claims stay distinct
     CONFLICT  -> a first-class CONTRADICTS link, NO silent winner
-    REJECT    -> a recorded no-op
+    REJECT    -> a recorded no-op (the admission gate: stale or overruled)
 
-A novel incoming concept with no local candidate is admitted as a MERGE (insert).
 The Patch -- not the raw delta -- is what the brain later applies to mutate state.
 """
 from __future__ import annotations
@@ -65,8 +66,14 @@ def merge_on_receive(
 ) -> List[Patch]:
     """Return one Patch per incoming claim."""
     patches: List[Patch] = []
+    # §5.3: a local unit/claim that is no longer ACTIVE is not an admission
+    # target. Filtered HERE (not inside _best_candidate) so the exclusion covers
+    # BOTH the exact-key fast path and the similarity scan from one site: a
+    # DEPRECATED/OVERRULED local cannot be revived by an exact-key match from a
+    # peer, and the status lifecycle stays monotone.
     local_claims: List[tuple] = [
-        (lu, lc) for lu in local_units for lc in _claims(lu)
+        (lu, lc) for lu in local_units if lu.status == "ACTIVE"
+        for lc in _claims(lu) if lc.claim_status == "ACTIVE"
     ]
 
     for ic in _claims(incoming):
@@ -74,10 +81,11 @@ def merge_on_receive(
         if best is None:
             # no real local candidate (best similarity below sigma_lo, or no
             # local claims at all) -> the incoming concept is NOVEL; admit it as
-            # an insert (MERGE). The four-way classifier only governs the case
-            # where an actual candidate match exists.
+            # its own first-class outcome, INSERT (R2, manuscript Sec. 4.2). The
+            # four-way classifier only governs the case where an actual
+            # candidate match exists.
             patches.append(_make_patch(
-                "MERGE", incoming, ic, gates=["novel"], sign=sign, version=version,
+                "INSERT", incoming, ic, gates=["novel"], sign=sign, version=version,
             ))
             continue
 
@@ -101,6 +109,12 @@ def merge_on_receive(
             ctx_ok=ctx_ok, authority_ok=auth_ok, retention_below_min=retention_below,
             status=incoming.status,
         )
+        if decision == "NO_RELATION":
+            # unreachable today (a candidate implies kappa=1 or sigma>=sigma_lo, so
+            # the classifier's below-floor verdict cannot fire here); mapped rather
+            # than asserted so a future candidate-selection change degrades to
+            # INSERT rather than to an invalid Patch decision.
+            decision = "INSERT"
         gates = _gates_for(decision, k, sigma_val, chi_val, ctx_ok)
         patches.append(_make_patch(
             decision, incoming, ic, peer_claim=lc, sigma=sigma_val,
@@ -143,7 +157,7 @@ def _make_patch(decision, incoming, claim, peer_claim: Optional[Claim] = None,
                 sigma: float = 0.0, gates=None, sign=b"sig", version=1) -> Patch:
     target = Endpoint(node_id=incoming.id, claim_key=claim.claim_key)
     emitted: list = []
-    if decision == "MERGE":
+    if decision in ("INSERT", "MERGE"):
         emitted.append(incoming)
         # A same-enough merge via SIMILARITY (kappa=0, sigma>=theta_merge) means the
         # incoming claim is a redundant paraphrase of an existing local canonical.

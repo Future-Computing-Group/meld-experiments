@@ -6,7 +6,7 @@ scratchpad; every observation it writes goes through the SMP wire path:
     text -> MemoryUnit (Concept + Claim)  [PUBLISH a delta]
          -> merge_on_receive(incoming, local)  [the three-signal (+ optional
             evidence overlap) + Context-gate decision procedure]
-         -> Patch  [MERGE / RELATE / CONFLICT / REJECT, auditable]
+         -> Patch  [INSERT / MERGE / RELATE / CONFLICT / REJECT, auditable]
          -> brain.apply(Patch)  [the ONLY thing that mutates the brain]
 
 and every recall is the brain's graph-walk read (lexical + dense + one-hop graph
@@ -27,17 +27,39 @@ from smp.protocol.messages import Patch
 from smp.proto import Claim, MemoryUnit
 
 
-def _cid(text: str) -> bytes:
-    return hashlib.sha256(text.encode("utf-8")).digest()[:12]
+DEFAULT_CELL = "agent.public"
+_SEP = b"\x1f"
 
 
-def _unit_from_text(text: str) -> MemoryUnit:
-    """A content-addressed Concept (MemoryUnit) carrying one Claim."""
+def _digest(tag: bytes, text: str, cell: str) -> bytes:
+    """Content address over (text, cell). Length-prefixing the text makes the
+    concatenation unambiguous, so ("a\x1fb", "c") and ("a", "b\x1fc") cannot collide."""
+    t = text.encode("utf-8")
+    return hashlib.sha256(tag + _SEP + len(t).to_bytes(4, "big") + t
+                          + cell.encode("utf-8")).digest()[:12]
+
+
+def _cid(text: str, cell: str = DEFAULT_CELL) -> bytes:
+    """Concept (MemoryUnit) id."""
+    return _digest(b"U", text, cell)
+
+
+def claim_key(text: str, cell: str = DEFAULT_CELL) -> bytes:
+    """Claim key = H(canonical content || discrete scope) (paper §4.1). Only the
+    DISCRETE cell enters the key; validity interval and freshness stay in the
+    Context gate, since hashing a continuous field would break key identity on any
+    timestamp delta."""
+    return _digest(b"C", text, cell)
+
+
+def _unit_from_text(text: str, cell: str = DEFAULT_CELL) -> MemoryUnit:
+    """A content-and-scope-addressed Concept (MemoryUnit) carrying one Claim."""
     return MemoryUnit(
-        id=_cid(text),
+        id=_cid(text, cell),
+        cell=cell,
         relevance_magnitude=1.0,
         status="ACTIVE",
-        claims=[Claim(claim_key=_cid(text + "::claim"), text=text,
+        claims=[Claim(claim_key=claim_key(text, cell), text=text,
                       confidence=0.9, claim_status="ACTIVE")],
     )
 
@@ -72,7 +94,14 @@ class SMPMemory:
         procedure ``write`` uses. The wire path deserializes a typed delta and
         calls this, so a received typed delta merges identically to a local
         text write (the only difference is where the unit was constructed)."""
-        local = [u for u in self.brain.extract_delta() if isinstance(u, MemoryUnit)]
+        # §5.3/§5.5: only STATUS-LIVE local units are admission targets. extract_delta()
+        # returns every unit regardless of CRDT status; merge-deprecation is recorded in
+        # Brain._status, not on the unit/claim fields, so the field-level filter inside
+        # merge_on_receive alone cannot see it. _unit_is_live is the SAME predicate the
+        # graph-walk read already uses (store.py), so candidacy and recall agree by
+        # construction, and a DEPRECATED/OVERRULED unit cannot be revived by a peer.
+        local = [u for u in self.brain.extract_delta()
+                if isinstance(u, MemoryUnit) and self.brain._unit_is_live(u)]
         patches = merge_on_receive(
             incoming, local, cfg=self.cfg, es=self._es, nli=self.nli)
         for p in patches:

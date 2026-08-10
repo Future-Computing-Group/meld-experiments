@@ -40,6 +40,7 @@ def a1_gate_ablation():
          "ctx_ok": False, "retention_below_min": False, "status": "ACTIVE", "stale": False},
         {"gold": "CONFLICT", "kappa": 0, "sigma": hi, "chi": "contradicts",
          "ctx_ok": True, "retention_below_min": False, "status": "ACTIVE", "stale": False},
+        # this probe's status is the INCOMING delta's (admission gate), not a local's.
         {"gold": "REJECT", "kappa": 0, "sigma": hi, "chi": "neutral",
          "ctx_ok": True, "retention_below_min": False, "status": "DEPRECATED", "stale": True},
         {"gold": "MERGE", "kappa": 0, "sigma": hi, "chi": "neutral",
@@ -150,6 +151,7 @@ def m2_classification():
     gold = [g for g, _, _ in scored]
     pred = decisions_full(scored, theta=theta, sigma_lo=sigma_lo)
     m = classification_metrics(gold, pred)
+    m["predictions"] = list(zip(gold, pred))
     n_neg = sum(1 for g in gold if g != "MERGE")
     f1_lo, f1_hi = bootstrap_metric_ci(gold, pred, metric="macro_f1", n_boot=2000, seed=0)
     fmr_lo, fmr_hi = bootstrap_metric_ci(gold, pred, metric="false_merge_rate", n_boot=2000, seed=0)
@@ -160,7 +162,7 @@ def m2_classification():
     print(f"  macro_f1={m['macro_f1']:.3f} [{f1_lo:.3f},{f1_hi:.3f}]  "
           f"false_merge_rate={m['false_merge_rate']:.3f} [{fmr_lo:.3f},{fmr_hi:.3f}] "
           f"({m['n_false_merges']}/{n_neg} non-mergeable)")
-    for c in ("MERGE", "RELATE", "CONFLICT", "REJECT"):
+    for c in ("MERGE", "RELATE", "CONFLICT", "NO_RELATION"):
         pc = m["per_class"][c]
         print(f"    {c:<9} P={pc['precision']:.2f} R={pc['recall']:.2f} "
               f"F1={pc['f1']:.2f}  (support={int(pc['support'])})")
@@ -186,6 +188,9 @@ def m2_classification():
               "macro_f1_ci": [f1_lo, f1_hi], "false_merge_rate": m["false_merge_rate"],
               "false_merge_rate_ci": [fmr_lo, fmr_hi], "n_false_merges": m["n_false_merges"],
               "n_non_mergeable": n_neg, "per_class": m["per_class"], "auc": auc,
+              # persist the full confusion matrix + per-pair predictions so the
+              # relabelled fourth class (NO_RELATION) is auditable, not just summarized.
+              "confusion": m["confusion"], "predictions": m["predictions"],
               "conflict_recall_by_difficulty": diff_recall, "roc_points": pts,
               "baseline_key_only": {"macro_f1": ko["macro_f1"],
                                     "merge_recall": ko["per_class"]["MERGE"]["recall"],

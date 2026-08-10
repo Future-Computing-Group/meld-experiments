@@ -26,7 +26,7 @@ def test_smoke_path_is_non_degenerate():
         assert rec["n_steps"] >= 2, "agent did not step"
         assert rec["n_patches"] >= 1, "no Patch reached the brain"
         assert rec["brain_units"] >= 1, "brain received no merged knowledge"
-        assert all(d in ("MERGE", "RELATE", "CONFLICT", "REJECT")
+        assert all(d in ("INSERT", "MERGE", "RELATE", "CONFLICT", "REJECT")
                    for d in rec["decisions"])
 
 

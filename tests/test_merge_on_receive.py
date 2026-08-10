@@ -49,13 +49,14 @@ def test_contradiction_emits_conflict_with_contradicts_link_no_winner():
 
 def test_unrelated_claim_is_novel_insert_not_a_conflict():
     # An incoming claim with NO real local candidate (best similarity below the
-    # floor) is novel knowledge -> inserted as MERGE. REJECT is reserved for the
-    # stale/overruled wire gate, not for "no match found".
+    # floor) is novel knowledge -> inserted as INSERT (its own first-class
+    # outcome, D1). REJECT is reserved for the stale/overruled wire gate, not
+    # for "no match found".
     inc = _incoming("quantum chromodynamics is hard", key=b"a")
     loc = _local("the cat sat on the mat", key=b"b")
     patches = merge_on_receive(inc, [loc], cfg=CFG, es=_es(), nli="lexical")
     assert len(patches) == 1
-    assert patches[0].decision == "MERGE"
+    assert patches[0].decision == "INSERT"
     assert "novel" in patches[0].gates_that_fired
 
 
@@ -71,9 +72,9 @@ def test_stale_incoming_is_rejected_at_wire():
 def test_no_local_match_yields_a_patch_per_incoming_claim():
     inc = _incoming("a brand new fact about widgets", key=b"new")
     patches = merge_on_receive(inc, [], cfg=CFG, es=_es(), nli="lexical")
-    # with no local claim, a novel concept is admitted as a MERGE (insert)
+    # with no local claim, a novel concept is admitted as INSERT
     assert len(patches) == 1
-    assert patches[0].decision in {"MERGE", "RELATE"}
+    assert patches[0].decision == "INSERT"
 
 
 def test_sigma_paraphrase_merge_deprecates_incoming_and_supersedes_local():
@@ -115,16 +116,53 @@ def test_relate_retains_the_incoming_claim_as_a_unit():
     assert any(l.type == "ASSOCIATES" for l in links)
 
 
+def test_deprecated_local_is_not_an_exact_key_merge_target():
+    # S5.3 (S1 memo sec 3): an exact-key hit on a local claim that is no longer
+    # ACTIVE must not revive it. A DEPRECATED local sharing the incoming's key
+    # is not an admission target at all -> the incoming is novel -> INSERT, not
+    # a MERGE/SUPERSEDES onto the retired claim.
+    inc = _incoming("Paris is in France", key=b"same")
+    loc = MemoryUnit(id=b"loc", status="DEPRECATED",
+                     claims=[Claim(claim_key=b"same", text="Paris is in France",
+                                   claim_status="DEPRECATED")])
+    patches = merge_on_receive(inc, [loc], cfg=CFG, es=_es(), nli="lexical")
+    assert len(patches) == 1
+    p = patches[0]
+    assert p.decision == "INSERT", p.decision
+    assert not any(isinstance(x, MemoryLink) and x.type == "SUPERSEDES"
+                   for x in p.emitted)
+
+
+def test_novel_claim_emits_insert_patch():
+    # D1 (S1 memo sec 1, R2): a claim with no local candidate at or above the
+    # relatedness floor is NOVEL -- INSERT is its own first-class decision, not
+    # a relabelled MERGE. The emitted payload is unchanged (unit + ACTIVE status).
+    inc = _incoming("a wholly novel fact about gizmos", key=b"novel-key")
+    patches = merge_on_receive(inc, [], cfg=CFG, es=_es(), nli="lexical")
+    assert len(patches) == 1
+    p = patches[0]
+    assert p.decision == "INSERT"
+    assert p.gates_that_fired == ["novel"]
+    units = [x for x in p.emitted if isinstance(x, MemoryUnit)]
+    status_updates = [x for x in p.emitted
+                      if isinstance(x, tuple) and x and x[0] == "STATUS"]
+    links = [x for x in p.emitted if isinstance(x, MemoryLink)]
+    assert units and units[0].id == inc.id
+    assert status_updates and status_updates[0][2][1] == "ACTIVE"
+    assert links == []
+
+
 def test_exact_key_and_novel_merges_stay_active():
     # the deprecation applies ONLY to the sigma-paraphrase path; an exact-key
     # merge and a novel insert remain ACTIVE (they are canonical, not redundant).
     exact = merge_on_receive(_incoming("Paris is in France", key=b"same"),
                              [_local("Paris is in France", key=b"same")],
                              cfg=CFG, es=_es(), nli="lexical")[0]
-    novel = merge_on_receive(_incoming("quantum chromodynamics is hard", key=b"a"),
-                             [_local("the cat sat on the mat", key=b"b")],
-                             cfg=CFG, es=_es(), nli="lexical")[0]
-    for p in (exact, novel):
+    novel_patch = merge_on_receive(_incoming("quantum chromodynamics is hard", key=b"a"),
+                                   [_local("the cat sat on the mat", key=b"b")],
+                                   cfg=CFG, es=_es(), nli="lexical")[0]
+    assert novel_patch.decision == "INSERT"
+    for p in (exact, novel_patch):
         effs = [x[2][1] for x in p.emitted
                 if isinstance(x, tuple) and x and x[0] == "STATUS"]
         assert all(e == "ACTIVE" for e in effs)

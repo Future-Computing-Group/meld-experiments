@@ -4,10 +4,10 @@ A reproducible 104-pair benchmark (26 seeds x 4 classes) replacing a smaller
 hand-built smoke set. Built from a curated seed bank of facts, balanced across
 the four decision classes; each seed contributes one pair to each class:
 
-  MERGE    canonical vs a paraphrase (same claim, reworded)
-  RELATE   canonical vs an overlapping but distinct, non-contradicting fact
-  CONFLICT canonical vs a contradiction (same subject, incompatible value)
-  REJECT   canonical vs an unrelated fact (deterministic cross-domain pairing)
+  MERGE       canonical vs a paraphrase (same claim, reworded)
+  RELATE      canonical vs an overlapping but distinct, non-contradicting fact
+  CONFLICT    canonical vs a contradiction (same subject, incompatible value)
+  NO_RELATION canonical vs an unrelated fact (deterministic cross-domain pairing)
 
 Each seed carries a difficulty tag. ``hard`` seeds have low-lexical-overlap
 paraphrases and/or lexically-divergent contradictions -- the hardest case for
@@ -162,9 +162,9 @@ _SEEDS: List[Tuple[str, str, str, str, str, str]] = [
 def build_gold_set() -> List[Dict]:
     """Materialize the gold set as a list of dict rows with metadata.
 
-    Returns rows ordered MERGE, RELATE, CONFLICT, then REJECT (the REJECT block
-    pairs each canonical with the canonical n/2 seeds away -- a deterministic
-    cross-domain, unrelated pairing)."""
+    Returns rows ordered MERGE, RELATE, CONFLICT, then NO_RELATION (the
+    NO_RELATION block pairs each canonical with the canonical n/2 seeds away --
+    a deterministic cross-domain, unrelated pairing)."""
     rows: List[Dict] = []
     for sid, diff, canon, para, rel, conf in _SEEDS:
         rows.append({"label": "MERGE", "a": canon, "b": para,
@@ -178,7 +178,7 @@ def build_gold_set() -> List[Dict]:
     n = len(_SEEDS)
     for i, (sid, diff, canon, para, rel, conf) in enumerate(_SEEDS):
         other = _SEEDS[(i + n // 2) % n][2]  # canonical of the seed n/2 away
-        rows.append({"label": "REJECT", "a": canon, "b": other,
+        rows.append({"label": "NO_RELATION", "a": canon, "b": other,
                      "difficulty": "easy", "seed_id": sid})
     return rows
 

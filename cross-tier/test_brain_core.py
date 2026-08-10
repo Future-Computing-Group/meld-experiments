@@ -28,7 +28,7 @@ CFG = load_thresholds(os.path.join(REPO, "src", "smp", "config", "thresholds-min
 MERGE = {"op": "publish", "claim_id": "c1", "kappa": 0, "sigma": 0.93, "chi": "entails", "ctx_ok": True}
 RELATE = {"op": "publish", "claim_id": "c1", "kappa": 0, "sigma": 0.93, "chi": "entails", "ctx_ok": False}
 CONFLICT = {"op": "publish", "claim_id": "c2", "kappa": 0, "sigma": 0.86, "chi": "contradicts", "ctx_ok": True}
-REJECT = {"op": "publish", "claim_id": "c3", "kappa": 0, "sigma": 0.00, "chi": "neutral", "ctx_ok": True}
+NO_RELATION = {"op": "publish", "claim_id": "c3", "kappa": 0, "sigma": 0.00, "chi": "neutral", "ctx_ok": True}
 
 
 def _decide(delta):
@@ -41,7 +41,7 @@ def test_publish_classifies_each_class_distinctly():
     assert _decide(MERGE) == "MERGE"
     assert _decide(RELATE) == "RELATE"
     assert _decide(CONFLICT) == "CONFLICT"
-    assert _decide(REJECT) == "REJECT"
+    assert _decide(NO_RELATION) == "NO_RELATION"
 
 
 def test_publish_ack_shape_carries_identity_and_does_not_mutate_status():

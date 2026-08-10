@@ -14,10 +14,10 @@ is the offline stand-in so the merge engine + topology can be exercised now.
 """
 from __future__ import annotations
 
-import hashlib
 import random
 from typing import Dict, List
 
+from smp.agent.memory import _cid, claim_key
 from smp.proto import Claim, MemoryUnit
 
 # Templated fact families. Each family has a base fact, a paraphrase (coreferent,
@@ -59,17 +59,15 @@ _FAMILIES = [
 ]
 
 
-def _cid(text: str) -> bytes:
-    return hashlib.sha256(text.encode("utf-8")).digest()[:12]
-
-
 def _unit(text: str) -> MemoryUnit:
-    key = _cid(text + "::claim")
+    # production key helper (smp.agent.memory), so this fixture's keys cannot
+    # drift from the live write path's (default cell, D2 §4.1).
     return MemoryUnit(
         id=_cid(text),
         relevance_magnitude=1.0,
         status="ACTIVE",
-        claims=[Claim(claim_key=key, text=text, confidence=0.9, claim_status="ACTIVE")],
+        claims=[Claim(claim_key=claim_key(text), text=text, confidence=0.9,
+                      claim_status="ACTIVE")],
     )
 
 

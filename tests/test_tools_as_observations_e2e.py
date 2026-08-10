@@ -41,7 +41,7 @@ def test_agent_answers_from_a_file_via_brain_observation(tmp_path):
     result = agent.run("What is the launch venue in the attached report?")
     assert result.answer == "Helsinki"
     # the file content traversed the SMP merge path (not just a raw tool string)
-    assert any(p.decision in ("MERGE", "RELATE", "CONFLICT")
+    assert any(p.decision in ("INSERT", "MERGE", "RELATE", "CONFLICT")
                for p in mem.brain.audit_log)
 
 

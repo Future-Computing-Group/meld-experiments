@@ -4,7 +4,7 @@ Ablating an admission gate = forcing its input to the permissive value, then re-
 the same decision procedure (smp.merge.classify):
   * Context gate   -> ctx_ok forced True (a high-sigma cross-frame pair now MERGEs).
   * inference gate -> a contradicting chi treated as non-contradicting (CONFLICT -> MERGE).
-  * staleness gate -> a stale/non-ACTIVE local treated as fresh+ACTIVE (REJECT -> propagate).
+  * staleness gate -> a stale/non-ACTIVE incoming treated as fresh+ACTIVE (REJECT -> propagate).
 The full classifier is the safe baseline; each ablation must worsen its target error. Pure
 simulation -- no LLM, no testbed (independent of the multi-host runs).
 """

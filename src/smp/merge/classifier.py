@@ -1,22 +1,34 @@
-"""The four-way merge decision procedure (architecture A.2).
+"""The pair-adjudication classifier (four verdicts) plus the admission gate
+(architecture A.2).
 
 The genuinely NEW contribution: an executable classifier over three core signals
 (kappa/sigma/chi) + the Context gate -- plus an optional, off-by-default
 evidence-overlap signal (epsilon) -- emitting exactly one of
-MERGE / RELATE / CONFLICT / REJECT. Thresholds (theta_merge, sigma_lo) come from
-config (CFG), NEVER hardcoded; they are calibrated in M-2, not derived.
+MERGE / RELATE / CONFLICT / NO_RELATION. Thresholds (theta_merge, sigma_lo) come
+from config (CFG), NEVER hardcoded; they are calibrated in M-2, not derived.
+This module is the pair-adjudication core of the five-outcome decision procedure
+(manuscript Sec. 4.2); the admission gate (REJECT) and the novelty test (INSERT)
+are the two outcomes that live one level up, in
+``smp.protocol.merge_on_receive``.
 
-Decision procedure (A.2), with the wire-admission (REJECT) gate taking
-precedence over everything (Cor. 2.1):
+Decision procedure (Sec. 4.2), a first-match cascade, five outcomes total:
 
-    REJECT    if  stale/overruled gate fails
-    CONFLICT  if  chi == contradicts  AND  (kappa == 1 OR sigma >= sigma_lo)
-    MERGE     if  kappa == 1
-              OR  (sigma >= theta_merge AND chi != contradicts AND ctx_ok)
-    RELATE    if  sigma_lo <= sigma < theta_merge          (related, not identical)
-              OR  (sigma >= theta_merge AND not ctx_ok)    (same meaning, diff frame)
+    REJECT    (R1, admission gate) if  stale/overruled gate fails -- evaluated
+              here first because it takes precedence over everything (Cor. 2.1),
+              but it is a PRE-VERDICT, not a pair-adjudication verdict.
+    INSERT    (R2, novel) if no local candidate has kappa==1 or sigma>=sigma_lo
+              -- decided by the caller (merge_on_receive), not this function.
+    CONFLICT  (R3) if  chi == contradicts  AND  (kappa == 1 OR sigma >= sigma_lo)
+    MERGE     (R4, exact key) if  kappa == 1 -- exempt from Context/authority:
+              the claim key hashes content together with discrete scope
+              (Sec. 4.1), so kappa==1 already means same assertion, same scope.
+    MERGE     (R5, similarity) if  sigma >= theta_merge AND chi != contradicts
+              AND ctx_ok AND authority_ok
+    RELATE    (R6, otherwise) if  sigma_lo <= sigma < theta_merge
+              OR  (sigma >= theta_merge AND (not ctx_ok OR not authority_ok))
               with chi != contradicts
-    REJECT    otherwise (no actionable relation: sigma below sigma_lo, no key)
+    NO_RELATION (otherwise: no actionable relation: sigma below sigma_lo, no
+              key); the protocol layer maps this to INSERT.
 """
 from __future__ import annotations
 
@@ -60,7 +72,7 @@ def classify(
     # relation floor, NOT theta_merge: a contradiction need not be near-identical
     # in surface form to be a contradiction. Gating it on theta_merge instead
     # would route lexically divergent contradictions (sigma in
-    # [sigma_lo, theta_merge)) silently to REJECT -- the conflict-recall blind
+    # [sigma_lo, theta_merge)) silently to NO_RELATION -- the conflict-recall blind
     # spot. No silent winner; the contradiction is surfaced. ---
     conflict_actionable = (kappa == 1) or (sigma >= cfg.sigma_lo)
     if chi == "contradicts" and conflict_actionable:
@@ -68,7 +80,12 @@ def classify(
 
     # --- MERGE: exact key, OR high-sigma non-contradicting in a shared frame ---
     # An EXACT-KEY match is the SAME claim (no silent-rewrite risk), so it merges
-    # regardless of authority. A SIMILARITY merge requires authority_ok: a
+    # regardless of authority. This exemption from BOTH ctx_ok and authority_ok is
+    # licensed by the scoped claim key (D2, §4.1): the key hashes canonical
+    # content TOGETHER WITH the claim's discrete scope, so kappa==1 already means
+    # the two claims are the same assertion in the same scope -- there is no frame
+    # to preserve and no cross-boundary rewrite to guard against. A SIMILARITY
+    # merge carries no such guarantee, so it requires authority_ok: a
     # low-authority source into a more-canonical local is downgraded to a candidate
     # RELATE below (§5.3), not auto-merged. authority_ok defaults True ⇒ unchanged.
     if kappa == 1:
@@ -102,8 +119,10 @@ def classify(
         if cfg.sigma_lo <= sigma < cfg.theta_merge:
             return "RELATE"
 
-    # --- otherwise: no actionable relation ---
-    return "REJECT"
+    # --- otherwise: no actionable relation (sigma below sigma_lo, no key) ---
+    # NOT a REJECT: REJECT is the admission gate (:56 above) alone. This is a
+    # pair-adjudication verdict the caller (merge_on_receive) maps to INSERT.
+    return "NO_RELATION"
 
 
 __all__ = ["classify"]

@@ -96,9 +96,9 @@ def test_naive_union_never_merges():
     assert b.n_overlap_merges == 0
     assert b.n_relate == 0
     assert b.n_conflict == 0
-    # every patch is a 'novel' MERGE insert (the union)
+    # every patch is a novel INSERT (the union)
     for p in b.brain.brain.audit_log:
-        assert p.decision == "MERGE" and "novel" in p.gates_that_fired
+        assert p.decision == "INSERT" and "novel" in p.gates_that_fired
 
 
 def test_distributed_merge_smaller_than_naive_union_store():

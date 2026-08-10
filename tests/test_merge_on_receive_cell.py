@@ -47,3 +47,27 @@ def test_default_cell_preserves_merge():
                      claims=[Claim(claim_key=b"kl", text=B, claim_status="ACTIVE")])
     p = merge_on_receive(inc, [loc], cfg=CFG, es=_es(), nli="lexical")[0]
     assert p.decision == "MERGE", p.decision
+
+
+def test_cross_boundary_identical_text_relates_not_merges():
+    # D2 (S1 memo sec 2): the claim key hashes canonical content TOGETHER WITH
+    # discrete scope, so the very same sentence published under two different
+    # jurisdictions is a DIFFERENT claim (kappa=0), not a kappa=1 exact-key hit.
+    # It falls through to the similarity path, where sigma=1.0 (identical text)
+    # meets theta_merge but the cells are Context-incompatible -> R5 fails ->
+    # R6 RELATE. This is the running-example message-2 regression (headline
+    # finding): today the content-only key gives kappa=1 and merges silently
+    # across the jurisdiction boundary.
+    from smp.agent.memory import _cid, claim_key
+    text = "The unemployment rate is 4.2 percent"
+    us_cell, eu_cell = "jurisdiction.us", "jurisdiction.eu"
+    inc = MemoryUnit(id=_cid(text, us_cell), cell=us_cell, relevance_magnitude=1.0,
+                     status="ACTIVE",
+                     claims=[Claim(claim_key=claim_key(text, us_cell), text=text,
+                                   confidence=0.9, claim_status="ACTIVE")])
+    loc = MemoryUnit(id=_cid(text, eu_cell), cell=eu_cell, relevance_magnitude=1.0,
+                     status="ACTIVE",
+                     claims=[Claim(claim_key=claim_key(text, eu_cell), text=text,
+                                   confidence=0.9, claim_status="ACTIVE")])
+    p = merge_on_receive(inc, [loc], cfg=CFG, es=_es(), nli="lexical")[0]
+    assert p.decision == "RELATE", p.decision

@@ -95,7 +95,7 @@ def test_file_reader_reads_text_and_writes_through_the_brain(tmp_path):
     assert "launch venue" in out.lower()
     # content reached the brain as a merged observation (a Patch in the log)
     assert len(mem.brain.audit_log) >= 1, "file content did not reach the brain"
-    assert any(p_.decision in ("MERGE", "RELATE", "CONFLICT")
+    assert any(p_.decision in ("INSERT", "MERGE", "RELATE", "CONFLICT")
                for p_ in mem.brain.audit_log)
     # and a later recall can retrieve it
     hits = mem.recall("where is the launch", k=3)

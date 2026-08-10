@@ -54,7 +54,7 @@ def test_epsilon_does_not_merge_below_sigma_lo():
     cfg = _cfg(eps_hi=0.5)
     # sigma below sigma_lo: no actionable relation; high eps + entails must not rescue it.
     assert classify(cfg=cfg, kappa=0, sigma=0.05, epsilon=1.0, chi="entails",
-                    ctx_ok=True) == "REJECT"
+                    ctx_ok=True) == "NO_RELATION"
 
 
 # --- safety: epsilon needs a compatible frame (ctx) to promote ---

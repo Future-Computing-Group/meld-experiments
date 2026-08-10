@@ -83,7 +83,7 @@ def _synthetic_scores():
     for i in range(20):
         rows.append(("CONFLICT", 0.70 + 0.01 * (i % 5), "contradicts"))
     for i in range(20):
-        rows.append(("REJECT", 0.10 + 0.01 * (i % 5), "neutral"))
+        rows.append(("NO_RELATION", 0.10 + 0.01 * (i % 5), "neutral"))
     return rows
 
 
@@ -115,7 +115,7 @@ def test_roc_fpr_monotone_nonincreasing_in_theta():
 # Bootstrap CIs on the metrics (AE asked for CIs)
 # --------------------------------------------------------------------------- #
 def test_bootstrap_ci_brackets_point_estimate():
-    gold = ["MERGE", "MERGE", "RELATE", "CONFLICT", "REJECT"] * 8
+    gold = ["MERGE", "MERGE", "RELATE", "CONFLICT", "NO_RELATION"] * 8
     pred = list(gold)
     pred[0] = "RELATE"  # one error
     lo, hi = bootstrap_metric_ci(gold, pred, metric="macro_f1",
