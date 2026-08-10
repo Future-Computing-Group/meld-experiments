@@ -1,0 +1,36 @@
+{
+  "title": "MELD: A Protocol for Merging Knowledge Across Distributed Agentic Memories -- reference implementation and experiments",
+  "description": "Reference implementation and experiment harness for MELD, a knowledge-merge protocol for sovereign agent memories: the five-outcome admission procedure (insert, merge, relate, conflict, reject) over three signals (scoped claim-key identity, embedding similarity, NLI contradiction verdict), the auditable Patch, the per-claim status CRDT, and the publish/subscribe binding. Includes the 104-pair merge-classification benchmark and gold set, the order-shuffle graph-sensitivity experiment, the CRDT convergence and partition-heal drivers, the cross-tier (edge/HPC/local) deployment drivers over Apache Kafka, the M-1 HotpotQA memory-delta campaign harness, and archived per-run logs with a hashed run manifest. v1.0 accompanies the TAAS submission.",
+  "creators": [
+    {
+      "name": "Lovén, Lauri",
+      "affiliation": "University of Oulu",
+      "orcid": "0000-0001-9475-4839"
+    },
+    {
+      "name": "Sauvola, Jaakko",
+      "affiliation": "University of Oulu"
+    },
+    {
+      "name": "Riekki, Jukka",
+      "affiliation": "University of Oulu"
+    },
+    {
+      "name": "Tarkoma, Sasu",
+      "affiliation": "University of Helsinki"
+    }
+  ],
+  "license": "Apache-2.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "keywords": [
+    "multi-agent systems",
+    "agent memory",
+    "knowledge graphs",
+    "CRDT",
+    "publish/subscribe",
+    "semantic merge",
+    "computing continuum"
+  ],
+  "version": "1.0.0"
+}

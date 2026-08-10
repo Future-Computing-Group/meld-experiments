@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite the accompanying paper."
-title: "The Semantic Merge Protocol (SMP): reference implementation and experiments"
+title: "MELD: reference implementation and experiments (A Protocol for Merging Knowledge Across Distributed Agentic Memories)"
 authors:
   - family-names: "Lovén"
     given-names: "Lauri"
@@ -13,7 +13,7 @@ authors:
     given-names: "Sasu"
 preferred-citation:
   type: article
-  title: "The Semantic Merge Protocol: A Protocol for Merging Knowledge Across Distributed Agentic Memories"
+  title: "MELD: A Protocol for Merging Knowledge Across Distributed Agentic Memories"
   authors:
     - family-names: "Lovén"
       given-names: "Lauri"
