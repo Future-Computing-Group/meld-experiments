@@ -3,7 +3,9 @@
 The figure IS the claim (manuscript Section 7.4): semantic routing's p50 stays
 low and fans DOWN as fan-out N grows (each publish reaches ~1 needed peer), while
 broadcast rises with N and is non-monotone under WAN (the N-inversion). Six lines:
-{broadcast, semantic} x {N=2,3,4}. Error bars are 95% bootstrap CIs.
+{broadcast, semantic} x {N=3,4} (the N=2 cells carry a replication-factor
+confound and are reported in the electronic supplement only).
+Error bars are 95% bootstrap CIs.
 
 Data: multi-host testbed, HotpotQA workload, 15 seeds/cell, 360 cells, 0 failures.
 Numbers transcribed verbatim from the campaign result tables (do not recompute).
@@ -32,13 +34,14 @@ DATA = {
 
 # colourblind-safe: broadcast = vermillion, semantic = blue (Okabe-Ito).
 COL = {"Broadcast": "#D55E00", "Semantic": "#0072B2"}
+MAIN_NS = (3, 4)  # N=2 excluded from the main figure (confound; supplement only)
 MARK = {2: "o", 3: "s", 4: "^"}
 
 fig, ax = plt.subplots(figsize=(5.4, 3.9))
 
 for mode, by_n in DATA.items():
     ls = "--" if mode == "Broadcast" else "-"
-    for n in (2, 3, 4):
+    for n in MAIN_NS:
         y = [v[0] for v in by_n[n]]
         lo = [v[0] - v[1] for v in by_n[n]]
         hi = [v[2] - v[0] for v in by_n[n]]
