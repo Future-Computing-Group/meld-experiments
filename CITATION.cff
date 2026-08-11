@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 doi: 10.5281/zenodo.21878274
-version: 1.0.0
+version: 1.0.1
 message: "If you use this software, please cite the accompanying paper."
 title: "MELD: reference implementation and experiments (A Protocol for Merging Knowledge Across Distributed Agentic Memories)"
 authors:
