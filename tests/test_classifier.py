@@ -97,3 +97,14 @@ def test_midsigma_noncontradiction_routing_unchanged():
     sigma = (CFG.sigma_lo + CFG.theta_merge) / 2.0
     assert classify(kappa=0, sigma=sigma, chi="neutral", ctx_ok=True,
                     cfg=CFG) == "RELATE"
+
+
+def test_exact_key_with_incompatible_context_relates_not_merges():
+    # Reviewer round 3, issue 1: the scoped key carries content+cell but NOT
+    # validity/freshness, so kappa=1 does not imply a compatible frame. An
+    # exact-key pair in an incompatible Context must RELATE, not MERGE.
+    assert classify(cfg=CFG, kappa=1, sigma=1.0, chi="neutral", ctx_ok=False) == "RELATE"
+    # compatible frame keeps the fast path
+    assert classify(cfg=CFG, kappa=1, sigma=1.0, chi="neutral", ctx_ok=True) == "MERGE"
+    # contradiction still wins over the exact-key path (R3 before R4)
+    assert classify(cfg=CFG, kappa=1, sigma=1.0, chi="contradicts", ctx_ok=False) == "CONFLICT"

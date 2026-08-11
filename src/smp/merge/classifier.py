@@ -83,13 +83,16 @@ def classify(
     # regardless of authority. This exemption from BOTH ctx_ok and authority_ok is
     # licensed by the scoped claim key (D2, §4.1): the key hashes canonical
     # content TOGETHER WITH the claim's discrete scope, so kappa==1 already means
-    # the two claims are the same assertion in the same scope -- there is no frame
-    # to preserve and no cross-boundary rewrite to guard against. A SIMILARITY
+    # the two claims are the same assertion in the same scope and there is no
+    # cross-boundary rewrite to guard against. The key does NOT carry validity or
+    # freshness, so the FRAME must still be compatible: an exact-key pair in an
+    # incompatible Context (e.g. disjoint validity intervals) RELATEs instead of
+    # merging (reviewer round 3, issue 1). A SIMILARITY
     # merge carries no such guarantee, so it requires authority_ok: a
     # low-authority source into a more-canonical local is downgraded to a candidate
     # RELATE below (§5.3), not auto-merged. authority_ok defaults True ⇒ unchanged.
     if kappa == 1:
-        return "MERGE"
+        return "MERGE" if ctx_ok else "RELATE"
     if (sigma >= cfg.theta_merge and chi != "contradicts" and ctx_ok
             and authority_ok):
         return "MERGE"
