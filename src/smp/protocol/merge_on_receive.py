@@ -77,7 +77,9 @@ def merge_on_receive(
     ]
 
     for ic in _claims(incoming):
-        best = _best_candidate(ic, local_claims, es, sigma_lo=cfg.sigma_lo)
+        best, best_elig = _best_candidate(
+            ic, local_claims, es, sigma_lo=cfg.sigma_lo,
+            incoming=incoming, theta_merge=cfg.theta_merge)
         if best is None:
             # no real local candidate (best similarity below sigma_lo, or no
             # local claims at all) -> the incoming concept is NOVEL; admit it as
@@ -109,6 +111,21 @@ def merge_on_receive(
             ctx_ok=ctx_ok, authority_ok=auth_ok, retention_below_min=retention_below,
             status=incoming.status,
         )
+        if decision == "RELATE" and best_elig is not None and chi_val != "contradicts":
+            # Gate-aware fallback (reviewer round 4): the max-similarity primary is
+            # merge-ineligible (Context or authority) and does not contradict; a
+            # gate-admissible candidate exists, so adjudicate that one instead.
+            # Conflict priority is preserved: a contradicting primary never reaches
+            # this branch, and the fallback pair runs its own NLI check below.
+            lu2, lc2, sigma2 = best_elig
+            chi2 = chi(ic.text, lc2.text, model=nli)
+            if chi2 == "contradicts":
+                decision, lu, lc, sigma_val, chi_val = "CONFLICT", lu2, lc2, sigma2, chi2
+                ctx_ok = True
+            else:
+                decision, lu, lc, sigma_val, chi_val = "MERGE", lu2, lc2, sigma2, chi2
+                ctx_ok = True
+            k = 0
         if decision == "NO_RELATION":
             # unreachable today (a candidate implies kappa=1 or sigma>=sigma_lo, so
             # the classifier's below-floor verdict cannot fire here); mapped rather
@@ -123,21 +140,36 @@ def merge_on_receive(
     return patches
 
 
-def _best_candidate(ic: Claim, local_claims, es: EmbeddingSimilarity, sigma_lo: float):
-    """Return the best local candidate (lu, lc, sigma) only if it is a REAL
-    match: an exact claim-key hit, or a similarity at/above sigma_lo. Below the
-    floor there is no candidate (the incoming claim is novel)."""
+def _best_candidate(ic: Claim, local_claims, es: EmbeddingSimilarity, sigma_lo: float,
+                    *, incoming=None, theta_merge=None):
+    """Return (primary, eligible): the max-similarity candidate (or exact-key hit)
+    and, when it differs, the best candidate that also satisfies the merge-
+    admission gates (sigma >= theta_merge, compatible Context, admissible
+    authority). Gate-aware selection stops a Context/authority-ineligible
+    high-similarity candidate from shadowing an admissible merge target
+    (reviewer round 4). Both are None below the relatedness floor (novel).
+    Exact-key hits are primary immediately; the eligible track is only consulted
+    when the primary is merge-ineligible and does not contradict."""
     best = None
     best_sigma = -1.0
+    best_elig = None
+    best_elig_sigma = -1.0
     for lu, lc in local_claims:
         if kappa(ic, lc) == 1:
-            return (lu, lc, 1.0)
+            return (lu, lc, 1.0), None
         s = es.sigma(ic.text, lc.text)
         if s > best_sigma:
             best_sigma, best = s, (lu, lc, s)
+        if (incoming is not None and theta_merge is not None and s >= theta_merge
+                and s > best_elig_sigma
+                and context_compatible(_context_of(incoming, ic), _context_of(lu, lc))
+                and _authority_ok(incoming, lu)):
+            best_elig_sigma, best_elig = s, (lu, lc, s)
     if best is None or best_sigma < sigma_lo:
-        return None
-    return best
+        return None, None
+    if best_elig is not None and best_elig[1] is best[1]:
+        best_elig = None  # same claim; no separate eligible track needed
+    return best, best_elig
 
 
 def _gates_for(decision, k, sigma_val, chi_val, ctx_ok) -> List[str]:

@@ -71,3 +71,30 @@ def test_cross_boundary_identical_text_relates_not_merges():
                                    confidence=0.9, claim_status="ACTIVE")])
     p = merge_on_receive(inc, [loc], cfg=CFG, es=_es(), nli="lexical")[0]
     assert p.decision == "RELATE", p.decision
+
+
+def test_context_ineligible_candidate_does_not_shadow_admissible_merge():
+    # Reviewer round 4, issue 1 (candidate shadowing): the byte-identical text in
+    # an INCOMPATIBLE cell has the highest similarity (sigma=1.0) but fails the
+    # Context gate; a paraphrase in the SAME cell satisfies the merge-admission
+    # gates. Pre-fix, the shadower was selected and the pair RELATEd; the fix
+    # makes selection gate-aware, so the admissible candidate MERGEs.
+    inc = _unit(A, b"ki", cell="eu", uid=b"inc")
+    shadow = _unit(A, b"ks", cell="us", uid=b"us1")          # sigma 1.0, ctx fails
+    eligible = _unit(B, b"ke", cell="eu", uid=b"eu1")        # paraphrase, ctx ok
+    p = merge_on_receive(inc, [shadow, eligible], cfg=CFG, es=_es(), nli="lexical")[0]
+    assert p.decision == "MERGE", (p.decision, p.gates)
+
+
+def test_conflict_priority_survives_gate_aware_selection():
+    # A contradicting most-similar candidate must still surface as CONFLICT;
+    # gate-aware selection must not bypass it toward an admissible merge.
+    # the contradiction is the MOST similar candidate (negated copy of A itself),
+    # so it must be the adjudication target and CONFLICT must fire; a lower-sigma
+    # admissible merge candidate must not divert it.
+    neg = "Paris is not the capital city of France"
+    inc = _unit(A, b"ki", cell="eu", uid=b"inc")
+    contra = _unit(neg, b"kc", cell="eu", uid=b"c1")
+    friendly = _unit("France has Paris as its capital", b"kf", cell="eu", uid=b"f1")
+    p = merge_on_receive(inc, [contra, friendly], cfg=CFG, es=_es(), nli="lexical")[0]
+    assert p.decision == "CONFLICT", (p.decision, p.gates)

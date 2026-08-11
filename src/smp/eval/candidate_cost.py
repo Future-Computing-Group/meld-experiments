@@ -65,9 +65,12 @@ def instrument_best_candidate(recorder: CandidateCostRecorder):
 
     original = _mor._best_candidate
 
-    def wrapped(ic, local_claims, es, sigma_lo):
+    def wrapped(ic, local_claims, es, sigma_lo=None, **kwargs):
+        # signature-transparent: forwards positionals and keywords unchanged, so
+        # the wrapper survives signature evolution of _best_candidate (it gained
+        # gate-aware keyword arguments in the round-4 shadowing fix).
         t0 = time.perf_counter()
-        result = original(ic, local_claims, es, sigma_lo)
+        result = original(ic, local_claims, es, sigma_lo, **kwargs)
         t1 = time.perf_counter()
         recorder.record(len(local_claims), t1 - t0)
         return result
