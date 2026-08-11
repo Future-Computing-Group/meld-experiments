@@ -45,8 +45,9 @@ class Brain:
 
     # -- mutation: ONLY via Patch ---------------------------------------
     def apply(self, patch: Patch) -> None:
-        """Apply a Patch: one of INSERT/MERGE/RELATE/CONFLICT/REJECT (manuscript
-        Sec. 4.2). REJECT is the ONLY no-op; INSERT/MERGE/RELATE/CONFLICT each
+        """Apply a Patch: a claim-admission outcome INSERT/MERGE/RELATE/CONFLICT/
+        REJECT (manuscript Sec. 4.2) or a STATUS append (an already-authored
+        status link entering the CRDT, Sec. 3.1). REJECT is the ONLY no-op; INSERT/MERGE/RELATE/CONFLICT each
         emit their deltas (INSERT's payload is byte-identical to a novel MERGE's:
         the unit plus an ACTIVE status tuple). The Patch (not the raw delta) is
         the only thing that mutates state."""

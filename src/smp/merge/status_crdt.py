@@ -68,7 +68,8 @@ def effective_status(state: StatusState) -> str:
     return status
 
 
-def effective_status_gated(state: StatusState, *, stale=frozenset()) -> str:
+def effective_status_gated(state: StatusState, *, stale=frozenset(),
+                           unauthorized=frozenset()) -> str:
     """Lattice-join of the effects of the links NOT in ``stale`` -- the
     staleness/overrule reject gate applied at MATERIALIZATION-READ.
 
@@ -76,12 +77,13 @@ def effective_status_gated(state: StatusState, *, stale=frozenset()) -> str:
     every link is admitted into the grow-only set unconditionally, and the gate
     drops stale/overruled links only when the effective status is COMPUTED. Since
     it is a pure function of the converged link set and the (replicated) stale
+    and unauthorized
     set, it is order-independent -- unlike an admission-time gate that drops a
     link based on receipt-time local state. Empty effective set -> ACTIVE.
     """
     status = "ACTIVE"
     for lid, eff in state.links.items():
-        if lid in stale:
+        if lid in stale or lid in unauthorized:
             continue
         status = join(status, eff)
     return status

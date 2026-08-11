@@ -98,3 +98,25 @@ def test_conflict_priority_survives_gate_aware_selection():
     friendly = _unit("France has Paris as its capital", b"kf", cell="eu", uid=b"f1")
     p = merge_on_receive(inc, [contra, friendly], cfg=CFG, es=_es(), nli="lexical")[0]
     assert p.decision == "CONFLICT", (p.decision, p.gates)
+
+
+def test_exact_key_incompatible_frame_does_not_shadow_admissible_merge():
+    # Round 5, issue 2: an exact-key candidate whose Context fails must not
+    # shadow an admissible semantic merge. The exact-key hit is the
+    # provisionally selected candidate; when it relates (kappa=1, ctx fails)
+    # and an admissible same-frame paraphrase exists, the paraphrase merges.
+    from smp.agent.memory import _cid, claim_key
+    text = "The unemployment rate is 4.2 percent"
+    us, eu = "jurisdiction.us", "jurisdiction.eu"
+    inc = MemoryUnit(id=_cid(text, eu), cell=eu, relevance_magnitude=1.0, status="ACTIVE",
+                     claims=[Claim(claim_key=claim_key(text, eu), text=text,
+                                   claim_status="ACTIVE")])
+    # exact-key twin: same content, same key inputs? NO - scoped key differs by
+    # cell, so craft a literal same-key shadow: same text + same cell key but the
+    # UNIT carries an incompatible frame via cell mismatch at the unit level.
+    shadow = MemoryUnit(id=_cid(text, us), cell=us, relevance_magnitude=1.0, status="ACTIVE",
+                        claims=[Claim(claim_key=claim_key(text, eu), text=text,
+                                      claim_status="ACTIVE")])
+    eligible = _unit("Unemployment stands at 4.2 percent", b"ke", cell=eu, uid=b"e1")
+    p = merge_on_receive(inc, [shadow, eligible], cfg=CFG, es=_es(), nli="lexical")[0]
+    assert p.decision == "MERGE", (p.decision, p.gates)

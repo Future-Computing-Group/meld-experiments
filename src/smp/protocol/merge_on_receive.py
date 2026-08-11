@@ -154,9 +154,15 @@ def _best_candidate(ic: Claim, local_claims, es: EmbeddingSimilarity, sigma_lo: 
     best_sigma = -1.0
     best_elig = None
     best_elig_sigma = -1.0
+    primary_exact = None
     for lu, lc in local_claims:
-        if kappa(ic, lc) == 1:
-            return (lu, lc, 1.0), None
+        if primary_exact is None and kappa(ic, lc) == 1:
+            # exact-key hit: the provisionally selected candidate (first in
+            # admission order). Do NOT return yet: keep scanning so the
+            # gate-admissible track fills, or an exact hit whose frame fails
+            # the Context gate would shadow an admissible merge (round 5).
+            primary_exact = (lu, lc, 1.0)
+            continue
         s = es.sigma(ic.text, lc.text)
         if s > best_sigma:
             best_sigma, best = s, (lu, lc, s)
@@ -165,6 +171,10 @@ def _best_candidate(ic: Claim, local_claims, es: EmbeddingSimilarity, sigma_lo: 
                 and context_compatible(_context_of(incoming, ic), _context_of(lu, lc))
                 and _authority_ok(incoming, lu)):
             best_elig_sigma, best_elig = s, (lu, lc, s)
+    if primary_exact is not None:
+        if best_elig is not None and best_elig[1] is primary_exact[1]:
+            best_elig = None
+        return primary_exact, best_elig
     if best is None or best_sigma < sigma_lo:
         return None, None
     if best_elig is not None and best_elig[1] is best[1]:

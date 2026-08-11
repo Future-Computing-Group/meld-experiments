@@ -51,7 +51,7 @@ def _deliver(brain: Brain, item: WorkloadItem, *, cfg: Thresholds,
             brain.apply(p)
         return patches
     claim_key, link_id, effect = item
-    patch = Patch(decision="MERGE", target=Endpoint(claim_key=claim_key),
+    patch = Patch(decision="STATUS", target=Endpoint(claim_key=claim_key),
                  emitted=[("STATUS", claim_key, (link_id, effect))],
                  gates_that_fired=["status-link"], version=1, signature=b"s")
     brain.apply(patch)

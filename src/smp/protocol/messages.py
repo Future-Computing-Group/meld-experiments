@@ -24,7 +24,9 @@ from smp.proto import Endpoint
 # verdict (smp.merge.classifier), never a Patch decision -- the protocol layer
 # (merge_on_receive) maps an unreached NO_RELATION to INSERT before a Patch is
 # ever constructed, and __post_init__ below enforces exactly these five.
-DECISIONS = ("INSERT", "MERGE", "RELATE", "CONFLICT", "REJECT")
+DECISIONS = ("INSERT", "MERGE", "RELATE", "CONFLICT", "REJECT", "STATUS")
+# STATUS: the append of an already-authored status link (overrule/supersede/
+# revoke) into the per-claim CRDT; not a claim-admission outcome (Sec. 3.1).
 
 # the five primitive names that REUSE proto types (Patch is the sixth, NEW)
 PRIMITIVE_PROTO_MAP = {
