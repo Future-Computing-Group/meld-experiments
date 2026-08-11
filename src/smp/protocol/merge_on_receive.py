@@ -112,7 +112,7 @@ def merge_on_receive(
             status=incoming.status,
         )
         if decision == "RELATE" and best_elig is not None and chi_val != "contradicts":
-            # Gate-aware fallback (reviewer round 4): the max-similarity primary is
+            # Gate-aware fallback: the max-similarity primary is
             # merge-ineligible (Context or authority) and does not contradict; a
             # gate-admissible candidate exists, so adjudicate that one instead.
             # Conflict priority is preserved: a contradicting primary never reaches
@@ -147,7 +147,7 @@ def _best_candidate(ic: Claim, local_claims, es: EmbeddingSimilarity, sigma_lo: 
     admission gates (sigma >= theta_merge, compatible Context, admissible
     authority). Gate-aware selection stops a Context/authority-ineligible
     high-similarity candidate from shadowing an admissible merge target
-    (reviewer round 4). Both are None below the relatedness floor (novel).
+    (§4.2). Both are None below the relatedness floor (novel).
     Exact-key hits are primary immediately; the eligible track is only consulted
     when the primary is merge-ineligible and does not contradict."""
     best = None
@@ -160,7 +160,7 @@ def _best_candidate(ic: Claim, local_claims, es: EmbeddingSimilarity, sigma_lo: 
             # exact-key hit: the provisionally selected candidate (first in
             # admission order). Do NOT return yet: keep scanning so the
             # gate-admissible track fills, or an exact hit whose frame fails
-            # the Context gate would shadow an admissible merge (round 5).
+            # the Context gate would shadow an admissible merge.
             primary_exact = (lu, lc, 1.0)
             continue
         s = es.sigma(ic.text, lc.text)

@@ -78,7 +78,7 @@ def test_midsigma_lexically_divergent_contradiction_conflicts():
 
 
 def test_below_floor_pair_is_no_relation():
-    # D1 (S1 memo sec 1): the classifier's below-floor verdict is NO_RELATION,
+    # §4.2: the classifier's below-floor verdict is NO_RELATION,
     # never REJECT -- REJECT is the admission gate alone. The protocol layer
     # (merge_on_receive) maps an unreached NO_RELATION to INSERT.
     assert classify(kappa=0, sigma=0.05, chi="neutral", ctx_ok=True,
@@ -100,7 +100,7 @@ def test_midsigma_noncontradiction_routing_unchanged():
 
 
 def test_exact_key_with_incompatible_context_relates_not_merges():
-    # Reviewer round 3, issue 1: the scoped key carries content+cell but NOT
+    # The scoped key carries content+cell but NOT
     # validity/freshness, so kappa=1 does not imply a compatible frame. An
     # exact-key pair in an incompatible Context must RELATE, not MERGE.
     assert classify(cfg=CFG, kappa=1, sigma=1.0, chi="neutral", ctx_ok=False) == "RELATE"

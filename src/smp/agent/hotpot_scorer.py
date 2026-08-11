@@ -1,6 +1,6 @@
 """HotpotQA answer scorer (EM + token-F1) + the competence gate.
 
-The competence benchmark is PIVOTED from GAIA (gated on Hugging Face; the PI has
+The competence benchmark is PIVOTED from GAIA (gated on Hugging Face; no access token is assumed, so it has
 no HF token) to **HotpotQA distractor** (open, CC BY-SA 4.0). HotpotQA fits SMP
 better than GAIA: each item's context paragraphs are fed THROUGH the SMP brain as
 merged observations, so the gate exercises recall + multi-hop reasoning over

@@ -1,6 +1,6 @@
 """G3 (HotpotQA pivot) — HotpotQA scorer (EM + token-F1) + competence gate.
 
-The competence benchmark is PIVOTED from GAIA (gated; PI has no HF token) to
+The competence benchmark is PIVOTED from GAIA (token-gated on Hugging Face) to
 HotpotQA (distractor; open, CC BY-SA 4.0). These tests pin the OFFICIAL HotpotQA
 answer metrics (hotpot_evaluate_v1.py, verified at source):
 

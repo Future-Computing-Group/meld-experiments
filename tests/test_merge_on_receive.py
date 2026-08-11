@@ -117,7 +117,7 @@ def test_relate_retains_the_incoming_claim_as_a_unit():
 
 
 def test_deprecated_local_is_not_an_exact_key_merge_target():
-    # S5.3 (S1 memo sec 3): an exact-key hit on a local claim that is no longer
+    # §5.3: an exact-key hit on a local claim that is no longer
     # ACTIVE must not revive it. A DEPRECATED local sharing the incoming's key
     # is not an admission target at all -> the incoming is novel -> INSERT, not
     # a MERGE/SUPERSEDES onto the retired claim.
@@ -134,7 +134,7 @@ def test_deprecated_local_is_not_an_exact_key_merge_target():
 
 
 def test_novel_claim_emits_insert_patch():
-    # D1 (S1 memo sec 1, R2): a claim with no local candidate at or above the
+    # R2 (§4.2): a claim with no local candidate at or above the
     # relatedness floor is NOVEL -- INSERT is its own first-class decision, not
     # a relabelled MERGE. The emitted payload is unchanged (unit + ACTIVE status).
     inc = _incoming("a wholly novel fact about gizmos", key=b"novel-key")

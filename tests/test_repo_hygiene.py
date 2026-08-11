@@ -42,6 +42,9 @@ _GENERIC_NEEDLES = [
     ("dev-era-date", "MjAoMls1LTldfFszLTldWzAtOV0pLVxkezJ9LVxkezJ9", False, True),
     # statistical theatre
     ("process-jargon", "c3RhdGlzdGljYWwgdGhlYXRyZQ==", False, False),
+    # simulated-review narrative must never read as an actual editorial process
+    ("review-narrative", "cmV2aWV3ZXIgcm91bmQ=", False, False),
+    ("cascade-artifact", "UzEgbWVtbw==", False, False),
 ]
 
 # PROJECT-SPECIFIC needles: shared-host aliases, scratch/project paths, the

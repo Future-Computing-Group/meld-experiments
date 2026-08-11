@@ -50,7 +50,7 @@ def test_default_cell_preserves_merge():
 
 
 def test_cross_boundary_identical_text_relates_not_merges():
-    # D2 (S1 memo sec 2): the claim key hashes canonical content TOGETHER WITH
+    # §4.1: the claim key hashes canonical content TOGETHER WITH
     # discrete scope, so the very same sentence published under two different
     # jurisdictions is a DIFFERENT claim (kappa=0), not a kappa=1 exact-key hit.
     # It falls through to the similarity path, where sigma=1.0 (identical text)
@@ -74,7 +74,7 @@ def test_cross_boundary_identical_text_relates_not_merges():
 
 
 def test_context_ineligible_candidate_does_not_shadow_admissible_merge():
-    # Reviewer round 4, issue 1 (candidate shadowing): the byte-identical text in
+    # Candidate shadowing: the byte-identical text in
     # an INCOMPATIBLE cell has the highest similarity (sigma=1.0) but fails the
     # Context gate; a paraphrase in the SAME cell satisfies the merge-admission
     # gates. Pre-fix, the shadower was selected and the pair RELATEd; the fix

@@ -61,7 +61,7 @@ _FAMILIES = [
 
 def _unit(text: str) -> MemoryUnit:
     # production key helper (smp.agent.memory), so this fixture's keys cannot
-    # drift from the live write path's (default cell, D2 §4.1).
+    # drift from the live write path's (default cell, §4.1).
     return MemoryUnit(
         id=_cid(text),
         relevance_magnitude=1.0,

@@ -1,6 +1,6 @@
 """HotpotQA (distractor) loader + the SMP brain-feed.
 
-The competence benchmark is PIVOTED from GAIA (gated; PI has no HF token) to
+The competence benchmark is PIVOTED from GAIA (token-gated on Hugging Face) to
 **HotpotQA distractor** (open, non-gated, CC BY-SA 4.0; ``hotpotqa/hotpot_qa``).
 Verified at source; provenance in ``data/benchmark_provenance.json``.
 

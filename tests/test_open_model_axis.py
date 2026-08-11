@@ -4,7 +4,7 @@ OpenWeightLLM (Qwen2.5-7B + Mistral-7B-Instruct; Gemma-2-9B-it fallback).
 These tests pin the axis declaration + the import-light contract: constructing an
 OpenWeightLLM for any axis model must NOT import transformers/vllm (the offline
 path stays clean; heavy deps load only at generate-time on the gated host). They
-do NOT run a real model (that is the PI-gated CSC run).
+do NOT run a real model (that is the real-model CSC run).
 """
 from __future__ import annotations
 

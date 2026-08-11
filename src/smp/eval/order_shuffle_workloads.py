@@ -2,7 +2,7 @@
 
 (i) The running-example message set -- the four messages walked in
     sections/04-merge-semantics.tex + figures/fig-running-example.tex + the
-    S1 memo's table (EU paraphrase merge, cross-boundary US relate, intra-EU
+    the running example (main paper, Section 4.3) (EU paraphrase merge, cross-boundary US relate, intra-EU
     conflict, status overrule) -- against a receiver that already holds c1
     ACTIVE, exactly the figure's starting state.
 (ii) A gold-derived workload: ~4 texts (canonical / paraphrase / related /
@@ -75,7 +75,7 @@ def build_gold_derived_workload(seed_ids: Sequence[str] = GOLD_SEED_IDS, *,
                                 encoder: str, n_sources: int = 3,
                                 cache_dir: str | None = None) -> List[MemoryUnit]:
     """~4 texts per seed (canonical/paraphrase/related/conflict; single cell,
-    so distinct claim keys follow from distinct content -- S1 memo 2b),
+    so distinct claim keys follow from distinct content -- main paper, Section 4.1),
     ingested as novel inserts into ``n_sources`` synthetic source brains
     (round-robin), then every source's extracted delta concatenated into ONE
     flat workload."""
