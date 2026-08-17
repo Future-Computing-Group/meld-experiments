@@ -1,0 +1,25 @@
+# MELD-brain CAMPAIGN image (real minilm encoder). Heavier than the smoke image
+# (adds sentence-transformers + torch CPU + the all-MiniLM-L6-v2 model prefetched at
+# build, so a run needs no network at boot). Build context = repo root:
+#   docker build -f edge/docker/Dockerfile.meld-minilm -t meld-brain:minilm .
+FROM python:3.11-slim
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends iproute2 curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# torch CPU wheel from the pytorch CPU index (avoids the large default CUDA build).
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+COPY edge/docker/requirements-minilm.txt .
+RUN pip install --no-cache-dir -r requirements-minilm.txt
+
+COPY src/ src/
+ENV PYTHONPATH=/app/src
+ENV SMP_PORT=8080
+
+# Prefetch the EXACT model id the minilm encoder loads (signals.py _MODEL_IDS), so the
+# brain boots offline (HF cache baked in). nli=lexical -> no NLI cross-encoder needed.
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
+
+EXPOSE 8080
+ENTRYPOINT ["python", "-m", "meld.sync.service"]

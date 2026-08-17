@@ -11,10 +11,10 @@
 """
 from __future__ import annotations
 
-from smp.eval.longmemeval_loader import load_conversation_slice
-from smp.eval.metrics import byte_count, mrr, recall_at_k, version_count
-from smp.eval.topology import CentralizedBaseline, build_topology
-from smp.proto import MemoryUnit
+from meld.eval.longmemeval_loader import load_conversation_slice
+from meld.eval.metrics import byte_count, mrr, recall_at_k, version_count
+from meld.eval.topology import CentralizedBaseline, build_topology
+from meld.proto import MemoryUnit
 
 
 def test_loader_yields_wellformed_deltas():

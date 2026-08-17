@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=smp-m1
+#SBATCH --job-name=meld-m1
 #SBATCH --output=%x-%j.out
 #
 # Generic M-1 memory-delta runner (the distributed-vs-centralized merge sweep).

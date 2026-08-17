@@ -16,9 +16,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from smp.merge.signals import chi                                  # noqa: E402
-from smp.agent.hotpot_loader import load_hotpot_fixture, load_hotpot_real  # noqa: E402
-from smp.eval.contradiction_field import build_field_sample, contradiction_metrics  # noqa: E402
+from meld.merge.signals import chi                                  # noqa: E402
+from meld.agent.hotpot_loader import load_hotpot_fixture, load_hotpot_real  # noqa: E402
+from meld.eval.contradiction_field import build_field_sample, contradiction_metrics  # noqa: E402
 
 
 def main():

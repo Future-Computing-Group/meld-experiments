@@ -3,9 +3,9 @@ encoder for speed -- the real minilm/cross-encoder run is
 scripts/run_order_shuffle.py, not this test."""
 from __future__ import annotations
 
-from smp.eval.order_shuffle_workloads import (build_gold_derived_workload,
+from meld.eval.order_shuffle_workloads import (build_gold_derived_workload,
                                                build_running_example_workload)
-from smp.proto import MemoryUnit
+from meld.proto import MemoryUnit
 
 
 def test_running_example_workload_shape():

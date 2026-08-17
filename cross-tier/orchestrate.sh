@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SMP cross-tier continuum run — laptop-hub orchestrator (reproducible artifact).
+# MELD cross-tier continuum run — laptop-hub orchestrator (reproducible artifact).
 #
 # Topology: the laptop hosts the broker + a local brain + the SSH reverse tunnels;
 # each remote tier runs a torch-free brain that reaches the broker through its
@@ -27,7 +27,7 @@ PIDS=(); LAUNCHED=()
 cleanup() {
   echo "[teardown]"
   for p in "${PIDS[@]:-}"; do kill "$p" 2>/dev/null || true; done
-  for h in "${LAUNCHED[@]:-}"; do ssh "$h" 'tmux kill-session -t smp-brain 2>/dev/null || true' 2>/dev/null || true; done
+  for h in "${LAUNCHED[@]:-}"; do ssh "$h" 'tmux kill-session -t meld-brain 2>/dev/null || true' 2>/dev/null || true; done
   [ -n "${CAFF_PID:-}" ] && kill "$CAFF_PID" 2>/dev/null || true
 }
 trap cleanup EXIT
@@ -39,7 +39,7 @@ deploy_and_launch() {
   [ -z "$env" ] && env=true
   echo "  [$id] rsync bundle -> $sa:$dir (code delivery = rsync)"
   ssh "$sa" "mkdir -p '$dir/src' '$dir/cross-tier'"
-  rsync -az --delete "$REPO/src/smp" "$sa:$dir/src/"
+  rsync -az --delete "$REPO/src/meld" "$sa:$dir/src/"
   rsync -az "$HERE/brain.py" "$HERE/probe_client.py" "$sa:$dir/cross-tier/"
   echo "  [$id] reverse tunnel -> $sa (remote :$TUN_PORT -> laptop :$BROKER_PORT)"
   local opts=(-N -R "${TUN_PORT}:localhost:${BROKER_PORT}" -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes)
@@ -50,7 +50,7 @@ deploy_and_launch() {
     | grep -q PONG && echo "    $id tunnel OK" || { echo "FATAL: $id cannot reach the broker"; exit 3; }
   echo "  [$id] launch brain in tmux"
   local rcmd="cd '$dir'; set +u; $env; set -u; PYTHONPATH=src python3 cross-tier/brain.py --broker-host 127.0.0.1 --broker-port $TUN_PORT --id $id --log '$dir/brain-$id.jsonl'"
-  ssh "$sa" "tmux kill-session -t smp-brain 2>/dev/null || true; tmux new-session -d -s smp-brain bash -c \"$rcmd\""
+  ssh "$sa" "tmux kill-session -t meld-brain 2>/dev/null || true; tmux new-session -d -s meld-brain bash -c \"$rcmd\""
   LAUNCHED+=("$sa")
   local _i; for _i in $(seq 1 20); do
     ssh "$sa" "grep -q '\"ev\": \"ready\"' '$dir/brain-$id.jsonl' 2>/dev/null" && { echo "    $id brain ready"; return 0; }

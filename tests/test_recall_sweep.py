@@ -7,9 +7,9 @@ recall on real tasks is a smoke-ladder step. Run:
 """
 import os
 
-from smp.eval.recall_sweep import aggregate_recall, recall_rows
+from meld.eval.recall_sweep import aggregate_recall, recall_rows
 
-_CFG = os.path.join(os.path.dirname(__file__), "..", "src", "smp", "config",
+_CFG = os.path.join(os.path.dirname(__file__), "..", "src", "meld", "config",
                     "thresholds-minilm.yaml")
 
 
@@ -19,8 +19,8 @@ def test_recall_rows_structures_per_cell_and_consumes_the_inner_brain():
     earlier b.brain-vs-b.brain.brain bug raised AttributeError instead of returning rows).
     Semantic merge consolidates paraphrase-duplicates that exact-dedup cannot, so the
     merged store holds no MORE live units than the exact-dedup store."""
-    from smp.agent.hotpot_loader import load_hotpot_fixture
-    from smp.config import load_thresholds
+    from meld.agent.hotpot_loader import load_hotpot_fixture
+    from meld.config import load_thresholds
     cfg = load_thresholds(_CFG)
     tasks = load_hotpot_fixture(n=2)
     rows = recall_rows(tasks, overlaps=[0.5], ks=[5],
@@ -37,8 +37,8 @@ def test_recall_rows_structures_per_cell_and_consumes_the_inner_brain():
 def test_recall_rows_emits_progress_per_task_for_mid_run_visibility():
     """A long sweep must emit per-batch progress so a wedge surfaces early. recall_rows
     calls the injected ``progress`` callback once per (cell, task) with counters."""
-    from smp.agent.hotpot_loader import load_hotpot_fixture
-    from smp.config import load_thresholds
+    from meld.agent.hotpot_loader import load_hotpot_fixture
+    from meld.config import load_thresholds
     cfg = load_thresholds(_CFG)
     seen = []
     recall_rows(load_hotpot_fixture(n=2), overlaps=[0.5], ks=[5],

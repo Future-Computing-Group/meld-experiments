@@ -1,4 +1,4 @@
-"""SMP-brain HTTP service (rung-2 containerized node), framework-free.
+"""MELD-brain HTTP service (rung-2 containerized node), framework-free.
 
 The request handling is a PURE function -- handle(method, path, body) -> (status, body)
 -- so it is unit-testable with no socket; a thin stdlib ThreadingHTTPServer wraps it
@@ -20,19 +20,19 @@ import json
 
 
 def _cfg():
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
     return _calibrated_cfg("hashing")
 
 
 def _service(nid="A"):
-    from smp.sync.node import BrainNode
-    from smp.sync.service import BrainService
+    from meld.sync.node import BrainNode
+    from meld.sync.service import BrainService
     return BrainService(BrainNode(nid, encoder="hashing", nli="lexical", cfg=_cfg()))
 
 
 def _signed(svc, text):
     """A signed, typed delta payload for ``text`` under the service's group key."""
-    from smp.sync.wire_delta import serialize_signed_delta
+    from meld.sync.wire_delta import serialize_signed_delta
     unit = svc.node.mem.build_unit(text)
     return serialize_signed_delta("peer", unit, svc.group_key)
 
@@ -124,7 +124,7 @@ def test_publish_without_transport_is_503_not_silent_ok():
 
 
 def test_post_reset_clears_node_state_and_latency():
-    from smp.sync.latency import SyncLatencyMeter
+    from meld.sync.latency import SyncLatencyMeter
     svc = _service()
     svc.meter = SyncLatencyMeter(clock=lambda: 0.0)
     svc.node.ingest("Paris is the capital of France")
@@ -141,8 +141,8 @@ def test_semantic_publish_fetches_peer_content_once_per_publish():
     # per publish (not per claim, and not never). Previously peer_live was unwired -> empty
     # content + sigma_lo=0 -> every peer passed -> semantic degenerated to broadcast.
     from types import SimpleNamespace
-    from smp.sync.node import BrainNode
-    from smp.sync.service import BrainService
+    from meld.sync.node import BrainNode
+    from meld.sync.service import BrainService
     calls = []
 
     def peer_live(p):
@@ -162,7 +162,7 @@ def test_semantic_publish_fetches_peer_content_once_per_publish():
 
 
 def test_build_from_env_wires_peer_live_for_semantic_routing():
-    from smp.sync.service import build_service_from_env
+    from meld.sync.service import build_service_from_env
     svc, _port = build_service_from_env({
         "SMP_NODE_ID": "A", "SMP_PORT": "8080", "SMP_ENCODER": "hashing", "SMP_NLI": "lexical",
         "SMP_PEERS": "http://b:8080", "SMP_ROUTING_MODE": "semantic", "SMP_SIGMA_LO": "0.12"})
@@ -173,7 +173,7 @@ def test_build_from_env_wires_peer_live_for_semantic_routing():
 def test_build_from_env_requires_explicit_core_config():
     # no-silent-default: NODE_ID / PORT / ENCODER / NLI must be set
     import pytest
-    from smp.sync.service import build_service_from_env
+    from meld.sync.service import build_service_from_env
     for missing in ("SMP_NODE_ID", "SMP_PORT", "SMP_ENCODER", "SMP_NLI"):
         env = {"SMP_NODE_ID": "A", "SMP_PORT": "8800",
                "SMP_ENCODER": "hashing", "SMP_NLI": "lexical"}
@@ -183,7 +183,7 @@ def test_build_from_env_requires_explicit_core_config():
 
 
 def test_build_from_env_parses_peers_and_routing():
-    from smp.sync.service import build_service_from_env
+    from meld.sync.service import build_service_from_env
     env = {"SMP_NODE_ID": "node-2", "SMP_PORT": "8800",
            "SMP_ENCODER": "hashing", "SMP_NLI": "lexical",
            "SMP_PEERS": "http://b:8800,http://c:8800", "SMP_ROUTING_MODE": "semantic"}

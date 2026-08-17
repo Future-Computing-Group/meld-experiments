@@ -6,8 +6,8 @@ inference is a smoke-ladder step, not a unit test. Run:
 """
 import pytest
 
-from smp.merge import signals
-from smp.merge.signals import _make_encoder, _SentenceTransformerEncoder
+from meld.merge import signals
+from meld.merge.signals import _make_encoder, _SentenceTransformerEncoder
 
 
 def test_make_encoder_resolves_added_encoder_aliases():

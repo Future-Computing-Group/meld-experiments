@@ -9,7 +9,7 @@ Run:  PYTHONPATH=src python3 -m pytest tests/test_wire_typed_delta.py -q
 """
 from __future__ import annotations
 
-from smp.proto import Claim, Endpoint, MemoryLink, MemoryUnit
+from meld.proto import Claim, Endpoint, MemoryLink, MemoryUnit
 
 
 # --------------------------------------------------------------------------- #
@@ -52,7 +52,7 @@ def test_memoryunit_with_claims_roundtrips_to_equal_typed_structure():
 def test_serialized_delta_is_json_not_bare_text():
     import json
 
-    from smp.sync.wire_delta import serialize_signed_delta
+    from meld.sync.wire_delta import serialize_signed_delta
     u = MemoryUnit(id=b"\x01", claims=[Claim(claim_key=b"\x02", text="hello world")])
     payload = serialize_signed_delta("A", u, b"k")
     env = json.loads(payload.decode("utf-8"))     # parses as a JSON envelope ...
@@ -65,17 +65,17 @@ def test_serialized_delta_is_json_not_bare_text():
 # (2) end-to-end: wire-reconstructed delta merges identically to in-process
 # --------------------------------------------------------------------------- #
 def _cfg():
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
     return _calibrated_cfg("hashing")
 
 
 def _node(nid):
-    from smp.sync.node import BrainNode
+    from meld.sync.node import BrainNode
     return BrainNode(nid, encoder="hashing", nli="lexical", cfg=_cfg())
 
 
 def test_wire_typed_delta_merges_identically_to_in_process_path():
-    from smp.sync.wire_delta import group_key
+    from meld.sync.wire_delta import group_key
 
     claims = ["Paris is the capital of France",
               "Mount Everest is the tallest mountain",

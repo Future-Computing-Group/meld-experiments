@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""SMP brain over Apache Kafka (the standard transport).
+"""MELD brain over Apache Kafka (the standard transport).
 
 Consumes deltas from a claims topic, runs the shared merge step (brain_core, which
-reuses the tested src/smp classifier + status CRDT), and publishes acks to an acks
+reuses the tested src/meld classifier + status CRDT), and publishes acks to an acks
 topic. Each brain uses a unique consumer group => broadcast (it sees every delta);
 routing strategies that restrict delivery sit above this, choosing the topic.
 
@@ -14,11 +14,11 @@ import argparse, json, os, sys, time, uuid
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "src"))
-from smp.config import load_thresholds          # noqa: E402
+from meld.config import load_thresholds          # noqa: E402
 from kafka_transport import KafkaTransport       # noqa: E402
 from brain_core import process_delta             # noqa: E402
 
-MINILM = os.path.join(os.path.dirname(HERE), "src", "smp", "config", "thresholds-minilm.yaml")
+MINILM = os.path.join(os.path.dirname(HERE), "src", "meld", "config", "thresholds-minilm.yaml")
 
 
 def main():
@@ -42,7 +42,7 @@ def main():
 
     t = KafkaTransport(args.bootstrap)
     consumer = t.consumer(args.claims_topic,
-                          group="smp-brain-%s-%s" % (args.id, uuid.uuid4().hex[:6]),
+                          group="meld-brain-%s-%s" % (args.id, uuid.uuid4().hex[:6]),
                           from_beginning=True, timeout_ms=500)
     log({"ev": "ready", "brain": args.id, "t": time.time()})
     deadline = (time.time() + args.run_seconds) if args.run_seconds > 0 else None

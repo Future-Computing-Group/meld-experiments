@@ -5,9 +5,9 @@ top-k actually contain the gold supporting sentences the answer needs?
 """
 from __future__ import annotations
 
-from smp.agent.hotpot_loader import feed_context_through_brain, load_hotpot_fixture
-from smp.agent.memory import SMPMemory
-from smp.agent.run_hotpot_gate import _calibrated_cfg
+from meld.agent.hotpot_loader import feed_context_through_brain, load_hotpot_fixture
+from meld.agent.memory import SMPMemory
+from meld.agent.run_hotpot_gate import _calibrated_cfg
 
 
 def _mem():
@@ -15,7 +15,7 @@ def _mem():
 
 
 def test_gold_supporting_sentences_extracted_from_task():
-    from smp.agent.recall_metrics import gold_supporting_sentences
+    from meld.agent.recall_metrics import gold_supporting_sentences
     task = load_hotpot_fixture(n=1)[0]
     gold = gold_supporting_sentences(task)
     assert len(gold) >= 1
@@ -26,7 +26,7 @@ def test_recall_at_k_finds_gold_after_feeding_context():
     # feed the item's context through the brain; the gold supporting sentences
     # must be retrievable in the top-k (positive recall) and the first hit gives a
     # positive MRR.
-    from smp.agent.recall_metrics import recall_at_k_and_mrr
+    from meld.agent.recall_metrics import recall_at_k_and_mrr
     task = load_hotpot_fixture(n=1)[0]
     mem = _mem()
     feed_context_through_brain(task, mem)
@@ -37,7 +37,7 @@ def test_recall_at_k_finds_gold_after_feeding_context():
 
 
 def test_recall_at_k_is_zero_for_an_empty_store():
-    from smp.agent.recall_metrics import recall_at_k_and_mrr
+    from meld.agent.recall_metrics import recall_at_k_and_mrr
     task = load_hotpot_fixture(n=1)[0]
     m = recall_at_k_and_mrr(_mem().brain, task, encoder="hashing", k=10)
     assert m["recall_at_k"] == 0.0

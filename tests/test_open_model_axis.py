@@ -12,7 +12,7 @@ import sys
 
 import pytest
 
-from smp.agent.llm import (OPEN_MODEL_AXIS, OpenWeightLLM, open_model,
+from meld.agent.llm import (OPEN_MODEL_AXIS, OpenWeightLLM, open_model,
                            DEFAULT_OPEN_WEIGHT_MODEL)
 
 

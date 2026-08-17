@@ -23,7 +23,7 @@ Per-seed protocol (one cell):
 
 Partition modes: "tc" = a real, healable tc partition between hosts (needs ssh+sudo
 tc per host); "delivery" = the partition is the absence of cross-side delivery
-(HTTP-only, no tc/ssh) — faithful because SMP status reconciliation is delivery-
+(HTTP-only, no tc/ssh) — faithful because MELD status reconciliation is delivery-
 driven. Set it under `partition.mode` in testbed.yaml.
 """
 from __future__ import annotations
@@ -37,10 +37,10 @@ from typing import Callable, Dict, List, Optional
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from smp.sync.eval_c_partition import (                   # noqa: E402
+from meld.sync.eval_c_partition import (                   # noqa: E402
     LINK_A, LINK_B, agreement as _agreement, aggregate_results, partition_plan,
     per_seed_result, seeded_delivery_orders)
-from smp.sync.partition import PartitionController        # noqa: E402
+from meld.sync.partition import PartitionController        # noqa: E402
 
 from config import load_testbed                           # noqa: E402
 

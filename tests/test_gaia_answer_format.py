@@ -13,8 +13,8 @@ without guessing -- it must NEVER fabricate the short answer from a sentence
 """
 from __future__ import annotations
 
-from smp.agent.gaia_scorer import tighten_gaia_answer
-from smp.agent.react_agent import GAIA_SYSTEM
+from meld.agent.gaia_scorer import tighten_gaia_answer
+from meld.agent.react_agent import GAIA_SYSTEM
 
 
 # --------------------------------------------------------------------------

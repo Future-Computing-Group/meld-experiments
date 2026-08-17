@@ -6,7 +6,7 @@ capacity (1/service) achieved throughput tracks the offered rate; above it, thro
 saturates near 1/service while latency climbs. Run:
   PYTHONPATH=src python3 -m pytest tests/test_sink_throughput.py -q
 """
-from smp.eval.sink_throughput import run_saturation, FakeMergeStep, saturation_knee
+from meld.eval.sink_throughput import run_saturation, FakeMergeStep, saturation_knee
 
 
 def test_throughput_tracks_offered_below_capacity_and_saturates_above():

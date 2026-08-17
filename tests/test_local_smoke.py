@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import os
 
-from smp.eval.smoke import run_smoke
+from meld.eval.smoke import run_smoke
 
 
 def test_smoke_runs_to_completion_and_renders_figure(tmp_path):

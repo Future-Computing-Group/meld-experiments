@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""System test: the SMP merge protocol end-to-end over REAL Apache Kafka.
+"""System test: the MELD merge protocol end-to-end over REAL Apache Kafka.
 
 Drives the whole Kafka kit on localhost --- three kafka_brain subprocesses (the
 standard-fabric brains) + the driver, over a real broker --- and asserts the same

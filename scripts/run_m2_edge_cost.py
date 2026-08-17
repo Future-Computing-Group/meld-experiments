@@ -14,9 +14,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from smp.merge.signals import EmbeddingSimilarity, chi    # noqa: E402
-from smp.merge.m2_gold import M2_GOLD_V2                   # noqa: E402
-from smp.eval.per_delta_cost import measure_per_delta_cost  # noqa: E402
+from meld.merge.signals import EmbeddingSimilarity, chi    # noqa: E402
+from meld.merge.m2_gold import M2_GOLD_V2                   # noqa: E402
+from meld.eval.per_delta_cost import measure_per_delta_cost  # noqa: E402
 
 
 def main():

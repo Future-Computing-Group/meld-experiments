@@ -17,8 +17,8 @@ from __future__ import annotations
 
 import json
 
-from smp.config import load_thresholds
-from smp.agent.run_hotpot_gate import _calibrated_cfg
+from meld.config import load_thresholds
+from meld.agent.run_hotpot_gate import _calibrated_cfg
 
 
 def _pct(x: float) -> str:
@@ -26,7 +26,7 @@ def _pct(x: float) -> str:
 
 
 def a1_gate_ablation():
-    from smp.merge.gate_ablation import gate_ablation_metrics, GATES
+    from meld.merge.gate_ablation import gate_ablation_metrics, GATES
     cfg = load_thresholds()
     hi = min(cfg.theta_merge + 0.05, 1.0)
     # All probes use kappa=0 (distinct claim keys): each gate is exercised on the
@@ -57,7 +57,7 @@ def a1_gate_ablation():
 
 
 def t1_conflict_trust():
-    from smp.merge.conflict_trust import conflict_flag_rate, authority_resolution_accuracy
+    from meld.merge.conflict_trust import conflict_flag_rate, authority_resolution_accuracy
     cfg = load_thresholds()
     hi = min(cfg.theta_merge + 0.05, 1.0)
     contradictions = [
@@ -74,17 +74,17 @@ def t1_conflict_trust():
     acc_canon = authority_resolution_accuracy(canonical_right)
     acc_peer = authority_resolution_accuracy(peer_right)
     print("== T-1 conflict-trust ==")
-    print(f"  conflict-flag rate: SMP={_pct(cfr['smp_flag_rate'])}  "
+    print(f"  conflict-flag rate: MELD={_pct(cfr['meld_flag_rate'])}  "
           f"auto-merge={_pct(cfr['auto_merge_flag_rate'])}")
     print(f"  authority-resolution accuracy (canonical holds truth): "
-          f"SMP={_pct(acc_canon['smp_authority_acc'])}  recency={_pct(acc_canon['recency_acc'])}")
+          f"MELD={_pct(acc_canon['meld_authority_acc'])}  recency={_pct(acc_canon['recency_acc'])}")
     print(f"  authority-resolution accuracy (peer holds truth):      "
-          f"SMP={_pct(acc_peer['smp_authority_acc'])}  recency={_pct(acc_peer['recency_acc'])}")
+          f"MELD={_pct(acc_peer['meld_authority_acc'])}  recency={_pct(acc_peer['recency_acc'])}")
     return {"flag": cfr, "canonical_right": acc_canon, "peer_right": acc_peer}
 
 
 def a2_echo_safety():
-    from smp.sync.echo_safety import echo_safety_probe
+    from meld.sync.echo_safety import echo_safety_probe
     cfg = _calibrated_cfg("hashing")
     r = echo_safety_probe(encoder="hashing", nli="lexical", cfg=cfg, n_peers=3,
                           tagged_claim="ALIGN-TAG: the canonical policy is X")
@@ -95,8 +95,8 @@ def a2_echo_safety():
 
 
 def a3_token_economics():
-    from smp.agent.token_economics import token_economics
-    from smp.agent.hotpot_loader import load_hotpot_fixture
+    from meld.agent.token_economics import token_economics
+    from meld.agent.hotpot_loader import load_hotpot_fixture
     cfg = _calibrated_cfg("hashing")
     task = load_hotpot_fixture(1)[0]
     rows = {}
@@ -123,11 +123,11 @@ def m2_classification():
     # sweep -> no m-E-1 crash), the easy/hard CONFLICT split (the
     # lexically-divergent contradictions are the hardest case), and the
     # key-only / embedding-only baselines (what each component buys).
-    from smp.merge.m2_gold import M2_GOLD_V2, build_gold_set
-    from smp.merge.m2_eval import (evaluate_m2, score_pairs, decisions_full,
+    from meld.merge.m2_gold import M2_GOLD_V2, build_gold_set
+    from meld.merge.m2_eval import (evaluate_m2, score_pairs, decisions_full,
                                    classification_metrics, roc_over_theta,
                                    bootstrap_metric_ci, evaluate_baseline)
-    from smp.merge.signals import EmbeddingSimilarity
+    from meld.merge.signals import EmbeddingSimilarity
     print("== M-2 merge-classification / ROC (V2 gold set) ==")
     dense_ok = True
     try:
@@ -231,7 +231,7 @@ def e2_perturbation():
     # E2: exercise the adaptive mechanisms under perturbation.
     import datetime
     import os as _os
-    from smp.eval.crdt_convergence import partition_reorder_sweep
+    from meld.eval.crdt_convergence import partition_reorder_sweep
     print("== E2(a) partition-duration x reorder-rate (status-CRDT vs LWW) ==")
     cells = partition_reorder_sweep(durations=[2, 4, 8, 16],
                                     reorder_rates=[0.0, 0.25, 0.5, 0.75, 1.0],
@@ -244,11 +244,11 @@ def e2_perturbation():
 
     robustness = None
     try:
-        from smp.merge.signals import EmbeddingSimilarity
+        from meld.merge.signals import EmbeddingSimilarity
         EmbeddingSimilarity(encoder="minilm").sigma("a", "b")
-        from smp.merge.m2_gold import M2_GOLD_V2
-        from smp.merge.m2_eval import score_pairs
-        from smp.eval.robustness import robustness_sweep
+        from meld.merge.m2_gold import M2_GOLD_V2
+        from meld.merge.m2_eval import score_pairs
+        from meld.eval.robustness import robustness_sweep
         base = _calibrated_cfg("minilm")
         scored = score_pairs(M2_GOLD_V2, encoder="minilm", nli="mnli-cross-encoder")
         robustness = robustness_sweep(scored, theta=base.theta_merge, sigma_lo=base.sigma_lo,

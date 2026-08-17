@@ -7,7 +7,7 @@ tampered delta are dropped before the decision procedure runs; a correctly-signe
 is admitted. HMAC is the stand-in suite (the manuscript scopes the specific PKI out).
 Run:  PYTHONPATH=src:cross-tier python3 -m pytest tests/test_signing.py -q
 """
-from smp.trust.signing import sign_delta, verify_delta, admit_signed
+from meld.trust.signing import sign_delta, verify_delta, admit_signed
 
 KEY = b"canonical-brain-key"
 

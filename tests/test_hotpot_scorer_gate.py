@@ -16,7 +16,7 @@ medium+hard slice is NOT a pass.
 """
 from __future__ import annotations
 
-from smp.agent.hotpot_scorer import (
+from meld.agent.hotpot_scorer import (
     competence_gate, em_score, f1_score, hotpot_normalize, score_predictions,
 )
 

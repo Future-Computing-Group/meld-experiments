@@ -57,7 +57,7 @@ def _seq(calls, host):
 
 
 def test_shape_clears_root_then_adds_delay_toward_peer():
-    from smp.sync.wan import WanShaper
+    from meld.sync.wan import WanShaper
     r = FakeRunner(initial_root="fq_codel")
     w = WanShaper(r, iface="enp1s0")
     w.shape("hostA", "10.0.0.2", delay_ms=50, jitter_ms=5)
@@ -73,14 +73,14 @@ def test_shape_clears_root_then_adds_delay_toward_peer():
 
 
 def test_shape_raises_on_tc_failure():
-    from smp.sync.wan import WanShaper
+    from meld.sync.wan import WanShaper
     w = WanShaper(FakeRunner(fail_substr="delay"), iface="enp1s0")
     with pytest.raises(RuntimeError):
         w.shape("hostA", "10.0.0.2", delay_ms=25)
 
 
 def test_clear_del_roots_and_verifies():
-    from smp.sync.wan import WanShaper
+    from meld.sync.wan import WanShaper
     r = FakeRunner(initial_root="fq_codel")
     w = WanShaper(r, iface="enp1s0")
     w.shape("hostA", "10.0.0.2", delay_ms=25)
@@ -94,7 +94,7 @@ def test_clear_tolerates_default_only_root_del_failure():
     # del dev X root` returns nonzero ("No such file"). clear() must treat a verify-clean
     # iface as success (verify is authoritative), NOT raise -- else every RTT=0 cell fails
     # and aborts cleanup, leaking shaping on later cells.
-    from smp.sync.wan import WanShaper
+    from meld.sync.wan import WanShaper
 
     class DefaultOnlyRunner(FakeRunner):
         def __call__(self, host, argv):
@@ -109,7 +109,7 @@ def test_clear_tolerates_default_only_root_del_failure():
 
 
 def test_verify_delay_reads_tc_show():
-    from smp.sync.wan import WanShaper
+    from meld.sync.wan import WanShaper
     r = FakeRunner()
     r.root["hostA"] = "prio"; r.delay["hostA"] = True
     w = WanShaper(r, iface="enp1s0")

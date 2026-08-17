@@ -9,7 +9,7 @@ the reviewers cited (recall 0.997).
 
 Pure simulation, deterministic in the seeds; sync-layer only (does NOT touch the
 merge classifier / M-2 headline). Calls the unit-tested
-``smp.eval.anti_entropy_eval``; the printed numbers are the asserted invariants.
+``meld.eval.anti_entropy_eval``; the printed numbers are the asserted invariants.
 Persists the full sweep to gitignored data/anti-entropy/.
 
 Run:  PYTHONPATH=src python3 scripts/run_anti_entropy_loss.py
@@ -20,7 +20,7 @@ import datetime
 import json
 import os
 
-from smp.eval.anti_entropy_eval import loss_convergence_sweep
+from meld.eval.anti_entropy_eval import loss_convergence_sweep
 
 LOSSES = [0.0, 0.003, 0.01, 0.05, 0.10]      # incl. the reviewer-cited 0.3%
 N_BRAINS = 12

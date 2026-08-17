@@ -10,10 +10,10 @@ apply/extract + graph-walk read.
 """
 from __future__ import annotations
 
-from smp.brain.store import Brain
-from smp.merge.status_crdt import StatusState
-from smp.proto import Claim, Endpoint, MemoryLink, MemoryUnit
-from smp.protocol.messages import Patch
+from meld.brain.store import Brain
+from meld.merge.status_crdt import StatusState
+from meld.proto import Claim, Endpoint, MemoryLink, MemoryUnit
+from meld.protocol.messages import Patch
 
 
 def _patch_merge(unit):
@@ -107,9 +107,9 @@ def test_paraphrase_duplicate_is_deduped_at_recall_after_merge():
     # merge_on_receive. The sigma-MERGE deprecates the paraphrase, so recall
     # returns ONE unit (the canonical), not two -- the property that makes
     # distributed_merge differ from naive_union.
-    from smp.config import load_thresholds
-    from smp.merge.signals import EmbeddingSimilarity
-    from smp.protocol.merge_on_receive import merge_on_receive
+    from meld.config import load_thresholds
+    from meld.merge.signals import EmbeddingSimilarity
+    from meld.protocol.merge_on_receive import merge_on_receive
     b = Brain()
     canon = MemoryUnit(id=b"canon", claims=[Claim(claim_key=b"kc",
                        text="Paris is the capital of France")])

@@ -1,9 +1,9 @@
 """Round 5, issue 1: status links ride a Patch of their own operation kind
 (STATUS), and materialization drops unauthorized links deterministically."""
-from smp.brain.store import Brain
-from smp.merge.status_crdt import StatusState, effective_status_gated
-from smp.proto import Claim, MemoryUnit
-from smp.protocol.messages import DECISIONS, Endpoint, Patch
+from meld.brain.store import Brain
+from meld.merge.status_crdt import StatusState, effective_status_gated
+from meld.proto import Claim, MemoryUnit
+from meld.protocol.messages import DECISIONS, Endpoint, Patch
 
 
 def test_status_is_a_patch_operation_kind():

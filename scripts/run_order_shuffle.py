@@ -14,9 +14,9 @@ import json
 import os
 import time
 
-from smp.agent.run_hotpot_gate import _calibrated_cfg
-from smp.eval.order_shuffle import run_order_shuffle
-from smp.eval.order_shuffle_workloads import (GOLD_PROBE_QUERIES,
+from meld.agent.run_hotpot_gate import _calibrated_cfg
+from meld.eval.order_shuffle import run_order_shuffle
+from meld.eval.order_shuffle_workloads import (GOLD_PROBE_QUERIES,
                                               RUNNING_EXAMPLE_PROBE_QUERIES,
                                               build_gold_derived_workload,
                                               build_running_example_workload)
@@ -38,8 +38,8 @@ def _warmup_caches(items, *, encoder: str, nli: str, cache_dir: str) -> None:
     would eat one-time model-load latency, which would otherwise sit in the
     candidate-cost distribution as a single wild outlier rather than
     reflecting steady-state per-call cost."""
-    from smp.merge.signals import EmbeddingSimilarity, chi
-    from smp.proto import MemoryUnit
+    from meld.merge.signals import EmbeddingSimilarity, chi
+    from meld.proto import MemoryUnit
 
     es = EmbeddingSimilarity(encoder=encoder, cache_dir=cache_dir)
     texts = sorted({c.text for it in items if isinstance(it, MemoryUnit) for c in it.claims})

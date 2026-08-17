@@ -9,8 +9,8 @@ from __future__ import annotations
 
 import pytest
 
-from smp.proto import Endpoint
-from smp.protocol.messages import Patch
+from meld.proto import Endpoint
+from meld.protocol.messages import Patch
 
 
 def _ep():

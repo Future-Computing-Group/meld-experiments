@@ -11,7 +11,7 @@ import json
 
 
 def test_record_marks_cell_done(tmp_path):
-    from smp.eval.campaign_checkpoint import CampaignCheckpoint
+    from meld.eval.campaign_checkpoint import CampaignCheckpoint
     cp = CampaignCheckpoint(str(tmp_path / "ckpt.jsonl"))
     assert cp.done("rtt50_N4_broadcast_seed3") is False
     cp.record("rtt50_N4_broadcast_seed3", {"p50_ms": 51.2})
@@ -19,7 +19,7 @@ def test_record_marks_cell_done(tmp_path):
 
 
 def test_resume_reads_prior_completed_from_disk(tmp_path):
-    from smp.eval.campaign_checkpoint import CampaignCheckpoint
+    from meld.eval.campaign_checkpoint import CampaignCheckpoint
     path = str(tmp_path / "ckpt.jsonl")
     cp = CampaignCheckpoint(path)
     cp.record("cellA", {"recall": 0.9})
@@ -30,7 +30,7 @@ def test_resume_reads_prior_completed_from_disk(tmp_path):
 
 
 def test_record_is_durable_jsonl(tmp_path):
-    from smp.eval.campaign_checkpoint import CampaignCheckpoint
+    from meld.eval.campaign_checkpoint import CampaignCheckpoint
     path = tmp_path / "ckpt.jsonl"
     cp = CampaignCheckpoint(str(path))
     cp.record("c1", {"x": 1})
@@ -40,7 +40,7 @@ def test_record_is_durable_jsonl(tmp_path):
 
 
 def test_pending_filters_out_completed(tmp_path):
-    from smp.eval.campaign_checkpoint import CampaignCheckpoint
+    from meld.eval.campaign_checkpoint import CampaignCheckpoint
     cp = CampaignCheckpoint(str(tmp_path / "ckpt.jsonl"))
     cp.record("c1", {})
     all_cells = ["c1", "c2", "c3"]
@@ -48,7 +48,7 @@ def test_pending_filters_out_completed(tmp_path):
 
 
 def test_rerecord_last_wins(tmp_path):
-    from smp.eval.campaign_checkpoint import CampaignCheckpoint
+    from meld.eval.campaign_checkpoint import CampaignCheckpoint
     path = str(tmp_path / "ckpt.jsonl")
     cp = CampaignCheckpoint(path)
     cp.record("c1", {"v": 1})

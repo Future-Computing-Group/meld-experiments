@@ -2,7 +2,7 @@
 
 The over-the-wire orchestrator replays the status-CRDT partition-heal protocol over real
 brains + a real, healable partition, but its decision logic is the scrubbed, host-agnostic
-core in smp.sync.eval_c_partition (stdlib-only, no HTTP/tc/docker), so it is testable here:
+core in meld.sync.eval_c_partition (stdlib-only, no HTTP/tc/docker), so it is testable here:
 
   * seeded_delivery_orders  -- per-brain permuted (link, effect) delivery order; same seed
                                must give the same order (order-independence demo is seeded).
@@ -14,7 +14,7 @@ core in smp.sync.eval_c_partition (stdlib-only, no HTTP/tc/docker), so it is tes
 """
 from __future__ import annotations
 
-from smp.sync import eval_c_partition as M
+from meld.sync import eval_c_partition as M
 
 
 # --- seeded delivery order (determinism) -----------------------------------------------

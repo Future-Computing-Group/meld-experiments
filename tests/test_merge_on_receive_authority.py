@@ -7,10 +7,10 @@ MERGE -- so a canonical brain is never silently rewritten by a low-authority pee
 Equal default authority (both OBSERVATION) -> no downgrade -> MERGE (M-2-preserving).
 An exact-key (kappa=1) match is the same claim -> still MERGE regardless of authority.
 """
-from smp.config import Thresholds
-from smp.merge.signals import EmbeddingSimilarity
-from smp.proto import Claim, MemoryUnit
-from smp.protocol.merge_on_receive import merge_on_receive
+from meld.config import Thresholds
+from meld.merge.signals import EmbeddingSimilarity
+from meld.proto import Claim, MemoryUnit
+from meld.protocol.merge_on_receive import merge_on_receive
 
 CFG = Thresholds(theta_merge=0.5, sigma_lo=0.12, r_min=0.2, tau=0.5)
 # theta_merge low enough that a near-identical paraphrase pair lands on the
@@ -65,7 +65,7 @@ def test_same_content_different_cell_relates_not_merges_under_production_key():
     # would have silently produced -- the pair the old spec silently allowed
     # straight through the R4 exemption. It falls to the similarity path
     # instead, where the Context gate (cell mismatch) withholds the auto-merge.
-    from smp.agent.memory import _cid, claim_key
+    from meld.agent.memory import _cid, claim_key
     us_cell, eu_cell = "jurisdiction.us", "jurisdiction.eu"
     inc = MemoryUnit(id=_cid(PARA_A, us_cell), cell=us_cell, relevance_magnitude=1.0,
                      status="ACTIVE", authority="OBSERVATION",

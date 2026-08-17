@@ -9,7 +9,7 @@ from __future__ import annotations
 
 
 def test_enumerate_cells_is_the_full_grid_with_unique_ids():
-    from smp.eval.campaign import enumerate_cells
+    from meld.eval.campaign import enumerate_cells
     cells = enumerate_cells(rtts=[0, 25], ns=[2, 4], routings=["broadcast", "semantic"],
                             seeds=[1, 2, 3])
     assert len(cells) == 2 * 2 * 2 * 3
@@ -18,8 +18,8 @@ def test_enumerate_cells_is_the_full_grid_with_unique_ids():
 
 
 def test_run_campaign_runs_each_pending_once_and_records(tmp_path):
-    from smp.eval.campaign import enumerate_cells, run_campaign
-    from smp.eval.campaign_checkpoint import CampaignCheckpoint
+    from meld.eval.campaign import enumerate_cells, run_campaign
+    from meld.eval.campaign_checkpoint import CampaignCheckpoint
     cells = enumerate_cells(rtts=[0], ns=[2], routings=["broadcast"], seeds=[1, 2])
     calls = []
 
@@ -33,8 +33,8 @@ def test_run_campaign_runs_each_pending_once_and_records(tmp_path):
 
 
 def test_run_campaign_resumes_and_skips_completed(tmp_path):
-    from smp.eval.campaign import enumerate_cells, run_campaign
-    from smp.eval.campaign_checkpoint import CampaignCheckpoint
+    from meld.eval.campaign import enumerate_cells, run_campaign
+    from meld.eval.campaign_checkpoint import CampaignCheckpoint
     cells = enumerate_cells(rtts=[0], ns=[2], routings=["broadcast"], seeds=[1, 2, 3])
     path = str(tmp_path / "c.jsonl")
     CampaignCheckpoint(path).record(cells[0].cell_id, {"p50_ms": 1.0})   # cell already done
@@ -46,8 +46,8 @@ def test_run_campaign_resumes_and_skips_completed(tmp_path):
 
 
 def test_failed_cell_is_not_recorded_so_it_retries(tmp_path):
-    from smp.eval.campaign import enumerate_cells, run_campaign
-    from smp.eval.campaign_checkpoint import CampaignCheckpoint
+    from meld.eval.campaign import enumerate_cells, run_campaign
+    from meld.eval.campaign_checkpoint import CampaignCheckpoint
     cells = enumerate_cells(rtts=[0], ns=[2], routings=["broadcast"], seeds=[1, 2])
 
     def run_cell(c):
@@ -62,7 +62,7 @@ def test_failed_cell_is_not_recorded_so_it_retries(tmp_path):
 
 
 def test_aggregate_by_condition_is_seed_as_unit():
-    from smp.eval.campaign import enumerate_cells, aggregate_by_condition
+    from meld.eval.campaign import enumerate_cells, aggregate_by_condition
     cells = enumerate_cells(rtts=[0], ns=[2], routings=["broadcast"], seeds=[1, 2, 3, 4])
     # one recall value per SEED; aggregation bootstraps across the 4 seeds
     results = {c.cell_id: {"recall": 0.80 + 0.01 * c.seed} for c in cells}

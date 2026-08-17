@@ -2,10 +2,10 @@
 classify, so shared grounding can promote a borderline-similarity pair to MERGE.
 Ungrounded claims (grounding=()) give epsilon=0 -> path inert (HotpotQA unaffected).
 """
-from smp.config import Thresholds
-from smp.merge.signals import EmbeddingSimilarity
-from smp.proto import Claim, MemoryUnit
-from smp.protocol.merge_on_receive import merge_on_receive
+from meld.config import Thresholds
+from meld.merge.signals import EmbeddingSimilarity
+from meld.proto import Claim, MemoryUnit
+from meld.protocol.merge_on_receive import merge_on_receive
 
 
 def _unit(text, grounding=()):

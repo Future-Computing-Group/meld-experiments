@@ -6,8 +6,8 @@ contradicting, and share a compatible frame. It NEVER overrides the contradictio
 guard, NEVER merges below sigma_lo, and is INERT when eps_hi=0 / eps=0 (so
 ungrounded datasets are unaffected -> M-1/M-2 headline numbers preserved).
 """
-from smp.config import Thresholds
-from smp.merge.classifier import classify
+from meld.config import Thresholds
+from meld.merge.classifier import classify
 
 
 def _cfg(eps_hi=0.5):

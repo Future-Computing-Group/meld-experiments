@@ -28,12 +28,12 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "src"))
 
-from smp.agent.hotpot_loader import load_hotpot_fixture                    # noqa: E402
-from smp.agent.llm import (MockLLM, OPEN_MODEL_AXIS, OpenWeightLLM,        # noqa: E402
+from meld.agent.hotpot_loader import load_hotpot_fixture                    # noqa: E402
+from meld.agent.llm import (MockLLM, OPEN_MODEL_AXIS, OpenWeightLLM,        # noqa: E402
                            open_model)
-from smp.agent.mem_conditions import MEMORY_CONDITIONS                     # noqa: E402
-from smp.agent.run_hotpot_gate import _calibrated_cfg                      # noqa: E402
-from smp.agent.run_hotpot_memdelta import (format_delta_table, run_one,    # noqa: E402
+from meld.agent.mem_conditions import MEMORY_CONDITIONS                     # noqa: E402
+from meld.agent.run_hotpot_gate import _calibrated_cfg                      # noqa: E402
+from meld.agent.run_hotpot_memdelta import (format_delta_table, run_one,    # noqa: E402
                                            summarize)
 
 

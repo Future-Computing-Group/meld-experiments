@@ -13,7 +13,7 @@ callers, eval-c, and the headline are unchanged.
 """
 from __future__ import annotations
 
-from smp.sync.node import BrainNode
+from meld.sync.node import BrainNode
 
 
 def _node(name):

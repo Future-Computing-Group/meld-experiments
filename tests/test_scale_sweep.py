@@ -9,7 +9,7 @@ routing run is the smoke step.
 
 Run:  PYTHONPATH=src python3 -m pytest tests/test_scale_sweep.py -q
 """
-from smp.eval.scale_sweep import make_brains, make_workload, summarize_scale
+from meld.eval.scale_sweep import make_brains, make_workload, summarize_scale
 
 
 def test_make_brains_are_distinct_and_sized():

@@ -1,0 +1,19 @@
+# MELD merge thresholds CALIBRATED for the hashing (bag-of-tokens) encoder.
+#
+# Provenance (reproducible): meld.merge.calibration.calibrate_thresholds over
+# CALIBRATION_PAIRS (a labeled MERGE/RELATE/NO_RELATION claim-pair set),
+# encoder="hashing", max-accuracy then max-margin. The hashing
+# encoder's similarity is compressed and does NOT cleanly separate paraphrases
+# from related-distinct pairs, so the best achievable accuracy is ~0.89 (< minilm's
+# 1.0) -- this config is for the fast unit-test path only; the headline experiment
+# uses minilm (thresholds-minilm.yaml). Checked by
+# tests/test_threshold_calibration.py.
+#
+# Properly ordered (sigma_lo < theta_merge), unlike the inverted 0.5/0.55 it
+# replaces; theta_merge ~= 0.49 preserves the moderate-similarity merge/conflict
+# behavior the hashing unit tests exercise.
+
+theta_merge: 0.49
+sigma_lo: 0.29
+r_min: 0.10
+tau: 0.50

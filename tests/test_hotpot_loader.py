@@ -6,17 +6,17 @@ the CSC node / any networked host; SKIPPED here if ``datasets`` is absent so the
 offline suite stays green). For the LOCAL path a tiny deterministic fixture in
 the HF distractor SCHEMA exercises the loader end-to-end with NO network.
 
-The load-bearing SMP integration: ``feed_context_through_brain`` feeds each item's
-``context`` paragraphs THROUGH the SMP brain as merged observations (chunked ->
+The load-bearing MELD integration: ``feed_context_through_brain`` feeds each item's
+``context`` paragraphs THROUGH the MELD brain as merged observations (chunked ->
 PUBLISH -> merge_on_receive -> Patch), so a later recall retrieves the evidence.
-This is the SMP-on-message choice (the gate exercises recall + multi-hop reason
+This is the MELD-on-message choice (the gate exercises recall + multi-hop reason
 over brain-resident evidence, not raw model recall).
 """
 from __future__ import annotations
 
 import pytest
 
-from smp.agent.hotpot_loader import (
+from meld.agent.hotpot_loader import (
     HotpotTask, feed_context_through_brain, load_hotpot_fixture,
     normalize_context, normalize_supporting_facts, stratified_slice,
 )
@@ -72,16 +72,16 @@ def test_fixture_is_deterministic():
     assert [t.answer for t in a] == [t.answer for t in b]
 
 
-# -- the SMP brain feed (load-bearing) --------------------------------------
+# -- the MELD brain feed (load-bearing) --------------------------------------
 
 def test_feed_context_through_brain_writes_patches_and_is_recallable():
-    from smp.agent.memory import SMPMemory
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.agent.memory import SMPMemory
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
 
     task = load_hotpot_fixture(n=1)[0]
     mem = SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
     patches = feed_context_through_brain(task, mem)
-    # every paragraph fed through the SMP merge path -> >=1 Patch in the audit log
+    # every paragraph fed through the MELD merge path -> >=1 Patch in the audit log
     assert mem.brain.audit_log, "context must traverse merge_on_receive -> Patch"
     assert patches
     # the gold-supporting evidence is now recallable from the brain
@@ -107,7 +107,7 @@ def test_stratified_slice_caps_per_level_and_is_deterministic():
 
 def test_load_hotpot_real_is_present_and_open():
     import importlib
-    mod = importlib.import_module("smp.agent.hotpot_loader")
+    mod = importlib.import_module("meld.agent.hotpot_loader")
     assert hasattr(mod, "load_hotpot_real")
     if importlib.util.find_spec("datasets") is None:
         pytest.skip("datasets not installed in the offline .venv (CSC-time dep)")

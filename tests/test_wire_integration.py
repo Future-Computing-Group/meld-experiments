@@ -13,12 +13,12 @@ import requests
 
 
 def _cfg():
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
     return _calibrated_cfg("hashing")
 
 
 def _node(nid):
-    from smp.sync.node import BrainNode
+    from meld.sync.node import BrainNode
     return BrainNode(nid, encoder="hashing", nli="lexical", cfg=_cfg())
 
 
@@ -31,17 +31,17 @@ def _free_port():
 
 
 def _start(node, port):
-    from smp.sync.service import serve
+    from meld.sync.service import serve
     httpd = serve(node, host="127.0.0.1", port=port)
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd
 
 
 def test_publish_delivers_over_real_http_and_records_latency():
-    from smp.sync.latency import SyncLatencyMeter
-    from smp.sync.transport import PatchTransport
-    from smp.sync.wire import make_http_send
-    from smp.sync.wire_delta import group_key, serialize_signed_delta
+    from meld.sync.latency import SyncLatencyMeter
+    from meld.sync.transport import PatchTransport
+    from meld.sync.wire import make_http_send
+    from meld.sync.wire_delta import group_key, serialize_signed_delta
 
     b = _node("B")
     port = _free_port()
@@ -71,9 +71,9 @@ def test_publish_delivers_over_real_http_and_records_latency():
 def test_node_driven_publish_converges_three_brains_over_http():
     # the real §7-s path: each node publishes its OWN delta to its peers over HTTP
     # (node->peer, not orchestrator->peer), then all three converge.
-    from smp.sync.latency import SyncLatencyMeter
-    from smp.sync.service import BrainService, serve
-    from smp.sync.wire import make_http_send
+    from meld.sync.latency import SyncLatencyMeter
+    from meld.sync.service import BrainService, serve
+    from meld.sync.wire import make_http_send
 
     ids = ["A", "B", "C"]
     ports = {i: _free_port() for i in ids}
@@ -91,7 +91,7 @@ def test_node_driven_publish_converges_three_brains_over_http():
                                send=make_http_send(timeout=5),
                                latency_meter=SyncLatencyMeter())
             services[i] = svc
-            from smp.sync.service import _make_handler
+            from meld.sync.service import _make_handler
             from http.server import ThreadingHTTPServer
             httpd = ThreadingHTTPServer(("127.0.0.1", ports[i]), _make_handler(svc))
             threading.Thread(target=httpd.serve_forever, daemon=True).start()
@@ -116,9 +116,9 @@ def test_resync_redelivers_full_state_to_a_behind_peer():
     # anti-entropy: B is behind (missed a claim, as after a partition). A's /resync sends
     # its FULL live set to B over the wire, so B catches up -- the convergence-after-heal
     # mechanism. A is a service object; B is a live server peer.
-    from smp.sync.latency import SyncLatencyMeter
-    from smp.sync.service import BrainService
-    from smp.sync.wire import make_http_send
+    from meld.sync.latency import SyncLatencyMeter
+    from meld.sync.service import BrainService
+    from meld.sync.wire import make_http_send
 
     b = _node("B")
     port = _free_port()
@@ -144,8 +144,8 @@ def test_resync_redelivers_full_state_to_a_behind_peer():
 
 
 def test_unknown_route_over_http_is_non_delivery():
-    from smp.sync.transport import PatchTransport
-    from smp.sync.wire import make_http_send
+    from meld.sync.transport import PatchTransport
+    from meld.sync.wire import make_http_send
 
     b = _node("B")
     port = _free_port()

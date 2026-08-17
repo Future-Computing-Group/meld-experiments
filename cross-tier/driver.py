@@ -15,7 +15,7 @@ A separate partition-heal phase lives in the orchestrator (drop a tier's tunnel)
 """
 import argparse, json, math, socket, sys, threading, time
 
-# Verified running-example signals (reproduced from src/smp; see manuscript Fig. 1).
+# Verified running-example signals (reproduced from src/meld; see manuscript Fig. 1).
 BEATS = [
     {"key": "merge",     "op": "publish",   "claim_id": "c1", "kappa": 0, "sigma": 0.93, "chi": "entails",     "ctx_ok": True},
     {"key": "relate",    "op": "publish",   "claim_id": "c1", "kappa": 0, "sigma": 0.93, "chi": "entails",     "ctx_ok": False},

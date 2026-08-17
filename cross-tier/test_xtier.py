@@ -5,7 +5,7 @@ Runs the WHOLE experiment on localhost (3 brains as subprocesses, no SSH) so the
 run logic is proven before any tier is real. What the real run measures is exactly
 what is asserted here: per-brain RTT (latency phase) and the running-example
 decisions + OVERRULED convergence (correctness phase). The merge decisions reuse
-the tested src/smp classifier + status CRDT; the brain is torch-free (signals
+the tested src/meld classifier + status CRDT; the brain is torch-free (signals
 arrive in the delta, precomputed by the driver).
 
 Run:  PYTHONPATH=src python3 -m pytest cross-tier/test_xtier.py -q

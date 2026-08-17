@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SMP cross-tier PARTITION-HEAL on real infrastructure (the C-1 result, upgraded
+# MELD cross-tier PARTITION-HEAL on real infrastructure (the C-1 result, upgraded
 # from a homogeneous LAN to the real continuum). Laptop hub + local brain + the
 # EDGE brain. Sequence: baseline -> drop the edge tunnel (partition) ->
 # overrule (edge misses it: DIVERGED) -> re-open the tunnel (heal; the brain's
@@ -19,7 +19,7 @@ PIDS=(); TUN_PID=""
 cleanup() {
   echo "[teardown]"
   for p in "${PIDS[@]:-}"; do kill "$p" 2>/dev/null || true; done
-  ssh "$EDGE_SSH" 'tmux kill-session -t smp-ph 2>/dev/null || true' 2>/dev/null || true
+  ssh "$EDGE_SSH" 'tmux kill-session -t meld-ph 2>/dev/null || true' 2>/dev/null || true
   [ -n "${CAFF_PID:-}" ] && kill "$CAFF_PID" 2>/dev/null || true
 }
 trap cleanup EXIT
@@ -44,10 +44,10 @@ command -v caffeinate >/dev/null && { caffeinate -s & CAFF_PID=$!; }
 echo "[setup] broker + edge deploy + tunnel + brains"
 python3 "$HERE/probe_broker.py" "$BROKER_PORT" >"$OUT/ph-broker-$STAMP.log" 2>&1 & PIDS+=($!); sleep 0.5
 ssh "$EDGE_SSH" "mkdir -p '$EDGE_DIR/src' '$EDGE_DIR/cross-tier'"
-rsync -az --delete "$REPO/src/smp" "$EDGE_SSH:$EDGE_DIR/src/"
+rsync -az --delete "$REPO/src/meld" "$EDGE_SSH:$EDGE_DIR/src/"
 rsync -az "$HERE/brain.py" "$HERE/probe_client.py" "$EDGE_SSH:$EDGE_DIR/cross-tier/"
 open_tunnel
-ssh "$EDGE_SSH" "tmux kill-session -t smp-ph 2>/dev/null || true; tmux new-session -d -s smp-ph bash -c \"cd '$EDGE_DIR'; set +u; ${EDGE_ENV:-true}; set -u; PYTHONPATH=src python3 cross-tier/brain.py --broker-host 127.0.0.1 --broker-port $TUN_PORT --id edge --log '$EDGE_LOG'\""
+ssh "$EDGE_SSH" "tmux kill-session -t meld-ph 2>/dev/null || true; tmux new-session -d -s meld-ph bash -c \"cd '$EDGE_DIR'; set +u; ${EDGE_ENV:-true}; set -u; PYTHONPATH=src python3 cross-tier/brain.py --broker-host 127.0.0.1 --broker-port $TUN_PORT --id edge --log '$EDGE_LOG'\""
 PYTHONPATH="$REPO/src" python3 "$HERE/brain.py" --broker-host 127.0.0.1 --broker-port "$BROKER_PORT" \
   --id local --log "$LOCAL_LOG" & PIDS+=($!)
 sleep 4

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""SMP brain for the cross-tier continuum run: merge-on-receive over the relay.
+"""MELD brain for the cross-tier continuum run: merge-on-receive over the relay.
 
 Subscribes to `claims`, runs the *tested* four-way decision procedure
-(`smp.merge.classifier.classify`) + the status CRDT (`smp.merge.status_crdt`) on
+(`meld.merge.classifier.classify`) + the status CRDT (`meld.merge.status_crdt`) on
 each delivered delta, and publishes an `acks` record back through the broker so
 the laptop driver can measure everything with one clock (no cross-tier skew).
 
@@ -15,11 +15,11 @@ import argparse, json, os, socket, sys, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "src"))
-from smp.config import load_thresholds                       # noqa: E402
-from smp.merge.classifier import classify                    # noqa: E402
-from smp.merge.status_crdt import StatusState, effective_status  # noqa: E402
+from meld.config import load_thresholds                       # noqa: E402
+from meld.merge.classifier import classify                    # noqa: E402
+from meld.merge.status_crdt import StatusState, effective_status  # noqa: E402
 
-MINILM = os.path.join(os.path.dirname(HERE), "src", "smp", "config", "thresholds-minilm.yaml")
+MINILM = os.path.join(os.path.dirname(HERE), "src", "meld", "config", "thresholds-minilm.yaml")
 
 
 def _connect(host, port):

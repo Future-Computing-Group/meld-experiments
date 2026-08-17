@@ -1,6 +1,6 @@
 """G3 — end-to-end: a tool-using agent answers a GAIA-shaped task where the
-ANSWER is only in an attached file / web page, and that evidence reaches the SMP
-brain as a merged observation (the SMP-on-message decision), then is RECALLED to
+ANSWER is only in an attached file / web page, and that evidence reaches the MELD
+brain as a merged observation (the MELD-on-message decision), then is RECALLED to
 answer. This is the L2-achievability path: file/web tools + memory, not raw recall
 of a pre-seeded clue.
 
@@ -8,18 +8,18 @@ WIRING smoke (oracle MockLLM), NOT a GAIA result.
 """
 from __future__ import annotations
 
-from smp.agent.llm import MockLLM
-from smp.agent.memory import SMPMemory
-from smp.agent.registry import make_agent
-from smp.agent.tools import (CalculatorTool, FileReaderTool, FinalAnswerTool,
+from meld.agent.llm import MockLLM
+from meld.agent.memory import SMPMemory
+from meld.agent.registry import make_agent
+from meld.agent.tools import (CalculatorTool, FileReaderTool, FinalAnswerTool,
                              OfflineWebSearchTool, RecallTool)
-from smp.config import Thresholds, load_thresholds
+from meld.config import Thresholds, load_thresholds
 
 
 def _mem():
     # canonical encoder-matched calibrated thresholds (was an inline inverted
     # 0.5/0.55 pair that tripped the Thresholds ordering invariant)
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
     return SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg("hashing"))
 
 
@@ -40,7 +40,7 @@ def test_agent_answers_from_a_file_via_brain_observation(tmp_path):
                        max_steps=6)
     result = agent.run("What is the launch venue in the attached report?")
     assert result.answer == "Helsinki"
-    # the file content traversed the SMP merge path (not just a raw tool string)
+    # the file content traversed the MELD merge path (not just a raw tool string)
     assert any(p.decision in ("INSERT", "MERGE", "RELATE", "CONFLICT")
                for p in mem.brain.audit_log)
 

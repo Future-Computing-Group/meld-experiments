@@ -1,9 +1,9 @@
 """G3 LOCAL competence-gate WIRING smoke (no GPU, no remote, no billable).
 
 Usage:  python3 scripts/run_gaia_gate_smoke.py
-Runs the wired ReAct agent (SMP brain as memory) over a tiny GAIA-shaped fixture
+Runs the wired ReAct agent (MELD brain as memory) over a tiny GAIA-shaped fixture
 with a deterministic ORACLE MockLLM, scores with GAIA quasi-exact-match, and
-prints the competence gate (GAIA L2 >= 60%). This validates the harness + SMP-
+prints the competence gate (GAIA L2 >= 60%). This validates the harness + MELD-
 brain integration; it is NOT a GAIA result (the real score is the gated CSC run).
 """
 import os
@@ -13,7 +13,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(ROOT, "src"))
 
-from smp.agent.run_gaia_gate import run_gate_smoke  # noqa: E402
+from meld.agent.run_gaia_gate import run_gate_smoke  # noqa: E402
 
 if __name__ == "__main__":
     res = run_gate_smoke(n=6)
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     print(f"  L2 rate          : {g['l2_correct']}/{g['l2_n']} = {g['l2_rate']:.2f}")
     print(f"  PASSED           : {g['passed']}  "
           f"(wiring oracle; NOT a model competence claim)")
-    print("== SMP-brain integration (per task) ==")
+    print("== MELD-brain integration (per task) ==")
     for rec in res["integration"]:
         print(f"  task {rec['task_id']}: steps={rec['n_steps']} "
               f"patches={rec['n_patches']} units={rec['brain_units']} "

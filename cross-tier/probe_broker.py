@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Minimal line-relay "broker" for the SMP cross-tier reachability probe.
+"""Minimal line-relay "broker" for the MELD cross-tier reachability probe.
 
-This is NOT the SMP transport. It is a ~40-line stand-in whose only job is to
+This is NOT the MELD transport. It is a ~40-line stand-in whose only job is to
 prove the SSH-reverse-tunnel hub topology end-to-end: that a process on each
 remote tier can reach a broker bound to the laptop's loopback through its local
 tunnel port, and that a message PUBlished on one tier is delivered to a SUBscriber

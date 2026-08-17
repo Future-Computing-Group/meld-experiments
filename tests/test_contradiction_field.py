@@ -6,11 +6,11 @@ over labelled pairs, is the pure function tested here;
 running the real NLI over a naturalistic sample is the smoke-ladder step. Run:
   PYTHONPATH=src python3 -m pytest tests/test_contradiction_field.py -q
 """
-from smp.eval.contradiction_field import contradiction_metrics, build_field_sample
+from meld.eval.contradiction_field import contradiction_metrics, build_field_sample
 
 
 def test_build_field_sample_makes_genuine_swap_contradictions_and_distinct_neutrals():
-    from smp.agent.hotpot_loader import load_hotpot_fixture
+    from meld.agent.hotpot_loader import load_hotpot_fixture
     sample = build_field_sample(load_hotpot_fixture(n=4), max_pairs=20)
     contras = [(a, b) for lab, a, b in sample if lab == "contradicts"]
     neutrals = [(a, b) for lab, a, b in sample if lab == "neutral"]

@@ -12,14 +12,14 @@ Run:  PYTHONPATH=src python3 -m pytest tests/test_wire_signing.py -q
 """
 from __future__ import annotations
 
-from smp.sync.node import BrainNode
-from smp.sync.wire_delta import deserialize_verified_delta, group_key
+from meld.sync.node import BrainNode
+from meld.sync.wire_delta import deserialize_verified_delta, group_key
 
-KEY = b"smp-test-group-key"
+KEY = b"meld-test-group-key"
 
 
 def _cfg():
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
     return _calibrated_cfg("hashing")
 
 

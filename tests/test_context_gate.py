@@ -8,7 +8,7 @@ the classifier RELATEs rather than MERGEs them.
 """
 from __future__ import annotations
 
-from smp.merge.context_gate import Context, context_compatible
+from meld.merge.context_gate import Context, context_compatible
 
 
 def _ctx(cell="agent.public", valid=(0, 10), fresh=True):

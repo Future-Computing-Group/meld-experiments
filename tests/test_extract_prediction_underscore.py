@@ -6,7 +6,7 @@ spaced 'FINAL ANSWER', so the whole 'FINAL_ANSWER: British' string leaked throug
 tighten and scored F1=0.67 instead of 1.0 (across ALL conditions equally, so the
 deltas held, but the absolute numbers were wrong).
 """
-from smp.agent.run_hotpot_gate import extract_prediction
+from meld.agent.run_hotpot_gate import extract_prediction
 
 
 def test_extract_prediction_handles_underscore_template():

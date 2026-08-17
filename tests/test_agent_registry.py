@@ -1,10 +1,10 @@
-"""G3 — the agent-framework REGISTRY (the SMP analogue of DWM's encoder ladder).
+"""G3 — the agent-framework REGISTRY (the MELD analogue of DWM's encoder ladder).
 
-These are the TDD spec for ``smp.agent.registry``. The registry exposes several
+These are the TDD spec for ``meld.agent.registry``. The registry exposes several
 PUBLIC, open agentic baselines behind ONE interface (``make_agent(name)`` ->
 something with ``.run(task) -> AgentResult``), each driving the SAME GAIA gate
-through the SAME SMP ``Brain`` as its memory backend. The load-bearing property:
-the baselines are SWAPPABLE and EACH writes >= 1 Patch through the SMP merge
+through the SAME MELD ``Brain`` as its memory backend. The load-bearing property:
+the baselines are SWAPPABLE and EACH writes >= 1 Patch through the MELD merge
 path (PUBLISH -> merge-on-receive -> Patch). No baseline keeps a private memory.
 
 The LLM here is a deterministic MOCK (offline, no weights, no network). Nothing
@@ -14,18 +14,18 @@ from __future__ import annotations
 
 import pytest
 
-from smp.agent.llm import MockLLM
-from smp.agent.memory import SMPMemory
-from smp.agent.react_agent import AgentResult
-from smp.agent.registry import AGENT_REGISTRY, make_agent, available_agents
-from smp.agent.tools import FinalAnswerTool, RecallTool
-from smp.config import Thresholds, load_thresholds
+from meld.agent.llm import MockLLM
+from meld.agent.memory import SMPMemory
+from meld.agent.react_agent import AgentResult
+from meld.agent.registry import AGENT_REGISTRY, make_agent, available_agents
+from meld.agent.tools import FinalAnswerTool, RecallTool
+from meld.config import Thresholds, load_thresholds
 
 
 def _calibrated_cfg() -> Thresholds:
     # delegate to the canonical encoder-matched calibrated thresholds (was a
     # duplicated inverted-0.5/0.55 copy that tripped the ordering invariant)
-    from smp.agent.run_hotpot_gate import _calibrated_cfg as _canonical
+    from meld.agent.run_hotpot_gate import _calibrated_cfg as _canonical
     return _canonical("hashing")
 
 
@@ -79,7 +79,7 @@ def test_each_offline_baseline_is_constructible_and_runs(name):
 @pytest.mark.parametrize("name", _OFFLINE_BASELINES)
 def test_each_baseline_is_nondegenerate_and_writes_a_patch(name):
     """Swappability + the load-bearing integration property: EACH baseline must
-    step the agent (>= 2 steps) AND write >= 1 Patch through the SMP merge path
+    step the agent (>= 2 steps) AND write >= 1 Patch through the MELD merge path
     (a MERGE/RELATE/CONFLICT in the brain audit log) -- never a no-op."""
     mem = _mem()
     agent = make_agent(name, llm=MockLLM(_oracle_script()), memory=mem,
@@ -93,7 +93,7 @@ def test_each_baseline_is_nondegenerate_and_writes_a_patch(name):
 
 def test_baselines_share_one_interface_and_same_brain_type():
     """All registered offline baselines share the SAME run/AgentResult interface
-    and the SAME SMP Brain memory backend (swap by name, no other change)."""
+    and the SAME MELD Brain memory backend (swap by name, no other change)."""
     results = {}
     for name in _OFFLINE_BASELINES:
         mem = _mem()
@@ -101,8 +101,8 @@ def test_baselines_share_one_interface_and_same_brain_type():
                            tools=[RecallTool(mem), FinalAnswerTool()], max_steps=6)
         r = agent.run("What is the capital of France?")
         assert isinstance(r, AgentResult)
-        # the memory backend is the SMP brain for every baseline
-        from smp.brain.store import Brain
+        # the memory backend is the MELD brain for every baseline
+        from meld.brain.store import Brain
         assert isinstance(mem.brain, Brain)
         results[name] = r.answer
     # same task, same oracle -> same answer regardless of which baseline ran

@@ -7,10 +7,10 @@ REJECT is a recorded no-op.
 """
 from __future__ import annotations
 
-from smp.config import load_thresholds
-from smp.merge.signals import EmbeddingSimilarity
-from smp.proto import Claim, MemoryLink, MemoryUnit
-from smp.protocol.merge_on_receive import merge_on_receive
+from meld.config import load_thresholds
+from meld.merge.signals import EmbeddingSimilarity
+from meld.proto import Claim, MemoryLink, MemoryUnit
+from meld.protocol.merge_on_receive import merge_on_receive
 
 CFG = load_thresholds()
 

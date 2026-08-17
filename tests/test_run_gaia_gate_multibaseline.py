@@ -1,14 +1,14 @@
 """G3 wiring smoke across SEVERAL baselines: the registry drives the SAME GAIA
-gate through the SAME SMP brain for each baseline, and each is non-degenerate.
+gate through the SAME MELD brain for each baseline, and each is non-degenerate.
 
 WIRING smoke (oracle LLM), NOT a GAIA result: it proves the
-registry <-> agent <-> SMP-brain <-> scorer harness runs end-to-end for >= 2
+registry <-> agent <-> MELD-brain <-> scorer harness runs end-to-end for >= 2
 public baselines and the gate computes per baseline. The oracle recovers gold
 (validates recall/answer wiring); it is NOT a model competence claim.
 """
 from __future__ import annotations
 
-from smp.agent.run_gaia_gate import run_gate_smoke_multibaseline
+from meld.agent.run_gaia_gate import run_gate_smoke_multibaseline
 
 
 def test_multibaseline_smoke_runs_offline_baselines():

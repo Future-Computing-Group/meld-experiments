@@ -3,7 +3,7 @@ endpoint) — the rung between the oracle wiring smoke and the gated CSC run.
 
 PURPOSE: exercise the REAL-LLM path the MockLLM cannot — prompt construction,
 the ReAct text contract, output parsing, tool dispatch, the open-weight-quirk
-surface — across the multi-baseline registry, each through the SMP Brain. It is
+surface — across the multi-baseline registry, each through the MELD Brain. It is
 NOT a competence claim: a small local model + a tiny fixture means correctness is
 incidental; the signal is "does a real model drive the harness end-to-end without
 contract/parse/dispatch failures?"
@@ -22,14 +22,14 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "src"))
 
-from smp.agent.gaia_loader import load_gaia_fixture            # noqa: E402
-from smp.agent.gaia_scorer import (competence_gate,            # noqa: E402
+from meld.agent.gaia_loader import load_gaia_fixture            # noqa: E402
+from meld.agent.gaia_scorer import (competence_gate,            # noqa: E402
                                     extract_final_answer, score_predictions)
-from smp.agent.llm import OpenWeightLLM                        # noqa: E402
-from smp.agent.memory import SMPMemory                         # noqa: E402
-from smp.agent.registry import make_agent                      # noqa: E402
-from smp.agent.run_gaia_gate import _calibrated_cfg            # noqa: E402
-from smp.agent.tools import (CalculatorTool, FinalAnswerTool,  # noqa: E402
+from meld.agent.llm import OpenWeightLLM                        # noqa: E402
+from meld.agent.memory import SMPMemory                         # noqa: E402
+from meld.agent.registry import make_agent                      # noqa: E402
+from meld.agent.run_gaia_gate import _calibrated_cfg            # noqa: E402
+from meld.agent.tools import (CalculatorTool, FinalAnswerTool,  # noqa: E402
                              RecallTool)
 
 
@@ -74,7 +74,7 @@ def main() -> int:
         steps_lo = steps_hi = patches_lo = patches_hi = None
         for t in tasks:
             mem = SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
-            for clue in t.clues:                 # pre-load via the SMP merge path
+            for clue in t.clues:                 # pre-load via the MELD merge path
                 mem.write(clue)
             agent = make_agent(b, llm=llm, memory=mem,
                                tools=[RecallTool(mem), FinalAnswerTool(),

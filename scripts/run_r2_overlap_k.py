@@ -15,11 +15,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from smp.config import load_thresholds                              # noqa: E402
-from smp.agent.hotpot_loader import load_hotpot_fixture, load_hotpot_real  # noqa: E402
-from smp.eval.recall_sweep import recall_rows, aggregate_recall    # noqa: E402
+from meld.config import load_thresholds                              # noqa: E402
+from meld.agent.hotpot_loader import load_hotpot_fixture, load_hotpot_real  # noqa: E402
+from meld.eval.recall_sweep import recall_rows, aggregate_recall    # noqa: E402
 
-MINILM = os.path.join(REPO, "src", "smp", "config", "thresholds-minilm.yaml")
+MINILM = os.path.join(REPO, "src", "meld", "config", "thresholds-minilm.yaml")
 CONDS = ["centralized", "distributed_merge", "naive_union", "exact_dedup"]
 
 

@@ -33,7 +33,7 @@ def test_publish_consume_roundtrip():
     _skip_if_no_broker()
     from kafka_transport import KafkaTransport
     t = KafkaTransport(BOOTSTRAP)
-    topic = "smp-test-%s" % uuid.uuid4().hex[:8]
+    topic = "meld-test-%s" % uuid.uuid4().hex[:8]
     try:
         t.publish(topic, "hello-continuum")
         c = t.consumer(topic, from_beginning=True, timeout_ms=8000)
@@ -50,7 +50,7 @@ def test_broadcast_two_groups_both_receive():
     _skip_if_no_broker()
     from kafka_transport import KafkaTransport
     t = KafkaTransport(BOOTSTRAP)
-    topic = "smp-bcast-%s" % uuid.uuid4().hex[:8]
+    topic = "meld-bcast-%s" % uuid.uuid4().hex[:8]
     try:
         t.publish(topic, "m1")
         c1 = t.consumer(topic, group="g-a", from_beginning=True, timeout_ms=8000)

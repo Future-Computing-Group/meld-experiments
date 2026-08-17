@@ -4,10 +4,10 @@ experiment: measure the merge-protocol DELTA, not absolute agent F1.
 REPLACES run_hotpot_gate_csc.py's centralized-only framing. That driver fed ALL of
 a question's context into ONE brain (= the ``centralized`` condition) and reported
 an absolute agent F1; it never exercised the merge ACROSS sovereign brains, which
-is SMP's whole contribution. This driver runs the SAME held-out questions under
+is MELD's whole contribution. This driver runs the SAME held-out questions under
 EVERY MEMORY_CONDITION x answer-mode x model and the headline is the condition
 DELTA (distributed_merge - naive_union; distributed_merge - centralized; the
-floor/ceiling none/full_context). See src/smp/agent/mem_delta_metrics.py.
+floor/ceiling none/full_context). See src/meld/agent/mem_delta_metrics.py.
 
 DURABLE CHECKPOINT + RESUME (G4 acceptance criterion): each completed
 (condition,mode,model,question) prediction is appended atomically (write+fsync) to
@@ -32,11 +32,11 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "src"))
 
-from smp.agent.hotpot_loader import load_hotpot_real, stratified_slice    # noqa: E402
-from smp.agent.llm import OPEN_MODEL_AXIS, open_model                     # noqa: E402
-from smp.agent.mem_conditions import ANSWER_MODES, MEMORY_CONDITIONS      # noqa: E402
-from smp.agent.run_hotpot_gate import _calibrated_cfg                     # noqa: E402
-from smp.agent.run_hotpot_memdelta import run_one, summarize             # noqa: E402
+from meld.agent.hotpot_loader import load_hotpot_real, stratified_slice    # noqa: E402
+from meld.agent.llm import OPEN_MODEL_AXIS, open_model                     # noqa: E402
+from meld.agent.mem_conditions import ANSWER_MODES, MEMORY_CONDITIONS      # noqa: E402
+from meld.agent.run_hotpot_gate import _calibrated_cfg                     # noqa: E402
+from meld.agent.run_hotpot_memdelta import run_one, summarize             # noqa: E402
 
 
 def _parse_per_level(spec: str) -> dict:
@@ -94,7 +94,7 @@ def main() -> int:
     max_new = int(os.environ.get("SMP_MAX_NEW_TOKENS", "512"))
     k = int(os.environ.get("SMP_K", "5"))
     # minilm is the headline encoder (its similarity separates the merge classes;
-    # the hashing encoder cannot -- see smp.merge.calibration). Requires the
+    # the hashing encoder cannot -- see meld.merge.calibration). Requires the
     # all-MiniLM-L6-v2 model cached in HF_HOME for the offline (HF_HUB_OFFLINE) run.
     encoder = os.environ.get("SMP_ENCODER", "minilm")
 

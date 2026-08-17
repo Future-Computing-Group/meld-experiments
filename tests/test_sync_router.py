@@ -6,7 +6,7 @@ Ground-truth "needs it" = the brain would MERGE/RELATE the claim (relevant), not
 REJECT it. Metrics: routing precision (delivered that were needed / delivered),
 recall (needed that were delivered / needed), wasted-delivery rate (delivered but
 not needed / delivered). The win over broadcast is equal recall at far lower waste.
-Built on the SMP sigma signal (smp.merge.signals).
+Built on the MELD sigma signal (meld.merge.signals).
 """
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ def _brains():
 
 
 def test_semantic_route_delivers_to_relevant_brain_only():
-    from smp.sync.router import semantic_route
+    from meld.sync.router import semantic_route
     delivered = semantic_route("Paris is the capital city of France", _brains(),
                                encoder="hashing", sigma_lo=0.3)
     assert delivered == {"b_paris"}
@@ -29,8 +29,8 @@ def test_semantic_route_delivers_to_relevant_brain_only():
 def test_semantic_route_reuses_shared_es_to_avoid_reencoding():
     # perf: scoring many claims against peer content must NOT re-encode per claim. A shared
     # EmbeddingSimilarity caches peer-content (and the claim) so the 2nd route hits the cache.
-    from smp.merge.signals import EmbeddingSimilarity
-    from smp.sync.router import semantic_route
+    from meld.merge.signals import EmbeddingSimilarity
+    from meld.sync.router import semantic_route
     es = EmbeddingSimilarity(encoder="hashing")
     semantic_route("Paris is the capital of France", _brains(),
                    encoder="hashing", sigma_lo=0.0, es=es)
@@ -42,7 +42,7 @@ def test_semantic_route_reuses_shared_es_to_avoid_reencoding():
 
 def test_score_brains_exposes_ranked_relevance():
     # the scoring seam NR never built: per-brain relevance score, not a bare set.
-    from smp.sync.router import score_brains
+    from meld.sync.router import score_brains
     s = score_brains("Paris is the capital city of France", _brains(), encoder="hashing")
     assert set(s) == {"b_paris", "b_everest", "b_orwell"}
     assert s["b_paris"] > s["b_everest"]
@@ -52,7 +52,7 @@ def test_score_brains_exposes_ranked_relevance():
 def test_semantic_route_top_k_keeps_highest_scoring():
     # two brains clear a low floor; top_k=1 keeps only the most relevant (score-ranked,
     # NOT a positional slice -- the NR router.py:606 bug we avoid).
-    from smp.sync.router import semantic_route
+    from meld.sync.router import semantic_route
     brains = {"b_france": ["France is a country in Europe"],
               "b_paris": ["Paris is the capital of France"]}
     d = semantic_route("Paris is the capital city of France", brains,
@@ -61,12 +61,12 @@ def test_semantic_route_top_k_keeps_highest_scoring():
 
 
 def test_broadcast_route_delivers_to_all():
-    from smp.sync.router import broadcast_route
+    from meld.sync.router import broadcast_route
     assert broadcast_route(_brains()) == {"b_paris", "b_everest", "b_orwell"}
 
 
 def test_routing_metrics_precision_recall_waste():
-    from smp.sync.router import routing_metrics
+    from meld.sync.router import routing_metrics
     # one patch: needed by {a}, delivered to {a,b} -> precision 1/2, recall 1/1, waste 1/2
     m = routing_metrics(delivered=[{"a", "b"}], needed=[{"a"}])
     assert abs(m["precision"] - 0.5) < 1e-9
@@ -77,7 +77,7 @@ def test_routing_metrics_precision_recall_waste():
 def test_semantic_beats_broadcast_on_waste_at_equal_recall():
     # across a few topic-specific patches, semantic routing recalls the needed
     # brain every time while wasting far fewer deliveries than broadcast.
-    from smp.sync.router import broadcast_route, routing_metrics, semantic_route
+    from meld.sync.router import broadcast_route, routing_metrics, semantic_route
     brains = _brains()
     patches = [("Paris is the capital city of France", {"b_paris"}),
                ("Everest is the highest mountain on Earth", {"b_everest"}),

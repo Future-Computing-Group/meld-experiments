@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # M3a: seeded MULTI-TRIAL cross-tier partition-heal over REAL Apache Kafka WAN.
 #
-# Laptop hub (smp-kafka KRaft :9092) + local brain + an HPC-tier brain + an edge-tier brain
+# Laptop hub (meld-kafka KRaft :9092) + local brain + an HPC-tier brain + an edge-tier brain
 # (real targets in gitignored site.env), each reaching the broker via `ssh -R 9092:localhost:9092`.
 # Per trial: deprecate a fresh claim (all three converge) -> PARTITION by dropping the
 # EDGE tunnel (no delivery to edge) -> overrule (local+hpc apply it; edge is cut off ->
@@ -20,7 +20,7 @@ N="${TRIALS:-8}"
 PY="$REPO/.venv/bin/python"
 OUT="${OUT_DIR:-$REPO/outputs/cross-tier}"; mkdir -p "$OUT"
 STAMP="$(date +%Y%m%d-%H%M%S)"; RUN="$(date +%s)"
-CLAIMS="smp-phwan-claims-$RUN"; ACKS="smp-phwan-acks-$RUN"
+CLAIMS="meld-phwan-claims-$RUN"; ACKS="meld-phwan-acks-$RUN"
 LOCAL_LOG="$OUT/phwan-local-$STAMP.jsonl"
 HPC_LOG="$HPC_DIR/phwan-hpc.jsonl"; EDGE_LOG="$EDGE_DIR/phwan-edge.jsonl"
 TRIALS_JSON="$OUT/m3a-wan-trials-$STAMP.jsonl"; : > "$TRIALS_JSON"
@@ -32,8 +32,8 @@ cleanup() {
   [ -n "$EDGE_TUN" ] && kill "$EDGE_TUN" 2>/dev/null || true
   [ -n "$HPC_TUN" ]  && kill "$HPC_TUN"  2>/dev/null || true
   [ -n "$LOCAL_BRAIN" ] && kill "$LOCAL_BRAIN" 2>/dev/null || true
-  ssh "$HPC_SSH"  'tmux kill-session -t smp-phwan 2>/dev/null || true' 2>/dev/null || true
-  ssh "$EDGE_SSH" 'tmux kill-session -t smp-phwan 2>/dev/null || true' 2>/dev/null || true
+  ssh "$HPC_SSH"  'tmux kill-session -t meld-phwan 2>/dev/null || true' 2>/dev/null || true
+  ssh "$EDGE_SSH" 'tmux kill-session -t meld-phwan 2>/dev/null || true' 2>/dev/null || true
   [ -n "$CAFF_PID" ] && kill "$CAFF_PID" 2>/dev/null || true
 }
 trap cleanup EXIT
@@ -46,10 +46,10 @@ deploy_brain() {  # host dir env id log
   local h="$1" d="$2" e="${3:-true}" id="$4" lg="$5"; [ -z "$e" ] && e=true
   echo "  [$id] deploy bundle -> $h:$d"
   ssh "$h" "mkdir -p '$d/src' '$d/cross-tier/vendor'"
-  rsync -az --delete "$REPO/src/smp" "$h:$d/src/"
+  rsync -az --delete "$REPO/src/meld" "$h:$d/src/"
   rsync -az "$HERE/kafka_brain.py" "$HERE/kafka_transport.py" "$HERE/brain_core.py" "$h:$d/cross-tier/"
   rsync -az "$HERE/vendor/kafka" "$h:$d/cross-tier/vendor/"
-  ssh "$h" "tmux kill-session -t smp-phwan 2>/dev/null || true; tmux new-session -d -s smp-phwan bash -c \"cd '$d'; set +u; $e; set -u; PYTHONPATH=src:cross-tier/vendor python3 cross-tier/kafka_brain.py --bootstrap localhost:9092 --id $id --claims-topic $CLAIMS --acks-topic $ACKS --log '$lg' --run-seconds 900\""
+  ssh "$h" "tmux kill-session -t meld-phwan 2>/dev/null || true; tmux new-session -d -s meld-phwan bash -c \"cd '$d'; set +u; $e; set -u; PYTHONPATH=src:cross-tier/vendor python3 cross-tier/kafka_brain.py --bootstrap localhost:9092 --id $id --claims-topic $CLAIMS --acks-topic $ACKS --log '$lg' --run-seconds 900\""
 }
 wait_ready_remote() {  # host log
   local i; for i in $(seq 1 40); do
@@ -80,7 +80,7 @@ wait_status() {  # tier cid want timeout_s   (returns 0 if reached)
 }
 
 command -v caffeinate >/dev/null && { caffeinate -s & CAFF_PID=$!; }
-docker ps --filter name=smp-kafka --format '{{.Names}}' | grep -q smp-kafka || { echo "FATAL: smp-kafka not running"; exit 2; }
+docker ps --filter name=meld-kafka --format '{{.Names}}' | grep -q meld-kafka || { echo "FATAL: meld-kafka not running"; exit 2; }
 
 echo "[setup] deploy HPC + EDGE brains over Kafka; start local brain; open tunnels"
 open_tun "$HPC_SSH";  HPC_TUN="$TUN_PID";  sleep 3

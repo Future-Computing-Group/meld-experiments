@@ -4,10 +4,10 @@ RELATE (same meaning, different frame) instead of MERGEing -- the §A.2 Context 
 actually fires on the federation path. Default cell ("agent.public") on both units
 preserves all current behavior (M-2/headline unchanged).
 """
-from smp.config import Thresholds
-from smp.merge.signals import EmbeddingSimilarity
-from smp.proto import Claim, MemoryUnit
-from smp.protocol.merge_on_receive import merge_on_receive
+from meld.config import Thresholds
+from meld.merge.signals import EmbeddingSimilarity
+from meld.proto import Claim, MemoryUnit
+from meld.protocol.merge_on_receive import merge_on_receive
 
 CFG = Thresholds(theta_merge=0.5, sigma_lo=0.12, r_min=0.2, tau=0.5)
 
@@ -58,7 +58,7 @@ def test_cross_boundary_identical_text_relates_not_merges():
     # R6 RELATE. This is the running-example message-2 regression (headline
     # finding): today the content-only key gives kappa=1 and merges silently
     # across the jurisdiction boundary.
-    from smp.agent.memory import _cid, claim_key
+    from meld.agent.memory import _cid, claim_key
     text = "The unemployment rate is 4.2 percent"
     us_cell, eu_cell = "jurisdiction.us", "jurisdiction.eu"
     inc = MemoryUnit(id=_cid(text, us_cell), cell=us_cell, relevance_magnitude=1.0,
@@ -105,7 +105,7 @@ def test_exact_key_incompatible_frame_does_not_shadow_admissible_merge():
     # shadow an admissible semantic merge. The exact-key hit is the
     # provisionally selected candidate; when it relates (kappa=1, ctx fails)
     # and an admissible same-frame paraphrase exists, the paraphrase merges.
-    from smp.agent.memory import _cid, claim_key
+    from meld.agent.memory import _cid, claim_key
     text = "The unemployment rate is 4.2 percent"
     us, eu = "jurisdiction.us", "jurisdiction.eu"
     inc = MemoryUnit(id=_cid(text, eu), cell=eu, relevance_magnitude=1.0, status="ACTIVE",

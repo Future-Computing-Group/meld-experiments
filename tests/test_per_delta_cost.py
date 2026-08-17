@@ -6,7 +6,7 @@ of the real model cost; the real CPU measurement is a smoke-ladder step. Run:
 """
 import time
 
-from smp.eval.per_delta_cost import measure_per_delta_cost
+from meld.eval.per_delta_cost import measure_per_delta_cost
 
 
 def test_decomposes_embed_and_nli_timing():

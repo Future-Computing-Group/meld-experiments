@@ -15,11 +15,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from smp.config import load_thresholds              # noqa: E402
-from smp.merge.m2_gold import M2_GOLD_V2            # noqa: E402
-from smp.eval.sink_load import sink_load_row        # noqa: E402
+from meld.config import load_thresholds              # noqa: E402
+from meld.merge.m2_gold import M2_GOLD_V2            # noqa: E402
+from meld.eval.sink_load import sink_load_row        # noqa: E402
 
-MINILM = os.path.join(REPO, "src", "smp", "config", "thresholds-minilm.yaml")
+MINILM = os.path.join(REPO, "src", "meld", "config", "thresholds-minilm.yaml")
 
 
 def main():

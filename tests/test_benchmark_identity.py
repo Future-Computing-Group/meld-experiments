@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import pytest
 
-from smp.eval.benchmark_provenance import (
+from meld.eval.benchmark_provenance import (
     identity_hash,
     load_expected,
     load_provenance,
@@ -49,7 +49,7 @@ def test_gaia_identity_matches_verified_source():
 def test_provenance_missing_raises_before_g0(monkeypatch):
     # If the provenance file is absent, the loader must refuse (gate closed),
     # not silently return a default.
-    import smp.eval.benchmark_provenance as bp
+    import meld.eval.benchmark_provenance as bp
 
     monkeypatch.setattr(bp, "PROVENANCE_PATH", "/nonexistent/benchmark_provenance.json")
     with pytest.raises(FileNotFoundError):

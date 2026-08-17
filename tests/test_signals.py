@@ -13,8 +13,8 @@ from __future__ import annotations
 
 import pytest
 
-from smp.merge.signals import chi, epsilon, kappa, sigma
-from smp.proto import Claim
+from meld.merge.signals import chi, epsilon, kappa, sigma
+from meld.proto import Claim
 
 
 # ---- kappa ----
@@ -25,7 +25,7 @@ def test_kappa_exact_claim_key_match():
 
 # ---- sigma (encoder-strength: symmetric + cached) ----
 def test_sigma_symmetric_and_cached(tmp_path):
-    from smp.merge.signals import EmbeddingSimilarity
+    from meld.merge.signals import EmbeddingSimilarity
 
     es = EmbeddingSimilarity(encoder="hashing", cache_dir=str(tmp_path))
     s1 = es.sigma("Paris is in France", "Paris lies in France")
@@ -36,7 +36,7 @@ def test_sigma_symmetric_and_cached(tmp_path):
 
 
 def test_sigma_identical_text_is_one(tmp_path):
-    from smp.merge.signals import EmbeddingSimilarity
+    from meld.merge.signals import EmbeddingSimilarity
 
     es = EmbeddingSimilarity(encoder="hashing", cache_dir=str(tmp_path))
     assert es.sigma("the sky is blue", "the sky is blue") == pytest.approx(1.0, abs=1e-6)
@@ -44,7 +44,7 @@ def test_sigma_identical_text_is_one(tmp_path):
 
 def test_sigma_encoder_strength_orders_paraphrase_above_unrelated(tmp_path):
     # a real similarity signal: a paraphrase scores higher than an unrelated text.
-    from smp.merge.signals import EmbeddingSimilarity
+    from meld.merge.signals import EmbeddingSimilarity
 
     es = EmbeddingSimilarity(encoder="hashing", cache_dir=str(tmp_path))
     para = es.sigma("the cat sat on the mat", "the cat sat on the mat")
@@ -54,7 +54,7 @@ def test_sigma_encoder_strength_orders_paraphrase_above_unrelated(tmp_path):
 
 def test_sigma_requires_explicit_encoder():
     # no silent default: constructing without an encoder is an error.
-    from smp.merge.signals import EmbeddingSimilarity
+    from meld.merge.signals import EmbeddingSimilarity
 
     with pytest.raises(TypeError):
         EmbeddingSimilarity()  # type: ignore[call-arg]

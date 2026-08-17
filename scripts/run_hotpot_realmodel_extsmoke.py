@@ -4,7 +4,7 @@ the gated/networked CSC run.
 
 Unlike the GAIA fixture (whose oracle/clue setup made accuracy incidental), this
 yields a GENUINE EM/F1: each item's HotpotQA-shaped ``context`` paragraphs are fed
-THROUGH the SMP brain (PUBLISH -> merge_on_receive -> Patch), then the question is
+THROUGH the MELD brain (PUBLISH -> merge_on_receive -> Patch), then the question is
 posed and the agent must RECALL the brain-resident evidence and MULTI-HOP REASON
 to answer. So the score is a real competence signal (still on a tiny fixture +
 7B model, so read it as a signal, not the gate verdict — that is the CSC run).
@@ -26,15 +26,15 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "src"))
 
-from smp.agent.hotpot_loader import (feed_context_through_brain,            # noqa: E402
+from meld.agent.hotpot_loader import (feed_context_through_brain,            # noqa: E402
                                      load_hotpot_fixture)
-from smp.agent.hotpot_scorer import (competence_gate, em_score,             # noqa: E402
+from meld.agent.hotpot_scorer import (competence_gate, em_score,             # noqa: E402
                                      f1_score, score_predictions)
-from smp.agent.llm import OpenWeightLLM                                     # noqa: E402
-from smp.agent.memory import SMPMemory                                      # noqa: E402
-from smp.agent.registry import make_agent                                   # noqa: E402
-from smp.agent.run_hotpot_gate import _calibrated_cfg, extract_prediction   # noqa: E402
-from smp.agent.tools import FinalAnswerTool, RecallTool                     # noqa: E402
+from meld.agent.llm import OpenWeightLLM                                     # noqa: E402
+from meld.agent.memory import SMPMemory                                      # noqa: E402
+from meld.agent.registry import make_agent                                   # noqa: E402
+from meld.agent.run_hotpot_gate import _calibrated_cfg, extract_prediction   # noqa: E402
+from meld.agent.tools import FinalAnswerTool, RecallTool                     # noqa: E402
 
 
 def _is_clean_final(pred: str) -> tuple:
@@ -67,7 +67,7 @@ def main() -> int:
     tasks = load_hotpot_fixture(n=n)
     print(f"== G3 HotpotQA LOCAL REAL-MODEL ext-smoke ==  model={model}")
     print(f"   endpoint={endpoint}  baselines={baselines}  tasks={len(tasks)}")
-    print("   context fed THROUGH the SMP brain -> recall+multi-hop reason "
+    print("   context fed THROUGH the MELD brain -> recall+multi-hop reason "
           "=> a GENUINE EM/F1 signal (tiny fixture + 7B: a signal, not the "
           "gate verdict)\n")
 
@@ -77,7 +77,7 @@ def main() -> int:
         steps_lo = steps_hi = patches_lo = patches_hi = None
         for t in tasks:
             mem = SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
-            feed_context_through_brain(t, mem)        # SMP-on-message: context -> brain
+            feed_context_through_brain(t, mem)        # MELD-on-message: context -> brain
             agent = make_agent(b, llm=llm, memory=mem,
                                tools=[RecallTool(mem), FinalAnswerTool()],
                                max_steps=6)

@@ -26,15 +26,15 @@ class FakeSender:
 
 
 def test_only_2xx_counts_as_delivered():
-    from smp.sync.transport import PatchTransport
+    from meld.sync.transport import PatchTransport
     t = PatchTransport(FakeSender({"p1": 200, "p2": 302, "p3": 500}))
     d = t.publish("patch1", b"payload", ["p1", "p2", "p3"])
     assert d == {"p1": True, "p2": False, "p3": False}   # 3xx is NOT delivery (NPS H3)
 
 
 def test_global_consistency_only_when_all_delivered():
-    from smp.sync.latency import SyncLatencyMeter
-    from smp.sync.transport import PatchTransport
+    from meld.sync.latency import SyncLatencyMeter
+    from meld.sync.transport import PatchTransport
     clk = [0.0]
     m = SyncLatencyMeter(clock=lambda: clk[0])
     t = PatchTransport(FakeSender({"p1": 200, "p2": 204}), latency_meter=m)
@@ -49,14 +49,14 @@ def test_global_consistency_only_when_all_delivered():
 
 
 def test_send_exception_is_non_delivery_not_raised():
-    from smp.sync.transport import PatchTransport
+    from meld.sync.transport import PatchTransport
     t = PatchTransport(FakeSender({"p1": 200, "p2": "raise"}))
     d = t.publish("p", b"x", ["p1", "p2"])
     assert d == {"p1": True, "p2": False}                # exception -> not delivered, no raise
 
 
 def test_peer_health_tracks_consecutive_failures_and_resets():
-    from smp.sync.transport import PatchTransport
+    from meld.sync.transport import PatchTransport
     down = PatchTransport(FakeSender({"p": 500}), fail_threshold=3)
     for _ in range(3):
         down.publish("x", b"x", ["p"])

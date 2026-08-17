@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import pytest
 
-from smp.merge.m2_eval import (
+from meld.merge.m2_eval import (
     DECISIONS,
     classification_metrics,
     roc_over_theta,
@@ -25,12 +25,12 @@ from smp.merge.m2_eval import (
 # Gold set: size, balance, validity, mixed difficulty
 # --------------------------------------------------------------------------- #
 def test_gold_set_at_least_100_pairs():
-    from smp.merge.m2_gold import M2_GOLD_V2
+    from meld.merge.m2_gold import M2_GOLD_V2
     assert len(M2_GOLD_V2) >= 100, f"need >=100 pairs, got {len(M2_GOLD_V2)}"
 
 
 def test_gold_set_balanced_across_four_classes():
-    from smp.merge.m2_gold import M2_GOLD_V2
+    from meld.merge.m2_gold import M2_GOLD_V2
     counts = {c: sum(1 for g, _, _ in M2_GOLD_V2 if g == c) for c in DECISIONS}
     assert set(counts) == set(DECISIONS)
     # balanced: every class within 20% of the mean class size
@@ -40,7 +40,7 @@ def test_gold_set_balanced_across_four_classes():
 
 
 def test_gold_labels_valid_and_pairs_unique():
-    from smp.merge.m2_gold import M2_GOLD_V2
+    from meld.merge.m2_gold import M2_GOLD_V2
     for g, a, b in M2_GOLD_V2:
         assert g in DECISIONS
         assert isinstance(a, str) and isinstance(b, str) and a and b
@@ -53,7 +53,7 @@ def test_gold_set_has_easy_and_hard_strata():
     # The set must include HARD cases (e.g. lexically-divergent contradictions,
     # low-overlap paraphrases) -- the hardest case for a similarity gate --
     # not just clear ones.
-    from smp.merge.m2_gold import build_gold_set
+    from meld.merge.m2_gold import build_gold_set
     rows = build_gold_set()
     diffs = {r["difficulty"] for r in rows}
     assert {"easy", "hard"} <= diffs, f"need easy+hard strata, got {diffs}"
@@ -63,7 +63,7 @@ def test_gold_set_has_easy_and_hard_strata():
 
 
 def test_tagged_and_flat_views_agree():
-    from smp.merge.m2_gold import M2_GOLD_V2, build_gold_set
+    from meld.merge.m2_gold import M2_GOLD_V2, build_gold_set
     rows = build_gold_set()
     assert len(rows) == len(M2_GOLD_V2)
     assert [(r["label"], r["a"], r["b"]) for r in rows] == list(M2_GOLD_V2)
@@ -131,8 +131,8 @@ def test_bootstrap_ci_brackets_point_estimate():
 def test_keyonly_baseline_never_merges_distinct_key_paraphrases():
     # gold MERGE pairs are paraphrases with DISTINCT content keys (kappa=0);
     # a key-only dedup baseline must therefore miss all of them -> recall 0.
-    from smp.merge.m2_eval import evaluate_baseline
-    from smp.merge.m2_gold import M2_GOLD_V2
+    from meld.merge.m2_eval import evaluate_baseline
+    from meld.merge.m2_gold import M2_GOLD_V2
     m = evaluate_baseline(M2_GOLD_V2, mode="key_only")
     assert m["per_class"]["MERGE"]["recall"] == 0.0
 
@@ -141,7 +141,7 @@ def test_embedding_only_baseline_has_more_false_merges_than_full_on_conflicts():
     # Without the chi/NLI contradiction guard, high-sigma CONTRADICTIONS merge.
     # The embedding-only baseline must have a >= false-merge rate vs the full
     # procedure on the same (synthetic) scored set.
-    from smp.merge.m2_eval import decisions_embedding_only, decisions_full
+    from meld.merge.m2_eval import decisions_embedding_only, decisions_full
     rows = _synthetic_scores()
     gold = [g for g, _, _ in rows]
     full = classification_metrics(gold, decisions_full(rows, theta=0.65, sigma_lo=0.05))

@@ -1,12 +1,12 @@
 // VENDORED -- REUSE-PENDING-RESTRUCTURE; the upstream firmament memory.proto
-// upgrade lands later. This is the SMP-owned copy of the links-first-class
+// upgrade lands later. This is the MELD-owned copy of the links-first-class
 // memory model: MemoryLink is promoted to a first-class typed/versioned/signed/
 // weighted object with an entailment score; a unit exposes addressable Claims;
 // Endpoints may target a claim within a unit; a StalenessTag carries web-source
 // freshness. The node-centric `citations` field is kept only as a deprecated
-// alias (reserved on the wire). SMP does NOT modify the upstream firmament proto.
+// alias (reserved on the wire). MELD does NOT modify the upstream firmament proto.
 syntax = "proto3";
-package smp.fusilli.v1;
+package meld.fusilli.v1;
 
 import "google/protobuf/timestamp.proto";
 

@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import pytest
 
-from smp.config import Thresholds, load_thresholds
+from meld.config import Thresholds, load_thresholds
 
 
 def test_loads_tracked_default():

@@ -1,12 +1,12 @@
 """G3 — the PUBLIC tool surface for GAIA L2 achievability.
 
 GAIA L2 tasks need real tools (web browse, file/document reading, calculation).
-These are the TDD spec for ``smp.agent.tools``' additions: a web-search tool with
+These are the TDD spec for ``meld.agent.tools``' additions: a web-search tool with
 an OFFLINE cache/replay mode (CSC compute nodes have no internet), a file/document
 reader (PDF/CSV/text), and a sandboxed calculator (no eval/exec of arbitrary code).
 
-The load-bearing SMP decision (documented in the campaign plan): a tool that reads
-EVIDENCE (web page / attached file) feeds its content THROUGH the SMP Brain as a
+The load-bearing MELD decision (documented in the campaign plan): a tool that reads
+EVIDENCE (web page / attached file) feeds its content THROUGH the MELD Brain as a
 merged observation (PUBLISH -> merge-on-receive -> Patch), not only as a raw tool
 string. So the brain accrues the evidence and a later recall can retrieve it. The
 calculator is pure computation and does NOT write to the brain.
@@ -21,19 +21,19 @@ import os
 
 import pytest
 
-from smp.agent.memory import SMPMemory
-from smp.agent.tools import (
+from meld.agent.memory import SMPMemory
+from meld.agent.tools import (
     CalculatorTool,
     FileReaderTool,
     OfflineWebSearchTool,
 )
-from smp.config import Thresholds, load_thresholds
+from meld.config import Thresholds, load_thresholds
 
 
 def _calibrated_cfg() -> Thresholds:
     # delegate to the canonical encoder-matched calibrated thresholds (was a
     # duplicated inverted-0.5/0.55 copy that tripped the ordering invariant)
-    from smp.agent.run_hotpot_gate import _calibrated_cfg as _canonical
+    from meld.agent.run_hotpot_gate import _calibrated_cfg as _canonical
     return _canonical("hashing")
 
 
@@ -82,7 +82,7 @@ def test_calculator_is_sandboxed_against_code_injection():
 
 
 # --------------------------------------------------------------------------
-# FileReaderTool: text / CSV / PDF, content goes THROUGH the SMP brain
+# FileReaderTool: text / CSV / PDF, content goes THROUGH the MELD brain
 # --------------------------------------------------------------------------
 
 

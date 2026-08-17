@@ -5,8 +5,8 @@ a plumbing/shape check, not a re-run of the real minilm/cross-encoder sweep
 (scripts/run_candidate_scaling.py)."""
 from __future__ import annotations
 
-from smp.config import load_thresholds
-from smp.eval.candidate_scaling import (build_incoming_stream, build_local_store,
+from meld.config import load_thresholds
+from meld.eval.candidate_scaling import (build_incoming_stream, build_local_store,
                                         run_candidate_scaling)
 
 

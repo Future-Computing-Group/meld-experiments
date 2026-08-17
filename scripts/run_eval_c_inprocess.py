@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import json
 
-from smp.eval.crdt_convergence import (run_inprocess_c1, CANONICAL_C1_SCENARIO,
+from meld.eval.crdt_convergence import (run_inprocess_c1, CANONICAL_C1_SCENARIO,
                                        reject_race_convergence)
 
 

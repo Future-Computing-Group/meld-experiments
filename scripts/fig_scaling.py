@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Small-multiples scaling figure: the three SMP scaling measurements side by side.
+"""Small-multiples scaling figure: the three MELD scaling measurements side by side.
 
 (a) message-rate  -> sink throughput knee (M1, S-2);
 (b) cluster size  -> per-claim sync overhead (S-3): semantic O(1) vs broadcast O(N);
 (c) cluster size  -> sink state-load (S-4): merge O(1) vs union O(N).
 
 Tufte small multiples: shared visual language, no top/right spines, no chartjunk grid,
-direct line labels (no legend), one accent for the SMP line and grey for the baseline.
+direct line labels (no legend), one accent for the MELD line and grey for the baseline.
 Reads the run JSONs in outputs/. Writes figures/scaling.{pdf,png}.
 
 Run:  PYTHONPATH=src .venv/bin/python scripts/fig_scaling.py
@@ -23,7 +23,7 @@ OUT = os.path.join(REPO, "outputs")
 FIGS = os.path.join(REPO, "figures")
 os.makedirs(FIGS, exist_ok=True)
 
-ACCENT = "#1f5c8a"   # SMP line (semantic / merge / achieved)
+ACCENT = "#1f5c8a"   # MELD line (semantic / merge / achieved)
 BASE = "#9a9a9a"     # baseline (broadcast / union / ideal)
 
 plt.rcParams.update({"font.size": 12, "axes.linewidth": 0.7,

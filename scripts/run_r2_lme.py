@@ -16,11 +16,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from smp.config import load_thresholds                            # noqa: E402
-from smp.eval.longmemeval_real import load_longmemeval_tasks      # noqa: E402
-from smp.eval.recall_sweep import recall_rows, aggregate_recall   # noqa: E402
+from meld.config import load_thresholds                            # noqa: E402
+from meld.eval.longmemeval_real import load_longmemeval_tasks      # noqa: E402
+from meld.eval.recall_sweep import recall_rows, aggregate_recall   # noqa: E402
 
-MINILM = os.path.join(REPO, "src", "smp", "config", "thresholds-minilm.yaml")
+MINILM = os.path.join(REPO, "src", "meld", "config", "thresholds-minilm.yaml")
 CONDS = ["centralized", "distributed_merge", "naive_union", "exact_dedup"]
 DEFAULT_DATA = os.path.join(REPO, "data", "longmemeval", "longmemeval_s")
 

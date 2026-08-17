@@ -3,11 +3,11 @@
 
 Generic, config-driven driver: the topology (nodes / SSH targets / IPs / ports /
 image tags) and the netem RTT/routing grid are read from `testbed.yaml`; this file
-carries no host aliases. It ties the tested core (smp.eval.campaign +
+carries no host aliases. It ties the tested core (meld.eval.campaign +
 CampaignCheckpoint + bootstrap_ci) to live brains over HTTP and to `tc` (WanShaper).
 
 Run it from a persistent session (e.g. tmux) on the orchestrator node named by
-`orchestrator:` in the config, so it survives a client disconnect. The smp package
+`orchestrator:` in the config, so it survives a client disconnect. The meld package
 must be importable there (PYTHONPATH=src), the brains must be deployed (deploy.sh),
 and a watchdog must listen on `watchdog_port` on each host.
 
@@ -29,10 +29,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from smp.eval.campaign import enumerate_cells, run_campaign, aggregate_by_condition  # noqa: E402
-from smp.eval.campaign_checkpoint import CampaignCheckpoint                          # noqa: E402
-from smp.sync.wan import WanShaper                                                   # noqa: E402
-from smp.sync.workload import build_workload, load_hotpot_claims                     # noqa: E402
+from meld.eval.campaign import enumerate_cells, run_campaign, aggregate_by_condition  # noqa: E402
+from meld.eval.campaign_checkpoint import CampaignCheckpoint                          # noqa: E402
+from meld.sync.wan import WanShaper                                                   # noqa: E402
+from meld.sync.workload import build_workload, load_hotpot_claims                     # noqa: E402
 
 from config import load_testbed                                                      # noqa: E402
 
@@ -44,7 +44,7 @@ URL = CFG["url"]
 IFACE = CFG["iface"]
 ORCH = CFG["orchestrator"]    # node co-located with this driver (commands run local)
 WD_PORT = int(CFG["watchdog_port"])
-CAMPAIGN_IMG = CFG.get("images", {}).get("campaign", "smp-brain:minilm")
+CAMPAIGN_IMG = CFG.get("images", {}).get("campaign", "meld-brain:minilm")
 GRID = CFG.get("grid", {})
 HEARTBEAT_S = int(GRID.get("heartbeat_s", 30))
 PUBLISH_TIMEOUT = int(GRID.get("publish_timeout_s", 120))
@@ -113,7 +113,7 @@ def _redeploy(routing, brains):
     log(f"  redeploy brains: routing={routing} image={CAMPAIGN_IMG} {extra.strip()}")
     for node in brains:
         peers = ",".join(URL[p] for p in brains if p != node)
-        run = (f"docker rm -f smp-brain >/dev/null 2>&1 || true; docker run -d --name smp-brain "
+        run = (f"docker rm -f meld-brain >/dev/null 2>&1 || true; docker run -d --name meld-brain "
                f"--network=host -e SMP_NODE_ID={node} -e SMP_PORT={URL[node].rsplit(':', 1)[1]} "
                f"-e SMP_ENCODER=minilm -e SMP_NLI=lexical -e SMP_ROUTING_MODE={routing} "
                f"{extra}-e SMP_PEERS='{peers}' {CAMPAIGN_IMG}")

@@ -38,7 +38,7 @@ class FakeRunner:
 
 
 def _wd(runner, *, clock, compose_down=None, timeout=30):
-    from smp.sync.watchdog import Watchdog
+    from meld.sync.watchdog import Watchdog
     return Watchdog(iface="enp1s0", heartbeat_timeout_s=timeout,
                     runner=runner, clock=clock, compose_down=compose_down or (lambda: None))
 
@@ -116,7 +116,7 @@ def test_teardown_does_not_bring_compose_down_if_tc_clearing_fails():
 # --- WatchdogDaemon (the unattended-run gate; heartbeat over the internal net) ----------
 
 def _daemon(runner, *, clock, compose_down, timeout=30):
-    from smp.sync.watchdog import Watchdog, WatchdogDaemon
+    from meld.sync.watchdog import Watchdog, WatchdogDaemon
     wd = Watchdog(iface="enp1s0", heartbeat_timeout_s=timeout, runner=runner,
                   clock=clock, compose_down=compose_down)
     return WatchdogDaemon(wd)

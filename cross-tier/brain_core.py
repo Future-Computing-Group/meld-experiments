@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Shared merge-on-receive step for the cross-tier brains (relay and Kafka).
 
-One source of truth for the decision logic: reuses the tested src/smp classifier
+One source of truth for the decision logic: reuses the tested src/meld classifier
 and status CRDT. ``process_delta`` is transport-independent --- given a delta dict,
 the calibrated thresholds, and the brain's status state, it returns the ack dict
 (and mutates ``status`` for overrule/deprecate links). The relay brain and the
@@ -13,8 +13,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
-from smp.merge.classifier import classify                       # noqa: E402
-from smp.merge.status_crdt import StatusState, effective_status  # noqa: E402
+from meld.merge.classifier import classify                       # noqa: E402
+from meld.merge.status_crdt import StatusState, effective_status  # noqa: E402
 
 
 def process_delta(d: dict, cfg, status: dict, brain_id: str, t_recv: float):

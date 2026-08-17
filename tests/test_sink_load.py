@@ -15,10 +15,10 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from smp.config import load_thresholds
-from smp.eval.sink_load import summarize_sink_load, sink_load_row
+from meld.config import load_thresholds
+from meld.eval.sink_load import summarize_sink_load, sink_load_row
 
-_MINILM = os.path.join(REPO, "src", "smp", "config", "thresholds-minilm.yaml")
+_MINILM = os.path.join(REPO, "src", "meld", "config", "thresholds-minilm.yaml")
 
 
 def test_summarize_sink_load_ratios():

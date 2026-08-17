@@ -4,7 +4,7 @@
 The driver publishes the verified running-example beats + latency probes to a
 claims topic; N brains (kafka_brain) merge-on-receive and publish acks; the driver
 measures. Same assertions as the relay end-to-end (test_xtier), now over Kafka ---
-proving the SMP merge protocol runs over the standard fabric, not a stand-in relay.
+proving the MELD merge protocol runs over the standard fabric, not a stand-in relay.
 
 Run (needs a broker at localhost:9092):
     PYTHONPATH=cross-tier:src python3 cross-tier/kafka_xtier.py
@@ -96,7 +96,7 @@ def _local_end_to_end():
     if not broker_up():
         print("SKIP: no Kafka broker at %s" % BOOTSTRAP); return 0
     run = uuid.uuid4().hex[:8]
-    claims, acks = "smp-claims-%s" % run, "smp-acks-%s" % run
+    claims, acks = "meld-claims-%s" % run, "meld-acks-%s" % run
     brains = ["local", "hpc", "edge"]
     env = dict(os.environ, PYTHONPATH=os.path.join(REPO, "src") + ":" + HERE)
     procs = []

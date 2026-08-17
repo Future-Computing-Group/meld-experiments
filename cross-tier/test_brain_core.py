@@ -18,10 +18,10 @@ REPO = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from smp.config import load_thresholds            # noqa: E402
+from meld.config import load_thresholds            # noqa: E402
 from brain_core import process_delta               # noqa: E402
 
-CFG = load_thresholds(os.path.join(REPO, "src", "smp", "config", "thresholds-minilm.yaml"))
+CFG = load_thresholds(os.path.join(REPO, "src", "meld", "config", "thresholds-minilm.yaml"))
 
 # The verified running-example signal tuples (driver.BEATS): each is built to land
 # in exactly one decision class at the calibrated operating point.
@@ -100,7 +100,7 @@ def test_unknown_op_returns_none():
 
 
 def effective(status, cid):
-    from smp.merge.status_crdt import effective_status
+    from meld.merge.status_crdt import effective_status
     return effective_status(status[cid])
 
 

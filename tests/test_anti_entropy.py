@@ -16,7 +16,7 @@ from __future__ import annotations
 def test_digest_is_order_independent_same_set_same_digest():
     # Two link books built by APPLYING the same links in different orders must
     # produce byte-identical digests (the digest is a pure fn of the converged set).
-    from smp.sync.anti_entropy import LinkBook, claim_digest
+    from meld.sync.anti_entropy import LinkBook, claim_digest
     links = [("c1", "c1.a", "DEPRECATED"), ("c1", "c1.b", "OVERRULED"),
              ("c2", "c2.x", "REVOKED"), ("c2", "c2.y", "DEPRECATED")]
     a = LinkBook()
@@ -31,7 +31,7 @@ def test_digest_is_order_independent_same_set_same_digest():
 
 
 def test_digest_lists_sorted_link_ids_and_a_set_hash_per_claim():
-    from smp.sync.anti_entropy import LinkBook, claim_digest
+    from meld.sync.anti_entropy import LinkBook, claim_digest
     book = LinkBook()
     book.add("c1", "c1.b", "OVERRULED")
     book.add("c1", "c1.a", "DEPRECATED")
@@ -43,7 +43,7 @@ def test_digest_lists_sorted_link_ids_and_a_set_hash_per_claim():
 
 
 def test_symmetric_difference_identifies_missing_ids_per_claim():
-    from smp.sync.anti_entropy import LinkBook, claim_digest, symmetric_difference
+    from meld.sync.anti_entropy import LinkBook, claim_digest, symmetric_difference
     a = LinkBook()
     a.add("c1", "c1.a", "DEPRECATED")
     a.add("c1", "c1.b", "OVERRULED")          # A has b, B does not
@@ -62,7 +62,7 @@ def test_symmetric_difference_identifies_missing_ids_per_claim():
 def test_anti_entropy_round_makes_missing_brain_match_complete_peer():
     # B is missing some links (as after lossy routing). One round with the complete
     # peer A drives B's per-claim effective status to A's.
-    from smp.sync.anti_entropy import LinkBook, anti_entropy_round
+    from meld.sync.anti_entropy import LinkBook, anti_entropy_round
     complete = LinkBook()
     complete.add("c1", "c1.dep", "DEPRECATED")
     complete.add("c1", "c1.ovr", "OVERRULED")
@@ -80,7 +80,7 @@ def test_anti_entropy_round_makes_missing_brain_match_complete_peer():
 def test_anti_entropy_round_is_idempotent_and_symmetric():
     # Re-applying links is safe (CRDT union); a second round transfers nothing and
     # the round reconciles BOTH directions (each side pulls what it lacks).
-    from smp.sync.anti_entropy import LinkBook, anti_entropy_round
+    from meld.sync.anti_entropy import LinkBook, anti_entropy_round
     a = LinkBook()
     a.add("c1", "c1.a", "DEPRECATED")
     a.add("c1", "c1.b", "OVERRULED")
@@ -98,7 +98,7 @@ def test_anti_entropy_round_is_idempotent_and_symmetric():
 def test_digest_bytes_are_a_compact_wire_form():
     # The digest serializes to a deterministic, order-independent wire blob; its
     # size is the per-round cost the experiment reports.
-    from smp.sync.anti_entropy import LinkBook, claim_digest, digest_wire_bytes
+    from meld.sync.anti_entropy import LinkBook, claim_digest, digest_wire_bytes
     book = LinkBook()
     book.add("c1", "c1.a", "DEPRECATED")
     book.add("c1", "c1.b", "OVERRULED")

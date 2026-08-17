@@ -20,7 +20,7 @@ sentence), so they live in ``tighten_gaia_answer`` and apply to GAIA too.
 """
 from __future__ import annotations
 
-from smp.agent.gaia_scorer import tighten_gaia_answer
+from meld.agent.gaia_scorer import tighten_gaia_answer
 
 
 def test_tighten_strips_bare_action_verb_wrapper():

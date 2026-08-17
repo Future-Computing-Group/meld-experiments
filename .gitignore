@@ -38,7 +38,7 @@ __pycache__/
 
 # Edge-testbed deployment + orchestration scripts/specs: carry shared-host aliases,
 # VM IPs, and infra/process detail the public repo must never contain (mirror of the
-# csc/ exclusion). The reusable, scrubbed LOGIC lives in src/smp/{sync,eval}.
+# csc/ exclusion). The reusable, scrubbed LOGIC lives in src/meld/{sync,eval}.
 5gtn/
 scripts/*5gtn*
 scripts/setup_vm1_orchestrator.sh

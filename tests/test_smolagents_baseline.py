@@ -1,5 +1,5 @@
 """G3 — the HF smolagents ``ToolCallingAgent`` baseline (Apache-2.0), wired as a
-REAL second public framework behind the SAME interface and the SAME SMP brain.
+REAL second public framework behind the SAME interface and the SAME MELD brain.
 
 smolagents is an OPTIONAL dependency: the offline path never imports it, and the
 adapter lazy-imports it so the protobuf-6.x venv pin stays unperturbed (verified:
@@ -9,7 +9,7 @@ smolagents is not installed, so the offline suite still passes on a minimal venv
 We drive the real ``ToolCallingAgent`` with an OFFLINE adapter ``Model`` backed by
 our deterministic ``MockLLM`` (no network, no weights). The point is to prove the
 off-the-shelf public framework is swappable through the registry and that ITS
-tool calls write through the SAME SMP brain via the SAME tool objects.
+tool calls write through the SAME MELD brain via the SAME tool objects.
 """
 from __future__ import annotations
 
@@ -18,18 +18,18 @@ import pytest
 smolagents = pytest.importorskip("smolagents",
                                  reason="smolagents optional; offline suite skips")
 
-from smp.agent.llm import MockLLM
-from smp.agent.memory import SMPMemory
-from smp.agent.react_agent import AgentResult
-from smp.agent.registry import make_agent
-from smp.agent.tools import FinalAnswerTool, RecallTool
-from smp.config import Thresholds, load_thresholds
+from meld.agent.llm import MockLLM
+from meld.agent.memory import SMPMemory
+from meld.agent.react_agent import AgentResult
+from meld.agent.registry import make_agent
+from meld.agent.tools import FinalAnswerTool, RecallTool
+from meld.config import Thresholds, load_thresholds
 
 
 def _calibrated_cfg() -> Thresholds:
     # delegate to the canonical encoder-matched calibrated thresholds (was a
     # duplicated inverted-0.5/0.55 copy that tripped the ordering invariant)
-    from smp.agent.run_hotpot_gate import _calibrated_cfg as _canonical
+    from meld.agent.run_hotpot_gate import _calibrated_cfg as _canonical
     return _canonical("hashing")
 
 
@@ -40,7 +40,7 @@ def _mem() -> SMPMemory:
 def _scripted_toolcalls():
     """Scripted smolagents tool-call turns: remember a clue, then final_answer.
     The adapter Model turns these MockLLM turns into smolagents ChatMessage
-    tool-calls, so the REAL ToolCallingAgent loop dispatches our SMP-brain tools.
+    tool-calls, so the REAL ToolCallingAgent loop dispatches our MELD-brain tools.
     """
     return [
         "Thought: store the clue.\nAction: remember[Paris is the capital of France]",
@@ -59,8 +59,8 @@ def test_smolagents_baseline_constructs_and_runs():
     assert "paris" in result.answer.lower()
 
 
-def test_smolagents_baseline_writes_through_the_smp_brain():
-    """The real smolagents loop must dispatch the SMP-brain-backed tools, so a
+def test_smolagents_baseline_writes_through_the_meld_brain():
+    """The real smolagents loop must dispatch the MELD-brain-backed tools, so a
     Patch must reach the brain audit log (the load-bearing integration property
     holds for the off-the-shelf framework too)."""
     mem = _mem()

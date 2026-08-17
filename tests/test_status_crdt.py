@@ -15,7 +15,7 @@ import itertools
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
-from smp.merge.status_crdt import StatusState, effective_status, join, merge
+from meld.merge.status_crdt import StatusState, effective_status, join, merge
 
 # overrule links carry an effect status; identity by a stable link id.
 _EFFECTS = ["DEPRECATED", "OVERRULED", "REVOKED"]

@@ -8,15 +8,15 @@ bootstrap delta CI; (6) the scorer integration through run_one.
 """
 from __future__ import annotations
 
-from smp.agent.hotpot_loader import HotpotTask, load_hotpot_fixture
-from smp.agent.llm import MockLLM
-from smp.agent.mem_conditions import (DEFAULT_N_BRAINS, MEMORY_CONDITIONS,
+from meld.agent.hotpot_loader import HotpotTask, load_hotpot_fixture
+from meld.agent.llm import MockLLM
+from meld.agent.mem_conditions import (DEFAULT_N_BRAINS, MEMORY_CONDITIONS,
                                       assemble_recall, build_condition,
                                       fixed_recall_prompt, light_paraphrase,
                                       split_across_brains)
-from smp.agent.mem_delta_metrics import bootstrap_delta, headline_table
-from smp.agent.run_hotpot_gate import _calibrated_cfg
-from smp.agent.run_hotpot_memdelta import run_one, summarize
+from meld.agent.mem_delta_metrics import bootstrap_delta, headline_table
+from meld.agent.run_hotpot_gate import _calibrated_cfg
+from meld.agent.run_hotpot_memdelta import run_one, summarize
 
 ENC, NLI = "hashing", "lexical"
 CFG = _calibrated_cfg(ENC)        # encoder-matched thresholds (hashing scale)
@@ -371,7 +371,7 @@ def test_bootstrap_delta_absent_condition_is_na_not_zero():
 
 def test_tost_declares_equivalence_when_within_margin():
     # identical paired scores -> delta 0 -> equivalent at any positive margin
-    from smp.agent.mem_delta_metrics import tost_equivalent
+    from meld.agent.mem_delta_metrics import tost_equivalent
     rows = []
     for i in range(20):
         rows.append({"question_id": f"q{i}", "condition": "A", "f1": 0.5, "gold": "x"})
@@ -381,7 +381,7 @@ def test_tost_declares_equivalence_when_within_margin():
 
 
 def test_tost_rejects_equivalence_when_gap_exceeds_margin():
-    from smp.agent.mem_delta_metrics import tost_equivalent
+    from meld.agent.mem_delta_metrics import tost_equivalent
     rows = []
     for i in range(20):
         rows.append({"question_id": f"q{i}", "condition": "A", "f1": 1.0, "gold": "x"})
@@ -394,7 +394,7 @@ def test_aggregation_skips_rows_missing_a_nonscore_metric():
     # rows from an older harness lack recall_at_k; aggregating recall_at_k must SKIP
     # them, not KeyError via score_one (which only recomputes em/f1). Caught on the
     # CSC validation smoke: resume mixed pre-fix rows lacking the new metric.
-    from smp.agent.mem_delta_metrics import bootstrap_delta, condition_means
+    from meld.agent.mem_delta_metrics import bootstrap_delta, condition_means
     rows = [
         {"question_id": "q1", "condition": "A", "recall_at_k": 0.8,
          "prediction": "x", "gold": "x"},
@@ -413,7 +413,7 @@ def test_aggregation_skips_rows_missing_a_nonscore_metric():
 
 
 def test_holm_correction_thresholds_family():
-    from smp.agent.mem_delta_metrics import holm_correct
+    from meld.agent.mem_delta_metrics import holm_correct
     res = holm_correct({"a": 0.001, "b": 0.4, "c": 0.8}, alpha=0.05)
     assert res["a"] is True and res["b"] is False and res["c"] is False
 

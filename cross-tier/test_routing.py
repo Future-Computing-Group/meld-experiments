@@ -8,7 +8,7 @@ import os, random, sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "src"))
 sys.path.insert(0, os.path.join(REPO, "cross-tier"))
-from smp.sync.router import (broadcast_route, random_route, round_robin_route,  # noqa: E402
+from meld.sync.router import (broadcast_route, random_route, round_robin_route,  # noqa: E402
                              routing_metrics)
 
 BRAINS = {"a": ["x"], "b": ["y"], "c": ["z"], "d": ["w"]}

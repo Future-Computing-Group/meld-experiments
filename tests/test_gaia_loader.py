@@ -10,7 +10,7 @@ It is NOT a GAIA result.
 """
 from __future__ import annotations
 
-from smp.agent.gaia_loader import load_gaia_fixture, GaiaTask
+from meld.agent.gaia_loader import load_gaia_fixture, GaiaTask
 
 
 def test_fixture_tasks_are_gaia_shaped():
@@ -36,7 +36,7 @@ def test_fixture_is_deterministic():
 
 
 def test_row_to_task_maps_real_gaia_fields():
-    from smp.agent.gaia_loader import _row_to_task
+    from meld.agent.gaia_loader import _row_to_task
     row = {"task_id": "t1", "Question": "What year?", "Final answer": "1999",
            "Level": 2, "file_path": "/tmp/x.pdf", "file_name": "x.pdf"}
     t = _row_to_task(row)
@@ -45,6 +45,6 @@ def test_row_to_task_maps_real_gaia_fields():
 
 
 def test_row_to_task_handles_missing_file_and_answer():
-    from smp.agent.gaia_loader import _row_to_task
+    from meld.agent.gaia_loader import _row_to_task
     t = _row_to_task({"task_id": "t2", "Question": "Q", "Level": 1})
     assert t.gold == "" and t.file_path == "" and t.level == "L1"

@@ -2,7 +2,7 @@
 eval-s / eval-r round over BrainNodes, so the full experiment LOGIC is verifiable
 end-to-end before any docker/edge-testbed. Models §7-s direct publish: each node publishes
 its local delta to its peers via PatchTransport (skew-free SyncLatencyMeter), routed
-either semantically (smp.sync.router) or by broadcast. Reports the sync-latency
+either semantically (meld.sync.router) or by broadcast. Reports the sync-latency
 summary (eval-s), the per-claim delivered-sets (eval-r, scored against a needed-oracle
 via router.routing_metrics), and presence_agreement -- the fraction of nodes that hold
 each live claim (full propagation == 1.0). The status-CRDT convergence story (eval-c
@@ -12,17 +12,17 @@ from __future__ import annotations
 
 
 def _cfg():
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
     return _calibrated_cfg("hashing")
 
 
 def _node(nid):
-    from smp.sync.node import BrainNode
+    from meld.sync.node import BrainNode
     return BrainNode(nid, encoder="hashing", nli="lexical", cfg=_cfg())
 
 
 def test_broadcast_full_mesh_converges_and_delivers_to_all_peers():
-    from smp.sync.experiment import run_sync
+    from meld.sync.experiment import run_sync
     a, b, c = _node("A"), _node("B"), _node("C")
     nodes = {"A": a, "B": b, "C": c}
     a.ingest("Paris is the capital of France")
@@ -36,7 +36,7 @@ def test_broadcast_full_mesh_converges_and_delivers_to_all_peers():
 
 
 def test_latency_recorded_per_published_claim():
-    from smp.sync.experiment import run_sync
+    from meld.sync.experiment import run_sync
     a, b = _node("A"), _node("B")
     a.ingest("Paris is the capital of France")           # only A has anything to publish
     nodes = {"A": a, "B": b}
@@ -51,7 +51,7 @@ def test_latency_recorded_per_published_claim():
 
 
 def test_semantic_routes_to_most_relevant_peer_only():
-    from smp.sync.experiment import run_sync
+    from meld.sync.experiment import run_sync
     src, paris, everest = _node("SRC"), _node("PARIS"), _node("EVEREST")
     paris.ingest("Paris France capital Europe Seine river")
     everest.ingest("Everest mountain Himalaya climbing altitude snow")
@@ -65,7 +65,7 @@ def test_semantic_routes_to_most_relevant_peer_only():
 
 
 def test_semantic_uses_fewer_deliveries_than_broadcast():
-    from smp.sync.experiment import run_sync
+    from meld.sync.experiment import run_sync
 
     def setup():
         src, paris, everest = _node("SRC"), _node("PARIS"), _node("EVEREST")

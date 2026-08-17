@@ -1,5 +1,5 @@
 #!/bin/bash
-# Deploy / control the SMP-brain node on every host in testbed.yaml.
+# Deploy / control the MELD-brain node on every host in testbed.yaml.
 #
 # Generic + config-driven: hosts, IPs, ports, interface, and image tags are read
 # from `testbed.yaml` (via config.py), so this script carries no host aliases.
@@ -26,8 +26,8 @@ from config import load_testbed
 c = load_testbed()
 print("IFACE=%s" % c["iface"])
 print("PORT=%s" % int(c.get("brain_port", 8080)))
-print("IMG_SMOKE=%s" % c.get("images", {}).get("smoke", "smp-brain:smoke"))
-print("IMG_CAMPAIGN=%s" % c.get("images", {}).get("campaign", "smp-brain:minilm"))
+print("IMG_SMOKE=%s" % c.get("images", {}).get("smoke", "meld-brain:smoke"))
+print("IMG_CAMPAIGN=%s" % c.get("images", {}).get("campaign", "meld-brain:minilm"))
 print("NODES='%s'" % " ".join("%s|%s|%s" % (n["id"], n["host"], n["ip"]) for n in c["nodes"]))
 PY
 }
@@ -35,7 +35,7 @@ eval "$(read_cfg)"
 
 ENC_DEFAULT=hashing
 IMG="$IMG_SMOKE"
-TAR="/tmp/smp-brain.tar.gz"
+TAR="/tmp/meld-brain.tar.gz"
 
 # Parse the NODES blob into parallel arrays (bash-3.2 safe; no assoc arrays).
 IDS=(); HOSTS=(); IPS=()
@@ -63,7 +63,7 @@ case "${1:-}" in
     for ((i=0; i<N; i++)); do
       peers=$(peers_for "$i")
       ssh "${HOSTS[$i]}" "sudo tc qdisc del dev $IFACE root >/dev/null 2>&1 || true; \
-        docker rm -f smp-brain >/dev/null 2>&1 || true; docker run -d --name smp-brain \
+        docker rm -f meld-brain >/dev/null 2>&1 || true; docker run -d --name meld-brain \
         --network=host -e SMP_NODE_ID=${IDS[$i]} -e SMP_PORT=$PORT -e SMP_ENCODER=$ENC \
         -e SMP_NLI=lexical -e SMP_ROUTING_MODE=$ROUTING -e SMP_PEERS='$peers' $IMG" >/dev/null
       echo "started ${IDS[$i]} @ ${HOSTS[$i]}  routing=$ROUTING enc=$ENC peers=$peers"
@@ -71,12 +71,12 @@ case "${1:-}" in
   status)
     for ((i=0; i<N; i++)); do
       echo -n "${HOSTS[$i]} (${IDS[$i]}): "
-      ssh "${HOSTS[$i]}" "docker ps --filter name=smp-brain --format '{{.Status}}' | head -1; \
+      ssh "${HOSTS[$i]}" "docker ps --filter name=meld-brain --format '{{.Status}}' | head -1; \
                 curl -fsS --max-time 3 http://localhost:$PORT/healthz && echo || echo ' UNHEALTHY'"
     done ;;
   stop)
     for ((i=0; i<N; i++)); do
-      ssh "${HOSTS[$i]}" "docker rm -f smp-brain >/dev/null 2>&1 || true; \
+      ssh "${HOSTS[$i]}" "docker rm -f meld-brain >/dev/null 2>&1 || true; \
                 sudo tc qdisc del dev $IFACE root >/dev/null 2>&1 || true"
       echo "stopped + tc-cleared ${HOSTS[$i]}"
     done ;;

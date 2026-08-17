@@ -11,16 +11,16 @@ final_answer and assert termination with a synthesized final answer.
 """
 from __future__ import annotations
 
-from smp.agent.memory import SMPMemory
-from smp.agent.registry import make_agent
-from smp.agent.tools import FinalAnswerTool, RecallTool
-from smp.config import Thresholds, load_thresholds
+from meld.agent.memory import SMPMemory
+from meld.agent.registry import make_agent
+from meld.agent.tools import FinalAnswerTool, RecallTool
+from meld.config import Thresholds, load_thresholds
 
 
 def _calibrated_cfg() -> Thresholds:
     # delegate to the canonical encoder-matched calibrated thresholds (was a
     # duplicated inverted-0.5/0.55 copy that tripped the ordering invariant)
-    from smp.agent.run_hotpot_gate import _calibrated_cfg as _canonical
+    from meld.agent.run_hotpot_gate import _calibrated_cfg as _canonical
     return _canonical("hashing")
 
 

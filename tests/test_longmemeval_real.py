@@ -10,7 +10,7 @@ dependency); the file loader + the recall run are the data-bearing step.
 
 Run:  PYTHONPATH=src python3 -m pytest tests/test_longmemeval_real.py -q
 """
-from smp.eval.longmemeval_real import item_to_task
+from meld.eval.longmemeval_real import item_to_task
 
 _ITEM = {
     "question_id": "q1",

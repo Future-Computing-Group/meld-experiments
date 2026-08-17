@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apache Kafka transport for the SMP cross-tier deployment.
+"""Apache Kafka transport for the MELD cross-tier deployment.
 
 Replaces the stand-in relay (probe_broker) with the standard, published pub/sub
 fabric NPS also uses (Kafka, KRaft mode). The brain and driver are unchanged in
@@ -10,7 +10,7 @@ publish race the socket relay needed. Routing strategies (broadcast / random /
 round-robin / semantic) sit ABOVE this transport, choosing the destination topic.
 
 Sync client (kafka-python) — the brain loop is synchronous; NPS uses async aiokafka
-for its broker, but the SMP brain does not need it.
+for its broker, but the MELD brain does not need it.
 """
 from __future__ import annotations
 
@@ -44,7 +44,7 @@ class KafkaTransport:
         return KafkaConsumer(
             topic,
             bootstrap_servers=self.bootstrap,
-            group_id=group or ("smp-" + uuid.uuid4().hex[:10]),
+            group_id=group or ("meld-" + uuid.uuid4().hex[:10]),
             auto_offset_reset="earliest" if from_beginning else "latest",
             enable_auto_commit=True,
             value_deserializer=lambda b: b.decode("utf-8"),

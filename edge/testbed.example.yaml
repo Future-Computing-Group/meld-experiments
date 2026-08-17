@@ -1,4 +1,4 @@
-# SMP edge-testbed topology — EXAMPLE config.
+# MELD edge-testbed topology — EXAMPLE config.
 #
 # Copy this file to `testbed.yaml` (gitignored) and fill in YOUR nodes. The
 # generic orchestrators (run_campaign.py, deploy.sh, run_eval_c.py) read the
@@ -15,13 +15,13 @@
 iface: eth0
 
 # Brain ports.
-brain_port: 8080          # the SMP-brain HTTP service (publish / ingest / status / metrics)
+brain_port: 8080          # the MELD-brain HTTP service (publish / ingest / status / metrics)
 watchdog_port: 8090       # the per-host watchdog the orchestrator heartbeats
 
 # Container image tags (built from edge/docker; see edge/README.md).
 images:
-  smoke: smp-brain:smoke      # hashing encoder, light/fast (smoke rungs)
-  campaign: smp-brain:minilm  # real MiniLM encoder (campaign rungs)
+  smoke: meld-brain:smoke      # hashing encoder, light/fast (smoke rungs)
+  campaign: meld-brain:minilm  # real MiniLM encoder (campaign rungs)
 
 # The orchestrator host: the node co-located with this driver (commands run
 # locally there, every other node is reached by SSH). Must match a `nodes` id.

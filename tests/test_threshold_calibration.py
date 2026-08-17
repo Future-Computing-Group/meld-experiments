@@ -16,8 +16,8 @@ from __future__ import annotations
 
 import pytest
 
-from smp.merge.classifier import classify
-from smp.merge.signals import EmbeddingSimilarity
+from meld.merge.classifier import classify
+from meld.merge.signals import EmbeddingSimilarity
 
 
 def _require_minilm():
@@ -38,7 +38,7 @@ def _accuracy(cfg, pairs, encoder):
 
 
 def test_calibration_on_minilm_is_ordered_accurate_and_relate_reachable():
-    from smp.merge.calibration import CALIBRATION_PAIRS, calibrate_thresholds
+    from meld.merge.calibration import CALIBRATION_PAIRS, calibrate_thresholds
     _require_minilm()
     cfg = calibrate_thresholds(CALIBRATION_PAIRS, encoder="minilm", nli="lexical",
                                r_min=0.1, tau=0.5)
@@ -54,7 +54,7 @@ def test_calibration_on_minilm_is_ordered_accurate_and_relate_reachable():
 def test_thresholds_reject_inverted_ordering():
     # the bug: theta_merge=0.5 < sigma_lo=0.55 makes the RELATE band empty. The
     # config must reject any non-(sigma_lo < theta_merge) pair at construction.
-    from smp.config import Thresholds
+    from meld.config import Thresholds
     with pytest.raises(ValueError):
         Thresholds(theta_merge=0.5, sigma_lo=0.55, r_min=0.1, tau=0.5)
     with pytest.raises(ValueError):
@@ -65,8 +65,8 @@ def test_thresholds_reject_inverted_ordering():
 
 def test_calibrated_minilm_config_matches_calibration():
     # the shipped minilm config IS the calibration output (reproducible provenance)
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
-    from smp.merge.calibration import CALIBRATION_PAIRS, calibrate_thresholds
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.merge.calibration import CALIBRATION_PAIRS, calibrate_thresholds
     _require_minilm()
     derived = calibrate_thresholds(CALIBRATION_PAIRS, encoder="minilm", nli="lexical",
                                    r_min=0.1, tau=0.5)
@@ -77,8 +77,8 @@ def test_calibrated_minilm_config_matches_calibration():
 
 def test_calibrated_hashing_config_matches_calibration():
     # the shipped hashing config IS the calibration output for the hashing encoder
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
-    from smp.merge.calibration import CALIBRATION_PAIRS, calibrate_thresholds
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.merge.calibration import CALIBRATION_PAIRS, calibrate_thresholds
     derived = calibrate_thresholds(CALIBRATION_PAIRS, encoder="hashing", nli="lexical",
                                    r_min=0.1, tau=0.5)
     shipped = _calibrated_cfg("hashing")
@@ -89,7 +89,7 @@ def test_calibrated_hashing_config_matches_calibration():
 def test_hashing_cannot_perfectly_separate_paraphrase_from_related():
     # the engineer's finding, encoded: hashing sigma puts a true paraphrase BELOW a
     # related-distinct pair, so the best possible accuracy on hashing is < 1.0.
-    from smp.merge.calibration import CALIBRATION_PAIRS, calibrate_thresholds
+    from meld.merge.calibration import CALIBRATION_PAIRS, calibrate_thresholds
     cfg_h = calibrate_thresholds(CALIBRATION_PAIRS, encoder="hashing", nli="lexical",
                                  r_min=0.1, tau=0.5)
     assert _accuracy(cfg_h, CALIBRATION_PAIRS, "hashing") < 1.0

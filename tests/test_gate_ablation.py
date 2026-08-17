@@ -2,14 +2,14 @@
 the false-merge and stale-promotion rates. Ablating a gate = forcing its input to the
 permissive value (Context -> ctx_ok=True; inference -> chi non-contradicting; staleness
 -> ACTIVE/not-stale), then re-classifying. The full classifier is the safe baseline; each
-ablation must make the corresponding error WORSE. Pure simulation over smp.merge.classify
+ablation must make the corresponding error WORSE. Pure simulation over meld.merge.classify
 (no LLM, no testbed) -- independent of the multi-host runs.
 """
 from __future__ import annotations
 
 
 def _cfg():
-    from smp.config import load_thresholds
+    from meld.config import load_thresholds
     return load_thresholds()
 
 
@@ -33,7 +33,7 @@ def _cases(cfg):
 
 
 def test_full_classifier_is_the_safe_baseline():
-    from smp.merge.gate_ablation import gate_ablation_metrics
+    from meld.merge.gate_ablation import gate_ablation_metrics
     cfg = _cfg()
     m = gate_ablation_metrics(_cases(cfg), cfg)
     assert m[None]["false_merge_rate"] == 0.0       # nothing non-MERGE silently merged
@@ -41,21 +41,21 @@ def test_full_classifier_is_the_safe_baseline():
 
 
 def test_ablating_context_gate_raises_false_merge():
-    from smp.merge.gate_ablation import gate_ablation_metrics
+    from meld.merge.gate_ablation import gate_ablation_metrics
     cfg = _cfg()
     m = gate_ablation_metrics(_cases(cfg), cfg)
     assert m["context"]["false_merge_rate"] > m[None]["false_merge_rate"]
 
 
 def test_ablating_inference_gate_raises_false_merge():
-    from smp.merge.gate_ablation import gate_ablation_metrics
+    from meld.merge.gate_ablation import gate_ablation_metrics
     cfg = _cfg()
     m = gate_ablation_metrics(_cases(cfg), cfg)
     assert m["inference"]["false_merge_rate"] > m[None]["false_merge_rate"]
 
 
 def test_ablating_staleness_gate_raises_stale_promotion():
-    from smp.merge.gate_ablation import gate_ablation_metrics
+    from meld.merge.gate_ablation import gate_ablation_metrics
     cfg = _cfg()
     m = gate_ablation_metrics(_cases(cfg), cfg)
     assert m["staleness"]["stale_promotion_rate"] > m[None]["stale_promotion_rate"]

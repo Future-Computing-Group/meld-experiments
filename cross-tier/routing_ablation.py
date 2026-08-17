@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """§7-r routing ablation, four strategies, NPS-aligned.
 
-Compares the delivery cost of four routing strategies over the SMP relevance
+Compares the delivery cost of four routing strategies over the MELD relevance
 signal, mirroring the federated-pub/sub baselines (broadcast / random / round-robin
 / semantic). Each Patch needs exactly the brains whose interest it matches (ground
 truth by construction); a strategy delivers a set of brains per Patch; we report
 recall (needed brains reached) and wasted-delivery rate (deliveries to brains that
 did not need it). Semantic routing should reach the needed brains at near-zero waste;
 random/round-robin spend the same budget blindly; broadcast reaches everyone at high
-waste. Built on the tested smp.sync.router.
+waste. Built on the tested meld.sync.router.
 
 Run:  PYTHONPATH=src python3 cross-tier/routing_ablation.py
 """
@@ -16,9 +16,9 @@ import json, os, random, sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "src"))
-from smp.sync.router import (broadcast_route, semantic_route, random_route,  # noqa: E402
+from meld.sync.router import (broadcast_route, semantic_route, random_route,  # noqa: E402
                              round_robin_route, routing_metrics)
-from smp.merge.signals import EmbeddingSimilarity                            # noqa: E402
+from meld.merge.signals import EmbeddingSimilarity                            # noqa: E402
 
 # Three well-separated interest domains -> one brain each; each Patch belongs to one
 # domain and needs exactly that brain (so broadcast wastes 2/3 = 0.667 by construction).

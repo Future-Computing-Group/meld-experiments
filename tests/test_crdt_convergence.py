@@ -9,7 +9,7 @@ from __future__ import annotations
 
 
 def test_status_crdt_converges_under_all_orderings():
-    from smp.eval.crdt_convergence import converge_across_orderings
+    from meld.eval.crdt_convergence import converge_across_orderings
     # escalating effects on c1 (+ one on c2); the lattice-join is order-independent
     events = [("c1", "L1", "DEPRECATED"), ("c1", "L2", "OVERRULED"),
               ("c1", "L3", "ACTIVE"), ("c2", "e4", "REVOKED")]
@@ -22,7 +22,7 @@ def test_status_crdt_converges_under_all_orderings():
 
 def test_idempotent_redelivery_does_not_change_status():
     # re-delivering the same link id is idempotent (OR-set add): no status change.
-    from smp.eval.crdt_convergence import converge_across_orderings
+    from meld.eval.crdt_convergence import converge_across_orderings
     events = [("c1", "L1", "DEPRECATED"), ("c1", "L1", "DEPRECATED"),
               ("c1", "L1", "DEPRECATED")]
     res = converge_across_orderings(events, n_orderings=8, seed=1)
@@ -34,7 +34,7 @@ def test_agreement_over_time_diverges_in_partition_reconverges_at_heal():
     # 2 nodes, one claim. A applies DEPRECATED at t=1; B (partitioned) only receives
     # the same link at heal t=3. CRDT: agree before (both ACTIVE), diverge during the
     # partition, reconverge after heal.
-    from smp.eval.crdt_convergence import agreement_over_time
+    from meld.eval.crdt_convergence import agreement_over_time
     node_logs = {"A": [(1.0, "L1", "DEPRECATED")],
                  "B": [(3.0, "L1", "DEPRECATED")]}
     pts = agreement_over_time(node_logs, checkpoints=[0.5, 2.0, 3.5], mode="crdt")
@@ -47,7 +47,7 @@ def test_crdt_reconverges_after_reordered_heal_where_lww_stays_diverged():
     # both nodes eventually receive BOTH conflicting links, but in different order
     # (partition delivered them out of order). CRDT joins to the same status; LWW's
     # last-writer differs by order, so it stays diverged after heal.
-    from smp.eval.crdt_convergence import agreement_over_time
+    from meld.eval.crdt_convergence import agreement_over_time
     node_logs = {"A": [(1.0, "L1", "DEPRECATED"), (4.0, "L2", "OVERRULED")],
                  "B": [(2.0, "L2", "OVERRULED"), (5.0, "L1", "DEPRECATED")]}
     crdt = agreement_over_time(node_logs, checkpoints=[6.0], mode="crdt")
@@ -60,7 +60,7 @@ def test_lww_baseline_diverges_where_crdt_converges():
     # the baseline contrast: last-writer-wins is order-dependent, so the same event
     # set under reordering yields DIFFERENT final statuses (agreement < 1), whereas
     # the status-CRDT converges (agreement == 1). Section 5.1's claim, made concrete.
-    from smp.eval.crdt_convergence import converge_across_orderings
+    from meld.eval.crdt_convergence import converge_across_orderings
     events = [("c1", "L1", "DEPRECATED"), ("c1", "L2", "OVERRULED"),
               ("c1", "L3", "ACTIVE")]
     crdt = converge_across_orderings(events, n_orderings=24, seed=0, mode="crdt")
@@ -77,7 +77,7 @@ def test_modal_agreement_and_n_distinct_reported():
     # status maps over all orderings, divided by n_orderings (does not depend on
     # which ordering happens to be first). CRDT: one cluster (n_distinct==1,
     # modal==1.0); LWW: many clusters (n_distinct>1, modal<1.0).
-    from smp.eval.crdt_convergence import converge_across_orderings
+    from meld.eval.crdt_convergence import converge_across_orderings
     events = [("c1", "lk1", "DEPRECATED"), ("c1", "lk2", "OVERRULED"),
               ("c2", "lk3", "DEPRECATED"), ("c2", "lk4", "REVOKED")]
     crdt = converge_across_orderings(events, n_orderings=200, seed=0, mode="crdt")
@@ -92,7 +92,7 @@ def test_canonical_c1_scenario_crdt_order_independent_lww_not():
     # The fixed canonical contested-lifecycle scenario the manuscript reports, run
     # at the manuscript's n_orderings=200, seed=0. CRDT is order-independent by
     # construction (one outcome); LWW diverges across orders.
-    from smp.eval.crdt_convergence import run_inprocess_c1, CANONICAL_C1_SCENARIO
+    from meld.eval.crdt_convergence import run_inprocess_c1, CANONICAL_C1_SCENARIO
     rep = run_inprocess_c1(n_orderings=200, seed=0)
     assert rep["n_orderings"] == 200
     # CRDT: every ordering computes the SAME per-claim statuses
@@ -108,7 +108,7 @@ def test_canonical_c1_scenario_crdt_order_independent_lww_not():
 def test_canonical_c1_scenario_includes_idempotent_redelivery():
     # the canonical event list re-delivers at least one link id (OR-set idempotence);
     # the CRDT result must be invariant to that re-delivery (n_distinct stays 1).
-    from smp.eval.crdt_convergence import CANONICAL_C1_SCENARIO
+    from meld.eval.crdt_convergence import CANONICAL_C1_SCENARIO
     events = CANONICAL_C1_SCENARIO["events"]
     seen = {}
     duplicated = False
@@ -122,7 +122,7 @@ def test_canonical_c1_scenario_includes_idempotent_redelivery():
 
 def test_run_inprocess_c1_is_reproducible():
     # same seed -> identical report (deterministic manuscript number).
-    from smp.eval.crdt_convergence import run_inprocess_c1
+    from meld.eval.crdt_convergence import run_inprocess_c1
     a = run_inprocess_c1(n_orderings=200, seed=0)
     b = run_inprocess_c1(n_orderings=200, seed=0)
     assert a["lww"]["modal_agreement"] == b["lww"]["modal_agreement"]

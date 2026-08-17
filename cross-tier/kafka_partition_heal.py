@@ -96,7 +96,7 @@ def run_one_trial(seed, bootstrap=None, join_s=4.0, timeout=12.0):
     bootstrap = bootstrap or BOOTSTRAP
     rng = random.Random(seed)
     run = uuid.uuid4().hex[:8]
-    claims, acks = "smp-ph-claims-%s" % run, "smp-ph-acks-%s" % run
+    claims, acks = "meld-ph-claims-%s" % run, "meld-ph-acks-%s" % run
     brains = [EDGE] + list(PEERS)
     env = dict(os.environ, PYTHONPATH=os.path.join(REPO, "src") + ":" + HERE)
     logs, procs = {}, {}

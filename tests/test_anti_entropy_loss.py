@@ -14,7 +14,7 @@ from __future__ import annotations
 def test_zero_loss_agrees_without_digest():
     # No loss -> every brain receives every link -> full agreement even without
     # the digest (the digest is only needed to repair LOSS).
-    from smp.eval.anti_entropy_eval import loss_convergence_cell
+    from meld.eval.anti_entropy_eval import loss_convergence_cell
     cell = loss_convergence_cell(loss=0.0, n_brains=5, seed=0, digest=False)
     assert cell["agreement"] == 1.0
     assert cell["n_distinct_maps"] == 1
@@ -23,7 +23,7 @@ def test_zero_loss_agrees_without_digest():
 def test_loss_without_digest_diverges():
     # Under loss, without reconciliation, some brains miss links -> the per-claim
     # status map set fragments (agreement < 1, more than one distinct map).
-    from smp.eval.anti_entropy_eval import loss_convergence_cell
+    from meld.eval.anti_entropy_eval import loss_convergence_cell
     cell = loss_convergence_cell(loss=0.10, n_brains=8, seed=1, digest=False)
     assert cell["agreement"] < 1.0
     assert cell["n_distinct_maps"] >= 2
@@ -32,7 +32,7 @@ def test_loss_without_digest_diverges():
 def test_loss_with_digest_reconverges_to_full_agreement():
     # The SAME lossy delivery, but with periodic anti-entropy rounds, reconciles
     # every brain to the complete link set -> agreement 1.000, one distinct map.
-    from smp.eval.anti_entropy_eval import loss_convergence_cell
+    from meld.eval.anti_entropy_eval import loss_convergence_cell
     cell = loss_convergence_cell(loss=0.10, n_brains=8, seed=1, digest=True)
     assert cell["agreement"] == 1.0
     assert cell["n_distinct_maps"] == 1
@@ -47,21 +47,21 @@ def test_loss_with_digest_reconverges_to_full_agreement():
 def test_with_digest_converges_at_the_reviewer_cited_rate():
     # The 0.3% loss the reviewers cited: without the digest a few links are lost;
     # with it, agreement is restored to 1.000.
-    from smp.eval.anti_entropy_eval import loss_convergence_cell
+    from meld.eval.anti_entropy_eval import loss_convergence_cell
     with_d = loss_convergence_cell(loss=0.003, n_brains=12, seed=2, digest=True)
     assert with_d["agreement"] == 1.0
     assert with_d["status_map"] == with_d["expected_status_map"]
 
 
 def test_sweep_is_deterministic_in_seed():
-    from smp.eval.anti_entropy_eval import loss_convergence_sweep
+    from meld.eval.anti_entropy_eval import loss_convergence_sweep
     a = loss_convergence_sweep(losses=[0.0, 0.01], n_brains=6, seeds=[0, 1])
     b = loss_convergence_sweep(losses=[0.0, 0.01], n_brains=6, seeds=[0, 1])
     assert a == b
 
 
 def test_sweep_with_digest_is_one_everywhere_without_drops_with_loss():
-    from smp.eval.anti_entropy_eval import loss_convergence_sweep
+    from meld.eval.anti_entropy_eval import loss_convergence_sweep
     rep = loss_convergence_sweep(losses=[0.0, 0.003, 0.01, 0.05, 0.10],
                                  n_brains=10, seeds=[0, 1, 2])
     for row in rep["rows"]:

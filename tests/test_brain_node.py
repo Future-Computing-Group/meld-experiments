@@ -1,4 +1,4 @@
-"""Integration kernel: a BrainNode ties the SMP brain + merge-on-receive into a
+"""Integration kernel: a BrainNode ties the MELD brain + merge-on-receive into a
 networked node. ingest() writes a local observation; extract_delta() yields the
 claims to publish (new since last publish); receive() merges a peer's delta into the
 local brain via merge-on-receive; live_claim_texts() reports the status-live claims
@@ -9,12 +9,12 @@ from __future__ import annotations
 
 
 def _cfg():
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
     return _calibrated_cfg("hashing")
 
 
 def _node(nid):
-    from smp.sync.node import BrainNode
+    from meld.sync.node import BrainNode
     return BrainNode(nid, encoder="hashing", nli="lexical", cfg=_cfg())
 
 

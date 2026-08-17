@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import pytest
 
-from smp.merge.m2_eval import M2_GOLD, classification_metrics, evaluate_m2
+from meld.merge.m2_eval import M2_GOLD, classification_metrics, evaluate_m2
 
 
 def test_classification_metrics_and_false_merge_rate():
@@ -27,8 +27,8 @@ def test_perfect_classification_zero_false_merge():
 
 def test_m2_gold_evaluation_minilm_crossencoder():
     # end-to-end on the real gold set; gated on the encoder/NLI models being present.
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
-    from smp.merge.signals import EmbeddingSimilarity
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.merge.signals import EmbeddingSimilarity
     try:
         EmbeddingSimilarity(encoder="minilm").sigma("a", "b")
     except Exception as e:  # pragma: no cover

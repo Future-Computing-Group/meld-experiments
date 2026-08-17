@@ -5,7 +5,7 @@ loop can write per-iteration progress to a status file readable mid-run. Run:
 import os
 import tempfile
 
-from smp.eval.progress import status_emitter
+from meld.eval.progress import status_emitter
 
 
 def test_status_emitter_writes_readable_status_file_with_label_and_elapsed():

@@ -1,6 +1,6 @@
 """A-2 echo-safety probe.
 
-SMP's wire discipline holds an echo-safety invariant: a claim a node RECEIVED over the
+MELD's wire discipline holds an echo-safety invariant: a claim a node RECEIVED over the
 wire is never re-published (the gossip-loop guard in BrainNode), so an alignment-tagged
 edge published once never echoes/amplifies back around the topology. The probe injects a
 tagged claim at an origin, propagates it to peers, and checks no peer (and not the origin)
@@ -11,12 +11,12 @@ from __future__ import annotations
 
 
 def _cfg():
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
     return _calibrated_cfg("hashing")
 
 
 def test_received_alignment_tagged_claim_never_echoes():
-    from smp.sync.echo_safety import echo_safety_probe
+    from meld.sync.echo_safety import echo_safety_probe
     r = echo_safety_probe(encoder="hashing", nli="lexical", cfg=_cfg(), n_peers=3,
                           tagged_claim="ALIGN-TAG: the canonical policy is X")
     assert r["peer_echoes"] == 0          # no peer re-publishes what it received
@@ -27,7 +27,7 @@ def test_received_alignment_tagged_claim_never_echoes():
 def test_guard_not_inability_blocks_the_echo():
     # control: a node that INGESTS the claim locally DOES publish it -> the no-echo property
     # is the receive-side gossip guard, not a general inability to publish the text.
-    from smp.sync.node import BrainNode
+    from meld.sync.node import BrainNode
     n = BrainNode("X", encoder="hashing", nli="lexical", cfg=_cfg())
     n.ingest("ALIGN-TAG: the canonical policy is X")
     assert any("ALIGN-TAG" in t for t in n.extract_delta())   # locally-ingested -> published

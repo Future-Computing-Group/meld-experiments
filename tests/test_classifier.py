@@ -8,8 +8,8 @@ from __future__ import annotations
 
 import pytest
 
-from smp.config import load_thresholds
-from smp.merge.classifier import classify
+from meld.config import load_thresholds
+from meld.merge.classifier import classify
 
 CFG = load_thresholds()
 

@@ -4,12 +4,12 @@ throughout (offline, fast, deterministic) -- this is a plumbing/shape test,
 not a re-run of the real minilm/cross-encoder workloads (scripts/run_order_shuffle.py)."""
 from __future__ import annotations
 
-from smp.agent.memory import _unit_from_text
-from smp.config import load_thresholds
-from smp.eval.candidate_cost import CandidateCostRecorder, instrument_best_candidate
-from smp.eval.order_shuffle import run_order_shuffle
-from smp.merge.signals import EmbeddingSimilarity
-from smp.protocol.merge_on_receive import merge_on_receive
+from meld.agent.memory import _unit_from_text
+from meld.config import load_thresholds
+from meld.eval.candidate_cost import CandidateCostRecorder, instrument_best_candidate
+from meld.eval.order_shuffle import run_order_shuffle
+from meld.merge.signals import EmbeddingSimilarity
+from meld.protocol.merge_on_receive import merge_on_receive
 
 
 def _tiny_workload():

@@ -4,10 +4,10 @@ relevant graph state (live claim set, per-claim status map, typed link
 multiset, representative choice per SUPERSEDES-consolidated group)."""
 from __future__ import annotations
 
-from smp.brain.store import Brain
-from smp.eval.graph_fingerprint import diff_fingerprints, fingerprint
-from smp.protocol.messages import Patch
-from smp.proto import Claim, Endpoint, MemoryLink, MemoryUnit
+from meld.brain.store import Brain
+from meld.eval.graph_fingerprint import diff_fingerprints, fingerprint
+from meld.protocol.messages import Patch
+from meld.proto import Claim, Endpoint, MemoryLink, MemoryUnit
 
 
 def _unit(uid: bytes, key: bytes, text: str) -> MemoryUnit:

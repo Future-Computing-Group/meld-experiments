@@ -13,7 +13,7 @@ CSC run).
 """
 from __future__ import annotations
 
-from smp.agent.gaia_scorer import (
+from meld.agent.gaia_scorer import (
     extract_final_answer,
     quasi_exact_match,
     score_predictions,

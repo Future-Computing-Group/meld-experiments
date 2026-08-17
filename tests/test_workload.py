@@ -15,7 +15,7 @@ CLAIMS = [("Paris is the capital of France", "geo"),
 
 
 def test_replication_1_homes_each_topic_on_one_brain():
-    from smp.sync.workload import build_workload
+    from meld.sync.workload import build_workload
     w = build_workload(CLAIMS, ["A", "B", "C"], replication=1, seed=1)
     for topic, homes in w.topic_home.items():
         assert len(homes) == 1                       # one home per topic
@@ -27,7 +27,7 @@ def test_replication_1_homes_each_topic_on_one_brain():
 
 
 def test_replication_2_homes_each_topic_on_two_brains():
-    from smp.sync.workload import build_workload
+    from meld.sync.workload import build_workload
     w = build_workload(CLAIMS, ["A", "B", "C"], replication=2, seed=1)
     for homes in w.topic_home.values():
         assert len(homes) == 2
@@ -38,14 +38,14 @@ def test_replication_2_homes_each_topic_on_two_brains():
 
 
 def test_needed_oracle_is_the_topic_home_set():
-    from smp.sync.workload import build_workload
+    from meld.sync.workload import build_workload
     w = build_workload(CLAIMS, ["A", "B", "C", "D"], replication=2, seed=3)
     for text, topic in CLAIMS:
         assert w.needed[text] == frozenset(w.topic_home[topic])   # independent of any router
 
 
 def test_deterministic_under_seed():
-    from smp.sync.workload import build_workload
+    from meld.sync.workload import build_workload
     a = build_workload(CLAIMS, ["A", "B", "C"], replication=1, seed=7)
     b = build_workload(CLAIMS, ["A", "B", "C"], replication=1, seed=7)
     assert a.topic_home == b.topic_home and a.assignments == b.assignments
@@ -63,7 +63,7 @@ def test_deterministic_under_seed():
 # every later cell read from local disk (zero network), keyed by (n, split, config).
 
 def test_hotpot_cache_fetches_once_then_reads_disk(tmp_path):
-    from smp.sync.workload import load_hotpot_claims
+    from meld.sync.workload import load_hotpot_claims
     calls = {"n": 0}
 
     def fake_fetch(n, *, split, config):
@@ -78,7 +78,7 @@ def test_hotpot_cache_fetches_once_then_reads_disk(tmp_path):
 
 
 def test_hotpot_cache_keyed_by_n_split_config(tmp_path):
-    from smp.sync.workload import load_hotpot_claims
+    from meld.sync.workload import load_hotpot_claims
     calls = {"n": 0}
 
     def fake_fetch(n, *, split, config):

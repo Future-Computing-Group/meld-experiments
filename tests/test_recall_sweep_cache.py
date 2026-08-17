@@ -5,17 +5,17 @@ same sentence embeds ONCE across builds, instead of being re-embedded per build_
 """
 import os
 
-from smp.eval.recall_sweep import recall_rows
-from smp.merge.signals import EmbeddingSimilarity
-from smp.agent.mem_conditions import _gold_sentences
+from meld.eval.recall_sweep import recall_rows
+from meld.merge.signals import EmbeddingSimilarity
+from meld.agent.mem_conditions import _gold_sentences
 
-_CFG = os.path.join(os.path.dirname(__file__), "..", "src", "smp", "config",
+_CFG = os.path.join(os.path.dirname(__file__), "..", "src", "meld", "config",
                     "thresholds-minilm.yaml")
 
 
 def test_recall_rows_threads_shared_cache_dir_so_embeddings_are_reused(tmp_path):
-    from smp.config import load_thresholds
-    from smp.agent.hotpot_loader import load_hotpot_fixture
+    from meld.config import load_thresholds
+    from meld.agent.hotpot_loader import load_hotpot_fixture
     cfg = load_thresholds(_CFG)
     tasks = load_hotpot_fixture(n=2)
     cache = str(tmp_path / "emb")

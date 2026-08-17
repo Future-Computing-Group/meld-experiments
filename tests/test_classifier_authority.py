@@ -8,8 +8,8 @@ claim (no rewrite risk) and is unaffected. ``authority_ok`` defaults True, so ev
 existing caller and the M-2 benchmark (default/equal authority) are byte-for-byte
 unchanged.
 """
-from smp.config import load_thresholds
-from smp.merge.classifier import classify
+from meld.config import load_thresholds
+from meld.merge.classifier import classify
 
 CFG = load_thresholds()
 

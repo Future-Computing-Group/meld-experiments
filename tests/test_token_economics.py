@@ -1,6 +1,6 @@
 """A-3 single-agent token-cost economics (motivating data point, not a contribution).
 
-Repeated queries against a CLEANED, linked brain (distributed_merge: SMP dedups paraphrase
+Repeated queries against a CLEANED, linked brain (distributed_merge: MELD dedups paraphrase
 duplicates into canonical claims) recall a smaller context than against an UNCLEANED brain
 (naive_union: every duplicate stays a live unit). Smaller recalled context = fewer input
 tokens fed to the agent's LLM, summed over repeated queries. Token cost is approximated by a
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 
 def _cfg():
-    from smp.agent.run_hotpot_gate import _calibrated_cfg
+    from meld.agent.run_hotpot_gate import _calibrated_cfg
     return _calibrated_cfg("hashing")
 
 
 def _task():
-    from smp.agent.hotpot_loader import load_hotpot_fixture
+    from meld.agent.hotpot_loader import load_hotpot_fixture
     return load_hotpot_fixture(1)[0]
 
 
 def test_cleaned_brain_recall_costs_fewer_tokens_than_uncleaned():
-    from smp.agent.token_economics import token_economics
+    from meld.agent.token_economics import token_economics
     task = _task()
     queries = [task.question] * 3            # repeated queries (the economics axis)
     r = token_economics(task, queries, encoder="hashing", nli="lexical", cfg=_cfg(), k=20)
@@ -31,7 +31,7 @@ def test_cleaned_brain_recall_costs_fewer_tokens_than_uncleaned():
 
 
 def test_reduction_scales_with_repeated_queries():
-    from smp.agent.token_economics import token_economics
+    from meld.agent.token_economics import token_economics
     task = _task()
     one = token_economics(task, [task.question], encoder="hashing", nli="lexical", cfg=_cfg(), k=20)
     five = token_economics(task, [task.question] * 5, encoder="hashing", nli="lexical", cfg=_cfg(), k=20)

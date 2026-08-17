@@ -21,7 +21,7 @@ from __future__ import annotations
 # --------------------------------------------------------------------------- #
 def test_partial_shuffle_endpoints():
     import random
-    from smp.eval.crdt_convergence import _partial_shuffle
+    from meld.eval.crdt_convergence import _partial_shuffle
     order = list(range(20))
     rng = random.Random(0)
     assert _partial_shuffle(order, 0.0, rng) == order            # identity
@@ -30,7 +30,7 @@ def test_partial_shuffle_endpoints():
 
 
 def test_crdt_modal_agreement_is_one_in_every_cell():
-    from smp.eval.crdt_convergence import partition_reorder_sweep
+    from meld.eval.crdt_convergence import partition_reorder_sweep
     cells = partition_reorder_sweep(durations=[2, 4, 8], reorder_rates=[0.0, 0.5, 1.0],
                                     n_claims=4, n_orderings=40, seed=0)
     assert len(cells) == 9
@@ -40,7 +40,7 @@ def test_crdt_modal_agreement_is_one_in_every_cell():
 
 
 def test_lww_degrades_with_reorder_and_duration():
-    from smp.eval.crdt_convergence import partition_reorder_sweep
+    from meld.eval.crdt_convergence import partition_reorder_sweep
     cells = partition_reorder_sweep(durations=[8], reorder_rates=[0.0, 1.0],
                                     n_claims=6, n_orderings=60, seed=1)
     by_r = {c["reorder_rate"]: c for c in cells}
@@ -52,7 +52,7 @@ def test_lww_degrades_with_reorder_and_duration():
 
 
 def test_sweep_is_deterministic():
-    from smp.eval.crdt_convergence import partition_reorder_sweep
+    from meld.eval.crdt_convergence import partition_reorder_sweep
     a = partition_reorder_sweep(durations=[4], reorder_rates=[1.0], n_claims=4,
                                 n_orderings=30, seed=7)
     b = partition_reorder_sweep(durations=[4], reorder_rates=[1.0], n_claims=4,
@@ -77,8 +77,8 @@ def _synthetic_scored():
 
 
 def test_robustness_clean_matches_unperturbed():
-    from smp.eval.robustness import robustness_sweep
-    from smp.merge.m2_eval import decisions_full, classification_metrics
+    from meld.eval.robustness import robustness_sweep
+    from meld.merge.m2_eval import decisions_full, classification_metrics
     scored = _synthetic_scored()
     gold = [g for g, _, _ in scored]
     base = classification_metrics(gold, decisions_full(scored, theta=0.85, sigma_lo=0.55))
@@ -89,7 +89,7 @@ def test_robustness_clean_matches_unperturbed():
 
 
 def test_macro_f1_degrades_under_embedding_noise():
-    from smp.eval.robustness import robustness_sweep
+    from meld.eval.robustness import robustness_sweep
     out = robustness_sweep(_synthetic_scored(), theta=0.85, sigma_lo=0.55,
                            noise_sds=[0.0, 0.30], flip_rates=[0.0],
                            n_trials=30, seed=0)
@@ -101,7 +101,7 @@ def test_macro_f1_degrades_under_embedding_noise():
 def test_false_merge_rate_responds_to_degraded_nli():
     # Flipping chi can turn a guarded contradiction into a merge -> the safety
     # metric must respond (degrade) as the NLI degrades.
-    from smp.eval.robustness import robustness_sweep
+    from meld.eval.robustness import robustness_sweep
     out = robustness_sweep(_synthetic_scored(), theta=0.85, sigma_lo=0.55,
                            noise_sds=[0.0], flip_rates=[0.0, 0.5],
                            n_trials=40, seed=0)
@@ -109,7 +109,7 @@ def test_false_merge_rate_responds_to_degraded_nli():
 
 
 def test_robustness_deterministic():
-    from smp.eval.robustness import robustness_sweep
+    from meld.eval.robustness import robustness_sweep
     kw = dict(theta=0.85, sigma_lo=0.55, noise_sds=[0.2], flip_rates=[0.2],
               n_trials=20, seed=3)
     assert robustness_sweep(_synthetic_scored(), **kw) == \
