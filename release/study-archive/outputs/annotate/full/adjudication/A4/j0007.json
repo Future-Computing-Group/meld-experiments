@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0007",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "69811b5389e0633d9eb0b3606e03bdbd6b49f8855231c5f96c96ef0e79f29cb2",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"d2bd340b3faaf911\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Crazily spinning in circles adds manner detail to a squirrel running in circles.\"},\n{\"item_id\": \"af31c15bbf74f737\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Whether the lists are exhaustive (so Lil Skies versus Jon Janez clash) or partial (compatible) is not decided by the texts.\"},\n{\"item_id\": \"918c7434757278a5\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The team and the university swap roles in who represented whom.\"},\n{\"item_id\": \"2e5a69eaac02e494\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The longer roster adds fighters to the same promotion's featured talents.\"},\n{\"item_id\": \"67be3d8b2e286b78\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Adding Mumbai to the flight destinations is a compatible extra detail.\"},\n{\"item_id\": \"37990c9d17b538ea\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The example shows differ (Upside Down Show versus Blue's Clues) but 'including' lists can both hold.\"},\n{\"item_id\": \"44b879af38d2e664\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Being raped specifies the non-consensual nature of the sex, a compatible but added detail.\"},\n{\"item_id\": \"255fe9f6e294e0e3\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Male is already implied by the male-actors category, so keeping one loses nothing.\"},\n{\"item_id\": \"75e3834915b82ad3\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both make effect claims about vitamin D deficiency on different birth outcomes, which can both hold.\"},\n{\"item_id\": \"d5f593eddd66fa79\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A woman being carried by the man cannot also be walking with him in the same scene.\"},\n{\"item_id\": \"98333e5cb60643e2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Men looking absent-mindedly into the distance is compatible with them not staring at the hills.\"},\n{\"item_id\": \"e0522e73811148a3\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only the leading word 'After' is truncated; the chart placements are identical.\"},\n{\"item_id\": \"159b401d57011235\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One version names Panini as the subject while the other omits it.\"},\n{\"item_id\": \"52b67275aec95a5d\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The stray 'will' is a grammar slip; the bout described is the same.\"},\n{\"item_id\": \"fc01c7c31a410f98\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"Belief in God is a narrower form of belief in religion, and both agreements can hold.\"},\n{\"item_id\": \"26bd54a6140d368b\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same 72 million sales total differs only in verb tense.\"},\n{\"item_id\": \"18784b2cc2addafa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe the 2005-2006 stand completing the bowl; one specifies it was the South stand.\"},\n{\"item_id\": \"ab3558c2b2916567\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Exclusion zone and closed area are synonyms here.\"},\n{\"item_id\": \"6a556f1059870237\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the as-of date to the same Firefox security claim.\"},\n{\"item_id\": \"14a7a7c76cf52f4c\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Whether The Soloist is or was his next film is a status that changes over time.\"},\n{\"item_id\": \"cf6c568ad6506f64\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"An unqualified Premier League scoring rank already means all time, so 'of all time' adds nothing.\"},\n{\"item_id\": \"d4d9cb8c4931a0bd\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Traditions inherited from Islam versus traditions Islam inherited reverses the direction of inheritance.\"},\n{\"item_id\": \"2093f63044eb7376\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give different career facts about Sancho that do not contradict each other as written.\"},\n{\"item_id\": \"33979736ba3c001f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"People playing rugby and rugby players tackling each other is the same proposition.\"},\n{\"item_id\": \"021677196951da71\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A car is a more specific vehicle, so one adds a detail to a man driving.\"},\n{\"item_id\": \"b8256c3bdd9e99fa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The negative reception is shared; one adds the Metacritic score and the other names the film.\"},\n{\"item_id\": \"a6e1530e54ae90ff\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The garbled lead-in 'He also had' does not change the list of forwards available to Souness.\"},\n{\"item_id\": \"2201e3eed71ff853\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds Krio ancestry to the Yoruba and Limba ancestry.\"},\n{\"item_id\": \"0c06f8e0c9f6bc36\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denying snake feeding and denying snake cooking are about different events.\"},\n{\"item_id\": \"356c3cb573ea8cf0\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man photographing himself with another guy and a man in blue posing by a vehicle are different scenes.\"},\n{\"item_id\": \"ceeef6c4d9ef5c80\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Denying a man holding a mask and denying a masked man in black concern different scenes.\"},\n{\"item_id\": \"6285ed7b3065b209\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe using an eye pencil on the eyelid; one adds applying eyeliner.\"},\n{\"item_id\": \"240b3a0adc2f2e34\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both describe a kicking bout against a gloved partner with compatible different details.\"},\n{\"item_id\": \"f160d8190c6541b8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Signing with the Patriots in April and a trade to the Jets in September are compatible 2019 events for Thomas.\"},\n{\"item_id\": \"5db6eb325385ae42\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Download totals carry explicit different as-of dates, so both can hold.\"},\n{\"item_id\": \"d09d94cb2932f89a\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Slicing a garlic clove and putting garlic on bread are different actions.\"},\n{\"item_id\": \"85d519f1d2324954\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The same kind of daily Henan report is given for different days.\"},\n{\"item_id\": \"e669ef66a398581b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Specifying that the shirtless person is a man adds a detail.\"},\n{\"item_id\": \"ae55a3a9e0f54421\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Former youth international is more specific than former youth player.\"},\n{\"item_id\": \"29521d7730ede0a1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Sindhi to the example languages.\"},\n{\"item_id\": \"6b6f663f80c27486\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A girl and a young woman playing guitar are near-synonymous descriptions.\"},\n{\"item_id\": \"8c5e495d84dde51f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Swapping the near-synonyms many and various leaves the claim unchanged.\"},\n{\"item_id\": \"d163ca23b5c4cafb\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The team in the College Football season is a football team in one and a soccer team in the other.\"},\n{\"item_id\": \"4e747c8769ab8d6b\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cost estimates for the project cover different phases and estimate years.\"},\n{\"item_id\": \"54a4352fd405a356\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The Rotten Tomatoes figures clash, but the texts do not say whether they concern the same film.\"},\n{\"item_id\": \"c29bdfe960f3fdd2\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Head-to-head match and win counts are totals to date that change over time.\"},\n{\"item_id\": \"10a38142291dbd8c\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Denying a wheelie by the orange rider and denying road riding concern different scenes.\"},\n{\"item_id\": \"fbd91c67ce28b4f8\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only a preposition typo differs.\"},\n{\"item_id\": \"09bd04883becd3f9\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The man cannot be both walking and running on the road at the same time.\"},\n{\"item_id\": \"ba144e073afffa00\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mud names the brown substance on the topless woman, and one adds the empty background.\"}\n]}\n"
+ ],
+ "labels": {
+  "d2bd340b3faaf911": {
+   "item_id": "d2bd340b3faaf911",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Crazily spinning in circles adds manner detail to a squirrel running in circles."
+  },
+  "af31c15bbf74f737": {
+   "item_id": "af31c15bbf74f737",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Whether the lists are exhaustive (so Lil Skies versus Jon Janez clash) or partial (compatible) is not decided by the texts."
+  },
+  "918c7434757278a5": {
+   "item_id": "918c7434757278a5",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The team and the university swap roles in who represented whom."
+  },
+  "2e5a69eaac02e494": {
+   "item_id": "2e5a69eaac02e494",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The longer roster adds fighters to the same promotion's featured talents."
+  },
+  "67be3d8b2e286b78": {
+   "item_id": "67be3d8b2e286b78",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Adding Mumbai to the flight destinations is a compatible extra detail."
+  },
+  "37990c9d17b538ea": {
+   "item_id": "37990c9d17b538ea",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The example shows differ (Upside Down Show versus Blue's Clues) but 'including' lists can both hold."
+  },
+  "44b879af38d2e664": {
+   "item_id": "44b879af38d2e664",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Being raped specifies the non-consensual nature of the sex, a compatible but added detail."
+  },
+  "255fe9f6e294e0e3": {
+   "item_id": "255fe9f6e294e0e3",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Male is already implied by the male-actors category, so keeping one loses nothing."
+  },
+  "75e3834915b82ad3": {
+   "item_id": "75e3834915b82ad3",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both make effect claims about vitamin D deficiency on different birth outcomes, which can both hold."
+  },
+  "d5f593eddd66fa79": {
+   "item_id": "d5f593eddd66fa79",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A woman being carried by the man cannot also be walking with him in the same scene."
+  },
+  "98333e5cb60643e2": {
+   "item_id": "98333e5cb60643e2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Men looking absent-mindedly into the distance is compatible with them not staring at the hills."
+  },
+  "e0522e73811148a3": {
+   "item_id": "e0522e73811148a3",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only the leading word 'After' is truncated; the chart placements are identical."
+  },
+  "159b401d57011235": {
+   "item_id": "159b401d57011235",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One version names Panini as the subject while the other omits it."
+  },
+  "52b67275aec95a5d": {
+   "item_id": "52b67275aec95a5d",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The stray 'will' is a grammar slip; the bout described is the same."
+  },
+  "fc01c7c31a410f98": {
+   "item_id": "fc01c7c31a410f98",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "Belief in God is a narrower form of belief in religion, and both agreements can hold."
+  },
+  "26bd54a6140d368b": {
+   "item_id": "26bd54a6140d368b",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same 72 million sales total differs only in verb tense."
+  },
+  "18784b2cc2addafa": {
+   "item_id": "18784b2cc2addafa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe the 2005-2006 stand completing the bowl; one specifies it was the South stand."
+  },
+  "ab3558c2b2916567": {
+   "item_id": "ab3558c2b2916567",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Exclusion zone and closed area are synonyms here."
+  },
+  "6a556f1059870237": {
+   "item_id": "6a556f1059870237",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the as-of date to the same Firefox security claim."
+  },
+  "14a7a7c76cf52f4c": {
+   "item_id": "14a7a7c76cf52f4c",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Whether The Soloist is or was his next film is a status that changes over time."
+  },
+  "cf6c568ad6506f64": {
+   "item_id": "cf6c568ad6506f64",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "An unqualified Premier League scoring rank already means all time, so 'of all time' adds nothing."
+  },
+  "d4d9cb8c4931a0bd": {
+   "item_id": "d4d9cb8c4931a0bd",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Traditions inherited from Islam versus traditions Islam inherited reverses the direction of inheritance."
+  },
+  "2093f63044eb7376": {
+   "item_id": "2093f63044eb7376",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give different career facts about Sancho that do not contradict each other as written."
+  },
+  "33979736ba3c001f": {
+   "item_id": "33979736ba3c001f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "People playing rugby and rugby players tackling each other is the same proposition."
+  },
+  "021677196951da71": {
+   "item_id": "021677196951da71",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A car is a more specific vehicle, so one adds a detail to a man driving."
+  },
+  "b8256c3bdd9e99fa": {
+   "item_id": "b8256c3bdd9e99fa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The negative reception is shared; one adds the Metacritic score and the other names the film."
+  },
+  "a6e1530e54ae90ff": {
+   "item_id": "a6e1530e54ae90ff",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The garbled lead-in 'He also had' does not change the list of forwards available to Souness."
+  },
+  "2201e3eed71ff853": {
+   "item_id": "2201e3eed71ff853",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds Krio ancestry to the Yoruba and Limba ancestry."
+  },
+  "0c06f8e0c9f6bc36": {
+   "item_id": "0c06f8e0c9f6bc36",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denying snake feeding and denying snake cooking are about different events."
+  },
+  "356c3cb573ea8cf0": {
+   "item_id": "356c3cb573ea8cf0",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man photographing himself with another guy and a man in blue posing by a vehicle are different scenes."
+  },
+  "ceeef6c4d9ef5c80": {
+   "item_id": "ceeef6c4d9ef5c80",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Denying a man holding a mask and denying a masked man in black concern different scenes."
+  },
+  "6285ed7b3065b209": {
+   "item_id": "6285ed7b3065b209",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe using an eye pencil on the eyelid; one adds applying eyeliner."
+  },
+  "240b3a0adc2f2e34": {
+   "item_id": "240b3a0adc2f2e34",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both describe a kicking bout against a gloved partner with compatible different details."
+  },
+  "f160d8190c6541b8": {
+   "item_id": "f160d8190c6541b8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Signing with the Patriots in April and a trade to the Jets in September are compatible 2019 events for Thomas."
+  },
+  "5db6eb325385ae42": {
+   "item_id": "5db6eb325385ae42",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Download totals carry explicit different as-of dates, so both can hold."
+  },
+  "d09d94cb2932f89a": {
+   "item_id": "d09d94cb2932f89a",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Slicing a garlic clove and putting garlic on bread are different actions."
+  },
+  "85d519f1d2324954": {
+   "item_id": "85d519f1d2324954",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The same kind of daily Henan report is given for different days."
+  },
+  "e669ef66a398581b": {
+   "item_id": "e669ef66a398581b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Specifying that the shirtless person is a man adds a detail."
+  },
+  "ae55a3a9e0f54421": {
+   "item_id": "ae55a3a9e0f54421",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Former youth international is more specific than former youth player."
+  },
+  "29521d7730ede0a1": {
+   "item_id": "29521d7730ede0a1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Sindhi to the example languages."
+  },
+  "6b6f663f80c27486": {
+   "item_id": "6b6f663f80c27486",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A girl and a young woman playing guitar are near-synonymous descriptions."
+  },
+  "8c5e495d84dde51f": {
+   "item_id": "8c5e495d84dde51f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Swapping the near-synonyms many and various leaves the claim unchanged."
+  },
+  "d163ca23b5c4cafb": {
+   "item_id": "d163ca23b5c4cafb",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The team in the College Football season is a football team in one and a soccer team in the other."
+  },
+  "4e747c8769ab8d6b": {
+   "item_id": "4e747c8769ab8d6b",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cost estimates for the project cover different phases and estimate years."
+  },
+  "54a4352fd405a356": {
+   "item_id": "54a4352fd405a356",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The Rotten Tomatoes figures clash, but the texts do not say whether they concern the same film."
+  },
+  "c29bdfe960f3fdd2": {
+   "item_id": "c29bdfe960f3fdd2",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Head-to-head match and win counts are totals to date that change over time."
+  },
+  "10a38142291dbd8c": {
+   "item_id": "10a38142291dbd8c",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Denying a wheelie by the orange rider and denying road riding concern different scenes."
+  },
+  "fbd91c67ce28b4f8": {
+   "item_id": "fbd91c67ce28b4f8",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only a preposition typo differs."
+  },
+  "09bd04883becd3f9": {
+   "item_id": "09bd04883becd3f9",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The man cannot be both walking and running on the road at the same time."
+  },
+  "ba144e073afffa00": {
+   "item_id": "ba144e073afffa00",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mud names the brown substance on the topless woman, and one adds the empty background."
+  }
+ },
+ "errors": []
+}

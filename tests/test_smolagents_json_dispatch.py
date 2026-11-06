@@ -28,18 +28,12 @@ from meld.agent.memory import SMPMemory
 from meld.agent.react_agent import AgentResult
 from meld.agent.registry import make_agent
 from meld.agent.tools import FinalAnswerTool, RecallTool
-from meld.config import Thresholds, load_thresholds
 
 
-def _calibrated_cfg() -> Thresholds:
-    # delegate to the canonical encoder-matched calibrated thresholds (was a
-    # duplicated inverted-0.5/0.55 copy that tripped the ordering invariant)
-    from meld.agent.run_hotpot_gate import _calibrated_cfg as _canonical
-    return _canonical("hashing")
 
 
 def _mem() -> SMPMemory:
-    return SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
+    return SMPMemory(encoder="hashing", nli="lexical")
 
 
 class _JsonToolCallLLM:

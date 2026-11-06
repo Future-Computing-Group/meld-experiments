@@ -10,9 +10,9 @@ Pure measurement over the existing mem_conditions builders + recall -- no LLM, n
 from __future__ import annotations
 
 
-def _cfg():
-    from meld.agent.run_hotpot_gate import _calibrated_cfg
-    return _calibrated_cfg("hashing")
+def _epoch():
+    from test_agent_meld_memory import agent_epoch
+    return agent_epoch("hashing", "lexical")
 
 
 def _task():
@@ -24,7 +24,7 @@ def test_cleaned_brain_recall_costs_fewer_tokens_than_uncleaned():
     from meld.agent.token_economics import token_economics
     task = _task()
     queries = [task.question] * 3            # repeated queries (the economics axis)
-    r = token_economics(task, queries, encoder="hashing", nli="lexical", cfg=_cfg(), k=20)
+    r = token_economics(task, queries, encoder="hashing", nli="lexical", epoch=_epoch(), k=20)
     assert r["uncleaned_tokens"] > 0
     assert r["cleaned_tokens"] < r["uncleaned_tokens"]   # dedup -> smaller recalled context
     assert r["reduction_rate"] > 0.0
@@ -33,8 +33,8 @@ def test_cleaned_brain_recall_costs_fewer_tokens_than_uncleaned():
 def test_reduction_scales_with_repeated_queries():
     from meld.agent.token_economics import token_economics
     task = _task()
-    one = token_economics(task, [task.question], encoder="hashing", nli="lexical", cfg=_cfg(), k=20)
-    five = token_economics(task, [task.question] * 5, encoder="hashing", nli="lexical", cfg=_cfg(), k=20)
+    one = token_economics(task, [task.question], encoder="hashing", nli="lexical", epoch=_epoch(), k=20)
+    five = token_economics(task, [task.question] * 5, encoder="hashing", nli="lexical", epoch=_epoch(), k=20)
     # absolute token savings accumulate over repeated queries; the per-query rate is stable
     assert (five["uncleaned_tokens"] - five["cleaned_tokens"]) > \
            (one["uncleaned_tokens"] - one["cleaned_tokens"])

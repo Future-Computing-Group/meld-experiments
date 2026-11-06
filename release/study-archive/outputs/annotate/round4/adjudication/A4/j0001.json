@@ -1,0 +1,223 @@
+{
+ "batch_id": "j0001",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "de4be55a4428e990dc7d39a80fd190f51ed2e56bbfe6a409b0ea404f71efa654",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"c790e61507ba9aba\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both say the Clippers are a Los Angeles basketball team, and one adds the LA Clippers abbreviation and American nationality.\"},\n{\"item_id\": \"ea4830f76d126fb8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Co-writing material with Lawrence and being Felt's lead guitarist are compatible details about the same musician.\"},\n{\"item_id\": \"22319eb15d8a6b1d\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The same request to finish, differing only by a politeness word.\"},\n{\"item_id\": \"fd94a96ef765744c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Dissolution in 2002 is consistent with the band existing from 1995 to 2002, which adds formation and genre details.\"},\n{\"item_id\": \"71495f573182ac58\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The Warner Bros release and the fourth-compilation position are compatible details about the same album.\"},\n{\"item_id\": \"3d5bafd4c8ad3f30\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Continuing from where one stopped is what continue already means, so both make the same request.\"},\n{\"item_id\": \"7d84342c9d3aee2f\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Finish and continue are different one-word instructions that could be read either as related requests to proceed or as unrelated.\"},\n{\"item_id\": \"8a2d690b858d7c45\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both ask to continue, and one specifies that the story is what should continue.\"},\n{\"item_id\": \"a7aeb2b1eb6de9c6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The show's description and its first airing date are compatible details about the same show.\"},\n{\"item_id\": \"fdc353261ee5aad1\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both ask the same kind of question about a Pinterest-like app, one over all stakeholders and the other over user types only.\"},\n{\"item_id\": \"a721582a39161c46\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The hosting claim is identical, and only the list title adds a year.\"},\n{\"item_id\": \"7a631db51b191838\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"A common, non-formal name and a nonsystematic chemical name are compatible characterizations of trivial names.\"},\n{\"item_id\": \"31a4273c5acc3afd\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The same request apart from a typo.\"},\n{\"item_id\": \"37e3fa7507ed74c1\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The same request apart from a typo.\"},\n{\"item_id\": \"2c27880f3f8fd841\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The opening date and walkway link are compatible with the joint-venture ownership facts about the same hotels.\"},\n{\"item_id\": \"b8778bfc49a98075\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The society definition and its role in managing chronic respiratory disease are compatible descriptions of pulmonary rehabilitation.\"},\n{\"item_id\": \"6031b954740ab86f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both ask for more creative and shorter emails, and one specifies the emails from steps 1 to 8.\"},\n{\"item_id\": \"f4028a5d43326ef8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both ask to continue, and one specifies the story.\"},\n{\"item_id\": \"923960b6d61dcdcf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both messages discuss the same social-media content calendar plan, adding compatible details about platforms and content types.\"},\n{\"item_id\": \"3f181fec61b4b952\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Lady Day is the Annunciation feast, and the two give compatible details about its names, date and meaning.\"},\n{\"item_id\": \"ef6a52dfd5e313a6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both ask for the potential user groups, and one also asks for their needs.\"},\n{\"item_id\": \"fed387b52a8e6371\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both ask for a revision that emphasizes words in each sentence, and one specifies bolding and a repeat revision.\"},\n{\"item_id\": \"af4f1fa21cf810db\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One is only the show's title and the other describes that same show.\"},\n{\"item_id\": \"e17139bb644052ba\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The district's county location and its office location are compatible details about the same district.\"},\n{\"item_id\": \"3fa5a2230211c9f6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Continuing from where one stopped is what continue already means, so both make the same request.\"},\n{\"item_id\": \"06351ea4906608cd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The definition of ngapi and the existence of many variations are compatible details about the same food.\"}\n]}\n"
+ ],
+ "labels": {
+  "c790e61507ba9aba": {
+   "item_id": "c790e61507ba9aba",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both say the Clippers are a Los Angeles basketball team, and one adds the LA Clippers abbreviation and American nationality."
+  },
+  "ea4830f76d126fb8": {
+   "item_id": "ea4830f76d126fb8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Co-writing material with Lawrence and being Felt's lead guitarist are compatible details about the same musician."
+  },
+  "22319eb15d8a6b1d": {
+   "item_id": "22319eb15d8a6b1d",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The same request to finish, differing only by a politeness word."
+  },
+  "fd94a96ef765744c": {
+   "item_id": "fd94a96ef765744c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Dissolution in 2002 is consistent with the band existing from 1995 to 2002, which adds formation and genre details."
+  },
+  "71495f573182ac58": {
+   "item_id": "71495f573182ac58",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The Warner Bros release and the fourth-compilation position are compatible details about the same album."
+  },
+  "3d5bafd4c8ad3f30": {
+   "item_id": "3d5bafd4c8ad3f30",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Continuing from where one stopped is what continue already means, so both make the same request."
+  },
+  "7d84342c9d3aee2f": {
+   "item_id": "7d84342c9d3aee2f",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Finish and continue are different one-word instructions that could be read either as related requests to proceed or as unrelated."
+  },
+  "8a2d690b858d7c45": {
+   "item_id": "8a2d690b858d7c45",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both ask to continue, and one specifies that the story is what should continue."
+  },
+  "a7aeb2b1eb6de9c6": {
+   "item_id": "a7aeb2b1eb6de9c6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The show's description and its first airing date are compatible details about the same show."
+  },
+  "fdc353261ee5aad1": {
+   "item_id": "fdc353261ee5aad1",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both ask the same kind of question about a Pinterest-like app, one over all stakeholders and the other over user types only."
+  },
+  "a721582a39161c46": {
+   "item_id": "a721582a39161c46",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The hosting claim is identical, and only the list title adds a year."
+  },
+  "7a631db51b191838": {
+   "item_id": "7a631db51b191838",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "A common, non-formal name and a nonsystematic chemical name are compatible characterizations of trivial names."
+  },
+  "31a4273c5acc3afd": {
+   "item_id": "31a4273c5acc3afd",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The same request apart from a typo."
+  },
+  "37e3fa7507ed74c1": {
+   "item_id": "37e3fa7507ed74c1",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The same request apart from a typo."
+  },
+  "2c27880f3f8fd841": {
+   "item_id": "2c27880f3f8fd841",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The opening date and walkway link are compatible with the joint-venture ownership facts about the same hotels."
+  },
+  "b8778bfc49a98075": {
+   "item_id": "b8778bfc49a98075",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The society definition and its role in managing chronic respiratory disease are compatible descriptions of pulmonary rehabilitation."
+  },
+  "6031b954740ab86f": {
+   "item_id": "6031b954740ab86f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both ask for more creative and shorter emails, and one specifies the emails from steps 1 to 8."
+  },
+  "f4028a5d43326ef8": {
+   "item_id": "f4028a5d43326ef8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both ask to continue, and one specifies the story."
+  },
+  "923960b6d61dcdcf": {
+   "item_id": "923960b6d61dcdcf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both messages discuss the same social-media content calendar plan, adding compatible details about platforms and content types."
+  },
+  "3f181fec61b4b952": {
+   "item_id": "3f181fec61b4b952",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Lady Day is the Annunciation feast, and the two give compatible details about its names, date and meaning."
+  },
+  "ef6a52dfd5e313a6": {
+   "item_id": "ef6a52dfd5e313a6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both ask for the potential user groups, and one also asks for their needs."
+  },
+  "fed387b52a8e6371": {
+   "item_id": "fed387b52a8e6371",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both ask for a revision that emphasizes words in each sentence, and one specifies bolding and a repeat revision."
+  },
+  "af4f1fa21cf810db": {
+   "item_id": "af4f1fa21cf810db",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One is only the show's title and the other describes that same show."
+  },
+  "e17139bb644052ba": {
+   "item_id": "e17139bb644052ba",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The district's county location and its office location are compatible details about the same district."
+  },
+  "3fa5a2230211c9f6": {
+   "item_id": "3fa5a2230211c9f6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Continuing from where one stopped is what continue already means, so both make the same request."
+  },
+  "06351ea4906608cd": {
+   "item_id": "06351ea4906608cd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The definition of ngapi and the existence of many variations are compatible details about the same food."
+  }
+ },
+ "errors": []
+}

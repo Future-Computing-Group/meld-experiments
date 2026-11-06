@@ -4,7 +4,7 @@ the gated/networked CSC run.
 
 Unlike the GAIA fixture (whose oracle/clue setup made accuracy incidental), this
 yields a GENUINE EM/F1: each item's HotpotQA-shaped ``context`` paragraphs are fed
-THROUGH the MELD brain (PUBLISH -> merge_on_receive -> Patch), then the question is
+THROUGH the MELD brain (PUBLISH -> admission), then the question is
 posed and the agent must RECALL the brain-resident evidence and MULTI-HOP REASON
 to answer. So the score is a real competence signal (still on a tiny fixture +
 7B model, so read it as a signal, not the gate verdict — that is the CSC run).
@@ -33,7 +33,7 @@ from meld.agent.hotpot_scorer import (competence_gate, em_score,             # n
 from meld.agent.llm import OpenWeightLLM                                     # noqa: E402
 from meld.agent.memory import SMPMemory                                      # noqa: E402
 from meld.agent.registry import make_agent                                   # noqa: E402
-from meld.agent.run_hotpot_gate import _calibrated_cfg, extract_prediction   # noqa: E402
+from meld.agent.run_hotpot_gate import extract_prediction   # noqa: E402
 from meld.agent.tools import FinalAnswerTool, RecallTool                     # noqa: E402
 
 
@@ -76,7 +76,7 @@ def main() -> int:
         preds, contract_fail = [], 0
         steps_lo = steps_hi = patches_lo = patches_hi = None
         for t in tasks:
-            mem = SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
+            mem = SMPMemory(encoder="hashing", nli="lexical")
             feed_context_through_brain(t, mem)        # MELD-on-message: context -> brain
             agent = make_agent(b, llm=llm, memory=mem,
                                tools=[RecallTool(mem), FinalAnswerTool()],
@@ -84,7 +84,7 @@ def main() -> int:
             try:
                 res = agent.run(t.question)
                 pred = extract_prediction(res.answer)
-                ns, npatch = res.n_steps, len(mem.brain.audit_log)
+                ns, npatch = res.n_steps, len(mem.decisions)
                 steps_lo = ns if steps_lo is None else min(steps_lo, ns)
                 steps_hi = ns if steps_hi is None else max(steps_hi, ns)
                 patches_lo = npatch if patches_lo is None else min(patches_lo, npatch)

@@ -1,0 +1,72 @@
+{
+ "n_pairs": 2758,
+ "n_final": 2758,
+ "paths": {
+  "adjudicated": 97,
+  "mergeability_majority": 321,
+  "mergeability_unanimous": 2340
+ },
+ "accuracy": {},
+ "verdict_accuracy": {},
+ "agreement": {
+  "tested_cross_item": {
+   "n": 1814,
+   "alpha_verdict": 0.3873765932036769,
+   "alpha_label": 0.36052961519201776,
+   "kappa": {
+    "A1|A2": 0.33450352775459496,
+    "A1|A3": 0.37083243242041436,
+    "A2|A3": 0.5626397667291269
+   },
+   "orientation_consistency": {
+    "A1": 0.8197353914002206,
+    "A2": 0.7883131201764058,
+    "A3": 0.818632855567806
+   },
+   "paths": {
+    "adjudicated": 30,
+    "mergeability_majority": 167,
+    "mergeability_unanimous": 1617
+   },
+   "ambiguous": 1
+  },
+  "tested_same_item": {
+   "n": 944,
+   "alpha_verdict": 0.4626892191164351,
+   "alpha_label": 0.45019387802406674,
+   "kappa": {
+    "A1|A2": 0.400064388718316,
+    "A1|A3": 0.39555585776251645,
+    "A2|A3": 0.6754680538865544
+   },
+   "orientation_consistency": {
+    "A1": 0.926906779661017,
+    "A2": 0.7616525423728814,
+    "A3": 0.7754237288135594
+   },
+   "paths": {
+    "adjudicated": 67,
+    "mergeability_majority": 154,
+    "mergeability_unanimous": 723
+   },
+   "ambiguous": 8
+  }
+ },
+ "repeat_consistency": {
+  "A1": {
+   "n": 120,
+   "agree": 0.9583333333333334
+  },
+  "A2": {
+   "n": 120,
+   "agree": 0.7666666666666667
+  },
+  "A3": {
+   "n": 120,
+   "agree": 0.8416666666666667
+  }
+ },
+ "pending_adjudication": 0,
+ "resolve": "mergeability",
+ "pending_by_reason": {}
+}

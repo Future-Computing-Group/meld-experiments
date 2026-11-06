@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0005",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "e47ae0b1c09d9b14ead27456720d4b71a14d556e738766809e290bad834e7a6c",
+ "raw": [
+  "{\"labels\": [{\"item_id\": \"9f3ba98b5676dcf9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Dogs battling for a frisbee in a lake adds detail to dogs fighting.\"}, {\"item_id\": \"ac75575c372f19e8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe kids playing in a pool with compatible details.\"}, {\"item_id\": \"5a8bc7e870824fa9\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both anchor the same 2017 part-time driver arrangement; only tense differs.\"}, {\"item_id\": \"305e4a40ccbdf3bb\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same negated claim is made over kids versus the narrower set of boys, and both hold.\"}, {\"item_id\": \"390299d92f36eb27\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The hull designation and navy are swapped, giving a different, incompatible designation.\"}, {\"item_id\": \"4fec688fd2183d1b\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The cities attached to the November 25 and 29 dates are swapped.\"}, {\"item_id\": \"c29f857eb44501b3\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Two compatible negations about a running dog could count as a shared topic or as unrelated scenes.\"}, {\"item_id\": \"d077e9f33ca9666e\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Long-range and long-distance are synonyms here.\"}, {\"item_id\": \"ba51e6e66d94833c\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The nine-month versus six-month stays may clash or may describe compatible spans with an unclear referent.\"}, {\"item_id\": \"69c65ae71a40d3cc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One list adds the moth Peridroma saucia.\"}, {\"item_id\": \"0ee7638fbbbac245\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The review count of 249 versus 250 is a total that changes over time.\"}, {\"item_id\": \"608a4ab4510a3db3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds Rockefeller's former office and family fortune.\"}, {\"item_id\": \"b2c5b364856441d8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Being among the worst films of 2007 adds detail to a negative reception.\"}, {\"item_id\": \"40db85b614c1e073\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Which role is former and which current is swapped between manager and footballer.\"}, {\"item_id\": \"4c94900f1cc9c1bb\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Net worth differs at two dated points, a value that changes over time.\"}, {\"item_id\": \"e4de780e022968c4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the concert setting to a man playing piano.\"}, {\"item_id\": \"790d9e78a2cf839c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a snowboarder jumping, one adding a snow covered hill, and both can hold.\"}, {\"item_id\": \"18d001cd43b1f2f2\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The pronoun variant he/she does not change the claim about the business woman.\"}, {\"item_id\": \"8fd29e0a6c22f172\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"At the same moment the girl cannot both ride in and get out of the toy car.\"}, {\"item_id\": \"5f60c97d58f5ac83\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Rearranging the attributes changes the coat colour from gray-to-fawn to gray.\"}, {\"item_id\": \"b6d8c9a065413c7b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe two dogs playing in snow with compatible weather detail.\"}, {\"item_id\": \"3fd3843f164c9ba9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The 2005 Liberal Democrat vote and the switch of allegiance are compatible details.\"}, {\"item_id\": \"581f6a460b900b07\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a dog jumping with a tennis ball with compatible details.\"}, {\"item_id\": \"ed8d5869331ac92c\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"High microcytic count is called a vulnerability versus a protection, possibly in different populations.\"}, {\"item_id\": \"8e90c2bdb5c746e6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only y versus and and minor rewording differ.\"}, {\"item_id\": \"521aa22c9f987cae\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Not frying at all is a broader negation compatible with not frying meat in a pan.\"}, {\"item_id\": \"9aecd92bee4e5f17\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The ownership transition is ongoing versus past, a status that changes over time.\"}, {\"item_id\": \"ba1dbba49572102c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Over 30,000 and over 32,000 are compatible, and one adds the murder conviction.\"}, {\"item_id\": \"46879e29207f28f4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both describe a player's season appearances with details that can both hold.\"}, {\"item_id\": \"ff18dd730502f605\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Skepta is a grime artist.\"}, {\"item_id\": \"d5488237fdf21fbf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds a green bike and a dirt ramp to a man doing motorcycle tricks.\"}, {\"item_id\": \"efe64d96857bb9da\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds September as the month filming ended.\"}, {\"item_id\": \"4ec01e78c9bcc265\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One non-exhaustive client list adds A.J. Lucus.\"}, {\"item_id\": \"3d9eaeed44c43d00\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A man specifies the person riding the motorcycle.\"}, {\"item_id\": \"e04e7a34810213e2\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Swapping other and indoor leaves nearly the same facts, so MERGE and RELATE both fit.\"}, {\"item_id\": \"82b38ad14387092d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the company name change to Wipro.\"}, {\"item_id\": \"6f07e7539076b386\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Training and working are swapped between nursing and social welfare.\"}, {\"item_id\": \"99cef3c6dbdc65b3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the reason for dismissing the drummer.\"}, {\"item_id\": \"83600c936d8c06a6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying any dog racing is broader than denying uniformed racing dogs, and both hold.\"}, {\"item_id\": \"b13a8ecb70d2f1ae\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying a man drawing is broader than denying a man drawing a picture.\"}, {\"item_id\": \"d08afe049eeb7177\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The flexible-scheduling note covers Sunday games versus all games except Week 8, and both can hold.\"}, {\"item_id\": \"d29092bcd8cd2505\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The Metacritic score of 24 versus 22 is a value that changes as reviews are added.\"}, {\"item_id\": \"5eb6cb626e77559d\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same 140 million sales figure is stated with only a tense difference.\"}, {\"item_id\": \"ba46d432f643effb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Kicking a ball into the goal adds the action to a soccer player scoring.\"}, {\"item_id\": \"49b9b7389857498c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both give compatible facts about the football player Thomas.\"}, {\"item_id\": \"aa150283b84927ae\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the bowl is big to a woman putting ingredients in a bowl.\"}, {\"item_id\": \"48efe493b902e5c7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The only difference is the typo abum.\"}, {\"item_id\": \"fc0abc1fffb077f1\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Pioglitazone's association is stated for prostate versus pancreatic cancer, and both can hold.\"}, {\"item_id\": \"0daebd413d6772e9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the NFL's delayed apology.\"}, {\"item_id\": \"0cf6a0f946f9a607\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The man not drawing at all is compatible with and broader than no man drawing a picture.\"}]}"
+ ],
+ "labels": {
+  "9f3ba98b5676dcf9": {
+   "item_id": "9f3ba98b5676dcf9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Dogs battling for a frisbee in a lake adds detail to dogs fighting."
+  },
+  "ac75575c372f19e8": {
+   "item_id": "ac75575c372f19e8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe kids playing in a pool with compatible details."
+  },
+  "5a8bc7e870824fa9": {
+   "item_id": "5a8bc7e870824fa9",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both anchor the same 2017 part-time driver arrangement; only tense differs."
+  },
+  "305e4a40ccbdf3bb": {
+   "item_id": "305e4a40ccbdf3bb",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same negated claim is made over kids versus the narrower set of boys, and both hold."
+  },
+  "390299d92f36eb27": {
+   "item_id": "390299d92f36eb27",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The hull designation and navy are swapped, giving a different, incompatible designation."
+  },
+  "4fec688fd2183d1b": {
+   "item_id": "4fec688fd2183d1b",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The cities attached to the November 25 and 29 dates are swapped."
+  },
+  "c29f857eb44501b3": {
+   "item_id": "c29f857eb44501b3",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Two compatible negations about a running dog could count as a shared topic or as unrelated scenes."
+  },
+  "d077e9f33ca9666e": {
+   "item_id": "d077e9f33ca9666e",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Long-range and long-distance are synonyms here."
+  },
+  "ba51e6e66d94833c": {
+   "item_id": "ba51e6e66d94833c",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The nine-month versus six-month stays may clash or may describe compatible spans with an unclear referent."
+  },
+  "69c65ae71a40d3cc": {
+   "item_id": "69c65ae71a40d3cc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One list adds the moth Peridroma saucia."
+  },
+  "0ee7638fbbbac245": {
+   "item_id": "0ee7638fbbbac245",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The review count of 249 versus 250 is a total that changes over time."
+  },
+  "608a4ab4510a3db3": {
+   "item_id": "608a4ab4510a3db3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds Rockefeller's former office and family fortune."
+  },
+  "b2c5b364856441d8": {
+   "item_id": "b2c5b364856441d8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Being among the worst films of 2007 adds detail to a negative reception."
+  },
+  "40db85b614c1e073": {
+   "item_id": "40db85b614c1e073",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Which role is former and which current is swapped between manager and footballer."
+  },
+  "4c94900f1cc9c1bb": {
+   "item_id": "4c94900f1cc9c1bb",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Net worth differs at two dated points, a value that changes over time."
+  },
+  "e4de780e022968c4": {
+   "item_id": "e4de780e022968c4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the concert setting to a man playing piano."
+  },
+  "790d9e78a2cf839c": {
+   "item_id": "790d9e78a2cf839c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a snowboarder jumping, one adding a snow covered hill, and both can hold."
+  },
+  "18d001cd43b1f2f2": {
+   "item_id": "18d001cd43b1f2f2",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The pronoun variant he/she does not change the claim about the business woman."
+  },
+  "8fd29e0a6c22f172": {
+   "item_id": "8fd29e0a6c22f172",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "At the same moment the girl cannot both ride in and get out of the toy car."
+  },
+  "5f60c97d58f5ac83": {
+   "item_id": "5f60c97d58f5ac83",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Rearranging the attributes changes the coat colour from gray-to-fawn to gray."
+  },
+  "b6d8c9a065413c7b": {
+   "item_id": "b6d8c9a065413c7b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe two dogs playing in snow with compatible weather detail."
+  },
+  "3fd3843f164c9ba9": {
+   "item_id": "3fd3843f164c9ba9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The 2005 Liberal Democrat vote and the switch of allegiance are compatible details."
+  },
+  "581f6a460b900b07": {
+   "item_id": "581f6a460b900b07",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a dog jumping with a tennis ball with compatible details."
+  },
+  "ed8d5869331ac92c": {
+   "item_id": "ed8d5869331ac92c",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "High microcytic count is called a vulnerability versus a protection, possibly in different populations."
+  },
+  "8e90c2bdb5c746e6": {
+   "item_id": "8e90c2bdb5c746e6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only y versus and and minor rewording differ."
+  },
+  "521aa22c9f987cae": {
+   "item_id": "521aa22c9f987cae",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Not frying at all is a broader negation compatible with not frying meat in a pan."
+  },
+  "9aecd92bee4e5f17": {
+   "item_id": "9aecd92bee4e5f17",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The ownership transition is ongoing versus past, a status that changes over time."
+  },
+  "ba1dbba49572102c": {
+   "item_id": "ba1dbba49572102c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Over 30,000 and over 32,000 are compatible, and one adds the murder conviction."
+  },
+  "46879e29207f28f4": {
+   "item_id": "46879e29207f28f4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both describe a player's season appearances with details that can both hold."
+  },
+  "ff18dd730502f605": {
+   "item_id": "ff18dd730502f605",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Skepta is a grime artist."
+  },
+  "d5488237fdf21fbf": {
+   "item_id": "d5488237fdf21fbf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds a green bike and a dirt ramp to a man doing motorcycle tricks."
+  },
+  "efe64d96857bb9da": {
+   "item_id": "efe64d96857bb9da",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds September as the month filming ended."
+  },
+  "4ec01e78c9bcc265": {
+   "item_id": "4ec01e78c9bcc265",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One non-exhaustive client list adds A.J. Lucus."
+  },
+  "3d9eaeed44c43d00": {
+   "item_id": "3d9eaeed44c43d00",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A man specifies the person riding the motorcycle."
+  },
+  "e04e7a34810213e2": {
+   "item_id": "e04e7a34810213e2",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Swapping other and indoor leaves nearly the same facts, so MERGE and RELATE both fit."
+  },
+  "82b38ad14387092d": {
+   "item_id": "82b38ad14387092d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the company name change to Wipro."
+  },
+  "6f07e7539076b386": {
+   "item_id": "6f07e7539076b386",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Training and working are swapped between nursing and social welfare."
+  },
+  "99cef3c6dbdc65b3": {
+   "item_id": "99cef3c6dbdc65b3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the reason for dismissing the drummer."
+  },
+  "83600c936d8c06a6": {
+   "item_id": "83600c936d8c06a6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying any dog racing is broader than denying uniformed racing dogs, and both hold."
+  },
+  "b13a8ecb70d2f1ae": {
+   "item_id": "b13a8ecb70d2f1ae",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying a man drawing is broader than denying a man drawing a picture."
+  },
+  "d08afe049eeb7177": {
+   "item_id": "d08afe049eeb7177",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The flexible-scheduling note covers Sunday games versus all games except Week 8, and both can hold."
+  },
+  "d29092bcd8cd2505": {
+   "item_id": "d29092bcd8cd2505",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The Metacritic score of 24 versus 22 is a value that changes as reviews are added."
+  },
+  "5eb6cb626e77559d": {
+   "item_id": "5eb6cb626e77559d",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same 140 million sales figure is stated with only a tense difference."
+  },
+  "ba46d432f643effb": {
+   "item_id": "ba46d432f643effb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Kicking a ball into the goal adds the action to a soccer player scoring."
+  },
+  "49b9b7389857498c": {
+   "item_id": "49b9b7389857498c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both give compatible facts about the football player Thomas."
+  },
+  "aa150283b84927ae": {
+   "item_id": "aa150283b84927ae",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the bowl is big to a woman putting ingredients in a bowl."
+  },
+  "48efe493b902e5c7": {
+   "item_id": "48efe493b902e5c7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The only difference is the typo abum."
+  },
+  "fc0abc1fffb077f1": {
+   "item_id": "fc0abc1fffb077f1",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Pioglitazone's association is stated for prostate versus pancreatic cancer, and both can hold."
+  },
+  "0daebd413d6772e9": {
+   "item_id": "0daebd413d6772e9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the NFL's delayed apology."
+  },
+  "0cf6a0f946f9a607": {
+   "item_id": "0cf6a0f946f9a607",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The man not drawing at all is compatible with and broader than no man drawing a picture."
+  }
+ },
+ "errors": []
+}

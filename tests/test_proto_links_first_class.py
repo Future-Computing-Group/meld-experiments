@@ -39,13 +39,50 @@ def test_memorylink_roundtrips_through_wire_bytes():
     assert back.signature == b"sig"
 
 
-def test_claim_carries_status_and_validity():
-    from meld.proto import Claim
+def test_claim_carries_status_and_version():
+    """r3 retired validity intervals: a claim carries a version that is part of its key, and its
+    status is read from vis (auth join cons), not from the carried claim_status field. A new
+    version under an authorized SUPERSEDE reactivates through the representative."""
+    from meld.brain.store import Derived, Store
+    from meld.proto import Claim, claim_key
+    from meld.protocol.objects import (FIXED_ONE, AuthoredEffect, Delta, attach_mac,
+                                       canonical_bytes)
 
-    c = Claim(claim_key=b"k", text="t", confidence=0.9, claim_status="ACTIVE")
-    assert c.claim_status == "ACTIVE"
-    assert c.claim_key == b"k"
-    assert c.text == "t"
+    # version is a field, survives the wire round trip, and is part of the key
+    c = Claim(claim_key=claim_key("t", "eu.a", 2), text="t", claim_status="ACTIVE", version=2)
+    assert c.version == 2 and Claim.from_dict(c.to_dict()).version == 2
+    assert claim_key("t", "eu.a", 0) != claim_key("t", "eu.a", 1)
+
+    key = b"t8-key"
+    pol = {"rank_map": {"PRECEDENT": 0, "OBSERVATION": 1}, "scopes": {"eu": ["eu.a"]},
+           "auth_policy": {"OVERRULE": 0, "REVOKE": 0, "SUPERSEDE": 1, "DISTINGUISHES": 1},
+           "step_version": 0, "r_min": 1}
+
+    def node(version):
+        k = claim_key("t", "eu.a", version)
+        return Delta(unit_id=k, claim_key=k, text="t", cell="eu.a", version=version, auth=1,
+                     status="ACTIVE", retention=FIXED_ONE, created_at=10 + version, origin="A",
+                     encoder="hashing", q=b"\x00" * 256)
+
+    def eff(kind, c1, c2=b"", author_auth=0):
+        return AuthoredEffect(scope="eu", kind=kind, c1=c1, c2=c2, target_cell="eu.a", author="C",
+                              author_cell="eu.a", author_auth=author_auth, created_at=0)
+
+    v0, v1 = node(0), node(1)
+    k0, k1 = v0.claim_key, v1.claim_key
+    assert k0 != k1
+    s = Store(pol, key, encoder="hashing")
+    for o in (v0, v1, eff("OVERRULE", k0), eff("SUPERSEDE", k0, k1, author_auth=1)):
+        o = attach_mac(o, key)
+        assert s.apply(canonical_bytes(o), o.mac) is not None
+    # status comes from vis: every carried claim_status is ACTIVE, yet v0 reads OVERRULED
+    assert v0.status == v1.status == "ACTIVE"
+    assert s.vis(k0) == "OVERRULED"
+    # the superseding version is the group's representative and reads ACTIVE
+    assert s.rep([k0, k1]) == k1
+    s.derived = Derived(rep={k0: k1}, links=[])
+    assert s.vis(k1) == "ACTIVE" and s.vis(k0) == "OVERRULED"
+    assert s.live_nodes() == [k1]
 
 
 def test_endpoint_may_target_a_claim_within_a_unit():
@@ -71,7 +108,7 @@ def test_memoryunit_carries_addressable_claims():
     import meld.proto as proto
     from meld.proto import Claim, MemoryUnit
 
-    u = MemoryUnit(id=b"u", claims=[Claim(claim_key=b"k", text="t")])
+    u = MemoryUnit(retention=0.0, id=b"u", claims=[Claim(claim_key=b"k", text="t")])
     assert u.id == b"u"
     assert u.claims[0].claim_key == b"k"
     assert not hasattr(proto, "Citation")
@@ -83,16 +120,16 @@ def test_memoryunit_cell_round_trips_through_dict():
     # wire-delta to_dict/from_dict round trip; default preserves current behavior.
     from meld.proto import Claim, MemoryUnit
 
-    u = MemoryUnit(id=b"u", cell="geo",
+    u = MemoryUnit(retention=0.0, id=b"u", cell="geo",
                    claims=[Claim(claim_key=b"k", text="t")])
     assert u.cell == "geo"
     d = u.to_dict()
     assert d["cell"] == "geo"
     u2 = MemoryUnit.from_dict(d)
     assert u2.cell == "geo"
-    # default cell when absent (back-compat with older serialized units)
-    assert MemoryUnit.from_dict({"id": ""}).cell == "agent.public"
-    assert MemoryUnit().cell == "agent.public"
+    # default cell when absent (retention is required, so it is always carried)
+    assert MemoryUnit.from_dict({"id": "", "retention": 0.0}).cell == "agent.public"
+    assert MemoryUnit(retention=0.0).cell == "agent.public"
 
 
 def test_linktype_taxonomy_complete():

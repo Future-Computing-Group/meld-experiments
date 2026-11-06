@@ -1,138 +1,218 @@
 """The brain store: a memory-store replica of a world-model graph.
 
-A "brain" holds Concepts (MemoryUnits with addressable Claims) and Mappings
-(first-class MemoryLinks), plus a per-claim status CRDT state. The ONLY thing
-that mutates a brain is applying a Patch (the merge decision procedure's output):
-a raw incoming delta applied directly is a no-op. The brain can extract a delta
-(the version set) for PUBLISH, and answer a graph-walk read that fuses lexical,
-dense, and graph-relevance channels (Def. 2/3 of the restructure note).
+``Store`` (design §2.1, §3.2, §3.4) holds the five replicated sets of its scopes in an
+``ObjectSet`` and a ``Derived`` cache that the fold fills (representative map, link
+multiset over node keys). Everything else is computed at read from those two:
 
-REUSE posture: this mirrors the firmament LocalEncryptedStore semantics
-(content-addressed units, append-only, origin-immutable) over the MELD-vendored
-proto. MELD keeps its own in-process replica so it is not coupled to the
-firmament generated bindings' protobuf version; the wire types are the vendored
-links-first-class copy. NEW (thin): delta apply/extract + graph-walk read.
+  * ``apply(received, mac, scope)`` -- the only mutation: MAC-verified, idempotent insertion.
+  * ``nodes()``   -- N in canonical order: key -> (delta_id, the <-minimal admissible delta);
+                     D^adm = status ACTIVE, retention >= pol["r_min"] and q of the encoder's
+                     length. Nothing is overwritten.
+  * ``auth(k)``   -- the join over authorized, valid effects (merge/status_crdt.py).
+  * ``cons(k)``   -- DEPRECATED iff k is not its group's representative (default ACTIVE).
+  * ``vis(k)``    -- auth(k) join cons(k); ``live_nodes()`` are those with vis ACTIVE.
+  * ``rep(G)``    -- §3.4 representative of a group, for the fold.
+  * ``graph_walk_read`` -- live nodes only, links resolved to representatives, each unit
+                     once (its best node), ties by unit id.
+
+nodes and cell_of are kept incrementally by ``apply`` (grow-only sets: a canonical-order-last
+node is appended, anything else re-sorts once at the next read); the auth map and the SUPERSEDE
+index are recomputed only after an effect, or a delta for a key some effect targets, arrives;
+cons reads ``derived`` at every call.
+
 """
 from __future__ import annotations
 
-from typing import Dict, List, Optional, Tuple
+from dataclasses import dataclass, field
+from typing import Dict, Iterable, List, Optional, Tuple
 
-from meld.merge.signals import EmbeddingSimilarity, _tokenize
-from meld.merge.status_crdt import StatusState, effective_status
-from meld.proto import Claim, MemoryLink, MemoryUnit
-from meld.protocol.messages import Patch
+from meld.merge.signals import ENCODER_DIM, EmbeddingSimilarity, _tokenize
+from meld.merge.status_crdt import auth_map, authorized, join
+from meld.proto import canon
+from meld.protocol.objects import AuthoredEffect, Delta, effect_valid, object_id, scope_partition
+from meld.sync.objectset import ObjectSet
+
+Link = Tuple[str, bytes, bytes, float]      # (type, src key, dst key, weight)
 
 
-class Brain:
-    """In-process world-model graph replica."""
+def _fuse(query: str, texts: Dict, edges: Iterable[Tuple], es: EmbeddingSimilarity,
+          beta_lex: float, beta_dense: float, beta_graph: float) -> Dict:
+    """Def. 2/3 fusion: lexical token overlap + dense cosine + one hop of link propagation
+    (dst gains dense(src) * weight) over the given items; returns id -> score."""
+    q_tokens = set(_tokenize(query))
+    dense, lex = {}, {}
+    for i, text in texts.items():
+        dense[i] = es.sigma(query, text) if text else 0.0
+        lex[i] = len(q_tokens & set(_tokenize(text))) / len(q_tokens) if q_tokens else 0.0
+    graph = dict.fromkeys(texts, 0.0)
+    for src, dst, w in edges:
+        if src in dense and dst in graph:
+            graph[dst] = max(graph[dst], dense[src] * w)
+    return {i: beta_lex * lex[i] + beta_dense * dense[i] + beta_graph * graph[i] for i in texts}
 
-    def __init__(self, encoder: str = "hashing", cache_dir: Optional[str] = None):
-        self._units: Dict[bytes, MemoryUnit] = {}
-        self._claims: Dict[bytes, Claim] = {}
-        self.links: List[MemoryLink] = []
-        self._status: Dict[bytes, StatusState] = {}
-        self.audit_log: List[Patch] = []
-        self.changed = False
-        self._encoder_name = encoder
-        self._es = EmbeddingSimilarity(encoder=encoder, cache_dir=cache_dir)
 
-    # -- read ------------------------------------------------------------
-    def get_unit(self, unit_id: bytes) -> Optional[MemoryUnit]:
-        return self._units.get(unit_id)
+@dataclass
+class Derived:
+    """The fold's output slot: node key -> its group's representative (absent = itself),
+    and the link multiset over node keys."""
 
-    def claim_status(self, claim_key: bytes) -> StatusState:
-        return self._status.setdefault(claim_key, StatusState())
+    rep: Dict[bytes, bytes] = field(default_factory=dict)
+    links: List[Link] = field(default_factory=list)
 
-    # -- mutation: ONLY via Patch ---------------------------------------
-    def apply(self, patch: Patch) -> None:
-        """Apply a Patch: a claim-admission outcome INSERT/MERGE/RELATE/CONFLICT/
-        REJECT (manuscript Sec. 4.2) or a STATUS append (an already-authored
-        status link entering the CRDT, Sec. 3.1). REJECT is the ONLY no-op; INSERT/MERGE/RELATE/CONFLICT each
-        emit their deltas (INSERT's payload is byte-identical to a novel MERGE's:
-        the unit plus an ACTIVE status tuple). The Patch (not the raw delta) is
-        the only thing that mutates state."""
-        self.audit_log.append(patch)
-        if patch.decision == "REJECT":
+
+class Store:
+    def __init__(self, pol: dict, key: bytes, scopes: Optional[Iterable[str]] = None, *,
+                 encoder: str):
+        """``pol["r_min"]`` (part of M_pol) bounds admissibility; ``encoder`` is M_nli's encoder:
+        a delta under another encoder is dropped at receipt, one whose q is not that encoder's
+        length is held but is never a node."""
+        r_min = pol["r_min"]
+        if type(r_min) is not int or r_min < 1:
+            raise ValueError("r_min is a positive fixed-point retention; R = 0 is below it")
+        self.pol, self.key, self.r_min, self.encoder = pol, key, r_min, encoder
+        self._q_len = ENCODER_DIM[encoder]
+        self.objects = ObjectSet(scope_partition(pol), scopes, encoder=encoder)
+        self.derived = Derived()
+        self._es: Dict[str, EmbeddingSimilarity] = {}
+        self._best: Dict[bytes, Tuple[int, bytes, object]] = {}   # key -> its <-minimal delta
+        self._cell_of: Dict[bytes, str] = {}
+        self._nodes: Optional[Dict[bytes, Tuple[bytes, object]]] = {}   # None: re-sort _best
+        self._status: Optional[Tuple[Dict, Dict]] = None    # (auth, supersede_by_c2); None: stale
+        self._c1s: set = set()      # c1 of held effects: a new such key can change validity
+
+    def apply(self, received: bytes, mac: str, scope: Optional[str] = None):
+        """Insert one received object; the stored object, or None if it was dropped."""
+        n = len(self.objects)
+        obj = self.objects.add(received, mac, self.key, scope)
+        if len(self.objects) > n:
+            self._index(obj, object_id(received))
+        return obj
+
+    def _index(self, o, oid: bytes) -> None:
+        """Update the views for one newly held object (the sets are grow-only)."""
+        if isinstance(o, AuthoredEffect):
+            self._c1s.add(o.c1)
+            self._status = None
+        if not isinstance(o, Delta):
             return
-        for item in patch.emitted:
-            if isinstance(item, MemoryUnit):
-                self._put_unit(item)
-            elif isinstance(item, MemoryLink):
-                self.links.append(item)
-            elif isinstance(item, tuple) and len(item) == 3 and item[0] == "STATUS":
-                # ("STATUS", claim_key, (link_id, effect))
-                _, ck, (lid, eff) = item
-                self._status[ck] = self.claim_status(ck).add(lid, eff)
+        k = o.claim_key
+        if k not in self._cell_of and k in self._c1s:
+            self._status = None
+        self._cell_of[k] = o.cell                    # a key binds its cell
+        if not (o.status == "ACTIVE" and o.retention >= self.r_min and len(o.q) == self._q_len):
+            return
+        old, new = self._best.get(k), (o.created_at, oid, o)
+        if old is not None and old[:2] <= new[:2]:
+            return
+        self._best[k] = new
+        nodes = self._nodes
+        if nodes is not None and (not nodes or self._best[next(reversed(nodes))][:2] < new[:2]):
+            nodes[k] = (oid, o)          # canonical-order last (never a replaced key): append
+        else:
+            self._nodes = None
 
-    def receive_raw_delta(self, units) -> None:
-        """A raw delta on the wire does NOT mutate state -- it must go through
-        the merge decision procedure and be applied as a Patch. No-op here."""
-        return None
+    def _auth_sup(self) -> Tuple[Dict, Dict]:
+        if self._status is None:
+            scope_of, pol, cell_of = self.objects.scope_of, self.pol, self._cell_of
+            # auth per scope (defense in depth): an effect filed under scope s only reaches
+            # nodes whose cell lies in s, whatever target_cell it names
+            auth: Dict[bytes, str] = {}
+            sup: Dict[bytes, List[bytes]] = {}
+            for s in sorted(self.objects.scopes):
+                effects = list(self.objects.iter("A", s))
+                for k, st in auth_map(effects, pol, cell_of).items():
+                    if k in cell_of and scope_of.get(cell_of[k]) == s:
+                        auth[k] = st
+                for e in effects:
+                    if e.kind == "SUPERSEDE" and self.ac(e):
+                        sup.setdefault(e.c2, []).append(e.c1)
+            self._status = (auth, sup)
+        return self._status
 
-    def _put_unit(self, unit: MemoryUnit) -> None:
-        # content-addressed, append-only-ish: re-put of same id updates in place
-        self._units[unit.id] = unit
-        for c in unit.claims:
-            self._claims[c.claim_key] = c
-            self._status.setdefault(c.claim_key, StatusState())
-        self.changed = True
+    def ac(self, e: AuthoredEffect) -> bool:
+        """e is an authorized, valid A_c effect (SUPERSEDE, DISTINGUISHES): the fold and the
+        representative rule read it (§2.1). The one predicate admission, fold and rep share."""
+        so = self.objects.scope_of
+        return (e.kind in ("SUPERSEDE", "DISTINGUISHES") and authorized(e, self.pol, so)
+                and effect_valid(e, so, self._cell_of))
 
-    # -- extract for PUBLISH --------------------------------------------
-    def extract_delta(self) -> List[MemoryUnit]:
-        """The current version set to PUBLISH (units + links)."""
-        return list(self._units.values()) + list(self.links)
+    # -- nodes ---------------------------------------------------------------------------
+    def nodes(self) -> Dict[bytes, Tuple[bytes, object]]:
+        """key -> (delta_id, delta) of the <-minimal admissible delta, in canonical order."""
+        if self._nodes is None:
+            self._nodes = {k: v[1:] for k, v in sorted(self._best.items(), key=lambda kv: kv[1][:2])}
+        return self._nodes
 
-    # -- graph-walk read (Def. 2/3 fusion) ------------------------------
-    def _unit_is_live(self, unit: MemoryUnit) -> bool:
-        """A unit is live for recall iff at least one of its claims is still
-        ACTIVE under the status CRDT. A unit whose every claim has been superseded
-        (DEPRECATED/OVERRULED/REVOKED) -- e.g. a paraphrase consolidated by a
-        same-enough merge -- is no longer surfaced; this is what dedups the merged
-        store at read time without destroying the unit (status, not truth)."""
-        claims = list(unit.claims)
-        if not claims:
-            return True
-        return any(effective_status(self._status.get(c.claim_key, StatusState()))
-                   == "ACTIVE" for c in claims)
+    def cell_of(self) -> Dict[bytes, str]:
+        """Held claim key -> cell (a key binds its cell, so every delta of a key agrees)."""
+        return self._cell_of
 
-    def live_unit_count(self) -> int:
-        """Number of status-live (recallable) units -- the storage/compactness
-        signal: a merged store deprecates redundant duplicates, so its live count
-        is below its stored count (len(self._units)) and below a naive union's."""
-        return sum(1 for u in self._units.values() if self._unit_is_live(u))
+    # -- status --------------------------------------------------------------------------
+    def auth(self, k: bytes) -> str:
+        return self._auth_sup()[0].get(k, "ACTIVE")
+
+    def cons(self, k: bytes) -> str:
+        return "ACTIVE" if self.derived.rep.get(k, k) == k else "DEPRECATED"
+
+    def vis(self, k: bytes) -> str:
+        return join(self.auth(k), self.cons(k))
+
+    def vis_map(self) -> Dict[bytes, str]:
+        auth = self._auth_sup()[0]
+        return {k: join(auth.get(k, "ACTIVE"), self.cons(k)) for k in self.nodes()}
+
+    def live_nodes(self) -> List[bytes]:
+        return [k for k, v in self.vis_map().items() if v == "ACTIVE"]
+
+    def rep(self, group: Iterable[bytes]) -> bytes:
+        """§3.4: min over the members with no authorized, valid SUPERSEDE to another member
+        of (auth rank, created_at, delta_id); else min over the group. Members are nodes."""
+        nodes, g = self.nodes(), set(group)
+        missing = sorted(k for k in g if k not in nodes)
+        if missing:
+            raise ValueError(f"rep: group member {missing[0].hex()} is not a node")
+        sup = self._auth_sup()[1]
+        superseded = {c1 for c2 in g for c1 in sup.get(c2, ()) if c1 in g}
+
+        def order(k):
+            did, d = nodes[k]
+            return (d.auth, d.created_at, did)
+        return min(g - superseded or g, key=order)
+
+    # -- read ----------------------------------------------------------------------------
+    def resolved_links(self) -> List[Link]:
+        """Links with endpoints resolved to representatives. Only a CONSOLIDATED_FROM that
+        resolves to a self-loop is dropped (it records the merge itself); any other self-loop
+        is kept so it stays visible. The raw multiset is ``derived.links``."""
+        r = self.derived.rep
+        out = [(t, r.get(s, s), r.get(d, d), w) for t, s, d, w in self.derived.links]
+        return [x for x in out if not (x[0] == "CONSOLIDATED_FROM" and x[1] == x[2])]
+
+    def fingerprint_inputs(self):
+        """(vis, groups, resolved links), each sorted: the replica-comparable derived view."""
+        groups: Dict[bytes, List[bytes]] = {}
+        for k in self.nodes():
+            groups.setdefault(self.derived.rep.get(k, k), []).append(k)
+        return (sorted(self.vis_map().items()),
+                sorted((r, tuple(sorted(m))) for r, m in groups.items()),
+                sorted(self.resolved_links()))
 
     def graph_walk_read(self, query: str, *, encoder: str, k: int = 5,
                         beta_lex: float = 0.3, beta_dense: float = 0.5,
                         beta_graph: float = 0.2) -> List[Tuple[bytes, float]]:
-        """Fuse lexical (token overlap), dense (cosine), and graph-relevance
-        channels into a ranked list of (unit_id, score). The graph channel adds
-        one hop of typed-link propagation from seed units (active links only).
-        Only status-live units are eligible (superseded duplicates are skipped)."""
-        es = self._es if encoder == self._encoder_name else EmbeddingSimilarity(encoder=encoder)
-        live = {uid: u for uid, u in self._units.items() if self._unit_is_live(u)}
-        q_tokens = set(_tokenize(query))
-        dense: Dict[bytes, float] = {}
-        lex: Dict[bytes, float] = {}
-        for uid, unit in live.items():
-            text = " ".join(c.text for c in unit.claims)
-            dense[uid] = es.sigma(query, text) if text else 0.0
-            u_tokens = set(_tokenize(text))
-            lex[uid] = (len(q_tokens & u_tokens) / len(q_tokens)) if q_tokens else 0.0
-        # one-hop graph propagation over ACTIVE links (live units only)
-        graph: Dict[bytes, float] = {uid: 0.0 for uid in live}
-        for ln in self.links:
-            if ln.status != "ACTIVE":
-                continue
-            src, dst = ln.src.node_id, ln.dst.node_id
-            if src in dense and dst in graph:
-                graph[dst] = max(graph[dst], dense[src] * ln.weight)
-        scored = []
-        for uid in live:
-            score = (beta_lex * lex[uid] + beta_dense * dense[uid]
-                     + beta_graph * graph.get(uid, 0.0))
-            scored.append((uid, score))
-        scored.sort(key=lambda x: x[1], reverse=True)
-        return scored[:k]
+        """Fused top-k units over live nodes as (unit_id, score): a unit scores the max over
+        its live nodes and appears once; sorted by (-score, unit_id)."""
+        es = self._es.setdefault(encoder, EmbeddingSimilarity(encoder=encoder))
+        nodes = self.nodes()
+        live = self.live_nodes()
+        scores = _fuse(query, {n: canon(nodes[n][1].text) for n in live},
+                       ((s, d, w) for _, s, d, w in self.resolved_links()), es,
+                       beta_lex, beta_dense, beta_graph)
+        unit: Dict[bytes, float] = {}
+        for n, sc in scores.items():
+            uid = nodes[n][1].unit_id
+            unit[uid] = max(unit.get(uid, sc), sc)
+        return sorted(unit.items(), key=lambda x: (-x[1], x[0]))[:k]
 
 
-__all__ = ["Brain"]
+__all__ = ["Store", "Derived"]

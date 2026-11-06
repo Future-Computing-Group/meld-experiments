@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0033",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "333fa996c940e10a0ce3a01753ff1a93f99979cb7073a724c249e5952170622a",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"53e31e27a918add4\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Voicing the gecko ongoing versus ending in 2015 is a status that changes over time.\"},\n{\"item_id\": \"847b8202c6f913df\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Coolest and coldest are synonyms here.\"},\n{\"item_id\": \"40114ce13aae9727\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The as-of race of a running win tally differs, each true at its own time.\"},\n{\"item_id\": \"52a775f1c174cfbd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the release was on YouTube.\"},\n{\"item_id\": \"11c982db658a181b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Naming one known survivor is compatible with there being few known survivors.\"},\n{\"item_id\": \"343b0275d6fedcf1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Engine class and Australian origin are compatible descriptions of Shane.\"},\n{\"item_id\": \"01d875326437f061\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Will be released versus was released is a status that changes with time.\"},\n{\"item_id\": \"1a0f8653eef1c6c4\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A large dog running versus a small dog playing clash only if the same dog is meant, which the texts leave open.\"},\n{\"item_id\": \"119afae20a13869c\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Confirmed case totals of 78 and 638 are counts that grow over time.\"},\n{\"item_id\": \"25e7688a646a104d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Each adds a compatible detail, the home in Sydney or the exact date.\"},\n{\"item_id\": \"f134360fd7701c54\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Capture the flag is dominated by Alpha.\"},\n{\"item_id\": \"ba85ae6eac23d4c4\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a dog running, over different places, and both can hold.\"},\n{\"item_id\": \"9488a38244268b03\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"End versus late November and the war name order are wording variants.\"},\n{\"item_id\": \"8859e0cf6a51257c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both share the contributor list and add compatible details about the album.\"},\n{\"item_id\": \"3338c05c51b30a0a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same scene of a dog crossing a tree-trunk bridge, one adding that the dog is black.\"},\n{\"item_id\": \"e3124b3f590b8287\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Being regarded as the greatest is compatible with being one of the greatest, a stronger claim adding detail.\"},\n{\"item_id\": \"6f47582ea7631178\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the middle name and that the hopes were brief.\"},\n{\"item_id\": \"088c3f1f4ee95b3a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The party goer can be the character named Henry, so one adds the name.\"},\n{\"item_id\": \"e6de1c753b6d2e01\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny violin playing, over a man versus a woman, and both can hold.\"},\n{\"item_id\": \"a894b1e4531f9e07\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying anyone plays the piano covers the narrower denial for a man.\"},\n{\"item_id\": \"0e052f91a3663c54\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give compatible facts about Mitroglou's club career.\"},\n{\"item_id\": \"35e52782df7ceb46\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Lithuanian-American adds heritage compatible with being American.\"},\n{\"item_id\": \"007004ea36a7df02\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The speaker's preferred French press ratio differs, 6 versus 5 ounces, a preference that can change over time.\"},\n{\"item_id\": \"1ba08c807406a4a0\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Playing the guitar and putting it down cannot both hold at the same moment.\"},\n{\"item_id\": \"bb7d7a1dfa4ef0b1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the rap rock genre label.\"},\n{\"item_id\": \"e8a1d63935f2cfd7\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying any girl plays covers the narrower denial for a little girl.\"},\n{\"item_id\": \"15b9e69322a56918\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Take Me Out was the debut single.\"},\n{\"item_id\": \"e6ffe836fe1f0c9e\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Moving minimal from the insurance amount to the exemptions may be a rewording or a change of meaning, and the rubric does not decide.\"},\n{\"item_id\": \"5b0ee092afadf18f\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Seven rowing titles over the last 14 years versus 1999 to 2011 is the same count over ranges that can both hold.\"},\n{\"item_id\": \"8e62175e713addfb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a bird flying over rocks, with compatible details.\"},\n{\"item_id\": \"9ce256b96dfba781\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The fixed end month of the ranking period differs, July versus August 2006.\"},\n{\"item_id\": \"2c99ae2a75c32727\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A soccer player kicking the ball between someone's feet or legs is the same event reworded.\"},\n{\"item_id\": \"e233e43d5ffef047\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"A man cannot be jumping rope and sitting in the field at once.\"},\n{\"item_id\": \"fdd684339d4a8db3\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Meat dropped into a pan and a lady not slicing meat are different events.\"},\n{\"item_id\": \"89e1e9b25d3db80f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"More dark and angrier versus darker and angrier is a wording variant.\"},\n{\"item_id\": \"7d7ffa21348c3404\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The garbled text refers to the same DVD-A video release, while the other adds that only the MTV 2 videos were released.\"},\n{\"item_id\": \"4174367d751ae163\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cooking and deboning a fish are compatible actions by a woman on the same fish.\"},\n{\"item_id\": \"8554b866171ec661\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One lists more occupations for the father.\"},\n{\"item_id\": \"2db73a67299c55e6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Seasoning and cutting meat are compatible actions by a woman on meat.\"},\n{\"item_id\": \"c245bb0b731f8080\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Woman versus girl riding a horse may be a near-synonym or a clashing description, and the rubric does not decide.\"},\n{\"item_id\": \"4712c938ec220c14\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Grohl is also rhythm guitarist.\"},\n{\"item_id\": \"4a5d0d771e5db5d9\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cracking eggs versus one egg is the same action over a different quantity, compatible.\"},\n{\"item_id\": \"91e448c054268957\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"An aggregator score and review count change over time.\"},\n{\"item_id\": \"32ce99891be22d56\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Putting down and holding up the device cannot both hold at once.\"},\n{\"item_id\": \"9b56346d0e61778e\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Intermediate and middle brother are synonyms; the trailing fragment adds nothing.\"},\n{\"item_id\": \"b605285546972caf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds District of Columbia, USA to the location.\"},\n{\"item_id\": \"229fd8054537bffc\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Doing and interacting versus action and interaction are synonymous category names.\"},\n{\"item_id\": \"b00ae90835b330cd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the three children are with his wife.\"},\n{\"item_id\": \"13aa28758faf5a5b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Roskilde in Denmark and in Zealand are compatible location details.\"},\n{\"item_id\": \"8f4471dd450e1dd6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a woman handling eggs, compatible denials of different actions.\"}\n]}\n"
+ ],
+ "labels": {
+  "53e31e27a918add4": {
+   "item_id": "53e31e27a918add4",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Voicing the gecko ongoing versus ending in 2015 is a status that changes over time."
+  },
+  "847b8202c6f913df": {
+   "item_id": "847b8202c6f913df",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Coolest and coldest are synonyms here."
+  },
+  "40114ce13aae9727": {
+   "item_id": "40114ce13aae9727",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The as-of race of a running win tally differs, each true at its own time."
+  },
+  "52a775f1c174cfbd": {
+   "item_id": "52a775f1c174cfbd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the release was on YouTube."
+  },
+  "11c982db658a181b": {
+   "item_id": "11c982db658a181b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Naming one known survivor is compatible with there being few known survivors."
+  },
+  "343b0275d6fedcf1": {
+   "item_id": "343b0275d6fedcf1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Engine class and Australian origin are compatible descriptions of Shane."
+  },
+  "01d875326437f061": {
+   "item_id": "01d875326437f061",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Will be released versus was released is a status that changes with time."
+  },
+  "1a0f8653eef1c6c4": {
+   "item_id": "1a0f8653eef1c6c4",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A large dog running versus a small dog playing clash only if the same dog is meant, which the texts leave open."
+  },
+  "119afae20a13869c": {
+   "item_id": "119afae20a13869c",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Confirmed case totals of 78 and 638 are counts that grow over time."
+  },
+  "25e7688a646a104d": {
+   "item_id": "25e7688a646a104d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Each adds a compatible detail, the home in Sydney or the exact date."
+  },
+  "f134360fd7701c54": {
+   "item_id": "f134360fd7701c54",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Capture the flag is dominated by Alpha."
+  },
+  "ba85ae6eac23d4c4": {
+   "item_id": "ba85ae6eac23d4c4",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a dog running, over different places, and both can hold."
+  },
+  "9488a38244268b03": {
+   "item_id": "9488a38244268b03",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "End versus late November and the war name order are wording variants."
+  },
+  "8859e0cf6a51257c": {
+   "item_id": "8859e0cf6a51257c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both share the contributor list and add compatible details about the album."
+  },
+  "3338c05c51b30a0a": {
+   "item_id": "3338c05c51b30a0a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same scene of a dog crossing a tree-trunk bridge, one adding that the dog is black."
+  },
+  "e3124b3f590b8287": {
+   "item_id": "e3124b3f590b8287",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Being regarded as the greatest is compatible with being one of the greatest, a stronger claim adding detail."
+  },
+  "6f47582ea7631178": {
+   "item_id": "6f47582ea7631178",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the middle name and that the hopes were brief."
+  },
+  "088c3f1f4ee95b3a": {
+   "item_id": "088c3f1f4ee95b3a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The party goer can be the character named Henry, so one adds the name."
+  },
+  "e6de1c753b6d2e01": {
+   "item_id": "e6de1c753b6d2e01",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny violin playing, over a man versus a woman, and both can hold."
+  },
+  "a894b1e4531f9e07": {
+   "item_id": "a894b1e4531f9e07",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying anyone plays the piano covers the narrower denial for a man."
+  },
+  "0e052f91a3663c54": {
+   "item_id": "0e052f91a3663c54",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give compatible facts about Mitroglou's club career."
+  },
+  "35e52782df7ceb46": {
+   "item_id": "35e52782df7ceb46",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Lithuanian-American adds heritage compatible with being American."
+  },
+  "007004ea36a7df02": {
+   "item_id": "007004ea36a7df02",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The speaker's preferred French press ratio differs, 6 versus 5 ounces, a preference that can change over time."
+  },
+  "1ba08c807406a4a0": {
+   "item_id": "1ba08c807406a4a0",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Playing the guitar and putting it down cannot both hold at the same moment."
+  },
+  "bb7d7a1dfa4ef0b1": {
+   "item_id": "bb7d7a1dfa4ef0b1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the rap rock genre label."
+  },
+  "e8a1d63935f2cfd7": {
+   "item_id": "e8a1d63935f2cfd7",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying any girl plays covers the narrower denial for a little girl."
+  },
+  "15b9e69322a56918": {
+   "item_id": "15b9e69322a56918",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Take Me Out was the debut single."
+  },
+  "e6ffe836fe1f0c9e": {
+   "item_id": "e6ffe836fe1f0c9e",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Moving minimal from the insurance amount to the exemptions may be a rewording or a change of meaning, and the rubric does not decide."
+  },
+  "5b0ee092afadf18f": {
+   "item_id": "5b0ee092afadf18f",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Seven rowing titles over the last 14 years versus 1999 to 2011 is the same count over ranges that can both hold."
+  },
+  "8e62175e713addfb": {
+   "item_id": "8e62175e713addfb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a bird flying over rocks, with compatible details."
+  },
+  "9ce256b96dfba781": {
+   "item_id": "9ce256b96dfba781",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The fixed end month of the ranking period differs, July versus August 2006."
+  },
+  "2c99ae2a75c32727": {
+   "item_id": "2c99ae2a75c32727",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A soccer player kicking the ball between someone's feet or legs is the same event reworded."
+  },
+  "e233e43d5ffef047": {
+   "item_id": "e233e43d5ffef047",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "A man cannot be jumping rope and sitting in the field at once."
+  },
+  "fdd684339d4a8db3": {
+   "item_id": "fdd684339d4a8db3",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Meat dropped into a pan and a lady not slicing meat are different events."
+  },
+  "89e1e9b25d3db80f": {
+   "item_id": "89e1e9b25d3db80f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "More dark and angrier versus darker and angrier is a wording variant."
+  },
+  "7d7ffa21348c3404": {
+   "item_id": "7d7ffa21348c3404",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The garbled text refers to the same DVD-A video release, while the other adds that only the MTV 2 videos were released."
+  },
+  "4174367d751ae163": {
+   "item_id": "4174367d751ae163",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cooking and deboning a fish are compatible actions by a woman on the same fish."
+  },
+  "8554b866171ec661": {
+   "item_id": "8554b866171ec661",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One lists more occupations for the father."
+  },
+  "2db73a67299c55e6": {
+   "item_id": "2db73a67299c55e6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Seasoning and cutting meat are compatible actions by a woman on meat."
+  },
+  "c245bb0b731f8080": {
+   "item_id": "c245bb0b731f8080",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Woman versus girl riding a horse may be a near-synonym or a clashing description, and the rubric does not decide."
+  },
+  "4712c938ec220c14": {
+   "item_id": "4712c938ec220c14",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Grohl is also rhythm guitarist."
+  },
+  "4a5d0d771e5db5d9": {
+   "item_id": "4a5d0d771e5db5d9",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cracking eggs versus one egg is the same action over a different quantity, compatible."
+  },
+  "91e448c054268957": {
+   "item_id": "91e448c054268957",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "An aggregator score and review count change over time."
+  },
+  "32ce99891be22d56": {
+   "item_id": "32ce99891be22d56",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Putting down and holding up the device cannot both hold at once."
+  },
+  "9b56346d0e61778e": {
+   "item_id": "9b56346d0e61778e",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Intermediate and middle brother are synonyms; the trailing fragment adds nothing."
+  },
+  "b605285546972caf": {
+   "item_id": "b605285546972caf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds District of Columbia, USA to the location."
+  },
+  "229fd8054537bffc": {
+   "item_id": "229fd8054537bffc",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Doing and interacting versus action and interaction are synonymous category names."
+  },
+  "b00ae90835b330cd": {
+   "item_id": "b00ae90835b330cd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the three children are with his wife."
+  },
+  "13aa28758faf5a5b": {
+   "item_id": "13aa28758faf5a5b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Roskilde in Denmark and in Zealand are compatible location details."
+  },
+  "8f4471dd450e1dd6": {
+   "item_id": "8f4471dd450e1dd6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a woman handling eggs, compatible denials of different actions."
+  }
+ },
+ "errors": []
+}

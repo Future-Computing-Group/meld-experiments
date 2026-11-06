@@ -14,14 +14,14 @@ the same scenario, which is exactly why MELD gates at read, not at admission.
 """
 from __future__ import annotations
 
-from meld.merge.status_crdt import StatusState, effective_status, effective_status_gated
+from meld.merge.status_crdt import LinkState, effective_status, effective_status_gated
 
 
 # --------------------------------------------------------------------------- #
 # Materialization-read gate is a pure function of the converged set
 # --------------------------------------------------------------------------- #
 def test_gated_drops_stale_links_at_read():
-    st = StatusState().add("L1", "OVERRULED").add("L2", "REVOKED")
+    st = LinkState().add("L1", "OVERRULED").add("L2", "REVOKED")
     # ungated: join(OVERRULED, REVOKED) = REVOKED
     assert effective_status(st) == "REVOKED"
     # gate L2 (stale) at read -> only L1 counts -> OVERRULED
@@ -31,8 +31,8 @@ def test_gated_drops_stale_links_at_read():
 
 
 def test_gated_is_pure_function_of_set_not_insertion_order():
-    a = StatusState().add("L1", "DEPRECATED").add("L2", "REVOKED").add("L3", "OVERRULED")
-    b = StatusState().add("L3", "OVERRULED").add("L1", "DEPRECATED").add("L2", "REVOKED")
+    a = LinkState().add("L1", "DEPRECATED").add("L2", "REVOKED").add("L3", "OVERRULED")
+    b = LinkState().add("L3", "OVERRULED").add("L1", "DEPRECATED").add("L2", "REVOKED")
     stale = frozenset({"L1"})
     assert effective_status_gated(a, stale=stale) == effective_status_gated(b, stale=stale)
 

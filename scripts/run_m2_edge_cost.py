@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """M2-edge: measure the per-delta merge cost decomposition on CPU (edge-class).
 
-Times the embedding step (all-MiniLM-L6-v2) and the NLI step
-(cross-encoder/nli-deberta-v3-small) separately over N claim pairs, reporting mean +/- std
+Times the embedding step (--encoder; deployed minilm, all-MiniLM-L6-v2) and the NLI step
+(--nli; deployed mnli-cross-encoder, nli-deberta-v3-small) separately over N claim pairs, reporting mean +/- std
 ms each and the per-delta total, so the manuscript's "edge-deployable" claim is substantiated
 on its costliest step. Run on a quiet CPU (no concurrent compute) for clean numbers.
 
-Run:  PYTHONPATH=src .venv/bin/python scripts/run_m2_edge_cost.py --n 200
+The result carries topology.stamps.
+
+Run:  PYTHONPATH=src .venv/bin/python scripts/run_m2_edge_cost.py --encoder minilm --nli mnli-cross-encoder --n 200
 """
 import argparse, itertools, json, os, sys
 
@@ -17,19 +19,22 @@ sys.path.insert(0, os.path.join(REPO, "src"))
 from meld.merge.signals import EmbeddingSimilarity, chi    # noqa: E402
 from meld.merge.m2_gold import M2_GOLD_V2                   # noqa: E402
 from meld.eval.per_delta_cost import measure_per_delta_cost  # noqa: E402
+from meld.eval.topology import stamps                       # noqa: E402
 
 
-def main():
+def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=200)
     ap.add_argument("--device", default=os.environ.get("SMP_ST_DEVICE", "cpu"),
                     help="cpu (edge proxy) or cuda (HPC GPU node, the Tier-C half)")
+    ap.add_argument("--encoder", required=True)
+    ap.add_argument("--nli", required=True)
     ap.add_argument("--out", default=os.path.join(REPO, "outputs", "m2-edge-cost.json"))
-    a = ap.parse_args()
+    a = ap.parse_args(argv)
 
     # The encoder reads SMP_ST_DEVICE; the cross-encoder auto-selects the same device.
     os.environ["SMP_ST_DEVICE"] = a.device
-    es = EmbeddingSimilarity(encoder="minilm")
+    es = EmbeddingSimilarity(encoder=a.encoder)
     pairs = [(g, x, y) for g, x, y in M2_GOLD_V2]
     cyc = itertools.cycle(pairs)
     # advance the cycle in lockstep so embed and nli time the SAME pair each iteration
@@ -42,12 +47,11 @@ def main():
 
     def nli_fn():
         a_, b_ = state["cur"][1], state["cur"][2]
-        chi(a_, b_, model="mnli-cross-encoder")
+        chi(a_, b_, model=a.nli)
 
     print(f"[run] timing embed + NLI over n={a.n} pairs (device={a.device}) ...", flush=True)
     res = measure_per_delta_cost(embed_fn, nli_fn, n=a.n, warmup=8)
-    res["encoder"] = "all-MiniLM-L6-v2"
-    res["nli"] = "cross-encoder/nli-deberta-v3-small"
+    res.update(stamps(a.encoder, a.nli, None, pol=None))
     res["device"] = a.device
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
     with open(a.out, "w", encoding="utf-8") as fh:

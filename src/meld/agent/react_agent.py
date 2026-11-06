@@ -5,8 +5,8 @@ The loop, per step:
      scratchpad + remembered facts);
   2. ask the LLM for ONE turn ("Thought: ... Action: tool[arg]");
   3. parse the action and dispatch:
-       remember[fact]     -> SMPMemory.write (PUBLISH -> merge-on-receive ->
-                             Patch); the brain receives MERGED knowledge.
+       remember[fact]     -> SMPMemory.write (PUBLISH -> admission); the brain
+                             receives MERGED knowledge.
        recall[query]      -> SMPMemory.recall (graph-walk read).
        final_answer[ans]  -> stop, return the answer.
   4. append the observation to the scratchpad.

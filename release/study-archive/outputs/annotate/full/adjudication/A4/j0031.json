@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0031",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "6323596901cdae3a2f8f258c1419ddbb92081f2327a269b6c23cccf0a5b02b60",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"3af1822bc0a9dffa\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The entity described as light blue and black changes from the male to a dog.\"},\n{\"item_id\": \"0eddf9903b4ffc92\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The named winner of the same final differs (Count versus Graf).\"},\n{\"item_id\": \"de070d395502c05a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Creative director is a more specific description of the advertising executive role.\"},\n{\"item_id\": \"a6cb2afcd048b9d0\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The modifiers raw and bluesy are reassigned among aggression, moments and guitars.\"},\n{\"item_id\": \"797482fb18140116\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man eating a banana, one adding the tree location.\"},\n{\"item_id\": \"26021be1122a5715\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds the Japanese title Bokujo Monogatari to an otherwise identical claim.\"},\n{\"item_id\": \"afab64d55ebcc916\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a man climbing, with compatible details about rock and rope.\"},\n{\"item_id\": \"dd053ac54dd66964\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the soundtrack release date of September 18, 2007.\"},\n{\"item_id\": \"94f455da3f911a13\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man cannot be playing and putting away the guitar at the same time.\"},\n{\"item_id\": \"0557cd318bde5177\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"The garbled version folds Yanji into the forces while the other names Yanji as the target, without a clear incompatibility.\"},\n{\"item_id\": \"67b7eb63682661b9\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The duration of the same tidying routine grows from three to four weeks over time.\"},\n{\"item_id\": \"b97e2db35e557194\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One names the Liverpool parents in addition to the shared birth facts.\"},\n{\"item_id\": \"027d5d1c5ff190a8\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The founder versus a founder may be a trivial article change or an added claim of sole founding.\"},\n{\"item_id\": \"39b6a4d940b6f9a3\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The Albanian Council of Ministers and the Albanian government denote the same acting body here.\"},\n{\"item_id\": \"ea78f6935936ee27\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the 2006 Garfield film as a further production set at the castle.\"},\n{\"item_id\": \"3d9e2ef736c24699\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Swapping light and visible garbles one text, so it reads either as the same description or a changed one.\"},\n{\"item_id\": \"7739122c0f297e25\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only the article before other Dark Fae differs.\"},\n{\"item_id\": \"0892e6a326e7165e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The same marriage is described with the musician label moved between spouses, which could both hold.\"},\n{\"item_id\": \"568eb6242285834c\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Flow direction and position relative to Depot Bay are swapped between south and west.\"},\n{\"item_id\": \"73f9c9fd24a54c9d\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The future-tense announcement of the renaming is superseded by the past-tense report.\"},\n{\"item_id\": \"d1615a70557ebfb1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds White Rabbit Gallery to the list of institutions to the south.\"},\n{\"item_id\": \"5633ce8051a95eb7\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Online and local are swapped between media organizations and news websites.\"},\n{\"item_id\": \"73f15dd87fd86706\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the April 30th abdication date and spells Naruhito correctly.\"},\n{\"item_id\": \"6315eb667f7f7074\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man playing guitar under different conditions, on stage versus loudly.\"},\n{\"item_id\": \"190ed1a13c569cdb\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"From the texts alone, TNA and Impact Wrestling may name the same partner or different ones.\"},\n{\"item_id\": \"4ef1e56f0ca5da18\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The Metacritic average and review count are running totals that changed over time.\"},\n{\"item_id\": \"309a02ec3deb875e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One gives the exact day within January 1989.\"},\n{\"item_id\": \"72c16368ab6e5e62\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe a dog jumping high, with compatible added details.\"},\n{\"item_id\": \"c19022957da5c77f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"Australia and New South Wales swap roles, placing the Victorian school within New South Wales.\"},\n{\"item_id\": \"2842dccaf695a335\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The taluka and district swap roles in locating the village.\"},\n{\"item_id\": \"1d1fb0192fbea522\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One lists two further acclaimed releases.\"},\n{\"item_id\": \"17403d88df07a346\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Potatoes specify which vegetables the man is slicing.\"},\n{\"item_id\": \"5aff19711ff553fa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The two tributary relations form a compatible chain through the Casimcea.\"},\n{\"item_id\": \"84104a1bffb2a97c\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny bicycle riding, one in general and one for a man on the beach.\"},\n{\"item_id\": \"8fb42b979b6f0877\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both share the Philippine premiere and add different compatible release details about Gundam 00.\"},\n{\"item_id\": \"5ffd6bdb587d7120\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The town and country swap roles in the typical-climate claim.\"},\n{\"item_id\": \"772d727253122bf2\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The only difference is a typo of and for had.\"},\n{\"item_id\": \"6dd0c74f7739b521\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both say cousin Arnold keeps goal for Kenya, one adding his club Lillestrom.\"},\n{\"item_id\": \"b2cbc01773ff392e\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The county population figure changes between the 2010 census and the 2017 estimate.\"},\n{\"item_id\": \"b0f5ae934f3db891\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds that the couple has just got married.\"},\n{\"item_id\": \"762e79e4d96799d6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies the NIT as the Tiruchirappalli campus.\"},\n{\"item_id\": \"8fef8df26335d6c9\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Annual ridership for different years can both hold.\"},\n{\"item_id\": \"62836642f0a5416c\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Colored patches may or may not be the black and orange ones denied, so the texts support both conflict and compatibility.\"},\n{\"item_id\": \"5745c9fe36a07523\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Classical and finite-dimensional swap roles, reversing the inclusion claim.\"},\n{\"item_id\": \"98c3a421e42d8e03\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the founders were childhood friends.\"},\n{\"item_id\": \"57705b92a64d8d59\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A group cannot be both far from and near the water.\"},\n{\"item_id\": \"3a9ba247f675734f\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The same kind of claim is made about different bird orders, and both can hold.\"},\n{\"item_id\": \"fbc2b7d599d724ab\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The Pacific Ocean and the Philippines swap roles in locating the eel.\"},\n{\"item_id\": \"4969613a3d5dbb70\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny group dancing, one adding the concert setting.\"},\n{\"item_id\": \"5e63ebe36a09803c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both give compatible reasons why Lorelai does not choose Christopher.\"}\n]}\n"
+ ],
+ "labels": {
+  "3af1822bc0a9dffa": {
+   "item_id": "3af1822bc0a9dffa",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The entity described as light blue and black changes from the male to a dog."
+  },
+  "0eddf9903b4ffc92": {
+   "item_id": "0eddf9903b4ffc92",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The named winner of the same final differs (Count versus Graf)."
+  },
+  "de070d395502c05a": {
+   "item_id": "de070d395502c05a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Creative director is a more specific description of the advertising executive role."
+  },
+  "a6cb2afcd048b9d0": {
+   "item_id": "a6cb2afcd048b9d0",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The modifiers raw and bluesy are reassigned among aggression, moments and guitars."
+  },
+  "797482fb18140116": {
+   "item_id": "797482fb18140116",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man eating a banana, one adding the tree location."
+  },
+  "26021be1122a5715": {
+   "item_id": "26021be1122a5715",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds the Japanese title Bokujo Monogatari to an otherwise identical claim."
+  },
+  "afab64d55ebcc916": {
+   "item_id": "afab64d55ebcc916",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a man climbing, with compatible details about rock and rope."
+  },
+  "dd053ac54dd66964": {
+   "item_id": "dd053ac54dd66964",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the soundtrack release date of September 18, 2007."
+  },
+  "94f455da3f911a13": {
+   "item_id": "94f455da3f911a13",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man cannot be playing and putting away the guitar at the same time."
+  },
+  "0557cd318bde5177": {
+   "item_id": "0557cd318bde5177",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "The garbled version folds Yanji into the forces while the other names Yanji as the target, without a clear incompatibility."
+  },
+  "67b7eb63682661b9": {
+   "item_id": "67b7eb63682661b9",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The duration of the same tidying routine grows from three to four weeks over time."
+  },
+  "b97e2db35e557194": {
+   "item_id": "b97e2db35e557194",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One names the Liverpool parents in addition to the shared birth facts."
+  },
+  "027d5d1c5ff190a8": {
+   "item_id": "027d5d1c5ff190a8",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The founder versus a founder may be a trivial article change or an added claim of sole founding."
+  },
+  "39b6a4d940b6f9a3": {
+   "item_id": "39b6a4d940b6f9a3",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The Albanian Council of Ministers and the Albanian government denote the same acting body here."
+  },
+  "ea78f6935936ee27": {
+   "item_id": "ea78f6935936ee27",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the 2006 Garfield film as a further production set at the castle."
+  },
+  "3d9e2ef736c24699": {
+   "item_id": "3d9e2ef736c24699",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Swapping light and visible garbles one text, so it reads either as the same description or a changed one."
+  },
+  "7739122c0f297e25": {
+   "item_id": "7739122c0f297e25",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only the article before other Dark Fae differs."
+  },
+  "0892e6a326e7165e": {
+   "item_id": "0892e6a326e7165e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The same marriage is described with the musician label moved between spouses, which could both hold."
+  },
+  "568eb6242285834c": {
+   "item_id": "568eb6242285834c",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Flow direction and position relative to Depot Bay are swapped between south and west."
+  },
+  "73f9c9fd24a54c9d": {
+   "item_id": "73f9c9fd24a54c9d",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The future-tense announcement of the renaming is superseded by the past-tense report."
+  },
+  "d1615a70557ebfb1": {
+   "item_id": "d1615a70557ebfb1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds White Rabbit Gallery to the list of institutions to the south."
+  },
+  "5633ce8051a95eb7": {
+   "item_id": "5633ce8051a95eb7",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Online and local are swapped between media organizations and news websites."
+  },
+  "73f15dd87fd86706": {
+   "item_id": "73f15dd87fd86706",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the April 30th abdication date and spells Naruhito correctly."
+  },
+  "6315eb667f7f7074": {
+   "item_id": "6315eb667f7f7074",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man playing guitar under different conditions, on stage versus loudly."
+  },
+  "190ed1a13c569cdb": {
+   "item_id": "190ed1a13c569cdb",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "From the texts alone, TNA and Impact Wrestling may name the same partner or different ones."
+  },
+  "4ef1e56f0ca5da18": {
+   "item_id": "4ef1e56f0ca5da18",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The Metacritic average and review count are running totals that changed over time."
+  },
+  "309a02ec3deb875e": {
+   "item_id": "309a02ec3deb875e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One gives the exact day within January 1989."
+  },
+  "72c16368ab6e5e62": {
+   "item_id": "72c16368ab6e5e62",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe a dog jumping high, with compatible added details."
+  },
+  "c19022957da5c77f": {
+   "item_id": "c19022957da5c77f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "Australia and New South Wales swap roles, placing the Victorian school within New South Wales."
+  },
+  "2842dccaf695a335": {
+   "item_id": "2842dccaf695a335",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The taluka and district swap roles in locating the village."
+  },
+  "1d1fb0192fbea522": {
+   "item_id": "1d1fb0192fbea522",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One lists two further acclaimed releases."
+  },
+  "17403d88df07a346": {
+   "item_id": "17403d88df07a346",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Potatoes specify which vegetables the man is slicing."
+  },
+  "5aff19711ff553fa": {
+   "item_id": "5aff19711ff553fa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The two tributary relations form a compatible chain through the Casimcea."
+  },
+  "84104a1bffb2a97c": {
+   "item_id": "84104a1bffb2a97c",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny bicycle riding, one in general and one for a man on the beach."
+  },
+  "8fb42b979b6f0877": {
+   "item_id": "8fb42b979b6f0877",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both share the Philippine premiere and add different compatible release details about Gundam 00."
+  },
+  "5ffd6bdb587d7120": {
+   "item_id": "5ffd6bdb587d7120",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The town and country swap roles in the typical-climate claim."
+  },
+  "772d727253122bf2": {
+   "item_id": "772d727253122bf2",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The only difference is a typo of and for had."
+  },
+  "6dd0c74f7739b521": {
+   "item_id": "6dd0c74f7739b521",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both say cousin Arnold keeps goal for Kenya, one adding his club Lillestrom."
+  },
+  "b2cbc01773ff392e": {
+   "item_id": "b2cbc01773ff392e",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The county population figure changes between the 2010 census and the 2017 estimate."
+  },
+  "b0f5ae934f3db891": {
+   "item_id": "b0f5ae934f3db891",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds that the couple has just got married."
+  },
+  "762e79e4d96799d6": {
+   "item_id": "762e79e4d96799d6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies the NIT as the Tiruchirappalli campus."
+  },
+  "8fef8df26335d6c9": {
+   "item_id": "8fef8df26335d6c9",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Annual ridership for different years can both hold."
+  },
+  "62836642f0a5416c": {
+   "item_id": "62836642f0a5416c",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Colored patches may or may not be the black and orange ones denied, so the texts support both conflict and compatibility."
+  },
+  "5745c9fe36a07523": {
+   "item_id": "5745c9fe36a07523",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Classical and finite-dimensional swap roles, reversing the inclusion claim."
+  },
+  "98c3a421e42d8e03": {
+   "item_id": "98c3a421e42d8e03",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the founders were childhood friends."
+  },
+  "57705b92a64d8d59": {
+   "item_id": "57705b92a64d8d59",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A group cannot be both far from and near the water."
+  },
+  "3a9ba247f675734f": {
+   "item_id": "3a9ba247f675734f",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The same kind of claim is made about different bird orders, and both can hold."
+  },
+  "fbc2b7d599d724ab": {
+   "item_id": "fbc2b7d599d724ab",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The Pacific Ocean and the Philippines swap roles in locating the eel."
+  },
+  "4969613a3d5dbb70": {
+   "item_id": "4969613a3d5dbb70",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny group dancing, one adding the concert setting."
+  },
+  "5e63ebe36a09803c": {
+   "item_id": "5e63ebe36a09803c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both give compatible reasons why Lorelai does not choose Christopher."
+  }
+ },
+ "errors": []
+}

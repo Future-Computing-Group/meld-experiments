@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0029",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "233c8b28fedbeb7dfb78429166d4b7f439d1e3bf1713f46d2c8e94d9fc21ade1",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"2af076149f835dc1\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The main name and the Croatian rendering are swapped, so the fixed fact of which form is Croatian differs.\"},\n{\"item_id\": \"6e0693cf165ba044\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The album's RIAA certification is 4x platinum in one and 8x platinum in the other, a level that grows over time.\"},\n{\"item_id\": \"0a28a5b7ae5dd8ab\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe two boys gaming on a couch, one specifying video games and the other the TV.\"},\n{\"item_id\": \"4505d6f492b8a4ed\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both garbled phrasings say the mill is part of the Columbia development in Maryland.\"},\n{\"item_id\": \"1677937738a4d56b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny a woman cutting a carrot, one adding that she is oriental and the pieces thin.\"},\n{\"item_id\": \"5f7b75e2899fd9d2\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only 'before' versus 'prior to' and an added 'of' differ.\"},\n{\"item_id\": \"b587b1b8404eb01c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that she is an Omega-level mutant as well as a telepath.\"},\n{\"item_id\": \"c05d57742ff04c8c\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The day and night weather descriptions are swapped.\"},\n{\"item_id\": \"2e93113cf85ac5ce\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A woman squeezing a lemon and squeezing juice out of it are the same action in different voice.\"},\n{\"item_id\": \"5e4880824bdb16ef\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The board the person does a trick on is a snowboard in one and a skateboard in the other.\"},\n{\"item_id\": \"094c121857771689\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe someone drawing, compatibly specifying a man and a person as the figure.\"},\n{\"item_id\": \"d9f32f144fbc861d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe someone biking, with compatible details of snow, a red jacket and a trail.\"},\n{\"item_id\": \"72a9b36b68a98b94\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only verb agreement differs.\"},\n{\"item_id\": \"b88f19cfba3ec0ca\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both compatibly deny a man's activity with water, in different ways.\"},\n{\"item_id\": \"fe73bb7ec344e19f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man fitting a silencer, one narrowing the gun to a pistol.\"},\n{\"item_id\": \"252272cc487e6457\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Whether the complete founder list omitting Allan Worrall contradicts the truncated list including him depends on reading it as exhaustive.\"},\n{\"item_id\": \"b3614138a7bcedcc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both compatibly deny a woman handling meat, by stirring or cutting.\"},\n{\"item_id\": \"258a2f2668d2b3a9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds a fragment that Silentó attended Redan High School.\"},\n{\"item_id\": \"cc2fe60391ddb24d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny anyone diving off the cliff, one adding two males standing on the edge.\"},\n{\"item_id\": \"9d968988a83905f6\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The current size of the to-watch list is 25 in one and 20 in the other, a count that changes.\"},\n{\"item_id\": \"6e1ecae2f55fe64d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that addiction was not a factor in McCready's death.\"},\n{\"item_id\": \"18ac8d57c0eca606\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The film's Rotten Tomatoes score and review count differ, totals that change over time.\"},\n{\"item_id\": \"3fc77d2320a37f26\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A puppy playing with a plastic container is compatible with a dog playing with a toy.\"},\n{\"item_id\": \"2de1a603a20552c5\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Great River of South and Great Southern River are two renderings of the same translated name.\"},\n{\"item_id\": \"69fa4c91fcdaa080\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The date 21 May 2014 is Lusinchi's death date in one and his own death date in the other.\"},\n{\"item_id\": \"3e8dba704ac20d3c\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Swapping Cape Town and South Africa in the location may be a real place conflict or a compatible restatement.\"},\n{\"item_id\": \"6efbe91a9f4400a6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Chris Ramsey was also on the coaching staff.\"},\n{\"item_id\": \"300319dd76ecf10d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the final appearance was Barzagli's 73rd.\"},\n{\"item_id\": \"b81dec44f503167d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe Oppo with compatible facts about its regional divisions and its business.\"},\n{\"item_id\": \"233dbb6156158553\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe the Raptors' finals run against the Warriors with compatible details.\"},\n{\"item_id\": \"24aee37e7ebdcb54\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Canadian and wealthy are compatible details about Red's ruined family.\"},\n{\"item_id\": \"c4e427778d5f627e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the release was exactly twelve years after the originals.\"},\n{\"item_id\": \"c4e0725858da170a\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Was versus is marks a change in Wylde's living status over time.\"},\n{\"item_id\": \"6dd50a6b09d2fccd\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A herd crossing a street and a deer not jumping a fence are different events.\"},\n{\"item_id\": \"c7e45e8a5be3dca1\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Casual is a typo for causal.\"},\n{\"item_id\": \"679c9b7455212b3e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds surnames, a suffix and that the younger brothers are half-brothers.\"},\n{\"item_id\": \"427fdfc293f92e41\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Only a stray word 'Pictures' differs.\"},\n{\"item_id\": \"2097bd60ab966630\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One list additionally names Sherri and Terri as first appearing.\"},\n{\"item_id\": \"a828974184f8361a\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The companies are current parents in one and former parents in the other, a status that changes.\"},\n{\"item_id\": \"8fcf971d84512408\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny a man playing a keyboard, one specifying electronic.\"},\n{\"item_id\": \"87fa10d0320a846f\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The season's Rotten Tomatoes rating and review count differ, totals that change over time.\"},\n{\"item_id\": \"454e2e3c5249b1ac\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Read as the same scene, the dog cannot both be stopping and running through the snow.\"},\n{\"item_id\": \"d1e2f78b59ef0176\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Hearts of Stone is the first expansion.\"},\n{\"item_id\": \"a4f91ae813e74b5c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the tavern was near the current post office.\"},\n{\"item_id\": \"c6d98221ad597f28\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"One further Brixton gig versus two further Brixton gigs.\"},\n{\"item_id\": \"107730d9071b36b2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A bike ridden by a person is compatible with two bikes ridden by two people.\"},\n{\"item_id\": \"094a0b5327d633b7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the band ignored the producer on song structure.\"},\n{\"item_id\": \"e294ecd3b580aed5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds an attribution of the September 11 attacks to Mossad/CIA, which the other leaves unstated.\"},\n{\"item_id\": \"45f7b1835a142ee0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the release year 1973.\"},\n{\"item_id\": \"b98d3f663ca5dc86\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Had been versus has been marks a change over time in whether Gigg Lane is still the home venue.\"}\n]}\n"
+ ],
+ "labels": {
+  "2af076149f835dc1": {
+   "item_id": "2af076149f835dc1",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The main name and the Croatian rendering are swapped, so the fixed fact of which form is Croatian differs."
+  },
+  "6e0693cf165ba044": {
+   "item_id": "6e0693cf165ba044",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The album's RIAA certification is 4x platinum in one and 8x platinum in the other, a level that grows over time."
+  },
+  "0a28a5b7ae5dd8ab": {
+   "item_id": "0a28a5b7ae5dd8ab",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe two boys gaming on a couch, one specifying video games and the other the TV."
+  },
+  "4505d6f492b8a4ed": {
+   "item_id": "4505d6f492b8a4ed",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both garbled phrasings say the mill is part of the Columbia development in Maryland."
+  },
+  "1677937738a4d56b": {
+   "item_id": "1677937738a4d56b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny a woman cutting a carrot, one adding that she is oriental and the pieces thin."
+  },
+  "5f7b75e2899fd9d2": {
+   "item_id": "5f7b75e2899fd9d2",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only 'before' versus 'prior to' and an added 'of' differ."
+  },
+  "b587b1b8404eb01c": {
+   "item_id": "b587b1b8404eb01c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that she is an Omega-level mutant as well as a telepath."
+  },
+  "c05d57742ff04c8c": {
+   "item_id": "c05d57742ff04c8c",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The day and night weather descriptions are swapped."
+  },
+  "2e93113cf85ac5ce": {
+   "item_id": "2e93113cf85ac5ce",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A woman squeezing a lemon and squeezing juice out of it are the same action in different voice."
+  },
+  "5e4880824bdb16ef": {
+   "item_id": "5e4880824bdb16ef",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The board the person does a trick on is a snowboard in one and a skateboard in the other."
+  },
+  "094c121857771689": {
+   "item_id": "094c121857771689",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe someone drawing, compatibly specifying a man and a person as the figure."
+  },
+  "d9f32f144fbc861d": {
+   "item_id": "d9f32f144fbc861d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe someone biking, with compatible details of snow, a red jacket and a trail."
+  },
+  "72a9b36b68a98b94": {
+   "item_id": "72a9b36b68a98b94",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only verb agreement differs."
+  },
+  "b88f19cfba3ec0ca": {
+   "item_id": "b88f19cfba3ec0ca",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both compatibly deny a man's activity with water, in different ways."
+  },
+  "fe73bb7ec344e19f": {
+   "item_id": "fe73bb7ec344e19f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man fitting a silencer, one narrowing the gun to a pistol."
+  },
+  "252272cc487e6457": {
+   "item_id": "252272cc487e6457",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Whether the complete founder list omitting Allan Worrall contradicts the truncated list including him depends on reading it as exhaustive."
+  },
+  "b3614138a7bcedcc": {
+   "item_id": "b3614138a7bcedcc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both compatibly deny a woman handling meat, by stirring or cutting."
+  },
+  "258a2f2668d2b3a9": {
+   "item_id": "258a2f2668d2b3a9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds a fragment that Silentó attended Redan High School."
+  },
+  "cc2fe60391ddb24d": {
+   "item_id": "cc2fe60391ddb24d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny anyone diving off the cliff, one adding two males standing on the edge."
+  },
+  "9d968988a83905f6": {
+   "item_id": "9d968988a83905f6",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The current size of the to-watch list is 25 in one and 20 in the other, a count that changes."
+  },
+  "6e1ecae2f55fe64d": {
+   "item_id": "6e1ecae2f55fe64d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that addiction was not a factor in McCready's death."
+  },
+  "18ac8d57c0eca606": {
+   "item_id": "18ac8d57c0eca606",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The film's Rotten Tomatoes score and review count differ, totals that change over time."
+  },
+  "3fc77d2320a37f26": {
+   "item_id": "3fc77d2320a37f26",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A puppy playing with a plastic container is compatible with a dog playing with a toy."
+  },
+  "2de1a603a20552c5": {
+   "item_id": "2de1a603a20552c5",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Great River of South and Great Southern River are two renderings of the same translated name."
+  },
+  "69fa4c91fcdaa080": {
+   "item_id": "69fa4c91fcdaa080",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The date 21 May 2014 is Lusinchi's death date in one and his own death date in the other."
+  },
+  "3e8dba704ac20d3c": {
+   "item_id": "3e8dba704ac20d3c",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Swapping Cape Town and South Africa in the location may be a real place conflict or a compatible restatement."
+  },
+  "6efbe91a9f4400a6": {
+   "item_id": "6efbe91a9f4400a6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Chris Ramsey was also on the coaching staff."
+  },
+  "300319dd76ecf10d": {
+   "item_id": "300319dd76ecf10d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the final appearance was Barzagli's 73rd."
+  },
+  "b81dec44f503167d": {
+   "item_id": "b81dec44f503167d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe Oppo with compatible facts about its regional divisions and its business."
+  },
+  "233dbb6156158553": {
+   "item_id": "233dbb6156158553",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe the Raptors' finals run against the Warriors with compatible details."
+  },
+  "24aee37e7ebdcb54": {
+   "item_id": "24aee37e7ebdcb54",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Canadian and wealthy are compatible details about Red's ruined family."
+  },
+  "c4e427778d5f627e": {
+   "item_id": "c4e427778d5f627e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the release was exactly twelve years after the originals."
+  },
+  "c4e0725858da170a": {
+   "item_id": "c4e0725858da170a",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Was versus is marks a change in Wylde's living status over time."
+  },
+  "6dd50a6b09d2fccd": {
+   "item_id": "6dd50a6b09d2fccd",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A herd crossing a street and a deer not jumping a fence are different events."
+  },
+  "c7e45e8a5be3dca1": {
+   "item_id": "c7e45e8a5be3dca1",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Casual is a typo for causal."
+  },
+  "679c9b7455212b3e": {
+   "item_id": "679c9b7455212b3e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds surnames, a suffix and that the younger brothers are half-brothers."
+  },
+  "427fdfc293f92e41": {
+   "item_id": "427fdfc293f92e41",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Only a stray word 'Pictures' differs."
+  },
+  "2097bd60ab966630": {
+   "item_id": "2097bd60ab966630",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One list additionally names Sherri and Terri as first appearing."
+  },
+  "a828974184f8361a": {
+   "item_id": "a828974184f8361a",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The companies are current parents in one and former parents in the other, a status that changes."
+  },
+  "8fcf971d84512408": {
+   "item_id": "8fcf971d84512408",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny a man playing a keyboard, one specifying electronic."
+  },
+  "87fa10d0320a846f": {
+   "item_id": "87fa10d0320a846f",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The season's Rotten Tomatoes rating and review count differ, totals that change over time."
+  },
+  "454e2e3c5249b1ac": {
+   "item_id": "454e2e3c5249b1ac",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Read as the same scene, the dog cannot both be stopping and running through the snow."
+  },
+  "d1e2f78b59ef0176": {
+   "item_id": "d1e2f78b59ef0176",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Hearts of Stone is the first expansion."
+  },
+  "a4f91ae813e74b5c": {
+   "item_id": "a4f91ae813e74b5c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the tavern was near the current post office."
+  },
+  "c6d98221ad597f28": {
+   "item_id": "c6d98221ad597f28",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "One further Brixton gig versus two further Brixton gigs."
+  },
+  "107730d9071b36b2": {
+   "item_id": "107730d9071b36b2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A bike ridden by a person is compatible with two bikes ridden by two people."
+  },
+  "094a0b5327d633b7": {
+   "item_id": "094a0b5327d633b7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the band ignored the producer on song structure."
+  },
+  "e294ecd3b580aed5": {
+   "item_id": "e294ecd3b580aed5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds an attribution of the September 11 attacks to Mossad/CIA, which the other leaves unstated."
+  },
+  "45f7b1835a142ee0": {
+   "item_id": "45f7b1835a142ee0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the release year 1973."
+  },
+  "b98d3f663ca5dc86": {
+   "item_id": "b98d3f663ca5dc86",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Had been versus has been marks a change over time in whether Gigg Lane is still the home venue."
+  }
+ },
+ "errors": []
+}

@@ -78,4 +78,19 @@ def aggregate_by_condition(cells: List[CellSpec], results: Dict[str, dict], *,
             for cond, vals in by_cond.items()}
 
 
-__all__ = ["CellSpec", "enumerate_cells", "run_campaign", "aggregate_by_condition"]
+def score_routing(delivered: Dict[str, dict], needed: Dict[str, frozenset], *, sender: str,
+                  url: Callable[[str], str]) -> Dict[str, int]:
+    """Routing counts of one brain's /publish reply: ``delivered`` is id -> {kind, text, peers};
+    only deltas (kind D) are scored, by text against the needed-oracle (brain ids, mapped to the
+    peer URLs the brains publish to by ``url``; the sender itself never needs its own delta)."""
+    num = den = tot = 0
+    for o in delivered.values():
+        if o.get("kind") != "D":
+            continue
+        got = set(o["peers"])
+        need = {url(b) for b in needed.get(o["text"], ()) if b != sender}
+        num, den, tot = num + len(got & need), den + len(need), tot + len(got)
+    return {"recall_num": num, "recall_den": den, "delivered_total": tot}
+
+
+__all__ = ["CellSpec", "enumerate_cells", "run_campaign", "aggregate_by_condition", "score_routing"]

@@ -1,0 +1,178 @@
+{
+ "epochs": [
+  {
+   "git_sha": "62005af4b7701eb7273098b19203d007cc427427",
+   "git_dirty": false,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "encoder": "minilm",
+   "encoder_id": "sentence-transformers/all-MiniLM-L6-v2",
+   "nli": "mnli-cross-encoder",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "hw": "arm64",
+   "alpha": 0.05,
+   "alpha_ppm": 50000,
+   "n_min": 19,
+   "B_0": 256,
+   "B_0_rule": "given",
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "domain": "lme",
+   "strata": [],
+   "epoch_file": "lme-seed-a0.05.epoch.json",
+   "scope": "agent",
+   "pol": {
+    "rank_map": {
+     "PRECEDENT": 0,
+     "OBSERVATION": 1,
+     "CLAIM": 2,
+     "SPECULATION": 3
+    },
+    "scopes": {
+     "agent": [
+      "agent.public"
+     ]
+    },
+    "auth_policy": {
+     "SUPERSEDE": 3,
+     "OVERRULE": 3,
+     "REVOKE": 3,
+     "DISTINGUISHES": 3,
+     "calibration_authority": {
+      "agent": "calibration"
+     }
+    },
+    "step_version": 0,
+    "r_min": 1,
+    "bootstrap_selector": [
+     32768,
+     32768,
+     3
+    ]
+   },
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+   "epoch_id": "50e5f63a35f307d38161b541fee212b5",
+   "seq": 1,
+   "policy": "SEED",
+   "mondrian_c": false,
+   "cal_root": "bbb3e900ee61c1b69dabb80ccc6e0555",
+   "cal_hw": "arm64",
+   "verified": true,
+   "substrate": {
+    "n_cal": null,
+    "world_seed": null,
+    "n_brains": 3,
+    "dup": 2,
+    "overlap": 0.5,
+    "per_store": 1,
+    "world_spec": {
+     "path": "outputs/annotate/round4/design/spec-h4.json",
+     "sha256": "d44b085572c68c6d79caf0d49fd6cf5385c04d3b3f40bddeb71ee152381a7bcf"
+    }
+   },
+   "repeated_items": 0,
+   "bins": [
+    {
+     "g": 0,
+     "n_g": 63,
+     "n_c_g": 0,
+     "theta_q": 5011,
+     "theta": 0.07646295872434578
+    },
+    {
+     "g": 1,
+     "n_g": 68,
+     "n_c_g": 0,
+     "theta_q": 17503,
+     "theta": 0.26707866025787746
+    },
+    {
+     "g": 2,
+     "n_g": 122,
+     "n_c_g": 0,
+     "theta_q": 7011,
+     "theta": 0.10698100251773861
+    },
+    {
+     "g": 3,
+     "n_g": 79,
+     "n_c_g": 0,
+     "theta_q": 13454,
+     "theta": 0.20529488059815365
+    },
+    {
+     "g": 4,
+     "n_g": 2,
+     "n_c_g": 0,
+     "theta_q": 65536,
+     "theta": null
+    }
+   ],
+   "populated_bins": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "disabled_bins": [
+    4
+   ],
+   "items_by_bin": {
+    "0": 75,
+    "1": 84,
+    "2": 143,
+    "3": 93,
+    "4": 3
+   },
+   "stats": {
+    "worlds": 8,
+    "nodes": 11824,
+    "tested": 11062,
+    "nli_calls": 41877,
+    "cal": 334,
+    "unresolved": 0
+   },
+   "labels": {
+    "cross_item": {
+     "non_mergeable": 122,
+     "ambiguous": 1,
+     "mergeable": 2
+    },
+    "same_item": {
+     "non_mergeable": 1127,
+     "mergeable": 6
+    },
+    "source_labelled": {
+     "mergeable": 9805
+    }
+   },
+   "unresolved": 0,
+   "development": false,
+   "copies_validated": {
+    "path": "outputs/annotate/round2/copy-validation-labels.jsonl",
+    "n": 200,
+    "mergeable": 200,
+    "rate": 1.0,
+    "wilson_lower": 0.9811539940816791,
+    "min_rate": 0.98
+   },
+   "source_labels": true,
+   "annotations_sha256": "916adc8e6b528b44e7e6b5f2f28537c08c7335880ba830836bca987806984633",
+   "contradiction_subtype_unlabelled": null,
+   "ambiguous": {
+    "policy": "non-mergeable",
+    "provenance": "adjudicated_ambiguous",
+    "labels_file": "outputs/annotate/labels-final-r4.jsonl",
+    "by_class": {
+     "cross_item": 1
+    }
+   },
+   "seconds": 1116.3
+  }
+ ]
+}

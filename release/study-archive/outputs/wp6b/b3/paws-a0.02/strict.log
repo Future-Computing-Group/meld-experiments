@@ -1,0 +1,12 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 4607.75it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 19031.42it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 22289.41it/s]
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|██████████| 106/106 [00:00<00:00, 19532.39it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 22521.81it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 19859.94it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 18203.83it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 15679.93it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 15860.10it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 14483.00it/s]
+WARNING paws: the Cal draw with seed 0 does not rebuild the given epoch; the training-conditional variant is of the rebuilt draw
+{"domain": "paws", "unresolved": 0, "labels": {"cross_item": {"non_mergeable": 31}, "manifest": {"non_mergeable": 309, "mergeable": 564}, "same_item": {"mergeable": 184, "non_mergeable": 367}, "source_labelled": {"non_mergeable": 103, "mergeable": 41}}, "fm": {"k": 14, "n": 810, "rate": 0.01728395061728395, "ci95": [0.00948069096270509, 0.028829637250675423]}, "recall": 0.11787072243346007, "chunks": 2, "test_disabled_share": 0.14884302689180737, "tc_fm": {"k": 11, "n": 810, "rate": 0.013580246913580247, "ci95": [0.006798181047444407, 0.024168644633709522]}, "tc_recall": 0.06717363751584284, "seconds": 952.8}

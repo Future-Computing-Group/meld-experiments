@@ -20,8 +20,14 @@ watchdog_port: 8090       # the per-host watchdog the orchestrator heartbeats
 
 # Container image tags (built from edge/docker; see edge/README.md).
 images:
-  smoke: meld-brain:smoke      # hashing encoder, light/fast (smoke rungs)
-  campaign: meld-brain:minilm  # real MiniLM encoder (campaign rungs)
+  smoke: meld-brain:smoke      # hashing encoder, lexical NLI, no epoch (smoke rungs only)
+  campaign: meld-brain:minilm  # MiniLM encoder + the NLI cross-encoder baked in (result rungs)
+
+# What a result-path brain runs (edge/config.py render_start; lexical is refused unless smoke: true).
+nli: mnli-cross-encoder
+key_file: ~/meld-run/run.key                         # the run's group key, mounted read-only (never the default test key)
+epoch_file: ~/meld-run/epoch/scope.group.epoch.json  # the calibration authority's signed epoch, signed under key_file
+http_timeout_s: 2                                    # brain-to-brain call timeout (a partitioned peer costs this per call)
 
 # The orchestrator host: the node co-located with this driver (commands run
 # locally there, every other node is reached by SSH). Must match a `nodes` id.
@@ -43,14 +49,17 @@ grid:
   n_nodes: [2, 3, 4]                 # brains per cell (prefix of `nodes`)
   routings: [broadcast, semantic]    # delivery policy (semantic = top-k peer)
   seeds: 15                          # seeds per condition
+  replication: 2                     # brains homing each topic; a claim interests replication/N of a cell
   heartbeat_s: 30                    # orchestrator -> watchdog heartbeat period
   publish_timeout_s: 120             # per-cell publish timeout
+  sigma_lo: 0.12                     # semantic routing floor (stated, no default)
+  top_k: 1                           # semantic routing: the top-k peers
 
 # eval-c (partition -> heal -> CRDT agreement) cell.
 partition:
-  mode: tc                  # "tc" = real healable network partition; "delivery" = withhold cross-side delivery
+  mode: tc                  # "tc" = real partition through each host's watchdog, healed by anti-entropy; "delivery" = labelled smoke only
   seeds: 15
   partition_s: 0            # optional dwell time before healing
   claim: "the sky is blue"  # the single claim both partition sides overrule
-  effect_a: ACTIVE          # status side A asserts during the partition
-  effect_b: RETRACTED       # status side B asserts during the partition
+  effect_a: DEPRECATED      # status effect side A authors during the partition
+  effect_b: OVERRULED       # status effect side B authors during the partition

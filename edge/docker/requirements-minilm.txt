@@ -1,0 +1,8 @@
+# Campaign image: the smoke deps plus the MiniLM encoder and the DeBERTa-v3 NLI cross-encoder.
+# torch (CPU wheel) is installed separately in the Dockerfile from the pytorch CPU index.
+# Versions = the development venv the evaluation ran in.
+-r requirements-smoke.txt
+sentence-transformers==3.4.1
+transformers==4.57.6
+tokenizers==0.22.2
+sentencepiece

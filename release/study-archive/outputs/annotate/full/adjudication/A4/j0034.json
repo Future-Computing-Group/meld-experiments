@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0034",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "b3366e227871667625bd9540bb595d144e7a7ad9f02ef788adb580171b2a8763",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"aa6afbe0af87cbd3\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Being first of its kind in China and being first in Fuzhou are compatible claims over different ranges, with the places swapped.\"},\n{\"item_id\": \"6862b48494409758\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Different tennis finals with different players.\"},\n{\"item_id\": \"f7d8cd859f268879\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Different finals with different players and scores.\"},\n{\"item_id\": \"7b97d0a1d5f0afa2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Policewomen singing karaoke adds detail to people singing.\"},\n{\"item_id\": \"03ed9861f03ae184\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Several species versus one species could be a clash in number or a difference of referent, and the texts do not decide.\"},\n{\"item_id\": \"e08a9ec2ac89e73b\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Twins born to his wife clash with all sons via surrogacy only if the same twins are meant, which the texts leave open.\"},\n{\"item_id\": \"c5e0ec724c730111\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The intensifier very adds a degree to being proud.\"},\n{\"item_id\": \"7e775f83f8743aa8\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Dancing versus not dancing outside clash unless the dancing happens indoors, which neither text settles.\"},\n{\"item_id\": \"5b06be859a073421\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Dogs fighting and cats fighting are different events with different animals.\"},\n{\"item_id\": \"85e0980acafa227b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A man specifies the person playing guitar.\"},\n{\"item_id\": \"5c4a828302ef8be5\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"If the same film, the US figures differ over time; otherwise the grosses are unrelated, and the texts do not say.\"},\n{\"item_id\": \"ca20fc9e08e097b2\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Two versus three recipes tried is a running count that changes over time.\"},\n{\"item_id\": \"9711b0c40c4b780c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cracking and whisking eggs in a bowl are compatible steps of the same activity.\"},\n{\"item_id\": \"8282ff53e426b9e2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Lily Safra is the widow of Edmond Safra.\"},\n{\"item_id\": \"35633683b7e27524\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Colours and grass add detail to two dogs playing outside.\"},\n{\"item_id\": \"dedc27632ede551c\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The garbled wording may restate the reverse mathematics claim or assert something different, and its meaning cannot be fixed.\"},\n{\"item_id\": \"6c2647bfca6c07d2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the year 1993 to the same drought claim.\"},\n{\"item_id\": \"b65d41a706ab91be\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"If the unnamed movie is Love, Simon the gross and budget figures clash; otherwise they are unrelated, and the texts do not say.\"},\n{\"item_id\": \"5ce7a3cd4c5e51a9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the Pronger closest-margin sentence to the same award record.\"},\n{\"item_id\": \"664b46d5c4e1d163\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Different pairs of dogs in different settings describe different scenes.\"},\n{\"item_id\": \"6c5b48fdd7b05629\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man at the wheel of a car with its door open is compatible with a man getting into a car.\"},\n{\"item_id\": \"8ac225e31cc47ba2\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The same officials are listed with only the quantifier moved.\"},\n{\"item_id\": \"684ed90a863fd07e\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Building versus buildings is a number-agreement typo over the same list.\"},\n{\"item_id\": \"3a61931f47f31146\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"America and North America name the same release region here with all dates identical.\"},\n{\"item_id\": \"80d30a8e34396534\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"What is mastered and what is applied are swapped, along with a changed activity name.\"},\n{\"item_id\": \"10baae4d331979ab\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Young girl and little girl are synonyms here.\"},\n{\"item_id\": \"f164c98419e13763\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the website revealed her phone number and address.\"},\n{\"item_id\": \"580bec8c00ac3f92\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny anyone in the snow with compatible details.\"},\n{\"item_id\": \"2ffeab36e0da05d2\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Only the tense of the same sacred-items claim differs.\"},\n{\"item_id\": \"ee1385523a39aca7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the middle name Zaha to the same full name.\"},\n{\"item_id\": \"84d2bcac7e00045f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the descent from Myles Standish is sixth-generation.\"},\n{\"item_id\": \"4ff9b2ba9813170c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Both boards took part in the same match, so Kent being represented and Barfoot representing Worcestershire can both hold, though the roles look swapped.\"},\n{\"item_id\": \"6dc5014b8adb2660\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The two names may denote the same character or different people, and the texts alone do not say.\"},\n{\"item_id\": \"55366c3fa69a9ca4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man fishing, with compatible details.\"},\n{\"item_id\": \"b97cdd57ac4bd0f8\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Slicing an onion and slicing an octopus describe different events with different objects.\"},\n{\"item_id\": \"09c99e8aa9bbe265\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Kunda leaving the justice post versus being left in it, with a changed title, cannot both hold.\"},\n{\"item_id\": \"5070e93a842fd2e9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A chimp kicking at a target and missing it are compatible details.\"},\n{\"item_id\": \"89800c3a730b6d9f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds that the new finishers include Babality and Friendship beyond Fatalities.\"},\n{\"item_id\": \"68ea13532670d7a0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Kicking a boxing trainer and clumsily kick boxing with a trainer are compatible descriptions.\"},\n{\"item_id\": \"cc77d62cf40bfeff\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only the position of the adverb first moves.\"},\n{\"item_id\": \"edea6df76b6d1896\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One specifies the unissued albums as Capitol and CMH LPs.\"},\n{\"item_id\": \"a6ec9f7ad4959b9b\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The same route is stated with the via clause moved.\"},\n{\"item_id\": \"600a3c83e6d5cf99\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Character skins and weapons versus characters and weapon skins swap what the skins apply to.\"},\n{\"item_id\": \"0e770e91a661a17d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Film actress adds detail to actress for the same person.\"},\n{\"item_id\": \"56d94920d3f92bc2\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Is versus was with the same completed airing dates asserts the same fact.\"},\n{\"item_id\": \"e6f7a5213177d46f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Over $519 million versus $519 million are compatible figures for the same film.\"},\n{\"item_id\": \"d035d3f64b61e9bc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the Space Echo sentence to the same citation.\"},\n{\"item_id\": \"272148cfdecff13a\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Was versus is changes his current status, which can change over time.\"},\n{\"item_id\": \"a2589026e7e8e971\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Jamie Lee Curtis to the main cast.\"},\n{\"item_id\": \"2f840e04d8dfcd87\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Absolutes is a typo for absolutists.\"}\n]}\n"
+ ],
+ "labels": {
+  "aa6afbe0af87cbd3": {
+   "item_id": "aa6afbe0af87cbd3",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Being first of its kind in China and being first in Fuzhou are compatible claims over different ranges, with the places swapped."
+  },
+  "6862b48494409758": {
+   "item_id": "6862b48494409758",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Different tennis finals with different players."
+  },
+  "f7d8cd859f268879": {
+   "item_id": "f7d8cd859f268879",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Different finals with different players and scores."
+  },
+  "7b97d0a1d5f0afa2": {
+   "item_id": "7b97d0a1d5f0afa2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Policewomen singing karaoke adds detail to people singing."
+  },
+  "03ed9861f03ae184": {
+   "item_id": "03ed9861f03ae184",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Several species versus one species could be a clash in number or a difference of referent, and the texts do not decide."
+  },
+  "e08a9ec2ac89e73b": {
+   "item_id": "e08a9ec2ac89e73b",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Twins born to his wife clash with all sons via surrogacy only if the same twins are meant, which the texts leave open."
+  },
+  "c5e0ec724c730111": {
+   "item_id": "c5e0ec724c730111",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The intensifier very adds a degree to being proud."
+  },
+  "7e775f83f8743aa8": {
+   "item_id": "7e775f83f8743aa8",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Dancing versus not dancing outside clash unless the dancing happens indoors, which neither text settles."
+  },
+  "5b06be859a073421": {
+   "item_id": "5b06be859a073421",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Dogs fighting and cats fighting are different events with different animals."
+  },
+  "85e0980acafa227b": {
+   "item_id": "85e0980acafa227b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A man specifies the person playing guitar."
+  },
+  "5c4a828302ef8be5": {
+   "item_id": "5c4a828302ef8be5",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "If the same film, the US figures differ over time; otherwise the grosses are unrelated, and the texts do not say."
+  },
+  "ca20fc9e08e097b2": {
+   "item_id": "ca20fc9e08e097b2",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Two versus three recipes tried is a running count that changes over time."
+  },
+  "9711b0c40c4b780c": {
+   "item_id": "9711b0c40c4b780c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cracking and whisking eggs in a bowl are compatible steps of the same activity."
+  },
+  "8282ff53e426b9e2": {
+   "item_id": "8282ff53e426b9e2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Lily Safra is the widow of Edmond Safra."
+  },
+  "35633683b7e27524": {
+   "item_id": "35633683b7e27524",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Colours and grass add detail to two dogs playing outside."
+  },
+  "dedc27632ede551c": {
+   "item_id": "dedc27632ede551c",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The garbled wording may restate the reverse mathematics claim or assert something different, and its meaning cannot be fixed."
+  },
+  "6c2647bfca6c07d2": {
+   "item_id": "6c2647bfca6c07d2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the year 1993 to the same drought claim."
+  },
+  "b65d41a706ab91be": {
+   "item_id": "b65d41a706ab91be",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "If the unnamed movie is Love, Simon the gross and budget figures clash; otherwise they are unrelated, and the texts do not say."
+  },
+  "5ce7a3cd4c5e51a9": {
+   "item_id": "5ce7a3cd4c5e51a9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the Pronger closest-margin sentence to the same award record."
+  },
+  "664b46d5c4e1d163": {
+   "item_id": "664b46d5c4e1d163",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Different pairs of dogs in different settings describe different scenes."
+  },
+  "6c5b48fdd7b05629": {
+   "item_id": "6c5b48fdd7b05629",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man at the wheel of a car with its door open is compatible with a man getting into a car."
+  },
+  "8ac225e31cc47ba2": {
+   "item_id": "8ac225e31cc47ba2",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The same officials are listed with only the quantifier moved."
+  },
+  "684ed90a863fd07e": {
+   "item_id": "684ed90a863fd07e",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Building versus buildings is a number-agreement typo over the same list."
+  },
+  "3a61931f47f31146": {
+   "item_id": "3a61931f47f31146",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "America and North America name the same release region here with all dates identical."
+  },
+  "80d30a8e34396534": {
+   "item_id": "80d30a8e34396534",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "What is mastered and what is applied are swapped, along with a changed activity name."
+  },
+  "10baae4d331979ab": {
+   "item_id": "10baae4d331979ab",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Young girl and little girl are synonyms here."
+  },
+  "f164c98419e13763": {
+   "item_id": "f164c98419e13763",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the website revealed her phone number and address."
+  },
+  "580bec8c00ac3f92": {
+   "item_id": "580bec8c00ac3f92",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny anyone in the snow with compatible details."
+  },
+  "2ffeab36e0da05d2": {
+   "item_id": "2ffeab36e0da05d2",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Only the tense of the same sacred-items claim differs."
+  },
+  "ee1385523a39aca7": {
+   "item_id": "ee1385523a39aca7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the middle name Zaha to the same full name."
+  },
+  "84d2bcac7e00045f": {
+   "item_id": "84d2bcac7e00045f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the descent from Myles Standish is sixth-generation."
+  },
+  "4ff9b2ba9813170c": {
+   "item_id": "4ff9b2ba9813170c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Both boards took part in the same match, so Kent being represented and Barfoot representing Worcestershire can both hold, though the roles look swapped."
+  },
+  "6dc5014b8adb2660": {
+   "item_id": "6dc5014b8adb2660",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The two names may denote the same character or different people, and the texts alone do not say."
+  },
+  "55366c3fa69a9ca4": {
+   "item_id": "55366c3fa69a9ca4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man fishing, with compatible details."
+  },
+  "b97cdd57ac4bd0f8": {
+   "item_id": "b97cdd57ac4bd0f8",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Slicing an onion and slicing an octopus describe different events with different objects."
+  },
+  "09c99e8aa9bbe265": {
+   "item_id": "09c99e8aa9bbe265",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Kunda leaving the justice post versus being left in it, with a changed title, cannot both hold."
+  },
+  "5070e93a842fd2e9": {
+   "item_id": "5070e93a842fd2e9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A chimp kicking at a target and missing it are compatible details."
+  },
+  "89800c3a730b6d9f": {
+   "item_id": "89800c3a730b6d9f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds that the new finishers include Babality and Friendship beyond Fatalities."
+  },
+  "68ea13532670d7a0": {
+   "item_id": "68ea13532670d7a0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Kicking a boxing trainer and clumsily kick boxing with a trainer are compatible descriptions."
+  },
+  "cc77d62cf40bfeff": {
+   "item_id": "cc77d62cf40bfeff",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only the position of the adverb first moves."
+  },
+  "edea6df76b6d1896": {
+   "item_id": "edea6df76b6d1896",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One specifies the unissued albums as Capitol and CMH LPs."
+  },
+  "a6ec9f7ad4959b9b": {
+   "item_id": "a6ec9f7ad4959b9b",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The same route is stated with the via clause moved."
+  },
+  "600a3c83e6d5cf99": {
+   "item_id": "600a3c83e6d5cf99",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Character skins and weapons versus characters and weapon skins swap what the skins apply to."
+  },
+  "0e770e91a661a17d": {
+   "item_id": "0e770e91a661a17d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Film actress adds detail to actress for the same person."
+  },
+  "56d94920d3f92bc2": {
+   "item_id": "56d94920d3f92bc2",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Is versus was with the same completed airing dates asserts the same fact."
+  },
+  "e6f7a5213177d46f": {
+   "item_id": "e6f7a5213177d46f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Over $519 million versus $519 million are compatible figures for the same film."
+  },
+  "d035d3f64b61e9bc": {
+   "item_id": "d035d3f64b61e9bc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the Space Echo sentence to the same citation."
+  },
+  "272148cfdecff13a": {
+   "item_id": "272148cfdecff13a",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Was versus is changes his current status, which can change over time."
+  },
+  "a2589026e7e8e971": {
+   "item_id": "a2589026e7e8e971",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Jamie Lee Curtis to the main cast."
+  },
+  "2f840e04d8dfcd87": {
+   "item_id": "2f840e04d8dfcd87",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Absolutes is a typo for absolutists."
+  }
+ },
+ "errors": []
+}

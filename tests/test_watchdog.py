@@ -21,19 +21,23 @@ import pytest
 
 class FakeRunner:
     """Models tc shaping state; `qdisc del root` clears it (unless told otherwise)."""
-    def __init__(self, cleared_after_del=True):
+    def __init__(self, cleared_after_del=True, shaping=True, del_rc=0):
         self.calls = []
-        self.shaping = True                 # iface starts shaped (a run is in progress)
+        self.shaping = shaping              # default: iface starts shaped (a run is in progress)
         self.cleared_after_del = cleared_after_del
+        self.del_rc = del_rc                # tc's rc for `qdisc del root` (default qdisc only: != 0)
 
     def __call__(self, argv):
         self.calls.append(list(argv))
         cmd = " ".join(argv)
         if "del" in cmd and "root" in cmd:
+            if self.del_rc:
+                return SimpleNamespace(returncode=self.del_rc, stdout="",
+                                       stderr="Error: Cannot delete qdisc with handle of zero.")
             self.shaping = not self.cleared_after_del
         stdout = ""
         if "show" in cmd:
-            stdout = "qdisc netem 30: ... loss 100%" if self.shaping else "qdisc pfifo_fast 0: root"
+            stdout = "qdisc netem 30: ... loss 100%" if self.shaping else "qdisc fq_codel 0: root"
         return SimpleNamespace(returncode=0, stdout=stdout, stderr="")
 
 
@@ -104,13 +108,33 @@ def test_teardown_raises_if_tc_not_cleared():
         w.teardown()
 
 
-def test_teardown_does_not_bring_compose_down_if_tc_clearing_fails():
+def test_teardown_removes_brain_even_if_tc_shaping_persists():
+    # fail loud on persisting shaping, but a tc error never skips removing the brain
     r = FakeRunner(cleared_after_del=False)
     downs = []
     w = _wd(r, clock=lambda: 0.0, compose_down=lambda: downs.append(True))
     with pytest.raises(RuntimeError):
         w.teardown()
-    assert downs == []                       # never reached compose_down (fail-loud first)
+    assert downs == [True]
+
+
+def test_teardown_unshaped_default_qdisc_del_fails_still_removes_brain():
+    # nothing shaped: root is the default qdisc (handle 0), `tc qdisc del root` returns rc != 0.
+    # That is a clean iface, not a failure: no raise, and the brain is removed.
+    r = FakeRunner(shaping=False, del_rc=2)
+    downs = []
+    w = _wd(r, clock=lambda: 0.0, compose_down=lambda: downs.append(True))
+    w.teardown()
+    assert downs == [True]
+
+
+def test_teardown_shaped_and_del_fails_raises_but_still_removes_brain():
+    r = FakeRunner(shaping=True, del_rc=2)
+    downs = []
+    w = _wd(r, clock=lambda: 0.0, compose_down=lambda: downs.append(True))
+    with pytest.raises(RuntimeError, match="enp1s0"):
+        w.teardown()
+    assert downs == [True]
 
 
 # --- WatchdogDaemon (the unattended-run gate; heartbeat over the internal net) ----------
@@ -155,3 +179,13 @@ def test_daemon_check_once_noop_when_fresh():
     clk[0] = 110.0                           # 10s < 30s timeout
     assert d.check_once() is False
     assert downs == []                       # nothing torn down
+
+
+def test_daemon_check_once_unshaped_stale_tears_down_without_raising():
+    clk = [0.0]
+    downs = []
+    d = _daemon(FakeRunner(shaping=False, del_rc=2), clock=lambda: clk[0],
+                compose_down=lambda: downs.append(True))
+    clk[0] = 31.0
+    assert d.check_once() is True
+    assert downs == [True]

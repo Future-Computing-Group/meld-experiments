@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0030",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "73f21e3a1b3518d9e3aa6239d530a3ac194ace0e69a2d3cb327f6b337cd83e19",
+ "raw": [
+  "{\"labels\": [{\"item_id\": \"c531d55ba8d71d0d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One lists the additional form nagi beyond nagin and nagini.\"}, {\"item_id\": \"251da282c0798fbf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Bendelow was a prolific golf architect.\"}, {\"item_id\": \"512f7fd140f14b40\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Sales by 2016 are cumulative while sales in 2016 cover one year, and both can hold.\"}, {\"item_id\": \"8ba86840738abbdf\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Uncomparable versus incomparable is only a spelling variant.\"}, {\"item_id\": \"1624a632d58c509f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the city's name Nelliyadi to the same location and population.\"}, {\"item_id\": \"3e93b543c195e871\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny a man walking, one outside generally and one only in the rain.\"}, {\"item_id\": \"a426773aac194f0b\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The same eighteen entities are called states in one and countries in the other.\"}, {\"item_id\": \"50168c75b2a746b4\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A woman pouring ingredients into a bowl and removing them from it are incompatible in one scene.\"}, {\"item_id\": \"f90d211fbf793777\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Market share figures for Cuba and Eritrea differ, which change over time.\"}, {\"item_id\": \"ee5bf8b8ae7c87ad\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the planning permission and opening date to otherwise identical content.\"}, {\"item_id\": \"43919c139cb67e56\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"As versus was is only a typo.\"}, {\"item_id\": \"8079f626e411793c\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A dog running on grass with a ball and a dog swimming after a ball cannot both describe the same scene.\"}, {\"item_id\": \"ae602c0fb69e0580\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Biking in a snowy forest and celebrating are different events.\"}, {\"item_id\": \"6b41029c7c1db564\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Metabolism influencing tamoxifen outcome is compatible with that relationship being independent of genetics.\"}, {\"item_id\": \"927d16c9c9e5945c\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The volleyball record 5-2 versus 3-2 is a count that changes over the season.\"}, {\"item_id\": \"af04bf203d924a9d\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Biologest versus biologist is only a spelling fix.\"}, {\"item_id\": \"82b07cf5e443a75b\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A partnership is symmetric, so swapping which institution partners with which asserts the same thing.\"}, {\"item_id\": \"c44d2c20c749bed9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One says the term oblast was official and the other that Russian was official, which are compatible claims about the same term.\"}, {\"item_id\": \"088d2c17467e458f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Lower rejection and higher opportunistic infections are compatible outcomes of the same comparison.\"}, {\"item_id\": \"78f864f4fb40a791\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The only difference is a redundant 'only' in the album-download clause.\"}, {\"item_id\": \"d7389a78dd1dd639\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"Pierceville and Franklin Township swap containing and contained roles.\"}, {\"item_id\": \"f4319c7b92def3c0\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Thicc is a variant spelling of thick.\"}, {\"item_id\": \"ad37db13af9395d3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Travis renounced his American citizenship.\"}, {\"item_id\": \"766da800300d8464\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Updated versus raised and raised versus topicalised eyebrows swap terms in garbled ways, so the texts support either a paraphrase or different claims.\"}, {\"item_id\": \"a9912f0175e659a9\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The number of pieces written since starting (four versus seven) is a running count.\"}, {\"item_id\": \"920613c97a2bd605\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny horse riding, and one specifies the person is a guy.\"}, {\"item_id\": \"39f23714a9b9f3f3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the girl's claim that she is keeping the money.\"}, {\"item_id\": \"5a6762ca0b294209\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe a kid hitting a man with a weapon, and one adds that the weapon is a toy.\"}, {\"item_id\": \"84ea5ce42ac56b29\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Pouring oil into a skillet and cooking an egg in a skillet are compatible details of one cooking scene.\"}, {\"item_id\": \"dbe900dfa00a164a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One gives the actor's fuller name Ajit Khan for the same gang leader role.\"}, {\"item_id\": \"e6e5b6186e748424\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Kellogg is American.\"}, {\"item_id\": \"f55b6192c392492a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Kuzma's middle name Alexander.\"}, {\"item_id\": \"a0a79eb442fb0e62\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One lists the extra character Hamilton Whiteman.\"}, {\"item_id\": \"ba6b4ee41b4f94fc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man playing a guitar, with compatible different details (singing versus sitting on the floor).\"}, {\"item_id\": \"d27622e8d5cfaf22\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that The Slim Shady LP was his major-label debut.\"}, {\"item_id\": \"4abec1954a6e695b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Increased stroke risk and no mortality risk for postmenopausal women can both hold about antidepressant side effects.\"}, {\"item_id\": \"6d1a8087c9c59a71\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the reason for emigrating, the Peruvian Civil War.\"}, {\"item_id\": \"94e0582a687b5886\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both garbled orderings state the same January 2009 Botafogo signing and contract to the end of the 2009 Campeonato Paulista.\"}, {\"item_id\": \"6e15ae829a5dfc0b\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Each gives a different exhaustive list of the same species' natural habitats.\"}, {\"item_id\": \"70c1f2850ff66320\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A bowl specifies the container the woman cracks eggs into.\"}, {\"item_id\": \"9a7a6e9f7301bc43\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds a causal link between Christianity's following and the retired population.\"}, {\"item_id\": \"71abd02bb9a4c7b8\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny a woman cutting, over any vegetable versus onions.\"}, {\"item_id\": \"0cb4b67cbb72e856\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Reed died.\"}, {\"item_id\": \"8957795be922bf96\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"British-American and British-based are compatible descriptions of the same UMG division.\"}, {\"item_id\": \"0a288863bfd9c6cf\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"Goals and caps to date differ, which are running totals.\"}, {\"item_id\": \"b41eced4fca1204e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Metalcore is a more specific genre description compatible with rock band.\"}, {\"item_id\": \"71ba17b322c5df81\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Birkenhead is placed in Cheshire versus Merseyside, which could reflect an unstated administrative scope, and one also names the parents.\"}, {\"item_id\": \"5bbdb68377915cb2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both are compatible events in Barzagli's career.\"}, {\"item_id\": \"105a5e0bef4bf016\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A cat drinking milk and a cat playing with a bottle are different events.\"}, {\"item_id\": \"5f9c9f20fdd66717\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds 'aggressive' to her style, while Major and Grand Slam are synonyms.\"}]}"
+ ],
+ "labels": {
+  "c531d55ba8d71d0d": {
+   "item_id": "c531d55ba8d71d0d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One lists the additional form nagi beyond nagin and nagini."
+  },
+  "251da282c0798fbf": {
+   "item_id": "251da282c0798fbf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Bendelow was a prolific golf architect."
+  },
+  "512f7fd140f14b40": {
+   "item_id": "512f7fd140f14b40",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Sales by 2016 are cumulative while sales in 2016 cover one year, and both can hold."
+  },
+  "8ba86840738abbdf": {
+   "item_id": "8ba86840738abbdf",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Uncomparable versus incomparable is only a spelling variant."
+  },
+  "1624a632d58c509f": {
+   "item_id": "1624a632d58c509f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the city's name Nelliyadi to the same location and population."
+  },
+  "3e93b543c195e871": {
+   "item_id": "3e93b543c195e871",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny a man walking, one outside generally and one only in the rain."
+  },
+  "a426773aac194f0b": {
+   "item_id": "a426773aac194f0b",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The same eighteen entities are called states in one and countries in the other."
+  },
+  "50168c75b2a746b4": {
+   "item_id": "50168c75b2a746b4",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A woman pouring ingredients into a bowl and removing them from it are incompatible in one scene."
+  },
+  "f90d211fbf793777": {
+   "item_id": "f90d211fbf793777",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Market share figures for Cuba and Eritrea differ, which change over time."
+  },
+  "ee5bf8b8ae7c87ad": {
+   "item_id": "ee5bf8b8ae7c87ad",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the planning permission and opening date to otherwise identical content."
+  },
+  "43919c139cb67e56": {
+   "item_id": "43919c139cb67e56",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "As versus was is only a typo."
+  },
+  "8079f626e411793c": {
+   "item_id": "8079f626e411793c",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A dog running on grass with a ball and a dog swimming after a ball cannot both describe the same scene."
+  },
+  "ae602c0fb69e0580": {
+   "item_id": "ae602c0fb69e0580",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Biking in a snowy forest and celebrating are different events."
+  },
+  "6b41029c7c1db564": {
+   "item_id": "6b41029c7c1db564",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Metabolism influencing tamoxifen outcome is compatible with that relationship being independent of genetics."
+  },
+  "927d16c9c9e5945c": {
+   "item_id": "927d16c9c9e5945c",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The volleyball record 5-2 versus 3-2 is a count that changes over the season."
+  },
+  "af04bf203d924a9d": {
+   "item_id": "af04bf203d924a9d",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Biologest versus biologist is only a spelling fix."
+  },
+  "82b07cf5e443a75b": {
+   "item_id": "82b07cf5e443a75b",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A partnership is symmetric, so swapping which institution partners with which asserts the same thing."
+  },
+  "c44d2c20c749bed9": {
+   "item_id": "c44d2c20c749bed9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One says the term oblast was official and the other that Russian was official, which are compatible claims about the same term."
+  },
+  "088d2c17467e458f": {
+   "item_id": "088d2c17467e458f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Lower rejection and higher opportunistic infections are compatible outcomes of the same comparison."
+  },
+  "78f864f4fb40a791": {
+   "item_id": "78f864f4fb40a791",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The only difference is a redundant 'only' in the album-download clause."
+  },
+  "d7389a78dd1dd639": {
+   "item_id": "d7389a78dd1dd639",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "Pierceville and Franklin Township swap containing and contained roles."
+  },
+  "f4319c7b92def3c0": {
+   "item_id": "f4319c7b92def3c0",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Thicc is a variant spelling of thick."
+  },
+  "ad37db13af9395d3": {
+   "item_id": "ad37db13af9395d3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Travis renounced his American citizenship."
+  },
+  "766da800300d8464": {
+   "item_id": "766da800300d8464",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Updated versus raised and raised versus topicalised eyebrows swap terms in garbled ways, so the texts support either a paraphrase or different claims."
+  },
+  "a9912f0175e659a9": {
+   "item_id": "a9912f0175e659a9",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The number of pieces written since starting (four versus seven) is a running count."
+  },
+  "920613c97a2bd605": {
+   "item_id": "920613c97a2bd605",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny horse riding, and one specifies the person is a guy."
+  },
+  "39f23714a9b9f3f3": {
+   "item_id": "39f23714a9b9f3f3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the girl's claim that she is keeping the money."
+  },
+  "5a6762ca0b294209": {
+   "item_id": "5a6762ca0b294209",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe a kid hitting a man with a weapon, and one adds that the weapon is a toy."
+  },
+  "84ea5ce42ac56b29": {
+   "item_id": "84ea5ce42ac56b29",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Pouring oil into a skillet and cooking an egg in a skillet are compatible details of one cooking scene."
+  },
+  "dbe900dfa00a164a": {
+   "item_id": "dbe900dfa00a164a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One gives the actor's fuller name Ajit Khan for the same gang leader role."
+  },
+  "e6e5b6186e748424": {
+   "item_id": "e6e5b6186e748424",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Kellogg is American."
+  },
+  "f55b6192c392492a": {
+   "item_id": "f55b6192c392492a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Kuzma's middle name Alexander."
+  },
+  "a0a79eb442fb0e62": {
+   "item_id": "a0a79eb442fb0e62",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One lists the extra character Hamilton Whiteman."
+  },
+  "ba6b4ee41b4f94fc": {
+   "item_id": "ba6b4ee41b4f94fc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man playing a guitar, with compatible different details (singing versus sitting on the floor)."
+  },
+  "d27622e8d5cfaf22": {
+   "item_id": "d27622e8d5cfaf22",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that The Slim Shady LP was his major-label debut."
+  },
+  "4abec1954a6e695b": {
+   "item_id": "4abec1954a6e695b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Increased stroke risk and no mortality risk for postmenopausal women can both hold about antidepressant side effects."
+  },
+  "6d1a8087c9c59a71": {
+   "item_id": "6d1a8087c9c59a71",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the reason for emigrating, the Peruvian Civil War."
+  },
+  "94e0582a687b5886": {
+   "item_id": "94e0582a687b5886",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both garbled orderings state the same January 2009 Botafogo signing and contract to the end of the 2009 Campeonato Paulista."
+  },
+  "6e15ae829a5dfc0b": {
+   "item_id": "6e15ae829a5dfc0b",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Each gives a different exhaustive list of the same species' natural habitats."
+  },
+  "70c1f2850ff66320": {
+   "item_id": "70c1f2850ff66320",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A bowl specifies the container the woman cracks eggs into."
+  },
+  "9a7a6e9f7301bc43": {
+   "item_id": "9a7a6e9f7301bc43",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds a causal link between Christianity's following and the retired population."
+  },
+  "71abd02bb9a4c7b8": {
+   "item_id": "71abd02bb9a4c7b8",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny a woman cutting, over any vegetable versus onions."
+  },
+  "0cb4b67cbb72e856": {
+   "item_id": "0cb4b67cbb72e856",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Reed died."
+  },
+  "8957795be922bf96": {
+   "item_id": "8957795be922bf96",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "British-American and British-based are compatible descriptions of the same UMG division."
+  },
+  "0a288863bfd9c6cf": {
+   "item_id": "0a288863bfd9c6cf",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "Goals and caps to date differ, which are running totals."
+  },
+  "b41eced4fca1204e": {
+   "item_id": "b41eced4fca1204e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Metalcore is a more specific genre description compatible with rock band."
+  },
+  "71ba17b322c5df81": {
+   "item_id": "71ba17b322c5df81",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Birkenhead is placed in Cheshire versus Merseyside, which could reflect an unstated administrative scope, and one also names the parents."
+  },
+  "5bbdb68377915cb2": {
+   "item_id": "5bbdb68377915cb2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both are compatible events in Barzagli's career."
+  },
+  "105a5e0bef4bf016": {
+   "item_id": "105a5e0bef4bf016",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A cat drinking milk and a cat playing with a bottle are different events."
+  },
+  "5f9c9f20fdd66717": {
+   "item_id": "5f9c9f20fdd66717",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds 'aggressive' to her style, while Major and Grand Slam are synonyms."
+  }
+ },
+ "errors": []
+}

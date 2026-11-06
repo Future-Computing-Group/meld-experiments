@@ -1,0 +1,154 @@
+manpath: can't set the locale; make sure $LC_* and $LANG are correct
+==== PROVENANCE jobid=7192177 ====
+[prov] node=<gpu-node>
+[prov] gpu=NVIDIA A100-SXM4-40GB, 40960 MiB, 535.309.01
+[prov] ollama=version is 0.21.0
+[prov] git_sha=b263f9e (passed from submit)
+[prov] models=qwen2.5-1.5b qwen2.5-7b qwen2.5-32b mistral-7b gemma-3-12b encoder=minilm transport=ollama
+[prov] per_level=hard:200 conditions=none,full_context,centralized,distributed_merge,naive_union modes=fixed_recall N=3 overlap=0.5 conflict=0 max_new=64 k=5 st_device=cpu
+[prov] py=3.12.12 sentence_transformers=5.5.1 transformers=4.57.3 numpy=2.2.6
+========================================
+[prov] ollama models available:
+[prov]   NAME            ID              SIZE      MODIFIED     
+[prov]   gemma3:12b      f4031aab637d    8.1 GB    2 months ago    
+[prov]   gemma4:12b      bbaa669aa393    7.1 GB    2 months ago    
+[prov]   qwen2.5:32b     9f13ba1299af    19 GB     2 months ago    
+[prov]   mistral:7b      6577803aa9a0    4.4 GB    2 months ago    
+[prov]   qwen2.5:1.5b    65ec06548149    986 MB    2 months ago    
+[prov]   qwen2.5:7b      845dbda0ea48    4.7 GB    2 months ago    
+[run] M-1 memory-delta grid for qwen2.5-1.5b via ollama (durable + resumable JSONL)
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hotpotqa/hotpot_qa' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hotpotqa/hotpot_qa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'distractor' at <run-dir>/hf_home/datasets/hotpotqa___hotpot_qa/distractor/0.0.0/1908d6afbbead072334abe2965f91bd2709910ab (last modified on Mon Jun  1 08:41:09 2026).
+[run] model=qwen2.5-1.5b transport=ollama endpoint=http://127.0.0.1:11434/v1/completions
+[run] conditions=['none', 'full_context', 'centralized', 'distributed_merge', 'naive_union'] modes=['fixed_recall'] baseline=react N=3 overlap=0.5 conflict=False
+[run] per_level={'hard': 200} resume: 0 scored keys in <run-dir>/outputs/memdelta_minilm_qwen2.5-1.5b.jsonl
+[run] sliced 200 tasks ({'hard': 200})
+[integrity] qwen2.5-1.5b: 0/1000 rows carry an error (frac=0.000)
+
+[summary qwen2.5-1.5b/fixed_recall] condition means (recall@5 | F1 | live/stored units):
+   none               recall@5=0.000  F1=0.104  live/stored=0.0/0.0 (n=0)
+   full_context       recall@5=0.000  F1=0.425  live/stored=0.0/0.0 (n=0)
+   centralized        recall@5=0.619  F1=0.339  live/stored=38.6/39.8 (n=200)
+   distributed_merge  recall@5=0.630  F1=0.340  live/stored=38.2/40.5 (n=200)
+   naive_union        recall@5=0.595  F1=0.366  live/stored=42.9/42.9 (n=200)
+[summary qwen2.5-1.5b/fixed_recall] HEADLINE deltas (recall@5, PRIMARY, 95% CI):
+   distributed_merge - naive_union        = +0.035 [+0.017, +0.053]  (n=200; merge beats dumping)
+   distributed_merge - centralized        = +0.011 [-0.003, +0.027]  (n=200; merge is lossless vs single store)
+   full_context - none               =    N/A   [condition not run; n=0]  (measurable headroom (competence FLOOR))
+[summary qwen2.5-1.5b/fixed_recall] secondary deltas (answer F1, 95% CI):
+   distributed_merge - naive_union        = -0.026 [-0.065, +0.010]  (n=200; merge beats dumping)
+   distributed_merge - centralized        = +0.001 [-0.009, +0.015]  (n=200; merge is lossless vs single store)
+   full_context - none               = +0.321 [+0.255, +0.390]  (n=200; measurable headroom (competence FLOOR))
+[summary qwen2.5-1.5b/fixed_recall] merge audit distributed_merge: overlap_merges=469 conflict=117 naive_union overlap_merges=0
+[run] M-1 memory-delta grid for qwen2.5-7b via ollama (durable + resumable JSONL)
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hotpotqa/hotpot_qa' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hotpotqa/hotpot_qa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'distractor' at <run-dir>/hf_home/datasets/hotpotqa___hotpot_qa/distractor/0.0.0/1908d6afbbead072334abe2965f91bd2709910ab (last modified on Mon Jun  1 08:41:09 2026).
+[run] model=qwen2.5-7b transport=ollama endpoint=http://127.0.0.1:11434/v1/completions
+[run] conditions=['none', 'full_context', 'centralized', 'distributed_merge', 'naive_union'] modes=['fixed_recall'] baseline=react N=3 overlap=0.5 conflict=False
+[run] per_level={'hard': 200} resume: 0 scored keys in <run-dir>/outputs/memdelta_minilm_qwen2.5-7b.jsonl
+[run] sliced 200 tasks ({'hard': 200})
+[integrity] qwen2.5-7b: 0/1000 rows carry an error (frac=0.000)
+
+[summary qwen2.5-7b/fixed_recall] condition means (recall@5 | F1 | live/stored units):
+   none               recall@5=0.000  F1=0.182  live/stored=0.0/0.0 (n=0)
+   full_context       recall@5=0.000  F1=0.596  live/stored=0.0/0.0 (n=0)
+   centralized        recall@5=0.619  F1=0.469  live/stored=38.6/39.8 (n=200)
+   distributed_merge  recall@5=0.630  F1=0.463  live/stored=38.2/40.5 (n=200)
+   naive_union        recall@5=0.595  F1=0.472  live/stored=42.9/42.9 (n=200)
+[summary qwen2.5-7b/fixed_recall] HEADLINE deltas (recall@5, PRIMARY, 95% CI):
+   distributed_merge - naive_union        = +0.035 [+0.017, +0.053]  (n=200; merge beats dumping)
+   distributed_merge - centralized        = +0.011 [-0.003, +0.027]  (n=200; merge is lossless vs single store)
+   full_context - none               =    N/A   [condition not run; n=0]  (measurable headroom (competence FLOOR))
+[summary qwen2.5-7b/fixed_recall] secondary deltas (answer F1, 95% CI):
+   distributed_merge - naive_union        = -0.009 [-0.044, +0.030]  (n=200; merge beats dumping)
+   distributed_merge - centralized        = -0.006 [-0.023, +0.010]  (n=200; merge is lossless vs single store)
+   full_context - none               = +0.414 [+0.344, +0.482]  (n=200; measurable headroom (competence FLOOR))
+[summary qwen2.5-7b/fixed_recall] merge audit distributed_merge: overlap_merges=469 conflict=117 naive_union overlap_merges=0
+[run] M-1 memory-delta grid for qwen2.5-32b via ollama (durable + resumable JSONL)
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hotpotqa/hotpot_qa' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hotpotqa/hotpot_qa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'distractor' at <run-dir>/hf_home/datasets/hotpotqa___hotpot_qa/distractor/0.0.0/1908d6afbbead072334abe2965f91bd2709910ab (last modified on Mon Jun  1 08:41:09 2026).
+[run] model=qwen2.5-32b transport=ollama endpoint=http://127.0.0.1:11434/v1/completions
+[run] conditions=['none', 'full_context', 'centralized', 'distributed_merge', 'naive_union'] modes=['fixed_recall'] baseline=react N=3 overlap=0.5 conflict=False
+[run] per_level={'hard': 200} resume: 0 scored keys in <run-dir>/outputs/memdelta_minilm_qwen2.5-32b.jsonl
+[run] sliced 200 tasks ({'hard': 200})
+[integrity] qwen2.5-32b: 0/1000 rows carry an error (frac=0.000)
+
+[summary qwen2.5-32b/fixed_recall] condition means (recall@5 | F1 | live/stored units):
+   none               recall@5=0.000  F1=0.277  live/stored=0.0/0.0 (n=0)
+   full_context       recall@5=0.000  F1=0.721  live/stored=0.0/0.0 (n=0)
+   centralized        recall@5=0.619  F1=0.579  live/stored=38.6/39.8 (n=200)
+   distributed_merge  recall@5=0.630  F1=0.577  live/stored=38.2/40.5 (n=200)
+   naive_union        recall@5=0.595  F1=0.573  live/stored=42.9/42.9 (n=200)
+[summary qwen2.5-32b/fixed_recall] HEADLINE deltas (recall@5, PRIMARY, 95% CI):
+   distributed_merge - naive_union        = +0.035 [+0.017, +0.053]  (n=200; merge beats dumping)
+   distributed_merge - centralized        = +0.011 [-0.003, +0.027]  (n=200; merge is lossless vs single store)
+   full_context - none               =    N/A   [condition not run; n=0]  (measurable headroom (competence FLOOR))
+[summary qwen2.5-32b/fixed_recall] secondary deltas (answer F1, 95% CI):
+   distributed_merge - naive_union        = +0.004 [-0.030, +0.037]  (n=200; merge beats dumping)
+   distributed_merge - centralized        = -0.002 [-0.020, +0.015]  (n=200; merge is lossless vs single store)
+   full_context - none               = +0.445 [+0.374, +0.511]  (n=200; measurable headroom (competence FLOOR))
+[summary qwen2.5-32b/fixed_recall] merge audit distributed_merge: overlap_merges=469 conflict=117 naive_union overlap_merges=0
+[run] M-1 memory-delta grid for mistral-7b via ollama (durable + resumable JSONL)
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hotpotqa/hotpot_qa' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hotpotqa/hotpot_qa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'distractor' at <run-dir>/hf_home/datasets/hotpotqa___hotpot_qa/distractor/0.0.0/1908d6afbbead072334abe2965f91bd2709910ab (last modified on Mon Jun  1 08:41:09 2026).
+[run] model=mistral-7b transport=ollama endpoint=http://127.0.0.1:11434/v1/completions
+[run] conditions=['none', 'full_context', 'centralized', 'distributed_merge', 'naive_union'] modes=['fixed_recall'] baseline=react N=3 overlap=0.5 conflict=False
+[run] per_level={'hard': 200} resume: 0 scored keys in <run-dir>/outputs/memdelta_minilm_mistral-7b.jsonl
+[run] sliced 200 tasks ({'hard': 200})
+[integrity] mistral-7b: 0/1000 rows carry an error (frac=0.000)
+
+[summary mistral-7b/fixed_recall] condition means (recall@5 | F1 | live/stored units):
+   none               recall@5=0.000  F1=0.225  live/stored=0.0/0.0 (n=0)
+   full_context       recall@5=0.000  F1=0.553  live/stored=0.0/0.0 (n=0)
+   centralized        recall@5=0.619  F1=0.413  live/stored=38.6/39.8 (n=200)
+   distributed_merge  recall@5=0.630  F1=0.431  live/stored=38.2/40.5 (n=200)
+   naive_union        recall@5=0.595  F1=0.438  live/stored=42.9/42.9 (n=200)
+[summary mistral-7b/fixed_recall] HEADLINE deltas (recall@5, PRIMARY, 95% CI):
+   distributed_merge - naive_union        = +0.035 [+0.017, +0.053]  (n=200; merge beats dumping)
+   distributed_merge - centralized        = +0.011 [-0.003, +0.027]  (n=200; merge is lossless vs single store)
+   full_context - none               =    N/A   [condition not run; n=0]  (measurable headroom (competence FLOOR))
+[summary mistral-7b/fixed_recall] secondary deltas (answer F1, 95% CI):
+   distributed_merge - naive_union        = -0.006 [-0.040, +0.028]  (n=200; merge beats dumping)
+   distributed_merge - centralized        = +0.018 [-0.002, +0.042]  (n=200; merge is lossless vs single store)
+   full_context - none               = +0.328 [+0.259, +0.395]  (n=200; measurable headroom (competence FLOOR))
+[summary mistral-7b/fixed_recall] merge audit distributed_merge: overlap_merges=469 conflict=117 naive_union overlap_merges=0
+[run] M-1 memory-delta grid for gemma-3-12b via ollama (durable + resumable JSONL)
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'hotpotqa/hotpot_qa' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+Using the latest cached version of the dataset since hotpotqa/hotpot_qa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'distractor' at <run-dir>/hf_home/datasets/hotpotqa___hotpot_qa/distractor/0.0.0/1908d6afbbead072334abe2965f91bd2709910ab (last modified on Mon Jun  1 08:41:09 2026).
+[run] model=gemma-3-12b transport=ollama endpoint=http://127.0.0.1:11434/v1/completions
+[run] conditions=['none', 'full_context', 'centralized', 'distributed_merge', 'naive_union'] modes=['fixed_recall'] baseline=react N=3 overlap=0.5 conflict=False
+[run] per_level={'hard': 200} resume: 0 scored keys in <run-dir>/outputs/memdelta_minilm_gemma-3-12b.jsonl
+[run] sliced 200 tasks ({'hard': 200})
+[integrity] gemma-3-12b: 0/1000 rows carry an error (frac=0.000)
+
+[summary gemma-3-12b/fixed_recall] condition means (recall@5 | F1 | live/stored units):
+   none               recall@5=0.000  F1=0.118  live/stored=0.0/0.0 (n=0)
+   full_context       recall@5=0.000  F1=0.407  live/stored=0.0/0.0 (n=0)
+   centralized        recall@5=0.619  F1=0.306  live/stored=38.6/39.8 (n=200)
+   distributed_merge  recall@5=0.630  F1=0.323  live/stored=38.2/40.5 (n=200)
+   naive_union        recall@5=0.595  F1=0.332  live/stored=42.9/42.9 (n=200)
+[summary gemma-3-12b/fixed_recall] HEADLINE deltas (recall@5, PRIMARY, 95% CI):
+   distributed_merge - naive_union        = +0.035 [+0.017, +0.053]  (n=200; merge beats dumping)
+   distributed_merge - centralized        = +0.011 [-0.003, +0.027]  (n=200; merge is lossless vs single store)
+   full_context - none               =    N/A   [condition not run; n=0]  (measurable headroom (competence FLOOR))
+[summary gemma-3-12b/fixed_recall] secondary deltas (answer F1, 95% CI):
+   distributed_merge - naive_union        = -0.009 [-0.064, +0.046]  (n=200; merge beats dumping)
+   distributed_merge - centralized        = +0.017 [-0.001, +0.038]  (n=200; merge is lossless vs single store)
+   full_context - none               = +0.289 [+0.227, +0.352]  (n=200; measurable headroom (competence FLOOR))
+[summary gemma-3-12b/fixed_recall] merge audit distributed_merge: overlap_merges=469 conflict=117 naive_union overlap_merges=0
+[job] done rc_total=0

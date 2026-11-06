@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0011",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "9a22c55f84c6e4b69f3362e611f8b54ba350e140cc888ae958ad2a38266446eb",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"410918351636678b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a boy climbing a wall, adding compatible details about the wall and rope.\"},\n{\"item_id\": \"56b97363cf2df662\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Rare and simple swap between the mineral and its formula.\"},\n{\"item_id\": \"9c70396a79297a27\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The third book's title and year (2017 versus 2016) differ as a fixed fact.\"},\n{\"item_id\": \"54273fea374f3853\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Monroney is the challenger in one and the challenged in the other.\"},\n{\"item_id\": \"fa381d64958712e0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Being regarded by many as the greatest is compatible with being regarded by some as one of the greatest.\"},\n{\"item_id\": \"f199958bf41e592d\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Will televise versus televised is a status that changes over time.\"},\n{\"item_id\": \"8f30955c9d81d7f6\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Denying screwing wood to a wall and denying drilling a strip of wood concern different events.\"},\n{\"item_id\": \"8c6dabbdc7f4824f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man climbing with a rope, one adding the cliff.\"},\n{\"item_id\": \"b054180966c629d4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Kashmiri heritage and an alternate stylization.\"},\n{\"item_id\": \"891a4cd286b69cd3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Men playing guitar, compatible if one of the two plays an acoustic guitar.\"},\n{\"item_id\": \"21248d946b3bec1b\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Is expected versus was expected supports either a tense-only merge or a superseded expectation.\"},\n{\"item_id\": \"a659996c0a6afe28\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same scene of a black-clad bike rider, one specifying a man.\"},\n{\"item_id\": \"852736d6b4e275b8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Over $488 million versus $488 million are compatible gross figures with different precision.\"},\n{\"item_id\": \"8114c032567a869f\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Denials of different activities by different children.\"},\n{\"item_id\": \"2bc8335bcca62887\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Gloria is beautiful.\"},\n{\"item_id\": \"5101579b16860e44\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Garbled versions of the same slogan support either a merge or a relation with differing words.\"},\n{\"item_id\": \"cdbc4302e89c5ad0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible facts about Torres's contracts at different times.\"},\n{\"item_id\": \"85c3fafecf33eae5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds the name Lil Derrick for Bulletproof.\"},\n{\"item_id\": \"48005473f2140bac\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Whether sliding under a sofa counts as crawling under furniture decides between conflict and compatible relation.\"},\n{\"item_id\": \"25297006f5c4b799\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Different scenes of smiling girls with no shared event.\"},\n{\"item_id\": \"105347208642c411\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The dog's water source is a container in one and the faucet in the other.\"},\n{\"item_id\": \"0ae4b97d88209037\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Tearing versus folding paper are different actions for the same scene.\"},\n{\"item_id\": \"fea2e0fe59b03a5b\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Current club Bayern on loan versus Real Madrid changes over time.\"},\n{\"item_id\": \"f23f92704d413093\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds worldwide sales of over 12 million.\"},\n{\"item_id\": \"02ca1c0b18178c8d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Compatible fountain scenes with different people described.\"},\n{\"item_id\": \"cfc88911ed1e2635\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Literary and liberal intellectual swap between the editor role and the magazine.\"},\n{\"item_id\": \"14c7f98c884028a4\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Playing versus stuck on a moving fan may clash or be compatible.\"},\n{\"item_id\": \"44e08b50def4ffed\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The garbled word swap reads either as the same list description or as swapped ordered and produced roles.\"},\n{\"item_id\": \"f490eb9881c07245\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Different 2017 release dates, one worldwide and the other unscoped.\"},\n{\"item_id\": \"41f46f9b4f8913e8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Frying specifies the cooking method of the breaded pork chop.\"},\n{\"item_id\": \"a48a68adea74e460\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The father statement has no stated link to Aparshakti Khurrana's career.\"},\n{\"item_id\": \"6312fc7cee7bc9e3\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The bank is modeled on Lehman and Bear Stearns versus Goldman Sachs.\"},\n{\"item_id\": \"e98d968ebc8552c5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible points about NIT work incentives.\"},\n{\"item_id\": \"6b8e26c97e95f2f4\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Glace Bay is called the province in one and Nova Scotia in the other.\"},\n{\"item_id\": \"65f45ec942f543fc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible details about a brown and a black dog in a field.\"},\n{\"item_id\": \"dacad75a0e09c9bc\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Denials of two different lemur activities.\"},\n{\"item_id\": \"f008f5d7d463b393\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Win and match totals to date change over time.\"},\n{\"item_id\": \"aeb6c437499cfbbf\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A princess versus the princess describes the same event.\"},\n{\"item_id\": \"93e14901e957706c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Children playing on a structure, one calling it a statue and one colorful.\"},\n{\"item_id\": \"d2084ec739b501fa\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Kit colours are swapped between the top and the shorts.\"},\n{\"item_id\": \"36d11ef2ef06bfa0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A child splashing in water, one specifying a boy jumping into a street puddle.\"},\n{\"item_id\": \"123126a1b9ea345f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Group/bunch and beach/shore are synonyms.\"},\n{\"item_id\": \"bad2b79b6a1c24c4\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Only an English translation of the authority's name is added.\"},\n{\"item_id\": \"4e94a5c667864766\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Ratings for a film versus a series are about different works.\"},\n{\"item_id\": \"107908c402a08bf8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Repnin ranking after Suvorov and Suvorov's opinion of Repnin are different but compatible claims.\"},\n{\"item_id\": \"5bbd15767cc0a6f4\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denial for cereal is broader than for a bowl of cereal; both hold.\"},\n{\"item_id\": \"e176df414b1c58a9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"People wading through water, one adding a guided child.\"},\n{\"item_id\": \"1462da30034aa04b\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A specific dog and blue ball versus any dog and ball; both can hold.\"},\n{\"item_id\": \"1a6b996db676458f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same date, with one adding Week 13.\"},\n{\"item_id\": \"c05369eb13737234\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds her partner Eliza Orlins.\"}\n]}\n"
+ ],
+ "labels": {
+  "410918351636678b": {
+   "item_id": "410918351636678b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a boy climbing a wall, adding compatible details about the wall and rope."
+  },
+  "56b97363cf2df662": {
+   "item_id": "56b97363cf2df662",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Rare and simple swap between the mineral and its formula."
+  },
+  "9c70396a79297a27": {
+   "item_id": "9c70396a79297a27",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The third book's title and year (2017 versus 2016) differ as a fixed fact."
+  },
+  "54273fea374f3853": {
+   "item_id": "54273fea374f3853",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Monroney is the challenger in one and the challenged in the other."
+  },
+  "fa381d64958712e0": {
+   "item_id": "fa381d64958712e0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Being regarded by many as the greatest is compatible with being regarded by some as one of the greatest."
+  },
+  "f199958bf41e592d": {
+   "item_id": "f199958bf41e592d",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Will televise versus televised is a status that changes over time."
+  },
+  "8f30955c9d81d7f6": {
+   "item_id": "8f30955c9d81d7f6",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Denying screwing wood to a wall and denying drilling a strip of wood concern different events."
+  },
+  "8c6dabbdc7f4824f": {
+   "item_id": "8c6dabbdc7f4824f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man climbing with a rope, one adding the cliff."
+  },
+  "b054180966c629d4": {
+   "item_id": "b054180966c629d4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Kashmiri heritage and an alternate stylization."
+  },
+  "891a4cd286b69cd3": {
+   "item_id": "891a4cd286b69cd3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Men playing guitar, compatible if one of the two plays an acoustic guitar."
+  },
+  "21248d946b3bec1b": {
+   "item_id": "21248d946b3bec1b",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Is expected versus was expected supports either a tense-only merge or a superseded expectation."
+  },
+  "a659996c0a6afe28": {
+   "item_id": "a659996c0a6afe28",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same scene of a black-clad bike rider, one specifying a man."
+  },
+  "852736d6b4e275b8": {
+   "item_id": "852736d6b4e275b8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Over $488 million versus $488 million are compatible gross figures with different precision."
+  },
+  "8114c032567a869f": {
+   "item_id": "8114c032567a869f",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Denials of different activities by different children."
+  },
+  "2bc8335bcca62887": {
+   "item_id": "2bc8335bcca62887",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Gloria is beautiful."
+  },
+  "5101579b16860e44": {
+   "item_id": "5101579b16860e44",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Garbled versions of the same slogan support either a merge or a relation with differing words."
+  },
+  "cdbc4302e89c5ad0": {
+   "item_id": "cdbc4302e89c5ad0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible facts about Torres's contracts at different times."
+  },
+  "85c3fafecf33eae5": {
+   "item_id": "85c3fafecf33eae5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds the name Lil Derrick for Bulletproof."
+  },
+  "48005473f2140bac": {
+   "item_id": "48005473f2140bac",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Whether sliding under a sofa counts as crawling under furniture decides between conflict and compatible relation."
+  },
+  "25297006f5c4b799": {
+   "item_id": "25297006f5c4b799",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Different scenes of smiling girls with no shared event."
+  },
+  "105347208642c411": {
+   "item_id": "105347208642c411",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The dog's water source is a container in one and the faucet in the other."
+  },
+  "0ae4b97d88209037": {
+   "item_id": "0ae4b97d88209037",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Tearing versus folding paper are different actions for the same scene."
+  },
+  "fea2e0fe59b03a5b": {
+   "item_id": "fea2e0fe59b03a5b",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Current club Bayern on loan versus Real Madrid changes over time."
+  },
+  "f23f92704d413093": {
+   "item_id": "f23f92704d413093",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds worldwide sales of over 12 million."
+  },
+  "02ca1c0b18178c8d": {
+   "item_id": "02ca1c0b18178c8d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Compatible fountain scenes with different people described."
+  },
+  "cfc88911ed1e2635": {
+   "item_id": "cfc88911ed1e2635",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Literary and liberal intellectual swap between the editor role and the magazine."
+  },
+  "14c7f98c884028a4": {
+   "item_id": "14c7f98c884028a4",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Playing versus stuck on a moving fan may clash or be compatible."
+  },
+  "44e08b50def4ffed": {
+   "item_id": "44e08b50def4ffed",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The garbled word swap reads either as the same list description or as swapped ordered and produced roles."
+  },
+  "f490eb9881c07245": {
+   "item_id": "f490eb9881c07245",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Different 2017 release dates, one worldwide and the other unscoped."
+  },
+  "41f46f9b4f8913e8": {
+   "item_id": "41f46f9b4f8913e8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Frying specifies the cooking method of the breaded pork chop."
+  },
+  "a48a68adea74e460": {
+   "item_id": "a48a68adea74e460",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The father statement has no stated link to Aparshakti Khurrana's career."
+  },
+  "6312fc7cee7bc9e3": {
+   "item_id": "6312fc7cee7bc9e3",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The bank is modeled on Lehman and Bear Stearns versus Goldman Sachs."
+  },
+  "e98d968ebc8552c5": {
+   "item_id": "e98d968ebc8552c5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible points about NIT work incentives."
+  },
+  "6b8e26c97e95f2f4": {
+   "item_id": "6b8e26c97e95f2f4",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Glace Bay is called the province in one and Nova Scotia in the other."
+  },
+  "65f45ec942f543fc": {
+   "item_id": "65f45ec942f543fc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible details about a brown and a black dog in a field."
+  },
+  "dacad75a0e09c9bc": {
+   "item_id": "dacad75a0e09c9bc",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Denials of two different lemur activities."
+  },
+  "f008f5d7d463b393": {
+   "item_id": "f008f5d7d463b393",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Win and match totals to date change over time."
+  },
+  "aeb6c437499cfbbf": {
+   "item_id": "aeb6c437499cfbbf",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A princess versus the princess describes the same event."
+  },
+  "93e14901e957706c": {
+   "item_id": "93e14901e957706c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Children playing on a structure, one calling it a statue and one colorful."
+  },
+  "d2084ec739b501fa": {
+   "item_id": "d2084ec739b501fa",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Kit colours are swapped between the top and the shorts."
+  },
+  "36d11ef2ef06bfa0": {
+   "item_id": "36d11ef2ef06bfa0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A child splashing in water, one specifying a boy jumping into a street puddle."
+  },
+  "123126a1b9ea345f": {
+   "item_id": "123126a1b9ea345f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Group/bunch and beach/shore are synonyms."
+  },
+  "bad2b79b6a1c24c4": {
+   "item_id": "bad2b79b6a1c24c4",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Only an English translation of the authority's name is added."
+  },
+  "4e94a5c667864766": {
+   "item_id": "4e94a5c667864766",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Ratings for a film versus a series are about different works."
+  },
+  "107908c402a08bf8": {
+   "item_id": "107908c402a08bf8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Repnin ranking after Suvorov and Suvorov's opinion of Repnin are different but compatible claims."
+  },
+  "5bbd15767cc0a6f4": {
+   "item_id": "5bbd15767cc0a6f4",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denial for cereal is broader than for a bowl of cereal; both hold."
+  },
+  "e176df414b1c58a9": {
+   "item_id": "e176df414b1c58a9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "People wading through water, one adding a guided child."
+  },
+  "1462da30034aa04b": {
+   "item_id": "1462da30034aa04b",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A specific dog and blue ball versus any dog and ball; both can hold."
+  },
+  "1a6b996db676458f": {
+   "item_id": "1a6b996db676458f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same date, with one adding Week 13."
+  },
+  "c05369eb13737234": {
+   "item_id": "c05369eb13737234",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds her partner Eliza Orlins."
+  }
+ },
+ "errors": []
+}

@@ -1,0 +1,18 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 17090.49it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 15954.40it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 16423.86it/s]
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|██████████| 106/106 [00:00<00:00, 15840.53it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 23987.41it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 23530.14it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 23806.32it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 23968.78it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 66699.60it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 24345.64it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 21551.10it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 22226.34it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 23255.28it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 23471.33it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 16343.71it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 23405.21it/s]
+WARNING sick: the Cal draw with seed 0 does not rebuild the given epoch; the training-conditional variant is of the rebuilt draw
+{"domain": "sick", "unresolved": 0, "labels": {"cross_item": {"non_mergeable": 506, "mergeable": 38}, "manifest": {"non_mergeable": 981, "mergeable": 742}, "same_item": {"non_mergeable": 334, "mergeable": 60}, "source_labelled": {"non_mergeable": 99}}, "fm": {"k": 69, "n": 1920, "rate": 0.0359375, "ci95": [0.028066996560413306, 0.045262963918274245]}, "recall": 0.8380952380952381, "chunks": 4, "test_disabled_share": 0.009782608695652175, "tc_fm": {"k": 7, "n": 1920, "rate": 0.0036458333333333334, "ci95": [0.001467031943213713, 0.007497296497815331]}, "tc_recall": 0.32976190476190476, "seconds": 706.2}

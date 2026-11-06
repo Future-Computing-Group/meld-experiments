@@ -1,0 +1,7 @@
+{
+ "pair_id": "4f21fa2cdcc66c24",
+ "recheck_label": "MERGE",
+ "corrected_to": "CONFLICT/SUPERSESSION",
+ "by": "auditor",
+ "reason": "is -> was signals the group no longer exists (state ended)"
+}

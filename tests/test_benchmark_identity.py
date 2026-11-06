@@ -8,6 +8,8 @@ benchmark data is wired into a loader.
 """
 from __future__ import annotations
 
+import os
+
 import pytest
 
 from meld.eval.benchmark_provenance import (
@@ -54,3 +56,18 @@ def test_provenance_missing_raises_before_g0(monkeypatch):
     monkeypatch.setattr(bp, "PROVENANCE_PATH", "/nonexistent/benchmark_provenance.json")
     with pytest.raises(FileNotFoundError):
         bp.load_provenance("longmemeval")
+
+
+def test_meld_claimpair_manifest_matches_pinned_identity():
+    # The claim-pair benchmark is pinned by the hash of its manifest (every pair, split,
+    # label and licence). A drift in any source file or in the build code fails here.
+    import json
+
+    from meld.bench.manifest import manifest_hash
+    from meld.eval.benchmark_provenance import REPO_ROOT
+
+    expected = load_expected()["meld_claimpair"]
+    got = load_provenance("meld_claimpair")
+    assert got["manifest_sha256"] == expected["manifest_sha256"]
+    with open(os.path.join(REPO_ROOT, got["manifest_path"]), encoding="utf-8") as fh:
+        assert manifest_hash(json.load(fh)) == expected["manifest_sha256"]

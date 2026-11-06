@@ -30,10 +30,10 @@ from meld.agent.mem_conditions import (ANSWER_MODES, MEMORY_CONDITIONS,
 from meld.agent.mem_delta_metrics import condition_means, headline_table
 from meld.agent.memory import SMPMemory
 from meld.agent.registry import make_agent
-from meld.agent.run_hotpot_gate import _calibrated_cfg, extract_prediction
+from meld.agent.run_hotpot_gate import extract_prediction
 from meld.agent.recall_metrics import recall_at_k_and_mrr
 from meld.agent.tools import FinalAnswerTool, RecallTool
-from meld.config import Thresholds
+from meld.protocol.objects import EpochRecord
 
 # the question's id namespace for the paired delta (same question across conditions)
 QID = "task_id"
@@ -54,7 +54,7 @@ def _answer_fixed_recall(llm, build: ConditionBuild, question: str, *,
 
 
 def _answer_agentic(llm, build: ConditionBuild, question: str, *, baseline: str,
-                    encoder: str, nli: str, cfg: Thresholds,
+                    encoder: str, nli: str, epoch: Optional[EpochRecord],
                     max_steps: int = 6) -> str:
     """Run a registry agent over the condition's memory.
 
@@ -66,7 +66,7 @@ def _answer_agentic(llm, build: ConditionBuild, question: str, *, baseline: str,
     if build.brain is not None:
         mem = build.brain
     else:
-        mem = SMPMemory(encoder=encoder, nli=nli, cfg=cfg)
+        mem = SMPMemory(encoder=encoder, nli=nli, epoch=epoch)
         for text in build.inline_context:   # empty for 'none'
             mem.write(text)
     agent = make_agent(baseline, llm=llm, memory=mem,
@@ -77,7 +77,7 @@ def _answer_agentic(llm, build: ConditionBuild, question: str, *, baseline: str,
 
 
 def run_one(task: HotpotTask, condition: str, mode: str, llm, *, encoder: str,
-            nli: str, cfg: Thresholds, baseline: str = "react",
+            nli: str, epoch: Optional[EpochRecord] = None, baseline: str = "react",
             n_brains: int = 3, overlap_fraction: float = 0.5,
             inject_conflict: bool = False, k: int = 5,
             max_steps: int = 6) -> Dict:
@@ -86,7 +86,7 @@ def run_one(task: HotpotTask, condition: str, mode: str, llm, *, encoder: str,
         raise ValueError(f"unknown condition {condition!r}")
     if mode not in ANSWER_MODES:
         raise ValueError(f"unknown mode {mode!r}")
-    build = build_condition(task, condition, encoder=encoder, nli=nli, cfg=cfg,
+    build = build_condition(task, condition, encoder=encoder, nli=nli, epoch=epoch,
                             n_brains=n_brains, overlap_fraction=overlap_fraction,
                             inject_conflict=inject_conflict)
     if mode == "fixed_recall":
@@ -94,7 +94,7 @@ def run_one(task: HotpotTask, condition: str, mode: str, llm, *, encoder: str,
             llm, build, task.question, encoder=encoder, k=k)
     else:
         pred = _answer_agentic(llm, build, task.question, baseline=baseline,
-                               encoder=encoder, nli=nli, cfg=cfg,
+                               encoder=encoder, nli=nli, epoch=epoch,
                                max_steps=max_steps)
         # agentic mode has no single deterministic answer prompt; persist the
         # assembled recall context (same model-independent build) + the prompt the
@@ -122,7 +122,7 @@ def run_one(task: HotpotTask, condition: str, mode: str, llm, *, encoder: str,
     # recall@k is N/A there and the keys are OMITTED (aggregation skips them; the
     # floor stays an F1 question, not a spurious recall@k 0.000).
     if build.brain is not None:
-        rm = recall_at_k_and_mrr(build.brain.brain, task, encoder=encoder, k=k)
+        rm = recall_at_k_and_mrr(build.brain, task, k=k, source=build.split and build.split.source)
         row.update(recall_at_k=rm["recall_at_k"], mrr=rm["mrr"], n_gold=rm["n_gold"])
     return row
 
@@ -130,7 +130,7 @@ def run_one(task: HotpotTask, condition: str, mode: str, llm, *, encoder: str,
 def run_grid(tasks: List[HotpotTask], llm_factory: Callable[[], object], *,
              conditions: Optional[List[str]] = None,
              modes: Optional[List[str]] = None, encoder: str = "hashing",
-             nli: str = "lexical", cfg: Optional[Thresholds] = None,
+             nli: str = "lexical", epoch: Optional[EpochRecord] = None,
              baseline: str = "react", n_brains: int = 3,
              overlap_fraction: float = 0.5, inject_conflict: bool = False,
              k: int = 5, max_steps: int = 6,
@@ -141,13 +141,12 @@ def run_grid(tasks: List[HotpotTask], llm_factory: Callable[[], object], *,
     optional durable-append callback (CSC checkpointing)."""
     conditions = conditions or list(MEMORY_CONDITIONS)
     modes = modes or ["fixed_recall"]
-    cfg = cfg or _calibrated_cfg(encoder)
     rows: List[Dict] = []
     for mode in modes:
         for cond in conditions:
             for task in tasks:
                 row = run_one(task, cond, mode, llm_factory(), encoder=encoder,
-                              nli=nli, cfg=cfg, baseline=baseline,
+                              nli=nli, epoch=epoch, baseline=baseline,
                               n_brains=n_brains, overlap_fraction=overlap_fraction,
                               inject_conflict=inject_conflict, k=k,
                               max_steps=max_steps)

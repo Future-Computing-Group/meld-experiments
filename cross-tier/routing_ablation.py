@@ -40,7 +40,7 @@ PATCHES = [  # (text, needed-brain) -- the ground-truth target by construction
 ]
 
 
-def run_ablation(encoder="minilm", sigma_lo=0.12, seed=0):
+def run_ablation(*, sigma_lo, encoder="minilm", seed=0):
     brains = DOMAINS
     es = EmbeddingSimilarity(encoder=encoder)
     rng = random.Random(seed)
@@ -69,5 +69,5 @@ def run_ablation(encoder="minilm", sigma_lo=0.12, seed=0):
 
 
 if __name__ == "__main__":
-    res = run_ablation()
+    res = run_ablation(sigma_lo=0.12)
     print(json.dumps(res, indent=2))

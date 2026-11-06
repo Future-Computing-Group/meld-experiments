@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0021",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "4ede84e535fed96d51fed70bcd2c82f78eb13c44c48ff34fb25e4162572642ed",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"acb25c5adc468290\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe young people playing games, with compatible added details about an arcade and a man.\"},\n{\"item_id\": \"5f9a61b42e0e5f25\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The rectangular/physical and optical/physical modifiers are swapped, giving incompatible definitions.\"},\n{\"item_id\": \"42b369dba0a34776\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One version specifies that the misjudged sales ratio was between the iPhone 5C and 5S; otherwise identical.\"},\n{\"item_id\": \"557fa15e3f11ac26\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"Like counts to date differ at February versus July 2019.\"},\n{\"item_id\": \"bb88713377ad155f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe two dogs playing, one adding colour, a ball and grass.\"},\n{\"item_id\": \"4e61c6ad4b53ed4b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same action, but one adds that the onion is white.\"},\n{\"item_id\": \"166fe485e9aaaaa1\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"The USA and Virgin Islands roles are swapped between the place and the administering body.\"},\n{\"item_id\": \"361de29950f26ef9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A man cutting a paper plate is compatible with no paper being cut with scissors.\"},\n{\"item_id\": \"b5161ae50ee3afa9\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The same denial of flute playing is made for a girl versus a woman, and both can hold.\"},\n{\"item_id\": \"78ba07f32be0faa9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds Xbox One as a further platform for the same game.\"},\n{\"item_id\": \"8ec640f42446da34\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Only the formatting of the Wizard Alex Ross Special title differs.\"},\n{\"item_id\": \"9ac910b6cb65625d\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Biochemical and biological are swapped and the definition ends in species versus way, giving different definitions.\"},\n{\"item_id\": \"b801c96ed2313505\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both state the league stage had four groups of four, differing only in tense form.\"},\n{\"item_id\": \"d19f935d49042219\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Rachel's team of ten has half women versus six women, which cannot both be true.\"},\n{\"item_id\": \"1eff4b4a6910e0fe\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Which thing is generated and which is done is swapped between attacks and rainbow tables.\"},\n{\"item_id\": \"8b730896a324f121\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both deny dogs looking, over a broader versus a narrower scene, and both can hold.\"},\n{\"item_id\": \"171538ea32cea989\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same low G tuning, with compatible different guitar equivalences.\"},\n{\"item_id\": \"50efd54c2ff1e2cf\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The long and right modifiers are swapped between the river and its tributary relation to the Mindel.\"},\n{\"item_id\": \"647f5ebf9c4545dc\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Russian and Slavic swap roles as term origin and language.\"},\n{\"item_id\": \"94544e5283b200b7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Reported versus reported seeing and adjective order do not change the proposition.\"},\n{\"item_id\": \"13be858e7649a099\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Woman versus man riding a scooter supports either a gender correction or two different riders.\"},\n{\"item_id\": \"5de95dda5141581f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The only difference is a typo in suggests.\"},\n{\"item_id\": \"71a2159a5020037b\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Will include versus includes reflects the album's release status changing over time.\"},\n{\"item_id\": \"9f6fae0cbf224cbb\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A rabbit playing with a toy clashes with the denial only if the toy is a toy rabbit, which the texts leave open.\"},\n{\"item_id\": \"0117ee2844590ef5\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Only adds an evaluative tone without changing the asserted catches and yards.\"},\n{\"item_id\": \"defbd5c882f27c9d\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A 2008 UK release and a 2007 re-run are different events with no shared identified entity.\"},\n{\"item_id\": \"92a0260a58b124b5\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denials about a man on a bicycle and people on camels concern different scenes.\"},\n{\"item_id\": \"206a02f7621e1ad2\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both deny bikini-wearing females in sandy settings over different populations and places, and both can hold.\"},\n{\"item_id\": \"46bc6e11049766b5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Nigo's associates are listed with compatible different examples.\"},\n{\"item_id\": \"48973fbaebbfafdc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A jumping dog and a large white animal jumping in snow are compatible descriptions of a jumping animal.\"},\n{\"item_id\": \"a950dfaa8f7346eb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Maxwell is a Brazilian and PSG teammate.\"},\n{\"item_id\": \"e29afe5ba2906094\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same flexible-scheduling claim covers Weeks 11-17 versus Weeks 15 and 17.\"},\n{\"item_id\": \"6f1d75321de06efc\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Consisted versus consists marks the group's membership as past versus current.\"},\n{\"item_id\": \"40ec443a13e9f7ad\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Peeling and slicing onions are compatible actions by a man.\"},\n{\"item_id\": \"7d6babae1f6342a7\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Denials of rope climbing and of a hatted man climbing a rocky wall concern different scenes.\"},\n{\"item_id\": \"e57d72624273db72\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Denials of slicing and of peeling an onion are compatible claims about the same onion scene.\"},\n{\"item_id\": \"52d0feec297b3b0a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible details of a snowboarder jumping off a hill and through the air.\"},\n{\"item_id\": \"4d74738f4d2aa163\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A doubles final and a singles final with different players are different events.\"},\n{\"item_id\": \"cc08d825a8b8a65b\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The male coloration clashes only if the unnamed insect is Austrolestes leda, which the texts do not settle.\"},\n{\"item_id\": \"dff35e85486cd5c1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the zombie film is a comedy.\"},\n{\"item_id\": \"7bb5ada98d2326db\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both describe spreading butter, with different compatible details about the surface and manner.\"},\n{\"item_id\": \"228efcf8f92f0191\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A dog running on a beach and with a ball are compatible details.\"},\n{\"item_id\": \"349eeff56ea53886\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same action, but one specifies two eggs.\"},\n{\"item_id\": \"8a0c575f110d3a71\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Two people riding, with compatible details of a motorcycle versus helmets and flowers.\"},\n{\"item_id\": \"86e0596c43e04822\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the NFL as the league of the Seahawks.\"},\n{\"item_id\": \"ad36b1fa77560585\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible descriptions of the same midfielder's playing qualities.\"},\n{\"item_id\": \"4a4700434cab6c20\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The UK debut and a two-theatre opening could be the same film in different markets or different films.\"},\n{\"item_id\": \"1b61403f6b93e6a9\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The order of mastering and applying the strategy is swapped.\"},\n{\"item_id\": \"f0164ced35afb37d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds that the show was a launch show at the same venue.\"},\n{\"item_id\": \"3dfaaf4651c4946e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds dancing to people singing.\"}\n]}\n"
+ ],
+ "labels": {
+  "acb25c5adc468290": {
+   "item_id": "acb25c5adc468290",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe young people playing games, with compatible added details about an arcade and a man."
+  },
+  "5f9a61b42e0e5f25": {
+   "item_id": "5f9a61b42e0e5f25",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The rectangular/physical and optical/physical modifiers are swapped, giving incompatible definitions."
+  },
+  "42b369dba0a34776": {
+   "item_id": "42b369dba0a34776",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One version specifies that the misjudged sales ratio was between the iPhone 5C and 5S; otherwise identical."
+  },
+  "557fa15e3f11ac26": {
+   "item_id": "557fa15e3f11ac26",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "Like counts to date differ at February versus July 2019."
+  },
+  "bb88713377ad155f": {
+   "item_id": "bb88713377ad155f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe two dogs playing, one adding colour, a ball and grass."
+  },
+  "4e61c6ad4b53ed4b": {
+   "item_id": "4e61c6ad4b53ed4b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same action, but one adds that the onion is white."
+  },
+  "166fe485e9aaaaa1": {
+   "item_id": "166fe485e9aaaaa1",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "The USA and Virgin Islands roles are swapped between the place and the administering body."
+  },
+  "361de29950f26ef9": {
+   "item_id": "361de29950f26ef9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A man cutting a paper plate is compatible with no paper being cut with scissors."
+  },
+  "b5161ae50ee3afa9": {
+   "item_id": "b5161ae50ee3afa9",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The same denial of flute playing is made for a girl versus a woman, and both can hold."
+  },
+  "78ba07f32be0faa9": {
+   "item_id": "78ba07f32be0faa9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds Xbox One as a further platform for the same game."
+  },
+  "8ec640f42446da34": {
+   "item_id": "8ec640f42446da34",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Only the formatting of the Wizard Alex Ross Special title differs."
+  },
+  "9ac910b6cb65625d": {
+   "item_id": "9ac910b6cb65625d",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Biochemical and biological are swapped and the definition ends in species versus way, giving different definitions."
+  },
+  "b801c96ed2313505": {
+   "item_id": "b801c96ed2313505",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both state the league stage had four groups of four, differing only in tense form."
+  },
+  "d19f935d49042219": {
+   "item_id": "d19f935d49042219",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Rachel's team of ten has half women versus six women, which cannot both be true."
+  },
+  "1eff4b4a6910e0fe": {
+   "item_id": "1eff4b4a6910e0fe",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Which thing is generated and which is done is swapped between attacks and rainbow tables."
+  },
+  "8b730896a324f121": {
+   "item_id": "8b730896a324f121",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both deny dogs looking, over a broader versus a narrower scene, and both can hold."
+  },
+  "171538ea32cea989": {
+   "item_id": "171538ea32cea989",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same low G tuning, with compatible different guitar equivalences."
+  },
+  "50efd54c2ff1e2cf": {
+   "item_id": "50efd54c2ff1e2cf",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The long and right modifiers are swapped between the river and its tributary relation to the Mindel."
+  },
+  "647f5ebf9c4545dc": {
+   "item_id": "647f5ebf9c4545dc",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Russian and Slavic swap roles as term origin and language."
+  },
+  "94544e5283b200b7": {
+   "item_id": "94544e5283b200b7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Reported versus reported seeing and adjective order do not change the proposition."
+  },
+  "13be858e7649a099": {
+   "item_id": "13be858e7649a099",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Woman versus man riding a scooter supports either a gender correction or two different riders."
+  },
+  "5de95dda5141581f": {
+   "item_id": "5de95dda5141581f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The only difference is a typo in suggests."
+  },
+  "71a2159a5020037b": {
+   "item_id": "71a2159a5020037b",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Will include versus includes reflects the album's release status changing over time."
+  },
+  "9f6fae0cbf224cbb": {
+   "item_id": "9f6fae0cbf224cbb",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A rabbit playing with a toy clashes with the denial only if the toy is a toy rabbit, which the texts leave open."
+  },
+  "0117ee2844590ef5": {
+   "item_id": "0117ee2844590ef5",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Only adds an evaluative tone without changing the asserted catches and yards."
+  },
+  "defbd5c882f27c9d": {
+   "item_id": "defbd5c882f27c9d",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A 2008 UK release and a 2007 re-run are different events with no shared identified entity."
+  },
+  "92a0260a58b124b5": {
+   "item_id": "92a0260a58b124b5",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denials about a man on a bicycle and people on camels concern different scenes."
+  },
+  "206a02f7621e1ad2": {
+   "item_id": "206a02f7621e1ad2",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both deny bikini-wearing females in sandy settings over different populations and places, and both can hold."
+  },
+  "46bc6e11049766b5": {
+   "item_id": "46bc6e11049766b5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Nigo's associates are listed with compatible different examples."
+  },
+  "48973fbaebbfafdc": {
+   "item_id": "48973fbaebbfafdc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A jumping dog and a large white animal jumping in snow are compatible descriptions of a jumping animal."
+  },
+  "a950dfaa8f7346eb": {
+   "item_id": "a950dfaa8f7346eb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Maxwell is a Brazilian and PSG teammate."
+  },
+  "e29afe5ba2906094": {
+   "item_id": "e29afe5ba2906094",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same flexible-scheduling claim covers Weeks 11-17 versus Weeks 15 and 17."
+  },
+  "6f1d75321de06efc": {
+   "item_id": "6f1d75321de06efc",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Consisted versus consists marks the group's membership as past versus current."
+  },
+  "40ec443a13e9f7ad": {
+   "item_id": "40ec443a13e9f7ad",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Peeling and slicing onions are compatible actions by a man."
+  },
+  "7d6babae1f6342a7": {
+   "item_id": "7d6babae1f6342a7",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Denials of rope climbing and of a hatted man climbing a rocky wall concern different scenes."
+  },
+  "e57d72624273db72": {
+   "item_id": "e57d72624273db72",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Denials of slicing and of peeling an onion are compatible claims about the same onion scene."
+  },
+  "52d0feec297b3b0a": {
+   "item_id": "52d0feec297b3b0a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible details of a snowboarder jumping off a hill and through the air."
+  },
+  "4d74738f4d2aa163": {
+   "item_id": "4d74738f4d2aa163",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A doubles final and a singles final with different players are different events."
+  },
+  "cc08d825a8b8a65b": {
+   "item_id": "cc08d825a8b8a65b",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The male coloration clashes only if the unnamed insect is Austrolestes leda, which the texts do not settle."
+  },
+  "dff35e85486cd5c1": {
+   "item_id": "dff35e85486cd5c1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the zombie film is a comedy."
+  },
+  "7bb5ada98d2326db": {
+   "item_id": "7bb5ada98d2326db",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both describe spreading butter, with different compatible details about the surface and manner."
+  },
+  "228efcf8f92f0191": {
+   "item_id": "228efcf8f92f0191",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A dog running on a beach and with a ball are compatible details."
+  },
+  "349eeff56ea53886": {
+   "item_id": "349eeff56ea53886",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same action, but one specifies two eggs."
+  },
+  "8a0c575f110d3a71": {
+   "item_id": "8a0c575f110d3a71",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Two people riding, with compatible details of a motorcycle versus helmets and flowers."
+  },
+  "86e0596c43e04822": {
+   "item_id": "86e0596c43e04822",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the NFL as the league of the Seahawks."
+  },
+  "ad36b1fa77560585": {
+   "item_id": "ad36b1fa77560585",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible descriptions of the same midfielder's playing qualities."
+  },
+  "4a4700434cab6c20": {
+   "item_id": "4a4700434cab6c20",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The UK debut and a two-theatre opening could be the same film in different markets or different films."
+  },
+  "1b61403f6b93e6a9": {
+   "item_id": "1b61403f6b93e6a9",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The order of mastering and applying the strategy is swapped."
+  },
+  "f0164ced35afb37d": {
+   "item_id": "f0164ced35afb37d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds that the show was a launch show at the same venue."
+  },
+  "3dfaaf4651c4946e": {
+   "item_id": "3dfaaf4651c4946e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds dancing to people singing."
+  }
+ },
+ "errors": []
+}

@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0018",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "d14d816a33f4bbc1b5ba0907923984c1ca5ee98c560ee7786b866fa0d944d47d",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"3d17954afc522264\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A piano is a keyboard instrument and one adds that the cat plays funnily.\"},\n{\"item_id\": \"2902de51fc26895a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a man in a bike race, one adding the red uniform and the jump.\"},\n{\"item_id\": \"b00545bf04995619\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Unlawful versus unincorporated changes the asserted status of the community.\"},\n{\"item_id\": \"329ac52546226f0f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Only the tense of the same sales expectation differs.\"},\n{\"item_id\": \"6da87d9eff00f1a6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Being highly effective and having side effects are compatible properties of the same medications.\"},\n{\"item_id\": \"c9236a05bd0de367\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same schools, states, course and year with the location phrases reordered.\"},\n{\"item_id\": \"4c7b65c773a965ef\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible details about the same November 2012 class action lawsuit.\"},\n{\"item_id\": \"c0d654daecf789dd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Organising in 2018 is compatible with the event spanning 2018-2019, which adds its duration.\"},\n{\"item_id\": \"c318cf6b18b881f5\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A boy jumping off a chair is denied in one and asserted in the other.\"},\n{\"item_id\": \"8d92597f889858aa\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same district and territory; the Indian and administrative modifiers move without changing the facts.\"},\n{\"item_id\": \"f4ab569902f01ed6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Loud playing and an acoustic guitar are compatible details of a man playing guitar.\"},\n{\"item_id\": \"5b0ea5e7bf486253\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Street and road names are synonyms here.\"},\n{\"item_id\": \"a470a2fd88a139c3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that he was a best-selling author.\"},\n{\"item_id\": \"a6691acd99e52647\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The critic review count (13 versus 12) is a figure that changes over time.\"},\n{\"item_id\": \"9e73e08259774ff4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A fish is a specific swimming animal, compatible with the general statement.\"},\n{\"item_id\": \"a04d80be51291586\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Unsafe moves from the effects to the ingredients, but both claims about caffeine in the supplements can hold.\"},\n{\"item_id\": \"b0cd223d62befb7e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the month August to the 2017 report.\"},\n{\"item_id\": \"101476f052ea2e89\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Glamorous image and soap operas are compatible details about her TV roles.\"},\n{\"item_id\": \"8a8493188054ece4\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The aggregator approval rating (78% versus 96%) is a value that changes over time.\"},\n{\"item_id\": \"8f506201f556f56d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Bombardier is a Canadian company.\"},\n{\"item_id\": \"1c0259988c9f8025\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One names the oncoming vehicle as an Austin A60.\"},\n{\"item_id\": \"c28fc1cb23280b42\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Saying they fled eventually to Scotland adds a temporal detail to fleeing to Scotland.\"},\n{\"item_id\": \"e3f0010035af07b6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe dogs watching something in water, with compatible extra details.\"},\n{\"item_id\": \"111f6b0390d75d1f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds model and singer to her occupations.\"},\n{\"item_id\": \"120e3ce8a20f59f4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Different factors' effects on SLE development are compatible claims on the same topic.\"},\n{\"item_id\": \"d7c3b10fff01de77\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both negations can hold, one adding running through a field.\"},\n{\"item_id\": \"cb5057df7cb6dc3e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a woman applying eye makeup with a pencil, compatibly.\"},\n{\"item_id\": \"e7e65c270c994557\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Pardon and petition swap roles, so one asserts a pardon existed while the other only a petition for one.\"},\n{\"item_id\": \"44416f4fddbed107\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Whether a four-member 'made up of' list clashes with a five-member past list depends on an exhaustive or time-varying reading.\"},\n{\"item_id\": \"c07729d06086f840\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a woman cooking, compatibly, with frying something versus cooking fish.\"},\n{\"item_id\": \"18ce3db60c73a88b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Sequel releases and box-office gross are compatible facts about the same film franchise.\"},\n{\"item_id\": \"1edf52697be72f49\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Women versus woman is a typo given the singular her.\"},\n{\"item_id\": \"2d28a3d69b5672ac\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Is versus was one of the leading lyricists is a status that changes over time.\"},\n{\"item_id\": \"977246ee39942ed8\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Read as the same scene, the dog's collar is blue in one and red in the other.\"},\n{\"item_id\": \"84999b38bee9118f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds British-American origin and division status.\"},\n{\"item_id\": \"102990701458dbdc\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"Which Browne brother is younger is swapped.\"},\n{\"item_id\": \"0791d96b22cd6a68\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Total tests to date of 6,438 versus 9,791 differ as a running count.\"},\n{\"item_id\": \"81419d4deb855630\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Clients 'included' lists are non-exhaustive and compatible.\"},\n{\"item_id\": \"2e42521368ac38f7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both concern a man with a mask, adding compatible details of cap and raised hand.\"},\n{\"item_id\": \"fc9253ea2836293d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A man is a more specific person eating.\"},\n{\"item_id\": \"33e99f3d39b12c8c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One names the bordering lake as Lake Victoria.\"},\n{\"item_id\": \"def9d66309cabd9e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Cold and large swap between salmonids and rivers, yet both descriptions can hold.\"},\n{\"item_id\": \"a18104efe39a4d54\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The same dating claim is made for southeast England versus London.\"},\n{\"item_id\": \"b600a1b3d727290f\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Four versus five completed projects is a count that grows over time.\"},\n{\"item_id\": \"3ceba5d58807987e\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"Running down hill versus up hill.\"},\n{\"item_id\": \"54bdac58fc940cf4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible different claims about ribosome occupancy by lncRNAs.\"},\n{\"item_id\": \"188a53bad2f9279b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds upside-down, the other that the ceiling is of a room.\"},\n{\"item_id\": \"014340e5fd21ab67\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Very first versus first is only an intensifier.\"},\n{\"item_id\": \"f1c17ccab10a8519\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Best closer is a more specific form of the best reliever claim.\"},\n{\"item_id\": \"05cf7a06dabf17fa\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A black dog versus a black and white dog may be a colour clash or a less specific description.\"}\n]}\n"
+ ],
+ "labels": {
+  "3d17954afc522264": {
+   "item_id": "3d17954afc522264",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A piano is a keyboard instrument and one adds that the cat plays funnily."
+  },
+  "2902de51fc26895a": {
+   "item_id": "2902de51fc26895a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a man in a bike race, one adding the red uniform and the jump."
+  },
+  "b00545bf04995619": {
+   "item_id": "b00545bf04995619",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Unlawful versus unincorporated changes the asserted status of the community."
+  },
+  "329ac52546226f0f": {
+   "item_id": "329ac52546226f0f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Only the tense of the same sales expectation differs."
+  },
+  "6da87d9eff00f1a6": {
+   "item_id": "6da87d9eff00f1a6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Being highly effective and having side effects are compatible properties of the same medications."
+  },
+  "c9236a05bd0de367": {
+   "item_id": "c9236a05bd0de367",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same schools, states, course and year with the location phrases reordered."
+  },
+  "4c7b65c773a965ef": {
+   "item_id": "4c7b65c773a965ef",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible details about the same November 2012 class action lawsuit."
+  },
+  "c0d654daecf789dd": {
+   "item_id": "c0d654daecf789dd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Organising in 2018 is compatible with the event spanning 2018-2019, which adds its duration."
+  },
+  "c318cf6b18b881f5": {
+   "item_id": "c318cf6b18b881f5",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A boy jumping off a chair is denied in one and asserted in the other."
+  },
+  "8d92597f889858aa": {
+   "item_id": "8d92597f889858aa",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same district and territory; the Indian and administrative modifiers move without changing the facts."
+  },
+  "f4ab569902f01ed6": {
+   "item_id": "f4ab569902f01ed6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Loud playing and an acoustic guitar are compatible details of a man playing guitar."
+  },
+  "5b0ea5e7bf486253": {
+   "item_id": "5b0ea5e7bf486253",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Street and road names are synonyms here."
+  },
+  "a470a2fd88a139c3": {
+   "item_id": "a470a2fd88a139c3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that he was a best-selling author."
+  },
+  "a6691acd99e52647": {
+   "item_id": "a6691acd99e52647",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The critic review count (13 versus 12) is a figure that changes over time."
+  },
+  "9e73e08259774ff4": {
+   "item_id": "9e73e08259774ff4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A fish is a specific swimming animal, compatible with the general statement."
+  },
+  "a04d80be51291586": {
+   "item_id": "a04d80be51291586",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Unsafe moves from the effects to the ingredients, but both claims about caffeine in the supplements can hold."
+  },
+  "b0cd223d62befb7e": {
+   "item_id": "b0cd223d62befb7e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the month August to the 2017 report."
+  },
+  "101476f052ea2e89": {
+   "item_id": "101476f052ea2e89",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Glamorous image and soap operas are compatible details about her TV roles."
+  },
+  "8a8493188054ece4": {
+   "item_id": "8a8493188054ece4",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The aggregator approval rating (78% versus 96%) is a value that changes over time."
+  },
+  "8f506201f556f56d": {
+   "item_id": "8f506201f556f56d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Bombardier is a Canadian company."
+  },
+  "1c0259988c9f8025": {
+   "item_id": "1c0259988c9f8025",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One names the oncoming vehicle as an Austin A60."
+  },
+  "c28fc1cb23280b42": {
+   "item_id": "c28fc1cb23280b42",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Saying they fled eventually to Scotland adds a temporal detail to fleeing to Scotland."
+  },
+  "e3f0010035af07b6": {
+   "item_id": "e3f0010035af07b6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe dogs watching something in water, with compatible extra details."
+  },
+  "111f6b0390d75d1f": {
+   "item_id": "111f6b0390d75d1f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds model and singer to her occupations."
+  },
+  "120e3ce8a20f59f4": {
+   "item_id": "120e3ce8a20f59f4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Different factors' effects on SLE development are compatible claims on the same topic."
+  },
+  "d7c3b10fff01de77": {
+   "item_id": "d7c3b10fff01de77",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both negations can hold, one adding running through a field."
+  },
+  "cb5057df7cb6dc3e": {
+   "item_id": "cb5057df7cb6dc3e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a woman applying eye makeup with a pencil, compatibly."
+  },
+  "e7e65c270c994557": {
+   "item_id": "e7e65c270c994557",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Pardon and petition swap roles, so one asserts a pardon existed while the other only a petition for one."
+  },
+  "44416f4fddbed107": {
+   "item_id": "44416f4fddbed107",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Whether a four-member 'made up of' list clashes with a five-member past list depends on an exhaustive or time-varying reading."
+  },
+  "c07729d06086f840": {
+   "item_id": "c07729d06086f840",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a woman cooking, compatibly, with frying something versus cooking fish."
+  },
+  "18ce3db60c73a88b": {
+   "item_id": "18ce3db60c73a88b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Sequel releases and box-office gross are compatible facts about the same film franchise."
+  },
+  "1edf52697be72f49": {
+   "item_id": "1edf52697be72f49",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Women versus woman is a typo given the singular her."
+  },
+  "2d28a3d69b5672ac": {
+   "item_id": "2d28a3d69b5672ac",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Is versus was one of the leading lyricists is a status that changes over time."
+  },
+  "977246ee39942ed8": {
+   "item_id": "977246ee39942ed8",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Read as the same scene, the dog's collar is blue in one and red in the other."
+  },
+  "84999b38bee9118f": {
+   "item_id": "84999b38bee9118f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds British-American origin and division status."
+  },
+  "102990701458dbdc": {
+   "item_id": "102990701458dbdc",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "Which Browne brother is younger is swapped."
+  },
+  "0791d96b22cd6a68": {
+   "item_id": "0791d96b22cd6a68",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Total tests to date of 6,438 versus 9,791 differ as a running count."
+  },
+  "81419d4deb855630": {
+   "item_id": "81419d4deb855630",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Clients 'included' lists are non-exhaustive and compatible."
+  },
+  "2e42521368ac38f7": {
+   "item_id": "2e42521368ac38f7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both concern a man with a mask, adding compatible details of cap and raised hand."
+  },
+  "fc9253ea2836293d": {
+   "item_id": "fc9253ea2836293d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A man is a more specific person eating."
+  },
+  "33e99f3d39b12c8c": {
+   "item_id": "33e99f3d39b12c8c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One names the bordering lake as Lake Victoria."
+  },
+  "def9d66309cabd9e": {
+   "item_id": "def9d66309cabd9e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Cold and large swap between salmonids and rivers, yet both descriptions can hold."
+  },
+  "a18104efe39a4d54": {
+   "item_id": "a18104efe39a4d54",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The same dating claim is made for southeast England versus London."
+  },
+  "b600a1b3d727290f": {
+   "item_id": "b600a1b3d727290f",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Four versus five completed projects is a count that grows over time."
+  },
+  "3ceba5d58807987e": {
+   "item_id": "3ceba5d58807987e",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "Running down hill versus up hill."
+  },
+  "54bdac58fc940cf4": {
+   "item_id": "54bdac58fc940cf4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible different claims about ribosome occupancy by lncRNAs."
+  },
+  "188a53bad2f9279b": {
+   "item_id": "188a53bad2f9279b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds upside-down, the other that the ceiling is of a room."
+  },
+  "014340e5fd21ab67": {
+   "item_id": "014340e5fd21ab67",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Very first versus first is only an intensifier."
+  },
+  "f1c17ccab10a8519": {
+   "item_id": "f1c17ccab10a8519",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Best closer is a more specific form of the best reliever claim."
+  },
+  "05cf7a06dabf17fa": {
+   "item_id": "05cf7a06dabf17fa",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A black dog versus a black and white dog may be a colour clash or a less specific description."
+  }
+ },
+ "errors": []
+}

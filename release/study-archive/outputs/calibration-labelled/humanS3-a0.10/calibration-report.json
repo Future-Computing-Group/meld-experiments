@@ -1,0 +1,158 @@
+{
+ "epochs": [
+  {
+   "git_sha": "bdb44ea74f00aac769cd60cf2277d421cfe1c732",
+   "git_dirty": false,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "encoder": "minilm",
+   "encoder_id": "sentence-transformers/all-MiniLM-L6-v2",
+   "nli": "mnli-cross-encoder",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "hw": "arm64",
+   "alpha": 0.1,
+   "alpha_ppm": 100000,
+   "n_min": 9,
+   "B_0": 256,
+   "B_0_rule": "given",
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "domain": "vitaminc",
+   "strata": [
+    "S3_vitc_nonfactual",
+    "S4_vitc_factual"
+   ],
+   "epoch_file": "vitaminc-seed-a0.10.epoch.json",
+   "scope": "vitaminc",
+   "pol": {
+    "rank_map": {
+     "PRECEDENT": 0,
+     "OBSERVATION": 1,
+     "CLAIM": 2,
+     "SPECULATION": 3
+    },
+    "scopes": {
+     "vitaminc": [
+      "vitaminc"
+     ]
+    },
+    "auth_policy": {
+     "SUPERSEDE": 3,
+     "OVERRULE": 3,
+     "REVOKE": 3,
+     "DISTINGUISHES": 3,
+     "calibration_authority": {
+      "vitaminc": "calibration"
+     }
+    },
+    "step_version": 0,
+    "r_min": 1,
+    "bootstrap_selector": [
+     32768,
+     32768,
+     3
+    ]
+   },
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "55aaeca8b0d086aa84e71a250881a35a",
+   "epoch_id": "5699c29f9be654e1a33e0b4e2bcdc7c7",
+   "seq": 1,
+   "policy": "SEED",
+   "mondrian_c": false,
+   "cal_root": "39e2e1ad5dcb277f4ec18da6f308305f",
+   "cal_hw": "arm64",
+   "verified": true,
+   "substrate": null,
+   "bins": [
+    {
+     "g": 0,
+     "n_g": 19,
+     "n_c_g": 0,
+     "theta_q": 63331,
+     "theta": 0.9663691157396811
+    },
+    {
+     "g": 1,
+     "n_g": 48,
+     "n_c_g": 0,
+     "theta_q": 59492,
+     "theta": 0.9077897306782635
+    },
+    {
+     "g": 2,
+     "n_g": 122,
+     "n_c_g": 0,
+     "theta_q": 63224,
+     "theta": 0.9647364003967346
+    },
+    {
+     "g": 3,
+     "n_g": 36,
+     "n_c_g": 0,
+     "theta_q": 62575,
+     "theta": 0.9548332951857786
+    }
+   ],
+   "populated_bins": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "disabled_bins": [],
+   "items_by_bin": {
+    "0": 56,
+    "1": 103,
+    "2": 243,
+    "3": 123
+   },
+   "stats": {
+    "worlds": 1,
+    "nodes": 1188,
+    "tested": 736,
+    "nli_calls": 1938,
+    "cal": 225,
+    "unresolved": 0
+   },
+   "labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "unresolved": 0,
+   "development": false,
+   "copies_validated": null,
+   "source_labels": true,
+   "annotations_sha256": "93901edcc50087ec3dcec888cd14b834d38e6acd592c8eef82ebb76a22b6764e",
+   "contradiction_subtype_unlabelled": true,
+   "ambiguous": {
+    "policy": "non-mergeable",
+    "provenance": "adjudicated_ambiguous",
+    "labels_file": "outputs/annotate/full/labels-humanS3.jsonl",
+    "by_class": {
+     "cross_item": 2,
+     "manifest_pending": 3,
+     "same_item": 1
+    }
+   },
+   "seconds": 74.6
+  }
+ ]
+}

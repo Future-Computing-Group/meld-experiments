@@ -10,10 +10,10 @@ recall -- no LLM, no testbed.
 """
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from meld.agent.mem_conditions import build_condition
-from meld.config import Thresholds
+from meld.protocol.objects import EpochRecord
 from meld.agent.hotpot_loader import HotpotTask
 
 
@@ -23,11 +23,11 @@ def _recall_tokens(brain, query: str, k: int) -> int:
 
 
 def token_economics(task: HotpotTask, queries: List[str], *, encoder: str, nli: str,
-                    cfg: Thresholds, k: int = 20) -> Dict[str, float]:
+                    epoch: Optional[EpochRecord], k: int = 20) -> Dict[str, float]:
     """Sum the recalled-context token cost over ``queries`` for the cleaned
     (distributed_merge) and uncleaned (naive_union) brain built from the same task."""
-    cleaned = build_condition(task, "distributed_merge", encoder=encoder, nli=nli, cfg=cfg)
-    uncleaned = build_condition(task, "naive_union", encoder=encoder, nli=nli, cfg=cfg)
+    cleaned = build_condition(task, "distributed_merge", encoder=encoder, nli=nli, epoch=epoch)
+    uncleaned = build_condition(task, "naive_union", encoder=encoder, nli=nli, epoch=epoch)
     ct = sum(_recall_tokens(cleaned.brain, q, k) for q in queries)
     ut = sum(_recall_tokens(uncleaned.brain, q, k) for q in queries)
     return {"cleaned_tokens": ct, "uncleaned_tokens": ut,

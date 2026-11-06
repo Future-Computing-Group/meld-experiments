@@ -8,7 +8,7 @@ the HF distractor SCHEMA exercises the loader end-to-end with NO network.
 
 The load-bearing MELD integration: ``feed_context_through_brain`` feeds each item's
 ``context`` paragraphs THROUGH the MELD brain as merged observations (chunked ->
-PUBLISH -> merge_on_receive -> Patch), so a later recall retrieves the evidence.
+PUBLISH -> admission), so a later recall retrieves the evidence.
 This is the MELD-on-message choice (the gate exercises recall + multi-hop reason
 over brain-resident evidence, not raw model recall).
 """
@@ -76,13 +76,12 @@ def test_fixture_is_deterministic():
 
 def test_feed_context_through_brain_writes_patches_and_is_recallable():
     from meld.agent.memory import SMPMemory
-    from meld.agent.run_hotpot_gate import _calibrated_cfg
-
     task = load_hotpot_fixture(n=1)[0]
-    mem = SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
+    mem = SMPMemory(encoder="hashing", nli="lexical")
     patches = feed_context_through_brain(task, mem)
-    # every paragraph fed through the MELD merge path -> >=1 Patch in the audit log
-    assert mem.brain.audit_log, "context must traverse merge_on_receive -> Patch"
+    # every sentence is a signed delta admitted by the protocol's step
+    assert mem.decisions, "context must traverse the admission path"
+    assert mem.footprint()["stored"] == len(mem.store.objects.ids("D", "agent"))
     assert patches
     # the gold-supporting evidence is now recallable from the brain
     hits = mem.recall(task.question, k=5)

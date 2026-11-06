@@ -89,3 +89,49 @@ def test_semantic_beats_broadcast_on_waste_at_equal_recall():
     bc = routing_metrics(delivered=bc_deliv, needed=needed)
     assert sem["recall"] == bc["recall"] == 1.0          # both deliver to the needed brain
     assert sem["wasted_delivery_rate"] < bc["wasted_delivery_rate"]   # semantic wastes less
+
+
+# --- budget-free selection rules (wp6h): R1 floor = sigma_lo alone, R2 margin, R3 largest gap ---
+
+def test_select_peers_floor_only_is_r1():
+    from meld.sync.router import select_peers
+    s = {"a": 0.95, "b": 0.40, "c": 0.10}
+    assert select_peers(s, sigma_lo=0.5) == {"a"}
+    assert select_peers(s, sigma_lo=0.12) == {"a", "b"}
+
+
+def test_select_peers_margin_keeps_scores_within_delta_of_max():
+    from meld.sync.router import select_peers
+    s = {"a": 0.95, "b": 0.90, "c": 0.60}
+    assert select_peers(s, sigma_lo=0.0, margin=0.1) == {"a", "b"}
+    assert select_peers(s, sigma_lo=0.0, margin=0.01) == {"a"}
+    assert select_peers(s, sigma_lo=0.92, margin=0.5) == {"a"}      # the floor still applies
+
+
+def test_select_peers_gap_cuts_at_largest_gap_with_floor_as_bottom():
+    from meld.sync.router import select_peers
+    s = {"a": 1.0, "b": 0.98, "c": 0.45, "d": 0.40}
+    assert select_peers(s, sigma_lo=0.1, gap=True) == {"a", "b"}     # gap 0.53 between b and c
+    # the floor is the virtual bottom score: when every eligible peer sits far above it,
+    # the largest gap is to the floor and every eligible peer is kept
+    s2 = {"a": 0.99, "b": 0.97, "c": 0.95}
+    assert select_peers(s2, sigma_lo=0.3, gap=True) == {"a", "b", "c"}
+    assert select_peers({"a": 0.2}, sigma_lo=0.3, gap=True) == set()  # nothing eligible
+    assert select_peers({"a": 0.5}, sigma_lo=0.3, gap=True) == {"a"}
+
+
+def test_select_peers_default_matches_semantic_route_contract():
+    from meld.sync.router import select_peers
+    s = {"a": 0.9, "b": 0.8, "c": 0.05}
+    assert select_peers(s, sigma_lo=0.1) == {"a", "b"}
+    assert select_peers(s, sigma_lo=0.1, top_k=1) == {"a"}
+
+
+def test_semantic_route_forwards_margin_and_gap():
+    from meld.sync.router import semantic_route
+    brains = {"b_france": ["France is a country in Europe"],
+              "b_paris": ["Paris is the capital of France"],
+              "b_orwell": ["George Orwell wrote the novel 1984"]}
+    claim = "Paris is the capital of France"
+    assert semantic_route(claim, brains, encoder="hashing", sigma_lo=0.0, margin=1e-6) == {"b_paris"}
+    assert "b_paris" in semantic_route(claim, brains, encoder="hashing", sigma_lo=0.0, gap=True)

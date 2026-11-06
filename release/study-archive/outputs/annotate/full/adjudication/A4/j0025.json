@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0025",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "027207773f22c0a903d4a5e1b73dd59f548daf65d11d17ab39390c261b19f21a",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"b0da24c73c8fa8a1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One version adds nicknames for William Tell to otherwise identical content.\"},\n{\"item_id\": \"1ea5214fe9389ef8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Graceful and hearty are compatible manners of the same man singing with a guitar.\"},\n{\"item_id\": \"412f7bb141eed333\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The statements describe different bouts with different fighters and titles.\"},\n{\"item_id\": \"55d190a14207ae8a\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"In one scene the bike cannot be both ridden and being put down.\"},\n{\"item_id\": \"e80783f4787b35d4\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Biting and stroking a lemur may be compatible details of one scene or separate unrelated scenes.\"},\n{\"item_id\": \"994ecafc32033fe8\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The title crowned in 2004 differs between the reorderings.\"},\n{\"item_id\": \"0f753bbb4458e500\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Net worth is a changing value reported at different months.\"},\n{\"item_id\": \"564e70ca1e466b8c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Genre labels and origin are compatible details about the same band.\"},\n{\"item_id\": \"90797b5804a8fa87\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Squad call-ups for different qualifier matches on different dates can both hold.\"},\n{\"item_id\": \"6c702b009f0b8228\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"Ownership by Maran of Sun TV differs from joint ownership with Keshav Bansal.\"},\n{\"item_id\": \"7f0ed1adb97938b2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"More frequently adds a comparative detail to frequently appearing Oscan names.\"},\n{\"item_id\": \"1c007d77da494fef\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One names the 2014 FIFA World Cup where the other says only the World Cup final stages.\"},\n{\"item_id\": \"782406734c24779d\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Whether the duo still exists is a status that changes over time.\"},\n{\"item_id\": \"5d18fd17d352760a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A woman eating and happiness are added to the man eating.\"},\n{\"item_id\": \"daec5d9dcf44cc40\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The boy can play an instrument other than the piano, so both hold.\"},\n{\"item_id\": \"bc189576ae2ed231\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds substance abuse as the reason for the suspension.\"},\n{\"item_id\": \"d2f1156858d4e23d\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Normal and formal are swapped between coordinates and series.\"},\n{\"item_id\": \"4aa3a3a64bd2a885\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Each adds a compatible detail to a man dancing on the ceiling.\"},\n{\"item_id\": \"f95f61f8e6d6c871\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds her appearance on Chelsea to the same citation.\"},\n{\"item_id\": \"8c7a2c29af62fe37\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The small dog chases a large brown cow in one and a little brown dog in the other.\"},\n{\"item_id\": \"d5611a086c6c02bf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the height of eighty-nine feet.\"},\n{\"item_id\": \"af80a6a07a79d4ff\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"View and like counts are running totals reported at different dates.\"},\n{\"item_id\": \"b0d35d32a95f42bf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Muslim paternal family and Afghan-origin grandfather are compatible details.\"},\n{\"item_id\": \"c0e63f16af04ff38\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only has versus have differs.\"},\n{\"item_id\": \"1d201e511fc77229\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"A counterfactual could-have-been ranking contradicts a factual is-listed ranking.\"},\n{\"item_id\": \"a92226c7b0eceb95\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"A bridge made from a fallen tree differs from a tree now falling over a separate bridge.\"},\n{\"item_id\": \"693c5b9937d37c14\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A single panda lying down is compatible with two pandas not lying together.\"},\n{\"item_id\": \"0d4cd53a755d427b\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same denial is made over any person versus a man.\"},\n{\"item_id\": \"5cf05e8c4df1563f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One names the Imperial Guard as the reader where the other omits the subject.\"},\n{\"item_id\": \"ce95490b9cd22f0c\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only verb agreement differs.\"},\n{\"item_id\": \"732c3f8de7c50896\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"One names Righter where the other has a garbled subject for the same marriage.\"},\n{\"item_id\": \"486ab324961aef5f\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Being a designated landing strip is a status that changed over time.\"},\n{\"item_id\": \"ea0625f627bd568f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the musicals were jazz musicals.\"},\n{\"item_id\": \"776f480cb97184b8\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"City versus town and footballers versus football player are plain synonyms here.\"},\n{\"item_id\": \"707f0ad631490599\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both compatibly deny soccer activity with different details.\"},\n{\"item_id\": \"4b0f2e434daabf4a\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same denial is made over any person versus a man.\"},\n{\"item_id\": \"7a0d1a0e631ba78d\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denying any flute is broader than denying a wooden flute.\"},\n{\"item_id\": \"bae65dae47f514ac\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Different legal names for Oppo may be a conflicting fact or compatible descriptions of related entities.\"},\n{\"item_id\": \"d5bc95d2343971ef\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds a parenthetical on Jewell's citizenship and succession.\"},\n{\"item_id\": \"843a1a7affdb1a98\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible details about a person riding a motorcycle.\"},\n{\"item_id\": \"2454d7c72e22393d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Pacing tiredly in a pen adds detail to a lion walking slowly.\"},\n{\"item_id\": \"d78d924aeb9cba0c\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The listed risk-factor race differs, African-American versus African-Caribbean.\"},\n{\"item_id\": \"958ed61afdaadde2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Roman Reigns as another example wrestler.\"},\n{\"item_id\": \"4d16690f240334ef\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Wino on guitar alongside Lemmy.\"},\n{\"item_id\": \"552174df30cba989\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The reporting time differs, 04:00 versus the full day 00:00-24:00.\"},\n{\"item_id\": \"281c7aa90bd5bd94\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Received and obtained are interchangeable synonyms here.\"},\n{\"item_id\": \"c3e92e0897119b76\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Woman specifies the person doing the severing.\"},\n{\"item_id\": \"05dff1c736e8e9c5\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Terrell's draft status changed from prospect to drafted.\"},\n{\"item_id\": \"afb31b08e83e204c\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The population figure differs between 2010 and today, a value that changes over time.\"},\n{\"item_id\": \"63425203f8239c83\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Man specifies the person who is not drawing.\"}\n]}\n"
+ ],
+ "labels": {
+  "b0da24c73c8fa8a1": {
+   "item_id": "b0da24c73c8fa8a1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One version adds nicknames for William Tell to otherwise identical content."
+  },
+  "1ea5214fe9389ef8": {
+   "item_id": "1ea5214fe9389ef8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Graceful and hearty are compatible manners of the same man singing with a guitar."
+  },
+  "412f7bb141eed333": {
+   "item_id": "412f7bb141eed333",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The statements describe different bouts with different fighters and titles."
+  },
+  "55d190a14207ae8a": {
+   "item_id": "55d190a14207ae8a",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "In one scene the bike cannot be both ridden and being put down."
+  },
+  "e80783f4787b35d4": {
+   "item_id": "e80783f4787b35d4",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Biting and stroking a lemur may be compatible details of one scene or separate unrelated scenes."
+  },
+  "994ecafc32033fe8": {
+   "item_id": "994ecafc32033fe8",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The title crowned in 2004 differs between the reorderings."
+  },
+  "0f753bbb4458e500": {
+   "item_id": "0f753bbb4458e500",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Net worth is a changing value reported at different months."
+  },
+  "564e70ca1e466b8c": {
+   "item_id": "564e70ca1e466b8c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Genre labels and origin are compatible details about the same band."
+  },
+  "90797b5804a8fa87": {
+   "item_id": "90797b5804a8fa87",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Squad call-ups for different qualifier matches on different dates can both hold."
+  },
+  "6c702b009f0b8228": {
+   "item_id": "6c702b009f0b8228",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "Ownership by Maran of Sun TV differs from joint ownership with Keshav Bansal."
+  },
+  "7f0ed1adb97938b2": {
+   "item_id": "7f0ed1adb97938b2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "More frequently adds a comparative detail to frequently appearing Oscan names."
+  },
+  "1c007d77da494fef": {
+   "item_id": "1c007d77da494fef",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One names the 2014 FIFA World Cup where the other says only the World Cup final stages."
+  },
+  "782406734c24779d": {
+   "item_id": "782406734c24779d",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Whether the duo still exists is a status that changes over time."
+  },
+  "5d18fd17d352760a": {
+   "item_id": "5d18fd17d352760a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A woman eating and happiness are added to the man eating."
+  },
+  "daec5d9dcf44cc40": {
+   "item_id": "daec5d9dcf44cc40",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The boy can play an instrument other than the piano, so both hold."
+  },
+  "bc189576ae2ed231": {
+   "item_id": "bc189576ae2ed231",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds substance abuse as the reason for the suspension."
+  },
+  "d2f1156858d4e23d": {
+   "item_id": "d2f1156858d4e23d",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Normal and formal are swapped between coordinates and series."
+  },
+  "4aa3a3a64bd2a885": {
+   "item_id": "4aa3a3a64bd2a885",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Each adds a compatible detail to a man dancing on the ceiling."
+  },
+  "f95f61f8e6d6c871": {
+   "item_id": "f95f61f8e6d6c871",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds her appearance on Chelsea to the same citation."
+  },
+  "8c7a2c29af62fe37": {
+   "item_id": "8c7a2c29af62fe37",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The small dog chases a large brown cow in one and a little brown dog in the other."
+  },
+  "d5611a086c6c02bf": {
+   "item_id": "d5611a086c6c02bf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the height of eighty-nine feet."
+  },
+  "af80a6a07a79d4ff": {
+   "item_id": "af80a6a07a79d4ff",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "View and like counts are running totals reported at different dates."
+  },
+  "b0d35d32a95f42bf": {
+   "item_id": "b0d35d32a95f42bf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Muslim paternal family and Afghan-origin grandfather are compatible details."
+  },
+  "c0e63f16af04ff38": {
+   "item_id": "c0e63f16af04ff38",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only has versus have differs."
+  },
+  "1d201e511fc77229": {
+   "item_id": "1d201e511fc77229",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "A counterfactual could-have-been ranking contradicts a factual is-listed ranking."
+  },
+  "a92226c7b0eceb95": {
+   "item_id": "a92226c7b0eceb95",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "A bridge made from a fallen tree differs from a tree now falling over a separate bridge."
+  },
+  "693c5b9937d37c14": {
+   "item_id": "693c5b9937d37c14",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A single panda lying down is compatible with two pandas not lying together."
+  },
+  "0d4cd53a755d427b": {
+   "item_id": "0d4cd53a755d427b",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same denial is made over any person versus a man."
+  },
+  "5cf05e8c4df1563f": {
+   "item_id": "5cf05e8c4df1563f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One names the Imperial Guard as the reader where the other omits the subject."
+  },
+  "ce95490b9cd22f0c": {
+   "item_id": "ce95490b9cd22f0c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only verb agreement differs."
+  },
+  "732c3f8de7c50896": {
+   "item_id": "732c3f8de7c50896",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "One names Righter where the other has a garbled subject for the same marriage."
+  },
+  "486ab324961aef5f": {
+   "item_id": "486ab324961aef5f",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Being a designated landing strip is a status that changed over time."
+  },
+  "ea0625f627bd568f": {
+   "item_id": "ea0625f627bd568f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the musicals were jazz musicals."
+  },
+  "776f480cb97184b8": {
+   "item_id": "776f480cb97184b8",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "City versus town and footballers versus football player are plain synonyms here."
+  },
+  "707f0ad631490599": {
+   "item_id": "707f0ad631490599",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both compatibly deny soccer activity with different details."
+  },
+  "4b0f2e434daabf4a": {
+   "item_id": "4b0f2e434daabf4a",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same denial is made over any person versus a man."
+  },
+  "7a0d1a0e631ba78d": {
+   "item_id": "7a0d1a0e631ba78d",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denying any flute is broader than denying a wooden flute."
+  },
+  "bae65dae47f514ac": {
+   "item_id": "bae65dae47f514ac",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Different legal names for Oppo may be a conflicting fact or compatible descriptions of related entities."
+  },
+  "d5bc95d2343971ef": {
+   "item_id": "d5bc95d2343971ef",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds a parenthetical on Jewell's citizenship and succession."
+  },
+  "843a1a7affdb1a98": {
+   "item_id": "843a1a7affdb1a98",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible details about a person riding a motorcycle."
+  },
+  "2454d7c72e22393d": {
+   "item_id": "2454d7c72e22393d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Pacing tiredly in a pen adds detail to a lion walking slowly."
+  },
+  "d78d924aeb9cba0c": {
+   "item_id": "d78d924aeb9cba0c",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The listed risk-factor race differs, African-American versus African-Caribbean."
+  },
+  "958ed61afdaadde2": {
+   "item_id": "958ed61afdaadde2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Roman Reigns as another example wrestler."
+  },
+  "4d16690f240334ef": {
+   "item_id": "4d16690f240334ef",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Wino on guitar alongside Lemmy."
+  },
+  "552174df30cba989": {
+   "item_id": "552174df30cba989",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The reporting time differs, 04:00 versus the full day 00:00-24:00."
+  },
+  "281c7aa90bd5bd94": {
+   "item_id": "281c7aa90bd5bd94",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Received and obtained are interchangeable synonyms here."
+  },
+  "c3e92e0897119b76": {
+   "item_id": "c3e92e0897119b76",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Woman specifies the person doing the severing."
+  },
+  "05dff1c736e8e9c5": {
+   "item_id": "05dff1c736e8e9c5",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Terrell's draft status changed from prospect to drafted."
+  },
+  "afb31b08e83e204c": {
+   "item_id": "afb31b08e83e204c",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The population figure differs between 2010 and today, a value that changes over time."
+  },
+  "63425203f8239c83": {
+   "item_id": "63425203f8239c83",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Man specifies the person who is not drawing."
+  }
+ },
+ "errors": []
+}

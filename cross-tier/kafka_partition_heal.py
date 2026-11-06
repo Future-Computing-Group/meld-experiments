@@ -22,6 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(REPO, "src"))
+from driver import C2_ID, ENCODER, NLI, c2_message, effect_message  # noqa: E402
 
 BOOTSTRAP = os.environ.get("SMP_KAFKA_BOOTSTRAP", "localhost:9092")
 KBRAIN = os.path.join(HERE, "kafka_brain.py")
@@ -74,7 +75,7 @@ def _last_c2_status(log_path):
                     r = json.loads(line)
                 except json.JSONDecodeError:
                     continue
-                if r.get("ev") == "merge" and r.get("claim_id") == "c2":
+                if r.get("ev") == "merge" and r.get("claim_id") == C2_ID:
                     eff = r.get("eff_status")
     except FileNotFoundError:
         pass
@@ -107,7 +108,7 @@ def run_one_trial(seed, bootstrap=None, join_s=4.0, timeout=12.0):
         procs[b] = subprocess.Popen(
             [sys.executable, KBRAIN, "--bootstrap", bootstrap, "--id", b,
              "--claims-topic", claims, "--acks-topic", acks, "--log", lg.name,
-             "--run-seconds", "60"], env=env)
+             "--encoder", ENCODER, "--nli", NLI, "--run-seconds", "60"], env=env)
 
     def _resume_all():
         for p in procs.values():
@@ -121,8 +122,8 @@ def run_one_trial(seed, bootstrap=None, join_s=4.0, timeout=12.0):
         time.sleep(join_s)  # let every consumer join the group + start polling
         t = KafkaTransport(bootstrap)
         # [1] baseline: deprecate c2; all three converge to DEPRECATED
-        t.publish(claims, json.dumps({"nonce": "d0", "op": "deprecate",
-                                      "claim_id": "c2", "link_id": "L_dep"}))
+        t.publish(claims, c2_message())                      # the claim c2 itself
+        t.publish(claims, effect_message("d0", "SUPERSEDE"))
         for b in brains:
             _wait_status(logs[b], "DEPRECATED", timeout)
 
@@ -131,8 +132,7 @@ def run_one_trial(seed, bootstrap=None, join_s=4.0, timeout=12.0):
         time.sleep(0.2 + rng.uniform(0.0, 0.3))  # seeded jitter, reproducible
 
         # [3] overrule during the partition: peers apply it, edge is cut off
-        t.publish(claims, json.dumps({"nonce": "o1", "op": "overrule",
-                                      "claim_id": "c2", "link_id": "L_ovr"}))
+        t.publish(claims, effect_message("o1", "OVERRULE"))
         peers_ovr = all(_wait_status(logs[b], "OVERRULED", timeout) for b in PEERS)
         edge_status = _last_c2_status(logs[EDGE])
         diverged_first = bool(peers_ovr and edge_status == "DEPRECATED")

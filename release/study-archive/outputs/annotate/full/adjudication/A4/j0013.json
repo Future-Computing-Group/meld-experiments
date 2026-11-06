@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0013",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "456919f412cafbcd865408561f0bd9bf046529cf0e9fbc16a4f7f04116c363cd",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"e33195e8fa539ec0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One list adds The Blue Bird and The Little Prince to otherwise identical claims.\"},\n{\"item_id\": \"bbd2cf28b1860ae1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The tire rolling race with two men specifies the men running a race.\"},\n{\"item_id\": \"fdb9d38f5927907a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same birth date; birthplace and parents versus nationality and profession are compatible details.\"},\n{\"item_id\": \"83d7cafaa8a53d63\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denying a white and brown dog pacing with difficulty is compatible with a light brown dog sprinting in water.\"},\n{\"item_id\": \"a464a348b0e90d0a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same announcement; one adds that Fradkov was the Russian Prime Minister.\"},\n{\"item_id\": \"58116c07012034ca\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same re-signing; one adds Premier League club, the other a free transfer.\"},\n{\"item_id\": \"2dd8b485c35370f9\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only an article and the spelling of praetorian differ.\"},\n{\"item_id\": \"d16b7db05f390d6d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One cast list adds Alexa Davalos as Beth Quinn.\"},\n{\"item_id\": \"9d60795eb2f2395e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible facts about Casilla's appearances at different stages of his career.\"},\n{\"item_id\": \"98a4bdd2b2a3be92\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Hitting Amanda and getting aggressive with her are compatible descriptions of the same incident with differing detail.\"},\n{\"item_id\": \"d1e15685cc3143a6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe two dogs facing each other, with compatible details of setting and colour.\"},\n{\"item_id\": \"8bc2e3f9a184a502\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A man and a woman walking in woods is compatible with two people and two dogs walking there.\"},\n{\"item_id\": \"794b21bab7e90df9\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same claim with the prepositional phrase moved.\"},\n{\"item_id\": \"e47ca97fb166fdc6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a dog activity on grass, and the two denials are compatible.\"},\n{\"item_id\": \"ed61dc8d81ab669e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the claim that the Pacers were 2018 NBA champions.\"},\n{\"item_id\": \"84150278a7d914fe\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A woman working two eggs in a bowl, with the wire whisk as an added detail.\"},\n{\"item_id\": \"6e89167eba18a248\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both concern the early coronavirus outbreak in Wuhan with compatible facts.\"},\n{\"item_id\": \"25177b5ef5b1f952\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Swapping the adverbs seriously and especially leaves the same assertion of damage by the same attackers.\"},\n{\"item_id\": \"567ee5db80c5cde4\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Indefinite men playing different instruments are different events.\"},\n{\"item_id\": \"ea8959dd298c7622\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cubs playing, with one adding a tiger cub and a ball.\"},\n{\"item_id\": \"1fe06111d79ab416\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The budgets clash if the same film is meant, but the texts may describe different films.\"},\n{\"item_id\": \"b8f0cd556ca44e21\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The same slicing claim is made over one potato versus several, and both can hold.\"},\n{\"item_id\": \"0406f0918367e580\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the Gujarati term Sava.\"},\n{\"item_id\": \"8b8a3d1bd3b1b5f2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Moving the western modifier from Ukraine to Lviv Oblast gives compatible location claims.\"},\n{\"item_id\": \"2b4d18ce27643488\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The unnamed striker may or may not be Vialli, so the pair is either related or unrelated.\"},\n{\"item_id\": \"f238ec682e05ee7b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Kids on a colourful structure, with one giving detail on the children and grotto.\"},\n{\"item_id\": \"c495e0962a945dfd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One list adds Tommy Macgregor.\"},\n{\"item_id\": \"e1a905e803c370d7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that he helped win the DFB-Pokal.\"},\n{\"item_id\": \"3bc0e1a0efd0aa13\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cleaning a shrimp is compatible with not cutting shrimps.\"},\n{\"item_id\": \"592302af0e469bb8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Christianity as largest religion is compatible with a twenty percent Muslim and considerable Christian population.\"},\n{\"item_id\": \"645d22813dbc3893\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the date September 2007.\"},\n{\"item_id\": \"17d22aac5d7c692e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Free calls and calls using stolen services are compatible details.\"},\n{\"item_id\": \"3139e279755b25da\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Hiking and walking together through wooded areas are near synonyms here.\"},\n{\"item_id\": \"ecf8e242b7a6e1d2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same 66 percent score; one adds review count and consensus.\"},\n{\"item_id\": \"4ab58c00365881f9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a dog in water in compatible ways.\"},\n{\"item_id\": \"a912ae5432981d71\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A kid splashing, with one adding a white t-shirt and shallow water.\"},\n{\"item_id\": \"c19940f8696f80be\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The clean and sustainable modifiers swap, changing the stated reason for the award.\"},\n{\"item_id\": \"bc359fe964df2d25\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Garbled reorder of bid, price and indifference may or may not change the term meant.\"},\n{\"item_id\": \"0e07d7a89ec62803\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The swapped Japan and Asia read either as the same presence claim or as a reversed containment.\"},\n{\"item_id\": \"8cbbfbc203b9cbd1\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The served area and the area served only in its eastern part swap.\"},\n{\"item_id\": \"d34aa47427d97153\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Was versus is a former leader is a tense shift only.\"},\n{\"item_id\": \"fead0a266a0feb94\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Denying a dog barking at a ball and a dog catching it are compatible.\"},\n{\"item_id\": \"f68b60ae82c51f38\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same singing guitarist; one adds heartily, the other a song.\"},\n{\"item_id\": \"16c66a80db44fe65\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A white car being driven, with one adding that it belongs to a man.\"},\n{\"item_id\": \"25ae44cbcba011af\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Very adds the degree of Patty's distress.\"},\n{\"item_id\": \"7bce8efcf38534e8\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Habitat lists clash as written unless different species or populations are meant.\"},\n{\"item_id\": \"24c29820097f2368\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Swapped northern and western descriptors read either as conflicting or as different populations.\"},\n{\"item_id\": \"3e5bff1ac093b4dc\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both truncated texts may assert the same fact or swap what the letter is and represents.\"},\n{\"item_id\": \"25c6dc2eab9986f7\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The village name and its containing places are swapped.\"},\n{\"item_id\": \"dd51083914883139\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A young rhino walking with its mother and a baby rhino shunning an adult may be one clashing scene or two unrelated ones.\"}\n]}\n"
+ ],
+ "labels": {
+  "e33195e8fa539ec0": {
+   "item_id": "e33195e8fa539ec0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One list adds The Blue Bird and The Little Prince to otherwise identical claims."
+  },
+  "bbd2cf28b1860ae1": {
+   "item_id": "bbd2cf28b1860ae1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The tire rolling race with two men specifies the men running a race."
+  },
+  "fdb9d38f5927907a": {
+   "item_id": "fdb9d38f5927907a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same birth date; birthplace and parents versus nationality and profession are compatible details."
+  },
+  "83d7cafaa8a53d63": {
+   "item_id": "83d7cafaa8a53d63",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denying a white and brown dog pacing with difficulty is compatible with a light brown dog sprinting in water."
+  },
+  "a464a348b0e90d0a": {
+   "item_id": "a464a348b0e90d0a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same announcement; one adds that Fradkov was the Russian Prime Minister."
+  },
+  "58116c07012034ca": {
+   "item_id": "58116c07012034ca",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same re-signing; one adds Premier League club, the other a free transfer."
+  },
+  "2dd8b485c35370f9": {
+   "item_id": "2dd8b485c35370f9",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only an article and the spelling of praetorian differ."
+  },
+  "d16b7db05f390d6d": {
+   "item_id": "d16b7db05f390d6d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One cast list adds Alexa Davalos as Beth Quinn."
+  },
+  "9d60795eb2f2395e": {
+   "item_id": "9d60795eb2f2395e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible facts about Casilla's appearances at different stages of his career."
+  },
+  "98a4bdd2b2a3be92": {
+   "item_id": "98a4bdd2b2a3be92",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Hitting Amanda and getting aggressive with her are compatible descriptions of the same incident with differing detail."
+  },
+  "d1e15685cc3143a6": {
+   "item_id": "d1e15685cc3143a6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe two dogs facing each other, with compatible details of setting and colour."
+  },
+  "8bc2e3f9a184a502": {
+   "item_id": "8bc2e3f9a184a502",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A man and a woman walking in woods is compatible with two people and two dogs walking there."
+  },
+  "794b21bab7e90df9": {
+   "item_id": "794b21bab7e90df9",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same claim with the prepositional phrase moved."
+  },
+  "e47ca97fb166fdc6": {
+   "item_id": "e47ca97fb166fdc6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a dog activity on grass, and the two denials are compatible."
+  },
+  "ed61dc8d81ab669e": {
+   "item_id": "ed61dc8d81ab669e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the claim that the Pacers were 2018 NBA champions."
+  },
+  "84150278a7d914fe": {
+   "item_id": "84150278a7d914fe",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A woman working two eggs in a bowl, with the wire whisk as an added detail."
+  },
+  "6e89167eba18a248": {
+   "item_id": "6e89167eba18a248",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both concern the early coronavirus outbreak in Wuhan with compatible facts."
+  },
+  "25177b5ef5b1f952": {
+   "item_id": "25177b5ef5b1f952",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Swapping the adverbs seriously and especially leaves the same assertion of damage by the same attackers."
+  },
+  "567ee5db80c5cde4": {
+   "item_id": "567ee5db80c5cde4",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Indefinite men playing different instruments are different events."
+  },
+  "ea8959dd298c7622": {
+   "item_id": "ea8959dd298c7622",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cubs playing, with one adding a tiger cub and a ball."
+  },
+  "1fe06111d79ab416": {
+   "item_id": "1fe06111d79ab416",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The budgets clash if the same film is meant, but the texts may describe different films."
+  },
+  "b8f0cd556ca44e21": {
+   "item_id": "b8f0cd556ca44e21",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The same slicing claim is made over one potato versus several, and both can hold."
+  },
+  "0406f0918367e580": {
+   "item_id": "0406f0918367e580",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the Gujarati term Sava."
+  },
+  "8b8a3d1bd3b1b5f2": {
+   "item_id": "8b8a3d1bd3b1b5f2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Moving the western modifier from Ukraine to Lviv Oblast gives compatible location claims."
+  },
+  "2b4d18ce27643488": {
+   "item_id": "2b4d18ce27643488",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The unnamed striker may or may not be Vialli, so the pair is either related or unrelated."
+  },
+  "f238ec682e05ee7b": {
+   "item_id": "f238ec682e05ee7b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Kids on a colourful structure, with one giving detail on the children and grotto."
+  },
+  "c495e0962a945dfd": {
+   "item_id": "c495e0962a945dfd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One list adds Tommy Macgregor."
+  },
+  "e1a905e803c370d7": {
+   "item_id": "e1a905e803c370d7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that he helped win the DFB-Pokal."
+  },
+  "3bc0e1a0efd0aa13": {
+   "item_id": "3bc0e1a0efd0aa13",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cleaning a shrimp is compatible with not cutting shrimps."
+  },
+  "592302af0e469bb8": {
+   "item_id": "592302af0e469bb8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Christianity as largest religion is compatible with a twenty percent Muslim and considerable Christian population."
+  },
+  "645d22813dbc3893": {
+   "item_id": "645d22813dbc3893",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the date September 2007."
+  },
+  "17d22aac5d7c692e": {
+   "item_id": "17d22aac5d7c692e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Free calls and calls using stolen services are compatible details."
+  },
+  "3139e279755b25da": {
+   "item_id": "3139e279755b25da",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Hiking and walking together through wooded areas are near synonyms here."
+  },
+  "ecf8e242b7a6e1d2": {
+   "item_id": "ecf8e242b7a6e1d2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same 66 percent score; one adds review count and consensus."
+  },
+  "4ab58c00365881f9": {
+   "item_id": "4ab58c00365881f9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a dog in water in compatible ways."
+  },
+  "a912ae5432981d71": {
+   "item_id": "a912ae5432981d71",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A kid splashing, with one adding a white t-shirt and shallow water."
+  },
+  "c19940f8696f80be": {
+   "item_id": "c19940f8696f80be",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The clean and sustainable modifiers swap, changing the stated reason for the award."
+  },
+  "bc359fe964df2d25": {
+   "item_id": "bc359fe964df2d25",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Garbled reorder of bid, price and indifference may or may not change the term meant."
+  },
+  "0e07d7a89ec62803": {
+   "item_id": "0e07d7a89ec62803",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The swapped Japan and Asia read either as the same presence claim or as a reversed containment."
+  },
+  "8cbbfbc203b9cbd1": {
+   "item_id": "8cbbfbc203b9cbd1",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The served area and the area served only in its eastern part swap."
+  },
+  "d34aa47427d97153": {
+   "item_id": "d34aa47427d97153",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Was versus is a former leader is a tense shift only."
+  },
+  "fead0a266a0feb94": {
+   "item_id": "fead0a266a0feb94",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Denying a dog barking at a ball and a dog catching it are compatible."
+  },
+  "f68b60ae82c51f38": {
+   "item_id": "f68b60ae82c51f38",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same singing guitarist; one adds heartily, the other a song."
+  },
+  "16c66a80db44fe65": {
+   "item_id": "16c66a80db44fe65",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A white car being driven, with one adding that it belongs to a man."
+  },
+  "25ae44cbcba011af": {
+   "item_id": "25ae44cbcba011af",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Very adds the degree of Patty's distress."
+  },
+  "7bce8efcf38534e8": {
+   "item_id": "7bce8efcf38534e8",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Habitat lists clash as written unless different species or populations are meant."
+  },
+  "24c29820097f2368": {
+   "item_id": "24c29820097f2368",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Swapped northern and western descriptors read either as conflicting or as different populations."
+  },
+  "3e5bff1ac093b4dc": {
+   "item_id": "3e5bff1ac093b4dc",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both truncated texts may assert the same fact or swap what the letter is and represents."
+  },
+  "25c6dc2eab9986f7": {
+   "item_id": "25c6dc2eab9986f7",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The village name and its containing places are swapped."
+  },
+  "dd51083914883139": {
+   "item_id": "dd51083914883139",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A young rhino walking with its mother and a baby rhino shunning an adult may be one clashing scene or two unrelated ones."
+  }
+ },
+ "errors": []
+}

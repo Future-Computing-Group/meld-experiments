@@ -14,7 +14,7 @@ rename): the loop runs an explicit PLAN turn first (the LLM proposes the steps),
 then executes ReAct steps; if it reaches ``max_steps`` WITHOUT a final answer it
 emits ONE reflection turn (a verbal critique) and runs a short second attempt.
 The MEMORY is the SAME MELD brain (no private store): every ``remember`` and every
-evidence-tool observation goes PUBLISH -> merge-on-receive -> Patch, exactly like
+evidence-tool observation goes PUBLISH -> admission, exactly like
 ReAct, so this baseline exercises the MELD merge integration identically.
 
 The LLM contract stays a PLAIN ReAct text turn (Thought:/Action:), honoring the

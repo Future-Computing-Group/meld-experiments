@@ -1,0 +1,58 @@
+cross-encoder/nli-deberta-v3-base {0: 'contradiction', 1: 'entailment', 2: 'neutral'} sanity [[0.0, 0.998, 0.002], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0]]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.20670858333081318, 's_per_pair_bs16': 0.037297320746195815}
+cross-encoder/nli-deberta-v3-large {0: 'contradiction', 1: 'entailment', 2: 'neutral'} sanity [[0.0, 0.999, 0.001], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0]]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.6095657569433873, 's_per_pair_bs16': 0.1055309908867154}
+cross-encoder/nli-roberta-base {0: 'contradiction', 1: 'entailment', 2: 'neutral'} sanity [[0.001, 0.992, 0.007], [0.993, 0.003, 0.003], [0.998, 0.001, 0.001]]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.10168707031213368, 's_per_pair_bs16': 0.016587768880223546}
+Some weights of the model checkpoint at FacebookAI/roberta-large-mnli were not used when initializing RobertaForSequenceClassification: ['roberta.pooler.dense.bias', 'roberta.pooler.dense.weight']
+- This IS expected if you are initializing RobertaForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+FacebookAI/roberta-large-mnli {0: 'CONTRADICTION', 1: 'NEUTRAL', 2: 'ENTAILMENT'} sanity [[0.004, 0.991, 0.005], [0.999, 0.0, 0.001], [0.999, 0.0, 0.001]]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.28758382900074747, 's_per_pair_bs16': 0.052632560114337444}
+cross-encoder/quora-distilroberta-base {0: 'LABEL_0'} sanity [0.189, 0.005, 0.004]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.05575531946184734, 's_per_pair_bs16': 0.008607310332687726}
+cross-encoder/quora-roberta-base {0: 'LABEL_0'} sanity [0.915, 0.082, 0.037]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.1352812508800222, 's_per_pair_bs16': 0.020449359161527052}
+cross-encoder/quora-roberta-large {0: 'LABEL_0'} sanity [0.028, 0.007, 0.014]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.2962310816122529, 's_per_pair_bs16': 0.055394337672623806}
+Intel/bert-base-uncased-mrpc {0: 'not_equivalent', 1: 'equivalent'} sanity [0.998, 0.998, 0.999]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.10781603125118029, 's_per_pair_bs16': 0.017964667970469844}
+semindan/paws_x_xlm_r_only_en {0: 'LABEL_0', 1: 'LABEL_1'} sanity [0.947, 0.076, 0.985]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.11728394791134633, 's_per_pair_bs16': 0.017936009979166556}
+domenicrosati/deberta-v3-large-finetuned-paws-paraphrase-detector {0: 'LABEL_0', 1: 'LABEL_1'} sanity [1.0, 0.0, 0.0]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.6183888524149855, 's_per_pair_bs16': 0.11839958788914373}
+cross-encoder/nli-deberta-v3-small {0: 'contradiction', 1: 'entailment', 2: 'neutral'} sanity [[0.0, 0.998, 0.002], [0.999, 0.0, 0.0], [0.999, 0.0, 0.001]]
+paws_dev 600
+sick_dev 300
+paws_val 600
+{'s_per_pair_bs1': 0.08679486632657547, 's_per_pair_bs16': 0.01823844162330109}

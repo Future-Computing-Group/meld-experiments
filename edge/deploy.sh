@@ -7,9 +7,9 @@
 # the configured iface. No docker --restart: a downed/injected node stays down
 # (failure injection must be real).
 #
-# Usage: ./deploy.sh {push|start|stop|status} [routing] [encoder]
-#   push                       docker save the image locally, load on every host
-#   start [broadcast|semantic] [hashing|minilm]   run the brains
+# Usage: ./deploy.sh {push|start|stop|status} [routing] [encoder] [node]
+#   push [smoke|campaign]      docker save the image locally, load on every host
+#   start [broadcast|semantic] [hashing|minilm] [node]   run the brains (config.py render_start)
 #   stop                       remove the brains + clear tc on every host
 #   status                     show container + healthz per host
 set -euo pipefail
@@ -45,28 +45,22 @@ for triple in $NODES; do
 done
 N=${#IDS[@]}
 
-peers_for() {   # all host IP:PORT urls except index $1
-  local self_i=$1 out=() j
-  for ((j=0; j<N; j++)); do [ "$j" -ne "$self_i" ] && out+=("http://${IPS[$j]}:$PORT"); done
-  local IFS=,; echo "${out[*]}"
-}
-
 case "${1:-}" in
   push)
     SEL="${2:-smoke}"; [ "$SEL" = "campaign" ] && IMG="$IMG_CAMPAIGN"
     echo "saving $IMG -> $TAR"; docker save "$IMG" | gzip > "$TAR"; ls -lh "$TAR"
     for ((i=0; i<N; i++)); do echo "load -> ${HOSTS[$i]}"; ssh "${HOSTS[$i]}" "docker load" < "$TAR"; done ;;
   start)
+    # One start path: config.py render_start renders the docker run (deployed NLI, the run key
+    # as a read-only file, the epoch read-only, SMP_HTTP_TIMEOUT; lexical only on the smoke rung).
     ROUTING="${2:-broadcast}"          # broadcast | semantic
     ENC="${3:-$ENC_DEFAULT}"           # hashing (smoke) | minilm (campaign)
-    [ "$ENC" = "minilm" ] && IMG="$IMG_CAMPAIGN"
+    ONLY="${4:-}"                      # optional: start this node id only
     for ((i=0; i<N; i++)); do
-      peers=$(peers_for "$i")
-      ssh "${HOSTS[$i]}" "sudo tc qdisc del dev $IFACE root >/dev/null 2>&1 || true; \
-        docker rm -f meld-brain >/dev/null 2>&1 || true; docker run -d --name meld-brain \
-        --network=host -e SMP_NODE_ID=${IDS[$i]} -e SMP_PORT=$PORT -e SMP_ENCODER=$ENC \
-        -e SMP_NLI=lexical -e SMP_ROUTING_MODE=$ROUTING -e SMP_PEERS='$peers' $IMG" >/dev/null
-      echo "started ${IDS[$i]} @ ${HOSTS[$i]}  routing=$ROUTING enc=$ENC peers=$peers"
+      [ -n "$ONLY" ] && [ "${IDS[$i]}" != "$ONLY" ] && continue
+      cmd=$("$PYBIN" "$HERE/config.py" start-cmd "${IDS[$i]}" "$ROUTING" "$ENC")
+      ssh "${HOSTS[$i]}" "$cmd" >/dev/null
+      echo "started ${IDS[$i]} @ ${HOSTS[$i]}  routing=$ROUTING enc=$ENC"
     done ;;
   status)
     for ((i=0; i<N; i++)); do
@@ -77,8 +71,8 @@ case "${1:-}" in
   stop)
     for ((i=0; i<N; i++)); do
       ssh "${HOSTS[$i]}" "docker rm -f meld-brain >/dev/null 2>&1 || true; \
-                sudo tc qdisc del dev $IFACE root >/dev/null 2>&1 || true"
+                sudo -n tc qdisc del dev $IFACE root >/dev/null 2>&1 || true"
       echo "stopped + tc-cleared ${HOSTS[$i]}"
     done ;;
-  *) echo "usage: $0 {push|start|stop|status} [routing] [encoder]"; exit 2 ;;
+  *) echo "usage: $0 {push|start|stop|status} [routing] [encoder] [node]"; exit 2 ;;
 esac

@@ -26,20 +26,39 @@ def score_brains(patch_claim: str, brains: Dict[str, List[str]], *,
             for bid, texts in brains.items()}
 
 
-def semantic_route(patch_claim: str, brains: Dict[str, List[str]], *,
-                   encoder: str, sigma_lo: float,
-                   top_k: Optional[int] = None,
-                   es: "EmbeddingSimilarity" = None) -> Set[str]:
-    """Deliver the Patch only to brains scoring at/above ``sigma_lo`` (the relatedness
-    floor) -- i.e. brains that would find it relevant. If ``top_k`` is set, keep only
-    the ``top_k`` highest-scoring of those (score-ranked, never a positional slice).
-    A Patch relevant to no brain is delivered to none (no force-route fallback)."""
-    scores = score_brains(patch_claim, brains, encoder=encoder, es=es)
+def select_peers(scores: Dict[str, float], *, sigma_lo: float,
+                 top_k: Optional[int] = None, margin: Optional[float] = None,
+                 gap: bool = False) -> Set[str]:
+    """Selection over per-brain scores. Eligible = score at/above ``sigma_lo`` (the floor).
+    Budget-free cuts on the eligible list, sorted by score: ``margin`` keeps scores at/above
+    max - margin; ``gap`` cuts at the largest drop between consecutive scores, the floor
+    counting as the bottom score (so a list far above the floor is kept whole). ``top_k``
+    (the budget) is applied last."""
     eligible = [(bid, s) for bid, s in scores.items() if s >= sigma_lo]
     eligible.sort(key=lambda kv: kv[1], reverse=True)
+    if margin is not None and eligible:
+        eligible = [(b, s) for b, s in eligible if s >= eligible[0][1] - margin]
+    if gap and eligible:
+        vals = [s for _, s in eligible] + [sigma_lo]
+        drops = [vals[i] - vals[i + 1] for i in range(len(eligible))]
+        eligible = eligible[:drops.index(max(drops)) + 1]
     if top_k is not None:
         eligible = eligible[:top_k]
     return {bid for bid, _ in eligible}
+
+
+def semantic_route(patch_claim: str, brains: Dict[str, List[str]], *,
+                   encoder: str, sigma_lo: float,
+                   top_k: Optional[int] = None,
+                   es: "EmbeddingSimilarity" = None,
+                   margin: Optional[float] = None, gap: bool = False) -> Set[str]:
+    """Deliver the Patch only to brains scoring at/above ``sigma_lo`` (the relatedness
+    floor) -- i.e. brains that would find it relevant. If ``top_k`` is set, keep only
+    the ``top_k`` highest-scoring of those (score-ranked, never a positional slice).
+    ``margin`` / ``gap`` are the budget-free cuts of select_peers.
+    A Patch relevant to no brain is delivered to none (no force-route fallback)."""
+    scores = score_brains(patch_claim, brains, encoder=encoder, es=es)
+    return select_peers(scores, sigma_lo=sigma_lo, top_k=top_k, margin=margin, gap=gap)
 
 
 def broadcast_route(brains: Dict[str, List[str]]) -> Set[str]:
@@ -84,5 +103,5 @@ def routing_metrics(*, delivered: List[Set[str]],
     }
 
 
-__all__ = ["score_brains", "semantic_route", "broadcast_route", "random_route",
+__all__ = ["score_brains", "select_peers", "semantic_route", "broadcast_route", "random_route",
            "round_robin_route", "routing_metrics"]

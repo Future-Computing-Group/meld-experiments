@@ -176,5 +176,64 @@ class OpenWeightLLM:
         return data["choices"][0]["text"]
 
 
-__all__ = ["MockLLM", "OpenWeightLLM", "open_model", "OPEN_MODEL_AXIS",
+class ChatJSON:
+    """OpenAI-compatible ``/chat/completions`` client for the structured-output baselines.
+
+    ``chat_json(messages, response_format)`` returns the raw message content (the caller
+    parses it as the upstream system would, so parse failures are measured, not hidden).
+    ``base_url`` is required (e.g. ``http://host:port/v1``). With ``cache_dir`` every response
+    is stored under sha256 of the request body (model, messages, response_format, decode
+    parameters), so a re-run replays the same responses; pass no cache_dir to probe
+    nondeterminism. An HTTP or transport error raises: a run with one is void."""
+
+    def __init__(self, base_url: str, model: str, *, temperature: float = 0.0,
+                 max_tokens: int = 2000, cache_dir: Optional[str] = None,
+                 timeout: float = 300.0):
+        self.url = base_url.rstrip("/") + "/chat/completions"
+        self.model, self.temperature, self.max_tokens = model, temperature, max_tokens
+        self.cache_dir, self.timeout = cache_dir, timeout
+        self.counters = {"calls": 0, "cache_hits": 0}
+
+    def chat_json(self, messages: List[dict], response_format: dict) -> str:
+        import hashlib
+        import json
+        import os
+        import urllib.request
+
+        body = {"model": self.model, "messages": messages, "response_format": response_format,
+                "temperature": self.temperature, "max_tokens": self.max_tokens}
+        blob = json.dumps(body, sort_keys=True).encode("utf-8")
+        path = (os.path.join(self.cache_dir, hashlib.sha256(blob).hexdigest() + ".json")
+                if self.cache_dir else None)
+        if path and os.path.exists(path):
+            self.counters["cache_hits"] += 1
+            with open(path, encoding="utf-8") as f:
+                return json.load(f)["content"]
+        req = urllib.request.Request(self.url, data=blob,
+                                     headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=self.timeout) as resp:  # noqa: S310
+            content = json.loads(resp.read().decode("utf-8"))["choices"][0]["message"]["content"] or ""
+        self.counters["calls"] += 1
+        if path:
+            os.makedirs(self.cache_dir, exist_ok=True)
+            with open(path + ".tmp", "w", encoding="utf-8") as f:
+                json.dump({"request": body, "content": content}, f)
+            os.replace(path + ".tmp", path)
+        return content
+
+
+class FakeChatJSON:
+    """Deterministic offline stand-in for ``ChatJSON``: ``respond(messages, response_format)``
+    returns the raw content; every request is recorded in ``calls``."""
+
+    def __init__(self, respond):
+        self.respond = respond
+        self.calls: List[tuple] = []
+
+    def chat_json(self, messages: List[dict], response_format: dict) -> str:
+        self.calls.append((messages, response_format))
+        return self.respond(messages, response_format)
+
+
+__all__ = ["MockLLM", "OpenWeightLLM", "ChatJSON", "FakeChatJSON", "open_model", "OPEN_MODEL_AXIS",
            "DEFAULT_OPEN_WEIGHT_MODEL", "DEFAULT_OPEN_WEIGHT_LICENSE"]

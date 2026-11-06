@@ -1,0 +1,51 @@
+graphiti on LongMemEval, shard 5 (Roihu job 2499127_2): the run stopped on the world after the last row below; that world's rows are absent and the world is excluded.
+
+--- client-5.log (progress lines removed) ---
+
+Traceback (most recent call last):
+  File "scripts/run_nbrains.py", line 157, in <module>
+    main()
+  File "scripts/run_nbrains.py", line 141, in main
+    b = topology.build(plan, cond, top, **kw, baselines=baselines)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/meld/eval/topology.py", line 129, in build
+    out = baselines[condition](plan, kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "scripts/run_nbrains.py", line 118, in <lambda>
+    baselines = {a.baseline: lambda plan, kw: topology.build(
+                                              ^^^^^^^^^^^^^^^
+  File "src/meld/eval/topology.py", line 155, in build
+    out.receive(*raw)
+  File "src/meld/agent/memory.py", line 118, in receive
+    return self._admit(obj) if new and isinstance(obj, Delta) else []
+           ^^^^^^^^^^^^^^^^
+  File "src/meld/baselines/memory.py", line 74, in _admit
+    v = self.policy(d.text, [nodes[k][1].text for k in old])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/meld/baselines/graphiti_policy.py", line 55, in __call__
+    raw = self.llm.chat_json([{"role": m.role, "content": _clean_input(None, m.content)}
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/meld/agent/llm.py", line 214, in chat_json
+    with urllib.request.urlopen(req, timeout=self.timeout) as resp:  # noqa: S310
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 521, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 630, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 559, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib64/python3.12/urllib/request.py", line 639, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 400: Bad Request
+
+--- vLLM server ---
+vllm.exceptions.VLLMValidationError: This model's maximum context length is 32768 tokens. However, you requested 2000 output tokens and your prompt contains at least 30769 input tokens, for a total of at least 32769 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=30769)

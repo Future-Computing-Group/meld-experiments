@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0003",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "aef26ef3fac1f351dff0beb6a951d7909a4533f4cd0cd0f7fe723198562423e2",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"e8130c5bf292f289\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny guitar playing and can hold together, one adding singing.\"},\n{\"item_id\": \"40ad8df9eab4dcc4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Calling the rider a man adds a detail to calling them a person.\"},\n{\"item_id\": \"a8de9fb678def554\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One filmography adds Record City (1978) to an otherwise identical list.\"},\n{\"item_id\": \"e3af4d77e6007870\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One description adds rapper to his compatible list of roles.\"},\n{\"item_id\": \"65695410aa4e5c51\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only verse versus verses differs, a grammatical slip.\"},\n{\"item_id\": \"5f60131ffca47b44\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the typo deposists versus deposits differs.\"},\n{\"item_id\": \"eaf3aa5804c99a53\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A white and tan dog in tall grass and a black and white dog outdoors describe different dogs.\"},\n{\"item_id\": \"9d9d90f62ca7c7ec\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"General and fiduciary swap between the duties and the law that imposes them.\"},\n{\"item_id\": \"8377940855b5a882\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Magneto at a San Francisco chessboard, with compatible details of looking weak versus being alone in a park.\"},\n{\"item_id\": \"75435c540046d2a0\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The premiere is stated as already held versus upcoming, a status that changes over time.\"},\n{\"item_id\": \"29ff174318666117\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A young man with a motocross bike on a hill and a child riding a bike on a path are different scenes.\"},\n{\"item_id\": \"84f984a5d797f502\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Part 2 followed versus will follow is a release status that changes over time.\"},\n{\"item_id\": \"56b9b8de520939ca\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Five young adults lounging indoors and five adults on stone steps describe different scenes.\"},\n{\"item_id\": \"8d2a43c2eeb92890\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Began and helped swap between the performances and the poetry recitals.\"},\n{\"item_id\": \"9cc821f7df107f63\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the doubled amount was a ransom.\"},\n{\"item_id\": \"0d14aaf1d494cef2\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The same Netflix distribution claim for the UK versus everywhere outside the US, both able to hold.\"},\n{\"item_id\": \"9109ca936e1f5c8e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both have a man and woman walking in the woods, one adding that he leads her.\"},\n{\"item_id\": \"a8cb8cad28c878dd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"No man playing a keyboard is compatible with no man playing two keyboards, one adding the count.\"},\n{\"item_id\": \"8b666640694d5a0f\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both garbled sentences may state the same 51 stranded runners or give 51 a different role.\"},\n{\"item_id\": \"c852cfc6ceb3f969\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"American-born versus American nationality are compatible but different details.\"},\n{\"item_id\": \"c8660f54d4a3fdde\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"140 million albums and singles is compatible with 32 million albums as of 2008.\"},\n{\"item_id\": \"28ce159f26f78800\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying a woman playing guitar and denying a woman exercising concern different activities.\"},\n{\"item_id\": \"5d1093041a91fd89\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A man slicing a potato specifies the person slicing it.\"},\n{\"item_id\": \"029e0e82829c8190\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give the same death date, so is versus was is only a tense slip.\"},\n{\"item_id\": \"6440f3c3076c0249\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The film will compete versus competed for the Golden Lion, a status changing over time.\"},\n{\"item_id\": \"0c6bcad2bfd95e4e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give the same overtime loss written in either score order, one adding the 57 yard field goal.\"},\n{\"item_id\": \"1f37a708501fa108\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe compatible events in Alice's story around Raccoon City.\"},\n{\"item_id\": \"6e0b291cfec81819\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Marriage is symmetric, so the statements assert the same thing.\"},\n{\"item_id\": \"a77378e6e088411c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Stroking an animal's belly and holding a small animal are compatible details of handling an animal.\"},\n{\"item_id\": \"7d1b7118f00230e8\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The growth period is 21 years versus 20 years for the same fixed span.\"},\n{\"item_id\": \"165692802790622f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Invited and chosen are used interchangeably for the same 1992 selection.\"},\n{\"item_id\": \"529fe2f166cdb038\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The full sentence adds Kat Von D's grandmother to the fragment.\"},\n{\"item_id\": \"4f30e36b197ef8f2\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The review count and average rating differ, values that change as reviews accrue.\"},\n{\"item_id\": \"3286e4d7fa347081\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Heavy rock versus heavy metal may be a genre contradiction or a compatible refinement.\"},\n{\"item_id\": \"60a25041efda65c9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A brown and black dog looking upwards specifies an animal looking around.\"},\n{\"item_id\": \"1231a969c25b2ddc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds that Stree is the 2018 film.\"},\n{\"item_id\": \"195f6cbad89d6a78\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One list adds ixigo to the cab companies.\"},\n{\"item_id\": \"278ddb209fb16ef5\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"Vancouver Island and Mount Filberg swap roles in the location of Mount Cobb.\"},\n{\"item_id\": \"4ec322ff8136e8c8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Two dogs running, with compatible details of high grass versus running quickly in a park.\"},\n{\"item_id\": \"5c9b26082df0df91\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Swapping public and various between supporters changes details but both can hold.\"},\n{\"item_id\": \"9c6ca3fb2813279e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny singing with a guitar, one specifying a seated woman.\"},\n{\"item_id\": \"51ac6f4eaaf23775\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Ratings for Scream 2 and for a season 2 concern different works.\"},\n{\"item_id\": \"5d3c09993f8d5d87\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One names Taran Adarsh's outlet Bollywood Hungama.\"},\n{\"item_id\": \"e3c92dcc78b375f7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Two kids with tongues out, with compatible details of colours and looking at the camera.\"},\n{\"item_id\": \"a1d8b6287f0cf155\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Channel 4 listings to the ITV listings restricted to TVTimes.\"},\n{\"item_id\": \"732cfa657bd55217\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds why Pique was sent off.\"},\n{\"item_id\": \"ce9e102e350914b8\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A man versus a lady slicing a tomato may be one scene in conflict or two unrelated scenes.\"},\n{\"item_id\": \"3468b3860c645065\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Defeat of America versus defeat to America reverses who lost.\"},\n{\"item_id\": \"1699608cf500383b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds Dustin Lance Black as the screenplay winner.\"},\n{\"item_id\": \"58fa798e5d2f63aa\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Are versus were reflects whether the group still exists, a status over time.\"}\n]}\n"
+ ],
+ "labels": {
+  "e8130c5bf292f289": {
+   "item_id": "e8130c5bf292f289",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny guitar playing and can hold together, one adding singing."
+  },
+  "40ad8df9eab4dcc4": {
+   "item_id": "40ad8df9eab4dcc4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Calling the rider a man adds a detail to calling them a person."
+  },
+  "a8de9fb678def554": {
+   "item_id": "a8de9fb678def554",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One filmography adds Record City (1978) to an otherwise identical list."
+  },
+  "e3af4d77e6007870": {
+   "item_id": "e3af4d77e6007870",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One description adds rapper to his compatible list of roles."
+  },
+  "65695410aa4e5c51": {
+   "item_id": "65695410aa4e5c51",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only verse versus verses differs, a grammatical slip."
+  },
+  "5f60131ffca47b44": {
+   "item_id": "5f60131ffca47b44",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the typo deposists versus deposits differs."
+  },
+  "eaf3aa5804c99a53": {
+   "item_id": "eaf3aa5804c99a53",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A white and tan dog in tall grass and a black and white dog outdoors describe different dogs."
+  },
+  "9d9d90f62ca7c7ec": {
+   "item_id": "9d9d90f62ca7c7ec",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "General and fiduciary swap between the duties and the law that imposes them."
+  },
+  "8377940855b5a882": {
+   "item_id": "8377940855b5a882",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Magneto at a San Francisco chessboard, with compatible details of looking weak versus being alone in a park."
+  },
+  "75435c540046d2a0": {
+   "item_id": "75435c540046d2a0",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The premiere is stated as already held versus upcoming, a status that changes over time."
+  },
+  "29ff174318666117": {
+   "item_id": "29ff174318666117",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A young man with a motocross bike on a hill and a child riding a bike on a path are different scenes."
+  },
+  "84f984a5d797f502": {
+   "item_id": "84f984a5d797f502",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Part 2 followed versus will follow is a release status that changes over time."
+  },
+  "56b9b8de520939ca": {
+   "item_id": "56b9b8de520939ca",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Five young adults lounging indoors and five adults on stone steps describe different scenes."
+  },
+  "8d2a43c2eeb92890": {
+   "item_id": "8d2a43c2eeb92890",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Began and helped swap between the performances and the poetry recitals."
+  },
+  "9cc821f7df107f63": {
+   "item_id": "9cc821f7df107f63",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the doubled amount was a ransom."
+  },
+  "0d14aaf1d494cef2": {
+   "item_id": "0d14aaf1d494cef2",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The same Netflix distribution claim for the UK versus everywhere outside the US, both able to hold."
+  },
+  "9109ca936e1f5c8e": {
+   "item_id": "9109ca936e1f5c8e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both have a man and woman walking in the woods, one adding that he leads her."
+  },
+  "a8cb8cad28c878dd": {
+   "item_id": "a8cb8cad28c878dd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "No man playing a keyboard is compatible with no man playing two keyboards, one adding the count."
+  },
+  "8b666640694d5a0f": {
+   "item_id": "8b666640694d5a0f",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both garbled sentences may state the same 51 stranded runners or give 51 a different role."
+  },
+  "c852cfc6ceb3f969": {
+   "item_id": "c852cfc6ceb3f969",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "American-born versus American nationality are compatible but different details."
+  },
+  "c8660f54d4a3fdde": {
+   "item_id": "c8660f54d4a3fdde",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "140 million albums and singles is compatible with 32 million albums as of 2008."
+  },
+  "28ce159f26f78800": {
+   "item_id": "28ce159f26f78800",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying a woman playing guitar and denying a woman exercising concern different activities."
+  },
+  "5d1093041a91fd89": {
+   "item_id": "5d1093041a91fd89",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A man slicing a potato specifies the person slicing it."
+  },
+  "029e0e82829c8190": {
+   "item_id": "029e0e82829c8190",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give the same death date, so is versus was is only a tense slip."
+  },
+  "6440f3c3076c0249": {
+   "item_id": "6440f3c3076c0249",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The film will compete versus competed for the Golden Lion, a status changing over time."
+  },
+  "0c6bcad2bfd95e4e": {
+   "item_id": "0c6bcad2bfd95e4e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give the same overtime loss written in either score order, one adding the 57 yard field goal."
+  },
+  "1f37a708501fa108": {
+   "item_id": "1f37a708501fa108",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe compatible events in Alice's story around Raccoon City."
+  },
+  "6e0b291cfec81819": {
+   "item_id": "6e0b291cfec81819",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Marriage is symmetric, so the statements assert the same thing."
+  },
+  "a77378e6e088411c": {
+   "item_id": "a77378e6e088411c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Stroking an animal's belly and holding a small animal are compatible details of handling an animal."
+  },
+  "7d1b7118f00230e8": {
+   "item_id": "7d1b7118f00230e8",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The growth period is 21 years versus 20 years for the same fixed span."
+  },
+  "165692802790622f": {
+   "item_id": "165692802790622f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Invited and chosen are used interchangeably for the same 1992 selection."
+  },
+  "529fe2f166cdb038": {
+   "item_id": "529fe2f166cdb038",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The full sentence adds Kat Von D's grandmother to the fragment."
+  },
+  "4f30e36b197ef8f2": {
+   "item_id": "4f30e36b197ef8f2",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The review count and average rating differ, values that change as reviews accrue."
+  },
+  "3286e4d7fa347081": {
+   "item_id": "3286e4d7fa347081",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Heavy rock versus heavy metal may be a genre contradiction or a compatible refinement."
+  },
+  "60a25041efda65c9": {
+   "item_id": "60a25041efda65c9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A brown and black dog looking upwards specifies an animal looking around."
+  },
+  "1231a969c25b2ddc": {
+   "item_id": "1231a969c25b2ddc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds that Stree is the 2018 film."
+  },
+  "195f6cbad89d6a78": {
+   "item_id": "195f6cbad89d6a78",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One list adds ixigo to the cab companies."
+  },
+  "278ddb209fb16ef5": {
+   "item_id": "278ddb209fb16ef5",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "Vancouver Island and Mount Filberg swap roles in the location of Mount Cobb."
+  },
+  "4ec322ff8136e8c8": {
+   "item_id": "4ec322ff8136e8c8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Two dogs running, with compatible details of high grass versus running quickly in a park."
+  },
+  "5c9b26082df0df91": {
+   "item_id": "5c9b26082df0df91",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Swapping public and various between supporters changes details but both can hold."
+  },
+  "9c6ca3fb2813279e": {
+   "item_id": "9c6ca3fb2813279e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny singing with a guitar, one specifying a seated woman."
+  },
+  "51ac6f4eaaf23775": {
+   "item_id": "51ac6f4eaaf23775",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Ratings for Scream 2 and for a season 2 concern different works."
+  },
+  "5d3c09993f8d5d87": {
+   "item_id": "5d3c09993f8d5d87",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One names Taran Adarsh's outlet Bollywood Hungama."
+  },
+  "e3c92dcc78b375f7": {
+   "item_id": "e3c92dcc78b375f7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Two kids with tongues out, with compatible details of colours and looking at the camera."
+  },
+  "a1d8b6287f0cf155": {
+   "item_id": "a1d8b6287f0cf155",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Channel 4 listings to the ITV listings restricted to TVTimes."
+  },
+  "732cfa657bd55217": {
+   "item_id": "732cfa657bd55217",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds why Pique was sent off."
+  },
+  "ce9e102e350914b8": {
+   "item_id": "ce9e102e350914b8",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A man versus a lady slicing a tomato may be one scene in conflict or two unrelated scenes."
+  },
+  "3468b3860c645065": {
+   "item_id": "3468b3860c645065",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Defeat of America versus defeat to America reverses who lost."
+  },
+  "1699608cf500383b": {
+   "item_id": "1699608cf500383b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds Dustin Lance Black as the screenplay winner."
+  },
+  "58fa798e5d2f63aa": {
+   "item_id": "58fa798e5d2f63aa",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Are versus were reflects whether the group still exists, a status over time."
+  }
+ },
+ "errors": []
+}

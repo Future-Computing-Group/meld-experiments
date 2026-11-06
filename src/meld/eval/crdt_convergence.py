@@ -12,7 +12,7 @@ import random
 from collections import Counter
 from typing import Dict, List, Tuple
 
-from meld.merge.status_crdt import StatusState, effective_status
+from meld.merge.status_crdt import LinkState, effective_status
 
 Event = Tuple[str, str, str]  # (claim_key, link_id, effect)
 TimedEvent = Tuple[float, str, str]  # (time, link_id, effect) for one claim
@@ -23,7 +23,7 @@ def _status_at(applied: List[TimedEvent], mode: str) -> str:
     if not applied:
         return "ACTIVE"
     if mode == "crdt":
-        st = StatusState()
+        st = LinkState()
         for _t, lid, eff in applied:
             st = st.add(lid, eff)
         return effective_status(st)
@@ -56,10 +56,10 @@ def _statuses_for_order(events: List[Event], order: List[int],
                         mode: str = "crdt") -> Dict[str, str]:
     if mode == "crdt":
         # state-based CRDT: OR-set add + lattice-join recompute (order-independent)
-        states: Dict[str, StatusState] = {}
+        states: Dict[str, LinkState] = {}
         for i in order:
             ck, lid, eff = events[i]
-            states[ck] = states.get(ck, StatusState()).add(lid, eff)
+            states[ck] = states.get(ck, LinkState()).add(lid, eff)
         return {ck: effective_status(st) for ck, st in states.items()}
     if mode == "lww":
         # last-writer-wins baseline: per claim, the LAST-applied effect wins
@@ -270,8 +270,8 @@ REJECT_RACE_SCENARIO = {
 
 def _materialization_status(links, order):
     """MELD gate: admit every link into the G-Set; drop stale links at READ."""
-    from meld.merge.status_crdt import StatusState, effective_status_gated
-    st = StatusState()
+    from meld.merge.status_crdt import LinkState, effective_status_gated
+    st = LinkState()
     stale = set()
     for i in order:
         lid, eff, fresh = links[i]
@@ -284,8 +284,8 @@ def _materialization_status(links, order):
 def _admission_status(links, order):
     """Naive gate: reject a link at admission if the claim is already non-ACTIVE
     (or the link is stale). The admitted set is order-dependent."""
-    from meld.merge.status_crdt import StatusState, effective_status
-    st = StatusState()
+    from meld.merge.status_crdt import LinkState, effective_status
+    st = LinkState()
     for i in order:
         lid, eff, fresh = links[i]
         if not fresh:

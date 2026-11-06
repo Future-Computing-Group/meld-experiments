@@ -12,8 +12,8 @@ NO network.
 
 LOAD-BEARING MELD DECISION (the MELD-on-message choice): an item's ``context``
 paragraphs are fed THROUGH the MELD brain as merged observations
-(``feed_context_through_brain``: each paragraph -> PUBLISH -> merge_on_receive ->
-Patch, chunked into recallable claims), NOT injected as a raw prompt blob. So the
+(``feed_context_through_brain``: each sentence -> PUBLISH -> admission, chunked
+into recallable claims), NOT injected as a raw prompt blob. So the
 distractor paragraphs accrue in the brain and a later ``recall`` retrieves the
 relevant evidence; the gate measures recall + multi-hop reasoning over
 brain-resident memory, which is precisely what MELD contributes (GAIA's competence
@@ -31,7 +31,7 @@ from dataclasses import dataclass, field
 from typing import Any, List
 
 from meld.agent.memory import SMPMemory
-from meld.protocol.messages import Patch
+from meld.merge.classifier import Decision
 
 
 @dataclass
@@ -217,15 +217,15 @@ def load_hotpot_fixture(n: int = 4) -> List[HotpotTask]:
 # --------------------------------------------------------------------------
 
 
-def feed_context_through_brain(task: HotpotTask, memory: SMPMemory) -> List[Patch]:
-    """Feed the item's ``context`` paragraphs THROUGH the MELD brain as merged
-    observations: each paragraph (title + sentences) is published as one
-    observation that traverses PUBLISH -> merge_on_receive -> Patch -> apply. So
-    the distractor paragraphs accrue in the brain and a later ``recall`` retrieves
-    the relevant evidence (multi-hop reasoning over brain-resident memory).
+def feed_context_through_brain(task: HotpotTask, memory: SMPMemory) -> List[Decision]:
+    """Feed the item's ``context`` paragraphs THROUGH the MELD brain as admitted
+    observations: each sentence (with its title) is published as one signed delta
+    and admitted (PUBLISH -> receive gate -> admission). So the distractor
+    paragraphs accrue in the brain and a later ``recall`` retrieves the relevant
+    evidence (multi-hop reasoning over brain-resident memory).
 
-    Returns the list of all emitted Patches (one or more per paragraph)."""
-    patches: List[Patch] = []
+    Returns the admission decisions (none for an exact copy of a held claim)."""
+    patches: List[Decision] = []
     for title, sentences in task.context:
         # one observation per sentence keyed by its title, so each gold/distractor
         # sentence is an independently recallable claim (chunked claims path).

@@ -1,0 +1,64 @@
+{
+ "tables": {
+  "lme": {
+   "sigma_q_paraphrase_c1": 0.9356,
+   "p_c_c2_to_c1": 0.9987,
+   "p_e_c2_to_c1": 0.0,
+   "p_n_c2_to_c1": 0.0013,
+   "s_paraphrase_c1": 0.9935,
+   "s_q": 65108,
+   "theta": 0.0765,
+   "theta_q": 5011,
+   "n_prior": 1,
+   "decision_paraphrase": "MERGE",
+   "decision_c2": "CONFLICT",
+   "gates_c2": [
+    "mask"
+   ],
+   "decisions": [
+    "INSERT",
+    "MERGE",
+    "RELATE",
+    "CONFLICT"
+   ],
+   "epoch_rescoped_from": "50e5f63a35f307d38161b541fee212b5",
+   "git_sha": "36092c0eb810ce7e773c2a86595147d14b8db9c8",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "eb5738da2e6e85b6fc59682ba48683d3",
+   "epoch_id": "11e8ef3866fc017f8e5ce009de223158",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+  },
+  "hotpot": {
+   "sigma_q_paraphrase_c1": 0.9356,
+   "p_c_c2_to_c1": 0.9987,
+   "p_e_c2_to_c1": 0.0,
+   "p_n_c2_to_c1": 0.0013,
+   "s_paraphrase_c1": 0.9935,
+   "s_q": 65108,
+   "theta": 0.0069,
+   "theta_q": 451,
+   "n_prior": 1,
+   "decision_paraphrase": "MERGE",
+   "decision_c2": "CONFLICT",
+   "gates_c2": [
+    "mask"
+   ],
+   "decisions": [
+    "INSERT",
+    "MERGE",
+    "RELATE",
+    "CONFLICT"
+   ],
+   "epoch_rescoped_from": "59b847dab1ffa1000f665c6425e6d66a",
+   "git_sha": "36092c0eb810ce7e773c2a86595147d14b8db9c8",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "eb5738da2e6e85b6fc59682ba48683d3",
+   "epoch_id": "eb12b56ff814a872c76649ca4d2c08cf",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+  }
+ }
+}

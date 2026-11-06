@@ -1,0 +1,207 @@
+{
+ "batch_id": "j0001",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "dba5b62bc4364c224e04f039a7d6b18bc832ac5630873c7795a78a548548fb24",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"cceccf8c4f924310\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both put the airport-to-hotel train fare at $10, and one adds a request for directions.\"},\n{\"item_id\": \"c1320b91e41816e4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Compatible facts about the 2010 KHL Junior Draft (player ages versus draft order and date).\"},\n{\"item_id\": \"151913bb14b3466c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both ask for a backpack with secure pockets, and one adds a price cap under $30.\"},\n{\"item_id\": \"d3b86a7a6e349846\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Both are the same request to continue.\"},\n{\"item_id\": \"1dc67719f6413b94\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A citation and a description of the same Binion case are compatible details.\"},\n{\"item_id\": \"3b4c353521c212fb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both ask for another method, but redoing and writing are different requests about the same task.\"},\n{\"item_id\": \"727ff876582d5108\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The Lomonosov biography is identical apart from a trailing 'as recorded'.\"},\n{\"item_id\": \"95119353909936f4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both ask to expand part 1 of the video, and one adds length and engagement goals.\"},\n{\"item_id\": \"8cc93ac10fa38bee\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both ask to elaborate part 1 of the video, and one narrows the request to the story plot.\"},\n{\"item_id\": \"59ce2ec67dbe9fef\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Two compatible conversational turns on youth mental health and coping mechanisms.\"},\n{\"item_id\": \"6021b83fd6b1e1f9\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both ask whether correlation can be checked by plotting, with only wording differences.\"},\n{\"item_id\": \"f4bc5a1b218e4953\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The creation history and the location of Pontotoc County are compatible facts.\"},\n{\"item_id\": \"734c816762a720a7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Same sheep plan, with one asking about terrain and breeds and the other adding the hens.\"},\n{\"item_id\": \"fef283a2c3908d76\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A question and a follow-up about agricultural use of soil and weather data.\"},\n{\"item_id\": \"8ec9b1030ec9fcd7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The Sonos question is identical apart from the 'Note:' prefix.\"},\n{\"item_id\": \"ca4d57cc2f42168c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A request for tips and the tips themselves on explaining business goals to kids.\"},\n{\"item_id\": \"e414ebb021bf7944\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Same Bears second-round 1999 draft fact, and one adds the pick number and the 1999 season.\"},\n{\"item_id\": \"f415bae225ae50d8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The calculator-sales sentence is identical but is attached to different entities, Ed Roberts and MITS.\"},\n{\"item_id\": \"5dbdbcc78b2e7efd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same Carmine's reservation and JFK transport exchange, with different added turns.\"},\n{\"item_id\": \"20675e6d971e6b81\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both ask how best to get from the airport to their Tokyo hotel during Japan trip planning.\"},\n{\"item_id\": \"0ad0188949f4856f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same whale sanctuary paragraph with different editing instructions.\"},\n{\"item_id\": \"32f40f8c8c5f625a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Same Wingman summary request, with one adding an emoji instruction.\"},\n{\"item_id\": \"c8f1ccbf5e776050\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same whale sanctuary paragraph with different editing instructions.\"},\n{\"item_id\": \"4fe15d819350ec84\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Same Wingman summary request, with one adding word-limit and style constraints.\"}\n]}\n"
+ ],
+ "labels": {
+  "cceccf8c4f924310": {
+   "item_id": "cceccf8c4f924310",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both put the airport-to-hotel train fare at $10, and one adds a request for directions."
+  },
+  "c1320b91e41816e4": {
+   "item_id": "c1320b91e41816e4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Compatible facts about the 2010 KHL Junior Draft (player ages versus draft order and date)."
+  },
+  "151913bb14b3466c": {
+   "item_id": "151913bb14b3466c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both ask for a backpack with secure pockets, and one adds a price cap under $30."
+  },
+  "d3b86a7a6e349846": {
+   "item_id": "d3b86a7a6e349846",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Both are the same request to continue."
+  },
+  "1dc67719f6413b94": {
+   "item_id": "1dc67719f6413b94",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A citation and a description of the same Binion case are compatible details."
+  },
+  "3b4c353521c212fb": {
+   "item_id": "3b4c353521c212fb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both ask for another method, but redoing and writing are different requests about the same task."
+  },
+  "727ff876582d5108": {
+   "item_id": "727ff876582d5108",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The Lomonosov biography is identical apart from a trailing 'as recorded'."
+  },
+  "95119353909936f4": {
+   "item_id": "95119353909936f4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both ask to expand part 1 of the video, and one adds length and engagement goals."
+  },
+  "8cc93ac10fa38bee": {
+   "item_id": "8cc93ac10fa38bee",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both ask to elaborate part 1 of the video, and one narrows the request to the story plot."
+  },
+  "59ce2ec67dbe9fef": {
+   "item_id": "59ce2ec67dbe9fef",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Two compatible conversational turns on youth mental health and coping mechanisms."
+  },
+  "6021b83fd6b1e1f9": {
+   "item_id": "6021b83fd6b1e1f9",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both ask whether correlation can be checked by plotting, with only wording differences."
+  },
+  "f4bc5a1b218e4953": {
+   "item_id": "f4bc5a1b218e4953",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The creation history and the location of Pontotoc County are compatible facts."
+  },
+  "734c816762a720a7": {
+   "item_id": "734c816762a720a7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Same sheep plan, with one asking about terrain and breeds and the other adding the hens."
+  },
+  "fef283a2c3908d76": {
+   "item_id": "fef283a2c3908d76",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A question and a follow-up about agricultural use of soil and weather data."
+  },
+  "8ec9b1030ec9fcd7": {
+   "item_id": "8ec9b1030ec9fcd7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The Sonos question is identical apart from the 'Note:' prefix."
+  },
+  "ca4d57cc2f42168c": {
+   "item_id": "ca4d57cc2f42168c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A request for tips and the tips themselves on explaining business goals to kids."
+  },
+  "e414ebb021bf7944": {
+   "item_id": "e414ebb021bf7944",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Same Bears second-round 1999 draft fact, and one adds the pick number and the 1999 season."
+  },
+  "f415bae225ae50d8": {
+   "item_id": "f415bae225ae50d8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The calculator-sales sentence is identical but is attached to different entities, Ed Roberts and MITS."
+  },
+  "5dbdbcc78b2e7efd": {
+   "item_id": "5dbdbcc78b2e7efd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same Carmine's reservation and JFK transport exchange, with different added turns."
+  },
+  "20675e6d971e6b81": {
+   "item_id": "20675e6d971e6b81",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both ask how best to get from the airport to their Tokyo hotel during Japan trip planning."
+  },
+  "0ad0188949f4856f": {
+   "item_id": "0ad0188949f4856f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same whale sanctuary paragraph with different editing instructions."
+  },
+  "32f40f8c8c5f625a": {
+   "item_id": "32f40f8c8c5f625a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Same Wingman summary request, with one adding an emoji instruction."
+  },
+  "c8f1ccbf5e776050": {
+   "item_id": "c8f1ccbf5e776050",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same whale sanctuary paragraph with different editing instructions."
+  },
+  "4fe15d819350ec84": {
+   "item_id": "4fe15d819350ec84",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Same Wingman summary request, with one adding word-limit and style constraints."
+  }
+ },
+ "errors": []
+}

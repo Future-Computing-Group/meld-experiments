@@ -1,0 +1,218 @@
+{
+ "n": 12,
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "rows": [
+  {
+   "loss": 0.0,
+   "n": 12,
+   "n_seeds": 5,
+   "without_ae_authored_mean": 0.0,
+   "with_ae_post_pass_max": 0,
+   "with_ae_delivered_mean": {
+    "authored": 0.0,
+    "sig": 11.0,
+    "reps": 0.6,
+    "links": 0.6,
+    "decisions": 0.6
+   },
+   "with_ae_pre_pass_mean": {
+    "authored": 0.0,
+    "sig": 0.0,
+    "reps": 0.6,
+    "links": 0.6,
+    "decisions": 0.6
+   },
+   "rounds_mean": 2.0,
+   "ae_bytes_mean": {
+    "/digest": 386955.0,
+    "/pull": 560153.6,
+    "/patch": 5555572.8
+   },
+   "L_max": 0,
+   "effects_last_post_pass_max": 0,
+   "effects_last_L_max": 0,
+   "final_misses_max": 0,
+   "with_ae_topk_distinct_max": 1,
+   "effects_last_topk_distinct_max": 1,
+   "purity_mean": 1.0,
+   "git_sha": "78f07250b0052cfa3c5d5f01e61947940259beae",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+   "epoch_id": "50e5f63a35f307d38161b541fee212b5",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+  },
+  {
+   "loss": 0.003,
+   "n": 12,
+   "n_seeds": 5,
+   "without_ae_authored_mean": 4.0,
+   "with_ae_post_pass_max": 0,
+   "with_ae_delivered_mean": {
+    "authored": 4.0,
+    "sig": 11.0,
+    "reps": 4.6,
+    "links": 4.6,
+    "decisions": 4.6
+   },
+   "with_ae_pre_pass_mean": {
+    "authored": 0.0,
+    "sig": 0.0,
+    "reps": 0.8,
+    "links": 0.8,
+    "decisions": 0.8
+   },
+   "rounds_mean": 2.0,
+   "ae_bytes_mean": {
+    "/digest": 447324.6,
+    "/pull": 556968.4,
+    "/patch": 5563138.8
+   },
+   "L_max": 0,
+   "effects_last_post_pass_max": 0,
+   "effects_last_L_max": 0,
+   "final_misses_max": 0,
+   "with_ae_topk_distinct_max": 1,
+   "effects_last_topk_distinct_max": 1,
+   "purity_mean": 1.0,
+   "git_sha": "78f07250b0052cfa3c5d5f01e61947940259beae",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+   "epoch_id": "50e5f63a35f307d38161b541fee212b5",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+  },
+  {
+   "loss": 0.01,
+   "n": 12,
+   "n_seeds": 5,
+   "without_ae_authored_mean": 8.8,
+   "with_ae_post_pass_max": 0,
+   "with_ae_delivered_mean": {
+    "authored": 8.8,
+    "sig": 11.0,
+    "reps": 9.2,
+    "links": 8.8,
+    "decisions": 9.0
+   },
+   "with_ae_pre_pass_mean": {
+    "authored": 0.0,
+    "sig": 0.0,
+    "reps": 2.2,
+    "links": 2.2,
+    "decisions": 2.2
+   },
+   "rounds_mean": 2.0,
+   "ae_bytes_mean": {
+    "/digest": 473203.0,
+    "/pull": 550887.2,
+    "/patch": 5576652.0
+   },
+   "L_max": 0,
+   "effects_last_post_pass_max": 0,
+   "effects_last_L_max": 0,
+   "final_misses_max": 0,
+   "with_ae_topk_distinct_max": 1,
+   "effects_last_topk_distinct_max": 1,
+   "purity_mean": 1.0,
+   "git_sha": "78f07250b0052cfa3c5d5f01e61947940259beae",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+   "epoch_id": "50e5f63a35f307d38161b541fee212b5",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+  },
+  {
+   "loss": 0.05,
+   "n": 12,
+   "n_seeds": 5,
+   "without_ae_authored_mean": 11.0,
+   "with_ae_post_pass_max": 0,
+   "with_ae_delivered_mean": {
+    "authored": 11.0,
+    "sig": 11.0,
+    "reps": 11.0,
+    "links": 11.0,
+    "decisions": 11.0
+   },
+   "with_ae_pre_pass_mean": {
+    "authored": 0.0,
+    "sig": 0.0,
+    "reps": 4.4,
+    "links": 4.4,
+    "decisions": 4.4
+   },
+   "rounds_mean": 2.0,
+   "ae_bytes_mean": {
+    "/digest": 496926.8,
+    "/pull": 520220.2,
+    "/patch": 5653025.2
+   },
+   "L_max": 0,
+   "effects_last_post_pass_max": 0,
+   "effects_last_L_max": 0,
+   "final_misses_max": 0,
+   "with_ae_topk_distinct_max": 1,
+   "effects_last_topk_distinct_max": 1,
+   "purity_mean": 1.0,
+   "git_sha": "78f07250b0052cfa3c5d5f01e61947940259beae",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+   "epoch_id": "50e5f63a35f307d38161b541fee212b5",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+  },
+  {
+   "loss": 0.1,
+   "n": 12,
+   "n_seeds": 5,
+   "without_ae_authored_mean": 11.0,
+   "with_ae_post_pass_max": 0,
+   "with_ae_delivered_mean": {
+    "authored": 11.0,
+    "sig": 11.0,
+    "reps": 11.0,
+    "links": 11.0,
+    "decisions": 11.0
+   },
+   "with_ae_pre_pass_mean": {
+    "authored": 0.0,
+    "sig": 0.0,
+    "reps": 7.2,
+    "links": 7.2,
+    "decisions": 7.2
+   },
+   "rounds_mean": 2.0,
+   "ae_bytes_mean": {
+    "/digest": 504205.4,
+    "/pull": 481469.8,
+    "/patch": 5748435.0
+   },
+   "L_max": 0,
+   "effects_last_post_pass_max": 0,
+   "effects_last_L_max": 0,
+   "final_misses_max": 0,
+   "with_ae_topk_distinct_max": 1,
+   "effects_last_topk_distinct_max": 1,
+   "purity_mean": 1.0,
+   "git_sha": "78f07250b0052cfa3c5d5f01e61947940259beae",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+   "epoch_id": "50e5f63a35f307d38161b541fee212b5",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+  }
+ ],
+ "epoch": "runs/wp6d/epochs/substrate-r4-a0.05-lme/lme-seed-a0.05.group.epoch.json"
+}

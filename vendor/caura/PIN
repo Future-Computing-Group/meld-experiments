@@ -1,0 +1,11 @@
+Caura (formerly MemClaw), the open-source implementation of governed shared memory (Margalit et al., arXiv 2606.24535).
+repository: https://github.com/caura-ai/caura
+licence: Apache-2.0 (LICENSE and NOTICE in this directory are the upstream files, unmodified)
+commit: fd1da78b563b21f357fe5a7060a79954c9df94c0 (tag backend-v3.34.5)
+git tree: 5a21142ac62260f22173875ae6212364af3f18e4
+tarball: https://codeload.github.com/caura-ai/caura/tar.gz/fd1da78b563b21f357fe5a7060a79954c9df94c0
+tarball sha256: d8347126b147b839fecb18f11416c11b4255058002e5aed1e6d6c6334698b4d3
+extracted tree: identical to a git clone at the commit (diff -r, .git excluded)
+fetch: sh vendor/caura/fetch.sh (downloads the tarball, checks the sha256, extracts to vendor/caura/src; tarball and src are gitignored)
+use: src/meld/baselines/_caura_prompts.py excerpts four files byte-identically (file sha256s and line ranges in its docstring, checked by tests/test_caura_baseline.py when src is present); src/meld/baselines/caura_policy.py re-implements the calling logic; scripts/run_caura_fidelity.py runs the upstream functions themselves from vendor/caura/src for comparison.
+not used: no Caura service, container, hosted API or telemetry endpoint is run or contacted by the MELD runs.

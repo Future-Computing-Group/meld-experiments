@@ -3,6 +3,10 @@ contract + skew-free latency, all in-process (no docker). Proves the socket wrap
 the on-the-wire send seam behave exactly as the unit-tested handle()/PatchTransport do,
 before containerizing. make_http_send() is the real transport seam the orchestrator uses
 on the testbed; here it POSTs to a live local server.
+
+Rewritten for the replication wire (design §2.2, WP2 T2): the convergence observable is
+the replicated object set (the Merkle roots in /metrics), not the old brain's live
+claims; received objects reach the merge step only through the admission hook (T6).
 """
 from __future__ import annotations
 
@@ -12,14 +16,11 @@ import threading
 import requests
 
 
-def _cfg():
-    from meld.agent.run_hotpot_gate import _calibrated_cfg
-    return _calibrated_cfg("hashing")
 
 
 def _node(nid):
     from meld.sync.node import BrainNode
-    return BrainNode(nid, encoder="hashing", nli="lexical", cfg=_cfg())
+    return BrainNode(nid, encoder="hashing", nli="lexical")
 
 
 def _free_port():
@@ -41,7 +42,9 @@ def test_publish_delivers_over_real_http_and_records_latency():
     from meld.sync.latency import SyncLatencyMeter
     from meld.sync.transport import PatchTransport
     from meld.sync.wire import make_http_send
-    from meld.sync.wire_delta import group_key, serialize_signed_delta
+    from meld.protocol.objects import attach_mac, canonical_bytes, object_id
+    from meld.sync.wire_delta import group_key, pack
+    from test_protocol_objects import _delta
 
     b = _node("B")
     port = _free_port()
@@ -53,15 +56,16 @@ def test_publish_delivers_over_real_http_and_records_latency():
 
         meter = SyncLatencyMeter()
         transport = PatchTransport(make_http_send(timeout=5), latency_meter=meter)
-        # a SIGNED, TYPED delta on the wire (the same default group key both ends use)
-        key = group_key({})
-        unit = b.mem.build_unit("Paris is the capital of France")
-        payload = serialize_signed_delta("A", unit, key)
-        delivered = transport.publish("p1", payload, [url])
+        # a signed object envelope on the wire (the same default group key both ends use)
+        d = attach_mac(_delta(cell="agent.public", text="Paris is the capital of France",
+                              encoder="hashing"),
+                       group_key({}))
+        delivered = transport.publish("p1", pack([(canonical_bytes(d), d.mac, "agent")]), [url])
 
         assert delivered[url] is True                       # 200 -> delivered
+        assert b.objects.get("D", object_id(canonical_bytes(d))) == d   # verified into D
         m = requests.get(url + "/metrics", timeout=5).json()
-        assert any("Paris" in x for x in m["live"])         # merge-on-receive applied
+        assert set(m["roots"]["agent"]) == {"D"}
         assert meter.latency_ms("p1") is not None           # latency recorded (all delivered)
         assert meter.latency_ms("p1") >= 0.0
     finally:
@@ -103,22 +107,22 @@ def test_node_driven_publish_converges_three_brains_over_http():
             r = requests.post(urls[i] + "/publish", timeout=5).json()
             assert r["published"] == 1
 
-        for i in ids:                                          # all three converged
-            live = requests.get(urls[i] + "/metrics", timeout=5).json()["live"]
-            joined = " ".join(live)
-            assert "Photosynthesis" in joined and "Tectonic" in joined and "Beethoven" in joined
+        roots = [requests.get(urls[i] + "/metrics", timeout=5).json()["roots"] for i in ids]
+        assert roots[0] == roots[1] == roots[2]                # all three hold the same sets
+        texts = {d.text for d in services["A"].node.objects.iter("D", "agent")}
+        assert texts == set(claims.values())
     finally:
         for h in httpds:
             h.shutdown()
 
 
-def test_resync_redelivers_full_state_to_a_behind_peer():
-    # anti-entropy: B is behind (missed a claim, as after a partition). A's /resync sends
-    # its FULL live set to B over the wire, so B catches up -- the convergence-after-heal
-    # mechanism. A is a service object; B is a live server peer.
+def test_resync_runs_digest_pull_over_http_and_a_behind_peer_catches_up():
+    # anti-entropy (design §2.2): B is behind (missed everything, as after a partition).
+    # A's /resync runs DIGEST + PULL against B over real HTTP and pushes what B lacks; B
+    # ends with byte-identical sets. Replaces the old text re-send of live claims.
     from meld.sync.latency import SyncLatencyMeter
     from meld.sync.service import BrainService
-    from meld.sync.wire import make_http_send
+    from meld.sync.wire import make_http_call, make_http_send
 
     b = _node("B")
     port = _free_port()
@@ -126,19 +130,23 @@ def test_resync_redelivers_full_state_to_a_behind_peer():
     try:
         b_url = f"http://127.0.0.1:{port}"
         a = BrainService(_node("A"), peers=[b_url], routing_mode="broadcast",
-                         send=make_http_send(timeout=5), latency_meter=SyncLatencyMeter())
+                         send=make_http_send(timeout=5), latency_meter=SyncLatencyMeter(),
+                         call=make_http_call(timeout=5))
         a.node.ingest("Photosynthesis converts sunlight into chemical energy")
         a.node.ingest("Tectonic plates drift across the molten mantle")
-        # B starts empty (it missed everything)
-        assert requests.get(b_url + "/metrics", timeout=5).json()["live_count"] == 0
+        assert requests.get(b_url + "/metrics", timeout=5).json()["roots"] == {"agent": {}}
 
         status, body = a.handle("POST", "/resync")
         assert status == 200
         import json as _j
-        assert _j.loads(body)["resynced"] == 2
+        r = _j.loads(body)
+        assert (r["pulled"], r["pushed"], r["failed_peers"]) == (0, 2, []) and r["digest_bytes"] > 0
 
-        live = " ".join(requests.get(b_url + "/metrics", timeout=5).json()["live"])
-        assert "Photosynthesis" in live and "Tectonic" in live   # B caught up
+        ids = a.node.objects.ids("D", "agent")
+        assert b.objects.ids("D", "agent") == ids
+        assert [b.objects.raw(i) for i in ids] == [a.node.objects.raw(i) for i in ids]
+        r = _j.loads(a.handle("POST", "/resync")[1])
+        assert (r["pulled"], r["pushed"]) == (0, 0)
     finally:
         httpd.shutdown()
 

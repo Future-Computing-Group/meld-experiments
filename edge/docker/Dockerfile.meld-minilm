@@ -1,6 +1,6 @@
-# MELD-brain CAMPAIGN image (real minilm encoder). Heavier than the smoke image
-# (adds sentence-transformers + torch CPU + the all-MiniLM-L6-v2 model prefetched at
-# build, so a run needs no network at boot). Build context = repo root:
+# MELD-brain CAMPAIGN image: the minilm encoder and the mnli-cross-encoder NLI model, both
+# prefetched at build through the service's own loaders, and HF_HUB_OFFLINE=1, so a brain never
+# downloads at boot. Build context = repo root:
 #   docker build -f edge/docker/Dockerfile.meld-minilm -t meld-brain:minilm .
 FROM python:3.11-slim
 WORKDIR /app
@@ -9,17 +9,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends iproute2 curl \
     && rm -rf /var/lib/apt/lists/*
 
 # torch CPU wheel from the pytorch CPU index (avoids the large default CUDA build).
-RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
-COPY edge/docker/requirements-minilm.txt .
+RUN pip install --no-cache-dir torch==2.12.0 --index-url https://download.pytorch.org/whl/cpu
+COPY edge/docker/requirements-smoke.txt edge/docker/requirements-minilm.txt ./
 RUN pip install --no-cache-dir -r requirements-minilm.txt
 
 COPY src/ src/
 ENV PYTHONPATH=/app/src
 ENV SMP_PORT=8080
 
-# Prefetch the EXACT model id the minilm encoder loads (signals.py _MODEL_IDS), so the
-# brain boots offline (HF cache baked in). nli=lexical -> no NLI cross-encoder needed.
-RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
+# Prefetch exactly what the service loads for SMP_ENCODER=minilm and SMP_NLI=mnli-cross-encoder
+# (one inference each), then forbid hub access and check both load from the baked cache.
+RUN python -c "from meld.merge.signals import EmbeddingSimilarity, new_cross_encoder; EmbeddingSimilarity(encoder='minilm').sigma('a b', 'a c'); new_cross_encoder('mnli-cross-encoder').probs('a', 'b')"
+ENV HF_HUB_OFFLINE=1
+RUN python -c "from meld.merge.signals import EmbeddingSimilarity, new_cross_encoder; EmbeddingSimilarity(encoder='minilm').sigma('a b', 'a c'); new_cross_encoder('mnli-cross-encoder').probs('a', 'b')"
 
 EXPOSE 8080
 ENTRYPOINT ["python", "-m", "meld.sync.service"]

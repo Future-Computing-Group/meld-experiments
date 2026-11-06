@@ -14,8 +14,7 @@ for the gated CSC run; the in-repo ReAct loop keeps the local ``.venv`` minimal
 and the vendored-proto protobuf 6.x pin safe (no heavy framework deps locally).
 
 The agent's memory backend is an MELD ``Brain``: the agent READS via the brain's
-graph-walk read and WRITES observations via PUBLISH -> merge-on-receive ->
-Patch. So a G3 run exercises the MELD merge integration, not just a bare agent.
+graph-walk read and WRITES observations via PUBLISH -> admission (the fold's step). So a G3 run exercises the MELD merge integration, not just a bare agent.
 
 ROBUSTNESS + ACHIEVABILITY extension:
 - ``registry.make_agent(name)`` is an agent-framework registry (the MELD analogue

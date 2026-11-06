@@ -1,0 +1,213 @@
+{
+ "running_example": {
+  "classes": {
+   "DELTA": {
+    "count": 4,
+    "bytes": 3741,
+    "min": 930,
+    "max": 940,
+    "mac": 256,
+    "body": 3201,
+    "mean": 935.25
+   },
+   "EFFECT": {
+    "count": 1,
+    "bytes": 329,
+    "min": 329,
+    "max": 329,
+    "mac": 64,
+    "body": 202,
+    "mean": 329.0
+   },
+   "SIG": {
+    "count": 6,
+    "bytes": 1952,
+    "min": 322,
+    "max": 331,
+    "mac": 384,
+    "body": 1214,
+    "mean": 325.3333333333333
+   },
+   "PASS": {
+    "count": 1,
+    "bytes": 522,
+    "min": 522,
+    "max": 522,
+    "mac": 64,
+    "body": 385,
+    "mean": 522.0
+   }
+  },
+  "git_sha": "0138e746adc9dd93d763c490b1ca44b33fd5a1a4",
+  "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+  "m_pol": "eb5738da2e6e85b6fc59682ba48683d3",
+  "epoch_id": null,
+  "seq": null,
+  "nli_id": "cross-encoder/nli-deberta-v3-small",
+  "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+ },
+ "gold": {
+  "classes": {
+   "DELTA": {
+    "count": 104,
+    "bytes": 96815,
+    "min": 911,
+    "max": 967,
+    "mac": 6656,
+    "body": 82567,
+    "mean": 930.9134615384615
+   },
+   "EFFECT": {
+    "count": 14,
+    "bytes": 4865,
+    "min": 333,
+    "max": 362,
+    "mac": 896,
+    "body": 3059,
+    "mean": 347.5
+   },
+   "SIG": {
+    "count": 138,
+    "bytes": 45753,
+    "min": 325,
+    "max": 342,
+    "mac": 8832,
+    "body": 28503,
+    "mean": 331.54347826086956
+   },
+   "PASS": {
+    "count": 1,
+    "bytes": 526,
+    "min": 526,
+    "max": 526,
+    "mac": 64,
+    "body": 387,
+    "mean": 526.0
+   },
+   "CAL": {
+    "count": 26,
+    "bytes": 12377,
+    "min": 472,
+    "max": 485,
+    "mac": 1664,
+    "body": 8451,
+    "mean": 476.03846153846155
+   },
+   "EPOCH": {
+    "count": 1,
+    "bytes": 514,
+    "min": 514,
+    "max": 514,
+    "mac": 64,
+    "body": 367,
+    "mean": 514.0
+   }
+  },
+  "decisions": 104,
+  "merges": 0,
+  "git_sha": "0138e746adc9dd93d763c490b1ca44b33fd5a1a4",
+  "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+  "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+  "epoch_id": null,
+  "seq": null,
+  "nli_id": "cross-encoder/nli-deberta-v3-small",
+  "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+ },
+ "anti_entropy": {
+  "lossy": [
+   {
+    "loss": 0.01,
+    "n": 4,
+    "dropped": 9,
+    "rounds": 2,
+    "moved": 1665,
+    "bytes": {
+     "/digest": 72757,
+     "/pull": 148813,
+     "/patch": 421223
+    },
+    "per_round": {
+     "/digest": 36378.5,
+     "/pull": 74406.5,
+     "/patch": 210611.5
+    },
+    "git_sha": "0138e746adc9dd93d763c490b1ca44b33fd5a1a4",
+    "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+    "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+    "epoch_id": null,
+    "seq": null,
+    "nli_id": "cross-encoder/nli-deberta-v3-small",
+    "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+   },
+   {
+    "loss": 0.05,
+    "n": 4,
+    "dropped": 27,
+    "rounds": 2,
+    "moved": 1683,
+    "bytes": {
+     "/digest": 69812,
+     "/pull": 142225,
+     "/patch": 443179
+    },
+    "per_round": {
+     "/digest": 34906.0,
+     "/pull": 71112.5,
+     "/patch": 221589.5
+    },
+    "git_sha": "0138e746adc9dd93d763c490b1ca44b33fd5a1a4",
+    "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+    "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+    "epoch_id": null,
+    "seq": null,
+    "nli_id": "cross-encoder/nli-deberta-v3-small",
+    "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+   },
+   {
+    "loss": 0.1,
+    "n": 4,
+    "dropped": 57,
+    "rounds": 2,
+    "moved": 1713,
+    "bytes": {
+     "/digest": 87574,
+     "/pull": 147325,
+     "/patch": 464484
+    },
+    "per_round": {
+     "/digest": 43787.0,
+     "/pull": 73662.5,
+     "/patch": 232242.0
+    },
+    "git_sha": "0138e746adc9dd93d763c490b1ca44b33fd5a1a4",
+    "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+    "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+    "epoch_id": null,
+    "seq": null,
+    "nli_id": "cross-encoder/nli-deberta-v3-small",
+    "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+   }
+  ],
+  "lossless_converge": {
+   "rounds": 2,
+   "bytes": {
+    "/digest": 42187,
+    "/pull": 151878,
+    "/patch": 410695
+   }
+  },
+  "quiescent_round": {
+   "/digest": 1204,
+   "/pull": 0,
+   "/patch": 0
+  },
+  "quiescent_rounds": 1,
+  "git_sha": "0138e746adc9dd93d763c490b1ca44b33fd5a1a4",
+  "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+  "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+  "epoch_id": null,
+  "seq": null,
+  "nli_id": "cross-encoder/nli-deberta-v3-small",
+  "encoder": "sentence-transformers/all-MiniLM-L6-v2"
+ }
+}

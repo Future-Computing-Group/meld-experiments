@@ -1,0 +1,14 @@
+{
+ "key_fingerprint": "133ffccfdf7b4c4d",
+ "epochs": [
+  {
+   "source": "lme-seed-a0.05.epoch.json",
+   "file": "lme-seed-a0.05.group.epoch.json",
+   "epoch_id": "50e5f63a35f307d38161b541fee212b5",
+   "scope": "agent",
+   "alpha": 50000,
+   "body_sha256": "50e5f63a35f307d38161b541fee212b5ebe65227cc419d8ffc0dcb546157be9a",
+   "key_fingerprint": "133ffccfdf7b4c4d"
+  }
+ ]
+}

@@ -1,0 +1,123 @@
+{
+  "git_sha": "89b36379ef5d037103c68399d4c6d98a659e0e06",
+  "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+  "m_pol": "1fb3ae481c4e1c8fa94896e95f8405dc",
+  "epoch_id": "59b847dab1ffa1000f665c6425e6d66a",
+  "seq": 1,
+  "nli_id": "cross-encoder/nli-deberta-v3-small",
+  "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+  "epoch_note": "dev-signed copy, content id = deployed 59b847dab1ffa1000f665c6425e6d66a",
+  "cpu": "Apple M1 Max",
+  "machine": "arm64",
+  "torch_threads": 2,
+  "omp": "2",
+  "torch": "2.12.0",
+  "device": "cpu",
+  "batch_size": 1,
+  "gpu": null,
+  "cuda": null,
+  "cuda_synchronized": false,
+  "encoder_device": "cpu",
+  "nli_device": "cpu",
+  "max_texts": null,
+  "predicate": "mutual entailment, s = min(p_e(x->y), p_e(y->x))",
+  "world": "5a8c7595554299585d9e36b6+5a85ea095542994775f606a8+5adbf0a255429947ff17385a+5a8e3ea95542995a26add48d+5abd94525542992ac4f382d2+5a85b2d95542997b5ce40028+5a87ab905542996e4f3088c1+5a7bbb64554299042af8f7cc+5a8db19d5542994ba4e3dd00+5a7166395542994082a3e814+5a877e5d5542993e715abf7d+5ab56e32554299637185c594+5ab6d09255429954757d337d+5a75e05c55429976ec32bc5f+5ab3e45655429976abd1bcd4+5ae0d4c9554299603e418468+5a8133725542995ce29dcbdb+5ae7a8175542993210983ed8+5ae6050f55429929b0807a5e+5adddccd5542997dc7907069",
+  "n_brains": 8,
+  "dup_degree": 4,
+  "texts": 998,
+  "timed": 946,
+  "warmup": 20,
+  "refolds_in_timed_window": 0,
+  "m": 3,
+  "summary": {
+    "total_ms": {
+      "n": 946,
+      "median": 237.2019374743104,
+      "p95": 540.9236351842992,
+      "mean": 243.42093129551736
+    },
+    "encode_ms": {
+      "n": 946,
+      "median": 14.497229014523327,
+      "p95": 29.98534351354465,
+      "mean": 17.217354916910352
+    },
+    "topm_ms": {
+      "n": 946,
+      "median": 0.10641687549650669,
+      "p95": 0.18473929958418012,
+      "mean": 0.12044232076793972
+    },
+    "nli_ms": {
+      "n": 946,
+      "median": 220.81256296951324,
+      "p95": 509.2839156277478,
+      "mean": 225.2903325930159
+    },
+    "other_ms": {
+      "n": 946,
+      "median": 0.808709068223834,
+      "p95": 1.3824276975356042,
+      "mean": 0.7928014648231593
+    }
+  },
+  "summary_n_prior_ge_500": {
+    "total_ms": {
+      "n": 466,
+      "median": 224.43216643296182,
+      "p95": 340.9227090305649,
+      "mean": 201.832361176586
+    },
+    "encode_ms": {
+      "n": 466,
+      "median": 13.55049991980195,
+      "p95": 18.50187493255362,
+      "mean": 14.499433643920067
+    },
+    "topm_ms": {
+      "n": 466,
+      "median": 0.11766597162932158,
+      "p95": 0.17907330766320229,
+      "mean": 0.1318544936826045
+    },
+    "nli_ms": {
+      "n": 466,
+      "median": 209.73270887043327,
+      "p95": 322.53382325870916,
+      "mean": 186.461382138327
+    },
+    "other_ms": {
+      "n": 466,
+      "median": 0.800645793788135,
+      "p95": 1.173405791632831,
+      "mean": 0.7396909006563507
+    }
+  },
+  "nli_calls_per_delta": {
+    "n": 946,
+    "median": 4.0,
+    "p95": 4.0,
+    "mean": 2.882663847780127
+  },
+  "share_of_mean_total": {
+    "encode_ms": 0.0707307905909216,
+    "topm_ms": 0.0004947903211401347,
+    "nli_ms": 0.9255175033387306,
+    "other_ms": 0.0032569157492076312
+  },
+  "decisions": {
+    "CONFLICT": 217,
+    "INSERT": 148,
+    "MERGE": 87,
+    "RELATE": 494
+  },
+  "max_n_prior": 965,
+  "decisions_vs_reference": {
+    "path": "rows of the 9572922 laptop run (not in this archive; its decisions equal laptop-cpu/ at every write)",
+    "compared": 946,
+    "differing": 0,
+    "only_this_run": 0,
+    "only_reference": 0,
+    "changes": {}
+  }
+}

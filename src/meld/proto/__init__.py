@@ -13,11 +13,11 @@ AUTHORITY_LEVELS name sets.
 
 Freshness is a derived property of the per-claim/unit ``status`` field
 (``is_fresh = status == "ACTIVE"``), so there is no standalone staleness type:
-the Context gate reads freshness off ``status`` directly (see
-``protocol.merge_on_receive._context_of``).
+status is read directly (R1 admissibility in brain/store.py).
 """
 from __future__ import annotations
 
+import hashlib
 import os
 import sys
 from dataclasses import dataclass, field
@@ -47,6 +47,31 @@ def _h2b(s: str) -> bytes:
     return bytes.fromhex(s) if s else b""
 
 
+def h16(b: bytes) -> bytes:
+    """H of design §2.1: SHA-256 truncated to 16 bytes."""
+    return hashlib.sha256(b).digest()[:16]
+
+
+def _lp(s: str) -> bytes:
+    b = s.encode("utf-8")
+    return len(b).to_bytes(4, "big") + b
+
+
+CANON_VERSION = "identity-v1"   # enters M_nli; bump when canon() changes
+
+
+def canon(text: str) -> str:
+    """The canonicaliser the claim key and the NLI input share (identity; callers strip)."""
+    return text
+
+
+def claim_key(text: str, cell: str = "agent.public", version: int = 0) -> bytes:
+    """c = H(canon(text) || cell || version) (design §2.1). Text and cell are length-prefixed
+    and the version is fixed-width, so no two (text, cell, version) triples share a byte
+    string. Only the discrete cell enters the key."""
+    return h16(b"C\x1f" + _lp(canon(text)) + _lp(cell) + version.to_bytes(8, "big"))
+
+
 @dataclass
 class Endpoint:
     node_id: bytes = b""
@@ -72,18 +97,20 @@ class Claim:
     # which is disabled by default (eps_hi=0). Empty on ungrounded corpora
     # (HotpotQA) -> epsilon=0 -> the epsilon path is inert regardless.
     grounding: tuple = ()
+    version: int = 0
 
     def to_dict(self) -> dict:
         return {"claim_key": _b2h(self.claim_key), "text": self.text,
                 "confidence": self.confidence, "claim_status": self.claim_status,
-                "grounding": list(self.grounding)}
+                "grounding": list(self.grounding), "version": self.version}
 
     @classmethod
     def from_dict(cls, d: dict) -> "Claim":
         return cls(claim_key=_h2b(d.get("claim_key", "")), text=d.get("text", ""),
                    confidence=d.get("confidence", 0.0),
                    claim_status=d.get("claim_status", "ACTIVE"),
-                   grounding=tuple(d.get("grounding", ())))
+                   grounding=tuple(d.get("grounding", ())),
+                   version=d.get("version", 0))
 
 
 @dataclass
@@ -167,7 +194,6 @@ class MemoryUnit:
     origin: str = "L0_ECHO_FREE"
     authority: str = "OBSERVATION"
     status: str = "ACTIVE"
-    relevance_magnitude: float = 0.0
     contradictions_received: int = 0
     access_count: int = 0
     signature: bytes = b""
@@ -178,12 +204,18 @@ class MemoryUnit:
     # behavior (M-2/headline use one cell).
     cell: str = "agent.public"
     claims: List[Claim] = field(default_factory=list)
+    created_at: int = 0          # integer microseconds since the Unix epoch, set by the publisher
+    encoder: str = ""            # encoder id of q
+    q: bytes = b""               # int8 quantised embedding under encoder (may be empty)
+    retention: float = field(kw_only=True)   # carried retention R; required, no default
 
     def to_dict(self) -> dict:
         return {"id": _b2h(self.id), "owner_did": _b2h(self.owner_did),
                 "confidence": self.confidence, "origin": self.origin,
                 "authority": self.authority, "status": self.status,
-                "relevance_magnitude": self.relevance_magnitude,
+                "retention": self.retention,
+                "created_at": self.created_at, "encoder": self.encoder,
+                "q": _b2h(self.q),
                 "contradictions_received": self.contradictions_received,
                 "access_count": self.access_count,
                 "signature": _b2h(self.signature),
@@ -197,7 +229,9 @@ class MemoryUnit:
             confidence=d.get("confidence", 0.0), origin=d.get("origin", "L0_ECHO_FREE"),
             authority=d.get("authority", "OBSERVATION"),
             status=d.get("status", "ACTIVE"),
-            relevance_magnitude=d.get("relevance_magnitude", 0.0),
+            retention=d["retention"],
+            created_at=d.get("created_at", 0), encoder=d.get("encoder", ""),
+            q=_h2b(d.get("q", "")),
             contradictions_received=d.get("contradictions_received", 0),
             access_count=d.get("access_count", 0),
             signature=_h2b(d.get("signature", "")),
@@ -206,7 +240,7 @@ class MemoryUnit:
 
 
 __all__ = [
-    "MemoryUnit", "Claim", "MemoryLink", "Endpoint",
+    "MemoryUnit", "Claim", "MemoryLink", "Endpoint", "claim_key", "h16", "canon", "CANON_VERSION",
     "LINK_TYPES", "LINK_PROVENANCES", "PRECEDENT_STATUSES", "ORIGIN_TAGS",
     "AUTHORITY_LEVELS",
 ]

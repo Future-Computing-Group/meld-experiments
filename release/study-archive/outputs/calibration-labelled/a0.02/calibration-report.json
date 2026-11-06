@@ -1,0 +1,454 @@
+{
+ "epochs": [
+  {
+   "git_sha": "b588bd7bc241e353ce3d55c9ccc88bec0c2c1694",
+   "git_dirty": false,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "encoder": "minilm",
+   "encoder_id": "sentence-transformers/all-MiniLM-L6-v2",
+   "nli": "mnli-cross-encoder",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "hw": "arm64",
+   "alpha": 0.02,
+   "alpha_ppm": 20000,
+   "n_min": 49,
+   "B_0": 256,
+   "B_0_rule": "given",
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "domain": "paws",
+   "strata": [
+    "S1_paws_para",
+    "S2_paws_nonpara"
+   ],
+   "epoch_file": "paws-seed-a0.02.epoch.json",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "148bf24987ed6a3d97ce60ad4387096b",
+   "pol": {
+    "rank_map": {
+     "PRECEDENT": 0,
+     "OBSERVATION": 1,
+     "CLAIM": 2,
+     "SPECULATION": 3
+    },
+    "scopes": {
+     "paws": [
+      "paws"
+     ]
+    },
+    "auth_policy": {
+     "SUPERSEDE": 3,
+     "OVERRULE": 3,
+     "REVOKE": 3,
+     "DISTINGUISHES": 3,
+     "calibration_authority": {
+      "paws": "calibration"
+     }
+    },
+    "step_version": 0,
+    "r_min": 1,
+    "bootstrap_selector": [
+     32768,
+     32768,
+     3
+    ]
+   },
+   "epoch_id": "3de557535326146f9b608d022bd3f490",
+   "seq": 1,
+   "policy": "SEED",
+   "mondrian_c": false,
+   "cal_root": "1e6c7e03b28c1ac49292258440928334",
+   "cal_hw": "arm64",
+   "verified": true,
+   "bins": [
+    {
+     "g": 0,
+     "n_g": 17,
+     "n_c_g": 0,
+     "theta_q": 65536,
+     "theta": null
+    },
+    {
+     "g": 1,
+     "n_g": 42,
+     "n_c_g": 0,
+     "theta_q": 65536,
+     "theta": null
+    },
+    {
+     "g": 2,
+     "n_g": 140,
+     "n_c_g": 0,
+     "theta_q": 65406,
+     "theta": 0.9980315861753262
+    },
+    {
+     "g": 3,
+     "n_g": 264,
+     "n_c_g": 0,
+     "theta_q": 65292,
+     "theta": 0.9962920576791028
+    },
+    {
+     "g": 4,
+     "n_g": 15,
+     "n_c_g": 0,
+     "theta_q": 65536,
+     "theta": null
+    }
+   ],
+   "populated_bins": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "disabled_bins": [
+    0,
+    1,
+    4
+   ],
+   "stats": {
+    "nodes": 2100,
+    "tested": 1591,
+    "nli_calls": 4850,
+    "cal": 478,
+    "unresolved": 0
+   },
+   "labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "unresolved": 0,
+   "development": false,
+   "source_labels": true,
+   "annotations_sha256": "8007787e224facce60c651dd9b826a8380f635141a629b907e936d03d87b9141",
+   "contradiction_subtype_unlabelled": true,
+   "ambiguous": {
+    "policy": "non-mergeable",
+    "provenance": "adjudicated_ambiguous",
+    "labels_file": "outputs/annotate/full/labels.jsonl",
+    "by_class": {
+     "cross_item": 1,
+     "same_item": 14
+    }
+   },
+   "seconds": 124.4
+  },
+  {
+   "git_sha": "b588bd7bc241e353ce3d55c9ccc88bec0c2c1694",
+   "git_dirty": false,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "encoder": "minilm",
+   "encoder_id": "sentence-transformers/all-MiniLM-L6-v2",
+   "nli": "mnli-cross-encoder",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "hw": "arm64",
+   "alpha": 0.02,
+   "alpha_ppm": 20000,
+   "n_min": 49,
+   "B_0": 256,
+   "B_0_rule": "given",
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "domain": "sick",
+   "strata": [
+    "S8_sick_para",
+    "S8_sick_oneway",
+    "S8_sick_contra"
+   ],
+   "epoch_file": "sick-seed-a0.02.epoch.json",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "0bb34937b465118902ec563e1cac4b09",
+   "pol": {
+    "rank_map": {
+     "PRECEDENT": 0,
+     "OBSERVATION": 1,
+     "CLAIM": 2,
+     "SPECULATION": 3
+    },
+    "scopes": {
+     "sick": [
+      "sick"
+     ]
+    },
+    "auth_policy": {
+     "SUPERSEDE": 3,
+     "OVERRULE": 3,
+     "REVOKE": 3,
+     "DISTINGUISHES": 3,
+     "calibration_authority": {
+      "sick": "calibration"
+     }
+    },
+    "step_version": 0,
+    "r_min": 1,
+    "bootstrap_selector": [
+     32768,
+     32768,
+     3
+    ]
+   },
+   "epoch_id": "a092a47d6d7f9cf0c24d02716602e63f",
+   "seq": 1,
+   "policy": "SEED",
+   "mondrian_c": false,
+   "cal_root": "3379acf06598a8a343d963265babd699",
+   "cal_hw": "arm64",
+   "verified": true,
+   "bins": [
+    {
+     "g": 0,
+     "n_g": 34,
+     "n_c_g": 5,
+     "theta_q": 65536,
+     "theta": null
+    },
+    {
+     "g": 1,
+     "n_g": 74,
+     "n_c_g": 11,
+     "theta_q": 64416,
+     "theta": 0.9829251544975967
+    },
+    {
+     "g": 2,
+     "n_g": 147,
+     "n_c_g": 50,
+     "theta_q": 64462,
+     "theta": 0.9836270695048447
+    },
+    {
+     "g": 3,
+     "n_g": 1,
+     "n_c_g": 0,
+     "theta_q": 65536,
+     "theta": null
+    }
+   ],
+   "populated_bins": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "disabled_bins": [
+    0,
+    3
+   ],
+   "stats": {
+    "nodes": 1035,
+    "tested": 858,
+    "nli_calls": 2964,
+    "cal": 256,
+    "unresolved": 0
+   },
+   "labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "unresolved": 0,
+   "development": false,
+   "source_labels": true,
+   "annotations_sha256": "8007787e224facce60c651dd9b826a8380f635141a629b907e936d03d87b9141",
+   "contradiction_subtype_unlabelled": false,
+   "ambiguous": {
+    "policy": "non-mergeable",
+    "provenance": "adjudicated_ambiguous",
+    "labels_file": "outputs/annotate/full/labels.jsonl",
+    "by_class": {
+     "cross_item": 7,
+     "same_item": 3
+    }
+   },
+   "seconds": 69.1
+  },
+  {
+   "git_sha": "b588bd7bc241e353ce3d55c9ccc88bec0c2c1694",
+   "git_dirty": false,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "encoder": "minilm",
+   "encoder_id": "sentence-transformers/all-MiniLM-L6-v2",
+   "nli": "mnli-cross-encoder",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "hw": "arm64",
+   "alpha": 0.02,
+   "alpha_ppm": 20000,
+   "n_min": 49,
+   "B_0": 256,
+   "B_0_rule": "given",
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "domain": "vitaminc",
+   "strata": [
+    "S3_vitc_nonfactual",
+    "S4_vitc_factual"
+   ],
+   "epoch_file": "vitaminc-seed-a0.02.epoch.json",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "55aaeca8b0d086aa84e71a250881a35a",
+   "pol": {
+    "rank_map": {
+     "PRECEDENT": 0,
+     "OBSERVATION": 1,
+     "CLAIM": 2,
+     "SPECULATION": 3
+    },
+    "scopes": {
+     "vitaminc": [
+      "vitaminc"
+     ]
+    },
+    "auth_policy": {
+     "SUPERSEDE": 3,
+     "OVERRULE": 3,
+     "REVOKE": 3,
+     "DISTINGUISHES": 3,
+     "calibration_authority": {
+      "vitaminc": "calibration"
+     }
+    },
+    "step_version": 0,
+    "r_min": 1,
+    "bootstrap_selector": [
+     32768,
+     32768,
+     3
+    ]
+   },
+   "epoch_id": "24ad1a47fe10a39bd5f2960cfa8f6d57",
+   "seq": 1,
+   "policy": "SEED",
+   "mondrian_c": false,
+   "cal_root": "6fc2f46dacba31f9d00e33f41623efce",
+   "cal_hw": "arm64",
+   "verified": true,
+   "bins": [
+    {
+     "g": 0,
+     "n_g": 19,
+     "n_c_g": 0,
+     "theta_q": 65536,
+     "theta": null
+    },
+    {
+     "g": 1,
+     "n_g": 48,
+     "n_c_g": 0,
+     "theta_q": 65536,
+     "theta": null
+    },
+    {
+     "g": 2,
+     "n_g": 122,
+     "n_c_g": 0,
+     "theta_q": 65160,
+     "theta": 0.9942778667887389
+    },
+    {
+     "g": 3,
+     "n_g": 36,
+     "n_c_g": 0,
+     "theta_q": 65536,
+     "theta": null
+    }
+   ],
+   "populated_bins": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "disabled_bins": [
+    0,
+    1,
+    3
+   ],
+   "stats": {
+    "nodes": 1188,
+    "tested": 736,
+    "nli_calls": 1938,
+    "cal": 225,
+    "unresolved": 0
+   },
+   "labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "unresolved": 0,
+   "development": false,
+   "source_labels": true,
+   "annotations_sha256": "8007787e224facce60c651dd9b826a8380f635141a629b907e936d03d87b9141",
+   "contradiction_subtype_unlabelled": true,
+   "ambiguous": {
+    "policy": "non-mergeable",
+    "provenance": "adjudicated_ambiguous",
+    "labels_file": "outputs/annotate/full/labels.jsonl",
+    "by_class": {
+     "cross_item": 2,
+     "manifest_pending": 3,
+     "same_item": 1
+    }
+   },
+   "seconds": 60.9
+  }
+ ]
+}

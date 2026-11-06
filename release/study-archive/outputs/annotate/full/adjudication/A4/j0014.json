@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0014",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "1058039c0d9d88c4d7d8c54f101605561cab13eccd00c808acda40de26d3fd5f",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"d33e1806274ff95f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The building's neighborhood is given as Hell's Kitchen in one and Midtown in the other.\"},\n{\"item_id\": \"992a65c8ee004914\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man eating, over a narrower (banana) and broader (food) range, and both can hold.\"},\n{\"item_id\": \"18a80a40c89e4d44\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the 10 crore budget to the same box-office claim.\"},\n{\"item_id\": \"5c1e622d729372a6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the nose detail to the same denial; both can hold.\"},\n{\"item_id\": \"73deddc3a126fadb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One lists two additional runner-up finishes beyond the shared record.\"},\n{\"item_id\": \"48fe6e2f6aba7c91\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that photos and stock footage of Rosenbaum appeared in season eight.\"},\n{\"item_id\": \"fa54d76839a8d941\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The swapped words could be a garbled duplicate or name a different field and vacuum, and the rubric does not decide.\"},\n{\"item_id\": \"4ab0f725b7f6aed5\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"WPLJ's commercial versus non-commercial status is a status that changes with the announced sale.\"},\n{\"item_id\": \"b88d78becd929934\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Different goals in different matches, leagues and years, with no shared entity established.\"},\n{\"item_id\": \"83c3c3fb18450cf0\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Bunny and rabbit, stuffed and toy are plain synonyms here.\"},\n{\"item_id\": \"cc2ef7d3e2d13463\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"It is unclear whether the song and the single are the same work, so related compatible chart facts and unrelated songs are both supported.\"},\n{\"item_id\": \"5120a16b9d34cefb\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"JMJD6 is said to slow versus catalyze the same hydroxylation.\"},\n{\"item_id\": \"7cafdafcae0b3be4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Definition and vision impact are compatible details about coloboma.\"},\n{\"item_id\": \"e3394ea0a5a1fe96\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the Split students were Serbian.\"},\n{\"item_id\": \"2d1151dd386dbdaa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds Teresa Edwards as co-appointee.\"},\n{\"item_id\": \"f5c7a6bee2865d40\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Read literally the denial of camouflage-clothed people fits unclothed people, but read as nobody in the snow it clashes with two people there.\"},\n{\"item_id\": \"7b5530f68bcc48a1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denying walking and denying running for the same dog can both hold.\"},\n{\"item_id\": \"013e3480d87faf0b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both describe a dog jumping with compatible differing details.\"},\n{\"item_id\": \"695bbf1d2f584d34\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds the one-wheel detail to the same denial of bike riding.\"},\n{\"item_id\": \"01b2a0a73cfe349a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the riding is in a creek.\"},\n{\"item_id\": \"fda1ff6800f970b6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Published and included swap places without changing the asserted fact about six of twelve stories.\"},\n{\"item_id\": \"c4aeae0f46029df0\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the generic pronoun he versus they differs.\"},\n{\"item_id\": \"9bd048337828bdbd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that fat and lean should be equal.\"},\n{\"item_id\": \"8397a7a91684d198\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Denials of stirring oil and of pouring liquid into a pot are compatible details about a cooking scene.\"},\n{\"item_id\": \"14aadce202e32513\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Being ridden and racing are compatible details about a horse.\"},\n{\"item_id\": \"5e73af62e2e116a4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the release was independent.\"},\n{\"item_id\": \"c5802f36f788062f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Lily Safra is Edmond Safra's widow.\"},\n{\"item_id\": \"25f33ea5f4752e62\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"The rebound average differs, 10.2 versus 10.3.\"},\n{\"item_id\": \"ea8790086d7f23cf\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same trains to Fresh Pond crossing the Hell Gate Bridge, only reworded.\"},\n{\"item_id\": \"a6e1822b0cb76fe8\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Baby and toddler, splashing and making a splash are near synonyms for the same scene.\"},\n{\"item_id\": \"7534cc185f8d39fb\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The current and former names of the university are swapped, so one is wrong.\"},\n{\"item_id\": \"397154be9bbd50ee\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Only the tense differs, which does not change the description of the kukri.\"},\n{\"item_id\": \"1dd7eb04630f85f5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denying singing-and-playing and denying playing a guitar are compatible about the same scene.\"},\n{\"item_id\": \"493597cf92c1099b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Promoting T cell survival and suppressing airway inflammation are compatible effects of CX3CR1.\"},\n{\"item_id\": \"18f97fcbd6e93a12\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One boy jumping into the water contradicts no one jumping.\"},\n{\"item_id\": \"e24daade0fd48dad\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that WWE's move was in response to AEW.\"},\n{\"item_id\": \"425b74c3cfb06c9b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Nobody playing guitar is compatible with no man singing and playing one.\"},\n{\"item_id\": \"844ee8e50cc6b854\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Will be released versus was released is a release status that changes over time.\"},\n{\"item_id\": \"0c2a5bf24cb91a05\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One list adds the Fairy Prion and the other uses fuller names.\"},\n{\"item_id\": \"ffe3a51dd664df5d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the year 2012 to the release date.\"},\n{\"item_id\": \"790b8b7437fbb2e7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the sales count albums and singles, plus a source.\"},\n{\"item_id\": \"40b7b816c5bc39f8\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Used and provided swap places without changing what the turntable does.\"},\n{\"item_id\": \"23c962ef5787c990\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds grand piano and stage to the same denial.\"},\n{\"item_id\": \"1c160edd9a4c4e8c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny the same squirting scene, one adding the white dog.\"},\n{\"item_id\": \"48d59a687bae3fa6\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Is versus was concerns whether WCW still exists, a status that changes over time.\"},\n{\"item_id\": \"9599b7210423e135\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Sprinkling and putting cheese on a pizza are equivalent here.\"},\n{\"item_id\": \"d523b65b77ba87aa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One additionally lists AC/DC.\"},\n{\"item_id\": \"a2c3ce0a050bf020\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds at a ball to the same denial.\"},\n{\"item_id\": \"660a253d77203528\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same constituency fact with only typographic differences.\"},\n{\"item_id\": \"79beca809d99d6a2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Birmingham City were rivals.\"}\n]}\n"
+ ],
+ "labels": {
+  "d33e1806274ff95f": {
+   "item_id": "d33e1806274ff95f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The building's neighborhood is given as Hell's Kitchen in one and Midtown in the other."
+  },
+  "992a65c8ee004914": {
+   "item_id": "992a65c8ee004914",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man eating, over a narrower (banana) and broader (food) range, and both can hold."
+  },
+  "18a80a40c89e4d44": {
+   "item_id": "18a80a40c89e4d44",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the 10 crore budget to the same box-office claim."
+  },
+  "5c1e622d729372a6": {
+   "item_id": "5c1e622d729372a6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the nose detail to the same denial; both can hold."
+  },
+  "73deddc3a126fadb": {
+   "item_id": "73deddc3a126fadb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One lists two additional runner-up finishes beyond the shared record."
+  },
+  "48fe6e2f6aba7c91": {
+   "item_id": "48fe6e2f6aba7c91",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that photos and stock footage of Rosenbaum appeared in season eight."
+  },
+  "fa54d76839a8d941": {
+   "item_id": "fa54d76839a8d941",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The swapped words could be a garbled duplicate or name a different field and vacuum, and the rubric does not decide."
+  },
+  "4ab0f725b7f6aed5": {
+   "item_id": "4ab0f725b7f6aed5",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "WPLJ's commercial versus non-commercial status is a status that changes with the announced sale."
+  },
+  "b88d78becd929934": {
+   "item_id": "b88d78becd929934",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Different goals in different matches, leagues and years, with no shared entity established."
+  },
+  "83c3c3fb18450cf0": {
+   "item_id": "83c3c3fb18450cf0",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Bunny and rabbit, stuffed and toy are plain synonyms here."
+  },
+  "cc2ef7d3e2d13463": {
+   "item_id": "cc2ef7d3e2d13463",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "It is unclear whether the song and the single are the same work, so related compatible chart facts and unrelated songs are both supported."
+  },
+  "5120a16b9d34cefb": {
+   "item_id": "5120a16b9d34cefb",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "JMJD6 is said to slow versus catalyze the same hydroxylation."
+  },
+  "7cafdafcae0b3be4": {
+   "item_id": "7cafdafcae0b3be4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Definition and vision impact are compatible details about coloboma."
+  },
+  "e3394ea0a5a1fe96": {
+   "item_id": "e3394ea0a5a1fe96",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the Split students were Serbian."
+  },
+  "2d1151dd386dbdaa": {
+   "item_id": "2d1151dd386dbdaa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds Teresa Edwards as co-appointee."
+  },
+  "f5c7a6bee2865d40": {
+   "item_id": "f5c7a6bee2865d40",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Read literally the denial of camouflage-clothed people fits unclothed people, but read as nobody in the snow it clashes with two people there."
+  },
+  "7b5530f68bcc48a1": {
+   "item_id": "7b5530f68bcc48a1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denying walking and denying running for the same dog can both hold."
+  },
+  "013e3480d87faf0b": {
+   "item_id": "013e3480d87faf0b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both describe a dog jumping with compatible differing details."
+  },
+  "695bbf1d2f584d34": {
+   "item_id": "695bbf1d2f584d34",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds the one-wheel detail to the same denial of bike riding."
+  },
+  "01b2a0a73cfe349a": {
+   "item_id": "01b2a0a73cfe349a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the riding is in a creek."
+  },
+  "fda1ff6800f970b6": {
+   "item_id": "fda1ff6800f970b6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Published and included swap places without changing the asserted fact about six of twelve stories."
+  },
+  "c4aeae0f46029df0": {
+   "item_id": "c4aeae0f46029df0",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the generic pronoun he versus they differs."
+  },
+  "9bd048337828bdbd": {
+   "item_id": "9bd048337828bdbd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that fat and lean should be equal."
+  },
+  "8397a7a91684d198": {
+   "item_id": "8397a7a91684d198",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Denials of stirring oil and of pouring liquid into a pot are compatible details about a cooking scene."
+  },
+  "14aadce202e32513": {
+   "item_id": "14aadce202e32513",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Being ridden and racing are compatible details about a horse."
+  },
+  "5e73af62e2e116a4": {
+   "item_id": "5e73af62e2e116a4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the release was independent."
+  },
+  "c5802f36f788062f": {
+   "item_id": "c5802f36f788062f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Lily Safra is Edmond Safra's widow."
+  },
+  "25f33ea5f4752e62": {
+   "item_id": "25f33ea5f4752e62",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "The rebound average differs, 10.2 versus 10.3."
+  },
+  "ea8790086d7f23cf": {
+   "item_id": "ea8790086d7f23cf",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same trains to Fresh Pond crossing the Hell Gate Bridge, only reworded."
+  },
+  "a6e1822b0cb76fe8": {
+   "item_id": "a6e1822b0cb76fe8",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Baby and toddler, splashing and making a splash are near synonyms for the same scene."
+  },
+  "7534cc185f8d39fb": {
+   "item_id": "7534cc185f8d39fb",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The current and former names of the university are swapped, so one is wrong."
+  },
+  "397154be9bbd50ee": {
+   "item_id": "397154be9bbd50ee",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Only the tense differs, which does not change the description of the kukri."
+  },
+  "1dd7eb04630f85f5": {
+   "item_id": "1dd7eb04630f85f5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denying singing-and-playing and denying playing a guitar are compatible about the same scene."
+  },
+  "493597cf92c1099b": {
+   "item_id": "493597cf92c1099b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Promoting T cell survival and suppressing airway inflammation are compatible effects of CX3CR1."
+  },
+  "18f97fcbd6e93a12": {
+   "item_id": "18f97fcbd6e93a12",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One boy jumping into the water contradicts no one jumping."
+  },
+  "e24daade0fd48dad": {
+   "item_id": "e24daade0fd48dad",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that WWE's move was in response to AEW."
+  },
+  "425b74c3cfb06c9b": {
+   "item_id": "425b74c3cfb06c9b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Nobody playing guitar is compatible with no man singing and playing one."
+  },
+  "844ee8e50cc6b854": {
+   "item_id": "844ee8e50cc6b854",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Will be released versus was released is a release status that changes over time."
+  },
+  "0c2a5bf24cb91a05": {
+   "item_id": "0c2a5bf24cb91a05",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One list adds the Fairy Prion and the other uses fuller names."
+  },
+  "ffe3a51dd664df5d": {
+   "item_id": "ffe3a51dd664df5d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the year 2012 to the release date."
+  },
+  "790b8b7437fbb2e7": {
+   "item_id": "790b8b7437fbb2e7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the sales count albums and singles, plus a source."
+  },
+  "40b7b816c5bc39f8": {
+   "item_id": "40b7b816c5bc39f8",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Used and provided swap places without changing what the turntable does."
+  },
+  "23c962ef5787c990": {
+   "item_id": "23c962ef5787c990",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds grand piano and stage to the same denial."
+  },
+  "1c160edd9a4c4e8c": {
+   "item_id": "1c160edd9a4c4e8c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny the same squirting scene, one adding the white dog."
+  },
+  "48d59a687bae3fa6": {
+   "item_id": "48d59a687bae3fa6",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Is versus was concerns whether WCW still exists, a status that changes over time."
+  },
+  "9599b7210423e135": {
+   "item_id": "9599b7210423e135",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Sprinkling and putting cheese on a pizza are equivalent here."
+  },
+  "d523b65b77ba87aa": {
+   "item_id": "d523b65b77ba87aa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One additionally lists AC/DC."
+  },
+  "a2c3ce0a050bf020": {
+   "item_id": "a2c3ce0a050bf020",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds at a ball to the same denial."
+  },
+  "660a253d77203528": {
+   "item_id": "660a253d77203528",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same constituency fact with only typographic differences."
+  },
+  "79beca809d99d6a2": {
+   "item_id": "79beca809d99d6a2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Birmingham City were rivals."
+  }
+ },
+ "errors": []
+}

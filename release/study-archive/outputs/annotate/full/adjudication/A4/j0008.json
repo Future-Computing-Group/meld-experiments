@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0008",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "43adf3cbe8abd99aad0eff49d3137ab92ff6732d4b94ddd4da9efff63e5da34f",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"7d5cf892dc23bf4c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Mendes is the film's director, named Sam Mendes.\"},\n{\"item_id\": \"664dc572252f829a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds world junior silver medallist Sam Giesbrecht to the list.\"},\n{\"item_id\": \"df72f536db585ed8\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The list of most recent performances changes over time, Pixels dropping out as Altered Carbon is added.\"},\n{\"item_id\": \"7c6cd60cfb8ee663\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Read as the same scene, an airplane cannot be both flying and stationed on the ground.\"},\n{\"item_id\": \"b9eeab04086ecda5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible details (painted face, black shirt, pink beads) about a girl standing among children.\"},\n{\"item_id\": \"e031f633a2324c9b\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Goma to Ndjili via Kisangani is the same route as Goma via Kisangani to Ndjili.\"},\n{\"item_id\": \"2414964baf10aaeb\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The only difference is the typo cornerbacm.\"},\n{\"item_id\": \"be19732de6a75cb6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same antagonism of Damian, with one adding that the target is the active Robin.\"},\n{\"item_id\": \"e020387344076ff7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only a missing pronoun and for versus with differ.\"},\n{\"item_id\": \"d0f663307b888d6b\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Mixed to negative and highly negative reviews describe incompatible receptions.\"},\n{\"item_id\": \"7e733b1d2c350a77\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the exact US release date within 2005.\"},\n{\"item_id\": \"ff43d24fed3e8c58\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"The scrambled wording changes who took lessons from whom, so the relations asserted differ.\"},\n{\"item_id\": \"eeda907abc6fe384\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Squad selection in July and debut in August 2007 are compatible events of the same England series.\"},\n{\"item_id\": \"0bc0f46fee7d7198\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the year 2012.\"},\n{\"item_id\": \"8bcfc717efe0e4f2\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The actor's and character's names are split differently, changing who plays whom.\"},\n{\"item_id\": \"ff4125e166e1a5b3\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A stuffed bunny and a toy rabbit are near synonyms here.\"},\n{\"item_id\": \"07e2c21b50dc3dba\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a cat playing, over a device in general versus a keyboard specifically, and both can hold.\"},\n{\"item_id\": \"84a1ac6576bcef61\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Different airlines' separate 747-400 retirement plans.\"},\n{\"item_id\": \"9c212a55b931b952\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Vodafone to a non-exhaustive list of customers.\"},\n{\"item_id\": \"4c8a44655fbddded\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The recording and release roles of 2000 and the label are swapped.\"},\n{\"item_id\": \"dc9d80fffec95309\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same trail route is described in reverse direction.\"},\n{\"item_id\": \"53c257611fb9e7e9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the film is American.\"},\n{\"item_id\": \"1935e61d7a7dca9f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same ritual described with generic singular versus plural sheep.\"},\n{\"item_id\": \"9d9fd6b2e92cbce9\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only the word also differs.\"},\n{\"item_id\": \"2d8e5cc3fcebb2b9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One specifies bass guitar and adds that Matty replaced Mikey Norris.\"},\n{\"item_id\": \"57ce6ddc5aa0a3b6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"On the shore is a more specific location than near the sea.\"},\n{\"item_id\": \"d10d582c10a8e8f1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"English is a narrower, compatible nationality detail than British.\"},\n{\"item_id\": \"09c38344cfe3a669\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Read as the same scene, the dog cannot be both brown and white and tan.\"},\n{\"item_id\": \"d0610e1753c34991\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Frigid and cold nights are near synonyms here.\"},\n{\"item_id\": \"48294e88ae5a6473\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only a duplicated name and a comma differ.\"},\n{\"item_id\": \"2d6eb821b72ce843\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Will be published versus was published is a publication status that changes over time.\"},\n{\"item_id\": \"7e14e980237eea8e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible details of a dog going after a ball.\"},\n{\"item_id\": \"c0746f5182cbd82c\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Free agent versus with the Browns is a team status that changes over time.\"},\n{\"item_id\": \"52d8989e80e935d4\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Al Haram AlQudsi Alshareef and the Temple Mount are names for the same site.\"},\n{\"item_id\": \"84f2d6820c61272a\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same province and dioceses, with comprises/includes rewording and a garbled verb.\"},\n{\"item_id\": \"1daf4626dde535b7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds the NHL on ABC branding of the broadcast.\"},\n{\"item_id\": \"043b9f6aaf0ab1da\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible facts about MafA ubiquitination, its cause and its effect.\"},\n{\"item_id\": \"5e20fda0f287c021\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Shown and used are interchanged with no change in meaning.\"},\n{\"item_id\": \"85fe0db85a5bc25d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the reason for Zender leaving.\"},\n{\"item_id\": \"a7dab43ab4ca6398\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Described and found are swapped between Hopp and Brazil.\"},\n{\"item_id\": \"1e30d67dbf1c4296\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible details about men dancing.\"},\n{\"item_id\": \"4a2c633e43531636\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Two compatible facts about pyridostatin.\"},\n{\"item_id\": \"1c246a5bf229fb4d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a boy cutting grass with scissors, one adding the curb location.\"},\n{\"item_id\": \"a2364f3113a4ea7b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Sticky goo specifies what the woman removes from the bowl.\"},\n{\"item_id\": \"2445c15f61f15920\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Compatible descriptions of a man posing with or for another man.\"},\n{\"item_id\": \"a32182757a3abe64\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that it is a love song.\"},\n{\"item_id\": \"08c0be2a14a3f19a\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Case counts are given at two explicit different dates, so both can hold.\"},\n{\"item_id\": \"8ae0f824b14db482\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible award details about Gless, one adding years and shows.\"},\n{\"item_id\": \"6d05f7d7ae12ccb3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man riding a bike, with compatible different details.\"},\n{\"item_id\": \"b7dcef60dfe2960c\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Read as the same scene, the violinist cannot be both a woman and a little girl.\"}\n]}\n"
+ ],
+ "labels": {
+  "7d5cf892dc23bf4c": {
+   "item_id": "7d5cf892dc23bf4c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Mendes is the film's director, named Sam Mendes."
+  },
+  "664dc572252f829a": {
+   "item_id": "664dc572252f829a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds world junior silver medallist Sam Giesbrecht to the list."
+  },
+  "df72f536db585ed8": {
+   "item_id": "df72f536db585ed8",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The list of most recent performances changes over time, Pixels dropping out as Altered Carbon is added."
+  },
+  "7c6cd60cfb8ee663": {
+   "item_id": "7c6cd60cfb8ee663",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Read as the same scene, an airplane cannot be both flying and stationed on the ground."
+  },
+  "b9eeab04086ecda5": {
+   "item_id": "b9eeab04086ecda5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible details (painted face, black shirt, pink beads) about a girl standing among children."
+  },
+  "e031f633a2324c9b": {
+   "item_id": "e031f633a2324c9b",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Goma to Ndjili via Kisangani is the same route as Goma via Kisangani to Ndjili."
+  },
+  "2414964baf10aaeb": {
+   "item_id": "2414964baf10aaeb",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The only difference is the typo cornerbacm."
+  },
+  "be19732de6a75cb6": {
+   "item_id": "be19732de6a75cb6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same antagonism of Damian, with one adding that the target is the active Robin."
+  },
+  "e020387344076ff7": {
+   "item_id": "e020387344076ff7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only a missing pronoun and for versus with differ."
+  },
+  "d0f663307b888d6b": {
+   "item_id": "d0f663307b888d6b",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Mixed to negative and highly negative reviews describe incompatible receptions."
+  },
+  "7e733b1d2c350a77": {
+   "item_id": "7e733b1d2c350a77",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the exact US release date within 2005."
+  },
+  "ff43d24fed3e8c58": {
+   "item_id": "ff43d24fed3e8c58",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "The scrambled wording changes who took lessons from whom, so the relations asserted differ."
+  },
+  "eeda907abc6fe384": {
+   "item_id": "eeda907abc6fe384",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Squad selection in July and debut in August 2007 are compatible events of the same England series."
+  },
+  "0bc0f46fee7d7198": {
+   "item_id": "0bc0f46fee7d7198",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the year 2012."
+  },
+  "8bcfc717efe0e4f2": {
+   "item_id": "8bcfc717efe0e4f2",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The actor's and character's names are split differently, changing who plays whom."
+  },
+  "ff4125e166e1a5b3": {
+   "item_id": "ff4125e166e1a5b3",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A stuffed bunny and a toy rabbit are near synonyms here."
+  },
+  "07e2c21b50dc3dba": {
+   "item_id": "07e2c21b50dc3dba",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a cat playing, over a device in general versus a keyboard specifically, and both can hold."
+  },
+  "84a1ac6576bcef61": {
+   "item_id": "84a1ac6576bcef61",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Different airlines' separate 747-400 retirement plans."
+  },
+  "9c212a55b931b952": {
+   "item_id": "9c212a55b931b952",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Vodafone to a non-exhaustive list of customers."
+  },
+  "4c8a44655fbddded": {
+   "item_id": "4c8a44655fbddded",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The recording and release roles of 2000 and the label are swapped."
+  },
+  "dc9d80fffec95309": {
+   "item_id": "dc9d80fffec95309",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same trail route is described in reverse direction."
+  },
+  "53c257611fb9e7e9": {
+   "item_id": "53c257611fb9e7e9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the film is American."
+  },
+  "1935e61d7a7dca9f": {
+   "item_id": "1935e61d7a7dca9f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same ritual described with generic singular versus plural sheep."
+  },
+  "9d9fd6b2e92cbce9": {
+   "item_id": "9d9fd6b2e92cbce9",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only the word also differs."
+  },
+  "2d8e5cc3fcebb2b9": {
+   "item_id": "2d8e5cc3fcebb2b9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One specifies bass guitar and adds that Matty replaced Mikey Norris."
+  },
+  "57ce6ddc5aa0a3b6": {
+   "item_id": "57ce6ddc5aa0a3b6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "On the shore is a more specific location than near the sea."
+  },
+  "d10d582c10a8e8f1": {
+   "item_id": "d10d582c10a8e8f1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "English is a narrower, compatible nationality detail than British."
+  },
+  "09c38344cfe3a669": {
+   "item_id": "09c38344cfe3a669",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Read as the same scene, the dog cannot be both brown and white and tan."
+  },
+  "d0610e1753c34991": {
+   "item_id": "d0610e1753c34991",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Frigid and cold nights are near synonyms here."
+  },
+  "48294e88ae5a6473": {
+   "item_id": "48294e88ae5a6473",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only a duplicated name and a comma differ."
+  },
+  "2d6eb821b72ce843": {
+   "item_id": "2d6eb821b72ce843",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Will be published versus was published is a publication status that changes over time."
+  },
+  "7e14e980237eea8e": {
+   "item_id": "7e14e980237eea8e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible details of a dog going after a ball."
+  },
+  "c0746f5182cbd82c": {
+   "item_id": "c0746f5182cbd82c",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Free agent versus with the Browns is a team status that changes over time."
+  },
+  "52d8989e80e935d4": {
+   "item_id": "52d8989e80e935d4",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Al Haram AlQudsi Alshareef and the Temple Mount are names for the same site."
+  },
+  "84f2d6820c61272a": {
+   "item_id": "84f2d6820c61272a",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same province and dioceses, with comprises/includes rewording and a garbled verb."
+  },
+  "1daf4626dde535b7": {
+   "item_id": "1daf4626dde535b7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds the NHL on ABC branding of the broadcast."
+  },
+  "043b9f6aaf0ab1da": {
+   "item_id": "043b9f6aaf0ab1da",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible facts about MafA ubiquitination, its cause and its effect."
+  },
+  "5e20fda0f287c021": {
+   "item_id": "5e20fda0f287c021",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Shown and used are interchanged with no change in meaning."
+  },
+  "85fe0db85a5bc25d": {
+   "item_id": "85fe0db85a5bc25d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the reason for Zender leaving."
+  },
+  "a7dab43ab4ca6398": {
+   "item_id": "a7dab43ab4ca6398",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Described and found are swapped between Hopp and Brazil."
+  },
+  "1e30d67dbf1c4296": {
+   "item_id": "1e30d67dbf1c4296",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible details about men dancing."
+  },
+  "4a2c633e43531636": {
+   "item_id": "4a2c633e43531636",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Two compatible facts about pyridostatin."
+  },
+  "1c246a5bf229fb4d": {
+   "item_id": "1c246a5bf229fb4d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a boy cutting grass with scissors, one adding the curb location."
+  },
+  "a2364f3113a4ea7b": {
+   "item_id": "a2364f3113a4ea7b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Sticky goo specifies what the woman removes from the bowl."
+  },
+  "2445c15f61f15920": {
+   "item_id": "2445c15f61f15920",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Compatible descriptions of a man posing with or for another man."
+  },
+  "a32182757a3abe64": {
+   "item_id": "a32182757a3abe64",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that it is a love song."
+  },
+  "08c0be2a14a3f19a": {
+   "item_id": "08c0be2a14a3f19a",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Case counts are given at two explicit different dates, so both can hold."
+  },
+  "8ae0f824b14db482": {
+   "item_id": "8ae0f824b14db482",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible award details about Gless, one adding years and shows."
+  },
+  "6d05f7d7ae12ccb3": {
+   "item_id": "6d05f7d7ae12ccb3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man riding a bike, with compatible different details."
+  },
+  "b7dcef60dfe2960c": {
+   "item_id": "b7dcef60dfe2960c",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Read as the same scene, the violinist cannot be both a woman and a little girl."
+  }
+ },
+ "errors": []
+}

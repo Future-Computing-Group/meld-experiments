@@ -55,7 +55,7 @@ def summarize_scale(n_brains: int, sem_delivered: List[Set[str]],
 
 
 def scale_row(n: int, *, per_domain: int = 4, encoder: str = "minilm",
-              sigma_lo: float = 0.12, es=None) -> Dict:
+              sigma_lo: float, es=None) -> Dict:
     """One N: route a workload by semantic (top-1) and by broadcast over ``n`` brains."""
     brains = make_brains(n)
     wl = make_workload(n, per_domain=per_domain)

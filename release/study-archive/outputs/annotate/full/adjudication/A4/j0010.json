@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0010",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "dce177cc3c1f8f7dcc21cdb7e6d9f45f262efbc50f4106e736ff96afc3fc70f3",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"d97ae7ac0fce7cc1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a female applying eye makeup with a pencil, with compatible differing details.\"},\n{\"item_id\": \"2b5f5b94e3b85095\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny someone cooking noodles, via boiling versus stirring, and can hold together.\"},\n{\"item_id\": \"8cc563c933f52201\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One supplies the $6.8 million contract value that the other leaves blank.\"},\n{\"item_id\": \"037e6cd83fdb0050\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The plural 'an Indian immigrants' is a grammatical typo of the same claim.\"},\n{\"item_id\": \"71b6a2ad66b95230\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the middle name Joy to an otherwise identical description.\"},\n{\"item_id\": \"a92250d5463e8ee4\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Possessed versus owned and by versus of are synonym-level wording differences.\"},\n{\"item_id\": \"4269df30c76fb4e6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a female applying eye makeup with a pencil, with compatible differing details.\"},\n{\"item_id\": \"03538fcb9855e1ee\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the accusation was false, which is compatible with the plain report of the accusation.\"},\n{\"item_id\": \"9a2cd0f89d954811\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One names the film Befikre where the other leaves it unnamed.\"},\n{\"item_id\": \"562db6d2444fe51e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds a teaser trailer revealing the same release date.\"},\n{\"item_id\": \"5bbd31b8221f9e04\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny biking activity, one generally and one a specific ramp jump, and both can hold.\"},\n{\"item_id\": \"ff202c3f6cdd2eaa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Two dogs tussling on grass is a more detailed version of two animals playing outside.\"},\n{\"item_id\": \"2a164b09805d0f94\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Was fronted versus is fronted differ in a status that changes over time.\"},\n{\"item_id\": \"6a1a222c36124658\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both are compatible negations about a man and water activity.\"},\n{\"item_id\": \"0e6e1b7f9bf67beb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man riding a bicycle in a particular way and can hold together.\"},\n{\"item_id\": \"f41d28e924b565d0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Grohl is also a guitarist.\"},\n{\"item_id\": \"dc08e34cf6f022cd\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only tense and contraction differ in the same quote.\"},\n{\"item_id\": \"d0dfc947d5fceb39\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only a typo in depicted differs.\"},\n{\"item_id\": \"8247165415608cc0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny paper cutting, one adding scissors, and both can hold.\"},\n{\"item_id\": \"00f36ce6bafa3587\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One gives full publication year ranges compatible with the start years.\"},\n{\"item_id\": \"4da0d4b915576785\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Rahman is said to have adopted versus recorded the song, a changed action.\"},\n{\"item_id\": \"02570f376b3487e3\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The garbled texts differ only in linear versus linearly and the versus that.\"},\n{\"item_id\": \"67a43f588b07f96b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the cameras are burned with a blow torch.\"},\n{\"item_id\": \"fdb0e8ad40bde7ea\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the middle name Michael.\"},\n{\"item_id\": \"f391830adeb70846\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a boy in red jumping, with compatible extra details.\"},\n{\"item_id\": \"4125815f11af28ce\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe a classroom of students watching, with compatible details.\"},\n{\"item_id\": \"fb2e5a27413cd8dd\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only a typo in mentions differs.\"},\n{\"item_id\": \"344a9954fea19dec\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a dog on sand, with compatible different details.\"},\n{\"item_id\": \"d19318af8d083bc5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Food is a more specific object than something.\"},\n{\"item_id\": \"d950252b39c744a4\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The view count of the video differs, a figure that grows over time.\"},\n{\"item_id\": \"df30e531896047d2\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A woman pouring and a man mixing in a bowl may be one scene or unrelated scenes.\"},\n{\"item_id\": \"f013af5a92fd2bf3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the update only contained the eight characters, which is compatible.\"},\n{\"item_id\": \"217966131aae2ad6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Jones was a Hawaii QB.\"},\n{\"item_id\": \"a39ec25316fe5ca1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the nickname The Institution.\"},\n{\"item_id\": \"39976fca0cbab0c9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One lists additional companies with offices in the town.\"},\n{\"item_id\": \"09353cd01c8764a2\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The eulogy appears in an autobiography versus a biography, a fixed fact.\"},\n{\"item_id\": \"138eb4be394acdb8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Turkey to a non-exhaustive list of exceptions.\"},\n{\"item_id\": \"872dbb9c190cb83a\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Yanni provided the recordings versus received them, a role swap.\"},\n{\"item_id\": \"81f90b13c52fa0b6\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"They overlook a lake versus an ocean.\"},\n{\"item_id\": \"c33a2ed741a6abb4\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The modifiers effective and offensive swap between cavalry and policies.\"},\n{\"item_id\": \"7b50e845ba1f26f5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the NSA rule change was secret.\"},\n{\"item_id\": \"a51aa9269e8f0374\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both negate women dancing, adding outside or the count two, and both can hold.\"},\n{\"item_id\": \"488b6e19221cf925\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The inserted aside that he in truth lost all the gold on novels contradicts spending it on the Zeppelin.\"},\n{\"item_id\": \"60c15dfd536057df\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that SAIC also owns MG.\"},\n{\"item_id\": \"c361fc030e3606d0\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The reader's current page in the same book is 200 versus 220, which changes over time.\"},\n{\"item_id\": \"98909f6baed56add\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Cruz is openly gay.\"},\n{\"item_id\": \"6534f0aaa386e6f0\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The modifiers true and marine swap between the mollusk and the whelks.\"},\n{\"item_id\": \"f9374cb6392d2e75\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Grissom is a lapsed Catholic.\"},\n{\"item_id\": \"ea8b29d9e5e3fc47\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Freeing versus deboning a fish may be clashing actions in one scene or unrelated scenes.\"},\n{\"item_id\": \"85e2630826f8e451\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Open and influential swap places, and created differs from compiled.\"}\n]}\n"
+ ],
+ "labels": {
+  "d97ae7ac0fce7cc1": {
+   "item_id": "d97ae7ac0fce7cc1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a female applying eye makeup with a pencil, with compatible differing details."
+  },
+  "2b5f5b94e3b85095": {
+   "item_id": "2b5f5b94e3b85095",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny someone cooking noodles, via boiling versus stirring, and can hold together."
+  },
+  "8cc563c933f52201": {
+   "item_id": "8cc563c933f52201",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One supplies the $6.8 million contract value that the other leaves blank."
+  },
+  "037e6cd83fdb0050": {
+   "item_id": "037e6cd83fdb0050",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The plural 'an Indian immigrants' is a grammatical typo of the same claim."
+  },
+  "71b6a2ad66b95230": {
+   "item_id": "71b6a2ad66b95230",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the middle name Joy to an otherwise identical description."
+  },
+  "a92250d5463e8ee4": {
+   "item_id": "a92250d5463e8ee4",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Possessed versus owned and by versus of are synonym-level wording differences."
+  },
+  "4269df30c76fb4e6": {
+   "item_id": "4269df30c76fb4e6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a female applying eye makeup with a pencil, with compatible differing details."
+  },
+  "03538fcb9855e1ee": {
+   "item_id": "03538fcb9855e1ee",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the accusation was false, which is compatible with the plain report of the accusation."
+  },
+  "9a2cd0f89d954811": {
+   "item_id": "9a2cd0f89d954811",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One names the film Befikre where the other leaves it unnamed."
+  },
+  "562db6d2444fe51e": {
+   "item_id": "562db6d2444fe51e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds a teaser trailer revealing the same release date."
+  },
+  "5bbd31b8221f9e04": {
+   "item_id": "5bbd31b8221f9e04",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny biking activity, one generally and one a specific ramp jump, and both can hold."
+  },
+  "ff202c3f6cdd2eaa": {
+   "item_id": "ff202c3f6cdd2eaa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Two dogs tussling on grass is a more detailed version of two animals playing outside."
+  },
+  "2a164b09805d0f94": {
+   "item_id": "2a164b09805d0f94",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Was fronted versus is fronted differ in a status that changes over time."
+  },
+  "6a1a222c36124658": {
+   "item_id": "6a1a222c36124658",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both are compatible negations about a man and water activity."
+  },
+  "0e6e1b7f9bf67beb": {
+   "item_id": "0e6e1b7f9bf67beb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man riding a bicycle in a particular way and can hold together."
+  },
+  "f41d28e924b565d0": {
+   "item_id": "f41d28e924b565d0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Grohl is also a guitarist."
+  },
+  "dc08e34cf6f022cd": {
+   "item_id": "dc08e34cf6f022cd",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only tense and contraction differ in the same quote."
+  },
+  "d0dfc947d5fceb39": {
+   "item_id": "d0dfc947d5fceb39",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only a typo in depicted differs."
+  },
+  "8247165415608cc0": {
+   "item_id": "8247165415608cc0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny paper cutting, one adding scissors, and both can hold."
+  },
+  "00f36ce6bafa3587": {
+   "item_id": "00f36ce6bafa3587",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One gives full publication year ranges compatible with the start years."
+  },
+  "4da0d4b915576785": {
+   "item_id": "4da0d4b915576785",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Rahman is said to have adopted versus recorded the song, a changed action."
+  },
+  "02570f376b3487e3": {
+   "item_id": "02570f376b3487e3",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The garbled texts differ only in linear versus linearly and the versus that."
+  },
+  "67a43f588b07f96b": {
+   "item_id": "67a43f588b07f96b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the cameras are burned with a blow torch."
+  },
+  "fdb0e8ad40bde7ea": {
+   "item_id": "fdb0e8ad40bde7ea",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the middle name Michael."
+  },
+  "f391830adeb70846": {
+   "item_id": "f391830adeb70846",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a boy in red jumping, with compatible extra details."
+  },
+  "4125815f11af28ce": {
+   "item_id": "4125815f11af28ce",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe a classroom of students watching, with compatible details."
+  },
+  "fb2e5a27413cd8dd": {
+   "item_id": "fb2e5a27413cd8dd",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only a typo in mentions differs."
+  },
+  "344a9954fea19dec": {
+   "item_id": "344a9954fea19dec",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a dog on sand, with compatible different details."
+  },
+  "d19318af8d083bc5": {
+   "item_id": "d19318af8d083bc5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Food is a more specific object than something."
+  },
+  "d950252b39c744a4": {
+   "item_id": "d950252b39c744a4",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The view count of the video differs, a figure that grows over time."
+  },
+  "df30e531896047d2": {
+   "item_id": "df30e531896047d2",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A woman pouring and a man mixing in a bowl may be one scene or unrelated scenes."
+  },
+  "f013af5a92fd2bf3": {
+   "item_id": "f013af5a92fd2bf3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the update only contained the eight characters, which is compatible."
+  },
+  "217966131aae2ad6": {
+   "item_id": "217966131aae2ad6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Jones was a Hawaii QB."
+  },
+  "a39ec25316fe5ca1": {
+   "item_id": "a39ec25316fe5ca1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the nickname The Institution."
+  },
+  "39976fca0cbab0c9": {
+   "item_id": "39976fca0cbab0c9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One lists additional companies with offices in the town."
+  },
+  "09353cd01c8764a2": {
+   "item_id": "09353cd01c8764a2",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The eulogy appears in an autobiography versus a biography, a fixed fact."
+  },
+  "138eb4be394acdb8": {
+   "item_id": "138eb4be394acdb8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Turkey to a non-exhaustive list of exceptions."
+  },
+  "872dbb9c190cb83a": {
+   "item_id": "872dbb9c190cb83a",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Yanni provided the recordings versus received them, a role swap."
+  },
+  "81f90b13c52fa0b6": {
+   "item_id": "81f90b13c52fa0b6",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "They overlook a lake versus an ocean."
+  },
+  "c33a2ed741a6abb4": {
+   "item_id": "c33a2ed741a6abb4",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The modifiers effective and offensive swap between cavalry and policies."
+  },
+  "7b50e845ba1f26f5": {
+   "item_id": "7b50e845ba1f26f5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the NSA rule change was secret."
+  },
+  "a51aa9269e8f0374": {
+   "item_id": "a51aa9269e8f0374",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both negate women dancing, adding outside or the count two, and both can hold."
+  },
+  "488b6e19221cf925": {
+   "item_id": "488b6e19221cf925",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The inserted aside that he in truth lost all the gold on novels contradicts spending it on the Zeppelin."
+  },
+  "60c15dfd536057df": {
+   "item_id": "60c15dfd536057df",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that SAIC also owns MG."
+  },
+  "c361fc030e3606d0": {
+   "item_id": "c361fc030e3606d0",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The reader's current page in the same book is 200 versus 220, which changes over time."
+  },
+  "98909f6baed56add": {
+   "item_id": "98909f6baed56add",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Cruz is openly gay."
+  },
+  "6534f0aaa386e6f0": {
+   "item_id": "6534f0aaa386e6f0",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The modifiers true and marine swap between the mollusk and the whelks."
+  },
+  "f9374cb6392d2e75": {
+   "item_id": "f9374cb6392d2e75",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Grissom is a lapsed Catholic."
+  },
+  "ea8b29d9e5e3fc47": {
+   "item_id": "ea8b29d9e5e3fc47",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Freeing versus deboning a fish may be clashing actions in one scene or unrelated scenes."
+  },
+  "85e2630826f8e451": {
+   "item_id": "85e2630826f8e451",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Open and influential swap places, and created differs from compiled."
+  }
+ },
+ "errors": []
+}

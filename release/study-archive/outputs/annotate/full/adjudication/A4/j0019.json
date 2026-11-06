@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0019",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "660e6ef42e70585f4ca1f1f8622794676d8b02faf5d4ac4a834eb7922cb00451",
+ "raw": [
+  "{\"labels\": [{\"item_id\": \"d45bebf65987a730\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the date ordinal suffixes differ.\"}, {\"item_id\": \"570da49a196a6f82\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Swapping generally and eventually shifts which part is hedged, and the texts do not settle whether that changes the claim.\"}, {\"item_id\": \"2f0498b4ba358730\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Adding also does not change the claim that the anthem was signed by Lori Hilary for the first time.\"}, {\"item_id\": \"07ba2b1e5766fd5b\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A broad denial of a guinea pig eating carrot and a narrower denial of a detailed scene can both hold.\"}, {\"item_id\": \"5fc3709b2c71afb3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A pot is a more specific kind of container.\"}, {\"item_id\": \"0e952f606aab36d0\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"The deer jumps over a wall in one and a fence in the other, a different obstacle for the same scene.\"}, {\"item_id\": \"011c7191165df5cf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the album is the band's final one.\"}, {\"item_id\": \"384ada84045b0d9f\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying anyone playing covers a wider range than denying a little girl playing.\"}, {\"item_id\": \"3838071200d2b5a8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the year 1937.\"}, {\"item_id\": \"2d3c86d97b1e1347\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give compatible details about Aldon Smith's career events.\"}, {\"item_id\": \"f896030fc28f36e1\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only the tense of the hosting verb differs, with dates fixed.\"}, {\"item_id\": \"879a4f89d3ef5852\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies that the fighting men number two.\"}, {\"item_id\": \"54038d180cc9b3d6\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A break from work and a break from a snowy road trip may be the same break or incompatible descriptions.\"}, {\"item_id\": \"8bcccdfefb2e907a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man erasing a drawing is compatible with him not drawing on the board.\"}, {\"item_id\": \"9b4ff7fb3a5a79f5\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"With the time anchored as of 2015, is and was assert the same relationship.\"}, {\"item_id\": \"82202dec4ee53127\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Each adds a different compatible detail about the same album.\"}, {\"item_id\": \"cfc229bfcb6ba504\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The listed lake exceptions to Uganda's landlocked status differ, one naming only Lake Victoria.\"}, {\"item_id\": \"a09bbebfb1ffaa7a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A man is a more specific person playing a flute.\"}, {\"item_id\": \"d82524a541ffbb3e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One gives the businessman's full first name Vincent.\"}, {\"item_id\": \"8e808d172d6204a2\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The running count of Crash Course videos watched is 10 in one and 15 in the other.\"}, {\"item_id\": \"bac579cd9633342d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give compatible facts about the footballer Martinelli.\"}, {\"item_id\": \"2315d61ea6b5416b\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"The man cutting the tree with an axe versus picking it up is a different action in the same scene.\"}, {\"item_id\": \"a264647255fbb5f9\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The same claim is made for Lollapalooza 2009 and for various venues.\"}, {\"item_id\": \"2bd927a608ec8220\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Swapping very similar and very early changes emphasis but both readings can hold, so conflict and relate are both defensible.\"}, {\"item_id\": \"0e5503f04d7cdb15\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The garbled swap of converges leaves it unclear whether the claim about Appley and Shevington Vale changes.\"}, {\"item_id\": \"f34c4a36dcd408c9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One labels Malthus a demographer and the other an economist, compatible details about the same influence.\"}, {\"item_id\": \"eb9830ef7c76406c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A 2015 contract signing and current free agency are compatible facts about Smith.\"}, {\"item_id\": \"61618066e44f84e0\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The average score and number of critics are running totals that change over time.\"}, {\"item_id\": \"a3a52f33388dd4b7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Reporting and notification intervals are near synonyms here.\"}, {\"item_id\": \"f18b4e98b3c3344a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A black dog chasing a brown dog is compatible with the brown dog not sniffing it.\"}, {\"item_id\": \"1317ef54a5d2df8b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds US Airways in Pittsburgh to the non-exhaustive list.\"}, {\"item_id\": \"023bad94c75298a1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds Cleverley's future move to Everton.\"}, {\"item_id\": \"a366356d5626d3f5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that it was the opening group match.\"}, {\"item_id\": \"e27e5fc2b407d407\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds Keith Allen's professions.\"}, {\"item_id\": \"c9b1b710e3bed7f5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A birth and a wedding are compatible events about the same person.\"}, {\"item_id\": \"5c09e9653932e88b\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"Which item is final, the remix or the recorded version, is swapped.\"}, {\"item_id\": \"45caf0e4ab0875d4\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Slicing a tomato and slicing onions are different scenes and objects.\"}, {\"item_id\": \"e29ceb6b6e3e8d60\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The reunion is upcoming in one and already happened in the other, each true at its own time.\"}, {\"item_id\": \"b4203b1883aa8f8f\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Not driving any car covers a wider range than not driving a white car.\"}, {\"item_id\": \"99540a7613fc2a5d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Weight loss and no biochemical impact are compatible outcomes of the same programme.\"}, {\"item_id\": \"1e8f8e9f4e96731c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Dudgeon was a music producer.\"}, {\"item_id\": \"9fb146d7bbae223c\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Cut and sliced are synonyms here.\"}, {\"item_id\": \"76e03cb28980b2a5\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"Primary and grave swap roles, changing which goods and burial are described.\"}, {\"item_id\": \"fd7ee18fd8a0e423\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The contents are historical objects in one and historical buildings in the other.\"}, {\"item_id\": \"ae92d03f3bbd24ff\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The marketing name is current in one and past in the other.\"}, {\"item_id\": \"87fd17aa16cb9390\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Only the perfect tense differs for the same non-entry since 1997.\"}, {\"item_id\": \"92d8690bcedb98f1\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying makeup covers a wider range than denying lipstick.\"}, {\"item_id\": \"8c602acb1784000c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the earlier tolerance of French.\"}, {\"item_id\": \"49d1e73074e2b43f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Leaving in 1979 and returning for 13 in 2013 are compatible bounds.\"}, {\"item_id\": \"0a53500f0aa9b25f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe applying makeup, with different compatible details of person and location.\"}]}"
+ ],
+ "labels": {
+  "d45bebf65987a730": {
+   "item_id": "d45bebf65987a730",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the date ordinal suffixes differ."
+  },
+  "570da49a196a6f82": {
+   "item_id": "570da49a196a6f82",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Swapping generally and eventually shifts which part is hedged, and the texts do not settle whether that changes the claim."
+  },
+  "2f0498b4ba358730": {
+   "item_id": "2f0498b4ba358730",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Adding also does not change the claim that the anthem was signed by Lori Hilary for the first time."
+  },
+  "07ba2b1e5766fd5b": {
+   "item_id": "07ba2b1e5766fd5b",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A broad denial of a guinea pig eating carrot and a narrower denial of a detailed scene can both hold."
+  },
+  "5fc3709b2c71afb3": {
+   "item_id": "5fc3709b2c71afb3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A pot is a more specific kind of container."
+  },
+  "0e952f606aab36d0": {
+   "item_id": "0e952f606aab36d0",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "The deer jumps over a wall in one and a fence in the other, a different obstacle for the same scene."
+  },
+  "011c7191165df5cf": {
+   "item_id": "011c7191165df5cf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the album is the band's final one."
+  },
+  "384ada84045b0d9f": {
+   "item_id": "384ada84045b0d9f",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying anyone playing covers a wider range than denying a little girl playing."
+  },
+  "3838071200d2b5a8": {
+   "item_id": "3838071200d2b5a8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the year 1937."
+  },
+  "2d3c86d97b1e1347": {
+   "item_id": "2d3c86d97b1e1347",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give compatible details about Aldon Smith's career events."
+  },
+  "f896030fc28f36e1": {
+   "item_id": "f896030fc28f36e1",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only the tense of the hosting verb differs, with dates fixed."
+  },
+  "879a4f89d3ef5852": {
+   "item_id": "879a4f89d3ef5852",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies that the fighting men number two."
+  },
+  "54038d180cc9b3d6": {
+   "item_id": "54038d180cc9b3d6",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A break from work and a break from a snowy road trip may be the same break or incompatible descriptions."
+  },
+  "8bcccdfefb2e907a": {
+   "item_id": "8bcccdfefb2e907a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man erasing a drawing is compatible with him not drawing on the board."
+  },
+  "9b4ff7fb3a5a79f5": {
+   "item_id": "9b4ff7fb3a5a79f5",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "With the time anchored as of 2015, is and was assert the same relationship."
+  },
+  "82202dec4ee53127": {
+   "item_id": "82202dec4ee53127",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Each adds a different compatible detail about the same album."
+  },
+  "cfc229bfcb6ba504": {
+   "item_id": "cfc229bfcb6ba504",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The listed lake exceptions to Uganda's landlocked status differ, one naming only Lake Victoria."
+  },
+  "a09bbebfb1ffaa7a": {
+   "item_id": "a09bbebfb1ffaa7a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A man is a more specific person playing a flute."
+  },
+  "d82524a541ffbb3e": {
+   "item_id": "d82524a541ffbb3e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One gives the businessman's full first name Vincent."
+  },
+  "8e808d172d6204a2": {
+   "item_id": "8e808d172d6204a2",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The running count of Crash Course videos watched is 10 in one and 15 in the other."
+  },
+  "bac579cd9633342d": {
+   "item_id": "bac579cd9633342d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give compatible facts about the footballer Martinelli."
+  },
+  "2315d61ea6b5416b": {
+   "item_id": "2315d61ea6b5416b",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "The man cutting the tree with an axe versus picking it up is a different action in the same scene."
+  },
+  "a264647255fbb5f9": {
+   "item_id": "a264647255fbb5f9",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The same claim is made for Lollapalooza 2009 and for various venues."
+  },
+  "2bd927a608ec8220": {
+   "item_id": "2bd927a608ec8220",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Swapping very similar and very early changes emphasis but both readings can hold, so conflict and relate are both defensible."
+  },
+  "0e5503f04d7cdb15": {
+   "item_id": "0e5503f04d7cdb15",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The garbled swap of converges leaves it unclear whether the claim about Appley and Shevington Vale changes."
+  },
+  "f34c4a36dcd408c9": {
+   "item_id": "f34c4a36dcd408c9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One labels Malthus a demographer and the other an economist, compatible details about the same influence."
+  },
+  "eb9830ef7c76406c": {
+   "item_id": "eb9830ef7c76406c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A 2015 contract signing and current free agency are compatible facts about Smith."
+  },
+  "61618066e44f84e0": {
+   "item_id": "61618066e44f84e0",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The average score and number of critics are running totals that change over time."
+  },
+  "a3a52f33388dd4b7": {
+   "item_id": "a3a52f33388dd4b7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Reporting and notification intervals are near synonyms here."
+  },
+  "f18b4e98b3c3344a": {
+   "item_id": "f18b4e98b3c3344a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A black dog chasing a brown dog is compatible with the brown dog not sniffing it."
+  },
+  "1317ef54a5d2df8b": {
+   "item_id": "1317ef54a5d2df8b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds US Airways in Pittsburgh to the non-exhaustive list."
+  },
+  "023bad94c75298a1": {
+   "item_id": "023bad94c75298a1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds Cleverley's future move to Everton."
+  },
+  "a366356d5626d3f5": {
+   "item_id": "a366356d5626d3f5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that it was the opening group match."
+  },
+  "e27e5fc2b407d407": {
+   "item_id": "e27e5fc2b407d407",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds Keith Allen's professions."
+  },
+  "c9b1b710e3bed7f5": {
+   "item_id": "c9b1b710e3bed7f5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A birth and a wedding are compatible events about the same person."
+  },
+  "5c09e9653932e88b": {
+   "item_id": "5c09e9653932e88b",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "Which item is final, the remix or the recorded version, is swapped."
+  },
+  "45caf0e4ab0875d4": {
+   "item_id": "45caf0e4ab0875d4",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Slicing a tomato and slicing onions are different scenes and objects."
+  },
+  "e29ceb6b6e3e8d60": {
+   "item_id": "e29ceb6b6e3e8d60",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The reunion is upcoming in one and already happened in the other, each true at its own time."
+  },
+  "b4203b1883aa8f8f": {
+   "item_id": "b4203b1883aa8f8f",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Not driving any car covers a wider range than not driving a white car."
+  },
+  "99540a7613fc2a5d": {
+   "item_id": "99540a7613fc2a5d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Weight loss and no biochemical impact are compatible outcomes of the same programme."
+  },
+  "1e8f8e9f4e96731c": {
+   "item_id": "1e8f8e9f4e96731c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Dudgeon was a music producer."
+  },
+  "9fb146d7bbae223c": {
+   "item_id": "9fb146d7bbae223c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Cut and sliced are synonyms here."
+  },
+  "76e03cb28980b2a5": {
+   "item_id": "76e03cb28980b2a5",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "Primary and grave swap roles, changing which goods and burial are described."
+  },
+  "fd7ee18fd8a0e423": {
+   "item_id": "fd7ee18fd8a0e423",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The contents are historical objects in one and historical buildings in the other."
+  },
+  "ae92d03f3bbd24ff": {
+   "item_id": "ae92d03f3bbd24ff",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The marketing name is current in one and past in the other."
+  },
+  "87fd17aa16cb9390": {
+   "item_id": "87fd17aa16cb9390",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Only the perfect tense differs for the same non-entry since 1997."
+  },
+  "92d8690bcedb98f1": {
+   "item_id": "92d8690bcedb98f1",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying makeup covers a wider range than denying lipstick."
+  },
+  "8c602acb1784000c": {
+   "item_id": "8c602acb1784000c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the earlier tolerance of French."
+  },
+  "49d1e73074e2b43f": {
+   "item_id": "49d1e73074e2b43f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Leaving in 1979 and returning for 13 in 2013 are compatible bounds."
+  },
+  "0a53500f0aa9b25f": {
+   "item_id": "0a53500f0aa9b25f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe applying makeup, with different compatible details of person and location."
+  }
+ },
+ "errors": []
+}

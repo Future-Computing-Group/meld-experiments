@@ -7,8 +7,12 @@ of the gold has_answer turns is computed on the status-live store, UPSTREAM of a
 the centralized / distributed-merge / naive-union (+ exact-dedup) conditions, reusing the
 tested recall_sweep machinery via the LongMemEval->HotpotTask adapter. Local, no LLM, no cost.
 
-Run (smoke):  PYTHONPATH=src .venv/bin/python scripts/run_r2_lme.py --smoke
-Run (full):   PYTHONPATH=src .venv/bin/python scripts/run_r2_lme.py --n 40
+The encoder and NLI are required arguments (deployed: --encoder minilm --nli mnli-cross-encoder);
+every cell carries topology.stamps.
+
+Run (smoke):  PYTHONPATH=src .venv/bin/python scripts/run_r2_lme.py --smoke --encoder E --nli N
+Run (full):   PYTHONPATH=src .venv/bin/python scripts/run_r2_lme.py --n 40 --encoder minilm \
+                  --nli mnli-cross-encoder --epoch EPOCH.json
 """
 import argparse, json, os, sys
 
@@ -16,31 +20,43 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from meld.config import load_thresholds                            # noqa: E402
+from meld.eval.runner_args import (add_baseline, add_key_file, add_read_tau, read_stamp, baseline_policy,  # noqa: E402
+                                   baseline_stamp, runner_key)
+from meld.config import read_epoch                            # noqa: E402
 from meld.eval.longmemeval_real import load_longmemeval_tasks      # noqa: E402
 from meld.eval.recall_sweep import recall_rows, aggregate_recall   # noqa: E402
+from meld.eval.topology import stamps                          # noqa: E402
+from meld.eval.substrates import eval_pool                     # noqa: E402
 
-MINILM = os.path.join(REPO, "src", "meld", "config", "thresholds-minilm.yaml")
 CONDS = ["centralized", "distributed_merge", "naive_union", "exact_dedup"]
 DEFAULT_DATA = os.path.join(REPO, "data", "longmemeval", "longmemeval_s")
 
 
-def main():
+def main(argv=None, llm=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--smoke", action="store_true")
     ap.add_argument("--n", type=int, default=40)
     ap.add_argument("--data", default=DEFAULT_DATA)
-    ap.add_argument("--nli", default="lexical")  # recall is sigma-driven; see run_r2_overlap_k
+    ap.add_argument("--encoder", required=True)
+    ap.add_argument("--nli", required=True)
     ap.add_argument("--out", default=os.path.join(REPO, "outputs", "r2-lme.json"))
-    a = ap.parse_args()
-    cfg = load_thresholds(MINILM)
+    ap.add_argument("--cache-dir", default=os.path.join(REPO, "outputs", "emb-cache-lme"))
+    ap.add_argument("--epoch", default=None, help="signed epoch file (config.read_epoch); "
+                    "without one no similarity merge happens")
+    add_key_file(ap)
+    add_baseline(ap)
+    add_read_tau(ap)
+    a = ap.parse_args(argv)
+    policy = baseline_policy(a, llm)
+    conds = CONDS + [a.baseline] * bool(policy)
+    epoch = read_epoch(a.epoch, runner_key(a.key_file)) if a.epoch else None
 
     n = 3 if a.smoke else a.n
     overlaps, ks = ([0.0, 0.5], [5]) if a.smoke else ([0.0, 0.5], [5, 10, 20])
-    tasks = load_longmemeval_tasks(a.data, n=n, seed=0)
-    print(f"[run] LongMemEval: {len(tasks)} tasks x overlaps {overlaps} x k {ks} x {len(CONDS)} conds, nli={a.nli}", flush=True)
+    tasks = eval_pool(load_longmemeval_tasks(a.data, seed=0))[:n]   # never a calibration-pool task
+    print(f"[run] LongMemEval: {len(tasks)} tasks x overlaps {overlaps} x k {ks} x {len(conds)} conds, nli={a.nli}", flush=True)
 
-    status_path = os.path.join(REPO, "outputs", "r2-lme-status.log")
+    status_path = a.out + ".status"
     os.makedirs(os.path.dirname(status_path), exist_ok=True)
 
     def _progress(info):
@@ -51,15 +67,17 @@ def main():
         with open(status_path, "w", encoding="utf-8") as fh:
             fh.write(line + "\n")
 
-    emb_cache = os.path.join(REPO, "outputs", "emb-cache-lme")
-    rows = recall_rows(tasks, overlaps=overlaps, ks=ks, conditions=CONDS,
-                       encoder="minilm", nli=a.nli, cfg=cfg, progress=_progress,
-                       cache_dir=emb_cache)
+    rows = recall_rows(tasks, overlaps=overlaps, ks=ks, conditions=conds,
+                       encoder=a.encoder, nli=a.nli, epoch=epoch, progress=_progress,
+                       cache_dir=a.cache_dir, policies={a.baseline: policy} if policy else None,
+                       tau=a.read_tau)
     agg = aggregate_recall(rows)
-    cells = {f"{ov}|{c}|{k}": v for (ov, c, k), v in agg.items()}
+    st = {**stamps(a.encoder, a.nli, epoch), **read_stamp(a)}
+    cells = {f"{ov}|{c}|{k}": {**v, **st, **(baseline_stamp(a) if c == a.baseline else {})}
+             for (ov, c, k), v in agg.items()}
     out = {"substrate": "LongMemEval (arXiv 2410.10813)", "data": os.path.basename(a.data),
-           "n_tasks": len(tasks), "overlaps": overlaps, "ks": ks, "conditions": CONDS,
-           "encoder": "all-MiniLM-L6-v2", "nli": a.nli, "cells": cells}
+           "n_tasks": len(tasks), "overlaps": overlaps, "ks": ks, "conditions": conds, "cells": cells,
+           **({"policy_counters": policy.counters} if policy else {})}
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
     with open(a.out, "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=2)

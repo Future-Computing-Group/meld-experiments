@@ -1,0 +1,174 @@
+[
+ {
+  "cell": "gh200-b1-t1",
+  "env": {
+   "machine": "aarch64",
+   "torch": "2.10.0+cu130",
+   "threads": 1,
+   "device": "cuda",
+   "gpu": "NVIDIA GH200 120GB",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 1,
+  "seconds": 91.3
+ },
+ {
+  "cell": "gh200-b1-tN",
+  "env": {
+   "machine": "aarch64",
+   "torch": "2.10.0+cu130",
+   "threads": 16,
+   "device": "cuda",
+   "gpu": "NVIDIA GH200 120GB",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 1,
+  "seconds": 91.2
+ },
+ {
+  "cell": "gh200-b32-t1",
+  "env": {
+   "machine": "aarch64",
+   "torch": "2.10.0+cu130",
+   "threads": 1,
+   "device": "cuda",
+   "gpu": "NVIDIA GH200 120GB",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 32,
+  "seconds": 5.1
+ },
+ {
+  "cell": "gh200-b32-tN",
+  "env": {
+   "machine": "aarch64",
+   "torch": "2.10.0+cu130",
+   "threads": 16,
+   "device": "cuda",
+   "gpu": "NVIDIA GH200 120GB",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 32,
+  "seconds": 4.8
+ },
+ {
+  "cell": "grace-b1-t1",
+  "env": {
+   "machine": "aarch64",
+   "torch": "2.10.0+cu130",
+   "threads": 1,
+   "device": "cpu",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 1,
+  "seconds": 1259.6
+ },
+ {
+  "cell": "grace-b1-tN",
+  "env": {
+   "machine": "aarch64",
+   "torch": "2.10.0+cu130",
+   "threads": 16,
+   "device": "cpu",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 1,
+  "seconds": 1111.0
+ },
+ {
+  "cell": "grace-b1-tNomp",
+  "env": {
+   "machine": "aarch64",
+   "torch": "2.10.0+cu130",
+   "threads": 16,
+   "device": "cpu",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 1,
+  "seconds": 369.6
+ },
+ {
+  "cell": "grace-b32-t1",
+  "env": {
+   "machine": "aarch64",
+   "torch": "2.10.0+cu130",
+   "threads": 1,
+   "device": "cpu",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 32,
+  "seconds": 496.2
+ },
+ {
+  "cell": "grace-b32-tN",
+  "env": {
+   "machine": "aarch64",
+   "torch": "2.10.0+cu130",
+   "threads": 16,
+   "device": "cpu",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 32,
+  "seconds": 438.6
+ },
+ {
+  "cell": "grace-b32-tNomp",
+  "env": {
+   "machine": "aarch64",
+   "torch": "2.10.0+cu130",
+   "threads": 16,
+   "device": "cpu",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 32,
+  "seconds": 38.4
+ },
+ {
+  "cell": "x86-b1-t1",
+  "env": {
+   "machine": "x86_64",
+   "torch": "2.10.0+cpu",
+   "threads": 1,
+   "device": "cpu",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 1,
+  "seconds": 1243.6
+ },
+ {
+  "cell": "x86-b1-tN",
+  "env": {
+   "machine": "x86_64",
+   "torch": "2.10.0+cpu",
+   "threads": 16,
+   "device": "cpu",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 1,
+  "seconds": 255.5
+ },
+ {
+  "cell": "x86-b32-t1",
+  "env": {
+   "machine": "x86_64",
+   "torch": "2.10.0+cpu",
+   "threads": 1,
+   "device": "cpu",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 32,
+  "seconds": 521.4
+ },
+ {
+  "cell": "x86-b32-tN",
+  "env": {
+   "machine": "x86_64",
+   "torch": "2.10.0+cpu",
+   "threads": 16,
+   "device": "cpu",
+   "git_sha": "6e25d5042509f40cfe63839c1706e153ff366451"
+  },
+  "batch": 32,
+  "seconds": 83.3
+ }
+]

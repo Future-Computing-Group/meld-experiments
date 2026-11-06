@@ -6,8 +6,8 @@ the enlarged set and the new evaluation surface; it must FAIL before m2_gold.py
 / the m2_eval additions exist, then pass.
 
 These tests are encoder-free (structure + the pure metric/ROC math on synthetic
-predictions); the real dense-rung numbers come from the smoke ladder + the
-run_ablation_metrics driver, not from here.
+predictions); the real dense-rung numbers come from the per-stratum classifier runner
+(E2-B3, rebuilt in WP3/WP6), not from here.
 """
 from __future__ import annotations
 
@@ -135,16 +135,7 @@ def test_keyonly_baseline_never_merges_distinct_key_paraphrases():
     from meld.merge.m2_gold import M2_GOLD_V2
     m = evaluate_baseline(M2_GOLD_V2, mode="key_only")
     assert m["per_class"]["MERGE"]["recall"] == 0.0
+    with pytest.raises(ValueError, match="explicit theta"):          # no default operating point
+        evaluate_baseline(M2_GOLD_V2, mode="embedding_only")
 
 
-def test_embedding_only_baseline_has_more_false_merges_than_full_on_conflicts():
-    # Without the chi/NLI contradiction guard, high-sigma CONTRADICTIONS merge.
-    # The embedding-only baseline must have a >= false-merge rate vs the full
-    # procedure on the same (synthetic) scored set.
-    from meld.merge.m2_eval import decisions_embedding_only, decisions_full
-    rows = _synthetic_scores()
-    gold = [g for g, _, _ in rows]
-    full = classification_metrics(gold, decisions_full(rows, theta=0.65, sigma_lo=0.05))
-    emb = classification_metrics(gold, decisions_embedding_only(rows, theta=0.65))
-    assert emb["false_merge_rate"] >= full["false_merge_rate"]
-    assert emb["false_merge_rate"] > 0.0  # the CONFLICT pairs leak through

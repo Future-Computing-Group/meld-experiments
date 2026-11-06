@@ -22,7 +22,7 @@ For GAIA L2 ACHIEVABILITY we add the standard open tool surface GAIA L2 needs:
 
 LOAD-BEARING MELD DECISION (documented in the campaign plan): the EVIDENCE-reading
 tools (web, file) feed their retrieved content THROUGH the MELD Brain as a merged
-observation (PUBLISH -> merge-on-receive -> Patch), not only as a raw tool string.
+observation (PUBLISH -> admission), not only as a raw tool string.
 So GAIA attached-file / web content accrues in the brain and a later recall can
 retrieve it -- this is the MELD-on-message choice (the tool is also an MELD author).
 The calculator is pure computation and does NOT write to the brain.

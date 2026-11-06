@@ -27,18 +27,12 @@ from meld.agent.tools import (
     FileReaderTool,
     OfflineWebSearchTool,
 )
-from meld.config import Thresholds, load_thresholds
 
 
-def _calibrated_cfg() -> Thresholds:
-    # delegate to the canonical encoder-matched calibrated thresholds (was a
-    # duplicated inverted-0.5/0.55 copy that tripped the ordering invariant)
-    from meld.agent.run_hotpot_gate import _calibrated_cfg as _canonical
-    return _canonical("hashing")
 
 
 def _mem() -> SMPMemory:
-    return SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
+    return SMPMemory(encoder="hashing", nli="lexical")
 
 
 # --------------------------------------------------------------------------
@@ -94,9 +88,9 @@ def test_file_reader_reads_text_and_writes_through_the_brain(tmp_path):
     out = reader(str(p))
     assert "launch venue" in out.lower()
     # content reached the brain as a merged observation (a Patch in the log)
-    assert len(mem.brain.audit_log) >= 1, "file content did not reach the brain"
+    assert len(mem.decisions) >= 1, "file content did not reach the brain"
     assert any(p_.decision in ("INSERT", "MERGE", "RELATE", "CONFLICT")
-               for p_ in mem.brain.audit_log)
+               for p_ in mem.decisions)
     # and a later recall can retrieve it
     hits = mem.recall("where is the launch", k=3)
     assert any("helsinki" in h.lower() or "launch" in h.lower() for h in hits)
@@ -113,7 +107,7 @@ def test_file_reader_reads_csv(tmp_path):
     reader = FileReaderTool(memory=mem)
     out = reader(str(p))
     assert "Paris" in out and "2148000" in out
-    assert len(mem.brain.audit_log) >= 1
+    assert len(mem.decisions) >= 1
 
 
 def test_file_reader_missing_file_is_handled(tmp_path):
@@ -122,7 +116,7 @@ def test_file_reader_missing_file_is_handled(tmp_path):
     out = reader(str(tmp_path / "nope.txt"))
     assert "error" in out.lower() or "not found" in out.lower()
     # a failed read must NOT write garbage into the brain
-    assert len(mem.brain.audit_log) == 0
+    assert len(mem.decisions) == 0
 
 
 # --------------------------------------------------------------------------
@@ -140,7 +134,7 @@ def test_web_search_replays_from_cache_and_writes_through_the_brain():
     out = web("capital of France")
     assert "Paris" in out
     # the retrieved page content was merged into the brain
-    assert len(mem.brain.audit_log) >= 1
+    assert len(mem.decisions) >= 1
     hits = mem.recall("what is the capital of France", k=3)
     assert any("paris" in h.lower() for h in hits)
 
@@ -153,7 +147,7 @@ def test_web_search_cache_miss_is_explicit_not_a_fabrication():
     out = web("a query that was never prefetched")
     assert "miss" in out.lower() or "no cached" in out.lower() \
         or "not prefetched" in out.lower()
-    assert len(mem.brain.audit_log) == 0
+    assert len(mem.decisions) == 0
 
 
 def test_web_search_live_mode_is_refused_offline():

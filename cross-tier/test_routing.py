@@ -45,7 +45,7 @@ def test_ablation_semantic_dominates():
     """On a separable workload, semantic = full recall at zero waste; random/round-robin
     spend the same budget at lower recall + higher waste."""
     from routing_ablation import run_ablation
-    res = run_ablation()
+    res = run_ablation(sigma_lo=0.12)
     assert res["broadcast"]["recall"] == 1.0
     assert res["semantic"]["recall"] == 1.0
     assert res["semantic"]["wasted_delivery_rate"] == 0.0

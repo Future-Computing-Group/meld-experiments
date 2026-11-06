@@ -1,0 +1,233 @@
+{
+ "config": {
+  "pairs": [
+   "runs/wp6d/pairs/shard-00.jsonl",
+   "runs/wp6d/pairs/shard-01.jsonl",
+   "runs/wp6d/pairs/shard-02.jsonl",
+   "runs/wp6d/pairs/shard-03.jsonl",
+   "runs/wp6d/pairs/shard-04.jsonl",
+   "runs/wp6d/pairs/shard-05.jsonl",
+   "runs/wp6d/pairs/shard-06.jsonl",
+   "runs/wp6d/pairs/shard-07.jsonl",
+   "runs/wp6d/pairs/shard-08.jsonl",
+   "runs/wp6d/pairs/shard-09.jsonl",
+   "runs/wp6d/pairs/shard-10.jsonl",
+   "runs/wp6d/pairs/shard-11.jsonl",
+   "runs/wp6d/pairs/shard-12.jsonl",
+   "runs/wp6d/pairs/shard-13.jsonl",
+   "runs/wp6d/pairs/shard-14.jsonl",
+   "runs/wp6d/pairs/shard-15.jsonl"
+  ],
+  "epoch": [
+   "paws=runs/wp6d/epochs/a0.02/paws-seed-a0.02.group.epoch.json",
+   "sick=runs/wp6d/epochs/a0.02/sick-seed-a0.02.group.epoch.json",
+   "vitaminc=runs/wp6d/epochs/humanS3-a0.02/vitaminc-seed-a0.02.group.epoch.json",
+   "lme=runs/wp6d/epochs/substrate-r4-a0.05-lme/lme-seed-a0.05.group.epoch.json"
+  ],
+  "key_file": "keys/group.key",
+  "encoder": "minilm",
+  "nli": "mnli-cross-encoder",
+  "n": 0,
+  "out_dir": "runs/wp6d/pairs-meld"
+ },
+ "n": 6177,
+ "seconds": 2530.0,
+ "pairs_sha256": {
+  "runs/wp6d/pairs/shard-00.jsonl": "2d5289ae4f173fd81cbd6aac3a580125e9b6dd567dae10f37a109b5251c8fd02",
+  "runs/wp6d/pairs/shard-01.jsonl": "8dc8d3c01e5f7ad9426fa2a8b8962a4f5d48168fb778482dfdc5ce7c51043cb3",
+  "runs/wp6d/pairs/shard-02.jsonl": "a0db30fca0461a6f6db3bdcbae30539fcb4cdf1e808ec0f11a12f116ae3c3f23",
+  "runs/wp6d/pairs/shard-03.jsonl": "55065067f067348600e6f26cfdc4f008273a858eab03582ddad1291e8e8ee61a",
+  "runs/wp6d/pairs/shard-04.jsonl": "70b55d7bcf3df2fb665e69c088cd2726696b4c30a6d35111b265c28076ebf851",
+  "runs/wp6d/pairs/shard-05.jsonl": "aea4897542d1895805d7f7a513f4fb3aedff49f79c2aa60f907de14ba36cd3e0",
+  "runs/wp6d/pairs/shard-06.jsonl": "13bf0dc55c9e67582b398c695e097a40f6017bf756d0a57c85200d1a662f0cf1",
+  "runs/wp6d/pairs/shard-07.jsonl": "3c63d4ff7372cca62b9771325c1c817a0a5252840d57d21240109d6ac35e353b",
+  "runs/wp6d/pairs/shard-08.jsonl": "5125a6b8471be033de21ffd008fa786e951b09f349debd0b46eae97233e9d899",
+  "runs/wp6d/pairs/shard-09.jsonl": "587f4ab8196c072f0303ecf47fd443515de59e42188507f42768b87cf0ceb614",
+  "runs/wp6d/pairs/shard-10.jsonl": "e0265610b165e71fe0b97b8c189a1bd6882ea454df0defd45eb5f8d370ed0d33",
+  "runs/wp6d/pairs/shard-11.jsonl": "01be881f579265e0f916d08a3a4c781660cd64fac4cbdd3d21a495ed082b982d",
+  "runs/wp6d/pairs/shard-12.jsonl": "acc06028bf0b92a7fadae18edd08cbb438cc3664b9e06eac60181f65753c3d50",
+  "runs/wp6d/pairs/shard-13.jsonl": "57028e8554b8759fade905a31443db9b826c774448045ec6515279ae3c802984",
+  "runs/wp6d/pairs/shard-14.jsonl": "f59c4c8f05c46095f341df750e7171bcc55c51f58074d16ca544475a4d8b97fd",
+  "runs/wp6d/pairs/shard-15.jsonl": "1f3376317e16cb796ffc2de38600b11c888a3117308f23f2c01221a41d04fe13"
+ },
+ "epochs": {
+  "paws": {
+   "path": "runs/wp6d/epochs/a0.02/paws-seed-a0.02.group.epoch.json",
+   "sha256": "9f487231cb52daf733ec418b30dce95bfd4bb046da951f179aad7b50b1ed904f",
+   "epoch_id": "3de557535326146f9b608d022bd3f490",
+   "scope": "paws",
+   "alpha": 20000,
+   "bins": [
+    256,
+    "doubling"
+   ],
+   "table": [
+    [
+     0,
+     17,
+     0,
+     65536,
+     65536
+    ],
+    [
+     1,
+     42,
+     0,
+     65536,
+     65536
+    ],
+    [
+     2,
+     140,
+     0,
+     65406,
+     65536
+    ],
+    [
+     3,
+     264,
+     0,
+     65292,
+     65536
+    ],
+    [
+     4,
+     15,
+     0,
+     65536,
+     65536
+    ]
+   ]
+  },
+  "sick": {
+   "path": "runs/wp6d/epochs/a0.02/sick-seed-a0.02.group.epoch.json",
+   "sha256": "04fcc3e8434d43b7de5a36f3edb75070c37bf330587f982b301b90e7189be07f",
+   "epoch_id": "a092a47d6d7f9cf0c24d02716602e63f",
+   "scope": "sick",
+   "alpha": 20000,
+   "bins": [
+    256,
+    "doubling"
+   ],
+   "table": [
+    [
+     0,
+     34,
+     5,
+     65536,
+     65536
+    ],
+    [
+     1,
+     74,
+     11,
+     64416,
+     65536
+    ],
+    [
+     2,
+     147,
+     50,
+     64462,
+     147
+    ],
+    [
+     3,
+     1,
+     0,
+     65536,
+     65536
+    ]
+   ]
+  },
+  "vitaminc": {
+   "path": "runs/wp6d/epochs/humanS3-a0.02/vitaminc-seed-a0.02.group.epoch.json",
+   "sha256": "ca2e7a5b44803c97550d04990842514965e98dfe882910ae76757f38460e15c2",
+   "epoch_id": "ce2ea4b2d601b46103d5e3c224341886",
+   "scope": "vitaminc",
+   "alpha": 20000,
+   "bins": [
+    256,
+    "doubling"
+   ],
+   "table": [
+    [
+     0,
+     19,
+     0,
+     65536,
+     65536
+    ],
+    [
+     1,
+     48,
+     0,
+     65536,
+     65536
+    ],
+    [
+     2,
+     122,
+     0,
+     65160,
+     65536
+    ],
+    [
+     3,
+     36,
+     0,
+     65536,
+     65536
+    ]
+   ]
+  },
+  "lme": {
+   "path": "runs/wp6d/epochs/substrate-r4-a0.05-lme/lme-seed-a0.05.group.epoch.json",
+   "sha256": "4673b1de01faaac467e2e3be4eda76f6b712b5f57eb262b70594acbdd746c51e",
+   "epoch_id": "50e5f63a35f307d38161b541fee212b5",
+   "scope": "agent",
+   "alpha": 50000,
+   "bins": [
+    256,
+    "doubling"
+   ],
+   "table": [
+    [
+     0,
+     63,
+     0,
+     5011,
+     65536
+    ],
+    [
+     1,
+     68,
+     0,
+     17503,
+     65536
+    ],
+    [
+     2,
+     122,
+     0,
+     7011,
+     65536
+    ],
+    [
+     3,
+     79,
+     0,
+     13454,
+     65536
+    ],
+    [
+     4,
+     2,
+     0,
+     65536,
+     65536
+    ]
+   ]
+  }
+ }
+}

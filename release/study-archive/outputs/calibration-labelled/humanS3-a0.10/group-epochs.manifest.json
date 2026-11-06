@@ -1,0 +1,14 @@
+{
+ "key_fingerprint": "133ffccfdf7b4c4d",
+ "epochs": [
+  {
+   "source": "vitaminc-seed-a0.10.epoch.json",
+   "file": "vitaminc-seed-a0.10.group.epoch.json",
+   "epoch_id": "5699c29f9be654e1a33e0b4e2bcdc7c7",
+   "scope": "vitaminc",
+   "alpha": 100000,
+   "body_sha256": "5699c29f9be654e1a33e0b4e2bcdc7c7570a06aa1f3e610692219f9fa37b1c3c",
+   "key_fingerprint": "133ffccfdf7b4c4d"
+  }
+ ]
+}

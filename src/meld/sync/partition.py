@@ -16,9 +16,12 @@ result`` with ``.returncode``/``.stdout``/``.stderr`` is the exec seam (real = s
 """
 from __future__ import annotations
 
-from typing import Callable, List
+from typing import Callable, List, Optional
 
 _LOSS_BAND = "1:3"
+# all-zeros priomap: every unfiltered packet goes to band 1:1 (unshaped); only the u32 /32
+# filters reach the netem band. The default priomap would put TC_PRIO_BULK traffic in 1:3.
+_PRIO_ROOT = ["prio", "bands", "3", "priomap", *["0"] * 16]
 _LOSS_HANDLE = "30:"
 
 
@@ -42,20 +45,21 @@ class PartitionController:
         else:
             self._run(host, argv)        # clear-before-setup: ignore (|| true), root may be default-only
 
-    def _add_loss(self, host: str, peer_ips: List[str]) -> None:
+    def _add_loss(self, host: str, peer_ips: List[str], dport: Optional[int] = None) -> None:
         # clear the default fq_codel root ONCE, add the prio + netem tree ONCE, then add a
         # u32 dst filter per peer. del-root is done once so several peers can be dropped on the
         # same host without each call wiping the previous peer's filter (the 2|2-split case).
         self._del_root(host, check=False)
         self._check(host, ["tc", "qdisc", "add", "dev", self.iface,
-                           "root", "handle", "1:", "prio"])
+                           "root", "handle", "1:", *_PRIO_ROOT])
         self._check(host, ["tc", "qdisc", "add", "dev", self.iface,
                            "parent", _LOSS_BAND, "handle", _LOSS_HANDLE,
                            "netem", "loss", "100%"])
+        port = ["match", "ip", "dport", str(int(dport)), "0xffff"] if dport is not None else []
         for peer_ip in peer_ips:
             self._check(host, ["tc", "filter", "add", "dev", self.iface,
                                "protocol", "ip", "parent", "1:0", "prio", "3",
-                               "u32", "match", "ip", "dst", f"{peer_ip}/32",
+                               "u32", "match", "ip", "dst", f"{peer_ip}/32", *port,
                                "flowid", _LOSS_BAND])
 
     def verify_partition(self, host: str, peer_ip: str) -> bool:
@@ -69,15 +73,17 @@ class PartitionController:
         if not self.verify_partition(host, peer_ip):
             raise RuntimeError(f"egress isolation not active on {host} after apply")
 
-    def isolate_egress_multi(self, host: str, peer_ips: List[str]) -> None:
+    def isolate_egress_multi(self, host: str, peer_ips: List[str], dport: Optional[int] = None) -> None:
         """Drop ``host``'s egress toward EVERY ``peer_ip`` under a single prio root (one
         del-root, one netem band, one u32 filter per peer). Repeated single-peer
         ``isolate_egress`` would del-root each call and wipe the prior peer's filter -- this
         is the primitive for a 2|2 (or N/2) split where a host must be cut from several peers
-        at once. Verifies the loss landed + raises."""
+        at once. ``dport`` scopes each rule to that destination port (the brains' peer port), so
+        a host's other traffic to the peers (orchestration, heartbeats) stays up. Verifies the
+        loss landed + raises."""
         if not peer_ips:
             return
-        self._add_loss(host, peer_ips)
+        self._add_loss(host, peer_ips, dport)
         if not self.verify_partition(host, peer_ips[0]):
             raise RuntimeError(f"egress isolation not active on {host} after multi-apply")
 

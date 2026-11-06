@@ -15,11 +15,11 @@ from meld.agent.mem_conditions import (DEFAULT_N_BRAINS, MEMORY_CONDITIONS,
                                       fixed_recall_prompt, light_paraphrase,
                                       split_across_brains)
 from meld.agent.mem_delta_metrics import bootstrap_delta, headline_table
-from meld.agent.run_hotpot_gate import _calibrated_cfg
 from meld.agent.run_hotpot_memdelta import run_one, summarize
+from test_agent_meld_memory import agent_epoch
 
 ENC, NLI = "hashing", "lexical"
-CFG = _calibrated_cfg(ENC)        # encoder-matched thresholds (hashing scale)
+EPOCH = agent_epoch(ENC, NLI)      # a test epoch on the hashing + lexical substrate
 
 
 def _task() -> HotpotTask:
@@ -33,21 +33,21 @@ def _task() -> HotpotTask:
 def test_all_conditions_build():
     t = _task()
     for cond in MEMORY_CONDITIONS:
-        b = build_condition(t, cond, encoder=ENC, nli=NLI, cfg=CFG)
+        b = build_condition(t, cond, encoder=ENC, nli=NLI, epoch=EPOCH)
         assert b.condition == cond
         if cond == "none":
             assert b.brain is None and b.inline_context == []
         elif cond == "full_context":
             assert b.brain is None and len(b.inline_context) > 0
         else:
-            assert b.brain is not None
-            assert b.n_total_patches > 0
+            assert b.brain is not None and b.stored_units > 0
+            assert (b.n_total_patches > 0) == (cond != "naive_union")   # the union admits nothing
 
 
 def test_unknown_condition_raises():
     import pytest
     with pytest.raises(ValueError):
-        build_condition(_task(), "bogus", encoder=ENC, nli=NLI, cfg=CFG)
+        build_condition(_task(), "bogus", encoder=ENC, nli=NLI, epoch=EPOCH)
 
 
 # -- (2) overlap injection FIRES the merge (load-bearing) -------------------
@@ -79,37 +79,39 @@ def test_distributed_merge_fires_overlap_merge_in_audit_log():
     (same-enough/overlap) Patch -- the merge actually does something. This is the
     assertion the brief requires (verify via the audit log)."""
     t = _task()
-    b = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, cfg=CFG,
+    b = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, epoch=EPOCH,
                         n_brains=DEFAULT_N_BRAINS, overlap_fraction=0.6)
-    # the overlap-merge count is MERGE Patches whose gates include 'sigma'
     assert b.n_overlap_merges >= 1, (
         "distributed_merge fired no overlap MERGE -- the merge is trivial; "
-        f"audit decisions={[p.decision for p in b.brain.brain.audit_log]}")
+        f"audit decisions={[p.decision for p in b.brain.decisions]}")
+    # without an epoch the same build makes no similarity merge
+    bare = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI,
+                           n_brains=DEFAULT_N_BRAINS, overlap_fraction=0.6)
+    assert bare.n_merge == 0 and bare.live_units == bare.stored_units
 
 
 def test_naive_union_never_merges():
     """The ablation: naive_union is a raw union -- NO MERGE-via-overlap, RELATE,
     or CONFLICT ever fires (every write is a plain novel insert)."""
     t = _task()
-    b = build_condition(t, "naive_union", encoder=ENC, nli=NLI, cfg=CFG,
+    b = build_condition(t, "naive_union", encoder=ENC, nli=NLI, epoch=EPOCH,
                         n_brains=DEFAULT_N_BRAINS, overlap_fraction=0.6)
     assert b.n_overlap_merges == 0
     assert b.n_relate == 0
     assert b.n_conflict == 0
-    # every patch is a novel INSERT (the union)
-    for p in b.brain.brain.audit_log:
-        assert p.decision == "INSERT" and "novel" in p.gates_that_fired
+    # nothing is admitted (the union): no decision, no link
+    assert b.brain.decisions == [] and b.brain.store.derived.links == []
 
 
 def test_distributed_merge_smaller_than_naive_union_store():
     """A direct consequence of merging overlaps: the merged global store holds
     FEWER distinct units than the naive union of the same split."""
     t = _task()
-    dm = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, cfg=CFG,
+    dm = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, epoch=EPOCH,
                          overlap_fraction=0.6)
-    nu = build_condition(t, "naive_union", encoder=ENC, nli=NLI, cfg=CFG,
+    nu = build_condition(t, "naive_union", encoder=ENC, nli=NLI, epoch=EPOCH,
                          overlap_fraction=0.6)
-    assert len(dm.brain.brain._units) <= len(nu.brain.brain._units)
+    assert dm.stored_units <= nu.stored_units
 
 
 def test_distributed_merge_has_fewer_live_recall_units_than_naive_union():
@@ -119,9 +121,9 @@ def test_distributed_merge_has_fewer_live_recall_units_than_naive_union():
     # is the storage/compactness metric for the overhead claim -- NOT the audit
     # patch count (n_total_patches), which is identical across the two conditions.
     t = _task()
-    dm = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, cfg=CFG,
+    dm = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, epoch=EPOCH,
                          overlap_fraction=0.6)
-    nu = build_condition(t, "naive_union", encoder=ENC, nli=NLI, cfg=CFG,
+    nu = build_condition(t, "naive_union", encoder=ENC, nli=NLI, epoch=EPOCH,
                          overlap_fraction=0.6)
     assert dm.live_units < dm.stored_units      # at least one duplicate deprecated
     assert dm.live_units < nu.live_units        # merge recalls fewer redundant units
@@ -144,10 +146,10 @@ def test_conflict_variant_forms_contradicts_edge():
                    "Christopher Nolan is a director."]]],
         supporting_facts=[["Christopher Nolan", 0]],
     )
-    b = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, cfg=CFG,
+    b = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, epoch=EPOCH,
                         n_brains=2, overlap_fraction=0.0, inject_conflict=True)
-    n_contradicts = sum(1 for ln in b.brain.brain.links
-                        if ln.type == "CONTRADICTS")
+    n_contradicts = sum(1 for ln in b.brain.store.derived.links
+                        if ln[0] == "CONTRADICTS")
     assert b.n_conflict >= 1, "conflict variant fired no CONFLICT Patch"
     assert n_contradicts >= 1, "no first-class CONTRADICTS edge formed"
 
@@ -157,7 +159,7 @@ def test_conflict_variant_forms_contradicts_edge():
 
 def test_fixed_recall_prompt_is_deterministic():
     t = _task()
-    b = build_condition(t, "centralized", encoder=ENC, nli=NLI, cfg=CFG)
+    b = build_condition(t, "centralized", encoder=ENC, nli=NLI, epoch=EPOCH)
     ev1 = assemble_recall(b, t.question, encoder=ENC, k=5)
     ev2 = assemble_recall(b, t.question, encoder=ENC, k=5)
     assert ev1 == ev2  # graph-walk read is deterministic
@@ -169,9 +171,9 @@ def test_fixed_recall_run_is_deterministic_with_fixed_llm():
     t = _task()
     script = [f"FINAL ANSWER: {t.answer}"]
     r1 = run_one(t, "distributed_merge", "fixed_recall", MockLLM(script),
-                 encoder=ENC, nli=NLI, cfg=CFG)
+                 encoder=ENC, nli=NLI, epoch=EPOCH)
     r2 = run_one(t, "distributed_merge", "fixed_recall", MockLLM(script),
-                 encoder=ENC, nli=NLI, cfg=CFG)
+                 encoder=ENC, nli=NLI, epoch=EPOCH)
     assert r1["prediction"] == r2["prediction"]
     assert r1["f1"] == r2["f1"] and r1["em"] == r2["em"]
     assert r1["n_overlap_merges"] == r2["n_overlap_merges"]
@@ -187,7 +189,7 @@ def test_rebuild_is_byte_identical_across_two_builds_distributed_merge():
     same task/seed/params must yield a BYTE-IDENTICAL assembled evidence + prompt.
     """
     t = _task()
-    kw = dict(encoder=ENC, nli=NLI, cfg=CFG, n_brains=DEFAULT_N_BRAINS,
+    kw = dict(encoder=ENC, nli=NLI, epoch=EPOCH, n_brains=DEFAULT_N_BRAINS,
               overlap_fraction=0.6, inject_conflict=False)
     b1 = build_condition(t, "distributed_merge", **kw)
     b2 = build_condition(t, "distributed_merge", **kw)
@@ -208,7 +210,7 @@ def test_rebuild_byte_identical_across_all_store_conditions():
     re-running it must reproduce the exact evidence/prompt a prior model saw."""
     t = _task()
     for cond in ("centralized", "distributed_merge", "naive_union"):
-        kw = dict(encoder=ENC, nli=NLI, cfg=CFG, overlap_fraction=0.6)
+        kw = dict(encoder=ENC, nli=NLI, epoch=EPOCH, overlap_fraction=0.6)
         b1 = build_condition(t, cond, **kw)
         b2 = build_condition(t, cond, **kw)
         ev1 = assemble_recall(b1, t.question, encoder=ENC, k=5)
@@ -226,7 +228,7 @@ def test_run_one_scores_correct_answer():
     t = _task()
     r = run_one(t, "full_context", "fixed_recall",
                 MockLLM([f"FINAL ANSWER: {t.answer}"]),
-                encoder=ENC, nli=NLI, cfg=CFG)
+                encoder=ENC, nli=NLI, epoch=EPOCH)
     assert r["em"] == 1.0 and r["f1"] == 1.0
     assert r["condition"] == "full_context" and r["question_id"] == t.task_id
 
@@ -234,7 +236,7 @@ def test_run_one_scores_correct_answer():
 def test_run_one_scores_wrong_answer_zero():
     t = _task()
     r = run_one(t, "none", "fixed_recall", MockLLM(["FINAL ANSWER: wrongplace"]),
-                encoder=ENC, nli=NLI, cfg=CFG)
+                encoder=ENC, nli=NLI, epoch=EPOCH)
     assert r["em"] == 0.0
 
 
@@ -245,7 +247,7 @@ def test_run_one_records_recall_at_k_and_footprint():
     t = _task()
     r = run_one(t, "distributed_merge", "fixed_recall",
                 MockLLM([f"FINAL ANSWER: {t.answer}"]),
-                encoder=ENC, nli=NLI, cfg=CFG, overlap_fraction=0.6, k=5)
+                encoder=ENC, nli=NLI, epoch=EPOCH, overlap_fraction=0.6, k=5)
     for key in ("recall_at_k", "mrr", "n_gold", "stored_units", "live_units"):
         assert key in r, key
     assert 0.0 <= r["recall_at_k"] <= 1.0
@@ -261,13 +263,13 @@ def test_run_one_persists_evidence_and_prompt():
     t = _task()
     r = run_one(t, "distributed_merge", "fixed_recall",
                 MockLLM([f"FINAL ANSWER: {t.answer}"]),
-                encoder=ENC, nli=NLI, cfg=CFG, overlap_fraction=0.6, k=5)
+                encoder=ENC, nli=NLI, epoch=EPOCH, overlap_fraction=0.6, k=5)
     assert "evidence" in r and "prompt" in r
     assert isinstance(r["evidence"], list)
     assert all(isinstance(e, str) for e in r["evidence"])
     assert isinstance(r["prompt"], str) and r["prompt"]
     # the persisted evidence is exactly what assemble_recall produced for this build
-    b = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, cfg=CFG,
+    b = build_condition(t, "distributed_merge", encoder=ENC, nli=NLI, epoch=EPOCH,
                         overlap_fraction=0.6)
     assert r["evidence"] == assemble_recall(b, t.question, encoder=ENC, k=5)
     # and the persisted prompt is exactly the fixed_recall answer prompt over it
@@ -281,7 +283,7 @@ def test_run_one_persists_prompt_for_agentic_mode():
     t = _task()
     r = run_one(t, "centralized", "agentic",
                 MockLLM([f"FINAL ANSWER: {t.answer}"]),
-                encoder=ENC, nli=NLI, cfg=CFG)
+                encoder=ENC, nli=NLI, epoch=EPOCH)
     assert "evidence" in r and "prompt" in r
     assert isinstance(r["evidence"], list) and isinstance(r["prompt"], str)
 
@@ -290,7 +292,7 @@ def test_summarize_does_not_break_on_evidence_prompt_keys():
     # the new durable keys must not perturb aggregation (no KeyError, deltas intact).
     t = _task()
     rows = [run_one(t, c, "fixed_recall", MockLLM([f"FINAL ANSWER: {t.answer}"]),
-                    encoder=ENC, nli=NLI, cfg=CFG, overlap_fraction=0.6)
+                    encoder=ENC, nli=NLI, epoch=EPOCH, overlap_fraction=0.6)
             for c in MEMORY_CONDITIONS]
     for r in rows:
         assert "evidence" in r and "prompt" in r
@@ -306,11 +308,11 @@ def test_run_one_omits_recall_for_no_store_conditions():
     # misleading 0.0 -- the recall@k floor would otherwise read as no-headroom.
     t = _task()
     none_row = run_one(t, "none", "fixed_recall", MockLLM(["FINAL ANSWER: x"]),
-                       encoder=ENC, nli=NLI, cfg=CFG)
+                       encoder=ENC, nli=NLI, epoch=EPOCH)
     full_row = run_one(t, "full_context", "fixed_recall",
-                       MockLLM([f"FINAL ANSWER: {t.answer}"]), encoder=ENC, nli=NLI, cfg=CFG)
+                       MockLLM([f"FINAL ANSWER: {t.answer}"]), encoder=ENC, nli=NLI, epoch=EPOCH)
     cen_row = run_one(t, "centralized", "fixed_recall",
-                      MockLLM([f"FINAL ANSWER: {t.answer}"]), encoder=ENC, nli=NLI, cfg=CFG)
+                      MockLLM([f"FINAL ANSWER: {t.answer}"]), encoder=ENC, nli=NLI, epoch=EPOCH)
     assert "recall_at_k" not in none_row and "recall_at_k" not in full_row
     assert "recall_at_k" in cen_row
 
@@ -320,7 +322,7 @@ def test_summarize_includes_recall_deltas_and_footprint():
     # headline deltas, and the per-condition live/stored footprint.
     t = _task()
     rows = [run_one(t, c, "fixed_recall", MockLLM([f"FINAL ANSWER: {t.answer}"]),
-                    encoder=ENC, nli=NLI, cfg=CFG, overlap_fraction=0.6)
+                    encoder=ENC, nli=NLI, epoch=EPOCH, overlap_fraction=0.6)
             for c in ("none", "full_context", "centralized",
                       "distributed_merge", "naive_union")]
     m = summarize(rows)["per_mode"]["fixed_recall"]
@@ -442,7 +444,7 @@ def test_summarize_produces_floor_ceiling_and_merge_audit():
             for t in tasks:
                 rows.append(run_one(t, cond, mode,
                                     MockLLM([f"FINAL ANSWER: {t.answer}"]),
-                                    encoder=ENC, nli=NLI, cfg=CFG,
+                                    encoder=ENC, nli=NLI, epoch=EPOCH,
                                     overlap_fraction=0.6))
     summary = summarize(rows, modes=["fixed_recall"], n_boot=200)
     fr = summary["per_mode"]["fixed_recall"]
@@ -451,3 +453,11 @@ def test_summarize_produces_floor_ceiling_and_merge_audit():
     assert fr["merge_audit"]["naive_union"]["overlap_merges"] == 0
     # the three headline deltas exist
     assert len(fr["headline_f1"]) == 3
+
+
+def test_distributed_merge_delivers_in_canonical_order_so_the_global_build_never_refolds():
+    # the sovereign deltas reach the global brain in canonical order (created_at, delta id):
+    # every admission is canonical-order last, so the build is one setup plus the latency path
+    b = build_condition(_task(), "distributed_merge", encoder=ENC, nli=NLI, epoch=EPOCH)
+    assert b.brain.admission.counters == {"not_last": 0, "refolds": 1}
+    assert b.n_total_patches == b.stored_units > 3

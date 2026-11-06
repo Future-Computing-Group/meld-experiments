@@ -39,7 +39,7 @@ def test_memorylink_roundtrips_through_json():
 
 def test_memoryunit_with_claims_roundtrips_to_equal_typed_structure():
     u = MemoryUnit(
-        id=b"\x12\x34", relevance_magnitude=1.0, status="ACTIVE",
+        id=b"\x12\x34", retention=1.0, status="ACTIVE",
         confidence=0.9,
         claims=[Claim(claim_key=b"\x01", text="alpha", confidence=0.9),
                 Claim(claim_key=b"\x02", text="beta", claim_status="DEPRECATED")],
@@ -50,49 +50,42 @@ def test_memoryunit_with_claims_roundtrips_to_equal_typed_structure():
 
 
 def test_serialized_delta_is_json_not_bare_text():
+    # the envelope carries the Delta's canonical bytes: typed, tagged JSON, not raw text
     import json
 
-    from meld.sync.wire_delta import serialize_signed_delta
-    u = MemoryUnit(id=b"\x01", claims=[Claim(claim_key=b"\x02", text="hello world")])
-    payload = serialize_signed_delta("A", u, b"k")
-    env = json.loads(payload.decode("utf-8"))     # parses as a JSON envelope ...
-    assert env["node_id"] == "A"
-    assert env["unit"]["claims"][0]["text"] == "hello world"   # typed unit, not raw text
-    assert "sig" in env
+    from meld.protocol.objects import attach_mac, canonical_bytes
+    from meld.sync.wire_delta import pack
+    from test_protocol_objects import _delta
+    d = attach_mac(_delta(text="hello world"), b"k")
+    env = json.loads(pack([(canonical_bytes(d), d.mac, "eu")]))[0]
+    body = json.loads(env["o"])
+    assert body["t"] == "Delta" and body["text"] == "hello world" and body["cell"] == "eu.a"
+    assert env["m"] == d.mac and env["s"] == "eu"
 
 
 # --------------------------------------------------------------------------- #
-# (2) end-to-end: wire-reconstructed delta merges identically to in-process
+# (2) end-to-end: the wire delivers the publisher's typed objects byte-identically
 # --------------------------------------------------------------------------- #
-def _cfg():
-    from meld.agent.run_hotpot_gate import _calibrated_cfg
-    return _calibrated_cfg("hashing")
 
 
 def _node(nid):
     from meld.sync.node import BrainNode
-    return BrainNode(nid, encoder="hashing", nli="lexical", cfg=_cfg())
+    return BrainNode(nid, encoder="hashing", nli="lexical")
 
 
-def test_wire_typed_delta_merges_identically_to_in_process_path():
-    from meld.sync.wire_delta import group_key
-
+def test_wire_delivers_the_publishers_typed_deltas_byte_identically():
+    # Rewritten (WP2 T2): the old test compared live claims after a wire merge; a received
+    # delta now reaches the merge only through the admission step (T6), so the wire's own
+    # contract is checked here: the receiver holds exactly the publisher's signed Deltas.
     claims = ["Paris is the capital of France",
               "Mount Everest is the tallest mountain",
               "Photosynthesis converts sunlight into chemical energy"]
-    key = group_key({})
-
-    # in-process path: write the text directly
-    inproc = _node("inproc")
-    for t in claims:
-        inproc.mem.write(t)
-
-    # wire path: publisher serializes typed deltas, receiver verifies + reconstructs + merges
     pub, recv = _node("pub"), _node("recv")
     for t in claims:
         pub.ingest(t)
-    for payload in pub.publish_wire_payloads(key):
-        assert recv.receive_wire(payload, key) is True
-
-    # identical observable brain state (the convergence observable)
-    assert recv.live_claim_texts() == inproc.live_claim_texts()
+    for oid in pub.outbox():
+        assert recv.receive_object(*pub.objects.raw(oid)) is True
+    ids = pub.objects.ids("D", "agent")
+    assert recv.objects.ids("D", "agent") == ids
+    assert [recv.objects.raw(i) for i in ids] == [pub.objects.raw(i) for i in ids]
+    assert {d.text for d in recv.objects.iter("D", "agent")} == set(claims)

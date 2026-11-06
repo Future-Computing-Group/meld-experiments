@@ -28,7 +28,6 @@ from meld.agent.gaia_scorer import (competence_gate,            # noqa: E402
 from meld.agent.llm import OpenWeightLLM                        # noqa: E402
 from meld.agent.memory import SMPMemory                         # noqa: E402
 from meld.agent.registry import make_agent                      # noqa: E402
-from meld.agent.run_gaia_gate import _calibrated_cfg            # noqa: E402
 from meld.agent.tools import (CalculatorTool, FinalAnswerTool,  # noqa: E402
                              RecallTool)
 
@@ -73,7 +72,7 @@ def main() -> int:
         preds, contract_fail = [], 0
         steps_lo = steps_hi = patches_lo = patches_hi = None
         for t in tasks:
-            mem = SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
+            mem = SMPMemory(encoder="hashing", nli="lexical")
             for clue in t.clues:                 # pre-load via the MELD merge path
                 mem.write(clue)
             agent = make_agent(b, llm=llm, memory=mem,
@@ -85,7 +84,7 @@ def main() -> int:
                 pred = res.answer or ""
                 if pred.upper().startswith("FINAL ANSWER:"):
                     pred = extract_final_answer(pred)
-                ns, npatch = res.n_steps, len(mem.brain.audit_log)
+                ns, npatch = res.n_steps, len(mem.decisions)
                 steps_lo = ns if steps_lo is None else min(steps_lo, ns)
                 steps_hi = ns if steps_hi is None else max(steps_hi, ns)
                 patches_lo = npatch if patches_lo is None else min(patches_lo, npatch)

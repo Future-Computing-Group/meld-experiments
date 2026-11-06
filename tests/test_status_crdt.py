@@ -15,7 +15,7 @@ import itertools
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
-from meld.merge.status_crdt import StatusState, effective_status, join, merge
+from meld.merge.status_crdt import LinkState, effective_status, join, merge
 
 # overrule links carry an effect status; identity by a stable link id.
 _EFFECTS = ["DEPRECATED", "OVERRULED", "REVOKED"]
@@ -26,7 +26,7 @@ def _link(i, eff):
 
 
 def _state(links):
-    s = StatusState()
+    s = LinkState()
     for lid, eff in links:
         s = s.add(lid, eff)
     return s
@@ -79,11 +79,11 @@ def test_same_linkset_same_status_regardless_of_order():
 
 
 def test_empty_state_is_active():
-    assert effective_status(StatusState()) == "ACTIVE"
+    assert effective_status(LinkState()) == "ACTIVE"
 
 
 def test_append_only_no_destroy():
-    s = StatusState().add("l1", "DEPRECATED")
+    s = LinkState().add("l1", "DEPRECATED")
     s2 = s.add("l1", "DEPRECATED")       # re-add same link-version is idempotent
     assert effective_status(s2) == "DEPRECATED"
     assert len(s2.links) == 1

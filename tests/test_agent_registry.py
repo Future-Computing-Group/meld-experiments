@@ -19,18 +19,12 @@ from meld.agent.memory import SMPMemory
 from meld.agent.react_agent import AgentResult
 from meld.agent.registry import AGENT_REGISTRY, make_agent, available_agents
 from meld.agent.tools import FinalAnswerTool, RecallTool
-from meld.config import Thresholds, load_thresholds
 
 
-def _calibrated_cfg() -> Thresholds:
-    # delegate to the canonical encoder-matched calibrated thresholds (was a
-    # duplicated inverted-0.5/0.55 copy that tripped the ordering invariant)
-    from meld.agent.run_hotpot_gate import _calibrated_cfg as _canonical
-    return _canonical("hashing")
 
 
 def _mem() -> SMPMemory:
-    return SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
+    return SMPMemory(encoder="hashing", nli="lexical")
 
 
 # The PUBLIC, open in-repo baselines that must always be present offline. The
@@ -86,9 +80,9 @@ def test_each_baseline_is_nondegenerate_and_writes_a_patch(name):
                        tools=[RecallTool(mem), FinalAnswerTool()], max_steps=6)
     result = agent.run("What is the capital of France?")
     assert result.n_steps >= 2, f"{name} did not step"
-    assert len(mem.brain.audit_log) >= 1, f"{name} wrote no Patch"
+    assert len(mem.decisions) >= 1, f"{name} wrote no Patch"
     assert any(p.decision in ("INSERT", "MERGE", "RELATE", "CONFLICT")
-               for p in mem.brain.audit_log), f"{name} wrote no real merge"
+               for p in mem.decisions), f"{name} wrote no real merge"
 
 
 def test_baselines_share_one_interface_and_same_brain_type():
@@ -102,8 +96,8 @@ def test_baselines_share_one_interface_and_same_brain_type():
         r = agent.run("What is the capital of France?")
         assert isinstance(r, AgentResult)
         # the memory backend is the MELD brain for every baseline
-        from meld.brain.store import Brain
-        assert isinstance(mem.brain, Brain)
+        from meld.brain.store import Store
+        assert isinstance(mem.store, Store)
         results[name] = r.answer
     # same task, same oracle -> same answer regardless of which baseline ran
     assert set(results.values()) == {"Paris"}

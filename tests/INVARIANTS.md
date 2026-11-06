@@ -1,0 +1,31 @@
+# Invariant-to-test map
+
+Each line names one protocol invariant and the tests in `tests/` that pin it. The supplement of the MELD paper (Appendix B.10) points to this file.
+
+- One encoding and one id per object: `test_objects_ids_are_content_addressed_over_received_bytes_and_mac_excluded`, `test_mondrian_c_is_exactly_bool_and_one_object_has_one_encoding`, `test_type_tag_mismatch_across_classes_is_refused`
+- Claim key binds text, cell and version: `test_claim_key_includes_version_and_cell`, `test_delta_binds_its_claim_key`
+- Scope partition; cross-scope objects: `test_scope_partition_assigns_every_cell_once_and_cross_scope_effect_is_invalid`, `test_cross_scope_pull_is_refused`
+- MAC verified before insertion on every path: `test_every_published_object_is_mac_verified_including_effects`, `test_unsigned_or_forged_object_never_enters_the_store`, `test_hostile_json_is_refused_on_every_receive_path`
+- Original bytes on the wire; no echo: `test_wire_carries_signed_bytes_cell_authority_id_preserved`, `test_received_objects_are_not_republished`
+- Redelivery is idempotent: `test_redelivery_is_idempotent_at_the_set_level`, `test_redelivery_is_idempotent_at_decision_level`, `test_concurrent_redeliveries_admit_exactly_once`
+- Foreign encoder dropped at receipt: `test_delta_under_another_encoder_is_dropped_at_receipt`, `test_foreign_encoder_delta_is_dropped_and_never_a_node`
+- Anti-entropy over the five sets: `test_digest_pull_reconciles_five_sets_under_loss`, `test_one_round_pulls_and_pushes_the_symmetric_difference`, `test_merkle_root_is_order_free_and_separates_sets`, `test_merkle_inner_nodes_are_separated_from_leaves`
+- Authorization from carried fields: `test_authorized_effect_from_carried_fields_unauthorized_never_materializes`, `test_effect_from_another_scope_never_revokes_or_overrules_a_node`
+- Authored status: order-free and monotone: `test_status_join_order_independent_over_200_permutations_with_duplicates`, `test_auth_never_decreases_when_deltas_arrive_after_effects`, `test_replicas_with_different_subscriptions_agree_on_auth_in_the_shared_scope`, `test_vis_dominates_auth`
+- Admission writes no authored effect: `test_admission_writes_no_authored_effect_and_records_derived_effects`
+- Admissibility before selection: `test_r1_reject_before_candidates_including_relevance_zero`, `test_r_min_comes_from_the_policy`
+- Exact copies are one node: `test_exact_key_is_one_node_attributes_from_canonical_min`, `test_no_reput_overwrite_node_attributes_are_the_canonical_min`
+- Selection fixed by the log: `test_selector_is_theta_independent`, `test_candidacy_never_reads_vis_or_auth`, `test_ties_by_canonical_order_and_read_ties_by_unit_id`
+- Fold is order-free; admission equals the fold: `test_fold_is_permutation_invariant_200`, `test_lemma2_in_order_admission_equals_fold`, `test_admission_decisions_equal_readjudicate_after_sig_exchange`, `test_out_of_order_or_late_sig_repaired_by_pass_after_sig_exchange`
+- Signal join; more evidence: `test_sig_join_is_semilattice_and_contradicts_is_monotone`, `test_more_sig_never_creates_a_merge_except_group_gate_release`, `test_admission_publishes_every_evaluated_sig_direction`
+- Strict test; gates only move away from MERGE: `test_merge_iff_score_exceeds_bin_theta_and_gates_only_move_away_from_merge`
+- Contradictions stay visible: `test_conflict_retains_incoming_as_live_node`, `test_collected_contradiction_with_group_member_forces_conflict`, `test_bounded_collection_adds_contradicts_and_only_forces_conflict_in_group`, `test_no_live_link_is_a_self_loop`
+- Cannot-link, calibration veto, correction: `test_group_cannot_link_veto_after_test`, `test_distinguishes_splits_group_at_pass`, `test_cal_veto_relates_labelled_nonmergeable_pair_under_retroactive_epoch`, `test_supersede_version_reactivates_via_representative`
+- Links reach retrieval; overrule then paraphrase: `test_links_resolve_to_representatives_and_change_graph_walk_rank`, `test_overrule_then_paraphrase_hidden_iff_eligible_tested_and_passed`
+- No default operating point: `test_no_default_thresholds_without_epoch_similarity_merge_disabled`, `test_bare_replica_without_epoch_folds_with_bootstrap_selector`
+- Exact int8 selection: `test_int8_products_cast_before_multiply_and_float32_gemm_is_exact`, `test_topm_exact_equals_brute_force_including_ties`, `test_sigma_q_squared_comparisons_do_not_overflow`, `test_sigma_q_exact_across_thread_counts_and_platforms`
+- Quantile, minimum size, bins: `test_n_min_and_quantile_threshold_exact_rational`, `test_epoch_row_at_n_min_minus_one_and_n_min_and_mondrian_with_infinite_theta_g`, `test_bin_of_n_prior_with_B0_and_derive_B0_at_defaults_is_256`, `test_small_bins_calibratable_at_B0`, `test_mondrian_off_by_default_and_on_disables_short_bins`
+- Calibration drawn by the selector; per-bin bound: `test_calibration_pairs_are_drawn_by_the_admission_selector`, `test_realised_false_merge_per_bin_within_alpha_on_synthetic_stream`
+- Epoch builder and verification: `test_epoch_rejects_mixed_sources_multi_hardware_or_multi_observation_cal_and_selector_mismatch`, `test_epoch_cannot_rebin_a_reused_cal_set`, `test_epoch_changing_selector_requires_new_cal_root`, `test_epoch_verifies_by_recomputation_and_sq_against_sig`, `test_cal_score_is_a_single_observation_on_cal_hw`, `test_active_epoch_is_max_seq`, `test_unauthorized_epoch_is_ignored`
+- Re-adjudication cost: `test_table_only_epoch_refolds_with_zero_nli_calls`, `test_selector_epoch_counts_new_nli_calls_and_new_tested_pairs`
+- Certificate: `test_pass_patch_certificate_recomputes_from_end_of_pass_roots`, `test_verify_pass_certifies_only_sig_complete_folds`, `test_pass_certificate_is_published_with_a_mac_and_a_tampered_issuer_fails_on_receipt`

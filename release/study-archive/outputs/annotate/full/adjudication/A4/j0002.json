@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0002",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "bf74df621dadeef2bf3921f2d25c16ef0da17725356a8355f58da1482d243b0f",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"bb490ddb572042f6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a dog running on sand, one adding wet sand and the other a ball chase.\"},\n{\"item_id\": \"3d9464f0fe0e188e\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Slicing bread and slicing some bread are the same proposition.\"},\n{\"item_id\": \"97391b5ba721fea7\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The was/is tense difference reads either as mere wording or as a changed airing status.\"},\n{\"item_id\": \"cb863ae8ccc62e9f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"Swapping licensed and published changes which act is tied to the five volumes, but Tokyopop doing both is compatible.\"},\n{\"item_id\": \"e4ce2a5555069ca7\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The same man and woman cannot be travelling by car and walking at once.\"},\n{\"item_id\": \"62750ddc7b3be1b7\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Enrollment of over 4,000 versus over 5,000 is a count that changes over time.\"},\n{\"item_id\": \"86803311ed37c9ea\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A young boy is a more specific description of a kid playing guitar.\"},\n{\"item_id\": \"8b204d65925183ef\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The league names are swapped, but they may be variant names of one league.\"},\n{\"item_id\": \"33671bd4a21dd8e6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Dropping other before the remaining Jedi masters does not change the assertion.\"},\n{\"item_id\": \"029ebfbd0f16fc95\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"People on both sides of a red stone structure adds detail to people sitting near a wall.\"},\n{\"item_id\": \"cfe509e7b3ca0eab\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Non-exhaustive client lists can both hold, each naming extra clients.\"},\n{\"item_id\": \"08e2e345978cf463\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the concert capacity to the same D Stand sentence.\"},\n{\"item_id\": \"6685b764e1772600\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"The bridge being on Long Island versus leading to Long Island is a fixed location difference.\"},\n{\"item_id\": \"e2d4240806043681\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Sign versus signed is only a grammatical slip.\"},\n{\"item_id\": \"a0bed473f0710cee\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A 2017 promotional single and an unnamed 2003 lead single are not shown to be the same release.\"},\n{\"item_id\": \"ddd3e5833f854b38\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the singer-songwriter is independent.\"},\n{\"item_id\": \"a600718c43f3e998\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the squid is giant.\"},\n{\"item_id\": \"d79e20391c0cbed5\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The man riding on one wheel is on a motorcycle in one and a bicycle in the other.\"},\n{\"item_id\": \"18788e6c9a860e85\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The violin player is a woman in one and a man in the other.\"},\n{\"item_id\": \"a629111f1fd9c793\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Two people in the ocean watching the sunset adds detail to people near the ocean.\"},\n{\"item_id\": \"81e79f0e00f2a4a7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both state the same Dovizioso and Iannone moves, only reworded.\"},\n{\"item_id\": \"5f38616f8f03bb64\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The same rating is attributed to the whole series versus the first season, and both can hold.\"},\n{\"item_id\": \"858561d205f49fe7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Mystique at the chessboard with Magneto.\"},\n{\"item_id\": \"64904c19f8149ea5\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man with a guitar, over a narrower and a broader action.\"},\n{\"item_id\": \"05218b44e35ca549\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One onion versus some onions reads either as a quantity clash or as a compatible variation.\"},\n{\"item_id\": \"7dd49c9580954e04\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A heart tank top and blue clothing are compatible details about a girl on a slide.\"},\n{\"item_id\": \"2967bcbda0630853\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the National and Filmfare award details to the same wins.\"},\n{\"item_id\": \"1948af965921ee90\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One inserts the extra parenthetical that they do use large type.\"},\n{\"item_id\": \"418c6c61f57373f1\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same three societies are listed in a different order.\"},\n{\"item_id\": \"2b1b3b3f17258cbe\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Arms extended and experiencing a new world are compatible descriptions of a child.\"},\n{\"item_id\": \"823a2319ce5d104c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds a woman standing next to the man on the sidewalk.\"},\n{\"item_id\": \"a2d194584496aff0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man kicking a soccer ball and the ball not entering the net are compatible.\"},\n{\"item_id\": \"ebbc334641a0fe68\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Immigrate and emigrate to America describe the same move here.\"},\n{\"item_id\": \"e54342c1bd219ce1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny fighting actions by a monkey and can hold together.\"},\n{\"item_id\": \"1260d25a1ecf7ebb\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny a woman cutting, over potatoes versus vegetables generally.\"},\n{\"item_id\": \"c1150b17c5b47f43\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A debut album with its hits and a count of certified albums share no named entity.\"},\n{\"item_id\": \"7f5253248a9e42d7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"About 80 kilometers and about 50 miles are the same distance, and near equals close to.\"},\n{\"item_id\": \"7e7b0d4ab13f03d7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the articles differ.\"},\n{\"item_id\": \"1b90ead52a86b73d\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The speaker's yoga frequency is twice versus three times a week, a habit that can change over time.\"},\n{\"item_id\": \"d653fba69332518f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Promising young player and best Brazilian in the Premier League are compatible acclaim for Martinelli.\"},\n{\"item_id\": \"75ee827374ffe981\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The new and spacious modifiers swap between the atrium and the computers, but both descriptions can hold.\"},\n{\"item_id\": \"9108d1ac60e77f94\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Mexican-Lebanese adds heritage to Mexican without contradicting it.\"},\n{\"item_id\": \"170e7350542230d5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that two runs scored on Eaton's single.\"},\n{\"item_id\": \"72c470c715d51b76\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that she was an eighth-generation descendant.\"},\n{\"item_id\": \"54f3875574ae6f26\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a woman handling meat in different ways and can hold together.\"},\n{\"item_id\": \"3a025054e3c4bd5f\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The definitive list of regional divisions differs by OPPO Morocco, a set that changes over time.\"},\n{\"item_id\": \"2c1a74d235f2f184\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mixing and cooking eggs are compatible actions by the same woman.\"},\n{\"item_id\": \"d480f66682352783\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cooking an egg in a skillet and cracking eggs are compatible parts of one scene.\"},\n{\"item_id\": \"440e79022a056875\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The bonus amount and condition differ in a way that reads either as a scope clash or as compatible elaboration.\"},\n{\"item_id\": \"7ce6b13edecaede0\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"A running win-loss record against Top 100 players changes over time.\"}\n]}\n"
+ ],
+ "labels": {
+  "bb490ddb572042f6": {
+   "item_id": "bb490ddb572042f6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a dog running on sand, one adding wet sand and the other a ball chase."
+  },
+  "3d9464f0fe0e188e": {
+   "item_id": "3d9464f0fe0e188e",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Slicing bread and slicing some bread are the same proposition."
+  },
+  "97391b5ba721fea7": {
+   "item_id": "97391b5ba721fea7",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The was/is tense difference reads either as mere wording or as a changed airing status."
+  },
+  "cb863ae8ccc62e9f": {
+   "item_id": "cb863ae8ccc62e9f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "Swapping licensed and published changes which act is tied to the five volumes, but Tokyopop doing both is compatible."
+  },
+  "e4ce2a5555069ca7": {
+   "item_id": "e4ce2a5555069ca7",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The same man and woman cannot be travelling by car and walking at once."
+  },
+  "62750ddc7b3be1b7": {
+   "item_id": "62750ddc7b3be1b7",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Enrollment of over 4,000 versus over 5,000 is a count that changes over time."
+  },
+  "86803311ed37c9ea": {
+   "item_id": "86803311ed37c9ea",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A young boy is a more specific description of a kid playing guitar."
+  },
+  "8b204d65925183ef": {
+   "item_id": "8b204d65925183ef",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The league names are swapped, but they may be variant names of one league."
+  },
+  "33671bd4a21dd8e6": {
+   "item_id": "33671bd4a21dd8e6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Dropping other before the remaining Jedi masters does not change the assertion."
+  },
+  "029ebfbd0f16fc95": {
+   "item_id": "029ebfbd0f16fc95",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "People on both sides of a red stone structure adds detail to people sitting near a wall."
+  },
+  "cfe509e7b3ca0eab": {
+   "item_id": "cfe509e7b3ca0eab",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Non-exhaustive client lists can both hold, each naming extra clients."
+  },
+  "08e2e345978cf463": {
+   "item_id": "08e2e345978cf463",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the concert capacity to the same D Stand sentence."
+  },
+  "6685b764e1772600": {
+   "item_id": "6685b764e1772600",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "The bridge being on Long Island versus leading to Long Island is a fixed location difference."
+  },
+  "e2d4240806043681": {
+   "item_id": "e2d4240806043681",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Sign versus signed is only a grammatical slip."
+  },
+  "a0bed473f0710cee": {
+   "item_id": "a0bed473f0710cee",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A 2017 promotional single and an unnamed 2003 lead single are not shown to be the same release."
+  },
+  "ddd3e5833f854b38": {
+   "item_id": "ddd3e5833f854b38",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the singer-songwriter is independent."
+  },
+  "a600718c43f3e998": {
+   "item_id": "a600718c43f3e998",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the squid is giant."
+  },
+  "d79e20391c0cbed5": {
+   "item_id": "d79e20391c0cbed5",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The man riding on one wheel is on a motorcycle in one and a bicycle in the other."
+  },
+  "18788e6c9a860e85": {
+   "item_id": "18788e6c9a860e85",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The violin player is a woman in one and a man in the other."
+  },
+  "a629111f1fd9c793": {
+   "item_id": "a629111f1fd9c793",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Two people in the ocean watching the sunset adds detail to people near the ocean."
+  },
+  "81e79f0e00f2a4a7": {
+   "item_id": "81e79f0e00f2a4a7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both state the same Dovizioso and Iannone moves, only reworded."
+  },
+  "5f38616f8f03bb64": {
+   "item_id": "5f38616f8f03bb64",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The same rating is attributed to the whole series versus the first season, and both can hold."
+  },
+  "858561d205f49fe7": {
+   "item_id": "858561d205f49fe7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Mystique at the chessboard with Magneto."
+  },
+  "64904c19f8149ea5": {
+   "item_id": "64904c19f8149ea5",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man with a guitar, over a narrower and a broader action."
+  },
+  "05218b44e35ca549": {
+   "item_id": "05218b44e35ca549",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One onion versus some onions reads either as a quantity clash or as a compatible variation."
+  },
+  "7dd49c9580954e04": {
+   "item_id": "7dd49c9580954e04",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A heart tank top and blue clothing are compatible details about a girl on a slide."
+  },
+  "2967bcbda0630853": {
+   "item_id": "2967bcbda0630853",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the National and Filmfare award details to the same wins."
+  },
+  "1948af965921ee90": {
+   "item_id": "1948af965921ee90",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One inserts the extra parenthetical that they do use large type."
+  },
+  "418c6c61f57373f1": {
+   "item_id": "418c6c61f57373f1",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same three societies are listed in a different order."
+  },
+  "2b1b3b3f17258cbe": {
+   "item_id": "2b1b3b3f17258cbe",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Arms extended and experiencing a new world are compatible descriptions of a child."
+  },
+  "823a2319ce5d104c": {
+   "item_id": "823a2319ce5d104c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds a woman standing next to the man on the sidewalk."
+  },
+  "a2d194584496aff0": {
+   "item_id": "a2d194584496aff0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man kicking a soccer ball and the ball not entering the net are compatible."
+  },
+  "ebbc334641a0fe68": {
+   "item_id": "ebbc334641a0fe68",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Immigrate and emigrate to America describe the same move here."
+  },
+  "e54342c1bd219ce1": {
+   "item_id": "e54342c1bd219ce1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny fighting actions by a monkey and can hold together."
+  },
+  "1260d25a1ecf7ebb": {
+   "item_id": "1260d25a1ecf7ebb",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny a woman cutting, over potatoes versus vegetables generally."
+  },
+  "c1150b17c5b47f43": {
+   "item_id": "c1150b17c5b47f43",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A debut album with its hits and a count of certified albums share no named entity."
+  },
+  "7f5253248a9e42d7": {
+   "item_id": "7f5253248a9e42d7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "About 80 kilometers and about 50 miles are the same distance, and near equals close to."
+  },
+  "7e7b0d4ab13f03d7": {
+   "item_id": "7e7b0d4ab13f03d7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the articles differ."
+  },
+  "1b90ead52a86b73d": {
+   "item_id": "1b90ead52a86b73d",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The speaker's yoga frequency is twice versus three times a week, a habit that can change over time."
+  },
+  "d653fba69332518f": {
+   "item_id": "d653fba69332518f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Promising young player and best Brazilian in the Premier League are compatible acclaim for Martinelli."
+  },
+  "75ee827374ffe981": {
+   "item_id": "75ee827374ffe981",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The new and spacious modifiers swap between the atrium and the computers, but both descriptions can hold."
+  },
+  "9108d1ac60e77f94": {
+   "item_id": "9108d1ac60e77f94",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Mexican-Lebanese adds heritage to Mexican without contradicting it."
+  },
+  "170e7350542230d5": {
+   "item_id": "170e7350542230d5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that two runs scored on Eaton's single."
+  },
+  "72c470c715d51b76": {
+   "item_id": "72c470c715d51b76",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that she was an eighth-generation descendant."
+  },
+  "54f3875574ae6f26": {
+   "item_id": "54f3875574ae6f26",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a woman handling meat in different ways and can hold together."
+  },
+  "3a025054e3c4bd5f": {
+   "item_id": "3a025054e3c4bd5f",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The definitive list of regional divisions differs by OPPO Morocco, a set that changes over time."
+  },
+  "2c1a74d235f2f184": {
+   "item_id": "2c1a74d235f2f184",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mixing and cooking eggs are compatible actions by the same woman."
+  },
+  "d480f66682352783": {
+   "item_id": "d480f66682352783",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cooking an egg in a skillet and cracking eggs are compatible parts of one scene."
+  },
+  "440e79022a056875": {
+   "item_id": "440e79022a056875",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The bonus amount and condition differ in a way that reads either as a scope clash or as compatible elaboration."
+  },
+  "7ce6b13edecaede0": {
+   "item_id": "7ce6b13edecaede0",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "A running win-loss record against Top 100 players changes over time."
+  }
+ },
+ "errors": []
+}

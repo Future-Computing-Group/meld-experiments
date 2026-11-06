@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0016",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "d40a1c959cf07e88ac123c5dd7aafa47f7b145d6653291bdf0275ac76766c312",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"9afe8b21179cecf8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Attending Bentley is compatible with having transferred there from Swartz Creek, which one statement adds.\"},\n{\"item_id\": \"b90f7832f78ac7d6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the January 10, 2016 return to the same injury report.\"},\n{\"item_id\": \"cf65560c2461c119\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Being the final album is an added detail compatible with being the fourth.\"},\n{\"item_id\": \"a52578ea57aa720b\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A man cannot be driving and getting into the car at once, but the texts may describe different moments or men.\"},\n{\"item_id\": \"2f2623ccf3e56cde\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the Treo product name to the same 600 smartphone claim.\"},\n{\"item_id\": \"1bcd4b96c3975fb5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the league's new name National League South to the same description.\"},\n{\"item_id\": \"f5c565f6213e950c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the character's name Jill Valentine to the same description.\"},\n{\"item_id\": \"4917e237681a5ae9\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both say RFPs are dominated by turbulent and non-ideal phenomena, with phenomena and effects used interchangeably.\"},\n{\"item_id\": \"ed924d7548c10398\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds ownership by James McGuire to the same company description.\"},\n{\"item_id\": \"38581272aaffca2c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Racer specifies what the man in full gear is, adding a detail.\"},\n{\"item_id\": \"639929526e2ff1d1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe someone riding a motorbike, with compatible details about a roadway and a motocross event.\"},\n{\"item_id\": \"acae8eb5b4c0dac3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both state compatible effects of bariatric surgery on cancer, on different cancer types.\"},\n{\"item_id\": \"fc43dd19b5c07e57\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The swapped names reverse who is called whose brother, yet maternal brotherhood is symmetric, so both identical-meaning and role-swap readings hold.\"},\n{\"item_id\": \"7a13f52be820751f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the 2011 divorce to the same separation announcement.\"},\n{\"item_id\": \"2fb865156b3ab92d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both concern The Irishman, giving compatible details on its review and its credits.\"},\n{\"item_id\": \"35237a751ff47b3f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Sarah keeps fighting to avert Judgment Day.\"},\n{\"item_id\": \"a4f14bb973b149aa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the aircraft included Canadian CF-18s.\"},\n{\"item_id\": \"e639abf9b4b698f4\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Larger focal length giving smaller shear and smaller focal length giving larger shear state the same inverse relation.\"},\n{\"item_id\": \"67e9e72b36857e74\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The division of cities save Bathurst is named Eastern in one and Maritime in the other.\"},\n{\"item_id\": \"62910f113a46a8f0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the dogs' colours to two dogs playing on a beach.\"},\n{\"item_id\": \"b9dab551e93c1f7f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Harvard Business School specifies the part of Harvard that granted the MBA.\"},\n{\"item_id\": \"c5d8d6a091f0281e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same slicing event, with man more specific than person.\"},\n{\"item_id\": \"c76c19df12acd7d9\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"They deny two different dog actions and assert no shared entity or event.\"},\n{\"item_id\": \"aa1aee4c1ca8ff03\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Affiliated and associated organization are synonyms here.\"},\n{\"item_id\": \"53652788454494e4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Each adds a compatible detail, the band's nationality or Hendrix as its leader.\"},\n{\"item_id\": \"444f3aa758bb0e68\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give compatible commercial details about the same album.\"},\n{\"item_id\": \"59c722dcce4b6ace\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe compatible cooking actions with a pan.\"},\n{\"item_id\": \"d968febcf8c95edd\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The only difference is the typo verison.\"},\n{\"item_id\": \"240672cade058abe\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe compatible rounds of the same Raptors playoff run.\"},\n{\"item_id\": \"bbab556a6de675d4\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Many and various are near-synonyms, so swapping them between films and orchestras does not change the claim.\"},\n{\"item_id\": \"b594b3fa7aa24ced\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Moving old Hungarian from the interpretations to the tribes may be a harmless reorder or a change in whose interpretation is meant.\"},\n{\"item_id\": \"49a47fdad94fa992\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One specifies that Grohl is the rhythm guitarist.\"},\n{\"item_id\": \"eceb4a91f69777d9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A dog jumping, with compatible details of being in the air and in the shade.\"},\n{\"item_id\": \"4b37eb3d17ef5f3d\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the tense of include differs.\"},\n{\"item_id\": \"727f7eb200424bf7\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The two people ride one motorcycle in one statement and several motorbikes in the other.\"},\n{\"item_id\": \"8244481a5aca44a6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Shollenberger as a further word for one thousand million.\"},\n{\"item_id\": \"af22b0359662a53b\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Well received versus negative reviews clash, but the unnamed film may not be the same one.\"},\n{\"item_id\": \"4fef5c82d2157902\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The same scene, with one adding the dirty road.\"},\n{\"item_id\": \"4413ef0552e8147e\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Novel and trilogy both refer to The Lord of the Rings, so the claim is the same.\"},\n{\"item_id\": \"e505b4538814d50e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both have Antequera flee to Charcas in 1725, with one adding resigning and the other returning.\"},\n{\"item_id\": \"224a9518ba0521fc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Matthew Wilder's birth name and date.\"},\n{\"item_id\": \"4e907c311d96d71e\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Playing the guitar and putting it away clash at one moment, but may be different moments.\"},\n{\"item_id\": \"5c4e1e5f80edbeb2\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The release status changes from upcoming to done, each true at its own time.\"},\n{\"item_id\": \"c449b67e5dba2040\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds a peanut policy to the same milkshake claim.\"},\n{\"item_id\": \"7d3fbd492d31da1b\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The richest-ever claim is made over all people in one and over Americans in the other.\"},\n{\"item_id\": \"055de66fbad50bca\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the man and the stenography machine to someone typing.\"},\n{\"item_id\": \"c7441c2746038021\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same denial of a running dog is made for snow and for a road.\"},\n{\"item_id\": \"c6d239c7c86df7fe\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The production status changes from future to completed, each true at its own time.\"},\n{\"item_id\": \"54657d39bab407eb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Duo specifies the size of the group.\"},\n{\"item_id\": \"3ffff2597a111cf5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds a pejorative claim to the same definition of atheism.\"}\n]}\n"
+ ],
+ "labels": {
+  "9afe8b21179cecf8": {
+   "item_id": "9afe8b21179cecf8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Attending Bentley is compatible with having transferred there from Swartz Creek, which one statement adds."
+  },
+  "b90f7832f78ac7d6": {
+   "item_id": "b90f7832f78ac7d6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the January 10, 2016 return to the same injury report."
+  },
+  "cf65560c2461c119": {
+   "item_id": "cf65560c2461c119",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Being the final album is an added detail compatible with being the fourth."
+  },
+  "a52578ea57aa720b": {
+   "item_id": "a52578ea57aa720b",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A man cannot be driving and getting into the car at once, but the texts may describe different moments or men."
+  },
+  "2f2623ccf3e56cde": {
+   "item_id": "2f2623ccf3e56cde",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the Treo product name to the same 600 smartphone claim."
+  },
+  "1bcd4b96c3975fb5": {
+   "item_id": "1bcd4b96c3975fb5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the league's new name National League South to the same description."
+  },
+  "f5c565f6213e950c": {
+   "item_id": "f5c565f6213e950c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the character's name Jill Valentine to the same description."
+  },
+  "4917e237681a5ae9": {
+   "item_id": "4917e237681a5ae9",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both say RFPs are dominated by turbulent and non-ideal phenomena, with phenomena and effects used interchangeably."
+  },
+  "ed924d7548c10398": {
+   "item_id": "ed924d7548c10398",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds ownership by James McGuire to the same company description."
+  },
+  "38581272aaffca2c": {
+   "item_id": "38581272aaffca2c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Racer specifies what the man in full gear is, adding a detail."
+  },
+  "639929526e2ff1d1": {
+   "item_id": "639929526e2ff1d1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe someone riding a motorbike, with compatible details about a roadway and a motocross event."
+  },
+  "acae8eb5b4c0dac3": {
+   "item_id": "acae8eb5b4c0dac3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both state compatible effects of bariatric surgery on cancer, on different cancer types."
+  },
+  "fc43dd19b5c07e57": {
+   "item_id": "fc43dd19b5c07e57",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The swapped names reverse who is called whose brother, yet maternal brotherhood is symmetric, so both identical-meaning and role-swap readings hold."
+  },
+  "7a13f52be820751f": {
+   "item_id": "7a13f52be820751f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the 2011 divorce to the same separation announcement."
+  },
+  "2fb865156b3ab92d": {
+   "item_id": "2fb865156b3ab92d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both concern The Irishman, giving compatible details on its review and its credits."
+  },
+  "35237a751ff47b3f": {
+   "item_id": "35237a751ff47b3f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Sarah keeps fighting to avert Judgment Day."
+  },
+  "a4f14bb973b149aa": {
+   "item_id": "a4f14bb973b149aa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the aircraft included Canadian CF-18s."
+  },
+  "e639abf9b4b698f4": {
+   "item_id": "e639abf9b4b698f4",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Larger focal length giving smaller shear and smaller focal length giving larger shear state the same inverse relation."
+  },
+  "67e9e72b36857e74": {
+   "item_id": "67e9e72b36857e74",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The division of cities save Bathurst is named Eastern in one and Maritime in the other."
+  },
+  "62910f113a46a8f0": {
+   "item_id": "62910f113a46a8f0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the dogs' colours to two dogs playing on a beach."
+  },
+  "b9dab551e93c1f7f": {
+   "item_id": "b9dab551e93c1f7f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Harvard Business School specifies the part of Harvard that granted the MBA."
+  },
+  "c5d8d6a091f0281e": {
+   "item_id": "c5d8d6a091f0281e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same slicing event, with man more specific than person."
+  },
+  "c76c19df12acd7d9": {
+   "item_id": "c76c19df12acd7d9",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "They deny two different dog actions and assert no shared entity or event."
+  },
+  "aa1aee4c1ca8ff03": {
+   "item_id": "aa1aee4c1ca8ff03",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Affiliated and associated organization are synonyms here."
+  },
+  "53652788454494e4": {
+   "item_id": "53652788454494e4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Each adds a compatible detail, the band's nationality or Hendrix as its leader."
+  },
+  "444f3aa758bb0e68": {
+   "item_id": "444f3aa758bb0e68",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give compatible commercial details about the same album."
+  },
+  "59c722dcce4b6ace": {
+   "item_id": "59c722dcce4b6ace",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe compatible cooking actions with a pan."
+  },
+  "d968febcf8c95edd": {
+   "item_id": "d968febcf8c95edd",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The only difference is the typo verison."
+  },
+  "240672cade058abe": {
+   "item_id": "240672cade058abe",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe compatible rounds of the same Raptors playoff run."
+  },
+  "bbab556a6de675d4": {
+   "item_id": "bbab556a6de675d4",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Many and various are near-synonyms, so swapping them between films and orchestras does not change the claim."
+  },
+  "b594b3fa7aa24ced": {
+   "item_id": "b594b3fa7aa24ced",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Moving old Hungarian from the interpretations to the tribes may be a harmless reorder or a change in whose interpretation is meant."
+  },
+  "49a47fdad94fa992": {
+   "item_id": "49a47fdad94fa992",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One specifies that Grohl is the rhythm guitarist."
+  },
+  "eceb4a91f69777d9": {
+   "item_id": "eceb4a91f69777d9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A dog jumping, with compatible details of being in the air and in the shade."
+  },
+  "4b37eb3d17ef5f3d": {
+   "item_id": "4b37eb3d17ef5f3d",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the tense of include differs."
+  },
+  "727f7eb200424bf7": {
+   "item_id": "727f7eb200424bf7",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The two people ride one motorcycle in one statement and several motorbikes in the other."
+  },
+  "8244481a5aca44a6": {
+   "item_id": "8244481a5aca44a6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Shollenberger as a further word for one thousand million."
+  },
+  "af22b0359662a53b": {
+   "item_id": "af22b0359662a53b",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Well received versus negative reviews clash, but the unnamed film may not be the same one."
+  },
+  "4fef5c82d2157902": {
+   "item_id": "4fef5c82d2157902",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The same scene, with one adding the dirty road."
+  },
+  "4413ef0552e8147e": {
+   "item_id": "4413ef0552e8147e",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Novel and trilogy both refer to The Lord of the Rings, so the claim is the same."
+  },
+  "e505b4538814d50e": {
+   "item_id": "e505b4538814d50e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both have Antequera flee to Charcas in 1725, with one adding resigning and the other returning."
+  },
+  "224a9518ba0521fc": {
+   "item_id": "224a9518ba0521fc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Matthew Wilder's birth name and date."
+  },
+  "4e907c311d96d71e": {
+   "item_id": "4e907c311d96d71e",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Playing the guitar and putting it away clash at one moment, but may be different moments."
+  },
+  "5c4e1e5f80edbeb2": {
+   "item_id": "5c4e1e5f80edbeb2",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The release status changes from upcoming to done, each true at its own time."
+  },
+  "c449b67e5dba2040": {
+   "item_id": "c449b67e5dba2040",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds a peanut policy to the same milkshake claim."
+  },
+  "7d3fbd492d31da1b": {
+   "item_id": "7d3fbd492d31da1b",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The richest-ever claim is made over all people in one and over Americans in the other."
+  },
+  "055de66fbad50bca": {
+   "item_id": "055de66fbad50bca",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the man and the stenography machine to someone typing."
+  },
+  "c7441c2746038021": {
+   "item_id": "c7441c2746038021",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same denial of a running dog is made for snow and for a road."
+  },
+  "c6d239c7c86df7fe": {
+   "item_id": "c6d239c7c86df7fe",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The production status changes from future to completed, each true at its own time."
+  },
+  "54657d39bab407eb": {
+   "item_id": "54657d39bab407eb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Duo specifies the size of the group."
+  },
+  "3ffff2597a111cf5": {
+   "item_id": "3ffff2597a111cf5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds a pejorative claim to the same definition of atheism."
+  }
+ },
+ "errors": []
+}

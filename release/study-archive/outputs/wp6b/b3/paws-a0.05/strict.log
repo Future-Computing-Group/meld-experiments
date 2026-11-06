@@ -1,0 +1,12 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 4870.99it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 26236.69it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 26039.02it/s]
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|██████████| 106/106 [00:00<00:00, 25536.83it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 71254.05it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 61725.01it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 73123.44it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 24723.21it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 24728.87it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 23978.09it/s]
+WARNING paws: the Cal draw with seed 0 does not rebuild the given epoch; the training-conditional variant is of the rebuilt draw
+{"domain": "paws", "unresolved": 0, "labels": {"cross_item": {"non_mergeable": 31}, "manifest": {"non_mergeable": 309, "mergeable": 564}, "same_item": {"mergeable": 184, "non_mergeable": 367}, "source_labelled": {"non_mergeable": 103, "mergeable": 41}}, "fm": {"k": 37, "n": 810, "rate": 0.04567901234567901, "ci95": [0.03236297854434334, 0.06241552790565432]}, "recall": 0.22433460076045628, "chunks": 2, "test_disabled_share": 0.07379612257661038, "tc_fm": {"k": 20, "n": 810, "rate": 0.024691358024691357, "ci95": [0.015145867495063435, 0.037877147916364005]}, "tc_recall": 0.14702154626108999, "seconds": 831.9}

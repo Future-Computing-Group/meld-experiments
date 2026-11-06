@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0028",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "f9caa9410c3ad4784054fc50fddde29fb5ed6f76c4da9c587ed7face1983ee98",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"af982e0ffb448549\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"Ironton and Halbert Township swap roles as community and containing township.\"},\n{\"item_id\": \"3410db417f4261b7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny a man speaking, one adds the stage.\"},\n{\"item_id\": \"e7a1205352b4e679\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same plot sentence with different compatible parentheticals (actor names versus Verona's parents' death).\"},\n{\"item_id\": \"01e42f4cd9ce0e98\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Will receive versus has received is a release status that changes over time.\"},\n{\"item_id\": \"87e066c590b3ebdd\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Two compatible negations about someone at a table that may or may not count as the same topic.\"},\n{\"item_id\": \"d975075aee95e296\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Artist and label names are swapped for the same 2001 compilation album.\"},\n{\"item_id\": \"0d1cfa522400aa2f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Frying food in a pan adds the pan to frying some food.\"},\n{\"item_id\": \"fe76aface884c43a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Juventus were the eventual runners-up.\"},\n{\"item_id\": \"ca8a4f608424d988\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Bought versus brought reads as a one-letter typo of the same sentence.\"},\n{\"item_id\": \"175edc81cbe1586a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible details about a film being a commercial success.\"},\n{\"item_id\": \"7825f4e0dd4abf6f\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Peeling versus slicing an onion could be a clash in one scene or compatible actions.\"},\n{\"item_id\": \"7cd3a206005dbfc8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A horse can stand while being ridden, so the woman rider is a compatible detail.\"},\n{\"item_id\": \"9b8df73c25c5ee9b\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The urban and dry modifiers attach to different habitats in the two lists.\"},\n{\"item_id\": \"1d2ad48a4ff0d557\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A primary source versus its primary source is a wording difference with the same claim.\"},\n{\"item_id\": \"62d17bc4e3441cb5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Most of the team staying implies some stay, so the quantities are compatible with one more specific.\"},\n{\"item_id\": \"0e6b76a268b057d8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny a boy playing guitar, one adds young and singing.\"},\n{\"item_id\": \"fa638cf0b057a667\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Photographic and other swap between slides and images, changing the listed items.\"},\n{\"item_id\": \"f232adbc595646bb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man drawing, with different compatible specifics.\"},\n{\"item_id\": \"3cd48db3b7f3c4b3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both describe two men racing with tires, adding different details.\"},\n{\"item_id\": \"d37da966fdfc48ef\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Margaret of England is only a fuller form of the same child's name.\"},\n{\"item_id\": \"c896c49f17a23dae\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Charlie as killer versus Charlie as one of the victims is a fixed fact that differs.\"},\n{\"item_id\": \"3c55e490807ed7e8\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Metacritic scores for a show's first season and for a film are about different works.\"},\n{\"item_id\": \"cc724c599498c0c7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Man and guy are synonyms; both deny one riding a horse.\"},\n{\"item_id\": \"5c32aa135116db28\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Circumpolar and prominent swap roles, changing what holds north of 44 N.\"},\n{\"item_id\": \"fbb46b7e8fbf562c\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Worst of all time versus worst of 2007 is the same claim over a different period.\"},\n{\"item_id\": \"1dc95b5acf21856d\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The parent stream named outside the parentheses differs, changing which stream Shaffer Creek feeds.\"},\n{\"item_id\": \"b73666137330c04a\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Central Sweetwater County versus central Wyoming swaps the location roles of county and state.\"},\n{\"item_id\": \"7e79da6f025bddf5\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The full name and the known-as name are swapped.\"},\n{\"item_id\": \"5509e6ea8fa4f83c\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Whether both reunite or one reunites with everyone changes who acts, but both can hold.\"},\n{\"item_id\": \"be39177c78c9f30f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Applied attaches to physics in one and to mathematics in the other, changing the prize fields.\"},\n{\"item_id\": \"d17f192ffa63845e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a dog in grass with different compatible details.\"},\n{\"item_id\": \"7f26b4e751163796\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the Baltimore Ravens to a non-exhaustive list of former teams.\"},\n{\"item_id\": \"04b1aac48a431f5c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds ABC Warehouse commercials.\"},\n{\"item_id\": \"d498dc3f1a63d922\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Life preservers are protective gear, with water safety as an added detail.\"},\n{\"item_id\": \"e4cd215846051292\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"A review count of 28 versus 27 is a tally that changes over time.\"},\n{\"item_id\": \"b9d56d741365f789\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Third versus fourth largest chain is a ranking that changes over time.\"},\n{\"item_id\": \"2148a56237621ee6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Gram versus graham crackers is a spelling fix.\"},\n{\"item_id\": \"5f36820cacefcbe4\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Occupying the island versus portions of it is the same claim over a different extent.\"},\n{\"item_id\": \"921179fda782bc1a\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Was versus are changes whether the group is active, a status over time.\"},\n{\"item_id\": \"e49d30cd7784dd01\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Standing versus dancing on a roof may be a scope clash or different people on the same topic.\"},\n{\"item_id\": \"7feac8b5671c22ba\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The group sits in a dark room versus is not sitting in a dim room.\"},\n{\"item_id\": \"6b5daa740e35dc21\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Will be versus was the special guest at the same concert is a status over time.\"},\n{\"item_id\": \"c2e61c6b05a21207\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Greatest ruler of his nation is compatible with, and specified by, greatest ruler of France.\"},\n{\"item_id\": \"fe9c86355afe23a8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man sprinkling cheese on pizza, one adds shredded.\"},\n{\"item_id\": \"318149f9e8791cbd\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A girl versus a man playing guitar is either a scope clash in one scene or two unrelated scenes.\"},\n{\"item_id\": \"69803a945d451992\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe piano playing, one specifying a pianist.\"},\n{\"item_id\": \"0f2a292714a706e0\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Potatoes versus a potato is a trivial number difference in the same denial.\"},\n{\"item_id\": \"7d406eb306e81eaa\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The film title differs for the same upcoming role and cast.\"},\n{\"item_id\": \"cacf93fc35487442\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A man versus a little girl playing piano is either a scope clash or two unrelated scenes.\"},\n{\"item_id\": \"2c0d421509a6dcfc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A motorcyclist with a passenger fits two people riding, so the details are compatible.\"}\n]}\n"
+ ],
+ "labels": {
+  "af982e0ffb448549": {
+   "item_id": "af982e0ffb448549",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "Ironton and Halbert Township swap roles as community and containing township."
+  },
+  "3410db417f4261b7": {
+   "item_id": "3410db417f4261b7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny a man speaking, one adds the stage."
+  },
+  "e7a1205352b4e679": {
+   "item_id": "e7a1205352b4e679",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same plot sentence with different compatible parentheticals (actor names versus Verona's parents' death)."
+  },
+  "01e42f4cd9ce0e98": {
+   "item_id": "01e42f4cd9ce0e98",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Will receive versus has received is a release status that changes over time."
+  },
+  "87e066c590b3ebdd": {
+   "item_id": "87e066c590b3ebdd",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Two compatible negations about someone at a table that may or may not count as the same topic."
+  },
+  "d975075aee95e296": {
+   "item_id": "d975075aee95e296",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Artist and label names are swapped for the same 2001 compilation album."
+  },
+  "0d1cfa522400aa2f": {
+   "item_id": "0d1cfa522400aa2f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Frying food in a pan adds the pan to frying some food."
+  },
+  "fe76aface884c43a": {
+   "item_id": "fe76aface884c43a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Juventus were the eventual runners-up."
+  },
+  "ca8a4f608424d988": {
+   "item_id": "ca8a4f608424d988",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Bought versus brought reads as a one-letter typo of the same sentence."
+  },
+  "175edc81cbe1586a": {
+   "item_id": "175edc81cbe1586a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible details about a film being a commercial success."
+  },
+  "7825f4e0dd4abf6f": {
+   "item_id": "7825f4e0dd4abf6f",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Peeling versus slicing an onion could be a clash in one scene or compatible actions."
+  },
+  "7cd3a206005dbfc8": {
+   "item_id": "7cd3a206005dbfc8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A horse can stand while being ridden, so the woman rider is a compatible detail."
+  },
+  "9b8df73c25c5ee9b": {
+   "item_id": "9b8df73c25c5ee9b",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The urban and dry modifiers attach to different habitats in the two lists."
+  },
+  "1d2ad48a4ff0d557": {
+   "item_id": "1d2ad48a4ff0d557",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A primary source versus its primary source is a wording difference with the same claim."
+  },
+  "62d17bc4e3441cb5": {
+   "item_id": "62d17bc4e3441cb5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Most of the team staying implies some stay, so the quantities are compatible with one more specific."
+  },
+  "0e6b76a268b057d8": {
+   "item_id": "0e6b76a268b057d8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny a boy playing guitar, one adds young and singing."
+  },
+  "fa638cf0b057a667": {
+   "item_id": "fa638cf0b057a667",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Photographic and other swap between slides and images, changing the listed items."
+  },
+  "f232adbc595646bb": {
+   "item_id": "f232adbc595646bb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man drawing, with different compatible specifics."
+  },
+  "3cd48db3b7f3c4b3": {
+   "item_id": "3cd48db3b7f3c4b3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both describe two men racing with tires, adding different details."
+  },
+  "d37da966fdfc48ef": {
+   "item_id": "d37da966fdfc48ef",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Margaret of England is only a fuller form of the same child's name."
+  },
+  "c896c49f17a23dae": {
+   "item_id": "c896c49f17a23dae",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Charlie as killer versus Charlie as one of the victims is a fixed fact that differs."
+  },
+  "3c55e490807ed7e8": {
+   "item_id": "3c55e490807ed7e8",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Metacritic scores for a show's first season and for a film are about different works."
+  },
+  "cc724c599498c0c7": {
+   "item_id": "cc724c599498c0c7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Man and guy are synonyms; both deny one riding a horse."
+  },
+  "5c32aa135116db28": {
+   "item_id": "5c32aa135116db28",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Circumpolar and prominent swap roles, changing what holds north of 44 N."
+  },
+  "fbb46b7e8fbf562c": {
+   "item_id": "fbb46b7e8fbf562c",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Worst of all time versus worst of 2007 is the same claim over a different period."
+  },
+  "1dc95b5acf21856d": {
+   "item_id": "1dc95b5acf21856d",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The parent stream named outside the parentheses differs, changing which stream Shaffer Creek feeds."
+  },
+  "b73666137330c04a": {
+   "item_id": "b73666137330c04a",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Central Sweetwater County versus central Wyoming swaps the location roles of county and state."
+  },
+  "7e79da6f025bddf5": {
+   "item_id": "7e79da6f025bddf5",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The full name and the known-as name are swapped."
+  },
+  "5509e6ea8fa4f83c": {
+   "item_id": "5509e6ea8fa4f83c",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Whether both reunite or one reunites with everyone changes who acts, but both can hold."
+  },
+  "be39177c78c9f30f": {
+   "item_id": "be39177c78c9f30f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Applied attaches to physics in one and to mathematics in the other, changing the prize fields."
+  },
+  "d17f192ffa63845e": {
+   "item_id": "d17f192ffa63845e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a dog in grass with different compatible details."
+  },
+  "7f26b4e751163796": {
+   "item_id": "7f26b4e751163796",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the Baltimore Ravens to a non-exhaustive list of former teams."
+  },
+  "04b1aac48a431f5c": {
+   "item_id": "04b1aac48a431f5c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds ABC Warehouse commercials."
+  },
+  "d498dc3f1a63d922": {
+   "item_id": "d498dc3f1a63d922",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Life preservers are protective gear, with water safety as an added detail."
+  },
+  "e4cd215846051292": {
+   "item_id": "e4cd215846051292",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "A review count of 28 versus 27 is a tally that changes over time."
+  },
+  "b9d56d741365f789": {
+   "item_id": "b9d56d741365f789",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Third versus fourth largest chain is a ranking that changes over time."
+  },
+  "2148a56237621ee6": {
+   "item_id": "2148a56237621ee6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Gram versus graham crackers is a spelling fix."
+  },
+  "5f36820cacefcbe4": {
+   "item_id": "5f36820cacefcbe4",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Occupying the island versus portions of it is the same claim over a different extent."
+  },
+  "921179fda782bc1a": {
+   "item_id": "921179fda782bc1a",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Was versus are changes whether the group is active, a status over time."
+  },
+  "e49d30cd7784dd01": {
+   "item_id": "e49d30cd7784dd01",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Standing versus dancing on a roof may be a scope clash or different people on the same topic."
+  },
+  "7feac8b5671c22ba": {
+   "item_id": "7feac8b5671c22ba",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The group sits in a dark room versus is not sitting in a dim room."
+  },
+  "6b5daa740e35dc21": {
+   "item_id": "6b5daa740e35dc21",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Will be versus was the special guest at the same concert is a status over time."
+  },
+  "c2e61c6b05a21207": {
+   "item_id": "c2e61c6b05a21207",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Greatest ruler of his nation is compatible with, and specified by, greatest ruler of France."
+  },
+  "fe9c86355afe23a8": {
+   "item_id": "fe9c86355afe23a8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man sprinkling cheese on pizza, one adds shredded."
+  },
+  "318149f9e8791cbd": {
+   "item_id": "318149f9e8791cbd",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A girl versus a man playing guitar is either a scope clash in one scene or two unrelated scenes."
+  },
+  "69803a945d451992": {
+   "item_id": "69803a945d451992",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe piano playing, one specifying a pianist."
+  },
+  "0f2a292714a706e0": {
+   "item_id": "0f2a292714a706e0",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Potatoes versus a potato is a trivial number difference in the same denial."
+  },
+  "7d406eb306e81eaa": {
+   "item_id": "7d406eb306e81eaa",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The film title differs for the same upcoming role and cast."
+  },
+  "cacf93fc35487442": {
+   "item_id": "cacf93fc35487442",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A man versus a little girl playing piano is either a scope clash or two unrelated scenes."
+  },
+  "2c0d421509a6dcfc": {
+   "item_id": "2c0d421509a6dcfc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A motorcyclist with a passenger fits two people riding, so the details are compatible."
+  }
+ },
+ "errors": []
+}

@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0017",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "49e8eda53f5013a1856335d4cd43372e4de884b9ad4a5b3895eeb5acf88ad306",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"18b923d5b62704ad\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The fuller statement adds the release date and featured artists for the same two singles.\"},\n{\"item_id\": \"fc8d12e7a5ca057d\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the typo wapper versus rapper differs.\"},\n{\"item_id\": \"484e27b5527ae62f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Chopping a red onion and a man slicing onions are compatible descriptions with differing details.\"},\n{\"item_id\": \"322049b27f5edcbd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the cheese is shredded.\"},\n{\"item_id\": \"09349d2d94a7f7d7\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man playing a violin, one over a narrower range limited to a rooftop.\"},\n{\"item_id\": \"bf59d79a13c8364a\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The claim about the only true Perry is restricted to imported Perry in one version.\"},\n{\"item_id\": \"de43501586b1dad0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Fan-chosen qualifies all nominations in one and only the win in the other, which are compatible but not identical claims.\"},\n{\"item_id\": \"81bb2686124b93c1\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only a grammar slip in want versus wants differs.\"},\n{\"item_id\": \"1191174e4223539d\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both are garbled versions of the same event, but collected versus confiscated may or may not change the meaning.\"},\n{\"item_id\": \"196810ead72e9db0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cutting butter into a bowl and adding butter pieces to it are compatible, with one specifying the method.\"},\n{\"item_id\": \"c7b5f739916bf3b9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man painting and a man drawing figures are compatible art-making descriptions.\"},\n{\"item_id\": \"f5ff5cdb831cd0db\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe the same winter star, one adding that it is prominent and the details on circumpolarity versus visibility differ compatibly.\"},\n{\"item_id\": \"6a7789bd89e29f3a\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Ownership of Luna is six versus nine months, a duration that grows over time.\"},\n{\"item_id\": \"98d6c5d24de596f2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One names the publishers Taito and Namco of the two games.\"},\n{\"item_id\": \"aecf293103793f2a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One names the reborn character as Siris.\"},\n{\"item_id\": \"09b231057d3a7a97\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the dropped word team differs.\"},\n{\"item_id\": \"b69f94589b4c945d\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a young girl in a pink shirt peacefully lying on grass, one in garbled wording.\"},\n{\"item_id\": \"6ad81e0fba7e0735\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the cameras are burned with a blow torch.\"},\n{\"item_id\": \"394c3e5310cccf26\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Richmond is said to contain an above-average ward in one and to be the only borough without one in the other.\"},\n{\"item_id\": \"9b717067e023fefb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that he is a genius.\"},\n{\"item_id\": \"bd4a816af3d86e02\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The order of opening and removing the safe differs, which may be mere rewording or a changed sequence of events.\"},\n{\"item_id\": \"703da8bc9c2288e7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A boy running through waves and a kid splashing in the ocean are compatible descriptions.\"},\n{\"item_id\": \"60a843aeda758e49\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the year 2016 to the feuds.\"},\n{\"item_id\": \"ce01e222c96ae8d3\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"His net worth and ranking differ at two dated points in time.\"},\n{\"item_id\": \"9487179bde083c6b\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Dog colour and ball type differ for what reads as the same dog holding a ball.\"},\n{\"item_id\": \"ebdcd377612fd3cb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe Tikka's use of the wand and its incapacitating effect with compatible details.\"},\n{\"item_id\": \"5ca191b64e327f5a\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The definitions swap biological and biochemical and add a species, giving incompatible definitions.\"},\n{\"item_id\": \"48bac4ebca3c7834\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Fairy Prion to the list of endemic species.\"},\n{\"item_id\": \"372891ebb9a1df3f\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Online and downunder swap places, which may be the same promotional claim or a changed one.\"},\n{\"item_id\": \"48840c81524f4f8e\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The Rotten Tomatoes percentage and review count differ, aggregates that change over time.\"},\n{\"item_id\": \"6c7c762af1204aab\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same marriage and date are stated, with the bride's name given fully or shortened.\"},\n{\"item_id\": \"ceada28fe576f0e6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the chili is stirred with a spoon.\"},\n{\"item_id\": \"47ebb4f4743bf1bf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the actress playing Joanna.\"},\n{\"item_id\": \"a24ed17ca963f94c\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same wins at the 2010 tournament, reworded with awkward grammar.\"},\n{\"item_id\": \"fef7ca3644b2bf35\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a snowboarder jump, with different specifics that can hold together.\"},\n{\"item_id\": \"56c24d9fef8e73e6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only the tense wording differs for the same relationship since 2010.\"},\n{\"item_id\": \"806fcba3443b23f8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Jonathan Jackson's brother was George Jackson.\"},\n{\"item_id\": \"d3cea872c70b2187\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One presents the cause as speculation, the other as fact, about the same problem.\"},\n{\"item_id\": \"82d3b5e5316e8cfe\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the sales were on iTunes.\"},\n{\"item_id\": \"5f6e0bbedfe55059\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Chopping and dicing garlic are near synonyms under the same negation.\"},\n{\"item_id\": \"45fbe7bd3a780893\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The Rotten Tomatoes rating is 67 versus 66 percent, a value that changes over time.\"},\n{\"item_id\": \"21a464be72f9c79f\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A person in front of rocks versus a man on top of rocks may be compatible views of one scene or a clash in position.\"},\n{\"item_id\": \"1a47fcf717a74a5d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mario occasionally failing to save a princess from Bowser Jr. and finally saving Peach are compatible plot details.\"},\n{\"item_id\": \"4982372c27842eca\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both negations about a girl in white can hold together.\"},\n{\"item_id\": \"be18fffd679437e6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the men on the shore are playing with a ball.\"},\n{\"item_id\": \"76628c2807a3ff0c\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same claim about Cavendish as MP for Aylesbury, reworded.\"},\n{\"item_id\": \"a4c08efcb1b92eed\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the extension was to a permanent contract.\"},\n{\"item_id\": \"d240dd45d48a4ad7\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Two eggs into a bowl versus one egg for the mixer differ in count for the same action.\"},\n{\"item_id\": \"c197d4323f90f785\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the boy runs through the water at the beach.\"},\n{\"item_id\": \"2b7c008f31d42ab1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny someone playing the violin, with different specifics that can hold together.\"}\n]}\n"
+ ],
+ "labels": {
+  "18b923d5b62704ad": {
+   "item_id": "18b923d5b62704ad",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The fuller statement adds the release date and featured artists for the same two singles."
+  },
+  "fc8d12e7a5ca057d": {
+   "item_id": "fc8d12e7a5ca057d",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the typo wapper versus rapper differs."
+  },
+  "484e27b5527ae62f": {
+   "item_id": "484e27b5527ae62f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Chopping a red onion and a man slicing onions are compatible descriptions with differing details."
+  },
+  "322049b27f5edcbd": {
+   "item_id": "322049b27f5edcbd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the cheese is shredded."
+  },
+  "09349d2d94a7f7d7": {
+   "item_id": "09349d2d94a7f7d7",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man playing a violin, one over a narrower range limited to a rooftop."
+  },
+  "bf59d79a13c8364a": {
+   "item_id": "bf59d79a13c8364a",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The claim about the only true Perry is restricted to imported Perry in one version."
+  },
+  "de43501586b1dad0": {
+   "item_id": "de43501586b1dad0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Fan-chosen qualifies all nominations in one and only the win in the other, which are compatible but not identical claims."
+  },
+  "81bb2686124b93c1": {
+   "item_id": "81bb2686124b93c1",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only a grammar slip in want versus wants differs."
+  },
+  "1191174e4223539d": {
+   "item_id": "1191174e4223539d",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both are garbled versions of the same event, but collected versus confiscated may or may not change the meaning."
+  },
+  "196810ead72e9db0": {
+   "item_id": "196810ead72e9db0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cutting butter into a bowl and adding butter pieces to it are compatible, with one specifying the method."
+  },
+  "c7b5f739916bf3b9": {
+   "item_id": "c7b5f739916bf3b9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man painting and a man drawing figures are compatible art-making descriptions."
+  },
+  "f5ff5cdb831cd0db": {
+   "item_id": "f5ff5cdb831cd0db",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe the same winter star, one adding that it is prominent and the details on circumpolarity versus visibility differ compatibly."
+  },
+  "6a7789bd89e29f3a": {
+   "item_id": "6a7789bd89e29f3a",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Ownership of Luna is six versus nine months, a duration that grows over time."
+  },
+  "98d6c5d24de596f2": {
+   "item_id": "98d6c5d24de596f2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One names the publishers Taito and Namco of the two games."
+  },
+  "aecf293103793f2a": {
+   "item_id": "aecf293103793f2a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One names the reborn character as Siris."
+  },
+  "09b231057d3a7a97": {
+   "item_id": "09b231057d3a7a97",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the dropped word team differs."
+  },
+  "b69f94589b4c945d": {
+   "item_id": "b69f94589b4c945d",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a young girl in a pink shirt peacefully lying on grass, one in garbled wording."
+  },
+  "6ad81e0fba7e0735": {
+   "item_id": "6ad81e0fba7e0735",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the cameras are burned with a blow torch."
+  },
+  "394c3e5310cccf26": {
+   "item_id": "394c3e5310cccf26",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Richmond is said to contain an above-average ward in one and to be the only borough without one in the other."
+  },
+  "9b717067e023fefb": {
+   "item_id": "9b717067e023fefb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that he is a genius."
+  },
+  "bd4a816af3d86e02": {
+   "item_id": "bd4a816af3d86e02",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The order of opening and removing the safe differs, which may be mere rewording or a changed sequence of events."
+  },
+  "703da8bc9c2288e7": {
+   "item_id": "703da8bc9c2288e7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A boy running through waves and a kid splashing in the ocean are compatible descriptions."
+  },
+  "60a843aeda758e49": {
+   "item_id": "60a843aeda758e49",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the year 2016 to the feuds."
+  },
+  "ce01e222c96ae8d3": {
+   "item_id": "ce01e222c96ae8d3",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "His net worth and ranking differ at two dated points in time."
+  },
+  "9487179bde083c6b": {
+   "item_id": "9487179bde083c6b",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Dog colour and ball type differ for what reads as the same dog holding a ball."
+  },
+  "ebdcd377612fd3cb": {
+   "item_id": "ebdcd377612fd3cb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe Tikka's use of the wand and its incapacitating effect with compatible details."
+  },
+  "5ca191b64e327f5a": {
+   "item_id": "5ca191b64e327f5a",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The definitions swap biological and biochemical and add a species, giving incompatible definitions."
+  },
+  "48bac4ebca3c7834": {
+   "item_id": "48bac4ebca3c7834",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Fairy Prion to the list of endemic species."
+  },
+  "372891ebb9a1df3f": {
+   "item_id": "372891ebb9a1df3f",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Online and downunder swap places, which may be the same promotional claim or a changed one."
+  },
+  "48840c81524f4f8e": {
+   "item_id": "48840c81524f4f8e",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The Rotten Tomatoes percentage and review count differ, aggregates that change over time."
+  },
+  "6c7c762af1204aab": {
+   "item_id": "6c7c762af1204aab",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same marriage and date are stated, with the bride's name given fully or shortened."
+  },
+  "ceada28fe576f0e6": {
+   "item_id": "ceada28fe576f0e6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the chili is stirred with a spoon."
+  },
+  "47ebb4f4743bf1bf": {
+   "item_id": "47ebb4f4743bf1bf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the actress playing Joanna."
+  },
+  "a24ed17ca963f94c": {
+   "item_id": "a24ed17ca963f94c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same wins at the 2010 tournament, reworded with awkward grammar."
+  },
+  "fef7ca3644b2bf35": {
+   "item_id": "fef7ca3644b2bf35",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a snowboarder jump, with different specifics that can hold together."
+  },
+  "56c24d9fef8e73e6": {
+   "item_id": "56c24d9fef8e73e6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only the tense wording differs for the same relationship since 2010."
+  },
+  "806fcba3443b23f8": {
+   "item_id": "806fcba3443b23f8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Jonathan Jackson's brother was George Jackson."
+  },
+  "d3cea872c70b2187": {
+   "item_id": "d3cea872c70b2187",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One presents the cause as speculation, the other as fact, about the same problem."
+  },
+  "82d3b5e5316e8cfe": {
+   "item_id": "82d3b5e5316e8cfe",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the sales were on iTunes."
+  },
+  "5f6e0bbedfe55059": {
+   "item_id": "5f6e0bbedfe55059",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Chopping and dicing garlic are near synonyms under the same negation."
+  },
+  "45fbe7bd3a780893": {
+   "item_id": "45fbe7bd3a780893",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The Rotten Tomatoes rating is 67 versus 66 percent, a value that changes over time."
+  },
+  "21a464be72f9c79f": {
+   "item_id": "21a464be72f9c79f",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A person in front of rocks versus a man on top of rocks may be compatible views of one scene or a clash in position."
+  },
+  "1a47fcf717a74a5d": {
+   "item_id": "1a47fcf717a74a5d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mario occasionally failing to save a princess from Bowser Jr. and finally saving Peach are compatible plot details."
+  },
+  "4982372c27842eca": {
+   "item_id": "4982372c27842eca",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both negations about a girl in white can hold together."
+  },
+  "be18fffd679437e6": {
+   "item_id": "be18fffd679437e6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the men on the shore are playing with a ball."
+  },
+  "76628c2807a3ff0c": {
+   "item_id": "76628c2807a3ff0c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same claim about Cavendish as MP for Aylesbury, reworded."
+  },
+  "a4c08efcb1b92eed": {
+   "item_id": "a4c08efcb1b92eed",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the extension was to a permanent contract."
+  },
+  "d240dd45d48a4ad7": {
+   "item_id": "d240dd45d48a4ad7",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Two eggs into a bowl versus one egg for the mixer differ in count for the same action."
+  },
+  "c197d4323f90f785": {
+   "item_id": "c197d4323f90f785",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the boy runs through the water at the beach."
+  },
+  "2b7c008f31d42ab1": {
+   "item_id": "2b7c008f31d42ab1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny someone playing the violin, with different specifics that can hold together."
+  }
+ },
+ "errors": []
+}

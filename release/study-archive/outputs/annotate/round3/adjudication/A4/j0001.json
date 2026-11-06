@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0001",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "2b12a20c54ce4a890e3abcc3f084994257fe8cc654346eddcbbb1b5b09db7cff",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"63cb1c51534862fc\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Grating and slicing carrots are distinct actions that may be incompatible in one scene or compatible, and the rubric does not decide.\"},\n{\"item_id\": \"1ae0567359c941b9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying any woman playing a guitar is compatible with and broader than denying the woman plays an electric guitar.\"},\n{\"item_id\": \"4d472cb8683b688c\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"Glace Bay and Nova Scotia swap roles as province and locality.\"},\n{\"item_id\": \"03e62e7d6090f2af\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds vigour and the number of eggs to the same egg-cracking scene.\"},\n{\"item_id\": \"f7cf6c5d4e8a830b\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Whether 'their death' is a singular reword of 'her death' or a different premise is undecidable from the texts.\"},\n{\"item_id\": \"c42986df03cc89ad\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The flute specifies which instrument the man plays.\"},\n{\"item_id\": \"75aa84c5833ee0f6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying any person slicing a potato is broader than denying a man doing so.\"},\n{\"item_id\": \"08dc674e63e84758\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies that the strummer is a man.\"},\n{\"item_id\": \"90d64013b09e1c8d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Unwritten and unpublished swap between definite and possible status, yet both can hold if the stories are unwritten.\"},\n{\"item_id\": \"d2db7e0e42657598\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a camera-and-nail action but differ in subject scope and in lens versus camera details.\"},\n{\"item_id\": \"a14e283e75d5df4b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Dicing is a specific way of cutting the garlic.\"},\n{\"item_id\": \"49dc67f307f475d1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the guitar is electric.\"},\n{\"item_id\": \"f9fed032df0e523e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds singer and fashion model to the list of Saldana's professions.\"},\n{\"item_id\": \"37e23949e0efd53e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny fast mushroom chopping with a knife, but man versus person changes the scope of the denial.\"},\n{\"item_id\": \"d6d537347e977f1c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible denials of keyboard playing about a man versus a person.\"},\n{\"item_id\": \"c8e2c38e51e8c2dd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible denials of steak rinsing with different details (a man, large steak, water).\"},\n{\"item_id\": \"91bfe5c00aeac64e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same laughing boy in yellow, with one adding the beach and the other a tank top.\"},\n{\"item_id\": \"f2cca0fea3a01bf5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"No one cutting a tomato is broader than no man slicing one.\"},\n{\"item_id\": \"60d2993a839d81fc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny a monkey moving through water, one specifying wading through a marsh.\"},\n{\"item_id\": \"0f8a4aa079f8ff00\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same 1954 marriage and later Lima, with one placing the wedding in Bogota and the other stating residence there.\"},\n{\"item_id\": \"4e8939930492fac0\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both garbled sentences relate the school list to Saint Rose differently, and whether that changes the proposition cannot be decided.\"},\n{\"item_id\": \"0bd3eb2d523a1143\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying any lion walking is broader than denying a lion pacing tiredly in a pen.\"},\n{\"item_id\": \"24be55a50ac914c2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies the exercising person is a man.\"},\n{\"item_id\": \"cbd5475d4adaee96\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Staring and attentively looking at a calendar may be synonyms or may differ in manner.\"},\n{\"item_id\": \"55fcc2f15b6a80f6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Skateboarder specifies who is jumping and the kind of board.\"},\n{\"item_id\": \"9ab3f52b6ceca7d0\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The order of removing and opening the safe differs, and whether the unordered list asserts an order is undecidable.\"},\n{\"item_id\": \"1e60403bfe5a37ce\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denials of slicing and of dicing garlic are distinct but compatible claims about the same woman.\"},\n{\"item_id\": \"688504204adcba06\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Studying and checking a calendar are compatible but not identical actions by the boy.\"},\n{\"item_id\": \"1604befa68b8e599\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Sprinkling shredded cheese is a specific way of putting cheese on a pizza.\"},\n{\"item_id\": \"139b3ad804417012\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same person with compatible details on origin and occupations.\"},\n{\"item_id\": \"11e1915d6e1d8a4a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible denials of cutting garlic with different subjects and cutting details.\"},\n{\"item_id\": \"ccbff11717106eb3\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Garben versus yarrow cohomology may be a translation variant of one name or a different entity.\"},\n{\"item_id\": \"0ed19598319c14e3\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both place Yalikoy in the Giresun district of Tirebolu province, only reworded.\"},\n{\"item_id\": \"820025700cddef7c\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A young woman and a girl playing the guitar is the same claim in active and passive voice.\"},\n{\"item_id\": \"39f836aba5cc3743\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible denials of garlic slicing, one adding clove and pieces with a broader subject.\"},\n{\"item_id\": \"5ea90844060fea98\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Past versus present tense gives the team's existence status different values over time.\"},\n{\"item_id\": \"9a985733886d0e25\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the wave is big.\"},\n{\"item_id\": \"ece42214540202a1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the person is a woman and the noodles are in water.\"},\n{\"item_id\": \"f1bca784b9e93568\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Present versus past tense gives the duo's active status different values over time.\"},\n{\"item_id\": \"46ebb6acdb68e8a1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Sawing and cutting wood add compatible details about the men's activity.\"},\n{\"item_id\": \"751fc32fed578840\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds a wetsuit and surfboard, the other the wave.\"},\n{\"item_id\": \"27995976ec7654d8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the jersey is black.\"},\n{\"item_id\": \"163c056727f982d3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Each adds compatible details about a man standing by a birdcage.\"},\n{\"item_id\": \"38ec69a4d60bc91d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible denials about a white dog with reindeer headgear and a brown dog, with differing details.\"},\n{\"item_id\": \"29597354650903b1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Dicing is a specific way of cutting onions.\"},\n{\"item_id\": \"589d468450863e88\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the folder is a man and folds slowly.\"},\n{\"item_id\": \"4621ffe55ed02749\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the wave is small.\"},\n{\"item_id\": \"1471245949e51eac\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A piano is a specific kind of keyboard.\"},\n{\"item_id\": \"46ab09a9209c31e2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the girl is little.\"},\n{\"item_id\": \"055a27797fa88434\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying any kid playing guitar is broader than denying a boy doing so.\"}\n]}\n"
+ ],
+ "labels": {
+  "63cb1c51534862fc": {
+   "item_id": "63cb1c51534862fc",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Grating and slicing carrots are distinct actions that may be incompatible in one scene or compatible, and the rubric does not decide."
+  },
+  "1ae0567359c941b9": {
+   "item_id": "1ae0567359c941b9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying any woman playing a guitar is compatible with and broader than denying the woman plays an electric guitar."
+  },
+  "4d472cb8683b688c": {
+   "item_id": "4d472cb8683b688c",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "Glace Bay and Nova Scotia swap roles as province and locality."
+  },
+  "03e62e7d6090f2af": {
+   "item_id": "03e62e7d6090f2af",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds vigour and the number of eggs to the same egg-cracking scene."
+  },
+  "f7cf6c5d4e8a830b": {
+   "item_id": "f7cf6c5d4e8a830b",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Whether 'their death' is a singular reword of 'her death' or a different premise is undecidable from the texts."
+  },
+  "c42986df03cc89ad": {
+   "item_id": "c42986df03cc89ad",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The flute specifies which instrument the man plays."
+  },
+  "75aa84c5833ee0f6": {
+   "item_id": "75aa84c5833ee0f6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying any person slicing a potato is broader than denying a man doing so."
+  },
+  "08dc674e63e84758": {
+   "item_id": "08dc674e63e84758",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies that the strummer is a man."
+  },
+  "90d64013b09e1c8d": {
+   "item_id": "90d64013b09e1c8d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Unwritten and unpublished swap between definite and possible status, yet both can hold if the stories are unwritten."
+  },
+  "d2db7e0e42657598": {
+   "item_id": "d2db7e0e42657598",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a camera-and-nail action but differ in subject scope and in lens versus camera details."
+  },
+  "a14e283e75d5df4b": {
+   "item_id": "a14e283e75d5df4b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Dicing is a specific way of cutting the garlic."
+  },
+  "49dc67f307f475d1": {
+   "item_id": "49dc67f307f475d1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the guitar is electric."
+  },
+  "f9fed032df0e523e": {
+   "item_id": "f9fed032df0e523e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds singer and fashion model to the list of Saldana's professions."
+  },
+  "37e23949e0efd53e": {
+   "item_id": "37e23949e0efd53e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny fast mushroom chopping with a knife, but man versus person changes the scope of the denial."
+  },
+  "d6d537347e977f1c": {
+   "item_id": "d6d537347e977f1c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible denials of keyboard playing about a man versus a person."
+  },
+  "c8e2c38e51e8c2dd": {
+   "item_id": "c8e2c38e51e8c2dd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible denials of steak rinsing with different details (a man, large steak, water)."
+  },
+  "91bfe5c00aeac64e": {
+   "item_id": "91bfe5c00aeac64e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same laughing boy in yellow, with one adding the beach and the other a tank top."
+  },
+  "f2cca0fea3a01bf5": {
+   "item_id": "f2cca0fea3a01bf5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "No one cutting a tomato is broader than no man slicing one."
+  },
+  "60d2993a839d81fc": {
+   "item_id": "60d2993a839d81fc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny a monkey moving through water, one specifying wading through a marsh."
+  },
+  "0f8a4aa079f8ff00": {
+   "item_id": "0f8a4aa079f8ff00",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same 1954 marriage and later Lima, with one placing the wedding in Bogota and the other stating residence there."
+  },
+  "4e8939930492fac0": {
+   "item_id": "4e8939930492fac0",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both garbled sentences relate the school list to Saint Rose differently, and whether that changes the proposition cannot be decided."
+  },
+  "0bd3eb2d523a1143": {
+   "item_id": "0bd3eb2d523a1143",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying any lion walking is broader than denying a lion pacing tiredly in a pen."
+  },
+  "24be55a50ac914c2": {
+   "item_id": "24be55a50ac914c2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies the exercising person is a man."
+  },
+  "cbd5475d4adaee96": {
+   "item_id": "cbd5475d4adaee96",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Staring and attentively looking at a calendar may be synonyms or may differ in manner."
+  },
+  "55fcc2f15b6a80f6": {
+   "item_id": "55fcc2f15b6a80f6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Skateboarder specifies who is jumping and the kind of board."
+  },
+  "9ab3f52b6ceca7d0": {
+   "item_id": "9ab3f52b6ceca7d0",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The order of removing and opening the safe differs, and whether the unordered list asserts an order is undecidable."
+  },
+  "1e60403bfe5a37ce": {
+   "item_id": "1e60403bfe5a37ce",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denials of slicing and of dicing garlic are distinct but compatible claims about the same woman."
+  },
+  "688504204adcba06": {
+   "item_id": "688504204adcba06",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Studying and checking a calendar are compatible but not identical actions by the boy."
+  },
+  "1604befa68b8e599": {
+   "item_id": "1604befa68b8e599",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Sprinkling shredded cheese is a specific way of putting cheese on a pizza."
+  },
+  "139b3ad804417012": {
+   "item_id": "139b3ad804417012",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same person with compatible details on origin and occupations."
+  },
+  "11e1915d6e1d8a4a": {
+   "item_id": "11e1915d6e1d8a4a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible denials of cutting garlic with different subjects and cutting details."
+  },
+  "ccbff11717106eb3": {
+   "item_id": "ccbff11717106eb3",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Garben versus yarrow cohomology may be a translation variant of one name or a different entity."
+  },
+  "0ed19598319c14e3": {
+   "item_id": "0ed19598319c14e3",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both place Yalikoy in the Giresun district of Tirebolu province, only reworded."
+  },
+  "820025700cddef7c": {
+   "item_id": "820025700cddef7c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A young woman and a girl playing the guitar is the same claim in active and passive voice."
+  },
+  "39f836aba5cc3743": {
+   "item_id": "39f836aba5cc3743",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible denials of garlic slicing, one adding clove and pieces with a broader subject."
+  },
+  "5ea90844060fea98": {
+   "item_id": "5ea90844060fea98",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Past versus present tense gives the team's existence status different values over time."
+  },
+  "9a985733886d0e25": {
+   "item_id": "9a985733886d0e25",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the wave is big."
+  },
+  "ece42214540202a1": {
+   "item_id": "ece42214540202a1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the person is a woman and the noodles are in water."
+  },
+  "f1bca784b9e93568": {
+   "item_id": "f1bca784b9e93568",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Present versus past tense gives the duo's active status different values over time."
+  },
+  "46ebb6acdb68e8a1": {
+   "item_id": "46ebb6acdb68e8a1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Sawing and cutting wood add compatible details about the men's activity."
+  },
+  "751fc32fed578840": {
+   "item_id": "751fc32fed578840",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds a wetsuit and surfboard, the other the wave."
+  },
+  "27995976ec7654d8": {
+   "item_id": "27995976ec7654d8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the jersey is black."
+  },
+  "163c056727f982d3": {
+   "item_id": "163c056727f982d3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Each adds compatible details about a man standing by a birdcage."
+  },
+  "38ec69a4d60bc91d": {
+   "item_id": "38ec69a4d60bc91d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible denials about a white dog with reindeer headgear and a brown dog, with differing details."
+  },
+  "29597354650903b1": {
+   "item_id": "29597354650903b1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Dicing is a specific way of cutting onions."
+  },
+  "589d468450863e88": {
+   "item_id": "589d468450863e88",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the folder is a man and folds slowly."
+  },
+  "4621ffe55ed02749": {
+   "item_id": "4621ffe55ed02749",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the wave is small."
+  },
+  "1471245949e51eac": {
+   "item_id": "1471245949e51eac",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A piano is a specific kind of keyboard."
+  },
+  "46ab09a9209c31e2": {
+   "item_id": "46ab09a9209c31e2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the girl is little."
+  },
+  "055a27797fa88434": {
+   "item_id": "055a27797fa88434",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying any kid playing guitar is broader than denying a boy doing so."
+  }
+ },
+ "errors": []
+}

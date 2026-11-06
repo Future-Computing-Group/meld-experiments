@@ -234,3 +234,15 @@ def test_heal_raises_if_partition_persists():
     pc.partition("hostA", "hostB", ip_a="10.0.0.1", ip_b="10.0.0.2")
     with pytest.raises(RuntimeError):
         pc.heal("hostA", "hostB", ip_a="10.0.0.1", ip_b="10.0.0.2")
+
+
+def test_isolate_egress_multi_with_dport_drops_only_the_brain_port_toward_each_peer():
+    # the orchestrator host is itself a brain: an address-only rule would also cut its control
+    # traffic (driver requests, heartbeats, /heal) to the other side; the partition is scoped to
+    # the brains' peer port, so only brain-to-brain traffic is dropped
+    from meld.sync.partition import PartitionController
+    r = FakeRunner(initial_root="fq_codel")
+    PartitionController(r, iface="enp1s0").isolate_egress_multi("hostA", ["10.0.0.3", "10.0.0.4"], dport=8080)
+    adds = [c for c in _seq(r.calls, "hostA") if "filter add" in c]
+    assert len(adds) == 2 and all("match ip dport 8080 0xffff" in c for c in adds)
+    assert r.filters["hostA"] == {"10.0.0.3", "10.0.0.4"}

@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0026",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "aabffdea5c2ccb1861431af2526129ca392d518bb6050ceeecb35f893c940514",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"3a0fd684fc6651fd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One specifies that the boy playing the guitar is young.\"},\n{\"item_id\": \"2ce6b2486672ee82\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One version of the quote adds that Toro is lead guitarist Ray Toro.\"},\n{\"item_id\": \"c15d1dc5d09ddbb0\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Taiwan and the Republic of China name the same country here.\"},\n{\"item_id\": \"84590c4d2426c85d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both give compatible facts about Casilla's career.\"},\n{\"item_id\": \"67bf0cbe79e887bf\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The film's Rotten Tomatoes score, an aggregate to date, is 36% versus 56%.\"},\n{\"item_id\": \"9f860a64a4d17639\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds that the consecutive titles number four.\"},\n{\"item_id\": \"34c312f57d951dcc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a woman playing a guitar; one adds that the guitar is acoustic and she is not singing.\"},\n{\"item_id\": \"7d29ff7cb0b491cc\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both say Smith got the ISCB Senior Scientist Award and Fellow status in 2009, differing only in verbs.\"},\n{\"item_id\": \"fc0ccfa70a3ef77d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds action to the film's genre.\"},\n{\"item_id\": \"54bf28a6656ebf59\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"View and track are swapped between cards and monsters, but an app can do both so the claims are compatible.\"},\n{\"item_id\": \"6540e018828f9beb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds that Calibre is upcoming.\"},\n{\"item_id\": \"f3a71e2c2c5758a0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Mixing and putting vegetables into a pot are different but compatible actions by the man.\"},\n{\"item_id\": \"935b378a0abdef99\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the baptism name change and popular name.\"},\n{\"item_id\": \"bdae9d30a6208d18\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The unnamed film may or may not be Annie, so the pair is either an elaboration or unrelated.\"},\n{\"item_id\": \"14d6e6ad72f25a26\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"The same ownership claim by Booth Newspapers is made of different owned parties, they versus you.\"},\n{\"item_id\": \"4143aeb9425509fa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible details: the eggs are raw and there are two.\"},\n{\"item_id\": \"65873125f9b5d7df\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One lists additional kinds of musicals.\"},\n{\"item_id\": \"9ba96f014a24ecb5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Painting a man's face and putting makeup on him are compatible, not identical, descriptions.\"},\n{\"item_id\": \"881dd44c37cb8def\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the keynote was the first by an African-American.\"},\n{\"item_id\": \"fcda99734e466c9f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Who inherited from whom, Islam or the Byzantine traditions, is reversed.\"},\n{\"item_id\": \"63622a7e1d18fe1c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies the vegetable as an eggplant.\"},\n{\"item_id\": \"f4629c90918d5601\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the redskin designation is racist.\"},\n{\"item_id\": \"4dcd20763ecafad4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Certifications at two different dates (2010 and 2014) can both hold for the album.\"},\n{\"item_id\": \"dc6779354e098d7b\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"With and featuring are synonymous here.\"},\n{\"item_id\": \"65614ab8d47195f3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the year 1985 for the first hit.\"},\n{\"item_id\": \"f9bf12130f5d033d\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The garbled punctuation may place death in Nantes against Paris, or merely omit the death place.\"},\n{\"item_id\": \"a09fd5b4e7aae71b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Strongest is a more specific claim than strong, and both are compatible.\"},\n{\"item_id\": \"2c319447703dafaf\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Weekly versus fortnightly meetings with Smith clash unless they refer to different meetings.\"},\n{\"item_id\": \"14fc8f6e345f4edf\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Repeating telecommunications before equipment does not change the claim.\"},\n{\"item_id\": \"8ff4285e3ffd7de8\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Barnsley's division, Championship versus League One, changes over time.\"},\n{\"item_id\": \"92e1b069d91a9d4f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Nu metal is a more specific genre label compatible with rock.\"},\n{\"item_id\": \"6009a36c5a2df5d5\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"The Sub-Saharan qualifier moves between the two senses, giving compatible usages over different ranges.\"},\n{\"item_id\": \"d3e745630d8bd86e\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Not cutting a carrot and not slicing carrots deny the same action.\"},\n{\"item_id\": \"97c7db1124756321\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Strange and uncomfortable are different, compatible descriptions of the position.\"},\n{\"item_id\": \"7af756f7f60bab1f\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Ernie Carroll either plays or hosts Ossie Ostrich depending on how the garbled clause is parsed.\"},\n{\"item_id\": \"324b4e1b393dfdcd\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Is versus was reflects the series' status changing over time.\"},\n{\"item_id\": \"61d86f85cf33558a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"The Nederland suffix shifts between Pfizer and Shell, naming compatible variants of the same companies.\"},\n{\"item_id\": \"75c05c72a5c93f50\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A dog bouncing a ball on its head and one chasing a flying ball may be different scenes or a clash.\"},\n{\"item_id\": \"4ca45e41e2e22a64\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the Torre Intesa Sanpaolo location.\"},\n{\"item_id\": \"86e79f3eefad3534\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A crying man versus a silent, still man is a clash only if the same man is meant.\"},\n{\"item_id\": \"1a03da4fbfb9a04d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Not cutting shrimps and not cutting meat are compatible negations about the woman.\"},\n{\"item_id\": \"504e3af2b6a51cee\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The same counts are given for different reporting windows.\"},\n{\"item_id\": \"385dd5d791a19cf9\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The family's common name differs, marine olives versus dwarf olives.\"},\n{\"item_id\": \"946d5b25f47ff658\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both describe climbing with a rope, with compatible differing details.\"},\n{\"item_id\": \"85beed56e28deb9a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the inference that the letter probably never existed.\"},\n{\"item_id\": \"113a9160ac172160\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The married couple walks up versus down the aisle.\"},\n{\"item_id\": \"82d6d78c78023a41\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the arrest followed a wedding party.\"},\n{\"item_id\": \"21fe002245a94cef\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"Struck is not a synonym of defeated, but winning the title already implies the defeat, so both can hold.\"},\n{\"item_id\": \"fbc774823046d370\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Playing with a ball and maneuvering for it are compatible descriptions.\"},\n{\"item_id\": \"94819f2ba9fa8ead\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the prepositions differ.\"}\n]}\n"
+ ],
+ "labels": {
+  "3a0fd684fc6651fd": {
+   "item_id": "3a0fd684fc6651fd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One specifies that the boy playing the guitar is young."
+  },
+  "2ce6b2486672ee82": {
+   "item_id": "2ce6b2486672ee82",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One version of the quote adds that Toro is lead guitarist Ray Toro."
+  },
+  "c15d1dc5d09ddbb0": {
+   "item_id": "c15d1dc5d09ddbb0",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Taiwan and the Republic of China name the same country here."
+  },
+  "84590c4d2426c85d": {
+   "item_id": "84590c4d2426c85d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both give compatible facts about Casilla's career."
+  },
+  "67bf0cbe79e887bf": {
+   "item_id": "67bf0cbe79e887bf",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The film's Rotten Tomatoes score, an aggregate to date, is 36% versus 56%."
+  },
+  "9f860a64a4d17639": {
+   "item_id": "9f860a64a4d17639",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds that the consecutive titles number four."
+  },
+  "34c312f57d951dcc": {
+   "item_id": "34c312f57d951dcc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a woman playing a guitar; one adds that the guitar is acoustic and she is not singing."
+  },
+  "7d29ff7cb0b491cc": {
+   "item_id": "7d29ff7cb0b491cc",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both say Smith got the ISCB Senior Scientist Award and Fellow status in 2009, differing only in verbs."
+  },
+  "fc0ccfa70a3ef77d": {
+   "item_id": "fc0ccfa70a3ef77d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds action to the film's genre."
+  },
+  "54bf28a6656ebf59": {
+   "item_id": "54bf28a6656ebf59",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "View and track are swapped between cards and monsters, but an app can do both so the claims are compatible."
+  },
+  "6540e018828f9beb": {
+   "item_id": "6540e018828f9beb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds that Calibre is upcoming."
+  },
+  "f3a71e2c2c5758a0": {
+   "item_id": "f3a71e2c2c5758a0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Mixing and putting vegetables into a pot are different but compatible actions by the man."
+  },
+  "935b378a0abdef99": {
+   "item_id": "935b378a0abdef99",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the baptism name change and popular name."
+  },
+  "bdae9d30a6208d18": {
+   "item_id": "bdae9d30a6208d18",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The unnamed film may or may not be Annie, so the pair is either an elaboration or unrelated."
+  },
+  "14d6e6ad72f25a26": {
+   "item_id": "14d6e6ad72f25a26",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "The same ownership claim by Booth Newspapers is made of different owned parties, they versus you."
+  },
+  "4143aeb9425509fa": {
+   "item_id": "4143aeb9425509fa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible details: the eggs are raw and there are two."
+  },
+  "65873125f9b5d7df": {
+   "item_id": "65873125f9b5d7df",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One lists additional kinds of musicals."
+  },
+  "9ba96f014a24ecb5": {
+   "item_id": "9ba96f014a24ecb5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Painting a man's face and putting makeup on him are compatible, not identical, descriptions."
+  },
+  "881dd44c37cb8def": {
+   "item_id": "881dd44c37cb8def",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the keynote was the first by an African-American."
+  },
+  "fcda99734e466c9f": {
+   "item_id": "fcda99734e466c9f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Who inherited from whom, Islam or the Byzantine traditions, is reversed."
+  },
+  "63622a7e1d18fe1c": {
+   "item_id": "63622a7e1d18fe1c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies the vegetable as an eggplant."
+  },
+  "f4629c90918d5601": {
+   "item_id": "f4629c90918d5601",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the redskin designation is racist."
+  },
+  "4dcd20763ecafad4": {
+   "item_id": "4dcd20763ecafad4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Certifications at two different dates (2010 and 2014) can both hold for the album."
+  },
+  "dc6779354e098d7b": {
+   "item_id": "dc6779354e098d7b",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "With and featuring are synonymous here."
+  },
+  "65614ab8d47195f3": {
+   "item_id": "65614ab8d47195f3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the year 1985 for the first hit."
+  },
+  "f9bf12130f5d033d": {
+   "item_id": "f9bf12130f5d033d",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The garbled punctuation may place death in Nantes against Paris, or merely omit the death place."
+  },
+  "a09fd5b4e7aae71b": {
+   "item_id": "a09fd5b4e7aae71b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Strongest is a more specific claim than strong, and both are compatible."
+  },
+  "2c319447703dafaf": {
+   "item_id": "2c319447703dafaf",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Weekly versus fortnightly meetings with Smith clash unless they refer to different meetings."
+  },
+  "14fc8f6e345f4edf": {
+   "item_id": "14fc8f6e345f4edf",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Repeating telecommunications before equipment does not change the claim."
+  },
+  "8ff4285e3ffd7de8": {
+   "item_id": "8ff4285e3ffd7de8",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Barnsley's division, Championship versus League One, changes over time."
+  },
+  "92e1b069d91a9d4f": {
+   "item_id": "92e1b069d91a9d4f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Nu metal is a more specific genre label compatible with rock."
+  },
+  "6009a36c5a2df5d5": {
+   "item_id": "6009a36c5a2df5d5",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "The Sub-Saharan qualifier moves between the two senses, giving compatible usages over different ranges."
+  },
+  "d3e745630d8bd86e": {
+   "item_id": "d3e745630d8bd86e",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Not cutting a carrot and not slicing carrots deny the same action."
+  },
+  "97c7db1124756321": {
+   "item_id": "97c7db1124756321",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Strange and uncomfortable are different, compatible descriptions of the position."
+  },
+  "7af756f7f60bab1f": {
+   "item_id": "7af756f7f60bab1f",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Ernie Carroll either plays or hosts Ossie Ostrich depending on how the garbled clause is parsed."
+  },
+  "324b4e1b393dfdcd": {
+   "item_id": "324b4e1b393dfdcd",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Is versus was reflects the series' status changing over time."
+  },
+  "61d86f85cf33558a": {
+   "item_id": "61d86f85cf33558a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "The Nederland suffix shifts between Pfizer and Shell, naming compatible variants of the same companies."
+  },
+  "75c05c72a5c93f50": {
+   "item_id": "75c05c72a5c93f50",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A dog bouncing a ball on its head and one chasing a flying ball may be different scenes or a clash."
+  },
+  "4ca45e41e2e22a64": {
+   "item_id": "4ca45e41e2e22a64",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the Torre Intesa Sanpaolo location."
+  },
+  "86e79f3eefad3534": {
+   "item_id": "86e79f3eefad3534",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A crying man versus a silent, still man is a clash only if the same man is meant."
+  },
+  "1a03da4fbfb9a04d": {
+   "item_id": "1a03da4fbfb9a04d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Not cutting shrimps and not cutting meat are compatible negations about the woman."
+  },
+  "504e3af2b6a51cee": {
+   "item_id": "504e3af2b6a51cee",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The same counts are given for different reporting windows."
+  },
+  "385dd5d791a19cf9": {
+   "item_id": "385dd5d791a19cf9",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The family's common name differs, marine olives versus dwarf olives."
+  },
+  "946d5b25f47ff658": {
+   "item_id": "946d5b25f47ff658",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both describe climbing with a rope, with compatible differing details."
+  },
+  "85beed56e28deb9a": {
+   "item_id": "85beed56e28deb9a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the inference that the letter probably never existed."
+  },
+  "113a9160ac172160": {
+   "item_id": "113a9160ac172160",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The married couple walks up versus down the aisle."
+  },
+  "82d6d78c78023a41": {
+   "item_id": "82d6d78c78023a41",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the arrest followed a wedding party."
+  },
+  "21fe002245a94cef": {
+   "item_id": "21fe002245a94cef",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "Struck is not a synonym of defeated, but winning the title already implies the defeat, so both can hold."
+  },
+  "fbc774823046d370": {
+   "item_id": "fbc774823046d370",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Playing with a ball and maneuvering for it are compatible descriptions."
+  },
+  "94819f2ba9fa8ead": {
+   "item_id": "94819f2ba9fa8ead",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the prepositions differ."
+  }
+ },
+ "errors": []
+}

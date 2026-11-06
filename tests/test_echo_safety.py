@@ -10,14 +10,11 @@ not an inability to publish, is what blocks the echo. Pure simulation (no LLM, n
 from __future__ import annotations
 
 
-def _cfg():
-    from meld.agent.run_hotpot_gate import _calibrated_cfg
-    return _calibrated_cfg("hashing")
 
 
 def test_received_alignment_tagged_claim_never_echoes():
     from meld.sync.echo_safety import echo_safety_probe
-    r = echo_safety_probe(encoder="hashing", nli="lexical", cfg=_cfg(), n_peers=3,
+    r = echo_safety_probe(encoder="hashing", nli="lexical", n_peers=3,
                           tagged_claim="ALIGN-TAG: the canonical policy is X")
     assert r["peer_echoes"] == 0          # no peer re-publishes what it received
     assert r["origin_echo"] == 0          # it never comes back to the origin
@@ -28,6 +25,6 @@ def test_guard_not_inability_blocks_the_echo():
     # control: a node that INGESTS the claim locally DOES publish it -> the no-echo property
     # is the receive-side gossip guard, not a general inability to publish the text.
     from meld.sync.node import BrainNode
-    n = BrainNode("X", encoder="hashing", nli="lexical", cfg=_cfg())
+    n = BrainNode("X", encoder="hashing", nli="lexical")
     n.ingest("ALIGN-TAG: the canonical policy is X")
-    assert any("ALIGN-TAG" in t for t in n.extract_delta())   # locally-ingested -> published
+    assert any("ALIGN-TAG" in n.objects.get("D", i).text for i in n.outbox())   # ingested -> published

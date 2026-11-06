@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0022",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "5d9a5a5c931272b40cf80fa18c4d99e12f8f66f4b47c1f455939aab1d217a52e",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"f205448f04ffa26e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both give Eva Green's 6 July 1980 birth date, one adding nationality and profession, the other the twin sister.\"},\n{\"item_id\": \"8a818eb697d03bc2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The genre lists coincide except that one replaces a duplicated heavy metal with experimental metal, adding a compatible category.\"},\n{\"item_id\": \"92129ea7c7641304\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Children playing in ground fountains and a child splashing in a children's pool may be compatible details of one scene or clashing settings.\"},\n{\"item_id\": \"a2cb2999a7d764bd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the comparison to the Hiroshima bomb.\"},\n{\"item_id\": \"8b64fcdabb327682\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe motorcycle tricks, one specifying that the rider is a man.\"},\n{\"item_id\": \"956444bf7779281d\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The garbled version moves the record from through the 2017 season to during it and says bound for tied, so it reads as either the same record or a changed scope.\"},\n{\"item_id\": \"90a7041c78fcf4a8\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Four dogs not playing on grass and three dogs resting on a sidewalk describe different scenes.\"},\n{\"item_id\": \"1dabb2f1f2c72958\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the guitar is played passionately.\"},\n{\"item_id\": \"03e8bbbff02c4cd6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give joint secretary in 1753 and secretary from 1758 until May 1776, differing only in became versus was.\"},\n{\"item_id\": \"dfe84efafb2f163d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cutting a potato and cutting potatoes are compatible, differing in the number of potatoes.\"},\n{\"item_id\": \"35034b1df9d57f63\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Standing on the motorcycle seat clashes with standing near a motorcycle unless they are different scenes.\"},\n{\"item_id\": \"4f12cdf2ff5d8632\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The marriage and date agree but the title Prince moves from Adam Ludwik Czartoryski to Maria.\"},\n{\"item_id\": \"064f47e9bd5a1069\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the draft was the 2009 NFL Draft.\"},\n{\"item_id\": \"3ac39c942f76c1b2\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The time using the Fitbit Charge 3 grows over time, 6 months versus 9 months.\"},\n{\"item_id\": \"466d6f1b1ffd26b8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds accordion to Garth Hudson's instruments.\"},\n{\"item_id\": \"01c1c0f13f514dea\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a yellow-jerseyed goal defender, one about the goalkeeper specifically and the other about any player, and both can hold.\"},\n{\"item_id\": \"72813260796e9721\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The June claim covers most national championships in one and most European championships in the other, and both can hold.\"},\n{\"item_id\": \"1478ffe2c9963a6f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Doing and interacting versus action and interaction are synonyms for the same categories.\"},\n{\"item_id\": \"3315bfb7f8bb26c6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only the auxiliary verb differs; the re-run date is the same.\"},\n{\"item_id\": \"9635cda08b6abf9b\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The same flexible-scheduling claim over Weeks 9 to 17 versus 12 to 17, and both can hold.\"},\n{\"item_id\": \"0073184a6e63bf46\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that it was his first Premier League goal since April 2013.\"},\n{\"item_id\": \"47defaf9b461bff9\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"All and both refer to the same two named films.\"},\n{\"item_id\": \"7308ef47c673a6da\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Released in 1985 and recorded on Muse versus recorded in 1985 and released on Muse swap the details, but all of them can hold together.\"},\n{\"item_id\": \"1afcf7fb04be3ffe\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both have a boy running at the beach, one adding the water and the other a white hat.\"},\n{\"item_id\": \"6426fe644a9137bd\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The only difference is the typo albumyys.\"},\n{\"item_id\": \"a9a6bb3d4c5854bd\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Mixed to negative and mostly negative reviews can be read as compatible or as different characterisations of the same reception.\"},\n{\"item_id\": \"b93596fa72294523\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"One soccer player versus several players kicking the ball into the goal clash only if they describe the same scene.\"},\n{\"item_id\": \"b2cc95c653ecb8af\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Little effect on pain hypersensitivity and an essential role in spinal long-term potentiation are different outcomes in the same knockout mice and can both hold.\"},\n{\"item_id\": \"15e02c99fcc7d79d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One specifies that the brothers play for the New England Patriots.\"},\n{\"item_id\": \"21f3ce77d278db3b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds Lucas's September 2006 birth date.\"},\n{\"item_id\": \"4196bf66bfd67aaa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Moving formerly from working alongside Dick Vermeil to announcing gives different but compatible past-tense details.\"},\n{\"item_id\": \"6748adf1678505f5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds Firozabad to the listed districts.\"},\n{\"item_id\": \"7a62bbad087fff09\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that he turned down Manchester United.\"},\n{\"item_id\": \"56d6bfffd815beb4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"No airplane taking off and a jet not flying are compatible negations about aircraft.\"},\n{\"item_id\": \"ad4ebe848de92da5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Three men is more specific than some men.\"},\n{\"item_id\": \"575f1eb61739e1bb\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The fly is named Paul Allen's flower fly in one and Allen's flower fly in the other.\"},\n{\"item_id\": \"c39c4fd9050228e0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that there were five monarchs.\"},\n{\"item_id\": \"c8788596e601fe36\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cold and frigid days are plain synonyms here; the rest is identical.\"},\n{\"item_id\": \"9d9e97143609d81a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the dog's colour, rolling in dirt and looking at the camera.\"},\n{\"item_id\": \"e80176411d67009d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe food preparation, one specifying a man.\"},\n{\"item_id\": \"fec9d25dd4fe741e\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"As written, the series publishing the Rowohlt house reverses the publisher relation.\"},\n{\"item_id\": \"73a67fe190509d9d\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A list of side effects and a news citation about green algae causing vomiting concern unidentified, apparently different substances.\"},\n{\"item_id\": \"4d04dfe6db8e5fad\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only a grammar fix (which was overshadowed) separates them.\"},\n{\"item_id\": \"0966b39233c8c1e5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the production cost and the other the box-office success, and both can hold.\"},\n{\"item_id\": \"39886674da25105f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Grouping and teaching together students with the same speech problem is the same practice either way.\"},\n{\"item_id\": \"1cbb4c9ef98965e5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"More than 55 years and nearly 60 years are compatible career spans.\"},\n{\"item_id\": \"4581a644670bae29\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The name is not yet announced in one and given as Sacha in the other, a status that changed over time.\"},\n{\"item_id\": \"5b45fe35fcfc04f8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies that the person strumming is a man.\"},\n{\"item_id\": \"2139e9044a4f7882\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The aircraft-movement ranking and count differ between 2016 and 2017 figures, values that change over time.\"},\n{\"item_id\": \"53cf0a35c1093247\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds her American Horror Story roles.\"}\n]}\n"
+ ],
+ "labels": {
+  "f205448f04ffa26e": {
+   "item_id": "f205448f04ffa26e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both give Eva Green's 6 July 1980 birth date, one adding nationality and profession, the other the twin sister."
+  },
+  "8a818eb697d03bc2": {
+   "item_id": "8a818eb697d03bc2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The genre lists coincide except that one replaces a duplicated heavy metal with experimental metal, adding a compatible category."
+  },
+  "92129ea7c7641304": {
+   "item_id": "92129ea7c7641304",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Children playing in ground fountains and a child splashing in a children's pool may be compatible details of one scene or clashing settings."
+  },
+  "a2cb2999a7d764bd": {
+   "item_id": "a2cb2999a7d764bd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the comparison to the Hiroshima bomb."
+  },
+  "8b64fcdabb327682": {
+   "item_id": "8b64fcdabb327682",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe motorcycle tricks, one specifying that the rider is a man."
+  },
+  "956444bf7779281d": {
+   "item_id": "956444bf7779281d",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The garbled version moves the record from through the 2017 season to during it and says bound for tied, so it reads as either the same record or a changed scope."
+  },
+  "90a7041c78fcf4a8": {
+   "item_id": "90a7041c78fcf4a8",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Four dogs not playing on grass and three dogs resting on a sidewalk describe different scenes."
+  },
+  "1dabb2f1f2c72958": {
+   "item_id": "1dabb2f1f2c72958",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the guitar is played passionately."
+  },
+  "03e8bbbff02c4cd6": {
+   "item_id": "03e8bbbff02c4cd6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give joint secretary in 1753 and secretary from 1758 until May 1776, differing only in became versus was."
+  },
+  "dfe84efafb2f163d": {
+   "item_id": "dfe84efafb2f163d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cutting a potato and cutting potatoes are compatible, differing in the number of potatoes."
+  },
+  "35034b1df9d57f63": {
+   "item_id": "35034b1df9d57f63",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Standing on the motorcycle seat clashes with standing near a motorcycle unless they are different scenes."
+  },
+  "4f12cdf2ff5d8632": {
+   "item_id": "4f12cdf2ff5d8632",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The marriage and date agree but the title Prince moves from Adam Ludwik Czartoryski to Maria."
+  },
+  "064f47e9bd5a1069": {
+   "item_id": "064f47e9bd5a1069",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the draft was the 2009 NFL Draft."
+  },
+  "3ac39c942f76c1b2": {
+   "item_id": "3ac39c942f76c1b2",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The time using the Fitbit Charge 3 grows over time, 6 months versus 9 months."
+  },
+  "466d6f1b1ffd26b8": {
+   "item_id": "466d6f1b1ffd26b8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds accordion to Garth Hudson's instruments."
+  },
+  "01c1c0f13f514dea": {
+   "item_id": "01c1c0f13f514dea",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a yellow-jerseyed goal defender, one about the goalkeeper specifically and the other about any player, and both can hold."
+  },
+  "72813260796e9721": {
+   "item_id": "72813260796e9721",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The June claim covers most national championships in one and most European championships in the other, and both can hold."
+  },
+  "1478ffe2c9963a6f": {
+   "item_id": "1478ffe2c9963a6f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Doing and interacting versus action and interaction are synonyms for the same categories."
+  },
+  "3315bfb7f8bb26c6": {
+   "item_id": "3315bfb7f8bb26c6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only the auxiliary verb differs; the re-run date is the same."
+  },
+  "9635cda08b6abf9b": {
+   "item_id": "9635cda08b6abf9b",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The same flexible-scheduling claim over Weeks 9 to 17 versus 12 to 17, and both can hold."
+  },
+  "0073184a6e63bf46": {
+   "item_id": "0073184a6e63bf46",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that it was his first Premier League goal since April 2013."
+  },
+  "47defaf9b461bff9": {
+   "item_id": "47defaf9b461bff9",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "All and both refer to the same two named films."
+  },
+  "7308ef47c673a6da": {
+   "item_id": "7308ef47c673a6da",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Released in 1985 and recorded on Muse versus recorded in 1985 and released on Muse swap the details, but all of them can hold together."
+  },
+  "1afcf7fb04be3ffe": {
+   "item_id": "1afcf7fb04be3ffe",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both have a boy running at the beach, one adding the water and the other a white hat."
+  },
+  "6426fe644a9137bd": {
+   "item_id": "6426fe644a9137bd",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The only difference is the typo albumyys."
+  },
+  "a9a6bb3d4c5854bd": {
+   "item_id": "a9a6bb3d4c5854bd",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Mixed to negative and mostly negative reviews can be read as compatible or as different characterisations of the same reception."
+  },
+  "b93596fa72294523": {
+   "item_id": "b93596fa72294523",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "One soccer player versus several players kicking the ball into the goal clash only if they describe the same scene."
+  },
+  "b2cc95c653ecb8af": {
+   "item_id": "b2cc95c653ecb8af",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Little effect on pain hypersensitivity and an essential role in spinal long-term potentiation are different outcomes in the same knockout mice and can both hold."
+  },
+  "15e02c99fcc7d79d": {
+   "item_id": "15e02c99fcc7d79d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One specifies that the brothers play for the New England Patriots."
+  },
+  "21f3ce77d278db3b": {
+   "item_id": "21f3ce77d278db3b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds Lucas's September 2006 birth date."
+  },
+  "4196bf66bfd67aaa": {
+   "item_id": "4196bf66bfd67aaa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Moving formerly from working alongside Dick Vermeil to announcing gives different but compatible past-tense details."
+  },
+  "6748adf1678505f5": {
+   "item_id": "6748adf1678505f5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds Firozabad to the listed districts."
+  },
+  "7a62bbad087fff09": {
+   "item_id": "7a62bbad087fff09",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that he turned down Manchester United."
+  },
+  "56d6bfffd815beb4": {
+   "item_id": "56d6bfffd815beb4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "No airplane taking off and a jet not flying are compatible negations about aircraft."
+  },
+  "ad4ebe848de92da5": {
+   "item_id": "ad4ebe848de92da5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Three men is more specific than some men."
+  },
+  "575f1eb61739e1bb": {
+   "item_id": "575f1eb61739e1bb",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The fly is named Paul Allen's flower fly in one and Allen's flower fly in the other."
+  },
+  "c39c4fd9050228e0": {
+   "item_id": "c39c4fd9050228e0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that there were five monarchs."
+  },
+  "c8788596e601fe36": {
+   "item_id": "c8788596e601fe36",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cold and frigid days are plain synonyms here; the rest is identical."
+  },
+  "9d9e97143609d81a": {
+   "item_id": "9d9e97143609d81a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the dog's colour, rolling in dirt and looking at the camera."
+  },
+  "e80176411d67009d": {
+   "item_id": "e80176411d67009d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe food preparation, one specifying a man."
+  },
+  "fec9d25dd4fe741e": {
+   "item_id": "fec9d25dd4fe741e",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "As written, the series publishing the Rowohlt house reverses the publisher relation."
+  },
+  "73a67fe190509d9d": {
+   "item_id": "73a67fe190509d9d",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A list of side effects and a news citation about green algae causing vomiting concern unidentified, apparently different substances."
+  },
+  "4d04dfe6db8e5fad": {
+   "item_id": "4d04dfe6db8e5fad",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only a grammar fix (which was overshadowed) separates them."
+  },
+  "0966b39233c8c1e5": {
+   "item_id": "0966b39233c8c1e5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the production cost and the other the box-office success, and both can hold."
+  },
+  "39886674da25105f": {
+   "item_id": "39886674da25105f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Grouping and teaching together students with the same speech problem is the same practice either way."
+  },
+  "1cbb4c9ef98965e5": {
+   "item_id": "1cbb4c9ef98965e5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "More than 55 years and nearly 60 years are compatible career spans."
+  },
+  "4581a644670bae29": {
+   "item_id": "4581a644670bae29",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The name is not yet announced in one and given as Sacha in the other, a status that changed over time."
+  },
+  "5b45fe35fcfc04f8": {
+   "item_id": "5b45fe35fcfc04f8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies that the person strumming is a man."
+  },
+  "2139e9044a4f7882": {
+   "item_id": "2139e9044a4f7882",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The aircraft-movement ranking and count differ between 2016 and 2017 figures, values that change over time."
+  },
+  "53cf0a35c1093247": {
+   "item_id": "53cf0a35c1093247",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds her American Horror Story roles."
+  }
+ },
+ "errors": []
+}

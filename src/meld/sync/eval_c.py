@@ -8,7 +8,9 @@ two sides DIVERGE while partitioned and RECONVERGE to the same join once heal+re
 every link to every brain (agreement -> 1.0), order-independently. The last-writer-wins
 baseline keeps only the latest-applied effect, so after a reordered heal the two sides keep
 different "latest" effects and stay diverged. Built on BrainNode.apply_status/status_of
-(the real status-CRDT); the testbed run replays this over the wire (POST /status).
+(signed authored effects joined by the authored-status lattice). The testbed run
+(edge/run_eval_c.py) replays it over the wire: signed effects PUBLISHed to /patch, vis read
+from /metrics.
 """
 from __future__ import annotations
 
@@ -23,9 +25,9 @@ def _agreement(statuses: List[str]) -> float:
     return max(Counter(statuses).values()) / len(statuses) if statuses else 1.0
 
 
-def eval_c_partition_heal(*, n_nodes: int, claim: str, encoder: str, nli: str, cfg,
+def eval_c_partition_heal(*, n_nodes: int, claim: str, encoder: str, nli: str,
                           effect_a: str, effect_b: str) -> Dict[str, float]:
-    nodes = [BrainNode(f"n{i}", encoder=encoder, nli=nli, cfg=cfg) for i in range(n_nodes)]
+    nodes = [BrainNode(f"n{i}", encoder=encoder, nli=nli) for i in range(n_nodes)]
     for n in nodes:
         n.ingest(claim)
     half = n_nodes // 2

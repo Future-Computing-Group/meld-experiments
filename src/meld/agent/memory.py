@@ -1,130 +1,135 @@
-"""SMPMemory: an MELD brain used as the agent's memory backend.
+"""SMPMemory: a MELD replica used as the agent's memory backend.
 
-This is the load-bearing G3 integration. The agent does NOT keep a private
-scratchpad; every observation it writes goes through the MELD wire path:
+The agent keeps no private scratchpad. Every observation it writes is a signed claim delta
+that enters the replica's sets through the MAC-verified receive gate and is admitted by the
+latency path (protocol/admission.py: the fold's step under the active epoch, or the policy's
+bootstrap selector without one, which makes no similarity merge):
 
-    text -> MemoryUnit (Concept + Claim)  [PUBLISH a delta]
-         -> merge_on_receive(incoming, local)  [the three-signal (+ optional
-            evidence overlap) + Context-gate decision procedure]
-         -> Patch  [INSERT / MERGE / RELATE / CONFLICT / REJECT, auditable]
-         -> brain.apply(Patch)  [the ONLY thing that mutates the brain]
+    text -> Delta (claim key, int8 embedding, created_at)  [PUBLISH]
+         -> Store.apply                                    [MAC-verified insertion into D]
+         -> Admission.admit                                [INSERT / MERGE / RELATE / CONFLICT / REJECT]
 
-and every recall is the brain's graph-walk read (lexical + dense + one-hop graph
-fusion). So running a GAIA task against this memory exercises the MELD merge
-integration, not just a bare agent. A contradicting write yields a CONFLICT
-(a first-class CONTRADICTS edge), never a silent overwrite.
+and every recall is the store's graph-walk read over live nodes. A contradicting write yields
+CONFLICT (a CONTRADICTS link, both claims live), never a silent overwrite.
+
+``DEFAULT_POL`` is the M_pol of a single-cell replica (the agent memory and the default
+BrainNode): one scope holding the default cell, the proto authority levels as ranks, every
+effect kind authorized at any rank, the calibration authority ``"calibration"``, R_min one
+fixed-point unit, and a bootstrap selector. The selector only decides which pairs are read
+before an epoch exists; theta is +inf without an epoch, so it is no merge operating point.
 """
 from __future__ import annotations
 
-import hashlib
-from typing import List
+import platform
+import time
+from typing import Callable, List, Optional
 
-from meld.brain.store import Brain
-from meld.config import Thresholds, load_thresholds
-from meld.merge.signals import EmbeddingSimilarity
-from meld.protocol.merge_on_receive import merge_on_receive
-from meld.protocol.messages import Patch
-from meld.proto import Claim, MemoryUnit
-
+from meld.brain.store import Store
+from meld.merge.classifier import Decision
+from meld.merge.signals import EmbeddingSimilarity, quantize_int8
+from meld.proto import AUTHORITY_LEVELS, CANON_VERSION, _lp, canon, claim_key, h16
+from meld.protocol.admission import Admission
+from meld.protocol.fold import nli_provider
+from meld.protocol.objects import (
+    EFFECT_KINDS, FIXED_ONE, Delta, EpochRecord, m_nli, object_id, signed,
+)
+from meld.sync.wire_delta import group_key
 
 DEFAULT_CELL = "agent.public"
-_SEP = b"\x1f"
-
-
-def _digest(tag: bytes, text: str, cell: str) -> bytes:
-    """Content address over (text, cell). Length-prefixing the text makes the
-    concatenation unambiguous, so ("a\x1fb", "c") and ("a", "b\x1fc") cannot collide."""
-    t = text.encode("utf-8")
-    return hashlib.sha256(tag + _SEP + len(t).to_bytes(4, "big") + t
-                          + cell.encode("utf-8")).digest()[:12]
+DEFAULT_SCOPE = "agent"
+DEFAULT_POL = {
+    "rank_map": dict(AUTHORITY_LEVELS), "scopes": {DEFAULT_SCOPE: [DEFAULT_CELL]},
+    "auth_policy": {**{k: max(AUTHORITY_LEVELS.values()) for k in EFFECT_KINDS},
+                    "calibration_authority": {DEFAULT_SCOPE: "calibration"}},
+    "step_version": 0, "r_min": 1,
+    "bootstrap_selector": [round(0.5 * FIXED_ONE), round(0.5 * FIXED_ONE), 3],
+}
 
 
 def _cid(text: str, cell: str = DEFAULT_CELL) -> bytes:
-    """Concept (MemoryUnit) id."""
-    return _digest(b"U", text, cell)
-
-
-def claim_key(text: str, cell: str = DEFAULT_CELL) -> bytes:
-    """Claim key = H(canonical content || discrete scope) (paper §4.1). Only the
-    DISCRETE cell enters the key; validity interval and freshness stay in the
-    Context gate, since hashing a continuous field would break key identity on any
-    timestamp delta."""
-    return _digest(b"C", text, cell)
-
-
-def _unit_from_text(text: str, cell: str = DEFAULT_CELL) -> MemoryUnit:
-    """A content-and-scope-addressed Concept (MemoryUnit) carrying one Claim."""
-    return MemoryUnit(
-        id=_cid(text, cell),
-        cell=cell,
-        relevance_magnitude=1.0,
-        status="ACTIVE",
-        claims=[Claim(claim_key=claim_key(text, cell), text=text,
-                      confidence=0.9, claim_status="ACTIVE")],
-    )
+    """Concept (unit) id: H over length-prefixed text and cell, tagged apart from keys."""
+    return h16(b"U\x1f" + _lp(text) + _lp(cell))
 
 
 class SMPMemory:
-    """Agent memory backed by an MELD ``Brain``.
+    """Agent memory backed by one MELD replica (``store``) and its admission path.
 
-    ``encoder``/``nli`` are required (no silent default), matching the MELD
-    no-silent-default discipline. ``cfg`` defaults to the tracked thresholds;
-    a calibrated config may be passed for the gated run.
-    """
+    ``encoder``/``nli`` are required (no silent default). ``epoch`` is the scope's epoch
+    record (author ``"calibration"``, M_nli ``self.m_nli``, M_pol of ``pol``); without one
+    the memory makes no similarity merge. ``provider`` is the signal provider (default
+    ``nli_provider(nli)``; a multi-replica harness passes one with its own model instance).
+    ``decisions`` is the admission audit log, one
+    entry per arrival; ``admission.decisions(scope)`` is every node's current decision
+    (a later out-of-order arrival can refold earlier ones)."""
 
-    def __init__(self, *, encoder: str, nli: str,
-                 cfg: Thresholds | None = None, cache_dir: str | None = None):
-        self.encoder = encoder
-        self.nli = nli
-        self.cfg = cfg or load_thresholds()
-        self.brain = Brain(encoder=encoder, cache_dir=cache_dir)
+    def __init__(self, *, encoder: str, nli: str, epoch: Optional[EpochRecord] = None,
+                 cache_dir: Optional[str] = None, pol: Optional[dict] = None,
+                 key: Optional[bytes] = None, origin: str = "agent",
+                 clock: Optional[Callable[[], int]] = None, provider=None):
+        self.encoder, self.nli, self.origin = encoder, nli, origin
+        self.pol = pol or DEFAULT_POL
+        self.key = key or group_key({})
+        self.m_nli = m_nli(encoder, nli, "int8", CANON_VERSION)
+        self.store = Store(self.pol, self.key, encoder=encoder)
+        self.admission = Admission(self.store, m_nli=self.m_nli, provider=provider or nli_provider(nli),
+                                   issuer=origin, hw=platform.machine() or "unknown")
         self._es = EmbeddingSimilarity(encoder=encoder, cache_dir=cache_dir)
+        self._clock = clock or (lambda: time.time_ns() // 1000)
+        self._t = 0
+        self.decisions: List[Decision] = []
+        if epoch is not None and self.store.apply(*signed(epoch, self.key)) is None:
+            raise ValueError("epoch refused by the memory's sets")
 
-    # -- write: PUBLISH -> merge-on-receive -> Patch -> apply ----------------
-    def write(self, text: str) -> List[Patch]:
-        """Publish one observation into the brain via the merge decision
-        procedure. Returns the emitted Patch(es)."""
+    def delta(self, text: str, cell: str = DEFAULT_CELL) -> Delta:
+        """The claim delta a local observation publishes. created_at is ``clock()`` (default
+        the wall clock in microseconds; a shared counter makes a build reproducible), made
+        strictly increasing per memory, so local writes arrive in order."""
+        self._t = max(self._clock(), self._t + 1)
+        return Delta(unit_id=_cid(text, cell), claim_key=claim_key(text, cell), text=text,
+                     cell=cell, version=0, auth=self.pol["rank_map"]["OBSERVATION"],
+                     status="ACTIVE", retention=FIXED_ONE, created_at=self._t,
+                     origin=self.origin, encoder=self.encoder,
+                     q=quantize_int8(self._es._embed(canon(text))).tobytes())
+
+    def publish(self, text: str) -> Optional[Delta]:
+        """Insert a local observation into D without admission (the naive-union ablation)."""
         text = (text or "").strip()
-        if not text:
+        return self.store.apply(*signed(self.delta(text), self.key)) if text else None
+
+    # -- write: PUBLISH -> receive gate -> admission ----------------------------------
+    def _admit(self, d) -> List[Decision]:
+        dec = self.admission.admit(d)
+        if dec is None:
             return []
-        return self.write_unit(_unit_from_text(text))
+        self.decisions.append(dec)
+        return [dec]
 
-    def write_unit(self, incoming: MemoryUnit) -> List[Patch]:
-        """Merge an already-typed incoming MemoryUnit through the SAME decision
-        procedure ``write`` uses. The wire path deserializes a typed delta and
-        calls this, so a received typed delta merges identically to a local
-        text write (the only difference is where the unit was constructed)."""
-        # §5.3/§5.5: only STATUS-LIVE local units are admission targets. extract_delta()
-        # returns every unit regardless of CRDT status; merge-deprecation is recorded in
-        # Brain._status, not on the unit/claim fields, so the field-level filter inside
-        # merge_on_receive alone cannot see it. _unit_is_live is the SAME predicate the
-        # graph-walk read already uses (store.py), so candidacy and recall agree by
-        # construction, and a DEPRECATED/OVERRULED unit cannot be revived by a peer.
-        local = [u for u in self.brain.extract_delta()
-                if isinstance(u, MemoryUnit) and self.brain._unit_is_live(u)]
-        patches = merge_on_receive(
-            incoming, local, cfg=self.cfg, es=self._es, nli=self.nli)
-        for p in patches:
-            self.brain.apply(p)
-        return patches
+    def write(self, text: str) -> List[Decision]:
+        """Publish one observation and admit it; the admission decision (none for an exact
+        copy of a held claim)."""
+        d = self.publish(text)
+        return self._admit(d) if d is not None else []
 
-    def build_unit(self, text: str) -> MemoryUnit:
-        """The typed Concept (MemoryUnit) a local observation publishes -- the
-        same unit ``write`` would merge, exposed so the sync layer can serialize
-        a TYPED delta on the wire instead of bare text."""
-        return _unit_from_text((text or "").strip())
+    def receive(self, received: bytes, mac: str) -> List[Decision]:
+        """The receive gate for a peer's object: MAC-verified insertion; a newly held delta
+        is admitted. Redelivery and dropped objects decide nothing."""
+        new = object_id(received) not in self.store.objects
+        obj = self.store.apply(received, mac)
+        return self._admit(obj) if new and isinstance(obj, Delta) else []
 
-    # -- read: graph-walk fusion --------------------------------------------
+    # -- read: graph-walk fusion ------------------------------------------------------
+    def texts(self) -> dict:
+        """unit id -> claim text of every node."""
+        return {d.unit_id: d.text for _, d in self.store.nodes().values()}
+
     def recall(self, query: str, k: int = 3) -> List[str]:
-        """Return up to ``k`` recalled claim texts, ranked by the brain's
-        graph-walk read (lexical + dense + one-hop graph)."""
-        hits = self.brain.graph_walk_read(query, encoder=self.encoder, k=k)
-        texts: List[str] = []
-        for uid, _score in hits:
-            unit = self.brain.get_unit(uid)
-            if unit and unit.claims:
-                texts.append(" ".join(c.text for c in unit.claims))
-        return texts
+        """Up to ``k`` claim texts ranked by the store's graph-walk read over live nodes."""
+        texts = self.texts()
+        return [texts[u] for u, _ in self.store.graph_walk_read(query, encoder=self.encoder, k=k)]
+
+    def footprint(self) -> dict:
+        """Stored nodes and live (recallable) nodes."""
+        return {"stored": len(self.store.nodes()), "live": len(self.store.live_nodes())}
 
 
-__all__ = ["SMPMemory"]
+__all__ = ["SMPMemory", "DEFAULT_CELL", "DEFAULT_SCOPE", "DEFAULT_POL", "signed"]

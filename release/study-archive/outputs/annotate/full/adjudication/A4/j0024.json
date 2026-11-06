@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0024",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "3acae6c420232f46913d3d1532262e66b3fabb1c723e112ecbc98b6f15e0a11c",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"0cce4e24773d7a67\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One list adds the Action Bronson collaboration.\"},\n{\"item_id\": \"9800898628b61f87\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The is/was tense shift can be read as mere wording or as a price that changed over time.\"},\n{\"item_id\": \"58150cfe54ea02bd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying breaking eggs and denying stirring eggs in a bowl are compatible claims about the same scene.\"},\n{\"item_id\": \"fbc4bc11226974fc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both describe a dog looking at another dog, with compatible differing details.\"},\n{\"item_id\": \"95acd91958c18ffb\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only singular versus plural of year differs.\"},\n{\"item_id\": \"3b107e8774e8e5e5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The slicing statement adds that the person is a man.\"},\n{\"item_id\": \"b7a7be18df0701a9\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Kunwinjku versus Gunwinggu may be a spelling variant of one name or a different language name.\"},\n{\"item_id\": \"1aa68da53a4ff92a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Porto is a Portuguese Primeira Liga club.\"},\n{\"item_id\": \"f0be04cb5eccf999\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Guy/man and lawn/grass are plain synonyms.\"},\n{\"item_id\": \"1ad0fb76d40f8840\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds a bald band member in the spotlight to a band playing instruments.\"},\n{\"item_id\": \"d4c974d8729f2266\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Recording and adopting the song are compatible but not synonymous actions in the same event.\"},\n{\"item_id\": \"3e231c27a6332038\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"YSL and YSL Records name the same label.\"},\n{\"item_id\": \"0938f02d453c0d18\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the roadway to a person riding a motorbike.\"},\n{\"item_id\": \"8fa3a6b45e07dcb9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny different surfer actions and can hold together.\"},\n{\"item_id\": \"930a4f663eccf3c8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the concrete block rests on another man.\"},\n{\"item_id\": \"d63dea993ece8c01\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Riley's surname and actress.\"},\n{\"item_id\": \"9b184bcc3eb47c4f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only a know/known typo differs.\"},\n{\"item_id\": \"41229bddff57c3f7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One names the MAUD Committee where the other only says it.\"},\n{\"item_id\": \"c187790cfaf75b2c\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The missing 'it' is a typo.\"},\n{\"item_id\": \"13d90e01876d7b68\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The missiles may be read as the weapon that sank the boat or as the boat's armament.\"},\n{\"item_id\": \"fce0388cd8552ca0\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The review count is a running total that differs (274 versus 284).\"},\n{\"item_id\": \"29c0a49329595f85\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same 1950 challenge, with 'Prefix' a typo for primary.\"},\n{\"item_id\": \"1c0061e5bd0b064f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both negations hold together; one specifies a bamboo flute.\"},\n{\"item_id\": \"ecc7fb8ed3a9db0f\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"A future opening versus a completed opening is a status that changes over time.\"},\n{\"item_id\": \"f3731628f7df53b5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A bird taking flight from a dead tree is compatible with it not sitting in a leafless tree.\"},\n{\"item_id\": \"d7502dce091e4d6d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a man cutting wood with an axe, tree versus log.\"},\n{\"item_id\": \"5a7bd5f164194c2e\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The negation over cats and over kittens covers different ranges and both can hold.\"},\n{\"item_id\": \"48f0fe704f7a5c1f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds that the Indian version is an alternate one.\"},\n{\"item_id\": \"498fcdbdee24feee\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible facts about the iPhone 5S unveiling and its sales.\"},\n{\"item_id\": \"4d6bad58ecdca5e6\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The review count is a running total that differs (114 versus 110).\"},\n{\"item_id\": \"8901330ba70dd275\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same garbled sentence apart from capitalisation and a word ending.\"},\n{\"item_id\": \"65baf83a77d93815\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Swapping often and generally may be a real frequency clash or compatible hedging.\"},\n{\"item_id\": \"2c241bc771b2ebf9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mixing and cooking eggs are compatible actions on the same eggs.\"},\n{\"item_id\": \"4a75e0a7c191bbc8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the birthplace Verviers.\"},\n{\"item_id\": \"1d348e772ea59411\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The same slicing claim over one vegetable versus several.\"},\n{\"item_id\": \"d341046dac5ce1f7\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The true and marine modifiers are swapped between gastropod and whelks.\"},\n{\"item_id\": \"5325f7eb801d3694\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Serving is a more specific way of sending volleyballs over a net.\"},\n{\"item_id\": \"fea801490a6f73b5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both negations about reading the email can hold together.\"},\n{\"item_id\": \"b77cf950083df21a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that competence excludes women.\"},\n{\"item_id\": \"24d2cb41158304fd\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Future versus present use of the engine is a status that changes over time.\"},\n{\"item_id\": \"552220b4330b428a\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same instruction about the attribute, wording and elements/items only differ.\"},\n{\"item_id\": \"76a4ed40a462fa70\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Mixed positive and mixed to positive reviews are the same reception.\"},\n{\"item_id\": \"463e26ee47dcab26\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Compatible details about a resting dog.\"},\n{\"item_id\": \"ff0e45021766b4d4\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The swapped names attach the life dates to a different brother.\"},\n{\"item_id\": \"452f44fc6cb83fc2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Dudgeon was responsible for John's success.\"},\n{\"item_id\": \"016e989036fa76fa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible details about the relationship with Lisa Hanawalt.\"},\n{\"item_id\": \"4b635670e234e77c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds the middle name Gaëlle.\"},\n{\"item_id\": \"4f89d3b5c97b7194\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Two compatible negations about a dog with a ball.\"},\n{\"item_id\": \"1245438138a714ba\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Two compatible negations about motorcycle riding in different settings.\"},\n{\"item_id\": \"f8ed11a265302738\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Audio and British are swapped between the drama and the television series.\"}\n]}\n"
+ ],
+ "labels": {
+  "0cce4e24773d7a67": {
+   "item_id": "0cce4e24773d7a67",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One list adds the Action Bronson collaboration."
+  },
+  "9800898628b61f87": {
+   "item_id": "9800898628b61f87",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The is/was tense shift can be read as mere wording or as a price that changed over time."
+  },
+  "58150cfe54ea02bd": {
+   "item_id": "58150cfe54ea02bd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying breaking eggs and denying stirring eggs in a bowl are compatible claims about the same scene."
+  },
+  "fbc4bc11226974fc": {
+   "item_id": "fbc4bc11226974fc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both describe a dog looking at another dog, with compatible differing details."
+  },
+  "95acd91958c18ffb": {
+   "item_id": "95acd91958c18ffb",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only singular versus plural of year differs."
+  },
+  "3b107e8774e8e5e5": {
+   "item_id": "3b107e8774e8e5e5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The slicing statement adds that the person is a man."
+  },
+  "b7a7be18df0701a9": {
+   "item_id": "b7a7be18df0701a9",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Kunwinjku versus Gunwinggu may be a spelling variant of one name or a different language name."
+  },
+  "1aa68da53a4ff92a": {
+   "item_id": "1aa68da53a4ff92a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Porto is a Portuguese Primeira Liga club."
+  },
+  "f0be04cb5eccf999": {
+   "item_id": "f0be04cb5eccf999",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Guy/man and lawn/grass are plain synonyms."
+  },
+  "1ad0fb76d40f8840": {
+   "item_id": "1ad0fb76d40f8840",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds a bald band member in the spotlight to a band playing instruments."
+  },
+  "d4c974d8729f2266": {
+   "item_id": "d4c974d8729f2266",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Recording and adopting the song are compatible but not synonymous actions in the same event."
+  },
+  "3e231c27a6332038": {
+   "item_id": "3e231c27a6332038",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "YSL and YSL Records name the same label."
+  },
+  "0938f02d453c0d18": {
+   "item_id": "0938f02d453c0d18",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the roadway to a person riding a motorbike."
+  },
+  "8fa3a6b45e07dcb9": {
+   "item_id": "8fa3a6b45e07dcb9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny different surfer actions and can hold together."
+  },
+  "930a4f663eccf3c8": {
+   "item_id": "930a4f663eccf3c8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the concrete block rests on another man."
+  },
+  "d63dea993ece8c01": {
+   "item_id": "d63dea993ece8c01",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Riley's surname and actress."
+  },
+  "9b184bcc3eb47c4f": {
+   "item_id": "9b184bcc3eb47c4f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only a know/known typo differs."
+  },
+  "41229bddff57c3f7": {
+   "item_id": "41229bddff57c3f7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One names the MAUD Committee where the other only says it."
+  },
+  "c187790cfaf75b2c": {
+   "item_id": "c187790cfaf75b2c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The missing 'it' is a typo."
+  },
+  "13d90e01876d7b68": {
+   "item_id": "13d90e01876d7b68",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The missiles may be read as the weapon that sank the boat or as the boat's armament."
+  },
+  "fce0388cd8552ca0": {
+   "item_id": "fce0388cd8552ca0",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The review count is a running total that differs (274 versus 284)."
+  },
+  "29c0a49329595f85": {
+   "item_id": "29c0a49329595f85",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same 1950 challenge, with 'Prefix' a typo for primary."
+  },
+  "1c0061e5bd0b064f": {
+   "item_id": "1c0061e5bd0b064f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both negations hold together; one specifies a bamboo flute."
+  },
+  "ecc7fb8ed3a9db0f": {
+   "item_id": "ecc7fb8ed3a9db0f",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "A future opening versus a completed opening is a status that changes over time."
+  },
+  "f3731628f7df53b5": {
+   "item_id": "f3731628f7df53b5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A bird taking flight from a dead tree is compatible with it not sitting in a leafless tree."
+  },
+  "d7502dce091e4d6d": {
+   "item_id": "d7502dce091e4d6d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a man cutting wood with an axe, tree versus log."
+  },
+  "5a7bd5f164194c2e": {
+   "item_id": "5a7bd5f164194c2e",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The negation over cats and over kittens covers different ranges and both can hold."
+  },
+  "48f0fe704f7a5c1f": {
+   "item_id": "48f0fe704f7a5c1f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds that the Indian version is an alternate one."
+  },
+  "498fcdbdee24feee": {
+   "item_id": "498fcdbdee24feee",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible facts about the iPhone 5S unveiling and its sales."
+  },
+  "4d6bad58ecdca5e6": {
+   "item_id": "4d6bad58ecdca5e6",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The review count is a running total that differs (114 versus 110)."
+  },
+  "8901330ba70dd275": {
+   "item_id": "8901330ba70dd275",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same garbled sentence apart from capitalisation and a word ending."
+  },
+  "65baf83a77d93815": {
+   "item_id": "65baf83a77d93815",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Swapping often and generally may be a real frequency clash or compatible hedging."
+  },
+  "2c241bc771b2ebf9": {
+   "item_id": "2c241bc771b2ebf9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mixing and cooking eggs are compatible actions on the same eggs."
+  },
+  "4a75e0a7c191bbc8": {
+   "item_id": "4a75e0a7c191bbc8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the birthplace Verviers."
+  },
+  "1d348e772ea59411": {
+   "item_id": "1d348e772ea59411",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The same slicing claim over one vegetable versus several."
+  },
+  "d341046dac5ce1f7": {
+   "item_id": "d341046dac5ce1f7",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The true and marine modifiers are swapped between gastropod and whelks."
+  },
+  "5325f7eb801d3694": {
+   "item_id": "5325f7eb801d3694",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Serving is a more specific way of sending volleyballs over a net."
+  },
+  "fea801490a6f73b5": {
+   "item_id": "fea801490a6f73b5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both negations about reading the email can hold together."
+  },
+  "b77cf950083df21a": {
+   "item_id": "b77cf950083df21a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that competence excludes women."
+  },
+  "24d2cb41158304fd": {
+   "item_id": "24d2cb41158304fd",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Future versus present use of the engine is a status that changes over time."
+  },
+  "552220b4330b428a": {
+   "item_id": "552220b4330b428a",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same instruction about the attribute, wording and elements/items only differ."
+  },
+  "76a4ed40a462fa70": {
+   "item_id": "76a4ed40a462fa70",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Mixed positive and mixed to positive reviews are the same reception."
+  },
+  "463e26ee47dcab26": {
+   "item_id": "463e26ee47dcab26",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Compatible details about a resting dog."
+  },
+  "ff0e45021766b4d4": {
+   "item_id": "ff0e45021766b4d4",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The swapped names attach the life dates to a different brother."
+  },
+  "452f44fc6cb83fc2": {
+   "item_id": "452f44fc6cb83fc2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Dudgeon was responsible for John's success."
+  },
+  "016e989036fa76fa": {
+   "item_id": "016e989036fa76fa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible details about the relationship with Lisa Hanawalt."
+  },
+  "4b635670e234e77c": {
+   "item_id": "4b635670e234e77c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds the middle name Gaëlle."
+  },
+  "4f89d3b5c97b7194": {
+   "item_id": "4f89d3b5c97b7194",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Two compatible negations about a dog with a ball."
+  },
+  "1245438138a714ba": {
+   "item_id": "1245438138a714ba",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Two compatible negations about motorcycle riding in different settings."
+  },
+  "f8ed11a265302738": {
+   "item_id": "f8ed11a265302738",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Audio and British are swapped between the drama and the television series."
+  }
+ },
+ "errors": []
+}

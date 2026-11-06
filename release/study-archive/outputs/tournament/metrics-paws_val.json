@@ -1,0 +1,407 @@
+[
+ {
+  "name": "cross-encoder/quora-roberta-large",
+  "kind": "b",
+  "gate": "cross-encoder/nli-deberta-v3-small",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.3830259479388284,
+   "s_per_pair_bs16": 0.07363277929592489
+  },
+  "paws_dev": {
+   "auc": 0.7471333333333334,
+   "q95": 0.9610830545425415,
+   "recall": 0.22
+  },
+  "paws_val": {
+   "auc": 0.7412166666666666,
+   "q95": 0.961221307516098,
+   "recall": 0.14333333333333334
+  },
+  "sick_dev": {
+   "auc": 0.8423999999999999,
+   "q95": 0.9611868858337402,
+   "recall": 0.38
+  },
+  "primary": 0.26166666666666666,
+  "cost_ratio": {
+   "s_per_pair_bs1": 4.413002337000555,
+   "s_per_pair_bs16": 4.037229759907395
+  },
+  "eligible": false
+ },
+ {
+  "name": "domenicrosati/deberta-v3-large-finetuned-paws-paraphrase-detector",
+  "kind": "b",
+  "gate": "cross-encoder/nli-deberta-v3-small",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.705183718741561,
+   "s_per_pair_bs16": 0.13663802951244483
+  },
+  "paws_dev": {
+   "auc": 0.9989222222222223,
+   "q95": 0.009590105153620243,
+   "recall": 1.0
+  },
+  "paws_val": {
+   "auc": 0.9844888888888889,
+   "q95": 0.7153338193893433,
+   "recall": 0.9433333333333334
+  },
+  "sick_dev": {
+   "auc": 0.9077999999999999,
+   "q95": 0.9996022284030914,
+   "recall": 0.5
+  },
+  "primary": 0.7216666666666667,
+  "cost_ratio": {
+   "s_per_pair_bs1": 8.124716916876487,
+   "s_per_pair_bs16": 7.491760114958433
+  },
+  "eligible": false
+ },
+ {
+  "name": "cross-encoder/nli-deberta-v3-small",
+  "kind": "a",
+  "gate": "cross-encoder/nli-deberta-v3-small",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.08679486632657547,
+   "s_per_pair_bs16": 0.01823844162330109
+  },
+  "paws_dev": {
+   "auc": 0.7793000000000001,
+   "q95": 0.9967701435089111,
+   "recall": 0.16333333333333333
+  },
+  "paws_val": {
+   "auc": 0.7781777777777779,
+   "q95": 0.9967979788780212,
+   "recall": 0.17
+  },
+  "sick_dev": {
+   "auc": 0.98245,
+   "q95": 0.8397262096405029,
+   "recall": 0.94
+  },
+  "primary": 0.5549999999999999,
+  "cost_ratio": {
+   "s_per_pair_bs1": 1.0,
+   "s_per_pair_bs16": 1.0
+  },
+  "eligible": true
+ },
+ {
+  "name": "cross-encoder/nli-deberta-v3-base",
+  "kind": "a",
+  "gate": "cross-encoder/nli-deberta-v3-base",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.20670858333081318,
+   "s_per_pair_bs16": 0.037297320746195815
+  },
+  "paws_dev": {
+   "auc": 0.8026777777777778,
+   "q95": 0.9978308081626892,
+   "recall": 0.13333333333333333
+  },
+  "paws_val": {
+   "auc": 0.8247666666666666,
+   "q95": 0.9976040720939636,
+   "recall": 0.2
+  },
+  "sick_dev": {
+   "auc": 0.98325,
+   "q95": 0.8515514731407166,
+   "recall": 0.94
+  },
+  "primary": 0.57,
+  "cost_ratio": {
+   "s_per_pair_bs1": 2.3815761470620718,
+   "s_per_pair_bs16": 2.0449839693839555
+  },
+  "eligible": true
+ },
+ {
+  "name": "cross-encoder/quora-roberta-base",
+  "kind": "b",
+  "gate": "cross-encoder/nli-deberta-v3-small",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.2220761172065977,
+   "s_per_pair_bs16": 0.03868780078482814
+  },
+  "paws_dev": {
+   "auc": 0.6927222222222222,
+   "q95": 0.9664934575557709,
+   "recall": 0.22666666666666666
+  },
+  "paws_val": {
+   "auc": 0.6608333333333334,
+   "q95": 0.9696249067783356,
+   "recall": 0.14
+  },
+  "sick_dev": {
+   "auc": 0.9057999999999999,
+   "q95": 0.9408455789089203,
+   "recall": 0.53
+  },
+  "primary": 0.335,
+  "cost_ratio": {
+   "s_per_pair_bs1": 2.5586319399469004,
+   "s_per_pair_bs16": 2.1212229412956716
+  },
+  "eligible": true
+ },
+ {
+  "name": "cross-encoder/nli-deberta-v3-large",
+  "kind": "a",
+  "gate": "cross-encoder/nli-deberta-v3-large",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.6095657569433873,
+   "s_per_pair_bs16": 0.1055309908867154
+  },
+  "paws_dev": {
+   "auc": 0.8168555555555557,
+   "q95": 0.9981077909469604,
+   "recall": 0.25333333333333335
+  },
+  "paws_val": {
+   "auc": 0.8112277777777778,
+   "q95": 0.9981288313865662,
+   "recall": 0.21
+  },
+  "sick_dev": {
+   "auc": 0.98005,
+   "q95": 0.21063275635242462,
+   "recall": 0.95
+  },
+  "primary": 0.58,
+  "cost_ratio": {
+   "s_per_pair_bs1": 7.0230623393073435,
+   "s_per_pair_bs16": 5.786184645945353
+  },
+  "eligible": false
+ },
+ {
+  "name": "cross-encoder/nli-roberta-base",
+  "kind": "a",
+  "gate": "cross-encoder/nli-roberta-base",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.10168707031213368,
+   "s_per_pair_bs16": 0.016587768880223546
+  },
+  "paws_dev": {
+   "auc": 0.7283333333333334,
+   "q95": 0.9908037185668945,
+   "recall": 0.2
+  },
+  "paws_val": {
+   "auc": 0.7313888888888889,
+   "q95": 0.991636335849762,
+   "recall": 0.16666666666666666
+  },
+  "sick_dev": {
+   "auc": 0.98175,
+   "q95": 0.5779930949211121,
+   "recall": 0.92
+  },
+  "primary": 0.5433333333333333,
+  "cost_ratio": {
+   "s_per_pair_bs1": 1.1715793181767757,
+   "s_per_pair_bs16": 0.9094948583233847
+  },
+  "eligible": true
+ },
+ {
+  "name": "cross-encoder/quora-distilroberta-base",
+  "kind": "b",
+  "gate": "cross-encoder/nli-deberta-v3-small",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.14255018578842282,
+   "s_per_pair_bs16": 0.026845751955988817
+  },
+  "paws_dev": {
+   "auc": 0.5655222222222223,
+   "q95": 0.9848157465457916,
+   "recall": 0.08
+  },
+  "paws_val": {
+   "auc": 0.5794888888888889,
+   "q95": 0.9856846034526825,
+   "recall": 0.10666666666666667
+  },
+  "sick_dev": {
+   "auc": 0.85935,
+   "q95": 0.9816176295280457,
+   "recall": 0.43
+  },
+  "primary": 0.2683333333333333,
+  "cost_ratio": {
+   "s_per_pair_bs1": 1.6423803828680565,
+   "s_per_pair_bs16": 1.4719323344869109
+  },
+  "eligible": true
+ },
+ {
+  "name": "semindan/paws_x_xlm_r_only_en",
+  "kind": "b",
+  "gate": "cross-encoder/nli-deberta-v3-small",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.2040788142379218,
+   "s_per_pair_bs16": 0.03617445160246764
+  },
+  "paws_dev": {
+   "auc": 0.9915444444444443,
+   "q95": 0.5195028185844421,
+   "recall": 0.98
+  },
+  "paws_val": {
+   "auc": 0.9716333333333333,
+   "q95": 0.6666993498802185,
+   "recall": 0.9066666666666666
+  },
+  "sick_dev": {
+   "auc": 0.511475,
+   "q95": 0.9939306974411011,
+   "recall": 0.11
+  },
+  "primary": 0.5083333333333333,
+  "cost_ratio": {
+   "s_per_pair_bs1": 2.351277476136114,
+   "s_per_pair_bs16": 1.983417901025702
+  },
+  "eligible": true
+ },
+ {
+  "name": "Intel/bert-base-uncased-mrpc",
+  "kind": "b",
+  "gate": "cross-encoder/nli-deberta-v3-small",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.19461089757775576,
+   "s_per_pair_bs16": 0.03620310959377093
+  },
+  "paws_dev": {
+   "auc": 0.5455055555555556,
+   "q95": 0.9987291395664215,
+   "recall": 0.10666666666666667
+  },
+  "paws_val": {
+   "auc": 0.5413888888888889,
+   "q95": 0.9987743198871613,
+   "recall": 0.05
+  },
+  "sick_dev": {
+   "auc": 0.6031000000000001,
+   "q95": 0.9986760914325714,
+   "recall": 0.1
+  },
+  "primary": 0.07500000000000001,
+  "cost_ratio": {
+   "s_per_pair_bs1": 2.242193643636829,
+   "s_per_pair_bs16": 1.9849891970769324
+  },
+  "eligible": true
+ },
+ {
+  "name": "FacebookAI/roberta-large-mnli",
+  "kind": "a",
+  "gate": "FacebookAI/roberta-large-mnli",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.28758382900074747,
+   "s_per_pair_bs16": 0.052632560114337444
+  },
+  "paws_dev": {
+   "auc": 0.8235666666666667,
+   "q95": 0.9924744963645935,
+   "recall": 0.33
+  },
+  "paws_val": {
+   "auc": 0.8313777777777779,
+   "q95": 0.9931885004043579,
+   "recall": 0.31
+  },
+  "sick_dev": {
+   "auc": 0.975,
+   "q95": 0.9349675178527832,
+   "recall": 0.83
+  },
+  "primary": 0.57,
+  "cost_ratio": {
+   "s_per_pair_bs1": 3.3133737186561345,
+   "s_per_pair_bs16": 2.8858035791333774
+  },
+  "eligible": true
+ },
+ {
+  "name": "min[cross-encoder/nli-deberta-v3-large | domenicrosati/deberta-v3-large-finetuned-paws-paraphrase-detector]",
+  "kind": "c",
+  "gate": "cross-encoder/nli-deberta-v3-large",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 1.2279546093583729,
+   "s_per_pair_bs16": 0.22393057877585915
+  },
+  "paws_dev": {
+   "auc": 0.9892,
+   "q95": 0.002634402713738382,
+   "recall": 0.9166666666666666
+  },
+  "paws_val": {
+   "auc": 0.9770888888888889,
+   "q95": 0.014270076644606888,
+   "recall": 0.9233333333333333
+  },
+  "sick_dev": {
+   "auc": 0.97445,
+   "q95": 0.21063275635242462,
+   "recall": 0.93
+  },
+  "primary": 0.9266666666666667,
+  "cost_ratio": {
+   "s_per_pair_bs1": 14.14777925618383,
+   "s_per_pair_bs16": 12.277944760903786
+  },
+  "eligible": false,
+  "combo_of": "best"
+ },
+ {
+  "name": "min[cross-encoder/nli-deberta-v3-base | semindan/paws_x_xlm_r_only_en]",
+  "kind": "c",
+  "gate": "cross-encoder/nli-deberta-v3-base",
+  "contra": 1.0,
+  "cost": {
+   "s_per_pair_bs1": 0.32399253124215954,
+   "s_per_pair_bs16": 0.05523333072536237
+  },
+  "paws_dev": {
+   "auc": 0.9692333333333334,
+   "q95": 0.22699065878987312,
+   "recall": 0.8733333333333333
+  },
+  "paws_val": {
+   "auc": 0.9728111111111112,
+   "q95": 0.41802307963371277,
+   "recall": 0.87
+  },
+  "sick_dev": {
+   "auc": 0.9741,
+   "q95": 0.2946406602859497,
+   "recall": 0.86
+  },
+  "primary": 0.865,
+  "cost_ratio": {
+   "s_per_pair_bs1": 3.732853623198187,
+   "s_per_pair_bs16": 3.028401870409658
+  },
+  "eligible": true,
+  "combo_of": "best-eligible"
+ }
+]

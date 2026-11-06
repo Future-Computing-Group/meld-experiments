@@ -1,0 +1,111 @@
+{
+ "batch_id": "j0036",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "5036c9a85ea7d2c8a27b7417122c3c2cfff5938097ff0f5d0df6b5602edff511",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"b22a291169c235ba\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"rationale\": \"The word former moves from his playing role to his executive role, swapping which role is current.\", \"confidence\": 3},\n{\"item_id\": \"e806b5387b343da0\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"rationale\": \"Playing for the Saints versus being a free agent is a team status that changes over time.\", \"confidence\": 5},\n{\"item_id\": \"b9e970e1d393fc0e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"rationale\": \"Both describe compatible transfers of Candreva at different times.\", \"confidence\": 4},\n{\"item_id\": \"e84a7826f2392f3d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"rationale\": \"Christie editing versus publishing the 1880 edition are different but compatible roles, so keeping one would lose a detail.\", \"confidence\": 3},\n{\"item_id\": \"e4400d37efbe2e86\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"rationale\": \"The is/are difference is a subject-verb agreement fix on an otherwise identical sentence.\", \"confidence\": 3},\n{\"item_id\": \"8114387087886060\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"rationale\": \"One adds the seasons in which Tonkin played Hayley Marshall.\", \"confidence\": 5},\n{\"item_id\": \"963ba17a5983c413\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"rationale\": \"One adds that he came to accept being gay around sixteen or seventeen.\", \"confidence\": 5},\n{\"item_id\": \"ce55a29831625127\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"rationale\": \"Both deny carrot slicing but over different ranges (any person slicing into pieces versus a woman slicing at all), and both can hold.\", \"confidence\": 3},\n{\"item_id\": \"2ebd7d100cd44729\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"rationale\": \"One fish swimming versus some fish swimming quickly can be read as a compatible elaboration or as a count clash in the same scene.\", \"confidence\": 2},\n{\"item_id\": \"9699fde1dbf0d586\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"rationale\": \"Negative reviews are compatible with mixed to negative reviews, which adds that some were mixed.\", \"confidence\": 3},\n{\"item_id\": \"6456e8cd64fd1699\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"rationale\": \"Both place Kuzmice in the Trebisov District and the Kosice Region of eastern Slovakia, only in a different order.\", \"confidence\": 3},\n{\"item_id\": \"0782b33676939d16\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"rationale\": \"Both describe the 2017 trade to the Rockets with compatible added details about before and after it.\", \"confidence\": 5}\n]}\n"
+ ],
+ "labels": {
+  "b22a291169c235ba": {
+   "item_id": "b22a291169c235ba",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "rationale": "The word former moves from his playing role to his executive role, swapping which role is current.",
+   "confidence": 3
+  },
+  "e806b5387b343da0": {
+   "item_id": "e806b5387b343da0",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "rationale": "Playing for the Saints versus being a free agent is a team status that changes over time.",
+   "confidence": 5
+  },
+  "b9e970e1d393fc0e": {
+   "item_id": "b9e970e1d393fc0e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "rationale": "Both describe compatible transfers of Candreva at different times.",
+   "confidence": 4
+  },
+  "e84a7826f2392f3d": {
+   "item_id": "e84a7826f2392f3d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "rationale": "Christie editing versus publishing the 1880 edition are different but compatible roles, so keeping one would lose a detail.",
+   "confidence": 3
+  },
+  "e4400d37efbe2e86": {
+   "item_id": "e4400d37efbe2e86",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "rationale": "The is/are difference is a subject-verb agreement fix on an otherwise identical sentence.",
+   "confidence": 3
+  },
+  "8114387087886060": {
+   "item_id": "8114387087886060",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "rationale": "One adds the seasons in which Tonkin played Hayley Marshall.",
+   "confidence": 5
+  },
+  "963ba17a5983c413": {
+   "item_id": "963ba17a5983c413",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "rationale": "One adds that he came to accept being gay around sixteen or seventeen.",
+   "confidence": 5
+  },
+  "ce55a29831625127": {
+   "item_id": "ce55a29831625127",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "rationale": "Both deny carrot slicing but over different ranges (any person slicing into pieces versus a woman slicing at all), and both can hold.",
+   "confidence": 3
+  },
+  "2ebd7d100cd44729": {
+   "item_id": "2ebd7d100cd44729",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "rationale": "One fish swimming versus some fish swimming quickly can be read as a compatible elaboration or as a count clash in the same scene.",
+   "confidence": 2
+  },
+  "9699fde1dbf0d586": {
+   "item_id": "9699fde1dbf0d586",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "rationale": "Negative reviews are compatible with mixed to negative reviews, which adds that some were mixed.",
+   "confidence": 3
+  },
+  "6456e8cd64fd1699": {
+   "item_id": "6456e8cd64fd1699",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "rationale": "Both place Kuzmice in the Trebisov District and the Kosice Region of eastern Slovakia, only in a different order.",
+   "confidence": 3
+  },
+  "0782b33676939d16": {
+   "item_id": "0782b33676939d16",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "rationale": "Both describe the 2017 trade to the Rockets with compatible added details about before and after it.",
+   "confidence": 5
+  }
+ },
+ "errors": []
+}

@@ -1,0 +1,145 @@
+{
+ "rows": [
+  {
+   "merged_per_s": 4.97,
+   "p50_ms": 11.16,
+   "p95_ms": 142.88,
+   "n": 60,
+   "offered_rate": 4.892,
+   "prefill": 200,
+   "live_before": 198,
+   "git_sha": "36092c0eb810ce7e773c2a86595147d14b8db9c8",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": null,
+   "epoch_id": null,
+   "seq": null,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "epoch_ids": [
+    "59b847dab1ffa1000f665c6425e6d66a"
+   ],
+   "host_cpu": "Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz"
+  },
+  {
+   "merged_per_s": 9.93,
+   "p50_ms": 22.88,
+   "p95_ms": 171.08,
+   "n": 60,
+   "offered_rate": 9.784,
+   "prefill": 200,
+   "live_before": 198,
+   "git_sha": "36092c0eb810ce7e773c2a86595147d14b8db9c8",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": null,
+   "epoch_id": null,
+   "seq": null,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "epoch_ids": [
+    "59b847dab1ffa1000f665c6425e6d66a"
+   ],
+   "host_cpu": "Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz"
+  },
+  {
+   "merged_per_s": 14.89,
+   "p50_ms": 64.45,
+   "p95_ms": 187.0,
+   "n": 60,
+   "offered_rate": 14.676,
+   "prefill": 200,
+   "live_before": 198,
+   "git_sha": "36092c0eb810ce7e773c2a86595147d14b8db9c8",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": null,
+   "epoch_id": null,
+   "seq": null,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "epoch_ids": [
+    "59b847dab1ffa1000f665c6425e6d66a"
+   ],
+   "host_cpu": "Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz"
+  },
+  {
+   "merged_per_s": 19.12,
+   "p50_ms": 102.0,
+   "p95_ms": 245.2,
+   "n": 60,
+   "offered_rate": 19.568,
+   "prefill": 200,
+   "live_before": 198,
+   "git_sha": "36092c0eb810ce7e773c2a86595147d14b8db9c8",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": null,
+   "epoch_id": null,
+   "seq": null,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "epoch_ids": [
+    "59b847dab1ffa1000f665c6425e6d66a"
+   ],
+   "host_cpu": "Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz"
+  },
+  {
+   "merged_per_s": 22.18,
+   "p50_ms": 147.89,
+   "p95_ms": 352.8,
+   "n": 60,
+   "offered_rate": 24.46,
+   "prefill": 200,
+   "live_before": 198,
+   "git_sha": "36092c0eb810ce7e773c2a86595147d14b8db9c8",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": null,
+   "epoch_id": null,
+   "seq": null,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "epoch_ids": [
+    "59b847dab1ffa1000f665c6425e6d66a"
+   ],
+   "host_cpu": "Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz"
+  },
+  {
+   "merged_per_s": 23.47,
+   "p50_ms": 264.41,
+   "p95_ms": 575.54,
+   "n": 60,
+   "offered_rate": 29.352,
+   "prefill": 200,
+   "live_before": 198,
+   "git_sha": "36092c0eb810ce7e773c2a86595147d14b8db9c8",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": null,
+   "epoch_id": null,
+   "seq": null,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "epoch_ids": [
+    "59b847dab1ffa1000f665c6425e6d66a"
+   ],
+   "host_cpu": "Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz"
+  },
+  {
+   "merged_per_s": 22.95,
+   "p50_ms": 581.72,
+   "p95_ms": 1106.36,
+   "n": 60,
+   "offered_rate": 39.136,
+   "prefill": 200,
+   "live_before": 198,
+   "git_sha": "36092c0eb810ce7e773c2a86595147d14b8db9c8",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": null,
+   "epoch_id": null,
+   "seq": null,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "epoch_ids": [
+    "59b847dab1ffa1000f665c6425e6d66a"
+   ],
+   "host_cpu": "Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz"
+  }
+ ],
+ "knee_merges_per_s": 23.47
+}

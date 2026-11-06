@@ -1,0 +1,12 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 4634.39it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 80210.42it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 79721.96it/s]
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]Loading weights: 100%|██████████| 106/106 [00:00<00:00, 4186.92it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 4453.88it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 75080.52it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 75171.97it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 77952.60it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 75289.88it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 25112.67it/s]
+WARNING paws: the Cal draw with seed 0 does not rebuild the given epoch; the training-conditional variant is of the rebuilt draw
+{"domain": "paws", "unresolved": 0, "labels": {"cross_item": {"non_mergeable": 31}, "manifest": {"non_mergeable": 309, "mergeable": 564}, "same_item": {"mergeable": 184, "non_mergeable": 367}, "source_labelled": {"non_mergeable": 103, "mergeable": 41}}, "fm": {"k": 79, "n": 810, "rate": 0.09753086419753086, "ci95": [0.07797716553854127, 0.12006863465430073]}, "recall": 0.449936628643853, "chunks": 2, "test_disabled_share": 0.0, "tc_fm": {"k": 50, "n": 810, "rate": 0.06172839506172839, "ci95": [0.0461594908984005, 0.0805746751178974]}, "tc_recall": 0.30544993662864384, "seconds": 806.6}

@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0004",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "0ea4ae927e6492c9c22c05135b84a8374738a0ed9c2ba6614dcd709d747eb49c",
+ "raw": [
+  "{\"labels\": [{\"item_id\": \"7a56441dcdea39f3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Paternal half-uncle specifies the uncle relationship without contradicting it.\"}, {\"item_id\": \"3eafc92360c2f538\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Six months out and out for the remainder of the season are compatible descriptions of the same absence.\"}, {\"item_id\": \"417d24d37202d9f3\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The modifiers local and new swap between the government and the partnerships.\"}, {\"item_id\": \"d56393613df45773\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Wealth is called unusual for a township versus for a community, a different range, with road and street synonymous.\"}, {\"item_id\": \"05a3c4c4d4538564\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A man is a more specific description of the person playing the trumpet.\"}, {\"item_id\": \"e705542739e92351\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The county of the fixed birthplace differs between Merseyside and Cheshire.\"}, {\"item_id\": \"2132739303e8b667\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny children playing, with different compatible details.\"}, {\"item_id\": \"f09b62b538705321\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A celebrating cyclist and a cyclist not doing an aerial trick are compatible details about a cyclist.\"}, {\"item_id\": \"5ac918e74a01f401\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The Wells Fargo pre-approval amount differs between 350,000 and 400,000.\"}, {\"item_id\": \"c8384516ff627064\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Playing the piano with his nose in a funny way adds detail to a man playing the piano.\"}, {\"item_id\": \"9eb1f2964ba0edb8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny butter being added, with compatible differing details.\"}, {\"item_id\": \"7a880130f2fd9d23\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the film was named Spectre.\"}, {\"item_id\": \"90546fab86b41c0d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Worms was initially developed by Andy Davidson.\"}, {\"item_id\": \"89c18735ccf367e9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the children were Christian and mentions forced conversions.\"}, {\"item_id\": \"3b94506c383cb402\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Active versus passive voice of the same proposition.\"}, {\"item_id\": \"e23242a97eedd7d8\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"Subscriber and view totals to date differ.\"}, {\"item_id\": \"92f4572d36c96ba6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A bonfire is a more specific fire, adding detail to the same scene.\"}, {\"item_id\": \"016907e505495498\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny potato slicing, with the man and into-pieces details added.\"}, {\"item_id\": \"29bcb64646beb342\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Hours spent so far on the sculpture is a running total that differs.\"}, {\"item_id\": \"8a0b261777138363\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One additionally lists Disney XD among the channels.\"}, {\"item_id\": \"4e9814c38c2ffc50\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only grammatical number and pronoun wording differ.\"}, {\"item_id\": \"da178f315ec794f1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a dog leaping, with compatible differing details.\"}, {\"item_id\": \"622f368f48218a4d\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Lack of FGF21 slowing plaque clashes with FGF21 protecting against atherosclerosis, though the mouse condition may differ.\"}, {\"item_id\": \"921c7517b3d0f98c\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only punctuation and participle wording differ.\"}, {\"item_id\": \"ab34957d33226447\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One additionally lists Kendrick Lamar among the featured artists.\"}, {\"item_id\": \"407792f759f280bc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A brown puppy gnawing a post outdoors is compatible detail on a brown dog playing outdoors.\"}, {\"item_id\": \"1b8c530d6f78329d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One names North Queensland Fury as the opponent, which the other leaves blank.\"}, {\"item_id\": \"034ec21f3459f850\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One prepends a sentence on single sideband modulation and FDM.\"}, {\"item_id\": \"c7c3cd81e6fc4e0e\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Ethene and ethylene are synonyms.\"}, {\"item_id\": \"5a0058ea8780a6e2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The day and night descriptors are rearranged but, as possibilities, both lists can hold.\"}, {\"item_id\": \"d3a9dad58c5084a9\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"The player's given name differs between Pipavin and Adrian Savin.\"}, {\"item_id\": \"fd7131dc6a8b254f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The film's setting differs between Veracruz and Yucatan and Guatemala.\"}, {\"item_id\": \"fd95a77204bdf4a0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both are compatible claims about the effect of losing avb8.\"}, {\"item_id\": \"54111e9187ef7300\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Painting a man's face and putting makeup on him are compatible, not identical, descriptions.\"}, {\"item_id\": \"7e49aa5c5bc02d1f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One attributes the comparison to the liberal media.\"}, {\"item_id\": \"6c457ae86262bf40\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Fish being cooked and something being fried are compatible, differing in specificity.\"}, {\"item_id\": \"c438b0dc8f452e17\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Silento's birth name, birth date and school differ.\"}, {\"item_id\": \"cb1b5b5eec663906\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds a Hindi rendering of the name.\"}, {\"item_id\": \"3622da4ea2890967\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same chessboard scene in San Francisco with compatible differing details.\"}, {\"item_id\": \"ff2f8de1a52b8a14\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds a sentence about Jackson hosting the podcast.\"}, {\"item_id\": \"aed6de831b325860\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Roberti is the star in one and a co-director in the other.\"}, {\"item_id\": \"5cdd8a1af36b9094\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same influence claim with garbled word order.\"}, {\"item_id\": \"8469e6ff115a32bc\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A fish swimming contradicts the fish being immobile.\"}, {\"item_id\": \"7dd9d2c1efd12c9f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the middle name Andrew.\"}, {\"item_id\": \"b1103f7ca71cb7b9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both list Arkin's best known films with overlapping, compatible details.\"}, {\"item_id\": \"3bf1178f4425718f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The signing date is compatible with Thomas playing for the Patriots.\"}, {\"item_id\": \"9e9c799c677a9b41\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both deny a dog activity on grass with compatible differing details.\"}, {\"item_id\": \"38a92228dcaab331\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A group sitting clashes with a group mostly standing, though they may be different groups.\"}, {\"item_id\": \"c6ceca35f9e35dc1\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The conversation is between men versus between a man and a woman.\"}, {\"item_id\": \"baed66637e410994\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Slicing and chopping garlic are synonyms under the same negation.\"}]}"
+ ],
+ "labels": {
+  "7a56441dcdea39f3": {
+   "item_id": "7a56441dcdea39f3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Paternal half-uncle specifies the uncle relationship without contradicting it."
+  },
+  "3eafc92360c2f538": {
+   "item_id": "3eafc92360c2f538",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Six months out and out for the remainder of the season are compatible descriptions of the same absence."
+  },
+  "417d24d37202d9f3": {
+   "item_id": "417d24d37202d9f3",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The modifiers local and new swap between the government and the partnerships."
+  },
+  "d56393613df45773": {
+   "item_id": "d56393613df45773",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Wealth is called unusual for a township versus for a community, a different range, with road and street synonymous."
+  },
+  "05a3c4c4d4538564": {
+   "item_id": "05a3c4c4d4538564",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A man is a more specific description of the person playing the trumpet."
+  },
+  "e705542739e92351": {
+   "item_id": "e705542739e92351",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The county of the fixed birthplace differs between Merseyside and Cheshire."
+  },
+  "2132739303e8b667": {
+   "item_id": "2132739303e8b667",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny children playing, with different compatible details."
+  },
+  "f09b62b538705321": {
+   "item_id": "f09b62b538705321",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A celebrating cyclist and a cyclist not doing an aerial trick are compatible details about a cyclist."
+  },
+  "5ac918e74a01f401": {
+   "item_id": "5ac918e74a01f401",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The Wells Fargo pre-approval amount differs between 350,000 and 400,000."
+  },
+  "c8384516ff627064": {
+   "item_id": "c8384516ff627064",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Playing the piano with his nose in a funny way adds detail to a man playing the piano."
+  },
+  "9eb1f2964ba0edb8": {
+   "item_id": "9eb1f2964ba0edb8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny butter being added, with compatible differing details."
+  },
+  "7a880130f2fd9d23": {
+   "item_id": "7a880130f2fd9d23",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the film was named Spectre."
+  },
+  "90546fab86b41c0d": {
+   "item_id": "90546fab86b41c0d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Worms was initially developed by Andy Davidson."
+  },
+  "89c18735ccf367e9": {
+   "item_id": "89c18735ccf367e9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the children were Christian and mentions forced conversions."
+  },
+  "3b94506c383cb402": {
+   "item_id": "3b94506c383cb402",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Active versus passive voice of the same proposition."
+  },
+  "e23242a97eedd7d8": {
+   "item_id": "e23242a97eedd7d8",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "Subscriber and view totals to date differ."
+  },
+  "92f4572d36c96ba6": {
+   "item_id": "92f4572d36c96ba6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A bonfire is a more specific fire, adding detail to the same scene."
+  },
+  "016907e505495498": {
+   "item_id": "016907e505495498",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny potato slicing, with the man and into-pieces details added."
+  },
+  "29bcb64646beb342": {
+   "item_id": "29bcb64646beb342",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Hours spent so far on the sculpture is a running total that differs."
+  },
+  "8a0b261777138363": {
+   "item_id": "8a0b261777138363",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One additionally lists Disney XD among the channels."
+  },
+  "4e9814c38c2ffc50": {
+   "item_id": "4e9814c38c2ffc50",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only grammatical number and pronoun wording differ."
+  },
+  "da178f315ec794f1": {
+   "item_id": "da178f315ec794f1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a dog leaping, with compatible differing details."
+  },
+  "622f368f48218a4d": {
+   "item_id": "622f368f48218a4d",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Lack of FGF21 slowing plaque clashes with FGF21 protecting against atherosclerosis, though the mouse condition may differ."
+  },
+  "921c7517b3d0f98c": {
+   "item_id": "921c7517b3d0f98c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only punctuation and participle wording differ."
+  },
+  "ab34957d33226447": {
+   "item_id": "ab34957d33226447",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One additionally lists Kendrick Lamar among the featured artists."
+  },
+  "407792f759f280bc": {
+   "item_id": "407792f759f280bc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A brown puppy gnawing a post outdoors is compatible detail on a brown dog playing outdoors."
+  },
+  "1b8c530d6f78329d": {
+   "item_id": "1b8c530d6f78329d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One names North Queensland Fury as the opponent, which the other leaves blank."
+  },
+  "034ec21f3459f850": {
+   "item_id": "034ec21f3459f850",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One prepends a sentence on single sideband modulation and FDM."
+  },
+  "c7c3cd81e6fc4e0e": {
+   "item_id": "c7c3cd81e6fc4e0e",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Ethene and ethylene are synonyms."
+  },
+  "5a0058ea8780a6e2": {
+   "item_id": "5a0058ea8780a6e2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The day and night descriptors are rearranged but, as possibilities, both lists can hold."
+  },
+  "d3a9dad58c5084a9": {
+   "item_id": "d3a9dad58c5084a9",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "The player's given name differs between Pipavin and Adrian Savin."
+  },
+  "fd7131dc6a8b254f": {
+   "item_id": "fd7131dc6a8b254f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The film's setting differs between Veracruz and Yucatan and Guatemala."
+  },
+  "fd95a77204bdf4a0": {
+   "item_id": "fd95a77204bdf4a0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both are compatible claims about the effect of losing avb8."
+  },
+  "54111e9187ef7300": {
+   "item_id": "54111e9187ef7300",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Painting a man's face and putting makeup on him are compatible, not identical, descriptions."
+  },
+  "7e49aa5c5bc02d1f": {
+   "item_id": "7e49aa5c5bc02d1f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One attributes the comparison to the liberal media."
+  },
+  "6c457ae86262bf40": {
+   "item_id": "6c457ae86262bf40",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Fish being cooked and something being fried are compatible, differing in specificity."
+  },
+  "c438b0dc8f452e17": {
+   "item_id": "c438b0dc8f452e17",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Silento's birth name, birth date and school differ."
+  },
+  "cb1b5b5eec663906": {
+   "item_id": "cb1b5b5eec663906",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds a Hindi rendering of the name."
+  },
+  "3622da4ea2890967": {
+   "item_id": "3622da4ea2890967",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same chessboard scene in San Francisco with compatible differing details."
+  },
+  "ff2f8de1a52b8a14": {
+   "item_id": "ff2f8de1a52b8a14",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds a sentence about Jackson hosting the podcast."
+  },
+  "aed6de831b325860": {
+   "item_id": "aed6de831b325860",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Roberti is the star in one and a co-director in the other."
+  },
+  "5cdd8a1af36b9094": {
+   "item_id": "5cdd8a1af36b9094",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same influence claim with garbled word order."
+  },
+  "8469e6ff115a32bc": {
+   "item_id": "8469e6ff115a32bc",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A fish swimming contradicts the fish being immobile."
+  },
+  "7dd9d2c1efd12c9f": {
+   "item_id": "7dd9d2c1efd12c9f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the middle name Andrew."
+  },
+  "b1103f7ca71cb7b9": {
+   "item_id": "b1103f7ca71cb7b9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both list Arkin's best known films with overlapping, compatible details."
+  },
+  "3bf1178f4425718f": {
+   "item_id": "3bf1178f4425718f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The signing date is compatible with Thomas playing for the Patriots."
+  },
+  "9e9c799c677a9b41": {
+   "item_id": "9e9c799c677a9b41",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both deny a dog activity on grass with compatible differing details."
+  },
+  "38a92228dcaab331": {
+   "item_id": "38a92228dcaab331",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A group sitting clashes with a group mostly standing, though they may be different groups."
+  },
+  "c6ceca35f9e35dc1": {
+   "item_id": "c6ceca35f9e35dc1",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The conversation is between men versus between a man and a woman."
+  },
+  "baed66637e410994": {
+   "item_id": "baed66637e410994",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Slicing and chopping garlic are synonyms under the same negation."
+  }
+ },
+ "errors": []
+}

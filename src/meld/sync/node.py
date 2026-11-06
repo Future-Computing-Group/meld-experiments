@@ -1,158 +1,152 @@
 """BrainNode: the integration kernel deployed per host in the multi-host sync runs.
 
-Wraps an SMPMemory (a Brain + the merge-on-receive decision procedure) with the
-network-facing operations the orchestration drives:
+A node is one MELD replica (``mem``: an SMPMemory over a Store holding the five replicated
+sets of its subscribed scopes, design §2.1) plus the publication bookkeeping of §2.2:
 
-  * ``ingest(text)``        -- a LOCAL observation; merged into the own brain.
-  * ``extract_delta()``     -- the claim texts to PUBLISH (new since last publish),
-                               i.e. the payload PatchTransport carries to peers.
-  * ``receive(claims)``     -- a PEER's delta; merged into the own brain via the same
-                               merge-on-receive path (status-CRDT reconciles).
-  * ``live_claim_texts()``  -- the status-live claims, the observable used by the
-                               convergence/agreement metric (eval-c).
+  * ``publish_local(obj)``  -- sign a locally authored object (any of the five kinds) and
+                               insert it into the own sets, admitting it like a received one;
+                               ``ingest(text)`` does this for a Delta in the node's cell.
+  * ``outbox()``            -- ids to PUBLISH: own objects not yet published (Sig records
+                               the admission path evaluated included). Received ids are
+                               marked published on receipt (echo guard keyed by id).
+  * ``receive_object(...)`` -- the receive gate: MAC-verified insertion into the sets, then
+                               the admission hook ``admit(kind, obj)`` for a newly inserted
+                               object. The default hook admits a delta through
+                               protocol/admission.py (the active epoch, or the policy's
+                               bootstrap selector: no similarity merge without an epoch).
+                               Redelivery is idempotent at the set level and never re-admits.
 
-A claim that was only RECEIVED is never re-published (gossip-loop guard): both
-locally-ingested and received claims are tracked, so extract_delta() returns each
-claim at most once across the node's lifetime. The transport/merge are decoupled --
-this class holds no socket; ``extract_delta()`` output is bytes-serialized by the
-caller and handed to PatchTransport, keeping the node unit-testable in-process.
+The epoch is a replicated object: pass ``epoch`` (signed with the node's key) or receive the
+calibration authority's signed record (config.load_epoch). There is no threshold config.
+
+Read side: ``live_claim_texts`` (live nodes), ``status_of`` (vis of a claim
+key). ``apply_status`` authors a signed effect (OVERRULE, REVOKE, or SUPERSEDE to the next
+version for DEPRECATED) through ``publish_local``: a status change is an authored, MAC'd
+object, never an unsigned local write.
 """
 from __future__ import annotations
 
-from typing import List, Optional, Set
+import threading
+from typing import Callable, List, Optional, Set
 
-from meld.agent.memory import SMPMemory
-from meld.config import Thresholds
+from meld.agent.memory import DEFAULT_CELL, DEFAULT_POL, DEFAULT_SCOPE, SMPMemory
+from meld.proto import claim_key
+from meld.protocol.objects import (
+    AuthoredEffect, EpochRecord, object_id, signed,
+)
+from meld.sync.objectset import KINDS
+from meld.sync.wire_delta import group_key, pack
+
+_EFFECT_KIND = {"OVERRULED": "OVERRULE", "REVOKED": "REVOKE", "DEPRECATED": "SUPERSEDE"}
+
+
+def status_effect(claim_text: str, *, link_id: str, effect: str,
+                  scope: str = DEFAULT_SCOPE) -> AuthoredEffect:
+    """A status change on the claim (default cell, version 0) as an AuthoredEffect authored by
+    ``link_id``; DEPRECATED is SUPERSEDE to the claim's next version."""
+    kind = _EFFECT_KIND[effect]
+    return AuthoredEffect(
+        scope=scope, kind=kind, c1=claim_key(claim_text, DEFAULT_CELL),
+        c2=claim_key(claim_text, DEFAULT_CELL, 1) if kind == "SUPERSEDE" else b"",
+        target_cell=DEFAULT_CELL, author=link_id, author_cell=DEFAULT_CELL,
+        author_auth=0, created_at=0)
+
+
+def status_envelope(claim_text: str, *, link_id: str, effect: str, key: bytes) -> bytes:
+    """The /patch body that PUBLISHes ``status_effect`` signed under the group key (the eval-c
+    drivers' status write; POST /status is retired)."""
+    e = status_effect(claim_text, link_id=link_id, effect=effect)
+    return pack([(*signed(e, key), e.scope)])
 
 
 class BrainNode:
     def __init__(self, node_id: str, *, encoder: str, nli: str,
-                 cfg: Optional[Thresholds] = None, cache_dir: Optional[str] = None):
+                 epoch: Optional[EpochRecord] = None, cache_dir: Optional[str] = None,
+                 pol: Optional[dict] = None, key: Optional[bytes] = None,
+                 admit: Optional[Callable] = None, provider=None,
+                 clock: Optional[Callable[[], int]] = None):
         self.node_id = node_id
-        self._mem_kw = dict(encoder=encoder, nli=nli, cfg=cfg, cache_dir=cache_dir)
-        self.mem = SMPMemory(**self._mem_kw)
-        self._published: Set[str] = set()   # claim texts already published OR received
-        # Read-time staleness set (§5.2): link_ids whose OWN carried fields mark
-        # them stale (non-active carried status, or retention below floor). It is a
-        # pure function of the converged link set (each link_id's membership depends
-        # only on that link's carried fields, not arrival order), so the read-time
-        # gate stays order-independent. Empty unless a link is explicitly applied
-        # with stale carried fields -> the gated read is then identical to the
-        # ungated one (default no-op).
-        self._stale_links: Set[str] = set()
+        self._mem_kw = dict(encoder=encoder, nli=nli, epoch=epoch, cache_dir=cache_dir,
+                            pol=pol or DEFAULT_POL, key=key or group_key({}), origin=node_id,
+                            provider=provider, clock=clock)
+        self.admit = admit or (lambda kind, obj: self.mem._admit(obj) if kind == "D" else None)
+        # ThreadingHTTPServer handles requests concurrently: insertion + admission and the
+        # outbox are one critical section, so a redelivery race admits exactly once.
+        self._lock = threading.RLock()
+        self.reset()
 
     def reset(self) -> None:
-        """Drop all state -> a fresh brain + empty published-set, so a campaign cell starts
+        """Drop all state -> a fresh replica + empty published-set, so a campaign cell starts
         isolated (seeds are independent replicates; each RTT regime is actually re-measured
         rather than masked by publish-once leftover state from the previous cell)."""
-        self.mem = SMPMemory(**self._mem_kw)
-        self._published.clear()
-        self._stale_links.clear()
+        with self._lock:
+            self.mem = SMPMemory(**self._mem_kw)
+            self.pol, self.key = self.mem.pol, self.mem.key
+            self.objects = self.mem.store.objects
+            self.scope_of = self.objects.scope_of
+            self._published: Set[bytes] = set()   # object ids published OR received
 
-    # -- local observation ---------------------------------------------------
+    # -- replication layer ---------------------------------------------------
+    def publish_local(self, obj) -> bytes:
+        """Sign a locally authored object, insert it (admitting it like a received one) and
+        return its id; PUBLISH ships it on the next ``outbox``. Raises ValueError if the
+        object is outside this node's scopes or (a Delta) under another encoder."""
+        received, mac = signed(obj, self.key)
+        if self._insert(received, mac, None) is None:
+            raise ValueError(f"{type(obj).__name__} refused by this node's sets")
+        return object_id(received)
+
+    def outbox(self) -> List[bytes]:
+        """Ids of own objects not yet published, sorted; each is returned once."""
+        with self._lock:
+            ids = sorted(i for k in KINDS for s in self.objects.scopes
+                         for i in self.objects.ids(k, s) if i not in self._published)
+            self._published.update(ids)
+        return ids
+
+    def receive_object(self, received: bytes, mac: str, scope: Optional[str]) -> bool:
+        """The receive gate for PUBLISH and PULL: True iff the object verified and is held.
+        A received id is marked published, so it is never re-published (echo guard)."""
+        return self._insert(received, mac, scope, echo_guard=True) is not None
+
+    def _insert(self, received: bytes, mac: str, scope: Optional[str], echo_guard=False):
+        with self._lock:
+            new = isinstance(received, bytes) and object_id(received) not in self.objects
+            obj = self.mem.store.apply(received, mac, scope)
+            if obj is None:
+                return None
+            oid = object_id(received)
+            if echo_guard:
+                self._published.add(oid)
+            if new:
+                self.admit(self.objects.kind_of(oid), obj)
+            return obj
+
+    # -- local observation and authorship ------------------------------------
     def ingest(self, text: str) -> None:
-        """Merge a local observation into the own brain (merge-on-receive)."""
-        self.mem.write(text)
+        """A local observation: a signed Delta in the node's cell enters the own sets and is
+        admitted."""
+        text = (text or "").strip()
+        if text:
+            self.publish_local(self.mem.delta(text))
 
-    # -- publish side --------------------------------------------------------
-    def _live_claim_texts(self) -> Set[str]:
-        b = self.mem.brain
-        return {c.text
-                for u in b._units.values() if b._unit_is_live(u)
-                for c in u.claims}
+    def apply_status(self, claim_text: str, *, link_id: str, effect: str) -> bytes:
+        """Author a status effect on the claim (default cell, version 0) as a signed
+        AuthoredEffect; ``link_id`` names the author, so re-applying one link is idempotent
+        and two links are two effects. DEPRECATED is SUPERSEDE to the claim's next version."""
+        return self.publish_local(status_effect(claim_text, link_id=link_id, effect=effect,
+                                                scope=self.scope_of[DEFAULT_CELL]))
 
+    # -- read side -----------------------------------------------------------
     def live_claim_texts(self) -> Set[str]:
-        """The status-live claim texts (the eval-c convergence observable)."""
-        return self._live_claim_texts()
-
-    def full_state(self) -> List[str]:
-        """The entire live set -- the anti-entropy payload. Unlike extract_delta()
-        this ignores the publish-once guard, so a peer that missed claims (e.g. during
-        a partition) is brought fully up to date on the next re-sync after heal."""
-        return sorted(self._live_claim_texts())
-
-    # -- status-CRDT (eval-c: concurrent overrules + partition heal) ----------
-    def _claim_key(self, claim_text: str) -> bytes:
-        from meld.agent.memory import claim_key
-        return claim_key(claim_text)   # ponytail: default cell; BrainNode is single-cell
-
-    def apply_status(self, claim_text: str, *, link_id: str, effect: str,
-                     link_status: str = "ACTIVE", retention=None,
-                     retention_floor: float = 0.0) -> None:
-        """Apply one overrule/supersede status link to a claim (the status-CRDT add).
-        Order-independent + idempotent: re-applying the same link id is a no-op, and the
-        same set of links yields the same effective status regardless of arrival order.
-
-        ``link_status`` is the link's OWN carried lifecycle status (NOT its
-        ``effect``); ``retention``/``retention_floor`` are the link's carried
-        retention vs the floor. A link whose carried status is non-active OR whose
-        retention is below the floor is recorded as stale and dropped at READ
-        (effective_status_gated, §5.2). Defaults (active link, retention None) keep
-        the link non-stale, so the read-time gate is a no-op for every existing
-        caller (the eval-c convergence runs apply only active links)."""
-        b = self.mem.brain
-        ck = self._claim_key(claim_text)
-        b._status[ck] = b.claim_status(ck).add(link_id, effect)
-        is_stale = (link_status != "ACTIVE") or (
-            retention is not None and retention < retention_floor)
-        if is_stale:
-            self._stale_links.add(link_id)
-        else:
-            self._stale_links.discard(link_id)
+        """The live claim texts (the eval-c convergence observable)."""
+        nodes = self.mem.store.nodes()
+        return {nodes[k][1].text for k in self.mem.store.live_nodes()}
 
     def status_of(self, claim_text: str) -> str:
-        """Effective per-claim status under the SEC-preserving read-time gate
-        (§5.2): the lattice-join of all the claim's links EXCEPT those whose carried
-        fields mark them stale. ACTIVE if no (non-stale) links. With no stale links
-        (the default) this is identical to the ungated effective_status."""
-        from meld.merge.status_crdt import effective_status_gated
-        state = self.mem.brain.claim_status(self._claim_key(claim_text))
-        return effective_status_gated(state, stale=frozenset(self._stale_links))
-
-    def extract_delta(self) -> List[str]:
-        """Claim texts to publish: live claims not yet published or received.
-        Each claim is emitted at most once over the node's lifetime."""
-        delta = sorted(self._live_claim_texts() - self._published)
-        self._published.update(delta)
-        return delta
-
-    # -- receive side --------------------------------------------------------
-    def receive(self, claim_texts: List[str]) -> None:
-        """Merge a peer's published delta into the own brain. Received claims are
-        marked published so they are never echoed back (gossip-loop guard).
-
-        In-process API: peers hand over claim TEXT. The wire path uses
-        ``receive_wire`` (a signed, typed delta) and merges identically."""
-        for t in claim_texts:
-            self.mem.write(t)
-            self._published.add(t)
-
-    # -- typed, signed wire seam (the real §7-s path) ------------------------
-    def publish_wire_payloads(self, key: bytes) -> List[bytes]:
-        """The publish payloads for this node's delta: one signed, serialized
-        TYPED delta (a MemoryUnit) per new claim, ready for the transport. Each
-        carries the originating node id and is HMAC-signed over the group ``key``."""
-        from meld.sync.wire_delta import serialize_signed_delta
-        payloads: List[bytes] = []
-        for text in self.extract_delta():
-            unit = self.mem.build_unit(text)
-            payloads.append(serialize_signed_delta(self.node_id, unit, key))
-        return payloads
-
-    def receive_wire(self, payload: bytes, key: bytes) -> bool:
-        """Verify a peer's signed, typed delta and -- only if it verifies -- merge
-        the reconstructed MemoryUnit through the same path as a local write.
-        Returns True if admitted, False if rejected before admission (forged /
-        tampered / wrong-key / malformed). Verification precedes any merge signal."""
-        from meld.sync.wire_delta import deserialize_verified_delta
-        out = deserialize_verified_delta(payload, key)
-        if out is None:
-            return False                              # dropped before admission
-        _node_id, unit = out
-        self.mem.write_unit(unit)
-        for c in unit.claims:
-            self._published.add(c.text)               # gossip-loop guard
-        return True
+        """vis of the claim's key in the default cell: authored status joined with the
+        consolidation view (ACTIVE if nothing applies)."""
+        return self.mem.store.vis(claim_key(claim_text, DEFAULT_CELL))
 
 
-__all__ = ["BrainNode"]
+__all__ = ["BrainNode", "DEFAULT_POL", "status_effect", "status_envelope"]

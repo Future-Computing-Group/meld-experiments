@@ -19,4 +19,13 @@ def make_http_send(*, timeout: float = 10.0) -> Callable[[str, bytes], "requests
     return send
 
 
-__all__ = ["make_http_send"]
+def make_http_call(*, timeout: float = 10.0) -> Callable[[str, str, bytes], tuple]:
+    """Request/response seam for DIGEST and PULL: ``call(peer_url, path, body) ->
+    (status, body)``; exceptions propagate to the caller (a lost call)."""
+    def call(peer_url: str, path: str, body: bytes) -> tuple:
+        r = requests.post(peer_url.rstrip("/") + path, data=body, timeout=timeout)
+        return r.status_code, r.content
+    return call
+
+
+__all__ = ["make_http_send", "make_http_call"]

@@ -1,20 +1,25 @@
 #!/usr/bin/env python3
 """Edge-testbed eval-s (sync latency) + eval-r (routing) campaign orchestrator.
 
-Generic, config-driven driver: the topology (nodes / SSH targets / IPs / ports /
-image tags) and the netem RTT/routing grid are read from `testbed.yaml`; this file
-carries no host aliases. It ties the tested core (meld.eval.campaign +
-CampaignCheckpoint + bootstrap_ci) to live brains over HTTP and to `tc` (WanShaper).
+Generic, config-driven driver: the topology (nodes / IPs / ports / image tags) and the netem
+RTT/routing grid are read from `testbed.yaml`; this file carries no host aliases. It ties the
+tested core (meld.eval.campaign + CampaignCheckpoint + bootstrap_ci) to live brains over HTTP.
 
-Run it from a persistent session (e.g. tmux) on the orchestrator node named by
-`orchestrator:` in the config, so it survives a client disconnect. The meld package
-must be importable there (PYTHONPATH=src), the brains must be deployed (deploy.sh),
-and a watchdog must listen on `watchdog_port` on each host.
+No ssh and no docker here. The brains of ONE routing phase are deployed from the laptop with
+`deploy.sh start <routing> <encoder>` before this driver starts; the driver runs only that
+phase's cells (SMP_ROUTING, checked against every brain's /metrics). Each host's watchdog is the
+tc agent (POST /shape, /heal) and the control path to its brain (/brain/<path>); the driver
+heartbeats every watchdog.
 
-SCOPE: the eval-s/eval-r grid only. eval-c (partition -> heal -> agreement) is a
-separate driver (run_eval_c.py).
+Per cell: POST /reset with the cell's peers to each brain of the cell (one deployment serves
+every N), check the deployed epoch is held after the reset (result rungs), shape netem delay
+toward the cell's other brains, ingest the topic-homed workload, POST /publish on every brain
+(node-driven, node-to-peer), score routing on deltas against the needed-oracle, and record
+latency, recall, waste, bytes per message class and the provenance stamps.
 
 Modes (env): SMP_DRY_CELL=1 -> 1 cell; SMP_PILOT=1 -> small pilot; otherwise FULL.
+SMP_ROUTING = the deployed phase (broadcast | semantic); SMP_CKPT = the checkpoint JSONL.
+grid.replication (default 2) = brains homing each topic (a claim interests replication/N of a cell).
 """
 from __future__ import annotations
 
@@ -25,117 +30,53 @@ import sys
 import threading
 import time
 import urllib.request
+from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from meld.eval.campaign import enumerate_cells, run_campaign, aggregate_by_condition  # noqa: E402
+from meld.eval.campaign import (aggregate_by_condition, enumerate_cells, run_campaign,  # noqa: E402
+                                score_routing)
 from meld.eval.campaign_checkpoint import CampaignCheckpoint                          # noqa: E402
-from meld.sync.wan import WanShaper                                                   # noqa: E402
+from meld.eval.topology import stamps                                                 # noqa: E402
 from meld.sync.workload import build_workload, load_hotpot_claims                     # noqa: E402
 
 from config import load_testbed                                                      # noqa: E402
 
-CFG = load_testbed()
-NODES = CFG["ids"]
-IP = CFG["ip"]
-HOST = CFG["host"]            # SSH target per node
-URL = CFG["url"]
-IFACE = CFG["iface"]
-ORCH = CFG["orchestrator"]    # node co-located with this driver (commands run local)
-WD_PORT = int(CFG["watchdog_port"])
-CAMPAIGN_IMG = CFG.get("images", {}).get("campaign", "meld-brain:minilm")
-GRID = CFG.get("grid", {})
-HEARTBEAT_S = int(GRID.get("heartbeat_s", 30))
-PUBLISH_TIMEOUT = int(GRID.get("publish_timeout_s", 120))
-CKPT = os.environ.get("SMP_CKPT", "campaign_results.jsonl")
-
 
 def log(msg):
-    line = f"- {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} campaign: {msg}"
-    print(line, flush=True)
+    print(f"- {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} campaign: {msg}", flush=True)
 
 
-def _get(url, timeout=8):
+def _get(url, timeout=30):
     with urllib.request.urlopen(url, timeout=timeout) as r:
         return json.loads(r.read().decode())
 
 
-def _post(url, data=b"", timeout=30):
+def _post(url, data=b"", timeout=60):
+    if isinstance(data, (dict, list)):
+        data = json.dumps(data).encode()
     req = urllib.request.Request(url, data=data, method="POST")
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.loads(r.read().decode())
 
 
-def _ssh(node, cmd):
-    """Run a shell command on a node: local for the orchestrator node, SSH otherwise."""
-    full = cmd if node == ORCH else f"ssh {HOST[node]} {json.dumps(cmd)}"
-    return subprocess.run(full, shell=True, capture_output=True, text=True)
-
-
-def _tc_runner(node, argv):
-    """tc on a node: local sudo for the orchestrator node, SSH sudo otherwise."""
-    inner = "sudo " + " ".join(argv)
-    cp = (subprocess.run(["sudo"] + list(argv), capture_output=True, text=True)
-          if node == ORCH else _ssh(node, inner))
-
-    class R:
-        returncode = cp.returncode
-        stdout = cp.stdout
-        stderr = cp.stderr
-
-    return R()
-
-
-def _clear_all_tc():
-    """Best-effort: clear tc on every node (startup pre-clean + campaign safety net)."""
-    shaper = WanShaper(_tc_runner, iface=IFACE)
-    for node in NODES:
-        try:
-            shaper.clear(node)
-        except Exception as e:
-            log(f"  WARN clear tc on {node}: {type(e).__name__}: {e}")
-
-
-def _safe_healthz(node):
-    try:
-        return _get(URL[node] + "/healthz", timeout=3).get("status") == "ok"
-    except Exception:
-        return False
-
-
-def _redeploy(routing, brains):
-    """Redeploy brains with the given routing mode + campaign image (node-driven publish
-    preserves node->peer latency per mode). Called once per routing level (routing-outer).
-    semantic routes to the single highest-similarity peer (top_k=1); broadcast delivers
-    to all (the wasted-delivery baseline)."""
-    extra = "-e SMP_TOP_K=1 " if routing == "semantic" else ""
-    log(f"  redeploy brains: routing={routing} image={CAMPAIGN_IMG} {extra.strip()}")
-    for node in brains:
-        peers = ",".join(URL[p] for p in brains if p != node)
-        run = (f"docker rm -f meld-brain >/dev/null 2>&1 || true; docker run -d --name meld-brain "
-               f"--network=host -e SMP_NODE_ID={node} -e SMP_PORT={URL[node].rsplit(':', 1)[1]} "
-               f"-e SMP_ENCODER=minilm -e SMP_NLI=lexical -e SMP_ROUTING_MODE={routing} "
-               f"{extra}-e SMP_PEERS='{peers}' {CAMPAIGN_IMG}")
-        r = _ssh(node, run)
-        if r.returncode != 0:
-            raise RuntimeError(f"redeploy {node} failed: {r.stderr}")
-    deadline = time.time() + 90
-    while time.time() < deadline:
-        if all(_safe_healthz(n) for n in brains):
-            return
-        time.sleep(2)
-    raise RuntimeError("brains not healthy after redeploy")
-
-
-def _heartbeat_loop(stop):
+def _heartbeat_loop(cfg, stop, period):
     while not stop.is_set():
-        for node in NODES:
+        for n in cfg["ids"]:
             try:
-                _post(f"http://{IP[node]}:{WD_PORT}/heartbeat", timeout=3)
+                _post(cfg["wd_url"][n] + "/heartbeat", timeout=3)
             except Exception:
                 pass
-        stop.wait(HEARTBEAT_S)
+        stop.wait(period)
+
+
+def _heal_all(cfg, nodes):
+    for n in nodes:
+        try:
+            _post(cfg["wd_url"][n] + "/heal", {}, timeout=30)
+        except Exception as e:
+            log(f"  WARN heal {n}: {type(e).__name__}: {e}")
 
 
 def _ping_rtt_ms(peer_ip):
@@ -149,94 +90,110 @@ def _ping_rtt_ms(peer_ip):
     return None
 
 
-def _run_eval_sr_cell(cell):
-    brains = NODES[:cell.n]
-    shaper = WanShaper(_tc_runner, iface=IFACE)
+def run_cell(cell, cfg, *, routing, publish_timeout, require_epoch, claims, replication=2):
+    if cell.routing != routing:
+        raise RuntimeError(f"cell {cell.cell_id} is {cell.routing}; deployed phase is {routing}")
+    brains = cfg["ids"][:cell.n]
+    url, ip = cfg["url"], cfg["ip"]
     try:
-        for h in brains:                               # per-cell isolation: fresh brain + latency
-            _post(URL[h] + "/reset")
+        held = {}
+        for h in brains:                               # per-cell isolation + the cell's peers
+            _post(url[h] + "/reset", {"peers": [cfg["peer_url"][p] for p in brains if p != h]})
+            m = _get(url[h] + "/metrics")
+            if m.get("routing_mode") != routing:
+                raise RuntimeError(f"brain {h} runs {m.get('routing_mode')}, not {routing}")
+            held[h] = all("Ep" in r for r in m["roots"].values()) and bool(m["roots"])
+        if require_epoch and not all(held.values()):
+            raise RuntimeError(f"deployed epoch missing after /reset: {held}")
         if cell.rtt_ms > 0:
             for h in brains:
-                for peer in brains:
-                    if peer != h:
-                        shaper.shape(h, IP[peer], delay_ms=cell.rtt_ms, jitter_ms=0)
-            rtt = _ping_rtt_ms(IP[brains[-1]])
+                _post(cfg["wd_url"][h] + "/shape",
+                      {"peer_ips": [ip[p] for p in brains if p != h], "delay_ms": cell.rtt_ms})
+            rtt = _ping_rtt_ms(ip[brains[-1]])
             if rtt is not None and rtt < cell.rtt_ms:      # netem must have taken
                 log(f"  WARN rtt read-back {rtt}ms < configured {cell.rtt_ms}ms on {cell.cell_id}")
         else:
             rtt = 0.0
-        claims = load_hotpot_claims(200)
-        wl = build_workload(claims, brains, replication=2, seed=cell.seed)
+        wl = build_workload(claims, brains, replication=replication, seed=cell.seed)
         for h in brains:
             for text in wl.assignments[h]:
-                _post(URL[h] + "/ingest", text.encode())
-        delivered_ok, needed_total, delivered_total = 0, 0, 0
+                _post(url[h] + "/ingest", text.encode())
+        sc, nbytes, lat = Counter(), {}, {}
+        t0 = time.monotonic()
         for h in brains:
-            resp = _post(URL[h] + "/publish", timeout=PUBLISH_TIMEOUT)
-            for claim, peers in resp.get("delivered", {}).items():
-                got = set(peers)
-                need = {URL[b] for b in wl.needed.get(claim, ()) if b != h}
-                delivered_ok += len(got & need)        # correct deliveries (recall numerator)
-                needed_total += len(need)              # needed edges (recall denominator)
-                delivered_total += len(got)            # ALL deliveries (for wasted-delivery)
-        lat = _get(URL[brains[0]] + "/metrics").get("latency", {})
-        wasted = (delivered_total - delivered_ok) / delivered_total if delivered_total else 0.0
-        return {"p50_ms": lat.get("p50_ms"), "p95_ms": lat.get("p95_ms"),
-                "recall_num": delivered_ok, "recall_den": needed_total,
-                "delivered_total": delivered_total, "wasted_rate": wasted, "rtt_meas_ms": rtt}
+            resp = _post(url[h] + "/publish", timeout=publish_timeout)
+            sc.update(score_routing(resp["delivered"], wl.needed, sender=h,
+                                    url=lambda b: cfg["peer_url"][b]))
+            for cls, r in resp["bytes"].items():
+                acc = nbytes.setdefault(cls, {"count": 0, "bytes": 0})
+                acc["count"] += r["count"]
+                acc["bytes"] += r["bytes"]
+            lat[h] = resp.get("latency") or {}
+        wall = time.monotonic() - t0
+        wasted = ((sc["delivered_total"] - sc["recall_num"]) / sc["delivered_total"]
+                  if sc["delivered_total"] else 0.0)
+        return {"p50_ms": lat[brains[0]].get("p50_ms"), "p95_ms": lat[brains[0]].get("p95_ms"),
+                "latency_per_brain": lat, "recall_num": sc["recall_num"],
+                "recall_den": sc["recall_den"], "delivered_total": sc["delivered_total"],
+                "wasted_rate": wasted, "bytes": nbytes, "epoch_held": held,
+                "publish_wall_s": round(wall, 3), "rtt_meas_ms": rtt}
     finally:
-        for h in brains:                                   # per-host cleanup, never abort the rest
-            try:
-                shaper.clear(h)
-            except Exception as e:
-                log(f"  WARN clear {h} after {cell.cell_id}: {type(e).__name__}: {e}")
+        _heal_all(cfg, brains)                         # per-host cleanup, never abort the rest
 
 
 def main():
-    mode = "DRY-CELL" if os.environ.get("SMP_DRY_CELL") == "1" else \
-           "PILOT" if os.environ.get("SMP_PILOT") == "1" else "FULL"
-    g_rtts = GRID.get("rtt_ms", [0, 10, 25, 50])
-    g_ns = GRID.get("n_nodes", [2, 3, 4])
-    g_routings = GRID.get("routings", ["broadcast", "semantic"])
-    g_seeds = list(range(1, int(GRID.get("seeds", 15)) + 1))
-
+    cfg = load_testbed()
+    grid = cfg.get("grid", {})
+    mode = ("DRY-CELL" if os.environ.get("SMP_DRY_CELL") == "1" else
+            "PILOT" if os.environ.get("SMP_PILOT") == "1" else "FULL")
+    routing = os.environ.get("SMP_ROUTING", "")
+    if routing not in ("broadcast", "semantic"):
+        raise SystemExit("SMP_ROUTING must name the deployed phase: broadcast | semantic")
+    smoke = cfg.get("smoke") is True
+    ckpt = os.environ.get("SMP_CKPT", f"campaign_{routing}.jsonl")
+    g_seeds = list(range(1, int(grid.get("seeds", 15)) + 1))
     if mode == "DRY-CELL":                                  # 1 cell, validates the core path
-        rtts, ns, routings, seeds = [0], [2], ["broadcast"], [1]
-    elif mode == "PILOT":                                   # validates WAN+semantic + 5-seed variance
-        rtts, ns, routings, seeds = [0, 50], [max(g_ns)], ["broadcast", "semantic"], [1, 2, 3, 4, 5]
+        rtts, ns, seeds = [0], [2], [1]
+    elif mode == "PILOT":                                   # WAN + the largest N, 5-seed variance
+        rtts, ns, seeds = [0, 50], [max(grid.get("n_nodes", [2, 3, 4]))], [1, 2, 3, 4, 5]
     else:
-        rtts, ns, routings, seeds = g_rtts, g_ns, g_routings, g_seeds
+        rtts, ns, seeds = grid.get("rtt_ms", [0, 10, 25, 50]), grid.get("n_nodes", [2, 3, 4]), g_seeds
 
-    log(f"=== campaign START (eval-s/r grid, {mode}) ===")
-    cells = enumerate_cells(rtts=rtts, ns=ns, routings=routings, seeds=seeds)
-    cells = sorted(cells, key=lambda c: (c.routing, c.rtt_ms, c.n, c.seed))   # routing-outer
-    cp = CampaignCheckpoint(CKPT)
+    m0 = _get(cfg["url"][cfg["ids"][0]] + "/metrics")
+    stamp = {**stamps(m0["encoder"], m0["nli"], None, None), "routing": routing, "mode": mode,
+             "smoke": smoke, "brain_m_nli": m0["m_nli"], "epoch_ids": m0["epoch_ids"],
+             "replication": int(grid.get("replication", 2))}
+    cp = CampaignCheckpoint(ckpt)
+    old = {r.get("stamp", {}).get("git_sha") for r in cp.results().values()}
+    if old - {stamp["git_sha"]}:
+        raise SystemExit(f"{ckpt} holds rows from another commit {sorted(old)}; use a new SMP_CKPT")
+    cells = sorted(enumerate_cells(rtts=rtts, ns=ns, routings=[routing], seeds=seeds),
+                   key=lambda c: (c.rtt_ms, c.n, c.seed))
+    claims = load_hotpot_claims(200)
     stop = threading.Event()
-    threading.Thread(target=_heartbeat_loop, args=(stop,), daemon=True).start()
-    log(f"grid: {len(cells)} cells; {len(cp.pending([c.cell_id for c in cells]))} pending; heartbeat -> :{WD_PORT}")
-
-    state = {"routing": None}
-
-    def run_cell(cell):
-        if cell.routing != state["routing"]:               # redeploy once per routing level
-            _redeploy(cell.routing, NODES[:cell.n])
-            state["routing"] = cell.routing
-        return _run_eval_sr_cell(cell)
-
+    threading.Thread(target=_heartbeat_loop, args=(cfg, stop, int(grid.get("heartbeat_s", 30))),
+                     daemon=True).start()
+    log(f"=== campaign START ({mode}, routing={routing}) {len(cells)} cells, "
+        f"{len(cp.pending([c.cell_id for c in cells]))} pending, ckpt={ckpt} ===")
     try:
-        _clear_all_tc()                                    # startup pre-clean
-        run_campaign(cells, run_cell, cp,
-                     progress=lambda cid, r: log(f"  done {cid}: p50={r.get('p50_ms')} "
-                                                  f"recall={r.get('recall_num')}/{r.get('recall_den')}"),
+        _heal_all(cfg, cfg["ids"])                         # startup pre-clean
+        run_campaign(cells, lambda c: {**run_cell(c, cfg, routing=routing,
+                                                  publish_timeout=int(grid.get("publish_timeout_s", 120)),
+                                                  require_epoch=not smoke, claims=claims,
+                                                  replication=stamp["replication"]),
+                                       "stamp": stamp},
+                     cp,
+                     progress=lambda cid, r: log(f"  done {cid}: p50={r.get('p50_ms')} recall="
+                                                  f"{r.get('recall_num')}/{r.get('recall_den')} "
+                                                  f"delivered={r.get('delivered_total')}"),
                      on_error=lambda c, e: log(f"  CELL FAIL {c.cell_id}: {type(e).__name__}: {e}"))
-        res = cp.results()
-        agg = aggregate_by_condition(cells, res, metric="p50_ms", n_boot=10000, seed=0)
+        agg = aggregate_by_condition(cells, cp.results(), metric="p50_ms", n_boot=10000, seed=0)
         for cond, (pt, lo, hi) in sorted(agg.items()):
             log(f"  agg p50_ms {cond}: {pt:.2f} [{lo:.2f},{hi:.2f}]")
         log("=== campaign DONE ===")
     finally:
         stop.set()
-        _clear_all_tc()                                    # safety net on any exit
+        _heal_all(cfg, cfg["ids"])                         # safety net on any exit
 
 
 if __name__ == "__main__":

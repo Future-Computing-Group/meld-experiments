@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0035",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "6823e14b8eb6b37649da088e7bc196cb32275b413409615cbab4f828f4b32279",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"3672c1724be97fb0\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Being knocked off a horse can be read as ending the riding or as an event during it, so the texts support both a clash and compatibility.\"},\n{\"item_id\": \"4c16ce308f84b530\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The release is the same, and one platform list also includes PS Vita.\"},\n{\"item_id\": \"2eca5d879a643ab4\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Is versus were could be a change in the duo's status or just a tense choice, and one statement also adds when they were successful.\"},\n{\"item_id\": \"821818e21be1e853\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Nothing in the texts says whether PrP positivity measures the same thing as vCJD carriers, so the figures may clash or may be unrelated.\"},\n{\"item_id\": \"ca334b7c3e97c2a0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe her 2019 departure with compatible details about the party leadership and her time as prime minister.\"},\n{\"item_id\": \"085f6513a3bec8e9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man playing two keyboards can also be playing an electronic keyboard, so each statement adds a compatible detail.\"},\n{\"item_id\": \"1becd9969aa4bf5f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One version adds that the loan was successful and that Benfica is a Portuguese side.\"},\n{\"item_id\": \"1a8265ac7673286a\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Nothing links the album to Jamiroquai, so the claims may be the same kind of sales figure over a different range or may be unrelated.\"},\n{\"item_id\": \"5020f57e6be2d4ff\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"In the same scene, a red dog and a dog with a tan coat give different coat colours.\"},\n{\"item_id\": \"d81d4472642919d6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both concern the use of milliard versus billion, with compatible details for English and for other European languages.\"},\n{\"item_id\": \"7105331e7cbece09\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Eyeshadow is a kind of makeup, and one statement adds that the woman is putting it on the man.\"},\n{\"item_id\": \"4bca003265edd466\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One version adds the example of the Aliens ostinato taken from Wolfen.\"},\n{\"item_id\": \"7f67195a66350f4e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Onions are a vegetable, and one statement adds that the slicing is quick.\"},\n{\"item_id\": \"79814a767ff6a8fb\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The missiles can be read as carried by the boat or as what sank it, so the pair supports both MERGE and CONFLICT.\"},\n{\"item_id\": \"8abbb3371303522e\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give the same traits of Paludibacter, and one version only garbles the word order.\"},\n{\"item_id\": \"1a668b77f30f09d1\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One is a negated action on garlic and the other a separate action on a capsicum.\"},\n{\"item_id\": \"2c842c9abd51fabb\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Not slicing a cucumber and not slicing meat are separate negated actions on different objects.\"},\n{\"item_id\": \"76d5b881b3f5e9e9\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Nothing in the texts says whether the state is the GSR, so the pair could be MERGE or a change of entity.\"},\n{\"item_id\": \"50b0c26519b289a0\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Ye is Kanye West, and the song, date and featured comedian are the same.\"},\n{\"item_id\": \"bad89f6f38560271\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The cohomology name differs (yarboro versus yarrow), and the modifiers possible and general are swapped.\"},\n{\"item_id\": \"7aeb482b48b3c6f0\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"Rearranging the clauses changes which places are said to lie in the Pacific Ocean.\"},\n{\"item_id\": \"c42444465e772a3a\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Whether the singles are released or still to be released is a status that changes over time.\"},\n{\"item_id\": \"d0ff3784878aab05\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Riding by a stream and riding in a creek may be the same place or different ones.\"},\n{\"item_id\": \"995f7d55acf0f4a0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One statement specifies that the person riding the animal is a man.\"},\n{\"item_id\": \"ee84ffe73ef8a9a4\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the grammatical number of the verbs differs.\"},\n{\"item_id\": \"ad5e4b49ae2b0605\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One statement adds that the season was 1993-94.\"},\n{\"item_id\": \"4514580d0758258a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One statement specifies that the lockdown was hardened.\"},\n{\"item_id\": \"d2a4daa79687ab34\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both negations can hold for the same women.\"},\n{\"item_id\": \"b3b15c702e57977c\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Reed ranks versus reed banks may be a typo or may name a different article.\"},\n{\"item_id\": \"f9f4e1b1a39e6e98\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One statement adds that the popular vote statistic is effectively meaningless.\"},\n{\"item_id\": \"0bb5bbe02f39ed2f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One statement adds the country, the United States.\"},\n{\"item_id\": \"38c5b5ba958c2a8f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One statement adds that the franchise is a survival horror video game series and that Capcom is a Japanese developer.\"},\n{\"item_id\": \"e73d36d53fad9bcd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cracking eggs includes cracking an egg, so the plural adds a compatible detail.\"},\n{\"item_id\": \"ff66899a5e13280b\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"North York's intermediate status differs (city versus borough).\"},\n{\"item_id\": \"48734d279f3d57b4\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Nothing says whether both texts refer to the same film, so the different release dates and distributors may clash or may concern different films.\"},\n{\"item_id\": \"e901c1f1212be358\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only a dropped subject pronoun differs.\"},\n{\"item_id\": \"c8bee44ab39ca4b9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mostly negative and highly negative describe compatible aspects of the same negative reception.\"},\n{\"item_id\": \"fbcd58831aad1aa1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One list adds Shivnarine Chanderpaul.\"},\n{\"item_id\": \"038d12be8d542a64\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"In the same scene, the black dog cannot be both running and walking.\"},\n{\"item_id\": \"77b7a2de87ed3dbe\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A hedged claim and a definite claim about the same relationship can both hold.\"},\n{\"item_id\": \"993f479f6492e796\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe the same musician, and one adds his name and birth details.\"},\n{\"item_id\": \"a725ed731395ba0b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe pouring oil, with compatible details (olive oil, stove, man).\"},\n{\"item_id\": \"9aa92204da7bc3d0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One version adds his prior post as Secretary of Housing and Urban Development.\"},\n{\"item_id\": \"1b282ab021338301\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One version adds Arezzo as the selling club.\"},\n{\"item_id\": \"b7040e06c560cd2a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One version adds that HBO and Sky UK produced it.\"},\n{\"item_id\": \"176e6087c02509b6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One version adds that Benoit died in 2007.\"},\n{\"item_id\": \"86d594e2b16492fd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both negated guitar activities can hold, and one adds the singing and the acoustic guitar.\"},\n{\"item_id\": \"049a8f27ed3ef4d6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One guest list adds SAFE.\"},\n{\"item_id\": \"70d97e9dfa54a171\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Breaking two eggs includes cracking an egg, so the two are compatible.\"},\n{\"item_id\": \"8c4fc585f9dee635\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Loading a rifle and aiming a gun are compatible actions with the same weapon.\"}\n]}\n"
+ ],
+ "labels": {
+  "3672c1724be97fb0": {
+   "item_id": "3672c1724be97fb0",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Being knocked off a horse can be read as ending the riding or as an event during it, so the texts support both a clash and compatibility."
+  },
+  "4c16ce308f84b530": {
+   "item_id": "4c16ce308f84b530",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The release is the same, and one platform list also includes PS Vita."
+  },
+  "2eca5d879a643ab4": {
+   "item_id": "2eca5d879a643ab4",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Is versus were could be a change in the duo's status or just a tense choice, and one statement also adds when they were successful."
+  },
+  "821818e21be1e853": {
+   "item_id": "821818e21be1e853",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Nothing in the texts says whether PrP positivity measures the same thing as vCJD carriers, so the figures may clash or may be unrelated."
+  },
+  "ca334b7c3e97c2a0": {
+   "item_id": "ca334b7c3e97c2a0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe her 2019 departure with compatible details about the party leadership and her time as prime minister."
+  },
+  "085f6513a3bec8e9": {
+   "item_id": "085f6513a3bec8e9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man playing two keyboards can also be playing an electronic keyboard, so each statement adds a compatible detail."
+  },
+  "1becd9969aa4bf5f": {
+   "item_id": "1becd9969aa4bf5f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One version adds that the loan was successful and that Benfica is a Portuguese side."
+  },
+  "1a8265ac7673286a": {
+   "item_id": "1a8265ac7673286a",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Nothing links the album to Jamiroquai, so the claims may be the same kind of sales figure over a different range or may be unrelated."
+  },
+  "5020f57e6be2d4ff": {
+   "item_id": "5020f57e6be2d4ff",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "In the same scene, a red dog and a dog with a tan coat give different coat colours."
+  },
+  "d81d4472642919d6": {
+   "item_id": "d81d4472642919d6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both concern the use of milliard versus billion, with compatible details for English and for other European languages."
+  },
+  "7105331e7cbece09": {
+   "item_id": "7105331e7cbece09",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Eyeshadow is a kind of makeup, and one statement adds that the woman is putting it on the man."
+  },
+  "4bca003265edd466": {
+   "item_id": "4bca003265edd466",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One version adds the example of the Aliens ostinato taken from Wolfen."
+  },
+  "7f67195a66350f4e": {
+   "item_id": "7f67195a66350f4e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Onions are a vegetable, and one statement adds that the slicing is quick."
+  },
+  "79814a767ff6a8fb": {
+   "item_id": "79814a767ff6a8fb",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The missiles can be read as carried by the boat or as what sank it, so the pair supports both MERGE and CONFLICT."
+  },
+  "8abbb3371303522e": {
+   "item_id": "8abbb3371303522e",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give the same traits of Paludibacter, and one version only garbles the word order."
+  },
+  "1a668b77f30f09d1": {
+   "item_id": "1a668b77f30f09d1",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One is a negated action on garlic and the other a separate action on a capsicum."
+  },
+  "2c842c9abd51fabb": {
+   "item_id": "2c842c9abd51fabb",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Not slicing a cucumber and not slicing meat are separate negated actions on different objects."
+  },
+  "76d5b881b3f5e9e9": {
+   "item_id": "76d5b881b3f5e9e9",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Nothing in the texts says whether the state is the GSR, so the pair could be MERGE or a change of entity."
+  },
+  "50b0c26519b289a0": {
+   "item_id": "50b0c26519b289a0",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Ye is Kanye West, and the song, date and featured comedian are the same."
+  },
+  "bad89f6f38560271": {
+   "item_id": "bad89f6f38560271",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The cohomology name differs (yarboro versus yarrow), and the modifiers possible and general are swapped."
+  },
+  "7aeb482b48b3c6f0": {
+   "item_id": "7aeb482b48b3c6f0",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 2,
+   "rationale": "Rearranging the clauses changes which places are said to lie in the Pacific Ocean."
+  },
+  "c42444465e772a3a": {
+   "item_id": "c42444465e772a3a",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Whether the singles are released or still to be released is a status that changes over time."
+  },
+  "d0ff3784878aab05": {
+   "item_id": "d0ff3784878aab05",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Riding by a stream and riding in a creek may be the same place or different ones."
+  },
+  "995f7d55acf0f4a0": {
+   "item_id": "995f7d55acf0f4a0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One statement specifies that the person riding the animal is a man."
+  },
+  "ee84ffe73ef8a9a4": {
+   "item_id": "ee84ffe73ef8a9a4",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the grammatical number of the verbs differs."
+  },
+  "ad5e4b49ae2b0605": {
+   "item_id": "ad5e4b49ae2b0605",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One statement adds that the season was 1993-94."
+  },
+  "4514580d0758258a": {
+   "item_id": "4514580d0758258a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One statement specifies that the lockdown was hardened."
+  },
+  "d2a4daa79687ab34": {
+   "item_id": "d2a4daa79687ab34",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both negations can hold for the same women."
+  },
+  "b3b15c702e57977c": {
+   "item_id": "b3b15c702e57977c",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Reed ranks versus reed banks may be a typo or may name a different article."
+  },
+  "f9f4e1b1a39e6e98": {
+   "item_id": "f9f4e1b1a39e6e98",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One statement adds that the popular vote statistic is effectively meaningless."
+  },
+  "0bb5bbe02f39ed2f": {
+   "item_id": "0bb5bbe02f39ed2f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One statement adds the country, the United States."
+  },
+  "38c5b5ba958c2a8f": {
+   "item_id": "38c5b5ba958c2a8f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One statement adds that the franchise is a survival horror video game series and that Capcom is a Japanese developer."
+  },
+  "e73d36d53fad9bcd": {
+   "item_id": "e73d36d53fad9bcd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cracking eggs includes cracking an egg, so the plural adds a compatible detail."
+  },
+  "ff66899a5e13280b": {
+   "item_id": "ff66899a5e13280b",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "North York's intermediate status differs (city versus borough)."
+  },
+  "48734d279f3d57b4": {
+   "item_id": "48734d279f3d57b4",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Nothing says whether both texts refer to the same film, so the different release dates and distributors may clash or may concern different films."
+  },
+  "e901c1f1212be358": {
+   "item_id": "e901c1f1212be358",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only a dropped subject pronoun differs."
+  },
+  "c8bee44ab39ca4b9": {
+   "item_id": "c8bee44ab39ca4b9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mostly negative and highly negative describe compatible aspects of the same negative reception."
+  },
+  "fbcd58831aad1aa1": {
+   "item_id": "fbcd58831aad1aa1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One list adds Shivnarine Chanderpaul."
+  },
+  "038d12be8d542a64": {
+   "item_id": "038d12be8d542a64",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "In the same scene, the black dog cannot be both running and walking."
+  },
+  "77b7a2de87ed3dbe": {
+   "item_id": "77b7a2de87ed3dbe",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A hedged claim and a definite claim about the same relationship can both hold."
+  },
+  "993f479f6492e796": {
+   "item_id": "993f479f6492e796",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe the same musician, and one adds his name and birth details."
+  },
+  "a725ed731395ba0b": {
+   "item_id": "a725ed731395ba0b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe pouring oil, with compatible details (olive oil, stove, man)."
+  },
+  "9aa92204da7bc3d0": {
+   "item_id": "9aa92204da7bc3d0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One version adds his prior post as Secretary of Housing and Urban Development."
+  },
+  "1b282ab021338301": {
+   "item_id": "1b282ab021338301",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One version adds Arezzo as the selling club."
+  },
+  "b7040e06c560cd2a": {
+   "item_id": "b7040e06c560cd2a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One version adds that HBO and Sky UK produced it."
+  },
+  "176e6087c02509b6": {
+   "item_id": "176e6087c02509b6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One version adds that Benoit died in 2007."
+  },
+  "86d594e2b16492fd": {
+   "item_id": "86d594e2b16492fd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both negated guitar activities can hold, and one adds the singing and the acoustic guitar."
+  },
+  "049a8f27ed3ef4d6": {
+   "item_id": "049a8f27ed3ef4d6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One guest list adds SAFE."
+  },
+  "70d97e9dfa54a171": {
+   "item_id": "70d97e9dfa54a171",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Breaking two eggs includes cracking an egg, so the two are compatible."
+  },
+  "8c4fc585f9dee635": {
+   "item_id": "8c4fc585f9dee635",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Loading a rifle and aiming a gun are compatible actions with the same weapon."
+  }
+ },
+ "errors": []
+}

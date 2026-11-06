@@ -1,0 +1,3051 @@
+{
+ "git_sha": "78f07250b0052cfa3c5d5f01e61947940259beae",
+ "rows": "runs/wp6d/pairs-meld/rows.jsonl",
+ "rows_sha256": "07f151bd413e86e706fe449588ec38755e905c8a1e6628f91897869fc0ec1685",
+ "n": 6177,
+ "run_stamps": [
+  [
+   "78f07250b0052cfa3c5d5f01e61947940259beae",
+   "cross-encoder/nli-deberta-v3-small",
+   "sentence-transformers/all-MiniLM-L6-v2"
+  ]
+ ],
+ "epoch_ids": {
+  "paws": "3de557535326146f9b608d022bd3f490",
+  "sick": "a092a47d6d7f9cf0c24d02716602e63f",
+  "vitaminc": "ce2ea4b2d601b46103d5e3c224341886",
+  "lme": "50e5f63a35f307d38161b541fee212b5"
+ },
+ "maxcal_bin": {
+  "paws": [
+   3,
+   264,
+   65292
+  ],
+  "sick": [
+   2,
+   147,
+   64462
+  ],
+  "vitaminc": [
+   2,
+   122,
+   65160
+  ],
+  "lme": [
+   2,
+   122,
+   7011
+  ]
+ },
+ "arms": {
+  "meld_literal": {
+   "overall": {
+    "pairs": 6177,
+    "false_merge": {
+     "k": 0,
+     "n": 3181,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.001158988166341478
+     ]
+    },
+    "silent_overwrite": {
+     "k": 0,
+     "n": 1548,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0023801599799136972
+     ]
+    },
+    "missed_contradiction": {
+     "k": 130,
+     "n": 1548,
+     "rate": 0.08397932816537468,
+     "ci95": [
+      0.07063900569530811,
+      0.09892142134691757
+     ]
+    },
+    "claim_lost": {
+     "k": 0,
+     "n": 6177,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0005970176754725343
+     ]
+    },
+    "merge_recall": {
+     "k": 0,
+     "n": 2996,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0012305104759543842
+     ]
+    },
+    "decisions": {
+     "INSERT": 86,
+     "RELATE": 4511,
+     "CONFLICT": 1580
+    }
+   },
+   "stratum": {
+    "S0_gold": {
+     "pairs": 91,
+     "false_merge": {
+      "k": 0,
+      "n": 65,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.055171634318813376
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 26,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1322746044977541
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 26,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1322746044977541
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 91,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.039726497691849584
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 26,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1322746044977541
+      ]
+     },
+     "decisions": {
+      "INSERT": 18,
+      "RELATE": 45,
+      "CONFLICT": 28
+     }
+    },
+    "S1_paws_para": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "decisions": {
+      "RELATE": 954,
+      "CONFLICT": 46
+     }
+    },
+    "S2_paws_nonpara": {
+     "pairs": 98,
+     "false_merge": {
+      "k": 0,
+      "n": 81,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.04452026245632174
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 76,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.047378753866930745
+      ]
+     },
+     "missed_contradiction": {
+      "k": 29,
+      "n": 76,
+      "rate": 0.3815789473684211,
+      "ci95": [
+       0.27246301456880295,
+       0.5002213449086967
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 98,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.03694198703519287
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 17,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.19506432296909318
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 49,
+      "RELATE": 49
+     }
+    },
+    "S3_vitc_nonfactual": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "decisions": {
+      "RELATE": 981,
+      "CONFLICT": 19
+     }
+    },
+    "S4_vitc_factual": {
+     "pairs": 990,
+     "false_merge": {
+      "k": 0,
+      "n": 912,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.004036654680546913
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 357,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.010279793673045648
+      ]
+     },
+     "missed_contradiction": {
+      "k": 45,
+      "n": 357,
+      "rate": 0.12605042016806722,
+      "ci95": [
+       0.09344764652835824,
+       0.16500956288899557
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 990,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0037192074142188333
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 78,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.04619242032804872
+      ]
+     },
+     "decisions": {
+      "RELATE": 632,
+      "CONFLICT": 357,
+      "INSERT": 1
+     }
+    },
+    "S5_lme_ku": {
+     "pairs": 51,
+     "false_merge": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 40,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.08809730287880237
+      ]
+     },
+     "missed_contradiction": {
+      "k": 12,
+      "n": 40,
+      "rate": 0.3,
+      "ci95": [
+       0.16562720439323564,
+       0.4653162852541233
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 32,
+      "RELATE": 13,
+      "INSERT": 6
+     }
+    },
+    "S6_scifact_conflict": {
+     "pairs": 104,
+     "false_merge": {
+      "k": 0,
+      "n": 104,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.034848306587674044
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 81,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.04452026245632174
+      ]
+     },
+     "missed_contradiction": {
+      "k": 4,
+      "n": 81,
+      "rate": 0.04938271604938271,
+      "ci95": [
+       0.013617087088063175,
+       0.12163813948651114
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 104,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.034848306587674044
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 87,
+      "INSERT": 4,
+      "RELATE": 13
+     }
+    },
+    "S8_sick_contra": {
+     "pairs": 968,
+     "false_merge": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "missed_contradiction": {
+      "k": 40,
+      "n": 968,
+      "rate": 0.04132231404958678,
+      "ci95": [
+       0.029682532860151333,
+       0.055846632976182635
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 928,
+      "INSERT": 33,
+      "RELATE": 7
+     }
+    },
+    "S8_sick_oneway": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "RELATE": 946,
+      "CONFLICT": 30,
+      "INSERT": 24
+     }
+    },
+    "S8_sick_para": {
+     "pairs": 875,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 875,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.004206987961370756
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 875,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.004206987961370756
+      ]
+     },
+     "decisions": {
+      "RELATE": 871,
+      "CONFLICT": 4
+     }
+    }
+   }
+  },
+  "meld_maxcal": {
+   "overall": {
+    "pairs": 6177,
+    "false_merge": {
+     "k": 9,
+     "n": 3181,
+     "rate": 0.0028292989625903803,
+     "ci95": [
+      0.001294526506045205,
+      0.005364066786456976
+     ]
+    },
+    "silent_overwrite": {
+     "k": 0,
+     "n": 1548,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0023801599799136972
+     ]
+    },
+    "missed_contradiction": {
+     "k": 130,
+     "n": 1548,
+     "rate": 0.08397932816537468,
+     "ci95": [
+      0.07063900569530811,
+      0.09892142134691757
+     ]
+    },
+    "claim_lost": {
+     "k": 0,
+     "n": 6177,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0005970176754725343
+     ]
+    },
+    "merge_recall": {
+     "k": 668,
+     "n": 2996,
+     "rate": 0.22296395193591456,
+     "ci95": [
+      0.20816884848673303,
+      0.2383019643927212
+     ]
+    },
+    "decisions": {
+     "INSERT": 86,
+     "RELATE": 3834,
+     "CONFLICT": 1580,
+     "MERGE": 677
+    }
+   },
+   "stratum": {
+    "S0_gold": {
+     "pairs": 91,
+     "false_merge": {
+      "k": 0,
+      "n": 65,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.055171634318813376
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 26,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1322746044977541
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 26,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1322746044977541
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 91,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.039726497691849584
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 26,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1322746044977541
+      ]
+     },
+     "decisions": {
+      "INSERT": 18,
+      "RELATE": 45,
+      "CONFLICT": 28
+     }
+    },
+    "S1_paws_para": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 195,
+      "n": 1000,
+      "rate": 0.195,
+      "ci95": [
+       0.1708704290229814,
+       0.2209396253926717
+      ]
+     },
+     "decisions": {
+      "MERGE": 195,
+      "RELATE": 759,
+      "CONFLICT": 46
+     }
+    },
+    "S2_paws_nonpara": {
+     "pairs": 98,
+     "false_merge": {
+      "k": 1,
+      "n": 81,
+      "rate": 0.012345679012345678,
+      "ci95": [
+       0.0003125166871538298,
+       0.06687562093221079
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 76,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.047378753866930745
+      ]
+     },
+     "missed_contradiction": {
+      "k": 29,
+      "n": 76,
+      "rate": 0.3815789473684211,
+      "ci95": [
+       0.27246301456880295,
+       0.5002213449086967
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 98,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.03694198703519287
+      ]
+     },
+     "merge_recall": {
+      "k": 3,
+      "n": 17,
+      "rate": 0.17647058823529413,
+      "ci95": [
+       0.037985068070626016,
+       0.43431787284428397
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 49,
+      "MERGE": 4,
+      "RELATE": 45
+     }
+    },
+    "S3_vitc_nonfactual": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 159,
+      "n": 1000,
+      "rate": 0.159,
+      "ci95": [
+       0.13686569233853219,
+       0.18316233481747668
+      ]
+     },
+     "decisions": {
+      "RELATE": 822,
+      "MERGE": 159,
+      "CONFLICT": 19
+     }
+    },
+    "S4_vitc_factual": {
+     "pairs": 990,
+     "false_merge": {
+      "k": 1,
+      "n": 912,
+      "rate": 0.0010964912280701754,
+      "ci95": [
+       2.7760369042563017e-05,
+       0.006093967937805606
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 357,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.010279793673045648
+      ]
+     },
+     "missed_contradiction": {
+      "k": 45,
+      "n": 357,
+      "rate": 0.12605042016806722,
+      "ci95": [
+       0.09344764652835824,
+       0.16500956288899557
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 990,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0037192074142188333
+      ]
+     },
+     "merge_recall": {
+      "k": 2,
+      "n": 78,
+      "rate": 0.02564102564102564,
+      "ci95": [
+       0.003120472482934025,
+       0.08957332714632771
+      ]
+     },
+     "decisions": {
+      "RELATE": 629,
+      "CONFLICT": 357,
+      "INSERT": 1,
+      "MERGE": 3
+     }
+    },
+    "S5_lme_ku": {
+     "pairs": 51,
+     "false_merge": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 40,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.08809730287880237
+      ]
+     },
+     "missed_contradiction": {
+      "k": 12,
+      "n": 40,
+      "rate": 0.3,
+      "ci95": [
+       0.16562720439323564,
+       0.4653162852541233
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 32,
+      "RELATE": 13,
+      "INSERT": 6
+     }
+    },
+    "S6_scifact_conflict": {
+     "pairs": 104,
+     "false_merge": {
+      "k": 0,
+      "n": 104,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.034848306587674044
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 81,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.04452026245632174
+      ]
+     },
+     "missed_contradiction": {
+      "k": 4,
+      "n": 81,
+      "rate": 0.04938271604938271,
+      "ci95": [
+       0.013617087088063175,
+       0.12163813948651114
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 104,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.034848306587674044
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 87,
+      "INSERT": 4,
+      "RELATE": 13
+     }
+    },
+    "S8_sick_contra": {
+     "pairs": 968,
+     "false_merge": {
+      "k": 1,
+      "n": 968,
+      "rate": 0.0010330578512396695,
+      "ci95": [
+       2.615441828158745e-05,
+       0.005742256593129476
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "missed_contradiction": {
+      "k": 40,
+      "n": 968,
+      "rate": 0.04132231404958678,
+      "ci95": [
+       0.029682532860151333,
+       0.055846632976182635
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 928,
+      "INSERT": 33,
+      "RELATE": 6,
+      "MERGE": 1
+     }
+    },
+    "S8_sick_oneway": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 6,
+      "n": 1000,
+      "rate": 0.006,
+      "ci95": [
+       0.0022049824851513773,
+       0.013013423270974496
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "RELATE": 940,
+      "CONFLICT": 30,
+      "INSERT": 24,
+      "MERGE": 6
+     }
+    },
+    "S8_sick_para": {
+     "pairs": 875,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 875,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.004206987961370756
+      ]
+     },
+     "merge_recall": {
+      "k": 309,
+      "n": 875,
+      "rate": 0.35314285714285715,
+      "ci95": [
+       0.3214431288615271,
+       0.38583551450915027
+      ]
+     },
+     "decisions": {
+      "RELATE": 562,
+      "MERGE": 309,
+      "CONFLICT": 4
+     }
+    }
+   }
+  },
+  "submitted": {
+   "overall": {
+    "pairs": 6177,
+    "false_merge": {
+     "k": 805,
+     "n": 3181,
+     "rate": 0.2530650738761396,
+     "ci95": [
+      0.2380318646826375,
+      0.26855360460109967
+     ]
+    },
+    "silent_overwrite": {
+     "k": 0,
+     "n": 1548,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0023801599799136972
+     ]
+    },
+    "missed_contradiction": {
+     "k": 167,
+     "n": 1548,
+     "rate": 0.1078811369509044,
+     "ci95": [
+      0.09285881416857891,
+      0.12440852177937746
+     ]
+    },
+    "claim_lost": {
+     "k": 0,
+     "n": 6177,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0005970176754725343
+     ]
+    },
+    "merge_recall": {
+     "k": 2650,
+     "n": 2996,
+     "rate": 0.8845126835781041,
+     "ci95": [
+      0.8725240971139518,
+      0.8957444536371173
+     ]
+    },
+    "decisions": {
+     "RELATE": 1190,
+     "MERGE": 3455,
+     "CONFLICT": 1523,
+     "NO_RELATION": 9
+    }
+   },
+   "stratum": {
+    "S0_gold": {
+     "pairs": 91,
+     "false_merge": {
+      "k": 0,
+      "n": 65,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.055171634318813376
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 26,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1322746044977541
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 26,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1322746044977541
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 91,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.039726497691849584
+      ]
+     },
+     "merge_recall": {
+      "k": 20,
+      "n": 26,
+      "rate": 0.7692307692307693,
+      "ci95": [
+       0.5635249030586136,
+       0.9102598891154248
+      ]
+     },
+     "decisions": {
+      "RELATE": 31,
+      "MERGE": 20,
+      "CONFLICT": 31,
+      "NO_RELATION": 9
+     }
+    },
+    "S1_paws_para": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 911,
+      "n": 1000,
+      "rate": 0.911,
+      "ci95": [
+       0.8916189999399975,
+       0.92791753546024
+      ]
+     },
+     "decisions": {
+      "MERGE": 911,
+      "RELATE": 51,
+      "CONFLICT": 38
+     }
+    },
+    "S2_paws_nonpara": {
+     "pairs": 98,
+     "false_merge": {
+      "k": 32,
+      "n": 81,
+      "rate": 0.3950617283950617,
+      "ci95": [
+       0.28813582777420105,
+       0.5098977334858689
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 76,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.047378753866930745
+      ]
+     },
+     "missed_contradiction": {
+      "k": 32,
+      "n": 76,
+      "rate": 0.42105263157894735,
+      "ci95": [
+       0.3086157248141728,
+       0.5398336531470997
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 98,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.03694198703519287
+      ]
+     },
+     "merge_recall": {
+      "k": 15,
+      "n": 17,
+      "rate": 0.8823529411764706,
+      "ci95": [
+       0.6355908378987498,
+       0.9854206831596976
+      ]
+     },
+     "decisions": {
+      "MERGE": 47,
+      "CONFLICT": 46,
+      "RELATE": 5
+     }
+    },
+    "S3_vitc_nonfactual": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 971,
+      "n": 1000,
+      "rate": 0.971,
+      "ci95": [
+       0.958615280883598,
+       0.9804940626756153
+      ]
+     },
+     "decisions": {
+      "MERGE": 971,
+      "RELATE": 14,
+      "CONFLICT": 15
+     }
+    },
+    "S4_vitc_factual": {
+     "pairs": 990,
+     "false_merge": {
+      "k": 483,
+      "n": 912,
+      "rate": 0.5296052631578947,
+      "ci95": [
+       0.4966122222993832,
+       0.5624065179399074
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 357,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.010279793673045648
+      ]
+     },
+     "missed_contradiction": {
+      "k": 67,
+      "n": 357,
+      "rate": 0.1876750700280112,
+      "ci95": [
+       0.1485086431238318,
+       0.23211169062762685
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 990,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0037192074142188333
+      ]
+     },
+     "merge_recall": {
+      "k": 66,
+      "n": 78,
+      "rate": 0.8461538461538461,
+      "ci95": [
+       0.7466786658963328,
+       0.9178981617130411
+      ]
+     },
+     "decisions": {
+      "MERGE": 549,
+      "CONFLICT": 324,
+      "RELATE": 117
+     }
+    },
+    "S5_lme_ku": {
+     "pairs": 51,
+     "false_merge": {
+      "k": 2,
+      "n": 51,
+      "rate": 0.0392156862745098,
+      "ci95": [
+       0.004784992694707295,
+       0.13458649112966417
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 40,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.08809730287880237
+      ]
+     },
+     "missed_contradiction": {
+      "k": 18,
+      "n": 40,
+      "rate": 0.45,
+      "ci95": [
+       0.29258835003987993,
+       0.6150932054659867
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 27,
+      "MERGE": 2,
+      "RELATE": 22
+     }
+    },
+    "S6_scifact_conflict": {
+     "pairs": 104,
+     "false_merge": {
+      "k": 1,
+      "n": 104,
+      "rate": 0.009615384615384616,
+      "ci95": [
+       0.00024341083216264874,
+       0.05241069970322814
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 81,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.04452026245632174
+      ]
+     },
+     "missed_contradiction": {
+      "k": 5,
+      "n": 81,
+      "rate": 0.06172839506172839,
+      "ci95": [
+       0.020344839322421693,
+       0.13820260527413497
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 104,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.034848306587674044
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 85,
+      "RELATE": 18,
+      "MERGE": 1
+     }
+    },
+    "S8_sick_contra": {
+     "pairs": 968,
+     "false_merge": {
+      "k": 5,
+      "n": 968,
+      "rate": 0.005165289256198347,
+      "ci95": [
+       0.0016792185535779646,
+       0.012012590222210979
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "missed_contradiction": {
+      "k": 45,
+      "n": 968,
+      "rate": 0.04648760330578512,
+      "ci95": [
+       0.034107319990625246,
+       0.06171230227477194
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 923,
+      "RELATE": 40,
+      "MERGE": 5
+     }
+    },
+    "S8_sick_oneway": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 282,
+      "n": 1000,
+      "rate": 0.282,
+      "ci95": [
+       0.25428669934092557,
+       0.31100307270924926
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "RELATE": 687,
+      "MERGE": 282,
+      "CONFLICT": 31
+     }
+    },
+    "S8_sick_para": {
+     "pairs": 875,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 875,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.004206987961370756
+      ]
+     },
+     "merge_recall": {
+      "k": 667,
+      "n": 875,
+      "rate": 0.7622857142857142,
+      "ci95": [
+       0.7326527756316551,
+       0.7901403183594826
+      ]
+     },
+     "decisions": {
+      "MERGE": 667,
+      "RELATE": 205,
+      "CONFLICT": 3
+     }
+    }
+   }
+  },
+  "meld_bin0": {
+   "overall": {
+    "pairs": 51,
+    "false_merge": {
+     "k": 0,
+     "n": 51,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.06977703074953864
+     ]
+    },
+    "silent_overwrite": {
+     "k": 0,
+     "n": 40,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.08809730287880237
+     ]
+    },
+    "missed_contradiction": {
+     "k": 12,
+     "n": 40,
+     "rate": 0.3,
+     "ci95": [
+      0.16562720439323564,
+      0.4653162852541233
+     ]
+    },
+    "claim_lost": {
+     "k": 0,
+     "n": 51,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.06977703074953864
+     ]
+    },
+    "merge_recall": {
+     "k": 0,
+     "n": 0,
+     "rate": null,
+     "ci95": [
+      null,
+      null
+     ]
+    },
+    "decisions": {
+     "CONFLICT": 32,
+     "RELATE": 13,
+     "INSERT": 6
+    }
+   },
+   "stratum": {
+    "S5_lme_ku": {
+     "pairs": 51,
+     "false_merge": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 40,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.08809730287880237
+      ]
+     },
+     "missed_contradiction": {
+      "k": 12,
+      "n": 40,
+      "rate": 0.3,
+      "ci95": [
+       0.16562720439323564,
+       0.4653162852541233
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 32,
+      "RELATE": 13,
+      "INSERT": 6
+     }
+    }
+   }
+  },
+  "meld_bin1": {
+   "overall": {
+    "pairs": 2894,
+    "false_merge": {
+     "k": 8,
+     "n": 2019,
+     "rate": 0.00396235760277365,
+     "ci95": [
+      0.0017121695087612655,
+      0.0077924196830535
+     ]
+    },
+    "silent_overwrite": {
+     "k": 0,
+     "n": 1008,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.003652914448520391
+     ]
+    },
+    "missed_contradiction": {
+     "k": 52,
+     "n": 1008,
+     "rate": 0.051587301587301584,
+     "ci95": [
+      0.03876447644675333,
+      0.06710263884634607
+     ]
+    },
+    "claim_lost": {
+     "k": 0,
+     "n": 2894,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0012738525952432698
+     ]
+    },
+    "merge_recall": {
+     "k": 330,
+     "n": 875,
+     "rate": 0.37714285714285717,
+     "ci95": [
+      0.34491760460101406,
+      0.4101985066200845
+     ]
+    },
+    "decisions": {
+     "CONFLICT": 994,
+     "INSERT": 63,
+     "RELATE": 1499,
+     "MERGE": 338
+    }
+   },
+   "stratum": {
+    "S5_lme_ku": {
+     "pairs": 51,
+     "false_merge": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 40,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.08809730287880237
+      ]
+     },
+     "missed_contradiction": {
+      "k": 12,
+      "n": 40,
+      "rate": 0.3,
+      "ci95": [
+       0.16562720439323564,
+       0.4653162852541233
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 32,
+      "RELATE": 13,
+      "INSERT": 6
+     }
+    },
+    "S8_sick_contra": {
+     "pairs": 968,
+     "false_merge": {
+      "k": 1,
+      "n": 968,
+      "rate": 0.0010330578512396695,
+      "ci95": [
+       2.615441828158745e-05,
+       0.005742256593129476
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "missed_contradiction": {
+      "k": 40,
+      "n": 968,
+      "rate": 0.04132231404958678,
+      "ci95": [
+       0.029682532860151333,
+       0.055846632976182635
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 928,
+      "INSERT": 33,
+      "RELATE": 6,
+      "MERGE": 1
+     }
+    },
+    "S8_sick_oneway": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 7,
+      "n": 1000,
+      "rate": 0.007,
+      "ci95": [
+       0.0028188587596205245,
+       0.014369194978918632
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "RELATE": 939,
+      "CONFLICT": 30,
+      "INSERT": 24,
+      "MERGE": 7
+     }
+    },
+    "S8_sick_para": {
+     "pairs": 875,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 875,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.004206987961370756
+      ]
+     },
+     "merge_recall": {
+      "k": 330,
+      "n": 875,
+      "rate": 0.37714285714285717,
+      "ci95": [
+       0.34491760460101406,
+       0.4101985066200845
+      ]
+     },
+     "decisions": {
+      "RELATE": 541,
+      "MERGE": 330,
+      "CONFLICT": 4
+     }
+    }
+   }
+  },
+  "meld_bin2": {
+   "overall": {
+    "pairs": 5982,
+    "false_merge": {
+     "k": 8,
+     "n": 3012,
+     "rate": 0.0026560424966799467,
+     "ci95": [
+      0.0011473663877186303,
+      0.005226719838963301
+     ]
+    },
+    "silent_overwrite": {
+     "k": 0,
+     "n": 1441,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0025566702414962133
+     ]
+    },
+    "missed_contradiction": {
+     "k": 126,
+     "n": 1441,
+     "rate": 0.08743927827897294,
+     "ci95": [
+      0.07336004622653763,
+      0.10322567078033396
+     ]
+    },
+    "claim_lost": {
+     "k": 0,
+     "n": 5982,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.000616473134355015
+     ]
+    },
+    "merge_recall": {
+     "k": 529,
+     "n": 2970,
+     "rate": 0.17811447811447811,
+     "ci95": [
+      0.16450814506254613,
+      0.1923579826732652
+     ]
+    },
+    "decisions": {
+     "MERGE": 537,
+     "RELATE": 3916,
+     "CONFLICT": 1465,
+     "INSERT": 64
+    }
+   },
+   "stratum": {
+    "S1_paws_para": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 59,
+      "n": 1000,
+      "rate": 0.059,
+      "ci95": [
+       0.045213354402796606,
+       0.07544907308424079
+      ]
+     },
+     "decisions": {
+      "MERGE": 59,
+      "RELATE": 895,
+      "CONFLICT": 46
+     }
+    },
+    "S2_paws_nonpara": {
+     "pairs": 98,
+     "false_merge": {
+      "k": 0,
+      "n": 81,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.04452026245632174
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 76,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.047378753866930745
+      ]
+     },
+     "missed_contradiction": {
+      "k": 29,
+      "n": 76,
+      "rate": 0.3815789473684211,
+      "ci95": [
+       0.27246301456880295,
+       0.5002213449086967
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 98,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.03694198703519287
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 17,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.19506432296909318
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 49,
+      "RELATE": 49
+     }
+    },
+    "S3_vitc_nonfactual": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 159,
+      "n": 1000,
+      "rate": 0.159,
+      "ci95": [
+       0.13686569233853219,
+       0.18316233481747668
+      ]
+     },
+     "decisions": {
+      "RELATE": 822,
+      "MERGE": 159,
+      "CONFLICT": 19
+     }
+    },
+    "S4_vitc_factual": {
+     "pairs": 990,
+     "false_merge": {
+      "k": 1,
+      "n": 912,
+      "rate": 0.0010964912280701754,
+      "ci95": [
+       2.7760369042563017e-05,
+       0.006093967937805606
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 357,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.010279793673045648
+      ]
+     },
+     "missed_contradiction": {
+      "k": 45,
+      "n": 357,
+      "rate": 0.12605042016806722,
+      "ci95": [
+       0.09344764652835824,
+       0.16500956288899557
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 990,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0037192074142188333
+      ]
+     },
+     "merge_recall": {
+      "k": 2,
+      "n": 78,
+      "rate": 0.02564102564102564,
+      "ci95": [
+       0.003120472482934025,
+       0.08957332714632771
+      ]
+     },
+     "decisions": {
+      "RELATE": 629,
+      "CONFLICT": 357,
+      "INSERT": 1,
+      "MERGE": 3
+     }
+    },
+    "S5_lme_ku": {
+     "pairs": 51,
+     "false_merge": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 40,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.08809730287880237
+      ]
+     },
+     "missed_contradiction": {
+      "k": 12,
+      "n": 40,
+      "rate": 0.3,
+      "ci95": [
+       0.16562720439323564,
+       0.4653162852541233
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 32,
+      "RELATE": 13,
+      "INSERT": 6
+     }
+    },
+    "S8_sick_contra": {
+     "pairs": 968,
+     "false_merge": {
+      "k": 1,
+      "n": 968,
+      "rate": 0.0010330578512396695,
+      "ci95": [
+       2.615441828158745e-05,
+       0.005742256593129476
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "missed_contradiction": {
+      "k": 40,
+      "n": 968,
+      "rate": 0.04132231404958678,
+      "ci95": [
+       0.029682532860151333,
+       0.055846632976182635
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 968,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003803573900334607
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 928,
+      "INSERT": 33,
+      "RELATE": 6,
+      "MERGE": 1
+     }
+    },
+    "S8_sick_oneway": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 6,
+      "n": 1000,
+      "rate": 0.006,
+      "ci95": [
+       0.0022049824851513773,
+       0.013013423270974496
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "RELATE": 940,
+      "CONFLICT": 30,
+      "INSERT": 24,
+      "MERGE": 6
+     }
+    },
+    "S8_sick_para": {
+     "pairs": 875,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 875,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.004206987961370756
+      ]
+     },
+     "merge_recall": {
+      "k": 309,
+      "n": 875,
+      "rate": 0.35314285714285715,
+      "ci95": [
+       0.3214431288615271,
+       0.38583551450915027
+      ]
+     },
+     "decisions": {
+      "RELATE": 562,
+      "MERGE": 309,
+      "CONFLICT": 4
+     }
+    }
+   }
+  },
+  "meld_bin3": {
+   "overall": {
+    "pairs": 1149,
+    "false_merge": {
+     "k": 1,
+     "n": 132,
+     "rate": 0.007575757575757576,
+     "ci95": [
+      0.00019178318289228915,
+      0.041485689811114654
+     ]
+    },
+    "silent_overwrite": {
+     "k": 0,
+     "n": 116,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.03130036074328996
+     ]
+    },
+    "missed_contradiction": {
+     "k": 41,
+     "n": 116,
+     "rate": 0.35344827586206895,
+     "ci95": [
+      0.26694868990926424,
+      0.44762936015255883
+     ]
+    },
+    "claim_lost": {
+     "k": 0,
+     "n": 1149,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0032053648288983072
+     ]
+    },
+    "merge_recall": {
+     "k": 198,
+     "n": 1017,
+     "rate": 0.19469026548672566,
+     "ci95": [
+      0.17077484590114625,
+      0.22038697696088086
+     ]
+    },
+    "decisions": {
+     "MERGE": 199,
+     "RELATE": 817,
+     "CONFLICT": 127,
+     "INSERT": 6
+    }
+   },
+   "stratum": {
+    "S1_paws_para": {
+     "pairs": 1000,
+     "false_merge": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "missed_contradiction": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 1000,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.003682083896865671
+      ]
+     },
+     "merge_recall": {
+      "k": 195,
+      "n": 1000,
+      "rate": 0.195,
+      "ci95": [
+       0.1708704290229814,
+       0.2209396253926717
+      ]
+     },
+     "decisions": {
+      "MERGE": 195,
+      "RELATE": 759,
+      "CONFLICT": 46
+     }
+    },
+    "S2_paws_nonpara": {
+     "pairs": 98,
+     "false_merge": {
+      "k": 1,
+      "n": 81,
+      "rate": 0.012345679012345678,
+      "ci95": [
+       0.0003125166871538298,
+       0.06687562093221079
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 76,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.047378753866930745
+      ]
+     },
+     "missed_contradiction": {
+      "k": 29,
+      "n": 76,
+      "rate": 0.3815789473684211,
+      "ci95": [
+       0.27246301456880295,
+       0.5002213449086967
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 98,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.03694198703519287
+      ]
+     },
+     "merge_recall": {
+      "k": 3,
+      "n": 17,
+      "rate": 0.17647058823529413,
+      "ci95": [
+       0.037985068070626016,
+       0.43431787284428397
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 49,
+      "MERGE": 4,
+      "RELATE": 45
+     }
+    },
+    "S5_lme_ku": {
+     "pairs": 51,
+     "false_merge": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "silent_overwrite": {
+      "k": 0,
+      "n": 40,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.08809730287880237
+      ]
+     },
+     "missed_contradiction": {
+      "k": 12,
+      "n": 40,
+      "rate": 0.3,
+      "ci95": [
+       0.16562720439323564,
+       0.4653162852541233
+      ]
+     },
+     "claim_lost": {
+      "k": 0,
+      "n": 51,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.06977703074953864
+      ]
+     },
+     "merge_recall": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       null,
+       null
+      ]
+     },
+     "decisions": {
+      "CONFLICT": 32,
+      "RELATE": 13,
+      "INSERT": 6
+     }
+    }
+   }
+  }
+ },
+ "arms_calibrated_domains": {
+  "meld_literal": {
+   "pairs": 5982,
+   "false_merge": {
+    "k": 0,
+    "n": 3012,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.0012239779016707843
+    ]
+   },
+   "silent_overwrite": {
+    "k": 0,
+    "n": 1441,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.0025566702414962133
+    ]
+   },
+   "missed_contradiction": {
+    "k": 126,
+    "n": 1441,
+    "rate": 0.08743927827897294,
+    "ci95": [
+     0.07336004622653763,
+     0.10322567078033396
+    ]
+   },
+   "claim_lost": {
+    "k": 0,
+    "n": 5982,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.000616473134355015
+    ]
+   },
+   "merge_recall": {
+    "k": 0,
+    "n": 2970,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.001241275933176667
+    ]
+   },
+   "decisions": {
+    "RELATE": 4453,
+    "CONFLICT": 1465,
+    "INSERT": 64
+   }
+  },
+  "meld_maxcal": {
+   "pairs": 5982,
+   "false_merge": {
+    "k": 9,
+    "n": 3012,
+    "rate": 0.00298804780876494,
+    "ci95": [
+     0.0013672078820500184,
+     0.0056646343776838096
+    ]
+   },
+   "silent_overwrite": {
+    "k": 0,
+    "n": 1441,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.0025566702414962133
+    ]
+   },
+   "missed_contradiction": {
+    "k": 126,
+    "n": 1441,
+    "rate": 0.08743927827897294,
+    "ci95": [
+     0.07336004622653763,
+     0.10322567078033396
+    ]
+   },
+   "claim_lost": {
+    "k": 0,
+    "n": 5982,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.000616473134355015
+    ]
+   },
+   "merge_recall": {
+    "k": 668,
+    "n": 2970,
+    "rate": 0.2249158249158249,
+    "ci95": [
+     0.21000823719016318,
+     0.24036722341637765
+    ]
+   },
+   "decisions": {
+    "MERGE": 677,
+    "RELATE": 3776,
+    "CONFLICT": 1465,
+    "INSERT": 64
+   }
+  },
+  "submitted": {
+   "pairs": 5982,
+   "false_merge": {
+    "k": 804,
+    "n": 3012,
+    "rate": 0.26693227091633465,
+    "ci95": [
+     0.2512011115921526,
+     0.2831173448874714
+    ]
+   },
+   "silent_overwrite": {
+    "k": 0,
+    "n": 1441,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.0025566702414962133
+    ]
+   },
+   "missed_contradiction": {
+    "k": 162,
+    "n": 1441,
+    "rate": 0.11242192921582235,
+    "ci95": [
+     0.09656801099088108,
+     0.12987458519416512
+    ]
+   },
+   "claim_lost": {
+    "k": 0,
+    "n": 5982,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.000616473134355015
+    ]
+   },
+   "merge_recall": {
+    "k": 2630,
+    "n": 2970,
+    "rate": 0.8855218855218855,
+    "ci95": [
+     0.8735212539645419,
+     0.8967569575805691
+    ]
+   },
+   "decisions": {
+    "MERGE": 3434,
+    "RELATE": 1141,
+    "CONFLICT": 1407
+   }
+  }
+ }
+}

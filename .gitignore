@@ -23,8 +23,8 @@ OPSLOG.md
 # the public repo must never contain; the hygiene guard forbids those tokens).
 csc/
 
-# Regenerable smoke/run outputs (figures are produced by run_local_smoke.py;
-# paper-final figures, if any, are committed deliberately, not the smoke ones).
+# Regenerable smoke/run outputs (paper-final figures, if any, are committed deliberately,
+# not the smoke ones).
 figures/
 outputs/
 
@@ -66,3 +66,17 @@ cross-tier/site.env
 
 # Vendored kafka-python for offline remote deploy (kafka-python is in requirements.txt)
 cross-tier/vendor/
+
+# per-task git worktrees
+.worktrees/
+
+# Caura source tree and tarball (fetched by vendor/caura/fetch.sh; pinned in vendor/caura/PIN)
+vendor/caura/src/
+vendor/caura/*.tar.gz
+
+# manuscript snapshots (never released)
+attic/
+
+# Curated study archive ships with the release (outputs/ and *.log above would ignore it)
+!release/study-archive/outputs/
+!release/study-archive/**/*.log

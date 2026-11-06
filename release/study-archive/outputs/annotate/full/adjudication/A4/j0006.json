@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0006",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "5c5f76b5ad01472855761d0032bf1e90ea0485835a0f677d2ecfbca53c6f9e5b",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"55470ea4220c2567\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Directing the organization of polarization clashes with preventing it, but the condition of Ly49Q being active may differ.\"},\n{\"item_id\": \"34db546b47ddf793\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"rationale\": \"Iraq and Pakistan swap places in the described range, so which country is only partly covered differs.\", \"confidence\": 4},\n{\"item_id\": \"d784cc2661cb6cd3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe the woman slicing an onion; one adds the knife.\"},\n{\"item_id\": \"f793574f62115838\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same death in 1981 near Paris; one adds the country France.\"},\n{\"item_id\": \"0fe73b6f9cd02c50\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Listing versus the garbled performing as endangered species could be a corruption of the same claim or a different action.\"},\n{\"item_id\": \"b6803b44c0ce87f6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give 3.9% of children in bilingual primary schooling in 2016, only reworded.\"},\n{\"item_id\": \"02511bd8add89b67\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Goal timings clash as written but could describe different matches.\"},\n{\"item_id\": \"331e1a6eefed819f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Who certified and who released the single and the video is swapped.\"},\n{\"item_id\": \"6213acfb0fc72796\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both concern NSAIDs such as ibuprofen and their COX-related properties with compatible details.\"},\n{\"item_id\": \"36db3a8eaf8d72d0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A chimp practicing martial arts is a more specific description of the animal.\"},\n{\"item_id\": \"74edc8c199d1cd0b\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Paper being cut in both, differing only in trivial wording.\"},\n{\"item_id\": \"e3fa8cf7bfd1aeaf\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The film's Rotten Tomatoes rating differs (67% versus 36%), an aggregate that can change over time.\"},\n{\"item_id\": \"5abaad7195b9575c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Denying a man cutting butter is compatible with a man adding butter to the bowl.\"},\n{\"item_id\": \"4d608dbf0de1b70b\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mixed reviews clash with universal acclaim, but the texts may refer to different films or critic sets.\"},\n{\"item_id\": \"8de4d1de38a07644\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only a stray duplicated pronoun differs.\"},\n{\"item_id\": \"89f7509f2bbc04ca\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Swapping useful and active changes the stated reason for uninstalling.\"},\n{\"item_id\": \"baa95e2d9f42d8ab\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Announcement pending versus already made is a status that changes over time.\"},\n{\"item_id\": \"9d82f37cfb4fae86\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds drama to the film's genre.\"},\n{\"item_id\": \"b860e646eecfe9bb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Excellent funds for own works and own funds for excellent works are different but compatible claims.\"},\n{\"item_id\": \"5854353e748ccdc8\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Will be released versus was released is a release status that changes over time.\"},\n{\"item_id\": \"c8206323201a5329\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Coordinated marrying and conceiving in either order assert the same facts.\"},\n{\"item_id\": \"363aaced2b635cb5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The Cavaliers' 12-1 record and the Warriors winning with 16-1 are compatible details of the same run.\"},\n{\"item_id\": \"b27378b1c9953a1e\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Progress through the Science series (50 episodes versus episode 10) is a count that changes over time.\"},\n{\"item_id\": \"8ecd430225b25696\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny aerial cycling, with compatible different specifics.\"},\n{\"item_id\": \"3c949bd97e7be609\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Pan and skillet are plain synonyms here.\"},\n{\"item_id\": \"0601ce500bcbe13f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The film's title differs (at versus in Peking), a fixed name.\"},\n{\"item_id\": \"c3962465d513650a\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A person on a motorcycle and a person standing near one may be different people or a clashing scene.\"},\n{\"item_id\": \"679e94736e2de697\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Sitting on versus getting off the motorcycle cannot both describe the policeman at once.\"},\n{\"item_id\": \"eeaa2d46b10fc7dd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe motorcycle riding with compatible details.\"},\n{\"item_id\": \"c18161e4a3bbcf2b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Touring the country with the show; one adds Europe and the show's name.\"},\n{\"item_id\": \"2d2139fc829ca3e1\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same marriage and children, with a garbled subject in one.\"},\n{\"item_id\": \"61c1c9b562638185\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Snowboarding down a railing specifies the snowboard trick.\"},\n{\"item_id\": \"f9a153aa85ba9551\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Swapped adjectives garble the claim, which reads as either a compatible variant or a changed fact.\"},\n{\"item_id\": \"13c874663b0e20f1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Denying a woman mixing eggs and denying one cooking eggs are compatible.\"},\n{\"item_id\": \"50dbfd6068a1468e\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Included versus will include is a status that changes over time.\"},\n{\"item_id\": \"0f6ececba61b8587\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Often and regularly are synonyms swapped between clauses.\"},\n{\"item_id\": \"2a2434754bec5b7d\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"District and province swap roles in the containment relation.\"},\n{\"item_id\": \"b071fdafad66b8f6\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Scrambled modifiers read as either the same catalyst claim or a swapped attribution.\"},\n{\"item_id\": \"e03662f2b02b77be\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same birthplace and parents; one only drops the subject name.\"},\n{\"item_id\": \"5cabdd94616840f0\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"She bore his daughter and their daughter assert the same parentage.\"},\n{\"item_id\": \"ce73ee88603575b2\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Review count 297 versus 301 is a total that changes over time.\"},\n{\"item_id\": \"1fad67898bc1ceff\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Cuban heritage to American.\"},\n{\"item_id\": \"3c32843e8db5b384\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the feeding is careful.\"},\n{\"item_id\": \"83659bdf4f558ee6\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Count of postcards added since resuming (25 versus 17) is a total to date.\"},\n{\"item_id\": \"1bda1ec38cf9fd5e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One names the members of the duo.\"},\n{\"item_id\": \"f6b278a9d1e58167\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the dog's colour, the dock and the pond.\"},\n{\"item_id\": \"4032881ff87b82fa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Not playing any guitar is compatible with not playing an acoustic one; one specifies the guitar type.\"},\n{\"item_id\": \"e14371ccf189c6ef\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Wait Until Dark was Oscar-nominated.\"},\n{\"item_id\": \"9c657ff35b7e5c65\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Continuous and random parts swap between integration range and density.\"},\n{\"item_id\": \"ff19ffeec6ac7012\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds that the child is young.\"}\n]}\n"
+ ],
+ "labels": {
+  "55470ea4220c2567": {
+   "item_id": "55470ea4220c2567",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Directing the organization of polarization clashes with preventing it, but the condition of Ly49Q being active may differ."
+  },
+  "34db546b47ddf793": {
+   "item_id": "34db546b47ddf793",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "rationale": "Iraq and Pakistan swap places in the described range, so which country is only partly covered differs.",
+   "confidence": 4
+  },
+  "d784cc2661cb6cd3": {
+   "item_id": "d784cc2661cb6cd3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe the woman slicing an onion; one adds the knife."
+  },
+  "f793574f62115838": {
+   "item_id": "f793574f62115838",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same death in 1981 near Paris; one adds the country France."
+  },
+  "0fe73b6f9cd02c50": {
+   "item_id": "0fe73b6f9cd02c50",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Listing versus the garbled performing as endangered species could be a corruption of the same claim or a different action."
+  },
+  "b6803b44c0ce87f6": {
+   "item_id": "b6803b44c0ce87f6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give 3.9% of children in bilingual primary schooling in 2016, only reworded."
+  },
+  "02511bd8add89b67": {
+   "item_id": "02511bd8add89b67",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Goal timings clash as written but could describe different matches."
+  },
+  "331e1a6eefed819f": {
+   "item_id": "331e1a6eefed819f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Who certified and who released the single and the video is swapped."
+  },
+  "6213acfb0fc72796": {
+   "item_id": "6213acfb0fc72796",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both concern NSAIDs such as ibuprofen and their COX-related properties with compatible details."
+  },
+  "36db3a8eaf8d72d0": {
+   "item_id": "36db3a8eaf8d72d0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A chimp practicing martial arts is a more specific description of the animal."
+  },
+  "74edc8c199d1cd0b": {
+   "item_id": "74edc8c199d1cd0b",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Paper being cut in both, differing only in trivial wording."
+  },
+  "e3fa8cf7bfd1aeaf": {
+   "item_id": "e3fa8cf7bfd1aeaf",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The film's Rotten Tomatoes rating differs (67% versus 36%), an aggregate that can change over time."
+  },
+  "5abaad7195b9575c": {
+   "item_id": "5abaad7195b9575c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Denying a man cutting butter is compatible with a man adding butter to the bowl."
+  },
+  "4d608dbf0de1b70b": {
+   "item_id": "4d608dbf0de1b70b",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mixed reviews clash with universal acclaim, but the texts may refer to different films or critic sets."
+  },
+  "8de4d1de38a07644": {
+   "item_id": "8de4d1de38a07644",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only a stray duplicated pronoun differs."
+  },
+  "89f7509f2bbc04ca": {
+   "item_id": "89f7509f2bbc04ca",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Swapping useful and active changes the stated reason for uninstalling."
+  },
+  "baa95e2d9f42d8ab": {
+   "item_id": "baa95e2d9f42d8ab",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Announcement pending versus already made is a status that changes over time."
+  },
+  "9d82f37cfb4fae86": {
+   "item_id": "9d82f37cfb4fae86",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds drama to the film's genre."
+  },
+  "b860e646eecfe9bb": {
+   "item_id": "b860e646eecfe9bb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Excellent funds for own works and own funds for excellent works are different but compatible claims."
+  },
+  "5854353e748ccdc8": {
+   "item_id": "5854353e748ccdc8",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Will be released versus was released is a release status that changes over time."
+  },
+  "c8206323201a5329": {
+   "item_id": "c8206323201a5329",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Coordinated marrying and conceiving in either order assert the same facts."
+  },
+  "363aaced2b635cb5": {
+   "item_id": "363aaced2b635cb5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The Cavaliers' 12-1 record and the Warriors winning with 16-1 are compatible details of the same run."
+  },
+  "b27378b1c9953a1e": {
+   "item_id": "b27378b1c9953a1e",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Progress through the Science series (50 episodes versus episode 10) is a count that changes over time."
+  },
+  "8ecd430225b25696": {
+   "item_id": "8ecd430225b25696",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny aerial cycling, with compatible different specifics."
+  },
+  "3c949bd97e7be609": {
+   "item_id": "3c949bd97e7be609",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Pan and skillet are plain synonyms here."
+  },
+  "0601ce500bcbe13f": {
+   "item_id": "0601ce500bcbe13f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The film's title differs (at versus in Peking), a fixed name."
+  },
+  "c3962465d513650a": {
+   "item_id": "c3962465d513650a",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A person on a motorcycle and a person standing near one may be different people or a clashing scene."
+  },
+  "679e94736e2de697": {
+   "item_id": "679e94736e2de697",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Sitting on versus getting off the motorcycle cannot both describe the policeman at once."
+  },
+  "eeaa2d46b10fc7dd": {
+   "item_id": "eeaa2d46b10fc7dd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe motorcycle riding with compatible details."
+  },
+  "c18161e4a3bbcf2b": {
+   "item_id": "c18161e4a3bbcf2b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Touring the country with the show; one adds Europe and the show's name."
+  },
+  "2d2139fc829ca3e1": {
+   "item_id": "2d2139fc829ca3e1",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same marriage and children, with a garbled subject in one."
+  },
+  "61c1c9b562638185": {
+   "item_id": "61c1c9b562638185",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Snowboarding down a railing specifies the snowboard trick."
+  },
+  "f9a153aa85ba9551": {
+   "item_id": "f9a153aa85ba9551",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Swapped adjectives garble the claim, which reads as either a compatible variant or a changed fact."
+  },
+  "13c874663b0e20f1": {
+   "item_id": "13c874663b0e20f1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Denying a woman mixing eggs and denying one cooking eggs are compatible."
+  },
+  "50dbfd6068a1468e": {
+   "item_id": "50dbfd6068a1468e",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Included versus will include is a status that changes over time."
+  },
+  "0f6ececba61b8587": {
+   "item_id": "0f6ececba61b8587",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Often and regularly are synonyms swapped between clauses."
+  },
+  "2a2434754bec5b7d": {
+   "item_id": "2a2434754bec5b7d",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "District and province swap roles in the containment relation."
+  },
+  "b071fdafad66b8f6": {
+   "item_id": "b071fdafad66b8f6",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Scrambled modifiers read as either the same catalyst claim or a swapped attribution."
+  },
+  "e03662f2b02b77be": {
+   "item_id": "e03662f2b02b77be",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same birthplace and parents; one only drops the subject name."
+  },
+  "5cabdd94616840f0": {
+   "item_id": "5cabdd94616840f0",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "She bore his daughter and their daughter assert the same parentage."
+  },
+  "ce73ee88603575b2": {
+   "item_id": "ce73ee88603575b2",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Review count 297 versus 301 is a total that changes over time."
+  },
+  "1fad67898bc1ceff": {
+   "item_id": "1fad67898bc1ceff",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Cuban heritage to American."
+  },
+  "3c32843e8db5b384": {
+   "item_id": "3c32843e8db5b384",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the feeding is careful."
+  },
+  "83659bdf4f558ee6": {
+   "item_id": "83659bdf4f558ee6",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Count of postcards added since resuming (25 versus 17) is a total to date."
+  },
+  "1bda1ec38cf9fd5e": {
+   "item_id": "1bda1ec38cf9fd5e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One names the members of the duo."
+  },
+  "f6b278a9d1e58167": {
+   "item_id": "f6b278a9d1e58167",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the dog's colour, the dock and the pond."
+  },
+  "4032881ff87b82fa": {
+   "item_id": "4032881ff87b82fa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Not playing any guitar is compatible with not playing an acoustic one; one specifies the guitar type."
+  },
+  "e14371ccf189c6ef": {
+   "item_id": "e14371ccf189c6ef",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Wait Until Dark was Oscar-nominated."
+  },
+  "9c657ff35b7e5c65": {
+   "item_id": "9c657ff35b7e5c65",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Continuous and random parts swap between integration range and density."
+  },
+  "ff19ffeec6ac7012": {
+   "item_id": "ff19ffeec6ac7012",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds that the child is young."
+  }
+ },
+ "errors": []
+}

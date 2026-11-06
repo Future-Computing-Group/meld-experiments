@@ -5,20 +5,32 @@ Drives the docker-compose brain stack: ingest one claim into every brain, then a
 CONFLICTING overrule links to different brains (a partition: A sees link La, C sees Lb,
 B sees neither) so the per-claim status DIVERGES; then "heal" by delivering BOTH links to
 every brain and confirm the status-CRDT RECONVERGES to one status everywhere (agreement
-1.0), order-independently. Exits non-zero on any failed check (run after compose up).
+1.0), order-independently. A status link is a signed AuthoredEffect PUBLISHed to /patch; the
+status read is vis from /metrics. Exits non-zero on any failed check (run after compose up).
+Run:  PYTHONPATH=src SMP_GROUP_KEY=<the stack's key> python scripts/eval_c_docker_smoke.py
 """
 from __future__ import annotations
 
 import json
+import os
 import sys
 import time
 import urllib.request
 from collections import Counter
 
+from meld.sync.node import status_envelope
+from meld.sync.wire_delta import group_key
+
 URL = {"A": "http://127.0.0.1:8801", "B": "http://127.0.0.1:8802", "C": "http://127.0.0.1:8803"}
 CLAIM = "the canonical policy is X"
 LINKS = [("A", "La", "DEPRECATED"), ("C", "Lb", "OVERRULED")]   # conflicting, per-side
 
+
+
+def _status_write(node, link_id, effect):
+    """A status change PUBLISHed as a signed AuthoredEffect to /patch under SMP_GROUP_KEY."""
+    _post(URL[node] + "/patch", status_envelope(CLAIM, link_id=link_id, effect=effect,
+                                                key=group_key(os.environ)))
 
 def _post(url, data=b""):
     with urllib.request.urlopen(urllib.request.Request(url, data=data, method="POST"),
@@ -48,7 +60,7 @@ def main():
 
     # PARTITION: conflicting overrules reach different brains only.
     for node, lid, eff in LINKS:
-        _post(URL[node] + "/status", json.dumps({"claim": CLAIM, "link_id": lid, "effect": eff}).encode())
+        _status_write(node, lid, eff)
     during = _agreement()
     print(f"  during partition: agreement={during:.2f} ({ {n: _status(n) for n in URL} })")
     if during >= 1.0:
@@ -57,7 +69,7 @@ def main():
     # HEAL: deliver BOTH links to every brain -> the status-CRDT joins them.
     for n in URL:
         for _node, lid, eff in LINKS:
-            _post(URL[n] + "/status", json.dumps({"claim": CLAIM, "link_id": lid, "effect": eff}).encode())
+            _status_write(n, lid, eff)
     healed = _agreement()
     print(f"  after heal:       agreement={healed:.2f} ({ {n: _status(n) for n in URL} })")
     if healed != 1.0:

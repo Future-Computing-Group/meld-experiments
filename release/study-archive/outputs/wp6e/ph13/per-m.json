@@ -1,0 +1,5000 @@
+{
+ "run": {
+  "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+  "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+  "ambiguous": "non-mergeable",
+  "source_labels": true,
+  "seed": 0,
+  "hw": "arm64",
+  "omp": "2",
+  "key": "local dev key (outputs/calibration-labelled/key), evaluation only; epochs not group-signed",
+  "unlabelled": "counted, never invented; left out of every rate; never a Cal record (fold_calibrate)"
+ },
+ "rows": [
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "148bf24987ed6a3d97ce60ad4387096b",
+   "epoch_id": "3de557535326146f9b608d022bd3f490",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.02,
+   "m": 3,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65406,
+    "3": 65292,
+    "4": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 14,
+    "n": 810,
+    "rate": 0.01728395061728395,
+    "ci95": [
+     0.00948069096270509,
+     0.028829637250675423
+    ]
+   },
+   "merge_recall": {
+    "k": 93,
+    "n": 789,
+    "rate": 0.11787072243346007,
+    "ci95": [
+     0.09619873224791489,
+     0.14244393700284544
+    ]
+   },
+   "contradiction_miss": {
+    "k": 145,
+    "n": 332,
+    "rate": 0.4367469879518072,
+    "ci95": [
+     0.3826642476034247,
+     0.49196822627085085
+    ],
+    "to_merge": 2,
+    "to_relate": 143
+   },
+   "decisions": {
+    "RELATE": 1033,
+    "CONFLICT": 459,
+    "MERGE": 107
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "in_K_not_merged": 394,
+    "in_K_merged": 3,
+    "outside_K_not_merged": 39,
+    "tested_not_merged": 490,
+    "tested_merged": 74
+   },
+   "single_target_miss": {
+    "k": 39,
+    "n": 1000,
+    "rate": 0.039
+   },
+   "in_K_untested_miss": {
+    "k": 394,
+    "n": 1000,
+    "rate": 0.394
+   },
+   "not_merged_with_target": {
+    "k": 923,
+    "n": 1000,
+    "rate": 0.923
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "in_K_unlinked": 18,
+    "in_K_linked": 21,
+    "outside_K_unlinked": 10,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 41,
+    "n": 76,
+    "rate": 0.5394736842105263
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 10,
+    "n": 76,
+    "rate": 0.13157894736842105
+   },
+   "nli_calls": 4845
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "8eb9cb6b1da8f9a7c3d4f1423af7a6c2",
+   "epoch_id": "4d6ed586eee9b586a9aa95b1393a5c07",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.02,
+   "m": 1,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65406,
+    "3": 65292,
+    "4": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 14,
+    "n": 810,
+    "rate": 0.01728395061728395,
+    "ci95": [
+     0.00948069096270509,
+     0.028829637250675423
+    ]
+   },
+   "merge_recall": {
+    "k": 93,
+    "n": 789,
+    "rate": 0.11787072243346007,
+    "ci95": [
+     0.09619873224791489,
+     0.14244393700284544
+    ]
+   },
+   "contradiction_miss": {
+    "k": 145,
+    "n": 332,
+    "rate": 0.4367469879518072,
+    "ci95": [
+     0.3826642476034247,
+     0.49196822627085085
+    ],
+    "to_merge": 2,
+    "to_relate": 143
+   },
+   "decisions": {
+    "RELATE": 1033,
+    "CONFLICT": 459,
+    "MERGE": 107
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "outside_K_not_merged": 433,
+    "outside_K_merged": 3,
+    "tested_not_merged": 490,
+    "tested_merged": 74
+   },
+   "single_target_miss": {
+    "k": 433,
+    "n": 1000,
+    "rate": 0.433
+   },
+   "in_K_untested_miss": {
+    "k": 0,
+    "n": 1000,
+    "rate": 0.0
+   },
+   "not_merged_with_target": {
+    "k": 923,
+    "n": 1000,
+    "rate": 0.923
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "outside_K_unlinked": 49,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 62,
+    "n": 76,
+    "rate": 0.8157894736842105
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 49,
+    "n": 76,
+    "rate": 0.6447368421052632
+   },
+   "nli_calls": 3198
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "87d2b8f092de44bccf61b825024bd6ae",
+   "epoch_id": "1bf6021117baf0647241e4e49ca48565",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.02,
+   "m": 5,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65406,
+    "3": 65292,
+    "4": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 14,
+    "n": 810,
+    "rate": 0.01728395061728395,
+    "ci95": [
+     0.00948069096270509,
+     0.028829637250675423
+    ]
+   },
+   "merge_recall": {
+    "k": 93,
+    "n": 789,
+    "rate": 0.11787072243346007,
+    "ci95": [
+     0.09619873224791489,
+     0.14244393700284544
+    ]
+   },
+   "contradiction_miss": {
+    "k": 145,
+    "n": 332,
+    "rate": 0.4367469879518072,
+    "ci95": [
+     0.3826642476034247,
+     0.49196822627085085
+    ],
+    "to_merge": 2,
+    "to_relate": 143
+   },
+   "decisions": {
+    "RELATE": 1033,
+    "CONFLICT": 459,
+    "MERGE": 107
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "in_K_not_merged": 433,
+    "in_K_merged": 3,
+    "tested_not_merged": 490,
+    "tested_merged": 74
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 1000,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 433,
+    "n": 1000,
+    "rate": 0.433
+   },
+   "not_merged_with_target": {
+    "k": 923,
+    "n": 1000,
+    "rate": 0.923
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "in_K_unlinked": 20,
+    "in_K_linked": 29,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 33,
+    "n": 76,
+    "rate": 0.4342105263157895
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 0,
+    "n": 76,
+    "rate": 0.0
+   },
+   "nli_calls": 5231
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "0e25371c2748ec3daf9e9c0b795c3b59",
+   "epoch_id": "e9583b7aaa19b564826babf1ca2409db",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.02,
+   "m": 10,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65406,
+    "3": 65292,
+    "4": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 14,
+    "n": 810,
+    "rate": 0.01728395061728395,
+    "ci95": [
+     0.00948069096270509,
+     0.028829637250675423
+    ]
+   },
+   "merge_recall": {
+    "k": 93,
+    "n": 789,
+    "rate": 0.11787072243346007,
+    "ci95": [
+     0.09619873224791489,
+     0.14244393700284544
+    ]
+   },
+   "contradiction_miss": {
+    "k": 145,
+    "n": 332,
+    "rate": 0.4367469879518072,
+    "ci95": [
+     0.3826642476034247,
+     0.49196822627085085
+    ],
+    "to_merge": 2,
+    "to_relate": 143
+   },
+   "decisions": {
+    "RELATE": 1033,
+    "CONFLICT": 459,
+    "MERGE": 107
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "in_K_not_merged": 433,
+    "in_K_merged": 3,
+    "tested_not_merged": 490,
+    "tested_merged": 74
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 1000,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 433,
+    "n": 1000,
+    "rate": 0.433
+   },
+   "not_merged_with_target": {
+    "k": 923,
+    "n": 1000,
+    "rate": 0.923
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "in_K_unlinked": 20,
+    "in_K_linked": 29,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 33,
+    "n": 76,
+    "rate": 0.4342105263157895
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 0,
+    "n": 76,
+    "rate": 0.0
+   },
+   "nli_calls": 5396
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "148bf24987ed6a3d97ce60ad4387096b",
+   "epoch_id": "e004d119027f74be29c8990f092cff38",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.05,
+   "m": 3,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 65536,
+    "1": 65383,
+    "2": 65294,
+    "3": 65202,
+    "4": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 37,
+    "n": 810,
+    "rate": 0.04567901234567901,
+    "ci95": [
+     0.03236297854434334,
+     0.06241552790565432
+    ]
+   },
+   "merge_recall": {
+    "k": 177,
+    "n": 789,
+    "rate": 0.22433460076045628,
+    "ci95": [
+     0.19566873574223928,
+     0.2550768133026714
+    ]
+   },
+   "contradiction_miss": {
+    "k": 144,
+    "n": 332,
+    "rate": 0.43373493975903615,
+    "ci95": [
+     0.3797213235060245,
+     0.4889413010876729
+    ],
+    "to_merge": 6,
+    "to_relate": 138
+   },
+   "decisions": {
+    "RELATE": 922,
+    "CONFLICT": 463,
+    "MERGE": 214
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "in_K_not_merged": 391,
+    "in_K_merged": 6,
+    "outside_K_not_merged": 39,
+    "tested_not_merged": 421,
+    "tested_merged": 143
+   },
+   "single_target_miss": {
+    "k": 39,
+    "n": 1000,
+    "rate": 0.039
+   },
+   "in_K_untested_miss": {
+    "k": 391,
+    "n": 1000,
+    "rate": 0.391
+   },
+   "not_merged_with_target": {
+    "k": 851,
+    "n": 1000,
+    "rate": 0.851
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "in_K_unlinked": 18,
+    "in_K_linked": 21,
+    "outside_K_unlinked": 10,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 41,
+    "n": 76,
+    "rate": 0.5394736842105263
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 10,
+    "n": 76,
+    "rate": 0.13157894736842105
+   },
+   "nli_calls": 4845
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "8eb9cb6b1da8f9a7c3d4f1423af7a6c2",
+   "epoch_id": "3e3be47a2911fabaec8c1304a04b658a",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.05,
+   "m": 1,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 65536,
+    "1": 65383,
+    "2": 65294,
+    "3": 65202,
+    "4": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 37,
+    "n": 810,
+    "rate": 0.04567901234567901,
+    "ci95": [
+     0.03236297854434334,
+     0.06241552790565432
+    ]
+   },
+   "merge_recall": {
+    "k": 180,
+    "n": 789,
+    "rate": 0.22813688212927757,
+    "ci95": [
+     0.19928354224406314,
+     0.2590375986086623
+    ]
+   },
+   "contradiction_miss": {
+    "k": 145,
+    "n": 332,
+    "rate": 0.4367469879518072,
+    "ci95": [
+     0.3826642476034247,
+     0.49196822627085085
+    ],
+    "to_merge": 6,
+    "to_relate": 139
+   },
+   "decisions": {
+    "RELATE": 923,
+    "CONFLICT": 459,
+    "MERGE": 217
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "outside_K_not_merged": 430,
+    "outside_K_merged": 6,
+    "tested_not_merged": 418,
+    "tested_merged": 146
+   },
+   "single_target_miss": {
+    "k": 430,
+    "n": 1000,
+    "rate": 0.43
+   },
+   "in_K_untested_miss": {
+    "k": 0,
+    "n": 1000,
+    "rate": 0.0
+   },
+   "not_merged_with_target": {
+    "k": 848,
+    "n": 1000,
+    "rate": 0.848
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "outside_K_unlinked": 49,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 62,
+    "n": 76,
+    "rate": 0.8157894736842105
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 49,
+    "n": 76,
+    "rate": 0.6447368421052632
+   },
+   "nli_calls": 3198
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "87d2b8f092de44bccf61b825024bd6ae",
+   "epoch_id": "e71918b290daea818ab474ec5081a9db",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.05,
+   "m": 5,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 65536,
+    "1": 65383,
+    "2": 65294,
+    "3": 65202,
+    "4": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 37,
+    "n": 810,
+    "rate": 0.04567901234567901,
+    "ci95": [
+     0.03236297854434334,
+     0.06241552790565432
+    ]
+   },
+   "merge_recall": {
+    "k": 177,
+    "n": 789,
+    "rate": 0.22433460076045628,
+    "ci95": [
+     0.19566873574223928,
+     0.2550768133026714
+    ]
+   },
+   "contradiction_miss": {
+    "k": 144,
+    "n": 332,
+    "rate": 0.43373493975903615,
+    "ci95": [
+     0.3797213235060245,
+     0.4889413010876729
+    ],
+    "to_merge": 6,
+    "to_relate": 138
+   },
+   "decisions": {
+    "RELATE": 922,
+    "CONFLICT": 463,
+    "MERGE": 214
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "in_K_not_merged": 430,
+    "in_K_merged": 6,
+    "tested_not_merged": 421,
+    "tested_merged": 143
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 1000,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 430,
+    "n": 1000,
+    "rate": 0.43
+   },
+   "not_merged_with_target": {
+    "k": 851,
+    "n": 1000,
+    "rate": 0.851
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "in_K_unlinked": 20,
+    "in_K_linked": 29,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 33,
+    "n": 76,
+    "rate": 0.4342105263157895
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 0,
+    "n": 76,
+    "rate": 0.0
+   },
+   "nli_calls": 5231
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "0e25371c2748ec3daf9e9c0b795c3b59",
+   "epoch_id": "a0f70b06db4127f58dd8b06114145f4c",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.05,
+   "m": 10,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 65536,
+    "1": 65383,
+    "2": 65294,
+    "3": 65202,
+    "4": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 37,
+    "n": 810,
+    "rate": 0.04567901234567901,
+    "ci95": [
+     0.03236297854434334,
+     0.06241552790565432
+    ]
+   },
+   "merge_recall": {
+    "k": 177,
+    "n": 789,
+    "rate": 0.22433460076045628,
+    "ci95": [
+     0.19566873574223928,
+     0.2550768133026714
+    ]
+   },
+   "contradiction_miss": {
+    "k": 144,
+    "n": 332,
+    "rate": 0.43373493975903615,
+    "ci95": [
+     0.3797213235060245,
+     0.4889413010876729
+    ],
+    "to_merge": 6,
+    "to_relate": 138
+   },
+   "decisions": {
+    "RELATE": 922,
+    "CONFLICT": 463,
+    "MERGE": 214
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "in_K_not_merged": 430,
+    "in_K_merged": 6,
+    "tested_not_merged": 421,
+    "tested_merged": 143
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 1000,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 430,
+    "n": 1000,
+    "rate": 0.43
+   },
+   "not_merged_with_target": {
+    "k": 851,
+    "n": 1000,
+    "rate": 0.851
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "in_K_unlinked": 20,
+    "in_K_linked": 29,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 33,
+    "n": 76,
+    "rate": 0.4342105263157895
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 0,
+    "n": 76,
+    "rate": 0.0
+   },
+   "nli_calls": 5396
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "148bf24987ed6a3d97ce60ad4387096b",
+   "epoch_id": "612a279487f5964b49b5cf54258add14",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.1,
+   "m": 3,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 64706,
+    "1": 65128,
+    "2": 65162,
+    "3": 64973,
+    "4": 64731
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 79,
+    "n": 810,
+    "rate": 0.09753086419753086,
+    "ci95": [
+     0.07797716553854125,
+     0.12006863465430072
+    ]
+   },
+   "merge_recall": {
+    "k": 355,
+    "n": 789,
+    "rate": 0.449936628643853,
+    "ci95": [
+     0.414832895387559,
+     0.4854157780596512
+    ]
+   },
+   "contradiction_miss": {
+    "k": 143,
+    "n": 332,
+    "rate": 0.4307228915662651,
+    "ci95": [
+     0.3767803908552283,
+     0.4859123891374159
+    ],
+    "to_merge": 16,
+    "to_relate": 127
+   },
+   "decisions": {
+    "RELATE": 699,
+    "MERGE": 434,
+    "CONFLICT": 466
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "in_K_not_merged": 359,
+    "in_K_merged": 38,
+    "outside_K_not_merged": 37,
+    "outside_K_merged": 2,
+    "tested_not_merged": 290,
+    "tested_merged": 274
+   },
+   "single_target_miss": {
+    "k": 37,
+    "n": 1000,
+    "rate": 0.037
+   },
+   "in_K_untested_miss": {
+    "k": 359,
+    "n": 1000,
+    "rate": 0.359
+   },
+   "not_merged_with_target": {
+    "k": 686,
+    "n": 1000,
+    "rate": 0.686
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "in_K_unlinked": 18,
+    "in_K_linked": 21,
+    "outside_K_unlinked": 10,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 41,
+    "n": 76,
+    "rate": 0.5394736842105263
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 10,
+    "n": 76,
+    "rate": 0.13157894736842105
+   },
+   "nli_calls": 4845
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "8eb9cb6b1da8f9a7c3d4f1423af7a6c2",
+   "epoch_id": "d81bbc9e2a30a356db0ad6a7ac97a80a",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.1,
+   "m": 1,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 64706,
+    "1": 65128,
+    "2": 65162,
+    "3": 64973,
+    "4": 64731
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 79,
+    "n": 810,
+    "rate": 0.09753086419753086,
+    "ci95": [
+     0.07797716553854125,
+     0.12006863465430072
+    ]
+   },
+   "merge_recall": {
+    "k": 358,
+    "n": 789,
+    "rate": 0.45373891001267425,
+    "ci95": [
+     0.4185953237036713,
+     0.48922939393335385
+    ]
+   },
+   "contradiction_miss": {
+    "k": 145,
+    "n": 332,
+    "rate": 0.4367469879518072,
+    "ci95": [
+     0.3826642476034247,
+     0.49196822627085085
+    ],
+    "to_merge": 16,
+    "to_relate": 129
+   },
+   "decisions": {
+    "RELATE": 703,
+    "MERGE": 437,
+    "CONFLICT": 459
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "outside_K_not_merged": 396,
+    "outside_K_merged": 40,
+    "tested_not_merged": 287,
+    "tested_merged": 277
+   },
+   "single_target_miss": {
+    "k": 396,
+    "n": 1000,
+    "rate": 0.396
+   },
+   "in_K_untested_miss": {
+    "k": 0,
+    "n": 1000,
+    "rate": 0.0
+   },
+   "not_merged_with_target": {
+    "k": 683,
+    "n": 1000,
+    "rate": 0.683
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "outside_K_unlinked": 49,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 62,
+    "n": 76,
+    "rate": 0.8157894736842105
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 49,
+    "n": 76,
+    "rate": 0.6447368421052632
+   },
+   "nli_calls": 3198
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "87d2b8f092de44bccf61b825024bd6ae",
+   "epoch_id": "84c5760f0ca701e5413d76c65808301b",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.1,
+   "m": 5,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 64706,
+    "1": 65128,
+    "2": 65162,
+    "3": 64973,
+    "4": 64731
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 79,
+    "n": 810,
+    "rate": 0.09753086419753086,
+    "ci95": [
+     0.07797716553854125,
+     0.12006863465430072
+    ]
+   },
+   "merge_recall": {
+    "k": 355,
+    "n": 789,
+    "rate": 0.449936628643853,
+    "ci95": [
+     0.414832895387559,
+     0.4854157780596512
+    ]
+   },
+   "contradiction_miss": {
+    "k": 143,
+    "n": 332,
+    "rate": 0.4307228915662651,
+    "ci95": [
+     0.3767803908552283,
+     0.4859123891374159
+    ],
+    "to_merge": 16,
+    "to_relate": 127
+   },
+   "decisions": {
+    "RELATE": 699,
+    "MERGE": 434,
+    "CONFLICT": 466
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "in_K_not_merged": 396,
+    "in_K_merged": 40,
+    "tested_not_merged": 290,
+    "tested_merged": 274
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 1000,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 396,
+    "n": 1000,
+    "rate": 0.396
+   },
+   "not_merged_with_target": {
+    "k": 686,
+    "n": 1000,
+    "rate": 0.686
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "in_K_unlinked": 20,
+    "in_K_linked": 29,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 33,
+    "n": 76,
+    "rate": 0.4342105263157895
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 0,
+    "n": 76,
+    "rate": 0.0
+   },
+   "nli_calls": 5231
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "0e25371c2748ec3daf9e9c0b795c3b59",
+   "epoch_id": "ff83fe6d5b4af0f8e6e22d71a57050a9",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "paws",
+   "alpha": 0.1,
+   "m": 10,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 25,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 573,
+     "non_mergeable": 298
+    },
+    "same_item": {
+     "non_mergeable": 339,
+     "ambiguous": 14,
+     "mergeable": 215
+    },
+    "source_labelled": {
+     "non_mergeable": 97,
+     "mergeable": 44
+    }
+   },
+   "cal_records": 478,
+   "theta_q": {
+    "0": 64706,
+    "1": 65128,
+    "2": 65162,
+    "3": 64973,
+    "4": 64731
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 31
+    },
+    "manifest": {
+     "non_mergeable": 309,
+     "mergeable": 564
+    },
+    "same_item": {
+     "mergeable": 184,
+     "non_mergeable": 367
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 41
+    }
+   },
+   "nodes": 2125,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 2125,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 79,
+    "n": 810,
+    "rate": 0.09753086419753086,
+    "ci95": [
+     0.07797716553854125,
+     0.12006863465430072
+    ]
+   },
+   "merge_recall": {
+    "k": 355,
+    "n": 789,
+    "rate": 0.449936628643853,
+    "ci95": [
+     0.414832895387559,
+     0.4854157780596512
+    ]
+   },
+   "contradiction_miss": {
+    "k": 143,
+    "n": 332,
+    "rate": 0.4307228915662651,
+    "ci95": [
+     0.3767803908552283,
+     0.4859123891374159
+    ],
+    "to_merge": 16,
+    "to_relate": 127
+   },
+   "decisions": {
+    "RELATE": 699,
+    "MERGE": 434,
+    "CONFLICT": 466
+   },
+   "mergeable_pairs": 1000,
+   "target": {
+    "in_K_not_merged": 396,
+    "in_K_merged": 40,
+    "tested_not_merged": 290,
+    "tested_merged": 274
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 1000,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 396,
+    "n": 1000,
+    "rate": 0.396
+   },
+   "not_merged_with_target": {
+    "k": 686,
+    "n": 1000,
+    "rate": 0.686
+   },
+   "conflict_pairs": 76,
+   "conflict": {
+    "in_K_unlinked": 20,
+    "in_K_linked": 29,
+    "tested_unlinked": 13,
+    "tested_linked": 14
+   },
+   "conflict_unlinked": {
+    "k": 33,
+    "n": 76,
+    "rate": 0.4342105263157895
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 0,
+    "n": 76,
+    "rate": 0.0
+   },
+   "nli_calls": 5396
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "0bb34937b465118902ec563e1cac4b09",
+   "epoch_id": "a092a47d6d7f9cf0c24d02716602e63f",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.02,
+   "m": 3,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 65536,
+    "1": 64416,
+    "2": 64462,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 6,
+    "n": 1920,
+    "rate": 0.003125,
+    "ci95": [
+     0.0011476566621970584,
+     0.006789311380026595
+    ]
+   },
+   "merge_recall": {
+    "k": 258,
+    "n": 840,
+    "rate": 0.30714285714285716,
+    "ci95": [
+     0.2760742426177158,
+     0.33957143584619687
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 0,
+    "to_relate": 5
+   },
+   "decisions": {
+    "RELATE": 1553,
+    "CONFLICT": 943,
+    "MERGE": 264
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "in_K_not_merged": 109,
+    "in_K_merged": 12,
+    "outside_K_not_merged": 12,
+    "tested_not_merged": 508,
+    "tested_merged": 234
+   },
+   "single_target_miss": {
+    "k": 12,
+    "n": 875,
+    "rate": 0.013714285714285714
+   },
+   "in_K_untested_miss": {
+    "k": 109,
+    "n": 875,
+    "rate": 0.12457142857142857
+   },
+   "not_merged_with_target": {
+    "k": 629,
+    "n": 875,
+    "rate": 0.7188571428571429
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "in_K_unlinked": 16,
+    "in_K_linked": 328,
+    "outside_K_unlinked": 191,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 209,
+    "n": 968,
+    "rate": 0.2159090909090909
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 191,
+    "n": 968,
+    "rate": 0.19731404958677687
+   },
+   "nli_calls": 9379
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "6521653477fe0073c9b318272a549720",
+   "epoch_id": "917f2a5485ab9477928521452995c6b8",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.02,
+   "m": 1,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 65536,
+    "1": 64416,
+    "2": 64462,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 6,
+    "n": 1920,
+    "rate": 0.003125,
+    "ci95": [
+     0.0011476566621970584,
+     0.006789311380026595
+    ]
+   },
+   "merge_recall": {
+    "k": 258,
+    "n": 840,
+    "rate": 0.30714285714285716,
+    "ci95": [
+     0.2760742426177158,
+     0.33957143584619687
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 0,
+    "to_relate": 5
+   },
+   "decisions": {
+    "RELATE": 1553,
+    "CONFLICT": 943,
+    "MERGE": 264
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "outside_K_not_merged": 121,
+    "outside_K_merged": 12,
+    "tested_not_merged": 508,
+    "tested_merged": 234
+   },
+   "single_target_miss": {
+    "k": 121,
+    "n": 875,
+    "rate": 0.1382857142857143
+   },
+   "in_K_untested_miss": {
+    "k": 0,
+    "n": 875,
+    "rate": 0.0
+   },
+   "not_merged_with_target": {
+    "k": 629,
+    "n": 875,
+    "rate": 0.7188571428571429
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "outside_K_unlinked": 535,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 537,
+    "n": 968,
+    "rate": 0.5547520661157025
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 535,
+    "n": 968,
+    "rate": 0.5526859504132231
+   },
+   "nli_calls": 5520
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "d1e0cd09962dbdd0276bce605fc08e59",
+   "epoch_id": "3f96dd61171e76640b329c647c0bb04e",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.02,
+   "m": 5,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 65536,
+    "1": 64416,
+    "2": 64462,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 6,
+    "n": 1920,
+    "rate": 0.003125,
+    "ci95": [
+     0.0011476566621970584,
+     0.006789311380026595
+    ]
+   },
+   "merge_recall": {
+    "k": 258,
+    "n": 840,
+    "rate": 0.30714285714285716,
+    "ci95": [
+     0.2760742426177158,
+     0.33957143584619687
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 0,
+    "to_relate": 5
+   },
+   "decisions": {
+    "RELATE": 1553,
+    "CONFLICT": 943,
+    "MERGE": 264
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "in_K_not_merged": 121,
+    "in_K_merged": 12,
+    "tested_not_merged": 508,
+    "tested_merged": 234
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 875,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 121,
+    "n": 875,
+    "rate": 0.1382857142857143
+   },
+   "not_merged_with_target": {
+    "k": 629,
+    "n": 875,
+    "rate": 0.7188571428571429
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "in_K_unlinked": 21,
+    "in_K_linked": 424,
+    "outside_K_unlinked": 90,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 113,
+    "n": 968,
+    "rate": 0.11673553719008264
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 90,
+    "n": 968,
+    "rate": 0.09297520661157024
+   },
+   "nli_calls": 11825
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "62719961441c539a2b09406afdbc8b0a",
+   "epoch_id": "8ae4876b3bcf1ca4c004b5f7da5cdbaf",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.02,
+   "m": 10,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 65536,
+    "1": 64416,
+    "2": 64462,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 6,
+    "n": 1920,
+    "rate": 0.003125,
+    "ci95": [
+     0.0011476566621970584,
+     0.006789311380026595
+    ]
+   },
+   "merge_recall": {
+    "k": 258,
+    "n": 840,
+    "rate": 0.30714285714285716,
+    "ci95": [
+     0.2760742426177158,
+     0.33957143584619687
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 0,
+    "to_relate": 5
+   },
+   "decisions": {
+    "RELATE": 1553,
+    "CONFLICT": 943,
+    "MERGE": 264
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "in_K_not_merged": 121,
+    "in_K_merged": 12,
+    "tested_not_merged": 508,
+    "tested_merged": 234
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 875,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 121,
+    "n": 875,
+    "rate": 0.1382857142857143
+   },
+   "not_merged_with_target": {
+    "k": 629,
+    "n": 875,
+    "rate": 0.7188571428571429
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "in_K_unlinked": 23,
+    "in_K_linked": 466,
+    "outside_K_unlinked": 46,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 71,
+    "n": 968,
+    "rate": 0.07334710743801653
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 46,
+    "n": 968,
+    "rate": 0.047520661157024795
+   },
+   "nli_calls": 14989
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "0bb34937b465118902ec563e1cac4b09",
+   "epoch_id": "11f0fc0a34fc633a3bf6b611e62ee31c",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.05,
+   "m": 3,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 59897,
+    "1": 61827,
+    "2": 59818,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 69,
+    "n": 1920,
+    "rate": 0.0359375,
+    "ci95": [
+     0.028066996560413317,
+     0.04526296391827425
+    ]
+   },
+   "merge_recall": {
+    "k": 704,
+    "n": 840,
+    "rate": 0.8380952380952381,
+    "ci95": [
+     0.8114118101872944,
+     0.8623800756439612
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 2,
+    "to_relate": 3
+   },
+   "decisions": {
+    "RELATE": 1043,
+    "CONFLICT": 944,
+    "MERGE": 773
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "in_K_not_merged": 69,
+    "in_K_merged": 52,
+    "outside_K_not_merged": 6,
+    "outside_K_merged": 6,
+    "tested_not_merged": 112,
+    "tested_merged": 630
+   },
+   "single_target_miss": {
+    "k": 6,
+    "n": 875,
+    "rate": 0.006857142857142857
+   },
+   "in_K_untested_miss": {
+    "k": 69,
+    "n": 875,
+    "rate": 0.07885714285714286
+   },
+   "not_merged_with_target": {
+    "k": 187,
+    "n": 875,
+    "rate": 0.21371428571428572
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "in_K_unlinked": 16,
+    "in_K_linked": 328,
+    "outside_K_unlinked": 191,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 209,
+    "n": 968,
+    "rate": 0.2159090909090909
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 191,
+    "n": 968,
+    "rate": 0.19731404958677687
+   },
+   "nli_calls": 9379
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "6521653477fe0073c9b318272a549720",
+   "epoch_id": "6290483cdaf60ad556051d66ceb8b05f",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.05,
+   "m": 1,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 59897,
+    "1": 61827,
+    "2": 59818,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 69,
+    "n": 1920,
+    "rate": 0.0359375,
+    "ci95": [
+     0.028066996560413317,
+     0.04526296391827425
+    ]
+   },
+   "merge_recall": {
+    "k": 704,
+    "n": 840,
+    "rate": 0.8380952380952381,
+    "ci95": [
+     0.8114118101872944,
+     0.8623800756439612
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 2,
+    "to_relate": 3
+   },
+   "decisions": {
+    "RELATE": 1044,
+    "CONFLICT": 943,
+    "MERGE": 773
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "outside_K_not_merged": 75,
+    "outside_K_merged": 58,
+    "tested_not_merged": 112,
+    "tested_merged": 630
+   },
+   "single_target_miss": {
+    "k": 75,
+    "n": 875,
+    "rate": 0.08571428571428572
+   },
+   "in_K_untested_miss": {
+    "k": 0,
+    "n": 875,
+    "rate": 0.0
+   },
+   "not_merged_with_target": {
+    "k": 187,
+    "n": 875,
+    "rate": 0.21371428571428572
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "outside_K_unlinked": 535,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 537,
+    "n": 968,
+    "rate": 0.5547520661157025
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 535,
+    "n": 968,
+    "rate": 0.5526859504132231
+   },
+   "nli_calls": 5520
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "d1e0cd09962dbdd0276bce605fc08e59",
+   "epoch_id": "ff834a71b2867a21be75e5f28852bd12",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.05,
+   "m": 5,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 59897,
+    "1": 61827,
+    "2": 59818,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 69,
+    "n": 1920,
+    "rate": 0.0359375,
+    "ci95": [
+     0.028066996560413317,
+     0.04526296391827425
+    ]
+   },
+   "merge_recall": {
+    "k": 704,
+    "n": 840,
+    "rate": 0.8380952380952381,
+    "ci95": [
+     0.8114118101872944,
+     0.8623800756439612
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 2,
+    "to_relate": 3
+   },
+   "decisions": {
+    "RELATE": 1042,
+    "CONFLICT": 945,
+    "MERGE": 773
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "in_K_not_merged": 75,
+    "in_K_merged": 58,
+    "tested_not_merged": 112,
+    "tested_merged": 630
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 875,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 75,
+    "n": 875,
+    "rate": 0.08571428571428572
+   },
+   "not_merged_with_target": {
+    "k": 187,
+    "n": 875,
+    "rate": 0.21371428571428572
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "in_K_unlinked": 21,
+    "in_K_linked": 424,
+    "outside_K_unlinked": 90,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 113,
+    "n": 968,
+    "rate": 0.11673553719008264
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 90,
+    "n": 968,
+    "rate": 0.09297520661157024
+   },
+   "nli_calls": 11825
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "62719961441c539a2b09406afdbc8b0a",
+   "epoch_id": "c835df1471c673e5abbcb61ba02e11cb",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.05,
+   "m": 10,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 59897,
+    "1": 61827,
+    "2": 59818,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 69,
+    "n": 1920,
+    "rate": 0.0359375,
+    "ci95": [
+     0.028066996560413317,
+     0.04526296391827425
+    ]
+   },
+   "merge_recall": {
+    "k": 704,
+    "n": 840,
+    "rate": 0.8380952380952381,
+    "ci95": [
+     0.8114118101872944,
+     0.8623800756439612
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 2,
+    "to_relate": 3
+   },
+   "decisions": {
+    "RELATE": 1042,
+    "CONFLICT": 945,
+    "MERGE": 773
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "in_K_not_merged": 75,
+    "in_K_merged": 58,
+    "tested_not_merged": 112,
+    "tested_merged": 630
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 875,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 75,
+    "n": 875,
+    "rate": 0.08571428571428572
+   },
+   "not_merged_with_target": {
+    "k": 187,
+    "n": 875,
+    "rate": 0.21371428571428572
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "in_K_unlinked": 23,
+    "in_K_linked": 466,
+    "outside_K_unlinked": 46,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 71,
+    "n": 968,
+    "rate": 0.07334710743801653
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 46,
+    "n": 968,
+    "rate": 0.047520661157024795
+   },
+   "nli_calls": 14989
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "0bb34937b465118902ec563e1cac4b09",
+   "epoch_id": "1fcc13dde87a06a341d512d88115708b",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.1,
+   "m": 3,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 5676,
+    "1": 9018,
+    "2": 39461,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 157,
+    "n": 1920,
+    "rate": 0.08177083333333333,
+    "ci95": [
+     0.06989976361172039,
+     0.09493695816615952
+    ]
+   },
+   "merge_recall": {
+    "k": 768,
+    "n": 840,
+    "rate": 0.9142857142857143,
+    "ci95": [
+     0.8932734525204233,
+     0.9323313462086704
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 3,
+    "to_relate": 2
+   },
+   "decisions": {
+    "RELATE": 886,
+    "CONFLICT": 949,
+    "MERGE": 925
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "in_K_not_merged": 47,
+    "in_K_merged": 74,
+    "outside_K_not_merged": 6,
+    "outside_K_merged": 6,
+    "tested_not_merged": 61,
+    "tested_merged": 681
+   },
+   "single_target_miss": {
+    "k": 6,
+    "n": 875,
+    "rate": 0.006857142857142857
+   },
+   "in_K_untested_miss": {
+    "k": 47,
+    "n": 875,
+    "rate": 0.053714285714285714
+   },
+   "not_merged_with_target": {
+    "k": 114,
+    "n": 875,
+    "rate": 0.13028571428571428
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "in_K_unlinked": 16,
+    "in_K_linked": 328,
+    "outside_K_unlinked": 191,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 209,
+    "n": 968,
+    "rate": 0.2159090909090909
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 191,
+    "n": 968,
+    "rate": 0.19731404958677687
+   },
+   "nli_calls": 9379
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "6521653477fe0073c9b318272a549720",
+   "epoch_id": "2dfa0f0707406b21b3b2e1ee6926be0d",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.1,
+   "m": 1,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 5676,
+    "1": 9018,
+    "2": 39461,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 157,
+    "n": 1920,
+    "rate": 0.08177083333333333,
+    "ci95": [
+     0.06989976361172039,
+     0.09493695816615952
+    ]
+   },
+   "merge_recall": {
+    "k": 771,
+    "n": 840,
+    "rate": 0.9178571428571428,
+    "ci95": [
+     0.8971917009385325,
+     0.9355281386083273
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 3,
+    "to_relate": 2
+   },
+   "decisions": {
+    "RELATE": 889,
+    "CONFLICT": 943,
+    "MERGE": 928
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "outside_K_not_merged": 53,
+    "outside_K_merged": 80,
+    "tested_not_merged": 58,
+    "tested_merged": 684
+   },
+   "single_target_miss": {
+    "k": 53,
+    "n": 875,
+    "rate": 0.060571428571428575
+   },
+   "in_K_untested_miss": {
+    "k": 0,
+    "n": 875,
+    "rate": 0.0
+   },
+   "not_merged_with_target": {
+    "k": 111,
+    "n": 875,
+    "rate": 0.12685714285714286
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "outside_K_unlinked": 535,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 537,
+    "n": 968,
+    "rate": 0.5547520661157025
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 535,
+    "n": 968,
+    "rate": 0.5526859504132231
+   },
+   "nli_calls": 5520
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "d1e0cd09962dbdd0276bce605fc08e59",
+   "epoch_id": "5be7fef7e83790326fab441f24498262",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.1,
+   "m": 5,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 5676,
+    "1": 9018,
+    "2": 39461,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 157,
+    "n": 1920,
+    "rate": 0.08177083333333333,
+    "ci95": [
+     0.06989976361172039,
+     0.09493695816615952
+    ]
+   },
+   "merge_recall": {
+    "k": 768,
+    "n": 840,
+    "rate": 0.9142857142857143,
+    "ci95": [
+     0.8932734525204233,
+     0.9323313462086704
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 3,
+    "to_relate": 2
+   },
+   "decisions": {
+    "RELATE": 884,
+    "CONFLICT": 951,
+    "MERGE": 925
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "in_K_not_merged": 53,
+    "in_K_merged": 80,
+    "tested_not_merged": 61,
+    "tested_merged": 681
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 875,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 53,
+    "n": 875,
+    "rate": 0.060571428571428575
+   },
+   "not_merged_with_target": {
+    "k": 114,
+    "n": 875,
+    "rate": 0.13028571428571428
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "in_K_unlinked": 21,
+    "in_K_linked": 424,
+    "outside_K_unlinked": 90,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 113,
+    "n": 968,
+    "rate": 0.11673553719008264
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 90,
+    "n": 968,
+    "rate": 0.09297520661157024
+   },
+   "nli_calls": 11825
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "62719961441c539a2b09406afdbc8b0a",
+   "epoch_id": "dba678802068ccfd4fecccd4b26340ef",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "sick",
+   "alpha": 0.1,
+   "m": 10,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 142,
+     "ambiguous": 7,
+     "mergeable": 7
+    },
+    "manifest": {
+     "non_mergeable": 289,
+     "mergeable": 235
+    },
+    "same_item": {
+     "non_mergeable": 109,
+     "ambiguous": 3,
+     "mergeable": 47
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_records": 256,
+   "theta_q": {
+    "0": 5676,
+    "1": 9018,
+    "2": 39461,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 506,
+     "mergeable": 38
+    },
+    "manifest": {
+     "non_mergeable": 981,
+     "mergeable": 742
+    },
+    "same_item": {
+     "non_mergeable": 334,
+     "mergeable": 60
+    },
+    "source_labelled": {
+     "non_mergeable": 99
+    }
+   },
+   "nodes": 3367,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3367,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 156,
+    "n": 1920,
+    "rate": 0.08125,
+    "ci95": [
+     0.06941534437760019,
+     0.09438142445381606
+    ]
+   },
+   "merge_recall": {
+    "k": 769,
+    "n": 840,
+    "rate": 0.9154761904761904,
+    "ci95": [
+     0.8945784341866659,
+     0.9333980652205304
+    ]
+   },
+   "contradiction_miss": {
+    "k": 5,
+    "n": 512,
+    "rate": 0.009765625,
+    "ci95": [
+     0.003178260799806264,
+     0.02264162068722705
+    ],
+    "to_merge": 3,
+    "to_relate": 2
+   },
+   "decisions": {
+    "RELATE": 885,
+    "CONFLICT": 950,
+    "MERGE": 925
+   },
+   "mergeable_pairs": 875,
+   "target": {
+    "in_K_not_merged": 53,
+    "in_K_merged": 80,
+    "tested_not_merged": 60,
+    "tested_merged": 682
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 875,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 53,
+    "n": 875,
+    "rate": 0.060571428571428575
+   },
+   "not_merged_with_target": {
+    "k": 113,
+    "n": 875,
+    "rate": 0.12914285714285714
+   },
+   "conflict_pairs": 968,
+   "conflict": {
+    "in_K_unlinked": 23,
+    "in_K_linked": 466,
+    "outside_K_unlinked": 46,
+    "tested_unlinked": 2,
+    "tested_linked": 431
+   },
+   "conflict_unlinked": {
+    "k": 71,
+    "n": 968,
+    "rate": 0.07334710743801653
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 46,
+    "n": 968,
+    "rate": 0.047520661157024795
+   },
+   "nli_calls": 14989
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "55aaeca8b0d086aa84e71a250881a35a",
+   "epoch_id": "ce2ea4b2d601b46103d5e3c224341886",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.02,
+   "m": 3,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65160,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 8,
+    "n": 1477,
+    "rate": 0.005416384563303994,
+    "ci95": [
+     0.002341223801591551,
+     0.010644403781458396
+    ]
+   },
+   "merge_recall": {
+    "k": 76,
+    "n": 939,
+    "rate": 0.08093716719914804,
+    "ci95": [
+     0.06429676394649515,
+     0.10025949911418974
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 5,
+    "to_relate": 81
+   },
+   "decisions": {
+    "RELATE": 1721,
+    "CONFLICT": 611,
+    "MERGE": 84
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "in_K_not_merged": 5,
+    "tested_not_merged": 844,
+    "tested_merged": 74
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 5,
+    "n": 923,
+    "rate": 0.005417118093174431
+   },
+   "not_merged_with_target": {
+    "k": 849,
+    "n": 923,
+    "rate": 0.9198266522210184
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "in_K_unlinked": 5,
+    "in_K_linked": 10,
+    "outside_K_unlinked": 3,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 89,
+    "n": 408,
+    "rate": 0.2181372549019608
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 3,
+    "n": 408,
+    "rate": 0.007352941176470588
+   },
+   "nli_calls": 6249
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "d39f8e7fb13bd7cd98c5cc5d71ecea9a",
+   "epoch_id": "e00d140dcfe302c500b768dc0e2743fb",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.02,
+   "m": 1,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65160,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 8,
+    "n": 1477,
+    "rate": 0.005416384563303994,
+    "ci95": [
+     0.002341223801591551,
+     0.010644403781458396
+    ]
+   },
+   "merge_recall": {
+    "k": 76,
+    "n": 939,
+    "rate": 0.08093716719914804,
+    "ci95": [
+     0.06429676394649515,
+     0.10025949911418974
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 5,
+    "to_relate": 81
+   },
+   "decisions": {
+    "RELATE": 1721,
+    "CONFLICT": 611,
+    "MERGE": 84
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "outside_K_not_merged": 5,
+    "tested_not_merged": 844,
+    "tested_merged": 74
+   },
+   "single_target_miss": {
+    "k": 5,
+    "n": 923,
+    "rate": 0.005417118093174431
+   },
+   "in_K_untested_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "not_merged_with_target": {
+    "k": 849,
+    "n": 923,
+    "rate": 0.9198266522210184
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "outside_K_unlinked": 18,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 99,
+    "n": 408,
+    "rate": 0.2426470588235294
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 18,
+    "n": 408,
+    "rate": 0.04411764705882353
+   },
+   "nli_calls": 4832
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "a655ed64dbe8184bd46791637359b11d",
+   "epoch_id": "6d33946377b864686fca80dc8892fdb0",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.02,
+   "m": 5,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65160,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 8,
+    "n": 1477,
+    "rate": 0.005416384563303994,
+    "ci95": [
+     0.002341223801591551,
+     0.010644403781458396
+    ]
+   },
+   "merge_recall": {
+    "k": 76,
+    "n": 939,
+    "rate": 0.08093716719914804,
+    "ci95": [
+     0.06429676394649515,
+     0.10025949911418974
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 5,
+    "to_relate": 81
+   },
+   "decisions": {
+    "RELATE": 1721,
+    "CONFLICT": 611,
+    "MERGE": 84
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "in_K_not_merged": 5,
+    "tested_not_merged": 844,
+    "tested_merged": 74
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 5,
+    "n": 923,
+    "rate": 0.005417118093174431
+   },
+   "not_merged_with_target": {
+    "k": 849,
+    "n": 923,
+    "rate": 0.9198266522210184
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "in_K_unlinked": 5,
+    "in_K_linked": 11,
+    "outside_K_unlinked": 2,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 88,
+    "n": 408,
+    "rate": 0.21568627450980393
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 2,
+    "n": 408,
+    "rate": 0.004901960784313725
+   },
+   "nli_calls": 6835
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "6c98ed4c76b6296f7850943cb45917b5",
+   "epoch_id": "37ab3e1c664bd2694519b582c7848c99",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.02,
+   "m": 10,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65160,
+    "3": 65536
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 8,
+    "n": 1477,
+    "rate": 0.005416384563303994,
+    "ci95": [
+     0.002341223801591551,
+     0.010644403781458396
+    ]
+   },
+   "merge_recall": {
+    "k": 76,
+    "n": 939,
+    "rate": 0.08093716719914804,
+    "ci95": [
+     0.06429676394649515,
+     0.10025949911418974
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 5,
+    "to_relate": 81
+   },
+   "decisions": {
+    "RELATE": 1721,
+    "CONFLICT": 611,
+    "MERGE": 84
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "in_K_not_merged": 5,
+    "tested_not_merged": 844,
+    "tested_merged": 74
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 5,
+    "n": 923,
+    "rate": 0.005417118093174431
+   },
+   "not_merged_with_target": {
+    "k": 849,
+    "n": 923,
+    "rate": 0.9198266522210184
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "in_K_unlinked": 5,
+    "in_K_linked": 12,
+    "outside_K_unlinked": 1,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 87,
+    "n": 408,
+    "rate": 0.21323529411764705
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 1,
+    "n": 408,
+    "rate": 0.0024509803921568627
+   },
+   "nli_calls": 7468
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "55aaeca8b0d086aa84e71a250881a35a",
+   "epoch_id": "dddbdf38e42de312879ffb5d9fcd00e3",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.05,
+   "m": 3,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 64203,
+    "1": 64962,
+    "2": 64731,
+    "3": 64692
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 42,
+    "n": 1477,
+    "rate": 0.02843601895734597,
+    "ci95": [
+     0.02056936408021266,
+     0.038244351379798945
+    ]
+   },
+   "merge_recall": {
+    "k": 413,
+    "n": 939,
+    "rate": 0.4398296059637913,
+    "ci95": [
+     0.40778050383958403,
+     0.47225723410552245
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 20,
+    "to_relate": 66
+   },
+   "decisions": {
+    "RELATE": 1350,
+    "CONFLICT": 611,
+    "MERGE": 455
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "in_K_not_merged": 3,
+    "in_K_merged": 2,
+    "tested_not_merged": 514,
+    "tested_merged": 404
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 3,
+    "n": 923,
+    "rate": 0.0032502708559046588
+   },
+   "not_merged_with_target": {
+    "k": 517,
+    "n": 923,
+    "rate": 0.5601300108342362
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "in_K_unlinked": 5,
+    "in_K_linked": 10,
+    "outside_K_unlinked": 3,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 89,
+    "n": 408,
+    "rate": 0.2181372549019608
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 3,
+    "n": 408,
+    "rate": 0.007352941176470588
+   },
+   "nli_calls": 6249
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "d39f8e7fb13bd7cd98c5cc5d71ecea9a",
+   "epoch_id": "bb3d4575f085ada8bb99f74c15e48ed2",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.05,
+   "m": 1,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 64203,
+    "1": 64962,
+    "2": 64731,
+    "3": 64692
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 42,
+    "n": 1477,
+    "rate": 0.02843601895734597,
+    "ci95": [
+     0.02056936408021266,
+     0.038244351379798945
+    ]
+   },
+   "merge_recall": {
+    "k": 413,
+    "n": 939,
+    "rate": 0.4398296059637913,
+    "ci95": [
+     0.40778050383958403,
+     0.47225723410552245
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 20,
+    "to_relate": 66
+   },
+   "decisions": {
+    "RELATE": 1350,
+    "CONFLICT": 611,
+    "MERGE": 455
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "outside_K_not_merged": 3,
+    "outside_K_merged": 2,
+    "tested_not_merged": 514,
+    "tested_merged": 404
+   },
+   "single_target_miss": {
+    "k": 3,
+    "n": 923,
+    "rate": 0.0032502708559046588
+   },
+   "in_K_untested_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "not_merged_with_target": {
+    "k": 517,
+    "n": 923,
+    "rate": 0.5601300108342362
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "outside_K_unlinked": 18,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 99,
+    "n": 408,
+    "rate": 0.2426470588235294
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 18,
+    "n": 408,
+    "rate": 0.04411764705882353
+   },
+   "nli_calls": 4832
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "a655ed64dbe8184bd46791637359b11d",
+   "epoch_id": "74d6c21a59d5c61e67986f9db659fed3",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.05,
+   "m": 5,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 64203,
+    "1": 64962,
+    "2": 64731,
+    "3": 64692
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 42,
+    "n": 1477,
+    "rate": 0.02843601895734597,
+    "ci95": [
+     0.02056936408021266,
+     0.038244351379798945
+    ]
+   },
+   "merge_recall": {
+    "k": 413,
+    "n": 939,
+    "rate": 0.4398296059637913,
+    "ci95": [
+     0.40778050383958403,
+     0.47225723410552245
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 20,
+    "to_relate": 66
+   },
+   "decisions": {
+    "RELATE": 1350,
+    "CONFLICT": 611,
+    "MERGE": 455
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "in_K_not_merged": 3,
+    "in_K_merged": 2,
+    "tested_not_merged": 514,
+    "tested_merged": 404
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 3,
+    "n": 923,
+    "rate": 0.0032502708559046588
+   },
+   "not_merged_with_target": {
+    "k": 517,
+    "n": 923,
+    "rate": 0.5601300108342362
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "in_K_unlinked": 5,
+    "in_K_linked": 11,
+    "outside_K_unlinked": 2,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 88,
+    "n": 408,
+    "rate": 0.21568627450980393
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 2,
+    "n": 408,
+    "rate": 0.004901960784313725
+   },
+   "nli_calls": 6835
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "6c98ed4c76b6296f7850943cb45917b5",
+   "epoch_id": "27339a10d3d4a9b3e58a75f23ceaeb02",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.05,
+   "m": 10,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 64203,
+    "1": 64962,
+    "2": 64731,
+    "3": 64692
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 42,
+    "n": 1477,
+    "rate": 0.02843601895734597,
+    "ci95": [
+     0.02056936408021266,
+     0.038244351379798945
+    ]
+   },
+   "merge_recall": {
+    "k": 413,
+    "n": 939,
+    "rate": 0.4398296059637913,
+    "ci95": [
+     0.40778050383958403,
+     0.47225723410552245
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 20,
+    "to_relate": 66
+   },
+   "decisions": {
+    "RELATE": 1350,
+    "CONFLICT": 611,
+    "MERGE": 455
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "in_K_not_merged": 3,
+    "in_K_merged": 2,
+    "tested_not_merged": 514,
+    "tested_merged": 404
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 3,
+    "n": 923,
+    "rate": 0.0032502708559046588
+   },
+   "not_merged_with_target": {
+    "k": 517,
+    "n": 923,
+    "rate": 0.5601300108342362
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "in_K_unlinked": 5,
+    "in_K_linked": 12,
+    "outside_K_unlinked": 1,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 87,
+    "n": 408,
+    "rate": 0.21323529411764705
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 1,
+    "n": 408,
+    "rate": 0.0024509803921568627
+   },
+   "nli_calls": 7468
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "55aaeca8b0d086aa84e71a250881a35a",
+   "epoch_id": "5699c29f9be654e1a33e0b4e2bcdc7c7",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.1,
+   "m": 3,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 63331,
+    "1": 59492,
+    "2": 63224,
+    "3": 62575
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 89,
+    "n": 1477,
+    "rate": 0.06025727826675694,
+    "ci95": [
+     0.048667632013545375,
+     0.07363132052221455
+    ]
+   },
+   "merge_recall": {
+    "k": 778,
+    "n": 939,
+    "rate": 0.8285410010649628,
+    "ci95": [
+     0.802880700779073,
+     0.852120563676287
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 28,
+    "to_relate": 58
+   },
+   "decisions": {
+    "MERGE": 867,
+    "RELATE": 937,
+    "CONFLICT": 612
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "in_K_not_merged": 1,
+    "in_K_merged": 4,
+    "tested_not_merged": 154,
+    "tested_merged": 764
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 1,
+    "n": 923,
+    "rate": 0.0010834236186348862
+   },
+   "not_merged_with_target": {
+    "k": 155,
+    "n": 923,
+    "rate": 0.16793066088840736
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "in_K_unlinked": 5,
+    "in_K_linked": 10,
+    "outside_K_unlinked": 3,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 89,
+    "n": 408,
+    "rate": 0.2181372549019608
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 3,
+    "n": 408,
+    "rate": 0.007352941176470588
+   },
+   "nli_calls": 6249
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "d39f8e7fb13bd7cd98c5cc5d71ecea9a",
+   "epoch_id": "9b4df9de81d5eafcd4f06dc4a09e2a7d",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.1,
+   "m": 1,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 63331,
+    "1": 59492,
+    "2": 63224,
+    "3": 62575
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 89,
+    "n": 1477,
+    "rate": 0.06025727826675694,
+    "ci95": [
+     0.048667632013545375,
+     0.07363132052221455
+    ]
+   },
+   "merge_recall": {
+    "k": 778,
+    "n": 939,
+    "rate": 0.8285410010649628,
+    "ci95": [
+     0.802880700779073,
+     0.852120563676287
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 28,
+    "to_relate": 58
+   },
+   "decisions": {
+    "MERGE": 867,
+    "RELATE": 938,
+    "CONFLICT": 611
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "outside_K_not_merged": 1,
+    "outside_K_merged": 4,
+    "tested_not_merged": 154,
+    "tested_merged": 764
+   },
+   "single_target_miss": {
+    "k": 1,
+    "n": 923,
+    "rate": 0.0010834236186348862
+   },
+   "in_K_untested_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "not_merged_with_target": {
+    "k": 155,
+    "n": 923,
+    "rate": 0.16793066088840736
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "outside_K_unlinked": 18,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 99,
+    "n": 408,
+    "rate": 0.2426470588235294
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 18,
+    "n": 408,
+    "rate": 0.04411764705882353
+   },
+   "nli_calls": 4832
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "a655ed64dbe8184bd46791637359b11d",
+   "epoch_id": "5c9ffe9659ad8b16d7ef6951c5fd79c3",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.1,
+   "m": 5,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 63331,
+    "1": 59492,
+    "2": 63224,
+    "3": 62575
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 89,
+    "n": 1477,
+    "rate": 0.06025727826675694,
+    "ci95": [
+     0.048667632013545375,
+     0.07363132052221455
+    ]
+   },
+   "merge_recall": {
+    "k": 778,
+    "n": 939,
+    "rate": 0.8285410010649628,
+    "ci95": [
+     0.802880700779073,
+     0.852120563676287
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 28,
+    "to_relate": 58
+   },
+   "decisions": {
+    "MERGE": 867,
+    "RELATE": 937,
+    "CONFLICT": 612
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "in_K_not_merged": 1,
+    "in_K_merged": 4,
+    "tested_not_merged": 154,
+    "tested_merged": 764
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 1,
+    "n": 923,
+    "rate": 0.0010834236186348862
+   },
+   "not_merged_with_target": {
+    "k": 155,
+    "n": 923,
+    "rate": 0.16793066088840736
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "in_K_unlinked": 5,
+    "in_K_linked": 11,
+    "outside_K_unlinked": 2,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 88,
+    "n": 408,
+    "rate": 0.21568627450980393
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 2,
+    "n": 408,
+    "rate": 0.004901960784313725
+   },
+   "nli_calls": 6835
+  },
+  {
+   "git_sha": "957292205206baa736640d1568f4d7e751f0b645",
+   "m_nli": "3fa4943a9636f8ac11d12bd3a91954df",
+   "m_pol": "6c98ed4c76b6296f7850943cb45917b5",
+   "epoch_id": "6d71cac4ed3c96f4e9570081c65435de",
+   "seq": 1,
+   "nli_id": "cross-encoder/nli-deberta-v3-small",
+   "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+   "domain": "vitaminc",
+   "alpha": 0.1,
+   "m": 10,
+   "released_epoch_table_equal": true,
+   "cal_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 67,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 279,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 83,
+     "ambiguous": 1,
+     "mergeable": 2
+    }
+   },
+   "cal_records": 225,
+   "theta_q": {
+    "0": 63331,
+    "1": 59492,
+    "2": 63224,
+    "3": 62575
+   },
+   "test_unresolved": 0,
+   "test_labels": {
+    "cross_item": {
+     "non_mergeable": 168
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 918,
+     "non_mergeable": 75
+    },
+    "same_item": {
+     "non_mergeable": 272,
+     "mergeable": 21
+    }
+   },
+   "nodes": 3964,
+   "tested_pair_differs_from_m3": {
+    "k": 0,
+    "n": 3964,
+    "rate": 0.0
+   },
+   "false_merge": {
+    "k": 89,
+    "n": 1477,
+    "rate": 0.06025727826675694,
+    "ci95": [
+     0.048667632013545375,
+     0.07363132052221455
+    ]
+   },
+   "merge_recall": {
+    "k": 778,
+    "n": 939,
+    "rate": 0.8285410010649628,
+    "ci95": [
+     0.802880700779073,
+     0.852120563676287
+    ]
+   },
+   "contradiction_miss": {
+    "k": 86,
+    "n": 418,
+    "rate": 0.20574162679425836,
+    "ci95": [
+     0.16799339175871084,
+     0.24771397955456145
+    ],
+    "to_merge": 28,
+    "to_relate": 58
+   },
+   "decisions": {
+    "MERGE": 867,
+    "RELATE": 937,
+    "CONFLICT": 612
+   },
+   "mergeable_pairs": 923,
+   "target": {
+    "in_K_not_merged": 1,
+    "in_K_merged": 4,
+    "tested_not_merged": 154,
+    "tested_merged": 764
+   },
+   "single_target_miss": {
+    "k": 0,
+    "n": 923,
+    "rate": 0.0
+   },
+   "in_K_untested_miss": {
+    "k": 1,
+    "n": 923,
+    "rate": 0.0010834236186348862
+   },
+   "not_merged_with_target": {
+    "k": 155,
+    "n": 923,
+    "rate": 0.16793066088840736
+   },
+   "conflict_pairs": 408,
+   "conflict": {
+    "in_K_unlinked": 5,
+    "in_K_linked": 12,
+    "outside_K_unlinked": 1,
+    "tested_unlinked": 81,
+    "tested_linked": 309
+   },
+   "conflict_unlinked": {
+    "k": 87,
+    "n": 408,
+    "rate": 0.21323529411764705
+   },
+   "conflict_unlinked_outside_K": {
+    "k": 1,
+    "n": 408,
+    "rate": 0.0024509803921568627
+   },
+   "nli_calls": 7468
+  }
+ ]
+}

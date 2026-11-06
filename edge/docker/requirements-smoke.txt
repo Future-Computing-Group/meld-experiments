@@ -1,0 +1,6 @@
+# Smoke image (hashing encoder, lexical NLI): exactly the third-party modules the service import
+# chain loads. Also the orchestrator venv on the driver host (edge/run_*.py, scripts/run_service_knee.py run).
+numpy==2.4.6
+requests==2.34.2
+protobuf==6.33.6
+pyyaml==6.0.3

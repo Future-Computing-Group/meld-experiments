@@ -1,6 +1,6 @@
 {
   "title": "MELD: A Protocol for Merging Knowledge Across Distributed Agentic Memories -- reference implementation and experiments",
-  "description": "Reference implementation and experiment harness for MELD, a knowledge-merge protocol for sovereign agent memories: the five-outcome admission procedure (insert, merge, relate, conflict, reject) over three signals (scoped claim-key identity, embedding similarity, NLI contradiction verdict), the auditable Patch, the per-claim status CRDT, and the publish/subscribe binding. Includes the 104-pair merge-classification benchmark and gold set, the order-shuffle graph-sensitivity experiment, the CRDT convergence and partition-heal drivers, the cross-tier (edge/HPC/local) deployment drivers over Apache Kafka, the M-1 HotpotQA memory-delta campaign harness, and archived per-run logs with a hashed run manifest. v1.0 accompanies the TAAS submission.",
+  "description": "Reference implementation, experiment drivers and study archive for MELD, a knowledge-merge protocol for sovereign agent memories. Replicas exchange only what principals assert, as five replicated grow-only sets (signed claim deltas, authored status effects, recorded NLI evidence, calibration records and calibration epochs), and derive consolidation, representatives and typed links by a deterministic fold that emits a recomputable certificate per pass. Admission is risk-specified: a tolerated false-merge rate is turned into a threshold per store-size bin by split-conformal calibration on labelled tested pairs, with abstention to RELATE and signed recalibration epochs. Includes the protocol and fold, the conformal calibration and epoch tooling, the benchmark builder for naturalistic pairs from PAWS, SICK, VitaminC, LongMemEval and SciFact, the Mem0, Graphiti and Caura merge-policy baselines, the convergence, recalibration, independently-evolving-memory, cross-hardware and scale drivers, the multi-host testbed drivers, and a study archive (release/study-archive) with result rows and provenance stamps, group-signed epochs and calibration records, and annotation and audit records. Version 2.0.0 accompanies the TAAS manuscript.",
   "creators": [
     {
       "name": "Lovén, Lauri",
@@ -28,9 +28,9 @@
     "agent memory",
     "knowledge graphs",
     "CRDT",
-    "publish/subscribe",
+    "conformal prediction",
     "semantic merge",
     "computing continuum"
   ],
-  "version": "1.0.6"
+  "version": "2.0.0"
 }

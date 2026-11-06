@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Local stand-ins for ssh/scp and the Slurm client (sbatch, squeue, srun, scancel), so the job-mode
+# HPC tier of kafka_tiers.sh runs end to end on one machine (tests and the local dry rung). Put this
+# directory first on PATH. Every call is appended to $FAKEHPC_LOG; job state lives in $FAKEHPC_STATE.
+#   ssh [opts] host [cmd...]  -> cmd run locally by bash; with -N (a tunnel) -> sleeps until killed
+#   scp [-q] src host:dst     -> cp src dst
+#   sbatch --parsable [opts] script args -> runs script in the background, prints the job id
+#   squeue -h -j ID -o FMT    -> "RUNNING localhost" while the job's process lives
+#   srun [opts] cmd...        -> cmd run locally;  scancel ID -> kills the job's process tree
+set -u
+: "${FAKEHPC_STATE:?}"; mkdir -p "$FAKEHPC_STATE"
+me="$(basename "$0")"
+echo "$me $*" >> "${FAKEHPC_LOG:-$FAKEHPC_STATE/calls.log}"
+case "$me" in
+  ssh)
+    tunnel=0
+    while [ $# -gt 0 ]; do case "$1" in
+      -N) tunnel=1; shift;;
+      -[JRLoipFlDW]) shift 2;;
+      -*) shift;;
+      *) break;; esac; done
+    shift   # the host
+    [ "$tunnel" = 1 ] && exec sleep 86400
+    exec bash -c "$*";;
+  scp)
+    [ "$1" = -q ] && shift
+    exec cp "$1" "${2#*:}";;
+  sbatch)
+    while [ $# -gt 0 ]; do case "$1" in -*) shift;; *) break;; esac; done
+    id=$(( $(cat "$FAKEHPC_STATE/next" 2>/dev/null || echo 1000) + 1 )); echo "$id" > "$FAKEHPC_STATE/next"
+    script="$1"; shift
+    SLURM_JOB_ID=$id nohup bash "$script" "$@" > "slurm-$id.out" 2>&1 &
+    echo $! > "$FAKEHPC_STATE/$id.pid"; echo "$id";;
+  squeue)
+    id=""; while [ $# -gt 0 ]; do case "$1" in -j) id="$2"; shift 2;; *) shift;; esac; done
+    p="$(cat "$FAKEHPC_STATE/$id.pid" 2>/dev/null)" && kill -0 "$p" 2>/dev/null && echo "RUNNING localhost"; exit 0;;
+  srun)
+    while [ $# -gt 0 ]; do case "$1" in -*) shift;; *) break;; esac; done
+    exec "$@";;
+  scancel)
+    p="$(cat "$FAKEHPC_STATE/$1.pid" 2>/dev/null)" || exit 0
+    pkill -CONT -P "$p" 2>/dev/null; pkill -P "$p" 2>/dev/null; kill -CONT "$p" 2>/dev/null; kill "$p" 2>/dev/null; exit 0;;
+esac

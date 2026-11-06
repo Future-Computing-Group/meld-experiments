@@ -1,0 +1,14 @@
+{
+ "key_fingerprint": "133ffccfdf7b4c4d",
+ "epochs": [
+  {
+   "source": "hotpot-seed-a0.05.epoch.json",
+   "file": "hotpot-seed-a0.05.group.epoch.json",
+   "epoch_id": "59b847dab1ffa1000f665c6425e6d66a",
+   "scope": "agent",
+   "alpha": 50000,
+   "body_sha256": "59b847dab1ffa1000f665c6425e6d66a81334f7bacd8fbb1e30c2900eb408829",
+   "key_fingerprint": "133ffccfdf7b4c4d"
+  }
+ ]
+}

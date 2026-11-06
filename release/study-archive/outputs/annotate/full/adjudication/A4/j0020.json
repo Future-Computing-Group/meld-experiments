@@ -1,0 +1,416 @@
+{
+ "batch_id": "j0020",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "14d0944865ab43ed376dfd95691e5f32f821ed76cb38fb09ddbaea3d45c3ed95",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"657d867aca1c5925\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The current team of the same player differs (49ers versus Jets), a holder that changes over time.\"},\n{\"item_id\": \"ca549461d907d959\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denying any woman cooking fish is broader than denying a woman frying fish; both can hold.\"},\n{\"item_id\": \"e741d8e810db3499\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The modifiers several and new move between churches and centres, giving compatible but different details.\"},\n{\"item_id\": \"d3921a1ad0f1cd1b\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Mixed-to-negative can be read as a refinement of mixed or as a different fixed reception.\"},\n{\"item_id\": \"db952a0b30ade447\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Terminally ill and incurably ill can be read as near synonyms or as different patient groups.\"},\n{\"item_id\": \"ad24008f92f85e18\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Garfield was appointed in one and elected in the other, a fixed fact about how he became president.\"},\n{\"item_id\": \"d27590e5b3ea3bf0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One lists additional fighters featured by the same promotion.\"},\n{\"item_id\": \"0836dcbb4222c775\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A dog on a mountainside and a person in bike gear are different negated scenes.\"},\n{\"item_id\": \"58a16f831d014671\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Jumping on a board and kids on a trampoline are different negated scenes.\"},\n{\"item_id\": \"74ea17d0e6b09145\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A motorcyclist on a roadway and dirt bikers on a trail are different negated scenes.\"},\n{\"item_id\": \"371068104b837ee7\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Slicing and peeling a potato are different denied events.\"},\n{\"item_id\": \"e2ea3ed03c348b0e\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Very and relatively swap between wealth and mansion size, giving incompatible degrees.\"},\n{\"item_id\": \"d347ee2665855866\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Jerry Jones agrees to write the screenplay in one, Moore in the other.\"},\n{\"item_id\": \"2377742cf22b0286\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One names the previous film as Finding Nemo.\"},\n{\"item_id\": \"20a8d14dda40c085\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"East of Reading and south of Slough are different compatible reference points for the same place.\"},\n{\"item_id\": \"653d53a85af93b05\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds Amaretto and Grand Marnier to the flavour list.\"},\n{\"item_id\": \"3e6ab1f9c4a8fd2f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Swapping regional and pre-existing changes whether the monuments or the temples are pre-existing.\"},\n{\"item_id\": \"8167c15421ba2abd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Puppy specifies the dog; both negations can hold.\"},\n{\"item_id\": \"8f9c04fba3b35d26\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the state Kentucky.\"},\n{\"item_id\": \"11d92932b8fbd981\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A few adds a quantity to the swimmers.\"},\n{\"item_id\": \"f1688f1e2d9a0755\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Piano and keyboard are related instruments in compatible negations about a boy playing.\"},\n{\"item_id\": \"322eb672f2701740\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the Sprint Cup series to the driver description.\"},\n{\"item_id\": \"87a603ff5c8c8398\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Swapping modern Hebrew and contemporary garbles the text but may or may not change the asserted facts.\"},\n{\"item_id\": \"07d7725329c29e41\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A man driving a car and a man's white car being driven away are compatible details of a car scene.\"},\n{\"item_id\": \"e40b9809ea80f25a\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Two dogs versus four dogs playing in a grassy field.\"},\n{\"item_id\": \"7709da03a986d1c9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the United Artists period before Red Bird Records.\"},\n{\"item_id\": \"f78d59cf4a03cb63\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"No men fighting is broader than two men not fighting; both can hold.\"},\n{\"item_id\": \"85de13826e56f6bb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe pledges forced to run late-night errands for the sorority, with compatible details.\"},\n{\"item_id\": \"d217c729f1c82b79\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A black and white dog with a ball, one adding a volleyball and a field.\"},\n{\"item_id\": \"f5c2137f844dd3d1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the year 2017.\"},\n{\"item_id\": \"65b4c6f9ca2fbb13\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both concern the same old colleague Rachel with compatible details.\"},\n{\"item_id\": \"b23725e8d2e28c62\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The count of attempts to date differs (10 versus 5), a total that grows over time.\"},\n{\"item_id\": \"4647c8e082ec89b3\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Stirring vegetables and cleaning a bowl of soup are different scenes.\"},\n{\"item_id\": \"607a15679816214d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny a man's bicycle activity, one more specifically a wheelie on a mountain bike.\"},\n{\"item_id\": \"2cdfef72632a7c9d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the ESPN2 show where the retirement was announced.\"},\n{\"item_id\": \"03236faae975b709\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One specifies a bamboo flute.\"},\n{\"item_id\": \"c0b29a94ae465164\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"UK and Edinburgh swap, changing the festival's name.\"},\n{\"item_id\": \"a1ae6b9e1387bbb9\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man running down a field and a child running over grass are different people in different scenes.\"},\n{\"item_id\": \"57f5266dd06b450b\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Will open versus opened is the same event's status at different times.\"},\n{\"item_id\": \"d2b90055820b53da\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Former is attached to a different excluded area.\"},\n{\"item_id\": \"dac28ce942a1fea5\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only a typo in goats differs.\"},\n{\"item_id\": \"173482515f7f6d34\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 2, \"rationale\": \"The adjectives move between the structure and its restoration, giving compatible but different descriptions.\"},\n{\"item_id\": \"c68965b857bd7a02\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the men act carefully.\"},\n{\"item_id\": \"04aa33291fdc7b73\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Debuts versus debut is only a wording difference.\"},\n{\"item_id\": \"c1a903c66ebaa45d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Emmit is Ray's twin.\"},\n{\"item_id\": \"a4b7ab438f2a1c36\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Opening figure and total gross are compatible box-office figures for a film.\"},\n{\"item_id\": \"38af6223f000936a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible compass locations for the same place, one listing more reference towns.\"},\n{\"item_id\": \"5fd29b61c756521e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the year and that the case was placed in isolation.\"},\n{\"item_id\": \"9e5d00712507052a\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Mixed versus negative reception clash, possibly from an unstated difference of source such as Metacritic.\"}\n]}\n",
+  "{\"labels\": [\n{\"item_id\": \"657d867aca1c5925\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The player's current team (49ers versus Jets) is a status that changes over time.\"},\n{\"item_id\": \"ca549461d907d959\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denying any woman cooking fish is broader than denying a woman frying fish; both can hold.\"},\n{\"item_id\": \"e741d8e810db3499\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The modifiers several and new move between churches and centres, giving compatible but different details.\"},\n{\"item_id\": \"d3921a1ad0f1cd1b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mixed-to-negative refines mixed reviews, and the gross is identical.\"},\n{\"item_id\": \"db952a0b30ade447\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Terminally ill and incurably ill can be read as synonyms or as different patient groups.\"},\n{\"item_id\": \"ad24008f92f85e18\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Appointed versus elected can be read as the same board act or as conflicting accounts of how Garfield became president.\"},\n{\"item_id\": \"d27590e5b3ea3bf0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One list of featured fighters is a superset of the other.\"},\n{\"item_id\": \"0836dcbb4222c775\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying a dog on a mountainside and denying a person in bike gear are different scenes.\"},\n{\"item_id\": \"58a16f831d014671\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Board jumping and kids on a trampoline are different negated scenes.\"},\n{\"item_id\": \"d8390e7e402764f0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both give compatible facts about the album Rock or Bust.\"},\n{\"item_id\": \"74ea17d0e6b09145\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A motorcyclist on a roadway and dirt bikers on a trail are different negated scenes.\"},\n{\"item_id\": \"371068104b837ee7\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Slicing and peeling a potato are different denied actions.\"},\n{\"item_id\": \"e2ea3ed03c348b0e\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Relatively and very are swapped between the wealth and the mansion size, so the degrees clash.\"},\n{\"item_id\": \"d347ee2665855866\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Jerry Jones agrees to write the screenplay in one, Moore in the other.\"},\n{\"item_id\": \"2377742cf22b0286\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the previous film is Finding Nemo.\"},\n{\"item_id\": \"20a8d14dda40c085\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"East of Reading and south of Slough are different reference points that can both hold.\"},\n{\"item_id\": \"653d53a85af93b05\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Amaretto and Grand Marnier to the flavour list.\"},\n{\"item_id\": \"3e6ab1f9c4a8fd2f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Swapping regional and pre-existing changes whether the monuments themselves are pre-existing.\"},\n{\"item_id\": \"8167c15421ba2abd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A puppy is a more specific dog; both negations can hold.\"},\n{\"item_id\": \"8f9c04fba3b35d26\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the state Kentucky.\"},\n{\"item_id\": \"11d92932b8fbd981\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that there are a few swimmers.\"},\n{\"item_id\": \"f1688f1e2d9a0755\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a boy playing a keyboard instrument, one specifying a piano.\"},\n{\"item_id\": \"322eb672f2701740\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the Sprint Cup series.\"},\n{\"item_id\": \"87a603ff5c8c8398\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The swapped modern Hebrew and contemporary phrases can be read as a garbled restatement or as a changed claim.\"},\n{\"item_id\": \"07d7725329c29e41\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man driving carefully and a man's white car being driven away are different events.\"},\n{\"item_id\": \"e40b9809ea80f25a\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same grassy-field scene has two dogs in one and four in the other.\"},\n{\"item_id\": \"7709da03a986d1c9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the United Artists period before Red Bird Records.\"},\n{\"item_id\": \"f78d59cf4a03cb63\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denying any men fighting is broader than denying two men fighting; both can hold.\"},\n{\"item_id\": \"85de13826e56f6bb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe forced late-night errands for sorority members, with compatible details.\"},\n{\"item_id\": \"d217c729f1c82b79\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A black and white dog with a ball, one adding a tattered volleyball and a brown field.\"},\n{\"item_id\": \"f5c2137f844dd3d1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the year 2017.\"},\n{\"item_id\": \"65b4c6f9ca2fbb13\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both concern the old colleague Rachel with compatible details.\"},\n{\"item_id\": \"b23725e8d2e28c62\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The number of attempts to date (10 versus 5) is a running count.\"},\n{\"item_id\": \"4647c8e082ec89b3\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Stirring vegetables and cleaning a bowl of soup are different scenes.\"},\n{\"item_id\": \"607a15679816214d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man's bicycle activity, one more specifically; both can hold.\"},\n{\"item_id\": \"2cdfef72632a7c9d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the ESPN2 show where the retirement was announced.\"},\n{\"item_id\": \"03236faae975b709\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the flute is bamboo.\"},\n{\"item_id\": \"c0b29a94ae465164\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"UK and Edinburgh are swapped, giving the festival a different name.\"},\n{\"item_id\": \"a1ae6b9e1387bbb9\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man running down a field and a child running over grass are different people.\"},\n{\"item_id\": \"57f5266dd06b450b\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Will open versus opened is the same event's status at different times.\"},\n{\"item_id\": \"d2b90055820b53da\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The former status is attached to different excluded areas.\"},\n{\"item_id\": \"dac28ce942a1fea5\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the typo gots versus goats differs.\"},\n{\"item_id\": \"173482515f7f6d34\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The swapped adjectives can be read as compatible praise or as a clash over whether the restoration is ongoing.\"},\n{\"item_id\": \"c68965b857bd7a02\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the men act carefully.\"},\n{\"item_id\": \"04aa33291fdc7b73\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only debuts versus debut differs.\"},\n{\"item_id\": \"c1a903c66ebaa45d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Emmit is Ray's twin.\"},\n{\"item_id\": \"a4b7ab438f2a1c36\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Opening figure and total gross are compatible figures about the film.\"},\n{\"item_id\": \"38af6223f000936a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Different compatible compass locations of the same place.\"},\n{\"item_id\": \"5fd29b61c756521e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the year and that the case was isolated.\"},\n{\"item_id\": \"9e5d00712507052a\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mixed versus negative reviews could reflect different sources, which the texts leave unstated.\"}\n]}\n"
+ ],
+ "labels": {
+  "657d867aca1c5925": {
+   "item_id": "657d867aca1c5925",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The player's current team (49ers versus Jets) is a status that changes over time."
+  },
+  "ca549461d907d959": {
+   "item_id": "ca549461d907d959",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denying any woman cooking fish is broader than denying a woman frying fish; both can hold."
+  },
+  "e741d8e810db3499": {
+   "item_id": "e741d8e810db3499",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The modifiers several and new move between churches and centres, giving compatible but different details."
+  },
+  "d3921a1ad0f1cd1b": {
+   "item_id": "d3921a1ad0f1cd1b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mixed-to-negative refines mixed reviews, and the gross is identical."
+  },
+  "db952a0b30ade447": {
+   "item_id": "db952a0b30ade447",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Terminally ill and incurably ill can be read as synonyms or as different patient groups."
+  },
+  "ad24008f92f85e18": {
+   "item_id": "ad24008f92f85e18",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Appointed versus elected can be read as the same board act or as conflicting accounts of how Garfield became president."
+  },
+  "d27590e5b3ea3bf0": {
+   "item_id": "d27590e5b3ea3bf0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One list of featured fighters is a superset of the other."
+  },
+  "0836dcbb4222c775": {
+   "item_id": "0836dcbb4222c775",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying a dog on a mountainside and denying a person in bike gear are different scenes."
+  },
+  "58a16f831d014671": {
+   "item_id": "58a16f831d014671",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Board jumping and kids on a trampoline are different negated scenes."
+  },
+  "d8390e7e402764f0": {
+   "item_id": "d8390e7e402764f0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both give compatible facts about the album Rock or Bust."
+  },
+  "74ea17d0e6b09145": {
+   "item_id": "74ea17d0e6b09145",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A motorcyclist on a roadway and dirt bikers on a trail are different negated scenes."
+  },
+  "371068104b837ee7": {
+   "item_id": "371068104b837ee7",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Slicing and peeling a potato are different denied actions."
+  },
+  "e2ea3ed03c348b0e": {
+   "item_id": "e2ea3ed03c348b0e",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Relatively and very are swapped between the wealth and the mansion size, so the degrees clash."
+  },
+  "d347ee2665855866": {
+   "item_id": "d347ee2665855866",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Jerry Jones agrees to write the screenplay in one, Moore in the other."
+  },
+  "2377742cf22b0286": {
+   "item_id": "2377742cf22b0286",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the previous film is Finding Nemo."
+  },
+  "20a8d14dda40c085": {
+   "item_id": "20a8d14dda40c085",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "East of Reading and south of Slough are different reference points that can both hold."
+  },
+  "653d53a85af93b05": {
+   "item_id": "653d53a85af93b05",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Amaretto and Grand Marnier to the flavour list."
+  },
+  "3e6ab1f9c4a8fd2f": {
+   "item_id": "3e6ab1f9c4a8fd2f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Swapping regional and pre-existing changes whether the monuments themselves are pre-existing."
+  },
+  "8167c15421ba2abd": {
+   "item_id": "8167c15421ba2abd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A puppy is a more specific dog; both negations can hold."
+  },
+  "8f9c04fba3b35d26": {
+   "item_id": "8f9c04fba3b35d26",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the state Kentucky."
+  },
+  "11d92932b8fbd981": {
+   "item_id": "11d92932b8fbd981",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that there are a few swimmers."
+  },
+  "f1688f1e2d9a0755": {
+   "item_id": "f1688f1e2d9a0755",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a boy playing a keyboard instrument, one specifying a piano."
+  },
+  "322eb672f2701740": {
+   "item_id": "322eb672f2701740",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the Sprint Cup series."
+  },
+  "87a603ff5c8c8398": {
+   "item_id": "87a603ff5c8c8398",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The swapped modern Hebrew and contemporary phrases can be read as a garbled restatement or as a changed claim."
+  },
+  "07d7725329c29e41": {
+   "item_id": "07d7725329c29e41",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man driving carefully and a man's white car being driven away are different events."
+  },
+  "e40b9809ea80f25a": {
+   "item_id": "e40b9809ea80f25a",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same grassy-field scene has two dogs in one and four in the other."
+  },
+  "7709da03a986d1c9": {
+   "item_id": "7709da03a986d1c9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the United Artists period before Red Bird Records."
+  },
+  "f78d59cf4a03cb63": {
+   "item_id": "f78d59cf4a03cb63",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denying any men fighting is broader than denying two men fighting; both can hold."
+  },
+  "85de13826e56f6bb": {
+   "item_id": "85de13826e56f6bb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe forced late-night errands for sorority members, with compatible details."
+  },
+  "d217c729f1c82b79": {
+   "item_id": "d217c729f1c82b79",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A black and white dog with a ball, one adding a tattered volleyball and a brown field."
+  },
+  "f5c2137f844dd3d1": {
+   "item_id": "f5c2137f844dd3d1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the year 2017."
+  },
+  "65b4c6f9ca2fbb13": {
+   "item_id": "65b4c6f9ca2fbb13",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both concern the old colleague Rachel with compatible details."
+  },
+  "b23725e8d2e28c62": {
+   "item_id": "b23725e8d2e28c62",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The number of attempts to date (10 versus 5) is a running count."
+  },
+  "4647c8e082ec89b3": {
+   "item_id": "4647c8e082ec89b3",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Stirring vegetables and cleaning a bowl of soup are different scenes."
+  },
+  "607a15679816214d": {
+   "item_id": "607a15679816214d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man's bicycle activity, one more specifically; both can hold."
+  },
+  "2cdfef72632a7c9d": {
+   "item_id": "2cdfef72632a7c9d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the ESPN2 show where the retirement was announced."
+  },
+  "03236faae975b709": {
+   "item_id": "03236faae975b709",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the flute is bamboo."
+  },
+  "c0b29a94ae465164": {
+   "item_id": "c0b29a94ae465164",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "UK and Edinburgh are swapped, giving the festival a different name."
+  },
+  "a1ae6b9e1387bbb9": {
+   "item_id": "a1ae6b9e1387bbb9",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man running down a field and a child running over grass are different people."
+  },
+  "57f5266dd06b450b": {
+   "item_id": "57f5266dd06b450b",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Will open versus opened is the same event's status at different times."
+  },
+  "d2b90055820b53da": {
+   "item_id": "d2b90055820b53da",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The former status is attached to different excluded areas."
+  },
+  "dac28ce942a1fea5": {
+   "item_id": "dac28ce942a1fea5",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the typo gots versus goats differs."
+  },
+  "173482515f7f6d34": {
+   "item_id": "173482515f7f6d34",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The swapped adjectives can be read as compatible praise or as a clash over whether the restoration is ongoing."
+  },
+  "c68965b857bd7a02": {
+   "item_id": "c68965b857bd7a02",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the men act carefully."
+  },
+  "04aa33291fdc7b73": {
+   "item_id": "04aa33291fdc7b73",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only debuts versus debut differs."
+  },
+  "c1a903c66ebaa45d": {
+   "item_id": "c1a903c66ebaa45d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Emmit is Ray's twin."
+  },
+  "a4b7ab438f2a1c36": {
+   "item_id": "a4b7ab438f2a1c36",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Opening figure and total gross are compatible figures about the film."
+  },
+  "38af6223f000936a": {
+   "item_id": "38af6223f000936a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Different compatible compass locations of the same place."
+  },
+  "5fd29b61c756521e": {
+   "item_id": "5fd29b61c756521e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the year and that the case was isolated."
+  },
+  "9e5d00712507052a": {
+   "item_id": "9e5d00712507052a",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mixed versus negative reviews could reflect different sources, which the texts leave unstated."
+  }
+ },
+ "errors": []
+}

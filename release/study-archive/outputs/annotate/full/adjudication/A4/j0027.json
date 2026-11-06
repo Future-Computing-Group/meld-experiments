@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0027",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "e7fcf49cdf24e4d4e58d2fbe4cbdd5e2022d6c8790889951765ff778361af740",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"4827f095c357f76f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Novelization and Romanization name different kinds of adaptation of the same script.\"},\n{\"item_id\": \"99e98759e7280006\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Free agent versus Ravens receiver is a team status that changes over time.\"},\n{\"item_id\": \"615597035423af58\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The band existing now versus having existed in the past is a status that changes over time.\"},\n{\"item_id\": \"9956471c820c3524\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The lead over PewDiePie, 7 million versus 6 million, is a running figure that changes over time.\"},\n{\"item_id\": \"01b8eca6caf4aff8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe an onion being cut, and one adds that a man is doing it.\"},\n{\"item_id\": \"cede67c718277252\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a running dog, one in grass generally and one up a grassy hill, and both can hold.\"},\n{\"item_id\": \"ec21e5a20aabb2f1\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Rare and simple swap between the mineral and its formula, changing which attribute is described.\"},\n{\"item_id\": \"0a064d31bcad85d7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Being regarded by some as one of the greatest and by many as the greatest are compatible claims about the same champion.\"},\n{\"item_id\": \"1ae3014358be3e57\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible details (yellow, little, sandy path) about a dog running on sand.\"},\n{\"item_id\": \"4cc88192118163e0\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Personal bests of 25:50 and a newly set 27:12 clash unless they refer to different race distances, which the texts leave unstated.\"},\n{\"item_id\": \"609bcde5c766a30e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe one-wheel bicycle riding, and one adds that the rider is skilled.\"},\n{\"item_id\": \"b0c099aad25755a6\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Cutting an onion and slicing potatoes are different events.\"},\n{\"item_id\": \"bea4d89df518fbfd\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same claim about directors' fiduciary duties in Australia; the list lead-in adds no assertion.\"},\n{\"item_id\": \"c357f2fb82dc8a50\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the year 2008 to the same naming by Time.\"},\n{\"item_id\": \"f72bfce294e30dda\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Whether the traded player and Anderson's 2016 signing are the same person is unstated, so the pair reads as a conflict or as unrelated.\"},\n{\"item_id\": \"d010eb2773953c7a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Being raised as an African king adds a detail to being raised a king.\"},\n{\"item_id\": \"6ef4d999580d0396\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The noun phrases swap 'totally' between modifiers, which may name different concepts or compatible properties of the same torsion.\"},\n{\"item_id\": \"e02d349f6f9a5545\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both concern a woman with pink gloves in the snow, with compatible differing details.\"},\n{\"item_id\": \"19b6fcbe52c127cb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Christian Evans is a jewelry designer.\"},\n{\"item_id\": \"c081893effe344b7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe a dog catching a ball in mid air, differing only in voice.\"},\n{\"item_id\": \"434ea404214dd497\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Driving and riding over the flowers are used synonymously for the same helmeted pair.\"},\n{\"item_id\": \"4c0bca83bd6ab45a\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Will participate versus participated is the same event viewed at different times.\"},\n{\"item_id\": \"30e982c0ad6a6951\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe climbing scenes involving a man and a rope, with compatible details.\"},\n{\"item_id\": \"e45791b74c5d7a85\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Topicalised and raised swap roles, changing the linguistic claim.\"},\n{\"item_id\": \"5c73234994a84f4d\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Different Rotten Tomatoes scores and review counts clash only if the unnamed works and times are the same, which the texts do not say.\"},\n{\"item_id\": \"a60f0c17735f9bd7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Seth Meyers is a comedian.\"},\n{\"item_id\": \"17a1f07e9c649817\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only the verb tense differs; the content is the same.\"},\n{\"item_id\": \"de1f435edb1e5910\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The population total 171,222,291 versus 1 differs for the same date and region.\"},\n{\"item_id\": \"da3fbb37d379ce3d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a young person rock climbing, one adding an indoor wall.\"},\n{\"item_id\": \"1ebe8f265856c202\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Given and distributed are synonyms swapped between recipients, with no change in meaning.\"},\n{\"item_id\": \"c60dbb5dd56968ff\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Golden and brown can describe the same dog running in tall grass, with compatible details.\"},\n{\"item_id\": \"ed79da3ae50bc9c7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Strumming specifies a way of playing the guitar.\"},\n{\"item_id\": \"4702dab54a3f30a7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The only difference is the dropped word song, a typo.\"},\n{\"item_id\": \"c5e16945b432df0a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One names the lakes Uganda borders.\"},\n{\"item_id\": \"0e7c26b95f321012\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the theaters were in the United States and Canada.\"},\n{\"item_id\": \"086337cbdc8ebec8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Alt-rock specifies the rock genre of the same band.\"},\n{\"item_id\": \"24a21a6407903a09\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both concern early inflammatory chemokine production in the lung, with compatible claims.\"},\n{\"item_id\": \"2988ca4ba4a23c47\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Riding a motorcycle without performing tricks is compatible.\"},\n{\"item_id\": \"4faa86b136f429e5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"British-Irish adds British origin to the Irish film.\"},\n{\"item_id\": \"86f757718c0adc02\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The party's name differs (of French Dahomey versus of Dahomey), a fixed fact.\"},\n{\"item_id\": \"306c9194b0d11675\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds American and Los Angeles to the band's description.\"},\n{\"item_id\": \"ef41dc0fba964e8a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible facts about the ketubah.\"},\n{\"item_id\": \"919718237a20bd70\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same events; the dangling participle is a grammar difference, not a change of who was raped.\"},\n{\"item_id\": \"00fcd58ca565b617\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Different Rotten Tomatoes figures clash only if the unnamed film and time match Finding Dory's, which is unstated.\"},\n{\"item_id\": \"ee1328bc8ca656f7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same facts about the track and album release date, reworded.\"},\n{\"item_id\": \"ff97198eff49cc91\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Mixed to positive refines mixed reviews.\"},\n{\"item_id\": \"fc141dd5b5ccadcf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One lists more towns of the Sinos Valley.\"},\n{\"item_id\": \"18ab076494bd80e7\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only typos of steroids differ.\"},\n{\"item_id\": \"c09bb298bbfa2bb8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The same event at the same date and venue is given two compatible title forms.\"},\n{\"item_id\": \"3e108dd2a1fe0680\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The civil and ecclesiastical order of the parish is swapped.\"}\n]}\n"
+ ],
+ "labels": {
+  "4827f095c357f76f": {
+   "item_id": "4827f095c357f76f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Novelization and Romanization name different kinds of adaptation of the same script."
+  },
+  "99e98759e7280006": {
+   "item_id": "99e98759e7280006",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Free agent versus Ravens receiver is a team status that changes over time."
+  },
+  "615597035423af58": {
+   "item_id": "615597035423af58",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The band existing now versus having existed in the past is a status that changes over time."
+  },
+  "9956471c820c3524": {
+   "item_id": "9956471c820c3524",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The lead over PewDiePie, 7 million versus 6 million, is a running figure that changes over time."
+  },
+  "01b8eca6caf4aff8": {
+   "item_id": "01b8eca6caf4aff8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe an onion being cut, and one adds that a man is doing it."
+  },
+  "cede67c718277252": {
+   "item_id": "cede67c718277252",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a running dog, one in grass generally and one up a grassy hill, and both can hold."
+  },
+  "ec21e5a20aabb2f1": {
+   "item_id": "ec21e5a20aabb2f1",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Rare and simple swap between the mineral and its formula, changing which attribute is described."
+  },
+  "0a064d31bcad85d7": {
+   "item_id": "0a064d31bcad85d7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Being regarded by some as one of the greatest and by many as the greatest are compatible claims about the same champion."
+  },
+  "1ae3014358be3e57": {
+   "item_id": "1ae3014358be3e57",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible details (yellow, little, sandy path) about a dog running on sand."
+  },
+  "4cc88192118163e0": {
+   "item_id": "4cc88192118163e0",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Personal bests of 25:50 and a newly set 27:12 clash unless they refer to different race distances, which the texts leave unstated."
+  },
+  "609bcde5c766a30e": {
+   "item_id": "609bcde5c766a30e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe one-wheel bicycle riding, and one adds that the rider is skilled."
+  },
+  "b0c099aad25755a6": {
+   "item_id": "b0c099aad25755a6",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Cutting an onion and slicing potatoes are different events."
+  },
+  "bea4d89df518fbfd": {
+   "item_id": "bea4d89df518fbfd",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same claim about directors' fiduciary duties in Australia; the list lead-in adds no assertion."
+  },
+  "c357f2fb82dc8a50": {
+   "item_id": "c357f2fb82dc8a50",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the year 2008 to the same naming by Time."
+  },
+  "f72bfce294e30dda": {
+   "item_id": "f72bfce294e30dda",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Whether the traded player and Anderson's 2016 signing are the same person is unstated, so the pair reads as a conflict or as unrelated."
+  },
+  "d010eb2773953c7a": {
+   "item_id": "d010eb2773953c7a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Being raised as an African king adds a detail to being raised a king."
+  },
+  "6ef4d999580d0396": {
+   "item_id": "6ef4d999580d0396",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The noun phrases swap 'totally' between modifiers, which may name different concepts or compatible properties of the same torsion."
+  },
+  "e02d349f6f9a5545": {
+   "item_id": "e02d349f6f9a5545",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both concern a woman with pink gloves in the snow, with compatible differing details."
+  },
+  "19b6fcbe52c127cb": {
+   "item_id": "19b6fcbe52c127cb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Christian Evans is a jewelry designer."
+  },
+  "c081893effe344b7": {
+   "item_id": "c081893effe344b7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe a dog catching a ball in mid air, differing only in voice."
+  },
+  "434ea404214dd497": {
+   "item_id": "434ea404214dd497",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Driving and riding over the flowers are used synonymously for the same helmeted pair."
+  },
+  "4c0bca83bd6ab45a": {
+   "item_id": "4c0bca83bd6ab45a",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Will participate versus participated is the same event viewed at different times."
+  },
+  "30e982c0ad6a6951": {
+   "item_id": "30e982c0ad6a6951",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe climbing scenes involving a man and a rope, with compatible details."
+  },
+  "e45791b74c5d7a85": {
+   "item_id": "e45791b74c5d7a85",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Topicalised and raised swap roles, changing the linguistic claim."
+  },
+  "5c73234994a84f4d": {
+   "item_id": "5c73234994a84f4d",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Different Rotten Tomatoes scores and review counts clash only if the unnamed works and times are the same, which the texts do not say."
+  },
+  "a60f0c17735f9bd7": {
+   "item_id": "a60f0c17735f9bd7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Seth Meyers is a comedian."
+  },
+  "17a1f07e9c649817": {
+   "item_id": "17a1f07e9c649817",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only the verb tense differs; the content is the same."
+  },
+  "de1f435edb1e5910": {
+   "item_id": "de1f435edb1e5910",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The population total 171,222,291 versus 1 differs for the same date and region."
+  },
+  "da3fbb37d379ce3d": {
+   "item_id": "da3fbb37d379ce3d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a young person rock climbing, one adding an indoor wall."
+  },
+  "1ebe8f265856c202": {
+   "item_id": "1ebe8f265856c202",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Given and distributed are synonyms swapped between recipients, with no change in meaning."
+  },
+  "c60dbb5dd56968ff": {
+   "item_id": "c60dbb5dd56968ff",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Golden and brown can describe the same dog running in tall grass, with compatible details."
+  },
+  "ed79da3ae50bc9c7": {
+   "item_id": "ed79da3ae50bc9c7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Strumming specifies a way of playing the guitar."
+  },
+  "4702dab54a3f30a7": {
+   "item_id": "4702dab54a3f30a7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The only difference is the dropped word song, a typo."
+  },
+  "c5e16945b432df0a": {
+   "item_id": "c5e16945b432df0a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One names the lakes Uganda borders."
+  },
+  "0e7c26b95f321012": {
+   "item_id": "0e7c26b95f321012",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the theaters were in the United States and Canada."
+  },
+  "086337cbdc8ebec8": {
+   "item_id": "086337cbdc8ebec8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Alt-rock specifies the rock genre of the same band."
+  },
+  "24a21a6407903a09": {
+   "item_id": "24a21a6407903a09",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both concern early inflammatory chemokine production in the lung, with compatible claims."
+  },
+  "2988ca4ba4a23c47": {
+   "item_id": "2988ca4ba4a23c47",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Riding a motorcycle without performing tricks is compatible."
+  },
+  "4faa86b136f429e5": {
+   "item_id": "4faa86b136f429e5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "British-Irish adds British origin to the Irish film."
+  },
+  "86f757718c0adc02": {
+   "item_id": "86f757718c0adc02",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The party's name differs (of French Dahomey versus of Dahomey), a fixed fact."
+  },
+  "306c9194b0d11675": {
+   "item_id": "306c9194b0d11675",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds American and Los Angeles to the band's description."
+  },
+  "ef41dc0fba964e8a": {
+   "item_id": "ef41dc0fba964e8a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible facts about the ketubah."
+  },
+  "919718237a20bd70": {
+   "item_id": "919718237a20bd70",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same events; the dangling participle is a grammar difference, not a change of who was raped."
+  },
+  "00fcd58ca565b617": {
+   "item_id": "00fcd58ca565b617",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Different Rotten Tomatoes figures clash only if the unnamed film and time match Finding Dory's, which is unstated."
+  },
+  "ee1328bc8ca656f7": {
+   "item_id": "ee1328bc8ca656f7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same facts about the track and album release date, reworded."
+  },
+  "ff97198eff49cc91": {
+   "item_id": "ff97198eff49cc91",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Mixed to positive refines mixed reviews."
+  },
+  "fc141dd5b5ccadcf": {
+   "item_id": "fc141dd5b5ccadcf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One lists more towns of the Sinos Valley."
+  },
+  "18ab076494bd80e7": {
+   "item_id": "18ab076494bd80e7",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only typos of steroids differ."
+  },
+  "c09bb298bbfa2bb8": {
+   "item_id": "c09bb298bbfa2bb8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The same event at the same date and venue is given two compatible title forms."
+  },
+  "3e108dd2a1fe0680": {
+   "item_id": "3e108dd2a1fe0680",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The civil and ecclesiastical order of the parish is swapped."
+  }
+ },
+ "errors": []
+}

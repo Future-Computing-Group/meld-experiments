@@ -9,23 +9,20 @@ import os
 
 from meld.eval.recall_sweep import aggregate_recall, recall_rows
 
-_CFG = os.path.join(os.path.dirname(__file__), "..", "src", "meld", "config",
-                    "thresholds-minilm.yaml")
+from test_agent_meld_memory import agent_epoch
 
 
 def test_recall_rows_structures_per_cell_and_consumes_the_inner_brain():
     """The orchestration contract: one row per (overlap, condition, task, k); recall in
-    [0,1]; and reaching the assertions at all proves the inner-Brain contract holds (the
-    earlier b.brain-vs-b.brain.brain bug raised AttributeError instead of returning rows).
-    Semantic merge consolidates paraphrase-duplicates that exact-dedup cannot, so the
+    [0,1]. Semantic merge (under the epoch) consolidates paraphrase-duplicates that
+    exact-dedup (no epoch) cannot, so the
     merged store holds no MORE live units than the exact-dedup store."""
     from meld.agent.hotpot_loader import load_hotpot_fixture
-    from meld.config import load_thresholds
-    cfg = load_thresholds(_CFG)
+    epoch = agent_epoch("minilm", "lexical")
     tasks = load_hotpot_fixture(n=2)
     rows = recall_rows(tasks, overlaps=[0.5], ks=[5],
                        conditions=["distributed_merge", "exact_dedup"],
-                       encoder="minilm", nli="lexical", cfg=cfg)
+                       encoder="minilm", nli="lexical", epoch=epoch)
     assert len(rows) == 1 * 2 * 2 * 1                         # overlaps x conds x tasks x ks
     assert all(0.0 <= r["recall"] <= 1.0 for r in rows)
     assert all(r["live_units"] >= 0 for r in rows)
@@ -38,11 +35,10 @@ def test_recall_rows_emits_progress_per_task_for_mid_run_visibility():
     """A long sweep must emit per-batch progress so a wedge surfaces early. recall_rows
     calls the injected ``progress`` callback once per (cell, task) with counters."""
     from meld.agent.hotpot_loader import load_hotpot_fixture
-    from meld.config import load_thresholds
-    cfg = load_thresholds(_CFG)
+    epoch = agent_epoch("minilm", "lexical")
     seen = []
     recall_rows(load_hotpot_fixture(n=2), overlaps=[0.5], ks=[5],
-                conditions=["centralized"], encoder="minilm", nli="lexical", cfg=cfg,
+                conditions=["centralized"], encoder="minilm", nli="lexical", epoch=epoch,
                 progress=lambda info: seen.append(info))
     assert len(seen) == 2                                  # one per task in the one cell
     assert {"cell", "n_cells", "task", "n_tasks", "elapsed_s"} <= set(seen[-1])

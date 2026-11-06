@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0012",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "627b8478a1455e34de33b7c44473c1b942d6646261fafd081fea5a923757eaeb",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"777094e97ee7ccfa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same Lord Darnley role; one adds the June 2017 casting date, the other the 2018 film year.\"},\n{\"item_id\": \"937aa1926aa5ba9a\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny that a man is playing the drums, only worded differently.\"},\n{\"item_id\": \"45c8289d7c22de3e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the conversion was peaceful and mentions Dagestan.\"},\n{\"item_id\": \"bdb6b493e523cab9\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The only difference is the typo corrently versus correctly.\"},\n{\"item_id\": \"36f6f867aa804c31\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a dog chasing a ball on grass, one with extra details about turning and a flying ball, and both can hold.\"},\n{\"item_id\": \"6460495ef7fca7d2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A dog running through snow is compatible with a dog running on the ground, snow adding detail.\"},\n{\"item_id\": \"06b245d751262d11\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 5, \"rationale\": \"Current team (Ravens versus Browns) is a status that changes over time.\"},\n{\"item_id\": \"cccd8dd6583f3432\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Different chief executives are named, but the texts do not establish whether they lead the same organisation.\"},\n{\"item_id\": \"f39a573dde1d4e05\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The thick and square dimensions are swapped and one requires equal fat and lean.\"},\n{\"item_id\": \"46eee66cc050c722\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A denial of two different dogs looking at each other in a street clashes with a black and a white dog staring at each other there.\"},\n{\"item_id\": \"f05009bd2ae1c826\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Denying any woman playing guitar is compatible with denying a seated singing one, which adds details.\"},\n{\"item_id\": \"e8a947066dcef283\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A black dog running in grass is compatible with a brown and a black dog running there, which adds a dog.\"},\n{\"item_id\": \"3f4ea3cf637969e0\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both concern a man doing exercises, with garbled wording about the floor that does not clearly contradict.\"},\n{\"item_id\": \"6c435859f46ad358\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Most draws and most wins at the stadium for Al-Ahli are compatible statistics about the same team.\"},\n{\"item_id\": \"2e28e8655389f566\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Truncated director lists differ compatibly, one including Barbra Streisand and the other Joseph Losey.\"},\n{\"item_id\": \"cc389c5a60174ea6\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A boy versus a man playing an instrument could be a clash in one scene or two unrelated scenes.\"},\n{\"item_id\": \"0c1b574b86d7d1db\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Denying a dog catching and denying a dog chasing a ball are compatible negations about the same scene.\"},\n{\"item_id\": \"f90be6e309613000\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Slicing a carrot and slicing carrots differ in number but can both hold for the same woman.\"},\n{\"item_id\": \"ff7d994dffa0b2fe\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Heraldic and modern are swapped, changing which traditions the 1946 design followed.\"},\n{\"item_id\": \"d02dc9484631139c\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both say the film's reviews were mixed to positive.\"},\n{\"item_id\": \"58c41b1bb7c1f575\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Two compatible negations about interactions between a dog and a baby.\"},\n{\"item_id\": \"47fdf22d2daff47d\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Denying a man cutting fish and denying a man cutting paper concern different objects and events.\"},\n{\"item_id\": \"3db3f09ca62cbfff\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible details about NXT moving to USA and competing with AEW's TNT show.\"},\n{\"item_id\": \"c73a177f02b5dccb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Same 1993 marriage with two children; the musician descriptor attaches to different spouses, which can both hold.\"},\n{\"item_id\": \"76bbdc6cf39907d1\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Themes versus theme is a grammatical slip given the singular verb, same claim.\"},\n{\"item_id\": \"d78b1b1a40295ff8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds a trial stay at Grimsby Town before the Exeter City and Grindavik moves.\"},\n{\"item_id\": \"2eca72a8b21f4e02\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Walking beside the bike versus riding it clash unless they describe different moments.\"},\n{\"item_id\": \"5898284fb2596d59\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Worshipped versus majestic as Aphrodite Areia changes the claim, but it is unclear whether that is a contradiction or a compatible addition.\"},\n{\"item_id\": \"b36260d2b5232080\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Four people on a bridge and a couple wading through water describe different scenes.\"},\n{\"item_id\": \"3c1acf09db467e59\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Rape and revenge versus rape and revenge films names the same genre.\"},\n{\"item_id\": \"7699000bbc31092b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man and woman walking is compatible with a group of people walking.\"},\n{\"item_id\": \"7976b5789f1ad085\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A woman putting on makeup is compatible with her applying it to a man, which adds the recipient.\"},\n{\"item_id\": \"4832da53e58c9538\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the watching man is amused.\"},\n{\"item_id\": \"7517bc3dd339ec80\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Munro also scrounged parts from others.\"},\n{\"item_id\": \"c3df964af9b1fcb7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A dog playing on grass and a brown dog carrying a toy in grass are compatible details.\"},\n{\"item_id\": \"c73c70239e9c1ab7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the fifth-best-selling ranking to the same sales figure.\"},\n{\"item_id\": \"77388a995ba9d8fb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A deer standing inside a fence is compatible with it not jumping over the fence.\"},\n{\"item_id\": \"e30798bef55ebdf2\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds his Colombian descent.\"},\n{\"item_id\": \"f7ddc61543f95f29\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Past and former are synonyms, so both roles are unchanged.\"},\n{\"item_id\": \"d6b65d86d1c0b856\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same plot event, one with a grammatical fix.\"},\n{\"item_id\": \"51118052cce1ef09\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"View and like totals grow over time, with later figures for July than for May.\"},\n{\"item_id\": \"c7007d11266e6194\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The current egg stock count differs (20 versus 30 dozen), a count that changes over time.\"},\n{\"item_id\": \"030d745a0032bb83\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The token's stated purpose differs, making the name clear versus unique.\"},\n{\"item_id\": \"7277dc0d5e151d2f\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same definition of the zeta function, with row a garbled synonym for series.\"},\n{\"item_id\": \"775e43970b63d305\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same Europa League debut against Ajax, only reworded.\"},\n{\"item_id\": \"2f470debbdec9e06\", \"verdict\": \"CONFLICT\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Sitting on a fountain versus near the ocean clash unless different settings are meant.\"},\n{\"item_id\": \"8f2b49dae3bf6e2d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible facts about Davies' background and international eligibility.\"},\n{\"item_id\": \"1c8661647242eed1\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Researching versus research is a grammar fix only.\"},\n{\"item_id\": \"d552f24e314d8e2f\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Subscriber count differs, a total that grows over time.\"},\n{\"item_id\": \"8122e76bc1008269\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Different sales figures, accolades and chart runs with no shared proposition that ties them to the same song.\"}\n]}\n"
+ ],
+ "labels": {
+  "777094e97ee7ccfa": {
+   "item_id": "777094e97ee7ccfa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same Lord Darnley role; one adds the June 2017 casting date, the other the 2018 film year."
+  },
+  "937aa1926aa5ba9a": {
+   "item_id": "937aa1926aa5ba9a",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny that a man is playing the drums, only worded differently."
+  },
+  "45c8289d7c22de3e": {
+   "item_id": "45c8289d7c22de3e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the conversion was peaceful and mentions Dagestan."
+  },
+  "bdb6b493e523cab9": {
+   "item_id": "bdb6b493e523cab9",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The only difference is the typo corrently versus correctly."
+  },
+  "36f6f867aa804c31": {
+   "item_id": "36f6f867aa804c31",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a dog chasing a ball on grass, one with extra details about turning and a flying ball, and both can hold."
+  },
+  "6460495ef7fca7d2": {
+   "item_id": "6460495ef7fca7d2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A dog running through snow is compatible with a dog running on the ground, snow adding detail."
+  },
+  "06b245d751262d11": {
+   "item_id": "06b245d751262d11",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 5,
+   "rationale": "Current team (Ravens versus Browns) is a status that changes over time."
+  },
+  "cccd8dd6583f3432": {
+   "item_id": "cccd8dd6583f3432",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Different chief executives are named, but the texts do not establish whether they lead the same organisation."
+  },
+  "f39a573dde1d4e05": {
+   "item_id": "f39a573dde1d4e05",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The thick and square dimensions are swapped and one requires equal fat and lean."
+  },
+  "46eee66cc050c722": {
+   "item_id": "46eee66cc050c722",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A denial of two different dogs looking at each other in a street clashes with a black and a white dog staring at each other there."
+  },
+  "f05009bd2ae1c826": {
+   "item_id": "f05009bd2ae1c826",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Denying any woman playing guitar is compatible with denying a seated singing one, which adds details."
+  },
+  "e8a947066dcef283": {
+   "item_id": "e8a947066dcef283",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A black dog running in grass is compatible with a brown and a black dog running there, which adds a dog."
+  },
+  "3f4ea3cf637969e0": {
+   "item_id": "3f4ea3cf637969e0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both concern a man doing exercises, with garbled wording about the floor that does not clearly contradict."
+  },
+  "6c435859f46ad358": {
+   "item_id": "6c435859f46ad358",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Most draws and most wins at the stadium for Al-Ahli are compatible statistics about the same team."
+  },
+  "2e28e8655389f566": {
+   "item_id": "2e28e8655389f566",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Truncated director lists differ compatibly, one including Barbra Streisand and the other Joseph Losey."
+  },
+  "cc389c5a60174ea6": {
+   "item_id": "cc389c5a60174ea6",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A boy versus a man playing an instrument could be a clash in one scene or two unrelated scenes."
+  },
+  "0c1b574b86d7d1db": {
+   "item_id": "0c1b574b86d7d1db",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Denying a dog catching and denying a dog chasing a ball are compatible negations about the same scene."
+  },
+  "f90be6e309613000": {
+   "item_id": "f90be6e309613000",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Slicing a carrot and slicing carrots differ in number but can both hold for the same woman."
+  },
+  "ff7d994dffa0b2fe": {
+   "item_id": "ff7d994dffa0b2fe",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Heraldic and modern are swapped, changing which traditions the 1946 design followed."
+  },
+  "d02dc9484631139c": {
+   "item_id": "d02dc9484631139c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both say the film's reviews were mixed to positive."
+  },
+  "58c41b1bb7c1f575": {
+   "item_id": "58c41b1bb7c1f575",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Two compatible negations about interactions between a dog and a baby."
+  },
+  "47fdf22d2daff47d": {
+   "item_id": "47fdf22d2daff47d",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Denying a man cutting fish and denying a man cutting paper concern different objects and events."
+  },
+  "3db3f09ca62cbfff": {
+   "item_id": "3db3f09ca62cbfff",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible details about NXT moving to USA and competing with AEW's TNT show."
+  },
+  "c73a177f02b5dccb": {
+   "item_id": "c73a177f02b5dccb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Same 1993 marriage with two children; the musician descriptor attaches to different spouses, which can both hold."
+  },
+  "76bbdc6cf39907d1": {
+   "item_id": "76bbdc6cf39907d1",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Themes versus theme is a grammatical slip given the singular verb, same claim."
+  },
+  "d78b1b1a40295ff8": {
+   "item_id": "d78b1b1a40295ff8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds a trial stay at Grimsby Town before the Exeter City and Grindavik moves."
+  },
+  "2eca72a8b21f4e02": {
+   "item_id": "2eca72a8b21f4e02",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Walking beside the bike versus riding it clash unless they describe different moments."
+  },
+  "5898284fb2596d59": {
+   "item_id": "5898284fb2596d59",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Worshipped versus majestic as Aphrodite Areia changes the claim, but it is unclear whether that is a contradiction or a compatible addition."
+  },
+  "b36260d2b5232080": {
+   "item_id": "b36260d2b5232080",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Four people on a bridge and a couple wading through water describe different scenes."
+  },
+  "3c1acf09db467e59": {
+   "item_id": "3c1acf09db467e59",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Rape and revenge versus rape and revenge films names the same genre."
+  },
+  "7699000bbc31092b": {
+   "item_id": "7699000bbc31092b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man and woman walking is compatible with a group of people walking."
+  },
+  "7976b5789f1ad085": {
+   "item_id": "7976b5789f1ad085",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A woman putting on makeup is compatible with her applying it to a man, which adds the recipient."
+  },
+  "4832da53e58c9538": {
+   "item_id": "4832da53e58c9538",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the watching man is amused."
+  },
+  "7517bc3dd339ec80": {
+   "item_id": "7517bc3dd339ec80",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Munro also scrounged parts from others."
+  },
+  "c3df964af9b1fcb7": {
+   "item_id": "c3df964af9b1fcb7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A dog playing on grass and a brown dog carrying a toy in grass are compatible details."
+  },
+  "c73c70239e9c1ab7": {
+   "item_id": "c73c70239e9c1ab7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the fifth-best-selling ranking to the same sales figure."
+  },
+  "77388a995ba9d8fb": {
+   "item_id": "77388a995ba9d8fb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A deer standing inside a fence is compatible with it not jumping over the fence."
+  },
+  "e30798bef55ebdf2": {
+   "item_id": "e30798bef55ebdf2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds his Colombian descent."
+  },
+  "f7ddc61543f95f29": {
+   "item_id": "f7ddc61543f95f29",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Past and former are synonyms, so both roles are unchanged."
+  },
+  "d6b65d86d1c0b856": {
+   "item_id": "d6b65d86d1c0b856",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same plot event, one with a grammatical fix."
+  },
+  "51118052cce1ef09": {
+   "item_id": "51118052cce1ef09",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "View and like totals grow over time, with later figures for July than for May."
+  },
+  "c7007d11266e6194": {
+   "item_id": "c7007d11266e6194",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The current egg stock count differs (20 versus 30 dozen), a count that changes over time."
+  },
+  "030d745a0032bb83": {
+   "item_id": "030d745a0032bb83",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The token's stated purpose differs, making the name clear versus unique."
+  },
+  "7277dc0d5e151d2f": {
+   "item_id": "7277dc0d5e151d2f",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same definition of the zeta function, with row a garbled synonym for series."
+  },
+  "775e43970b63d305": {
+   "item_id": "775e43970b63d305",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same Europa League debut against Ajax, only reworded."
+  },
+  "2f470debbdec9e06": {
+   "item_id": "2f470debbdec9e06",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Sitting on a fountain versus near the ocean clash unless different settings are meant."
+  },
+  "8f2b49dae3bf6e2d": {
+   "item_id": "8f2b49dae3bf6e2d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible facts about Davies' background and international eligibility."
+  },
+  "1c8661647242eed1": {
+   "item_id": "1c8661647242eed1",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Researching versus research is a grammar fix only."
+  },
+  "d552f24e314d8e2f": {
+   "item_id": "d552f24e314d8e2f",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Subscriber count differs, a total that grows over time."
+  },
+  "8122e76bc1008269": {
+   "item_id": "8122e76bc1008269",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Different sales figures, accolades and chart runs with no shared proposition that ties them to the same song."
+  }
+ },
+ "errors": []
+}

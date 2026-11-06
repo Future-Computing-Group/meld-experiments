@@ -1,0 +1,38 @@
+{
+  "transport": "kafka",
+  "encoder": "minilm",
+  "nli": "mnli-cross-encoder",
+  "latency": {
+    "per_brain": {
+      "edge": {
+        "acked": 100,
+        "p50_ms": 11014.47,
+        "p95_ms": 16881.91
+      },
+      "local": {
+        "acked": 100,
+        "p50_ms": 8386.59,
+        "p95_ms": 10405.88
+      }
+    }
+  },
+  "running_example": {
+    "per_brain": {
+      "edge": {
+        "seed": "INSERT",
+        "merge": "RELATE",
+        "relate": "RELATE",
+        "conflict": "CONFLICT",
+        "c2_status": "OVERRULED"
+      },
+      "local": {
+        "seed": "INSERT",
+        "merge": "RELATE",
+        "relate": "RELATE",
+        "conflict": "CONFLICT",
+        "c2_status": "OVERRULED"
+      }
+    },
+    "all_converged": true
+  }
+}

@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0001",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "9aae38a78e906d7f03e98fe5e4a0c544cee2d9253ce7b85c0c6d70209df99987",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"1803552d9621cad8\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only the title Dr. differs, which adds nothing to the proposition.\"},\n{\"item_id\": \"ca8d5ebd49ed83cd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Quinn Buckner and Magic Johnson later achieved the same feat.\"},\n{\"item_id\": \"2e42477150a08447\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Only the word also differs, which does not change the assertion.\"},\n{\"item_id\": \"ebd150b7d45ada4c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the specific founding day of March 22 to the year 1872.\"},\n{\"item_id\": \"db13dc650e775e13\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the birth year 1974.\"},\n{\"item_id\": \"a1c64ed4c59c0986\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same penalty figures are given in reworded sentences.\"},\n{\"item_id\": \"e8666eb2e0419a90\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Combing a cat's fur and brushing a cat are synonymous here.\"},\n{\"item_id\": \"c5a22ec830a776c4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe a football player running on the field with compatible details.\"},\n{\"item_id\": \"56d89fad1c6f1ec8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Gil Shepherd is played by Jeff Daniels.\"},\n{\"item_id\": \"a732414bb1e01663\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The US and Canada release is future in one and past in the other, a status that changes over time.\"},\n{\"item_id\": \"c25d26179b59e4d1\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The head-to-head match count to date differs, 26 versus 24.\"},\n{\"item_id\": \"7848b33c8714d7cf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Slicing into pieces adds a detail to cutting a potato.\"},\n{\"item_id\": \"74653c9f9a2cdd22\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Nearly and approximately are near-synonyms here and the figures are identical.\"},\n{\"item_id\": \"67bd0aebc452f9a7\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Swapping named and renamed changes which name was original.\"},\n{\"item_id\": \"8027f00d1d050fc1\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Whether Cador is Arthur's brother or Arthur is Cador's brother is swapped.\"},\n{\"item_id\": \"481b8673eec1da16\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny onion cutting with compatible differences in who and how many onions.\"},\n{\"item_id\": \"4e9131776909e695\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the rider is a boy and the fence is metal.\"},\n{\"item_id\": \"d45252f6d67efebf\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Terrell being a draft prospect versus having been one is a status that changes over time.\"},\n{\"item_id\": \"2a63b2a9d62b8587\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Sam is Ted's civil rights attorney.\"},\n{\"item_id\": \"ecf34a878ef8ee01\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds DIME TRAP and the same-day release detail.\"},\n{\"item_id\": \"e240be9fee9f492f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds Stand High Patrol from France to the list.\"},\n{\"item_id\": \"cf246d234dcdb84d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Definite worsening and possible worsening are compatible but assert different strength.\"},\n{\"item_id\": \"97983380fb75d8f1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a child outside in cold weather, with compatible different details.\"},\n{\"item_id\": \"3c32e0a70291ed65\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The ratings clash if they concern the same work, but the texts do not show that they do.\"},\n{\"item_id\": \"efc292bd119da061\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe a person surfing, with compatible details of a trick and a wetsuit.\"},\n{\"item_id\": \"aa449dcfebe60591\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The only difference is a parenthetical synonym, or Indians.\"},\n{\"item_id\": \"cfb3c9493dec3227\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only religion versus religions and a comma differ.\"},\n{\"item_id\": \"6b33b79d275c1dd2\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Race car and racing vehicle are synonyms.\"},\n{\"item_id\": \"92c97b21a8d7d5da\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies that the person is a man.\"},\n{\"item_id\": \"f5eadf9cec4d98eb\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Being the BBC's first and the world's first service are claims over different ranges that can both hold.\"},\n{\"item_id\": \"f4a531f8444dc13b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both give compatible facts about ENIC's ownership structure.\"},\n{\"item_id\": \"706453a2c127c743\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The only difference is a pronoun dropped by typo.\"},\n{\"item_id\": \"be10c83b92a716fe\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both concern a film's box office, but it is unclear they refer to the same film.\"},\n{\"item_id\": \"eaee7951957d93a9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mixed positive adds a positive lean to mixed reviews.\"},\n{\"item_id\": \"88cea88c03679ad0\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The cat enters the drawer by jumping in one and climbing in the other.\"},\n{\"item_id\": \"5bc375fce0dd34ec\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The town is placed in northern London versus southern Hertfordshire.\"},\n{\"item_id\": \"9757d79cef944127\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The containment of province and region is swapped.\"},\n{\"item_id\": \"8891f4eda2c26fb6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Country pop refines the country genre.\"},\n{\"item_id\": \"037e57bd837ea314\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denying anyone cutting a tomato covers a wider range than denying a man cutting tomatoes.\"},\n{\"item_id\": \"88b2fda5cb08ea20\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both describe children with a ball in a park, with compatible details.\"},\n{\"item_id\": \"eb220bad1ca9615a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Taking a break and the meatpacking plant location are compatible details of the killing.\"},\n{\"item_id\": \"445252e2e1093b7b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Flying debris and the car rolling twice are compatible details of the same accident.\"},\n{\"item_id\": \"614b1c6ee139bbad\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The view count to date changes between May and June 2018.\"},\n{\"item_id\": \"5ef3ce4324a9a120\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the exact day, August 14.\"},\n{\"item_id\": \"ada7329196f62cbe\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The Rotten Tomatoes review tally is a running total that differs.\"},\n{\"item_id\": \"172588f1f7496b85\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The review count to date differs, 153 versus 155.\"},\n{\"item_id\": \"9fcb16201e748fcf\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A young boy jumping into water and a man jumping into a pool are different people and scenes.\"},\n{\"item_id\": \"4bc4d25d8ef9fbf3\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mainly and especially are interchanged near-synonyms with no change to the claim.\"},\n{\"item_id\": \"99542d3b0b29e8f9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a dog carrying something in its mouth, with compatible differing details.\"},\n{\"item_id\": \"4439c507c9b2b73a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One gives the exact union date of July 1, consistent with later the same week.\"}\n]}\n"
+ ],
+ "labels": {
+  "1803552d9621cad8": {
+   "item_id": "1803552d9621cad8",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only the title Dr. differs, which adds nothing to the proposition."
+  },
+  "ca8d5ebd49ed83cd": {
+   "item_id": "ca8d5ebd49ed83cd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Quinn Buckner and Magic Johnson later achieved the same feat."
+  },
+  "2e42477150a08447": {
+   "item_id": "2e42477150a08447",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Only the word also differs, which does not change the assertion."
+  },
+  "ebd150b7d45ada4c": {
+   "item_id": "ebd150b7d45ada4c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the specific founding day of March 22 to the year 1872."
+  },
+  "db13dc650e775e13": {
+   "item_id": "db13dc650e775e13",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the birth year 1974."
+  },
+  "a1c64ed4c59c0986": {
+   "item_id": "a1c64ed4c59c0986",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same penalty figures are given in reworded sentences."
+  },
+  "e8666eb2e0419a90": {
+   "item_id": "e8666eb2e0419a90",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Combing a cat's fur and brushing a cat are synonymous here."
+  },
+  "c5a22ec830a776c4": {
+   "item_id": "c5a22ec830a776c4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a football player running on the field with compatible details."
+  },
+  "56d89fad1c6f1ec8": {
+   "item_id": "56d89fad1c6f1ec8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Gil Shepherd is played by Jeff Daniels."
+  },
+  "a732414bb1e01663": {
+   "item_id": "a732414bb1e01663",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The US and Canada release is future in one and past in the other, a status that changes over time."
+  },
+  "c25d26179b59e4d1": {
+   "item_id": "c25d26179b59e4d1",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The head-to-head match count to date differs, 26 versus 24."
+  },
+  "7848b33c8714d7cf": {
+   "item_id": "7848b33c8714d7cf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Slicing into pieces adds a detail to cutting a potato."
+  },
+  "74653c9f9a2cdd22": {
+   "item_id": "74653c9f9a2cdd22",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Nearly and approximately are near-synonyms here and the figures are identical."
+  },
+  "67bd0aebc452f9a7": {
+   "item_id": "67bd0aebc452f9a7",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Swapping named and renamed changes which name was original."
+  },
+  "8027f00d1d050fc1": {
+   "item_id": "8027f00d1d050fc1",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Whether Cador is Arthur's brother or Arthur is Cador's brother is swapped."
+  },
+  "481b8673eec1da16": {
+   "item_id": "481b8673eec1da16",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny onion cutting with compatible differences in who and how many onions."
+  },
+  "4e9131776909e695": {
+   "item_id": "4e9131776909e695",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the rider is a boy and the fence is metal."
+  },
+  "d45252f6d67efebf": {
+   "item_id": "d45252f6d67efebf",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Terrell being a draft prospect versus having been one is a status that changes over time."
+  },
+  "2a63b2a9d62b8587": {
+   "item_id": "2a63b2a9d62b8587",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Sam is Ted's civil rights attorney."
+  },
+  "ecf34a878ef8ee01": {
+   "item_id": "ecf34a878ef8ee01",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds DIME TRAP and the same-day release detail."
+  },
+  "e240be9fee9f492f": {
+   "item_id": "e240be9fee9f492f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds Stand High Patrol from France to the list."
+  },
+  "cf246d234dcdb84d": {
+   "item_id": "cf246d234dcdb84d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Definite worsening and possible worsening are compatible but assert different strength."
+  },
+  "97983380fb75d8f1": {
+   "item_id": "97983380fb75d8f1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a child outside in cold weather, with compatible different details."
+  },
+  "3c32e0a70291ed65": {
+   "item_id": "3c32e0a70291ed65",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The ratings clash if they concern the same work, but the texts do not show that they do."
+  },
+  "efc292bd119da061": {
+   "item_id": "efc292bd119da061",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe a person surfing, with compatible details of a trick and a wetsuit."
+  },
+  "aa449dcfebe60591": {
+   "item_id": "aa449dcfebe60591",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The only difference is a parenthetical synonym, or Indians."
+  },
+  "cfb3c9493dec3227": {
+   "item_id": "cfb3c9493dec3227",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only religion versus religions and a comma differ."
+  },
+  "6b33b79d275c1dd2": {
+   "item_id": "6b33b79d275c1dd2",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Race car and racing vehicle are synonyms."
+  },
+  "92c97b21a8d7d5da": {
+   "item_id": "92c97b21a8d7d5da",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies that the person is a man."
+  },
+  "f5eadf9cec4d98eb": {
+   "item_id": "f5eadf9cec4d98eb",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Being the BBC's first and the world's first service are claims over different ranges that can both hold."
+  },
+  "f4a531f8444dc13b": {
+   "item_id": "f4a531f8444dc13b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both give compatible facts about ENIC's ownership structure."
+  },
+  "706453a2c127c743": {
+   "item_id": "706453a2c127c743",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The only difference is a pronoun dropped by typo."
+  },
+  "be10c83b92a716fe": {
+   "item_id": "be10c83b92a716fe",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both concern a film's box office, but it is unclear they refer to the same film."
+  },
+  "eaee7951957d93a9": {
+   "item_id": "eaee7951957d93a9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mixed positive adds a positive lean to mixed reviews."
+  },
+  "88cea88c03679ad0": {
+   "item_id": "88cea88c03679ad0",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The cat enters the drawer by jumping in one and climbing in the other."
+  },
+  "5bc375fce0dd34ec": {
+   "item_id": "5bc375fce0dd34ec",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The town is placed in northern London versus southern Hertfordshire."
+  },
+  "9757d79cef944127": {
+   "item_id": "9757d79cef944127",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The containment of province and region is swapped."
+  },
+  "8891f4eda2c26fb6": {
+   "item_id": "8891f4eda2c26fb6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Country pop refines the country genre."
+  },
+  "037e57bd837ea314": {
+   "item_id": "037e57bd837ea314",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denying anyone cutting a tomato covers a wider range than denying a man cutting tomatoes."
+  },
+  "88b2fda5cb08ea20": {
+   "item_id": "88b2fda5cb08ea20",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe children with a ball in a park, with compatible details."
+  },
+  "eb220bad1ca9615a": {
+   "item_id": "eb220bad1ca9615a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Taking a break and the meatpacking plant location are compatible details of the killing."
+  },
+  "445252e2e1093b7b": {
+   "item_id": "445252e2e1093b7b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Flying debris and the car rolling twice are compatible details of the same accident."
+  },
+  "614b1c6ee139bbad": {
+   "item_id": "614b1c6ee139bbad",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The view count to date changes between May and June 2018."
+  },
+  "5ef3ce4324a9a120": {
+   "item_id": "5ef3ce4324a9a120",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the exact day, August 14."
+  },
+  "ada7329196f62cbe": {
+   "item_id": "ada7329196f62cbe",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The Rotten Tomatoes review tally is a running total that differs."
+  },
+  "172588f1f7496b85": {
+   "item_id": "172588f1f7496b85",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The review count to date differs, 153 versus 155."
+  },
+  "9fcb16201e748fcf": {
+   "item_id": "9fcb16201e748fcf",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A young boy jumping into water and a man jumping into a pool are different people and scenes."
+  },
+  "4bc4d25d8ef9fbf3": {
+   "item_id": "4bc4d25d8ef9fbf3",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mainly and especially are interchanged near-synonyms with no change to the claim."
+  },
+  "99542d3b0b29e8f9": {
+   "item_id": "99542d3b0b29e8f9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a dog carrying something in its mouth, with compatible differing details."
+  },
+  "4439c507c9b2b73a": {
+   "item_id": "4439c507c9b2b73a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One gives the exact union date of July 1, consistent with later the same week."
+  }
+ },
+ "errors": []
+}

@@ -20,7 +20,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 from typing import Dict, List, Optional
 
 from meld.agent.hotpot_loader import (HotpotTask, feed_context_through_brain,
@@ -31,31 +30,6 @@ from meld.agent.llm import MockLLM
 from meld.agent.memory import SMPMemory
 from meld.agent.registry import make_agent
 from meld.agent.tools import FinalAnswerTool, RecallTool
-from meld.config import DEFAULT_PATH, Thresholds, load_thresholds
-
-# Thresholds are calibrated PER ENCODER (the similarity scale differs by encoder);
-# the calibrated pairs live next to the schema and are reproduced by
-# tests/test_threshold_calibration.py (provenance meld.merge.calibration).
-_CFG_BY_ENCODER = {
-    "minilm": "thresholds-minilm.yaml",    # headline encoder; classes separate, acc 1.0
-    "hashing": "thresholds-hashing.yaml",  # fast unit-test path; compressed scale, acc ~0.89
-}
-
-
-def _calibrated_cfg(encoder: Optional[str] = None) -> Thresholds:
-    """Encoder-matched, CALIBRATED merge thresholds (Section 4 / M-2).
-
-    Thresholds are calibrated PER ENCODER because the similarity scale differs:
-    minilm -> theta_merge=0.90/sigma_lo=0.12 (acc 1.0); hashing ->
-    theta_merge=0.49/sigma_lo=0.29 (acc ~0.89). An unknown encoder falls back to the
-    documented default (0.85/0.55). The earlier hardcoded theta_merge=0.5 /
-    sigma_lo=0.55 was INVERTED (empty RELATE band) and is gone; every branch now
-    satisfies the Thresholds ordering invariant.
-    """
-    fname = _CFG_BY_ENCODER.get(encoder)
-    if fname:
-        return load_thresholds(os.path.join(os.path.dirname(DEFAULT_PATH), fname))
-    return load_thresholds()
 
 
 def extract_prediction(raw: Optional[str]) -> str:
@@ -92,7 +66,7 @@ def _run_one_baseline(baseline: str, tasks: List[HotpotTask], *, encoder: str,
     preds: List[Dict] = []
     integration: List[Dict] = []
     for t in tasks:
-        mem = SMPMemory(encoder=encoder, nli=nli, cfg=_calibrated_cfg(encoder))
+        mem = SMPMemory(encoder=encoder, nli=nli)     # wiring smoke: no epoch needed
         ctx_patches = feed_context_through_brain(t, mem)
         agent = make_agent(baseline, llm=MockLLM(_oracle_script(t)), memory=mem,
                            tools=[RecallTool(mem), FinalAnswerTool()],
@@ -104,9 +78,9 @@ def _run_one_baseline(baseline: str, tasks: List[HotpotTask], *, encoder: str,
         integration.append({
             "task_id": t.task_id,
             "n_steps": result.n_steps,
-            "n_patches": len(mem.brain.audit_log),
+            "n_patches": len(mem.decisions),
             "n_context_patches": len(ctx_patches),
-            "decisions": sorted({p.decision for p in mem.brain.audit_log}),
+            "decisions": sorted({p.decision for p in mem.decisions}),
         })
     return {"scored": score_predictions(preds),
             "gate": competence_gate(preds, bar=bar),
@@ -148,4 +122,4 @@ if __name__ == "__main__":
 
 
 __all__ = ["run_gate_smoke", "run_gate_smoke_multibaseline",
-           "extract_prediction", "_calibrated_cfg"]
+           "extract_prediction"]

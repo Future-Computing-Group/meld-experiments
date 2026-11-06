@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0032",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "fe645133bd40216ba24c858a03755b3a364f64c575bbae1a81308996319f034d",
+ "raw": [
+  "{\"labels\": [{\"item_id\": \"228119cdb8c0b458\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The crystalline attribute moves between the witnesses' report and TATP, giving compatible but different details.\"}, {\"item_id\": \"0f6fcdd32f62dd67\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The longer statement makes explicit that HJK remains the only Finnish team to have reached the group stage.\"}, {\"item_id\": \"9b27c26efa05927d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the cat is small, the drawer plastic and the paws used.\"}, {\"item_id\": \"9fe56b161c808980\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The same retroactive-medal claim is made over 1896 only versus 1896 and 1900, and both can hold.\"}, {\"item_id\": \"428c266b2c5f7396\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A black and white dog playing with a volleyball in a field is compatible with two dogs playing outside.\"}, {\"item_id\": \"972e895deb591d93\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Mixed reviews from critics and mixed positive reviews are compatible, each adding a nuance.\"}, {\"item_id\": \"2aecb112cbf78d59\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"A running case count has different values at different dates.\"}, {\"item_id\": \"5367696bbfb3a8a7\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Isabel Pardo's current post changes from Director of Social Innovation to Deputy Chief of Staff over time.\"}, {\"item_id\": \"02aec0458ae984fc\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Was versus is a founding member of Nazareth is a tense difference that asserts the same fact.\"}, {\"item_id\": \"99908e8aa98d3ed9\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"A band not singing and no band playing could be read as compatible related denials or as unrelated scenes.\"}, {\"item_id\": \"063e6000a5e25480\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Mixed positive and generally positive reviews are close enough to coexist, with one adding a 90% score.\"}, {\"item_id\": \"7ecc973e693009b7\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The category lists differ only in rock singer-songwriters versus singer-songwriters, which are compatible.\"}, {\"item_id\": \"9d46cb798f292b26\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Playing a guitar now and being a guitar player are compatible but not the same proposition.\"}, {\"item_id\": \"10ef31e5627b41eb\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The words end and route are swapped, changing which part of York Street the road is and runs along.\"}, {\"item_id\": \"0a0cb704b6840f7d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the second album is a major-label studio album.\"}, {\"item_id\": \"03851a1552bb6040\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Northern Irish is a more specific description compatible with Irish.\"}, {\"item_id\": \"55ae40f640d1ff5c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both give compatible plot points about Wayne understanding Adam's interest in baseball and the Tiki Man.\"}, {\"item_id\": \"639a600cc75f1524\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the November release month.\"}, {\"item_id\": \"cf774d6aac8cf486\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One names the causeway as MacArthur Causeway.\"}, {\"item_id\": \"2a61c13c3a2b4423\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both assert that Air Manas has its own certified maintenance base, only reworded.\"}, {\"item_id\": \"34b4b12b7c5bfa9a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds a source citation about Rachel Uchitel to the same camera statement.\"}, {\"item_id\": \"bd15a9687bb87e62\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Fires versus fired is a tense typo only.\"}, {\"item_id\": \"661f333beed81b0d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the keyboard is electronic.\"}, {\"item_id\": \"86bee2ffe776d519\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The gnawed post is wooden in one and metallic in the other.\"}, {\"item_id\": \"c4ac8c8752978642\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the middle name Albert.\"}, {\"item_id\": \"bd25749e1a693fa4\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A woman slicing an onion and a lady dicing onions describe the same cutting action.\"}, {\"item_id\": \"232efaca7b492edd\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Denials of jumping off a platform and jumping on a board could be read as the same scene or different activities.\"}, {\"item_id\": \"d4d40b4addada547\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the black dog is hanging out with its tongue out.\"}, {\"item_id\": \"d8d12a883332f0a3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the World Cup was held in Brazil.\"}, {\"item_id\": \"a5084a121b8fe83c\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Two men versus a man and a woman cannot both describe the same conversation.\"}, {\"item_id\": \"88578941b024e720\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the striking is violent.\"}, {\"item_id\": \"1deb6a9e7a320950\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Read as the same film, the gross and budget figures cannot both be right.\"}, {\"item_id\": \"1a161467bfd6f550\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny guitar playing, for a man on stage versus a woman, and both can hold.\"}, {\"item_id\": \"22b73d2545b74ecd\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Both deny a woman doing an activity, exercising versus snowboarding, and both can hold.\"}, {\"item_id\": \"dff5acc71b343c0d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Real Madrid were defending champions.\"}, {\"item_id\": \"3feae5b0daa58069\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Spinning around in circles and running in circles describe the same squirrel action.\"}, {\"item_id\": \"4efa16ca28f8cf6e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A boy and girl playing are described with compatible details of running and an outdoor gym.\"}, {\"item_id\": \"c76abd5783aa1693\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One adds that Steve Evans was then the Leeds head coach.\"}, {\"item_id\": \"81b259b603897683\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A wet boy jumping on wet grass is compatible with a boy playing slip and slide in the grass.\"}, {\"item_id\": \"b57ae9bf90afc76f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Writing versus recording and producing are swapped between work for other artists and the Tobora solo tracks.\"}, {\"item_id\": \"c39f04ebe810cdb9\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Moved and relocated are synonyms, so the swap leaves the same itinerary.\"}, {\"item_id\": \"91c1b09324817542\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Cold and humid continental are swapped between the climate and the winters, changing the climate classification claim.\"}, {\"item_id\": \"b5c9537edb6462a6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Number versus numbre is a typo only.\"}, {\"item_id\": \"81beac2a50d50333\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the alias Devente Varao.\"}, {\"item_id\": \"0a7f17d1fdfc10af\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Six detectives and three officers versus four and two cannot both be the main characters.\"}, {\"item_id\": \"c20f2bf14fb9390a\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Shrine and his versus shrine of his is a typo that does not change the asserted shrines.\"}, {\"item_id\": \"d8d8bd523ddfb88e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Noah joined the French team at EuroBasket 2011.\"}, {\"item_id\": \"82c632e05bdf0fa0\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The garbled text leaves unclear whether Devi Ahilya Bai Holkar is the same unnamed nearest facility or a conflicting railway-station claim.\"}, {\"item_id\": \"0933f3f54a639af0\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Stirring meat and mixing a meat mixture in a bowl describe the same action.\"}, {\"item_id\": \"58bd198a3fb73db6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A major-label debut can also be a second album overall, so the descriptions are compatible.\"}]}"
+ ],
+ "labels": {
+  "228119cdb8c0b458": {
+   "item_id": "228119cdb8c0b458",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The crystalline attribute moves between the witnesses' report and TATP, giving compatible but different details."
+  },
+  "0f6fcdd32f62dd67": {
+   "item_id": "0f6fcdd32f62dd67",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The longer statement makes explicit that HJK remains the only Finnish team to have reached the group stage."
+  },
+  "9b27c26efa05927d": {
+   "item_id": "9b27c26efa05927d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the cat is small, the drawer plastic and the paws used."
+  },
+  "9fe56b161c808980": {
+   "item_id": "9fe56b161c808980",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The same retroactive-medal claim is made over 1896 only versus 1896 and 1900, and both can hold."
+  },
+  "428c266b2c5f7396": {
+   "item_id": "428c266b2c5f7396",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A black and white dog playing with a volleyball in a field is compatible with two dogs playing outside."
+  },
+  "972e895deb591d93": {
+   "item_id": "972e895deb591d93",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Mixed reviews from critics and mixed positive reviews are compatible, each adding a nuance."
+  },
+  "2aecb112cbf78d59": {
+   "item_id": "2aecb112cbf78d59",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "A running case count has different values at different dates."
+  },
+  "5367696bbfb3a8a7": {
+   "item_id": "5367696bbfb3a8a7",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Isabel Pardo's current post changes from Director of Social Innovation to Deputy Chief of Staff over time."
+  },
+  "02aec0458ae984fc": {
+   "item_id": "02aec0458ae984fc",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Was versus is a founding member of Nazareth is a tense difference that asserts the same fact."
+  },
+  "99908e8aa98d3ed9": {
+   "item_id": "99908e8aa98d3ed9",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "A band not singing and no band playing could be read as compatible related denials or as unrelated scenes."
+  },
+  "063e6000a5e25480": {
+   "item_id": "063e6000a5e25480",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Mixed positive and generally positive reviews are close enough to coexist, with one adding a 90% score."
+  },
+  "7ecc973e693009b7": {
+   "item_id": "7ecc973e693009b7",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The category lists differ only in rock singer-songwriters versus singer-songwriters, which are compatible."
+  },
+  "9d46cb798f292b26": {
+   "item_id": "9d46cb798f292b26",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Playing a guitar now and being a guitar player are compatible but not the same proposition."
+  },
+  "10ef31e5627b41eb": {
+   "item_id": "10ef31e5627b41eb",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The words end and route are swapped, changing which part of York Street the road is and runs along."
+  },
+  "0a0cb704b6840f7d": {
+   "item_id": "0a0cb704b6840f7d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the second album is a major-label studio album."
+  },
+  "03851a1552bb6040": {
+   "item_id": "03851a1552bb6040",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Northern Irish is a more specific description compatible with Irish."
+  },
+  "55ae40f640d1ff5c": {
+   "item_id": "55ae40f640d1ff5c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both give compatible plot points about Wayne understanding Adam's interest in baseball and the Tiki Man."
+  },
+  "639a600cc75f1524": {
+   "item_id": "639a600cc75f1524",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the November release month."
+  },
+  "cf774d6aac8cf486": {
+   "item_id": "cf774d6aac8cf486",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One names the causeway as MacArthur Causeway."
+  },
+  "2a61c13c3a2b4423": {
+   "item_id": "2a61c13c3a2b4423",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both assert that Air Manas has its own certified maintenance base, only reworded."
+  },
+  "34b4b12b7c5bfa9a": {
+   "item_id": "34b4b12b7c5bfa9a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds a source citation about Rachel Uchitel to the same camera statement."
+  },
+  "bd15a9687bb87e62": {
+   "item_id": "bd15a9687bb87e62",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Fires versus fired is a tense typo only."
+  },
+  "661f333beed81b0d": {
+   "item_id": "661f333beed81b0d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the keyboard is electronic."
+  },
+  "86bee2ffe776d519": {
+   "item_id": "86bee2ffe776d519",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The gnawed post is wooden in one and metallic in the other."
+  },
+  "c4ac8c8752978642": {
+   "item_id": "c4ac8c8752978642",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the middle name Albert."
+  },
+  "bd25749e1a693fa4": {
+   "item_id": "bd25749e1a693fa4",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A woman slicing an onion and a lady dicing onions describe the same cutting action."
+  },
+  "232efaca7b492edd": {
+   "item_id": "232efaca7b492edd",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Denials of jumping off a platform and jumping on a board could be read as the same scene or different activities."
+  },
+  "d4d40b4addada547": {
+   "item_id": "d4d40b4addada547",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the black dog is hanging out with its tongue out."
+  },
+  "d8d12a883332f0a3": {
+   "item_id": "d8d12a883332f0a3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the World Cup was held in Brazil."
+  },
+  "a5084a121b8fe83c": {
+   "item_id": "a5084a121b8fe83c",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Two men versus a man and a woman cannot both describe the same conversation."
+  },
+  "88578941b024e720": {
+   "item_id": "88578941b024e720",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the striking is violent."
+  },
+  "1deb6a9e7a320950": {
+   "item_id": "1deb6a9e7a320950",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Read as the same film, the gross and budget figures cannot both be right."
+  },
+  "1a161467bfd6f550": {
+   "item_id": "1a161467bfd6f550",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny guitar playing, for a man on stage versus a woman, and both can hold."
+  },
+  "22b73d2545b74ecd": {
+   "item_id": "22b73d2545b74ecd",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both deny a woman doing an activity, exercising versus snowboarding, and both can hold."
+  },
+  "dff5acc71b343c0d": {
+   "item_id": "dff5acc71b343c0d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Real Madrid were defending champions."
+  },
+  "3feae5b0daa58069": {
+   "item_id": "3feae5b0daa58069",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Spinning around in circles and running in circles describe the same squirrel action."
+  },
+  "4efa16ca28f8cf6e": {
+   "item_id": "4efa16ca28f8cf6e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A boy and girl playing are described with compatible details of running and an outdoor gym."
+  },
+  "c76abd5783aa1693": {
+   "item_id": "c76abd5783aa1693",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One adds that Steve Evans was then the Leeds head coach."
+  },
+  "81b259b603897683": {
+   "item_id": "81b259b603897683",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A wet boy jumping on wet grass is compatible with a boy playing slip and slide in the grass."
+  },
+  "b57ae9bf90afc76f": {
+   "item_id": "b57ae9bf90afc76f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Writing versus recording and producing are swapped between work for other artists and the Tobora solo tracks."
+  },
+  "c39f04ebe810cdb9": {
+   "item_id": "c39f04ebe810cdb9",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Moved and relocated are synonyms, so the swap leaves the same itinerary."
+  },
+  "91c1b09324817542": {
+   "item_id": "91c1b09324817542",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Cold and humid continental are swapped between the climate and the winters, changing the climate classification claim."
+  },
+  "b5c9537edb6462a6": {
+   "item_id": "b5c9537edb6462a6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Number versus numbre is a typo only."
+  },
+  "81beac2a50d50333": {
+   "item_id": "81beac2a50d50333",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the alias Devente Varao."
+  },
+  "0a7f17d1fdfc10af": {
+   "item_id": "0a7f17d1fdfc10af",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Six detectives and three officers versus four and two cannot both be the main characters."
+  },
+  "c20f2bf14fb9390a": {
+   "item_id": "c20f2bf14fb9390a",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Shrine and his versus shrine of his is a typo that does not change the asserted shrines."
+  },
+  "d8d8bd523ddfb88e": {
+   "item_id": "d8d8bd523ddfb88e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Noah joined the French team at EuroBasket 2011."
+  },
+  "82c632e05bdf0fa0": {
+   "item_id": "82c632e05bdf0fa0",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The garbled text leaves unclear whether Devi Ahilya Bai Holkar is the same unnamed nearest facility or a conflicting railway-station claim."
+  },
+  "0933f3f54a639af0": {
+   "item_id": "0933f3f54a639af0",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Stirring meat and mixing a meat mixture in a bowl describe the same action."
+  },
+  "58bd198a3fb73db6": {
+   "item_id": "58bd198a3fb73db6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A major-label debut can also be a second album overall, so the descriptions are compatible."
+  }
+ },
+ "errors": []
+}

@@ -5,6 +5,8 @@ pyyaml>=6.0
 protobuf>=4.25
 matplotlib>=3.7
 pytest>=7.4
+# the candidate index (off-protocol scalability instrument, optional admission pre-filter)
+faiss-cpu>=1.15
 
 # Optional -- the dense M-2 merge-classification rung only (the MiniLM sentence
 # encoder and the cross-encoder NLI). NOT required by the deterministic

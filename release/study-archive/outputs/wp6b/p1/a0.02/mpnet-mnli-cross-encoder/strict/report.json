@@ -1,0 +1,2332 @@
+{
+ "stamp": {
+  "git_sha": "2efb97d374acbcde82b9acd40df04ae3a1ea0e62",
+  "git_dirty": true,
+  "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+  "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+  "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+  "source_labels": true,
+  "alpha": 0.02,
+  "n_min": 49,
+  "B_0": 256,
+  "selector": [
+   32768,
+   32768,
+   3
+  ],
+  "seed": 0,
+  "max_unresolved": 0,
+  "max_items": null,
+  "hw": "x86_64"
+ },
+ "rows": [
+  {
+   "git_sha": "2efb97d374acbcde82b9acd40df04ae3a1ea0e62",
+   "git_dirty": true,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+   "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+   "source_labels": true,
+   "alpha": 0.02,
+   "n_min": 49,
+   "B_0": 256,
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "max_unresolved": 0,
+   "max_items": null,
+   "hw": "x86_64",
+   "encoder": "mpnet",
+   "nli": "mnli-cross-encoder",
+   "encoder_id": "sentence-transformers/all-mpnet-base-v2",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "kind": "cell",
+   "cal_domain": "paws",
+   "test_domain": "paws",
+   "cal_unresolved": 0,
+   "test_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 35,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 594,
+     "non_mergeable": 293
+    },
+    "same_item": {
+     "non_mergeable": 326,
+     "ambiguous": 14,
+     "mergeable": 218
+    },
+    "source_labelled": {
+     "non_mergeable": 89,
+     "mergeable": 46
+    }
+   },
+   "cal_stats": {
+    "worlds": 1,
+    "nodes": 2100,
+    "tested": 1601,
+    "nli_calls": 4925,
+    "cal": 480,
+    "unresolved": 0
+   },
+   "cal_per_bin": {
+    "0": 17,
+    "1": 44,
+    "2": 136,
+    "3": 271,
+    "4": 12
+   },
+   "theta": {
+    "0": null,
+    "1": null,
+    "2": 0.9978789959563592,
+    "3": 0.9963530937666896,
+    "4": null
+   },
+   "disabled_bins": [
+    0,
+    1,
+    4
+   ],
+   "test_nodes": 2125,
+   "test_nli_calls": 4902,
+   "nli_calls_per_claim": 2.3068235294117647,
+   "seconds_cal_fold": 554.034832379024,
+   "seconds_test_fold": 538.4604824639973,
+   "status": "ok",
+   "mergeable": 818,
+   "non_mergeable": 791,
+   "merged_mergeable": 100,
+   "false_merges": 10,
+   "unresolved": 0,
+   "merged_unresolved": 0,
+   "excluded": 0,
+   "fm": 0.012642225031605562,
+   "recall": 0.12224938875305623,
+   "by_class": {
+    "cross_item": {
+     "non_mergeable": 41,
+     "mergeable": 1
+    },
+    "manifest": {
+     "non_mergeable": 297,
+     "mergeable": 592,
+     "merged_mergeable": 79,
+     "false_merges": 9
+    },
+    "same_item": {
+     "mergeable": 188,
+     "non_mergeable": 350,
+     "merged_mergeable": 17
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 37,
+     "false_merges": 1,
+     "merged_mergeable": 4
+    }
+   },
+   "by_stratum": {
+    "S1_paws_para": {
+     "mergeable": 592,
+     "merged_mergeable": 79
+    },
+    "S2_paws_nonpara": {
+     "non_mergeable": 297,
+     "false_merges": 9
+    },
+    "cross_item": {
+     "non_mergeable": 41,
+     "mergeable": 1
+    },
+    "same_item": {
+     "mergeable": 188,
+     "non_mergeable": 350,
+     "merged_mergeable": 17
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 37,
+     "false_merges": 1,
+     "merged_mergeable": 4
+    }
+   },
+   "by_bin": {
+    "0": {
+     "mergeable": 28,
+     "non_mergeable": 43,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "1": {
+     "mergeable": 55,
+     "non_mergeable": 70,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "2": {
+     "mergeable": 180,
+     "non_mergeable": 207,
+     "merged_mergeable": 15,
+     "false_merges": 2,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.00966183574879227,
+     "recall": 0.08333333333333333
+    },
+    "3": {
+     "mergeable": 530,
+     "non_mergeable": 447,
+     "merged_mergeable": 85,
+     "false_merges": 8,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.017897091722595078,
+     "recall": 0.16037735849056603
+    },
+    "4": {
+     "mergeable": 25,
+     "non_mergeable": 24,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    }
+   },
+   "by_chunk": [
+    {
+     "mergeable": 807,
+     "non_mergeable": 782,
+     "merged_mergeable": 100,
+     "false_merges": 10,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.01278772378516624,
+     "recall": 0.12391573729863693,
+     "nodes": 2097
+    },
+    {
+     "mergeable": 11,
+     "non_mergeable": 9,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0,
+     "nodes": 28
+    }
+   ],
+   "chunk_size": 2100,
+   "coverage": {
+    "test_per_bin": {
+     "0": 71,
+     "1": 125,
+     "2": 387,
+     "3": 977,
+     "4": 49
+    },
+    "cal_per_bin": {
+     "0": 17,
+     "1": 44,
+     "2": 136,
+     "3": 271,
+     "4": 12
+    },
+    "disabled_bins": [
+     0,
+     1,
+     4
+    ],
+    "test_disabled_share": 0.15226848974518334,
+    "cal_disabled_share": 0.15208333333333332
+   },
+   "thetas_used": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65396,
+    "3": 65296,
+    "4": 65536
+   },
+   "epoch_scope": "paws",
+   "nli_calls": 0,
+   "misses": 0,
+   "eval_seconds": 0.87
+  },
+  {
+   "git_sha": "2efb97d374acbcde82b9acd40df04ae3a1ea0e62",
+   "git_dirty": true,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+   "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+   "source_labels": true,
+   "alpha": 0.02,
+   "n_min": 49,
+   "B_0": 256,
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "max_unresolved": 0,
+   "max_items": null,
+   "hw": "x86_64",
+   "encoder": "mpnet",
+   "nli": "mnli-cross-encoder",
+   "encoder_id": "sentence-transformers/all-mpnet-base-v2",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "kind": "transfer",
+   "cal_domain": "paws",
+   "test_domain": "sick",
+   "cal_unresolved": 0,
+   "test_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 35,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 594,
+     "non_mergeable": 293
+    },
+    "same_item": {
+     "non_mergeable": 326,
+     "ambiguous": 14,
+     "mergeable": 218
+    },
+    "source_labelled": {
+     "non_mergeable": 89,
+     "mergeable": 46
+    }
+   },
+   "cal_stats": {
+    "worlds": 1,
+    "nodes": 2100,
+    "tested": 1601,
+    "nli_calls": 4925,
+    "cal": 480,
+    "unresolved": 0
+   },
+   "cal_per_bin": {
+    "0": 17,
+    "1": 44,
+    "2": 136,
+    "3": 271,
+    "4": 12
+   },
+   "theta": {
+    "0": null,
+    "1": null,
+    "2": 0.9978789959563592,
+    "3": 0.9963530937666896,
+    "4": null
+   },
+   "disabled_bins": [
+    0,
+    1,
+    4
+   ],
+   "test_nodes": 3367,
+   "test_nli_calls": 8925,
+   "nli_calls_per_claim": 2.6507276507276507,
+   "seconds_cal_fold": 554.034832379024,
+   "seconds_test_fold": 753.291433462,
+   "status": "ok",
+   "mergeable": 850,
+   "non_mergeable": 1834,
+   "merged_mergeable": 0,
+   "false_merges": 0,
+   "unresolved": 0,
+   "merged_unresolved": 0,
+   "excluded": 0,
+   "fm": 0.0,
+   "recall": 0.0,
+   "by_class": {
+    "cross_item": {
+     "non_mergeable": 777,
+     "mergeable": 35
+    },
+    "manifest": {
+     "non_mergeable": 745,
+     "mergeable": 764
+    },
+    "same_item": {
+     "non_mergeable": 217,
+     "mergeable": 51
+    },
+    "source_labelled": {
+     "non_mergeable": 95
+    }
+   },
+   "by_stratum": {
+    "S8_sick_contra": {
+     "non_mergeable": 172
+    },
+    "S8_sick_oneway": {
+     "non_mergeable": 573
+    },
+    "S8_sick_para": {
+     "mergeable": 764
+    },
+    "cross_item": {
+     "non_mergeable": 777,
+     "mergeable": 35
+    },
+    "same_item": {
+     "non_mergeable": 217,
+     "mergeable": 51
+    },
+    "source_labelled": {
+     "non_mergeable": 95
+    }
+   },
+   "by_bin": {
+    "0": {
+     "mergeable": 118,
+     "non_mergeable": 428,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "1": {
+     "mergeable": 179,
+     "non_mergeable": 467,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "2": {
+     "mergeable": 542,
+     "non_mergeable": 923,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "3": {
+     "mergeable": 11,
+     "non_mergeable": 16,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    }
+   },
+   "by_chunk": [
+    {
+     "mergeable": 259,
+     "non_mergeable": 569,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0,
+     "nodes": 1035
+    },
+    {
+     "mergeable": 260,
+     "non_mergeable": 568,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0,
+     "nodes": 1030
+    },
+    {
+     "mergeable": 266,
+     "non_mergeable": 566,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0,
+     "nodes": 1034
+    },
+    {
+     "mergeable": 65,
+     "non_mergeable": 131,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0,
+     "nodes": 268
+    }
+   ],
+   "chunk_size": 1035,
+   "coverage": {
+    "test_per_bin": {
+     "0": 546,
+     "1": 646,
+     "2": 1465,
+     "3": 27
+    },
+    "cal_per_bin": {
+     "0": 17,
+     "1": 44,
+     "2": 136,
+     "3": 271,
+     "4": 12
+    },
+    "disabled_bins": [
+     0,
+     1,
+     4
+    ],
+    "test_disabled_share": 0.44411326378539495,
+    "cal_disabled_share": 0.15208333333333332
+   },
+   "thetas_used": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65396,
+    "3": 65296
+   },
+   "epoch_scope": "sick",
+   "nli_calls": 0,
+   "misses": 0,
+   "eval_seconds": 2.36
+  },
+  {
+   "git_sha": "2efb97d374acbcde82b9acd40df04ae3a1ea0e62",
+   "git_dirty": true,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+   "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+   "source_labels": true,
+   "alpha": 0.02,
+   "n_min": 49,
+   "B_0": 256,
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "max_unresolved": 0,
+   "max_items": null,
+   "hw": "x86_64",
+   "encoder": "mpnet",
+   "nli": "mnli-cross-encoder",
+   "encoder_id": "sentence-transformers/all-mpnet-base-v2",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "kind": "transfer",
+   "cal_domain": "paws",
+   "test_domain": "vitaminc",
+   "cal_unresolved": 0,
+   "test_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 35,
+     "ambiguous": 1
+    },
+    "manifest": {
+     "mergeable": 594,
+     "non_mergeable": 293
+    },
+    "same_item": {
+     "non_mergeable": 326,
+     "ambiguous": 14,
+     "mergeable": 218
+    },
+    "source_labelled": {
+     "non_mergeable": 89,
+     "mergeable": 46
+    }
+   },
+   "cal_stats": {
+    "worlds": 1,
+    "nodes": 2100,
+    "tested": 1601,
+    "nli_calls": 4925,
+    "cal": 480,
+    "unresolved": 0
+   },
+   "cal_per_bin": {
+    "0": 17,
+    "1": 44,
+    "2": 136,
+    "3": 271,
+    "4": 12
+   },
+   "theta": {
+    "0": null,
+    "1": null,
+    "2": 0.9978789959563592,
+    "3": 0.9963530937666896,
+    "4": null
+   },
+   "disabled_bins": [
+    0,
+    1,
+    4
+   ],
+   "test_nodes": 3964,
+   "test_nli_calls": 6895,
+   "nli_calls_per_claim": 1.7394046417759839,
+   "seconds_cal_fold": 554.034832379024,
+   "seconds_test_fold": 1014.2876681679627,
+   "status": "ok",
+   "mergeable": 939,
+   "non_mergeable": 1592,
+   "merged_mergeable": 11,
+   "false_merges": 0,
+   "unresolved": 0,
+   "merged_unresolved": 0,
+   "excluded": 0,
+   "fm": 0.0,
+   "recall": 0.011714589989350373,
+   "by_class": {
+    "cross_item": {
+     "non_mergeable": 227
+    },
+    "manifest": {
+     "non_mergeable": 962
+    },
+    "manifest_pending": {
+     "mergeable": 917,
+     "non_mergeable": 75,
+     "merged_mergeable": 9
+    },
+    "same_item": {
+     "non_mergeable": 328,
+     "mergeable": 22,
+     "merged_mergeable": 2
+    }
+   },
+   "by_stratum": {
+    "S3_vitc_nonfactual": {
+     "mergeable": 917,
+     "non_mergeable": 75,
+     "merged_mergeable": 9
+    },
+    "S4_vitc_factual": {
+     "non_mergeable": 962
+    },
+    "cross_item": {
+     "non_mergeable": 227
+    },
+    "same_item": {
+     "non_mergeable": 328,
+     "mergeable": 22,
+     "merged_mergeable": 2
+    }
+   },
+   "by_bin": {
+    "0": {
+     "mergeable": 85,
+     "non_mergeable": 225,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "1": {
+     "mergeable": 168,
+     "non_mergeable": 373,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "2": {
+     "mergeable": 481,
+     "non_mergeable": 739,
+     "merged_mergeable": 3,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.006237006237006237
+    },
+    "3": {
+     "mergeable": 205,
+     "non_mergeable": 255,
+     "merged_mergeable": 8,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.03902439024390244
+    }
+   },
+   "by_chunk": [
+    {
+     "mergeable": 295,
+     "non_mergeable": 463,
+     "merged_mergeable": 1,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.003389830508474576,
+     "nodes": 1181
+    },
+    {
+     "mergeable": 277,
+     "non_mergeable": 498,
+     "merged_mergeable": 5,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.018050541516245487,
+     "nodes": 1186
+    },
+    {
+     "mergeable": 274,
+     "non_mergeable": 468,
+     "merged_mergeable": 5,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.01824817518248175,
+     "nodes": 1184
+    },
+    {
+     "mergeable": 93,
+     "non_mergeable": 163,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0,
+     "nodes": 413
+    }
+   ],
+   "chunk_size": 1188,
+   "coverage": {
+    "test_per_bin": {
+     "0": 310,
+     "1": 541,
+     "2": 1220,
+     "3": 460
+    },
+    "cal_per_bin": {
+     "0": 17,
+     "1": 44,
+     "2": 136,
+     "3": 271,
+     "4": 12
+    },
+    "disabled_bins": [
+     0,
+     1,
+     4
+    ],
+    "test_disabled_share": 0.3362307388384038,
+    "cal_disabled_share": 0.15208333333333332
+   },
+   "thetas_used": {
+    "0": 65536,
+    "1": 65536,
+    "2": 65396,
+    "3": 65296
+   },
+   "epoch_scope": "vitaminc",
+   "nli_calls": 0,
+   "misses": 0,
+   "eval_seconds": 1.23
+  },
+  {
+   "git_sha": "2efb97d374acbcde82b9acd40df04ae3a1ea0e62",
+   "git_dirty": true,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+   "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+   "source_labels": true,
+   "alpha": 0.02,
+   "n_min": 49,
+   "B_0": 256,
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "max_unresolved": 0,
+   "max_items": null,
+   "hw": "x86_64",
+   "encoder": "mpnet",
+   "nli": "mnli-cross-encoder",
+   "encoder_id": "sentence-transformers/all-mpnet-base-v2",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "kind": "transfer",
+   "cal_domain": "sick",
+   "test_domain": "paws",
+   "cal_unresolved": 0,
+   "test_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 232,
+     "mergeable": 7,
+     "ambiguous": 5
+    },
+    "manifest": {
+     "non_mergeable": 215,
+     "mergeable": 248
+    },
+    "same_item": {
+     "non_mergeable": 74,
+     "ambiguous": 1,
+     "mergeable": 39
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_stats": {
+    "worlds": 1,
+    "nodes": 1035,
+    "tested": 844,
+    "nli_calls": 2860,
+    "cal": 254,
+    "unresolved": 0
+   },
+   "cal_per_bin": {
+    "0": 36,
+    "1": 59,
+    "2": 158,
+    "3": 1
+   },
+   "theta": {
+    "0": null,
+    "1": 0.9769588769359884,
+    "2": 0.9836270695048447,
+    "3": null
+   },
+   "disabled_bins": [
+    0,
+    3
+   ],
+   "test_nodes": 2125,
+   "test_nli_calls": 4902,
+   "nli_calls_per_claim": 2.3068235294117647,
+   "seconds_cal_fold": 217.3234482719563,
+   "seconds_test_fold": 538.4604824639973,
+   "status": "ok",
+   "mergeable": 818,
+   "non_mergeable": 791,
+   "merged_mergeable": 168,
+   "false_merges": 49,
+   "unresolved": 0,
+   "merged_unresolved": 0,
+   "excluded": 0,
+   "fm": 0.061946902654867256,
+   "recall": 0.20537897310513448,
+   "by_class": {
+    "cross_item": {
+     "non_mergeable": 41,
+     "mergeable": 1
+    },
+    "manifest": {
+     "non_mergeable": 297,
+     "mergeable": 592,
+     "false_merges": 25,
+     "merged_mergeable": 124
+    },
+    "same_item": {
+     "mergeable": 188,
+     "non_mergeable": 350,
+     "merged_mergeable": 33,
+     "false_merges": 12
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 37,
+     "merged_mergeable": 11,
+     "false_merges": 12
+    }
+   },
+   "by_stratum": {
+    "S1_paws_para": {
+     "mergeable": 592,
+     "merged_mergeable": 124
+    },
+    "S2_paws_nonpara": {
+     "non_mergeable": 297,
+     "false_merges": 25
+    },
+    "cross_item": {
+     "non_mergeable": 41,
+     "mergeable": 1
+    },
+    "same_item": {
+     "mergeable": 188,
+     "non_mergeable": 350,
+     "merged_mergeable": 33,
+     "false_merges": 12
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 37,
+     "merged_mergeable": 11,
+     "false_merges": 12
+    }
+   },
+   "by_bin": {
+    "0": {
+     "mergeable": 28,
+     "non_mergeable": 43,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "1": {
+     "mergeable": 55,
+     "non_mergeable": 70,
+     "merged_mergeable": 37,
+     "false_merges": 17,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.24285714285714285,
+     "recall": 0.6727272727272727
+    },
+    "2": {
+     "mergeable": 180,
+     "non_mergeable": 207,
+     "merged_mergeable": 131,
+     "false_merges": 32,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.15458937198067632,
+     "recall": 0.7277777777777777
+    },
+    "3": {
+     "mergeable": 530,
+     "non_mergeable": 447,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "4": {
+     "mergeable": 25,
+     "non_mergeable": 24,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    }
+   },
+   "by_chunk": [
+    {
+     "mergeable": 807,
+     "non_mergeable": 782,
+     "merged_mergeable": 168,
+     "false_merges": 49,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.06265984654731457,
+     "recall": 0.20817843866171004,
+     "nodes": 2097
+    },
+    {
+     "mergeable": 11,
+     "non_mergeable": 9,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0,
+     "nodes": 28
+    }
+   ],
+   "chunk_size": 2100,
+   "coverage": {
+    "test_per_bin": {
+     "0": 71,
+     "1": 125,
+     "2": 387,
+     "3": 977,
+     "4": 49
+    },
+    "cal_per_bin": {
+     "0": 36,
+     "1": 59,
+     "2": 158,
+     "3": 1
+    },
+    "disabled_bins": [
+     0,
+     3,
+     4
+    ],
+    "test_disabled_share": 0.6817899316345556,
+    "cal_disabled_share": 0.14566929133858267
+   },
+   "thetas_used": {
+    "0": 65536,
+    "1": 64025,
+    "2": 64462,
+    "3": 65536,
+    "4": 65536
+   },
+   "epoch_scope": "paws",
+   "nli_calls": 0,
+   "misses": 0,
+   "eval_seconds": 0.82
+  },
+  {
+   "git_sha": "2efb97d374acbcde82b9acd40df04ae3a1ea0e62",
+   "git_dirty": true,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+   "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+   "source_labels": true,
+   "alpha": 0.02,
+   "n_min": 49,
+   "B_0": 256,
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "max_unresolved": 0,
+   "max_items": null,
+   "hw": "x86_64",
+   "encoder": "mpnet",
+   "nli": "mnli-cross-encoder",
+   "encoder_id": "sentence-transformers/all-mpnet-base-v2",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "kind": "cell",
+   "cal_domain": "sick",
+   "test_domain": "sick",
+   "cal_unresolved": 0,
+   "test_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 232,
+     "mergeable": 7,
+     "ambiguous": 5
+    },
+    "manifest": {
+     "non_mergeable": 215,
+     "mergeable": 248
+    },
+    "same_item": {
+     "non_mergeable": 74,
+     "ambiguous": 1,
+     "mergeable": 39
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_stats": {
+    "worlds": 1,
+    "nodes": 1035,
+    "tested": 844,
+    "nli_calls": 2860,
+    "cal": 254,
+    "unresolved": 0
+   },
+   "cal_per_bin": {
+    "0": 36,
+    "1": 59,
+    "2": 158,
+    "3": 1
+   },
+   "theta": {
+    "0": null,
+    "1": 0.9769588769359884,
+    "2": 0.9836270695048447,
+    "3": null
+   },
+   "disabled_bins": [
+    0,
+    3
+   ],
+   "test_nodes": 3367,
+   "test_nli_calls": 8925,
+   "nli_calls_per_claim": 2.6507276507276507,
+   "seconds_cal_fold": 217.3234482719563,
+   "seconds_test_fold": 753.291433462,
+   "status": "ok",
+   "mergeable": 850,
+   "non_mergeable": 1834,
+   "merged_mergeable": 289,
+   "false_merges": 6,
+   "unresolved": 0,
+   "merged_unresolved": 0,
+   "excluded": 0,
+   "fm": 0.003271537622682661,
+   "recall": 0.34,
+   "by_class": {
+    "cross_item": {
+     "non_mergeable": 777,
+     "mergeable": 35,
+     "merged_mergeable": 7,
+     "false_merges": 1
+    },
+    "manifest": {
+     "non_mergeable": 745,
+     "mergeable": 764,
+     "merged_mergeable": 265,
+     "false_merges": 4
+    },
+    "same_item": {
+     "non_mergeable": 217,
+     "mergeable": 51,
+     "merged_mergeable": 17,
+     "false_merges": 1
+    },
+    "source_labelled": {
+     "non_mergeable": 95
+    }
+   },
+   "by_stratum": {
+    "S8_sick_contra": {
+     "non_mergeable": 172,
+     "false_merges": 1
+    },
+    "S8_sick_oneway": {
+     "non_mergeable": 573,
+     "false_merges": 3
+    },
+    "S8_sick_para": {
+     "mergeable": 764,
+     "merged_mergeable": 265
+    },
+    "cross_item": {
+     "non_mergeable": 777,
+     "mergeable": 35,
+     "merged_mergeable": 7,
+     "false_merges": 1
+    },
+    "same_item": {
+     "non_mergeable": 217,
+     "mergeable": 51,
+     "merged_mergeable": 17,
+     "false_merges": 1
+    },
+    "source_labelled": {
+     "non_mergeable": 95
+    }
+   },
+   "by_bin": {
+    "0": {
+     "mergeable": 118,
+     "non_mergeable": 428,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "1": {
+     "mergeable": 179,
+     "non_mergeable": 467,
+     "merged_mergeable": 97,
+     "false_merges": 3,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.006423982869379015,
+     "recall": 0.5418994413407822
+    },
+    "2": {
+     "mergeable": 542,
+     "non_mergeable": 923,
+     "merged_mergeable": 192,
+     "false_merges": 3,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0032502708559046588,
+     "recall": 0.35424354243542433
+    },
+    "3": {
+     "mergeable": 11,
+     "non_mergeable": 16,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    }
+   },
+   "by_chunk": [
+    {
+     "mergeable": 259,
+     "non_mergeable": 569,
+     "merged_mergeable": 97,
+     "false_merges": 2,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0035149384885764497,
+     "recall": 0.3745173745173745,
+     "nodes": 1035
+    },
+    {
+     "mergeable": 260,
+     "non_mergeable": 568,
+     "merged_mergeable": 91,
+     "false_merges": 4,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.007042253521126761,
+     "recall": 0.35,
+     "nodes": 1030
+    },
+    {
+     "mergeable": 266,
+     "non_mergeable": 566,
+     "merged_mergeable": 98,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.3684210526315789,
+     "nodes": 1034
+    },
+    {
+     "mergeable": 65,
+     "non_mergeable": 131,
+     "merged_mergeable": 3,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.046153846153846156,
+     "nodes": 268
+    }
+   ],
+   "chunk_size": 1035,
+   "coverage": {
+    "test_per_bin": {
+     "0": 546,
+     "1": 646,
+     "2": 1465,
+     "3": 27
+    },
+    "cal_per_bin": {
+     "0": 36,
+     "1": 59,
+     "2": 158,
+     "3": 1
+    },
+    "disabled_bins": [
+     0,
+     3
+    ],
+    "test_disabled_share": 0.21348733233979136,
+    "cal_disabled_share": 0.14566929133858267
+   },
+   "thetas_used": {
+    "0": 65536,
+    "1": 64025,
+    "2": 64462,
+    "3": 65536
+   },
+   "epoch_scope": "sick",
+   "nli_calls": 0,
+   "misses": 0,
+   "eval_seconds": 1.53
+  },
+  {
+   "git_sha": "2efb97d374acbcde82b9acd40df04ae3a1ea0e62",
+   "git_dirty": true,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+   "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+   "source_labels": true,
+   "alpha": 0.02,
+   "n_min": 49,
+   "B_0": 256,
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "max_unresolved": 0,
+   "max_items": null,
+   "hw": "x86_64",
+   "encoder": "mpnet",
+   "nli": "mnli-cross-encoder",
+   "encoder_id": "sentence-transformers/all-mpnet-base-v2",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "kind": "transfer",
+   "cal_domain": "sick",
+   "test_domain": "vitaminc",
+   "cal_unresolved": 0,
+   "test_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 232,
+     "mergeable": 7,
+     "ambiguous": 5
+    },
+    "manifest": {
+     "non_mergeable": 215,
+     "mergeable": 248
+    },
+    "same_item": {
+     "non_mergeable": 74,
+     "ambiguous": 1,
+     "mergeable": 39
+    },
+    "source_labelled": {
+     "non_mergeable": 29
+    }
+   },
+   "cal_stats": {
+    "worlds": 1,
+    "nodes": 1035,
+    "tested": 844,
+    "nli_calls": 2860,
+    "cal": 254,
+    "unresolved": 0
+   },
+   "cal_per_bin": {
+    "0": 36,
+    "1": 59,
+    "2": 158,
+    "3": 1
+   },
+   "theta": {
+    "0": null,
+    "1": 0.9769588769359884,
+    "2": 0.9836270695048447,
+    "3": null
+   },
+   "disabled_bins": [
+    0,
+    3
+   ],
+   "test_nodes": 3964,
+   "test_nli_calls": 6895,
+   "nli_calls_per_claim": 1.7394046417759839,
+   "seconds_cal_fold": 217.3234482719563,
+   "seconds_test_fold": 1014.2876681679627,
+   "status": "ok",
+   "mergeable": 939,
+   "non_mergeable": 1592,
+   "merged_mergeable": 364,
+   "false_merges": 43,
+   "unresolved": 0,
+   "merged_unresolved": 0,
+   "excluded": 0,
+   "fm": 0.02701005025125628,
+   "recall": 0.3876464323748669,
+   "by_class": {
+    "cross_item": {
+     "non_mergeable": 227
+    },
+    "manifest": {
+     "non_mergeable": 962,
+     "false_merges": 20
+    },
+    "manifest_pending": {
+     "mergeable": 917,
+     "non_mergeable": 75,
+     "merged_mergeable": 356,
+     "false_merges": 21
+    },
+    "same_item": {
+     "non_mergeable": 328,
+     "mergeable": 22,
+     "merged_mergeable": 8,
+     "false_merges": 2
+    }
+   },
+   "by_stratum": {
+    "S3_vitc_nonfactual": {
+     "mergeable": 917,
+     "non_mergeable": 75,
+     "merged_mergeable": 356,
+     "false_merges": 21
+    },
+    "S4_vitc_factual": {
+     "non_mergeable": 962,
+     "false_merges": 20
+    },
+    "cross_item": {
+     "non_mergeable": 227
+    },
+    "same_item": {
+     "non_mergeable": 328,
+     "mergeable": 22,
+     "merged_mergeable": 8,
+     "false_merges": 2
+    }
+   },
+   "by_bin": {
+    "0": {
+     "mergeable": 85,
+     "non_mergeable": 225,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "1": {
+     "mergeable": 168,
+     "non_mergeable": 373,
+     "merged_mergeable": 107,
+     "false_merges": 19,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.05093833780160858,
+     "recall": 0.6369047619047619
+    },
+    "2": {
+     "mergeable": 481,
+     "non_mergeable": 739,
+     "merged_mergeable": 257,
+     "false_merges": 24,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.03247631935047361,
+     "recall": 0.5343035343035343
+    },
+    "3": {
+     "mergeable": 205,
+     "non_mergeable": 255,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    }
+   },
+   "by_chunk": [
+    {
+     "mergeable": 295,
+     "non_mergeable": 463,
+     "merged_mergeable": 120,
+     "false_merges": 12,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.02591792656587473,
+     "recall": 0.4067796610169492,
+     "nodes": 1181
+    },
+    {
+     "mergeable": 277,
+     "non_mergeable": 498,
+     "merged_mergeable": 111,
+     "false_merges": 12,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.024096385542168676,
+     "recall": 0.4007220216606498,
+     "nodes": 1186
+    },
+    {
+     "mergeable": 274,
+     "non_mergeable": 468,
+     "merged_mergeable": 99,
+     "false_merges": 13,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.027777777777777776,
+     "recall": 0.3613138686131387,
+     "nodes": 1184
+    },
+    {
+     "mergeable": 93,
+     "non_mergeable": 163,
+     "merged_mergeable": 34,
+     "false_merges": 6,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.03680981595092025,
+     "recall": 0.3655913978494624,
+     "nodes": 413
+    }
+   ],
+   "chunk_size": 1188,
+   "coverage": {
+    "test_per_bin": {
+     "0": 310,
+     "1": 541,
+     "2": 1220,
+     "3": 460
+    },
+    "cal_per_bin": {
+     "0": 36,
+     "1": 59,
+     "2": 158,
+     "3": 1
+    },
+    "disabled_bins": [
+     0,
+     3
+    ],
+    "test_disabled_share": 0.30422757803239825,
+    "cal_disabled_share": 0.14566929133858267
+   },
+   "thetas_used": {
+    "0": 65536,
+    "1": 64025,
+    "2": 64462,
+    "3": 65536
+   },
+   "epoch_scope": "vitaminc",
+   "nli_calls": 0,
+   "misses": 0,
+   "eval_seconds": 1.39
+  },
+  {
+   "git_sha": "2efb97d374acbcde82b9acd40df04ae3a1ea0e62",
+   "git_dirty": true,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+   "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+   "source_labels": true,
+   "alpha": 0.02,
+   "n_min": 49,
+   "B_0": 256,
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "max_unresolved": 0,
+   "max_items": null,
+   "hw": "x86_64",
+   "encoder": "mpnet",
+   "nli": "mnli-cross-encoder",
+   "encoder_id": "sentence-transformers/all-mpnet-base-v2",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "kind": "transfer",
+   "cal_domain": "vitaminc",
+   "test_domain": "paws",
+   "cal_unresolved": 0,
+   "test_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 88,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 278,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 90,
+     "mergeable": 3
+    }
+   },
+   "cal_stats": {
+    "worlds": 1,
+    "nodes": 1188,
+    "tested": 764,
+    "nli_calls": 2098,
+    "cal": 230,
+    "unresolved": 0
+   },
+   "cal_per_bin": {
+    "0": 26,
+    "1": 50,
+    "2": 120,
+    "3": 34
+   },
+   "theta": {
+    "0": null,
+    "1": 0.9952697032120241,
+    "2": 0.9942778667887389,
+    "3": null
+   },
+   "disabled_bins": [
+    0,
+    3
+   ],
+   "test_nodes": 2125,
+   "test_nli_calls": 4902,
+   "nli_calls_per_claim": 2.3068235294117647,
+   "seconds_cal_fold": 270.6434524640208,
+   "seconds_test_fold": 538.4604824639973,
+   "status": "ok",
+   "mergeable": 818,
+   "non_mergeable": 791,
+   "merged_mergeable": 67,
+   "false_merges": 15,
+   "unresolved": 0,
+   "merged_unresolved": 0,
+   "excluded": 0,
+   "fm": 0.018963337547408345,
+   "recall": 0.08190709046454768,
+   "by_class": {
+    "cross_item": {
+     "non_mergeable": 41,
+     "mergeable": 1
+    },
+    "manifest": {
+     "non_mergeable": 297,
+     "mergeable": 592,
+     "false_merges": 9,
+     "merged_mergeable": 53
+    },
+    "same_item": {
+     "mergeable": 188,
+     "non_mergeable": 350,
+     "merged_mergeable": 10
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 37,
+     "false_merges": 6,
+     "merged_mergeable": 4
+    }
+   },
+   "by_stratum": {
+    "S1_paws_para": {
+     "mergeable": 592,
+     "merged_mergeable": 53
+    },
+    "S2_paws_nonpara": {
+     "non_mergeable": 297,
+     "false_merges": 9
+    },
+    "cross_item": {
+     "non_mergeable": 41,
+     "mergeable": 1
+    },
+    "same_item": {
+     "mergeable": 188,
+     "non_mergeable": 350,
+     "merged_mergeable": 10
+    },
+    "source_labelled": {
+     "non_mergeable": 103,
+     "mergeable": 37,
+     "false_merges": 6,
+     "merged_mergeable": 4
+    }
+   },
+   "by_bin": {
+    "0": {
+     "mergeable": 28,
+     "non_mergeable": 43,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "1": {
+     "mergeable": 55,
+     "non_mergeable": 70,
+     "merged_mergeable": 12,
+     "false_merges": 6,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.08571428571428572,
+     "recall": 0.21818181818181817
+    },
+    "2": {
+     "mergeable": 180,
+     "non_mergeable": 207,
+     "merged_mergeable": 55,
+     "false_merges": 9,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.043478260869565216,
+     "recall": 0.3055555555555556
+    },
+    "3": {
+     "mergeable": 530,
+     "non_mergeable": 447,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "4": {
+     "mergeable": 25,
+     "non_mergeable": 24,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    }
+   },
+   "by_chunk": [
+    {
+     "mergeable": 807,
+     "non_mergeable": 782,
+     "merged_mergeable": 67,
+     "false_merges": 15,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.01918158567774936,
+     "recall": 0.08302354399008674,
+     "nodes": 2097
+    },
+    {
+     "mergeable": 11,
+     "non_mergeable": 9,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0,
+     "nodes": 28
+    }
+   ],
+   "chunk_size": 2100,
+   "coverage": {
+    "test_per_bin": {
+     "0": 71,
+     "1": 125,
+     "2": 387,
+     "3": 977,
+     "4": 49
+    },
+    "cal_per_bin": {
+     "0": 26,
+     "1": 50,
+     "2": 120,
+     "3": 34
+    },
+    "disabled_bins": [
+     0,
+     3,
+     4
+    ],
+    "test_disabled_share": 0.6817899316345556,
+    "cal_disabled_share": 0.2608695652173913
+   },
+   "thetas_used": {
+    "0": 65536,
+    "1": 65225,
+    "2": 65160,
+    "3": 65536,
+    "4": 65536
+   },
+   "epoch_scope": "paws",
+   "nli_calls": 0,
+   "misses": 0,
+   "eval_seconds": 1.63
+  },
+  {
+   "git_sha": "2efb97d374acbcde82b9acd40df04ae3a1ea0e62",
+   "git_dirty": true,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+   "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+   "source_labels": true,
+   "alpha": 0.02,
+   "n_min": 49,
+   "B_0": 256,
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "max_unresolved": 0,
+   "max_items": null,
+   "hw": "x86_64",
+   "encoder": "mpnet",
+   "nli": "mnli-cross-encoder",
+   "encoder_id": "sentence-transformers/all-mpnet-base-v2",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "kind": "transfer",
+   "cal_domain": "vitaminc",
+   "test_domain": "sick",
+   "cal_unresolved": 0,
+   "test_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 88,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 278,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 90,
+     "mergeable": 3
+    }
+   },
+   "cal_stats": {
+    "worlds": 1,
+    "nodes": 1188,
+    "tested": 764,
+    "nli_calls": 2098,
+    "cal": 230,
+    "unresolved": 0
+   },
+   "cal_per_bin": {
+    "0": 26,
+    "1": 50,
+    "2": 120,
+    "3": 34
+   },
+   "theta": {
+    "0": null,
+    "1": 0.9952697032120241,
+    "2": 0.9942778667887389,
+    "3": null
+   },
+   "disabled_bins": [
+    0,
+    3
+   ],
+   "test_nodes": 3367,
+   "test_nli_calls": 8925,
+   "nli_calls_per_claim": 2.6507276507276507,
+   "seconds_cal_fold": 270.6434524640208,
+   "seconds_test_fold": 753.291433462,
+   "status": "ok",
+   "mergeable": 850,
+   "non_mergeable": 1834,
+   "merged_mergeable": 10,
+   "false_merges": 0,
+   "unresolved": 0,
+   "merged_unresolved": 0,
+   "excluded": 0,
+   "fm": 0.0,
+   "recall": 0.011764705882352941,
+   "by_class": {
+    "cross_item": {
+     "non_mergeable": 777,
+     "mergeable": 35,
+     "merged_mergeable": 1
+    },
+    "manifest": {
+     "non_mergeable": 745,
+     "mergeable": 764,
+     "merged_mergeable": 6
+    },
+    "same_item": {
+     "non_mergeable": 217,
+     "mergeable": 51,
+     "merged_mergeable": 3
+    },
+    "source_labelled": {
+     "non_mergeable": 95
+    }
+   },
+   "by_stratum": {
+    "S8_sick_contra": {
+     "non_mergeable": 172
+    },
+    "S8_sick_oneway": {
+     "non_mergeable": 573
+    },
+    "S8_sick_para": {
+     "mergeable": 764,
+     "merged_mergeable": 6
+    },
+    "cross_item": {
+     "non_mergeable": 777,
+     "mergeable": 35,
+     "merged_mergeable": 1
+    },
+    "same_item": {
+     "non_mergeable": 217,
+     "mergeable": 51,
+     "merged_mergeable": 3
+    },
+    "source_labelled": {
+     "non_mergeable": 95
+    }
+   },
+   "by_bin": {
+    "0": {
+     "mergeable": 118,
+     "non_mergeable": 428,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "1": {
+     "mergeable": 179,
+     "non_mergeable": 467,
+     "merged_mergeable": 2,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0111731843575419
+    },
+    "2": {
+     "mergeable": 542,
+     "non_mergeable": 923,
+     "merged_mergeable": 8,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.014760147601476014
+    },
+    "3": {
+     "mergeable": 11,
+     "non_mergeable": 16,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    }
+   },
+   "by_chunk": [
+    {
+     "mergeable": 259,
+     "non_mergeable": 569,
+     "merged_mergeable": 6,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.023166023166023165,
+     "nodes": 1035
+    },
+    {
+     "mergeable": 260,
+     "non_mergeable": 568,
+     "merged_mergeable": 3,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.011538461538461539,
+     "nodes": 1030
+    },
+    {
+     "mergeable": 266,
+     "non_mergeable": 566,
+     "merged_mergeable": 1,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0037593984962406013,
+     "nodes": 1034
+    },
+    {
+     "mergeable": 65,
+     "non_mergeable": 131,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0,
+     "nodes": 268
+    }
+   ],
+   "chunk_size": 1035,
+   "coverage": {
+    "test_per_bin": {
+     "0": 546,
+     "1": 646,
+     "2": 1465,
+     "3": 27
+    },
+    "cal_per_bin": {
+     "0": 26,
+     "1": 50,
+     "2": 120,
+     "3": 34
+    },
+    "disabled_bins": [
+     0,
+     3
+    ],
+    "test_disabled_share": 0.21348733233979136,
+    "cal_disabled_share": 0.2608695652173913
+   },
+   "thetas_used": {
+    "0": 65536,
+    "1": 65225,
+    "2": 65160,
+    "3": 65536
+   },
+   "epoch_scope": "sick",
+   "nli_calls": 0,
+   "misses": 0,
+   "eval_seconds": 1.52
+  },
+  {
+   "git_sha": "2efb97d374acbcde82b9acd40df04ae3a1ea0e62",
+   "git_dirty": true,
+   "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6",
+   "annotations_sha256": "8b6e64bb62a2df8fdc9c96af25a3186c40c93b7d27e26355055409a18543a6cf",
+   "labels_sha256": "fecdbe41387ba950d212d702154e86a376f503e05750d187ee3543090a8f0e37",
+   "source_labels": true,
+   "alpha": 0.02,
+   "n_min": 49,
+   "B_0": 256,
+   "selector": [
+    32768,
+    32768,
+    3
+   ],
+   "seed": 0,
+   "max_unresolved": 0,
+   "max_items": null,
+   "hw": "x86_64",
+   "encoder": "mpnet",
+   "nli": "mnli-cross-encoder",
+   "encoder_id": "sentence-transformers/all-mpnet-base-v2",
+   "nli_model": "cross-encoder/nli-deberta-v3-small",
+   "kind": "cell",
+   "cal_domain": "vitaminc",
+   "test_domain": "vitaminc",
+   "cal_unresolved": 0,
+   "test_unresolved": 0,
+   "cal_labels": {
+    "cross_item": {
+     "non_mergeable": 88,
+     "ambiguous": 2
+    },
+    "manifest": {
+     "non_mergeable": 284
+    },
+    "manifest_pending": {
+     "mergeable": 278,
+     "non_mergeable": 21,
+     "ambiguous": 3
+    },
+    "same_item": {
+     "non_mergeable": 90,
+     "mergeable": 3
+    }
+   },
+   "cal_stats": {
+    "worlds": 1,
+    "nodes": 1188,
+    "tested": 764,
+    "nli_calls": 2098,
+    "cal": 230,
+    "unresolved": 0
+   },
+   "cal_per_bin": {
+    "0": 26,
+    "1": 50,
+    "2": 120,
+    "3": 34
+   },
+   "theta": {
+    "0": null,
+    "1": 0.9952697032120241,
+    "2": 0.9942778667887389,
+    "3": null
+   },
+   "disabled_bins": [
+    0,
+    3
+   ],
+   "test_nodes": 3964,
+   "test_nli_calls": 6895,
+   "nli_calls_per_claim": 1.7394046417759839,
+   "seconds_cal_fold": 270.6434524640208,
+   "seconds_test_fold": 1014.2876681679627,
+   "status": "ok",
+   "mergeable": 939,
+   "non_mergeable": 1592,
+   "merged_mergeable": 94,
+   "false_merges": 9,
+   "unresolved": 0,
+   "merged_unresolved": 0,
+   "excluded": 0,
+   "fm": 0.005653266331658292,
+   "recall": 0.10010649627263046,
+   "by_class": {
+    "cross_item": {
+     "non_mergeable": 227
+    },
+    "manifest": {
+     "non_mergeable": 962,
+     "false_merges": 2
+    },
+    "manifest_pending": {
+     "mergeable": 917,
+     "non_mergeable": 75,
+     "merged_mergeable": 91,
+     "false_merges": 7
+    },
+    "same_item": {
+     "non_mergeable": 328,
+     "mergeable": 22,
+     "merged_mergeable": 3
+    }
+   },
+   "by_stratum": {
+    "S3_vitc_nonfactual": {
+     "mergeable": 917,
+     "non_mergeable": 75,
+     "merged_mergeable": 91,
+     "false_merges": 7
+    },
+    "S4_vitc_factual": {
+     "non_mergeable": 962,
+     "false_merges": 2
+    },
+    "cross_item": {
+     "non_mergeable": 227
+    },
+    "same_item": {
+     "non_mergeable": 328,
+     "mergeable": 22,
+     "merged_mergeable": 3
+    }
+   },
+   "by_bin": {
+    "0": {
+     "mergeable": 85,
+     "non_mergeable": 225,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    },
+    "1": {
+     "mergeable": 168,
+     "non_mergeable": 373,
+     "merged_mergeable": 18,
+     "false_merges": 1,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.002680965147453083,
+     "recall": 0.10714285714285714
+    },
+    "2": {
+     "mergeable": 481,
+     "non_mergeable": 739,
+     "merged_mergeable": 76,
+     "false_merges": 8,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.010825439783491205,
+     "recall": 0.158004158004158
+    },
+    "3": {
+     "mergeable": 205,
+     "non_mergeable": 255,
+     "merged_mergeable": 0,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.0
+    }
+   },
+   "by_chunk": [
+    {
+     "mergeable": 295,
+     "non_mergeable": 463,
+     "merged_mergeable": 34,
+     "false_merges": 4,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.008639308855291577,
+     "recall": 0.1152542372881356,
+     "nodes": 1181
+    },
+    {
+     "mergeable": 277,
+     "non_mergeable": 498,
+     "merged_mergeable": 33,
+     "false_merges": 2,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.004016064257028112,
+     "recall": 0.11913357400722022,
+     "nodes": 1186
+    },
+    {
+     "mergeable": 274,
+     "non_mergeable": 468,
+     "merged_mergeable": 22,
+     "false_merges": 3,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.00641025641025641,
+     "recall": 0.08029197080291971,
+     "nodes": 1184
+    },
+    {
+     "mergeable": 93,
+     "non_mergeable": 163,
+     "merged_mergeable": 5,
+     "false_merges": 0,
+     "unresolved": 0,
+     "merged_unresolved": 0,
+     "excluded": 0,
+     "fm": 0.0,
+     "recall": 0.053763440860215055,
+     "nodes": 413
+    }
+   ],
+   "chunk_size": 1188,
+   "coverage": {
+    "test_per_bin": {
+     "0": 310,
+     "1": 541,
+     "2": 1220,
+     "3": 460
+    },
+    "cal_per_bin": {
+     "0": 26,
+     "1": 50,
+     "2": 120,
+     "3": 34
+    },
+    "disabled_bins": [
+     0,
+     3
+    ],
+    "test_disabled_share": 0.30422757803239825,
+    "cal_disabled_share": 0.2608695652173913
+   },
+   "thetas_used": {
+    "0": 65536,
+    "1": 65225,
+    "2": 65160,
+    "3": 65536
+   },
+   "epoch_scope": "vitaminc",
+   "nli_calls": 0,
+   "misses": 0,
+   "eval_seconds": 1.31
+  }
+ ],
+ "needs_labels": []
+}

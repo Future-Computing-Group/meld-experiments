@@ -1,28 +1,92 @@
 #!/usr/bin/env python3
 """Cross-tier experiment driver (runs on the laptop hub).
 
-Publishes claims to the brokered `claims` topic and collects per-brain `acks`,
+Publishes signed objects to the brokered `claims` topic and collects per-brain `acks`,
 measuring with ONE clock (the laptop's) so there is no cross-tier skew:
 
-  run_latency()          -> per-brain publish->merge->ack RTT (p50/p95) over K probes
-  run_running_example()  -> per-brain MERGE/RELATE/CONFLICT decisions + the c2
-                            status after a deprecate+overrule (expect OVERRULED on
-                            every tier: the order-independent CRDT join)
+  run_latency()          -> per-brain publish->admit->ack RTT (p50/p95) over K probe deltas
+  run_running_example()  -> per-brain INSERT/MERGE/RELATE/CONFLICT decisions on real claim
+                            deltas + the c2 status after an authored deprecate (SUPERSEDE)
+                            and overrule (expect OVERRULED on every tier: the order-
+                            independent join of authored effects)
 
-Signals in the running-example beats are the values verified against the encoder/
-NLI earlier (M-2 validates the dense rung); the driver is therefore torch-free.
-A separate partition-heal phase lives in the orchestrator (drop a tier's tunnel).
+Every brain admits each delta with the protocol's own step (brain_core). The MERGE beat
+merges only under an epoch: pass the calibration authority's signed epoch file
+(``--epoch``, config.load_epoch); the driver publishes it first. Without one the paraphrase
+RELATEs, by design (no default operating point). The brains and the driver must agree on
+the encoder and NLI model (M_nli); the defaults are the torch-free hashing + lexical rung.
 """
-import argparse, json, math, socket, sys, threading, time
+import argparse, json, math, os, socket, sys, threading, time
 
-# Verified running-example signals (reproduced from src/meld; see manuscript Fig. 1).
-BEATS = [
-    {"key": "merge",     "op": "publish",   "claim_id": "c1", "kappa": 0, "sigma": 0.93, "chi": "entails",     "ctx_ok": True},
-    {"key": "relate",    "op": "publish",   "claim_id": "c1", "kappa": 0, "sigma": 0.93, "chi": "entails",     "ctx_ok": False},
-    {"key": "conflict",  "op": "publish",   "claim_id": "c2", "kappa": 0, "sigma": 0.86, "chi": "contradicts", "ctx_ok": True},
-    {"key": "deprecate", "op": "deprecate", "claim_id": "c2", "link_id": "L_dep"},
-    {"key": "overrule",  "op": "overrule",  "claim_id": "c2", "link_id": "L_ovr"},
-]
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.join(os.path.dirname(HERE), "src"))
+from brain_core import OTHER_CELL, replica, signed_json   # noqa: E402  (brains drop unsigned objects)
+from meld.agent.memory import DEFAULT_CELL                 # noqa: E402
+from meld.proto import claim_key                           # noqa: E402
+from meld.protocol.objects import AuthoredEffect           # noqa: E402
+
+ENCODER, NLI = "hashing", "lexical"
+SEED = "the valve on line two is open"
+PARA = "the valve on line two is open now"
+NEG = "the valve on line two is not open"
+C2_ID = claim_key(NEG, DEFAULT_CELL).hex()     # the ack claim_id of the contradiction "c2"
+
+
+def _effect(kind, text=NEG):
+    c2 = claim_key(text, DEFAULT_CELL)
+    return AuthoredEffect(scope="agent", kind=kind, c1=c2,
+                          c2=claim_key(text, DEFAULT_CELL, 1) if kind == "SUPERSEDE" else b"",
+                          target_cell=DEFAULT_CELL, author="driver", author_cell=DEFAULT_CELL,
+                          author_auth=0, created_at=0)
+
+
+def running_example(encoder=ENCODER, nli=NLI):
+    """[(nonce, signed message)]: seed, its paraphrase (merge), the paraphrase in another
+    cell (relate), a contradiction (conflict), then deprecate and overrule the contradiction."""
+    f = replica("driver", encoder=encoder, nli=nli)
+    beats = [("seed", f.delta(SEED)), ("merge", f.delta(PARA)),
+             ("relate", f.delta(PARA, OTHER_CELL)), ("conflict", f.delta(NEG)),
+             ("deprecate", _effect("SUPERSEDE")), ("overrule", _effect("OVERRULE"))]
+    return [(n, signed_json(o, n)) for n, o in beats]
+
+
+def effect_message(nonce, kind):
+    """An authored effect on the contradiction c2. A brain reports its status once it holds
+    c2 as a node (``c2_message``): auth is read for nodes only."""
+    return signed_json(_effect(kind), nonce)
+
+
+def c2_message(nonce="c2", encoder=ENCODER, nli=NLI):
+    return signed_json(replica("driver", encoder=encoder, nli=nli).delta(NEG), nonce)
+
+
+def trial_messages(i, encoder=ENCODER, nli=NLI):
+    """One partition-heal trial on a fresh claim: its signed delta, then a signed deprecate
+    (SUPERSEDE) and overrule on it; ``claim_id`` is the ack claim_id the brains report."""
+    text = "the pump on line %d is running" % i
+    return {"claim_id": claim_key(text, DEFAULT_CELL).hex(),
+            "delta": signed_json(replica("driver", encoder=encoder, nli=nli).delta(text), "t%d" % i),
+            "deprecate": signed_json(_effect("SUPERSEDE", text), "d%d" % i),
+            "overrule": signed_json(_effect("OVERRULE", text), "o%d" % i)}
+
+
+def probe_messages(k, encoder=ENCODER, nli=NLI):
+    """[(nonce, signed message)] of k distinct probe deltas."""
+    f = replica("driver", encoder=encoder, nli=nli)
+    return [("lat-%d" % i, signed_json(f.delta("latency probe %d" % i), "lat-%d" % i))
+            for i in range(k)]
+
+
+def running_messages(epoch=None, encoder=ENCODER, nli=NLI):
+    """The running example as published: the signed epoch first when one is given."""
+    return ([("epoch", epoch_message(epoch))] if epoch else []) + running_example(encoder, nli)
+
+
+def epoch_message(epoch):
+    """The calibration authority's signed epoch record (config.load_epoch) as a message."""
+    received, mac = epoch
+    return json.dumps({"nonce": "epoch", "o": received.decode("ascii"), "m": mac})
 
 
 def _connect(host, port):
@@ -86,12 +150,9 @@ def _pct(vals, p):
 def run_latency(host, port, brains, k=50, timeout=20):
     coll = _AckCollector(host, port); coll.start(); coll.wait_ready()
     t_pub = {}
-    for i in range(k):
-        nonce = "lat-%d" % i
+    for nonce, msg in probe_messages(k):
         t_pub[nonce] = time.time()
-        _publish(host, port, "claims", json.dumps(
-            {"nonce": nonce, "op": "publish", "claim_id": "probe",
-             "kappa": 0, "sigma": 0.0, "chi": "neutral", "ctx_ok": True}))
+        _publish(host, port, "claims", msg)
         time.sleep(0.02)
     acks = _collect_until(coll, k * len(brains), timeout)
     per = {b: {"acked": 0, "rtts": []} for b in brains}
@@ -107,12 +168,13 @@ def run_latency(host, port, brains, k=50, timeout=20):
     return out
 
 
-def run_running_example(host, port, brains, timeout=15):
+def run_running_example(host, port, brains, epoch=None, timeout=15):
     coll = _AckCollector(host, port); coll.start(); coll.wait_ready()
-    for beat in BEATS:
-        _publish(host, port, "claims", json.dumps({"nonce": beat["key"], **beat}))
+    msgs = running_messages(epoch)
+    for _, msg in msgs:
+        _publish(host, port, "claims", msg)
         time.sleep(0.2)
-    acks = _collect_until(coll, len(BEATS) * len(brains), timeout)
+    acks = _collect_until(coll, len(msgs) * len(brains), timeout)
     per = {b: {} for b in brains}
     for a in acks:
         b = a.get("brain")
@@ -122,7 +184,7 @@ def run_running_example(host, port, brains, timeout=15):
     out = {"phase": "running-example", "per_brain": {}, "all_converged": True}
     for b in brains:
         d = per[b]
-        rec = {"merge": d.get("merge"), "relate": d.get("relate"),
+        rec = {"seed": d.get("seed"), "merge": d.get("merge"), "relate": d.get("relate"),
                "conflict": d.get("conflict"), "c2_status": d.get("overrule")}
         out["per_brain"][b] = rec
         if rec["c2_status"] != "OVERRULED":
@@ -137,11 +199,17 @@ def main(argv):
     ap.add_argument("--brains", required=True, help="comma-separated brain ids")
     ap.add_argument("--k", type=int, default=100)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--epoch", default=None, help="signed epoch file (config.load_epoch)")
     args = ap.parse_args(argv)
     brains = [b.strip() for b in args.brains.split(",") if b.strip()]
+    epoch = None
+    if args.epoch:
+        from meld.config import load_epoch
+        epoch = load_epoch(args.epoch)
     results = {
         "latency": run_latency(args.broker_host, args.broker_port, brains, k=args.k),
-        "running_example": run_running_example(args.broker_host, args.broker_port, brains),
+        "running_example": run_running_example(args.broker_host, args.broker_port, brains,
+                                               epoch=epoch),
     }
     blob = json.dumps(results, indent=2)
     if args.out:

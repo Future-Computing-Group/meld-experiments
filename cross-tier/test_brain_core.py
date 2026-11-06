@@ -1,107 +1,108 @@
 #!/usr/bin/env python3
-"""Unit tests for the shared merge-on-receive step (brain_core.process_delta).
+"""Unit tests for the shared receive step (brain_core.process_delta).
 
-``process_delta`` is the one source of truth both cross-tier brains (relay and
-Kafka) call, so the two transports cannot diverge in semantics. The broker-gated
-end-to-end tests exercise it through a real transport; these tests pin its
-contract DIRECTLY, transport-free and broker-free, asserting the causal effect at
-the seam (distinct signal in => distinct decision out: a double that ignored the
-signals would pass control-flow but fail these) and the order-independent CRDT
-join the convergence claim rests on.
+``process_delta`` is the one source of truth both cross-tier brains (relay and Kafka) call,
+so the two transports cannot diverge in semantics. These tests pin its contract directly,
+transport-free and broker-free: real claim deltas are admitted by the protocol's step
+(distinct content in => distinct decision out), authored effects join order-independently,
+redelivery is idempotent, and nothing unverifiable is read.
 
 Run:  PYTHONPATH=src:cross-tier python3 -m pytest cross-tier/test_brain_core.py -q
 """
-import os, sys
+import json, os, sys, tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from meld.config import load_thresholds            # noqa: E402
-from brain_core import process_delta               # noqa: E402
-
-CFG = load_thresholds(os.path.join(REPO, "src", "meld", "config", "thresholds-minilm.yaml"))
-
-# The verified running-example signal tuples (driver.BEATS): each is built to land
-# in exactly one decision class at the calibrated operating point.
-MERGE = {"op": "publish", "claim_id": "c1", "kappa": 0, "sigma": 0.93, "chi": "entails", "ctx_ok": True}
-RELATE = {"op": "publish", "claim_id": "c1", "kappa": 0, "sigma": 0.93, "chi": "entails", "ctx_ok": False}
-CONFLICT = {"op": "publish", "claim_id": "c2", "kappa": 0, "sigma": 0.86, "chi": "contradicts", "ctx_ok": True}
-NO_RELATION = {"op": "publish", "claim_id": "c3", "kappa": 0, "sigma": 0.00, "chi": "neutral", "ctx_ok": True}
+from brain_core import process_delta, replica, signed_json   # noqa: E402
+import driver                                                # noqa: E402
 
 
-def _decide(delta):
-    return process_delta(dict(delta, nonce="n"), CFG, {}, "b", 0.0)["decision"]
+
+def epoch_file(theta=0.5):
+    """A signed test epoch for the brains' M_nli and M_pol (what the calibration authority
+    would distribute), as a config.save_epoch file; returns its path."""
+    from meld.agent.memory import DEFAULT_POL
+    from meld.config import save_epoch
+    from meld.proto import CANON_VERSION
+    from meld.protocol.objects import FIXED_ONE, INF16, EpochRecord, m_nli, m_pol_of
+    from brain_core import XTIER_POL, KEY as GROUP_KEY
+    sel = DEFAULT_POL["bootstrap_selector"]
+    ep = EpochRecord(scope="agent", seq=1, m_nli=m_nli(driver.ENCODER, driver.NLI, "int8", CANON_VERSION),
+                     m_pol=m_pol_of(XTIER_POL), policy="SEED", alpha=20_000, alpha_c=20_000,
+                     mondrian_c=False, cal_root=b"\x00" * 16, cal_hw="cpu", bins=(256, "doubling"),
+                     table=((0, 100, 0, round(theta * FIXED_ONE), INF16),), sigma_lo_q=sel[0],
+                     sigma_c_q=sel[1], m=sel[2], author="calibration", created_at=0)
+    fd, path = tempfile.mkstemp(suffix=".epoch.json"); os.close(fd)
+    save_epoch(ep, GROUP_KEY, path)
+    return path
 
 
-def test_publish_classifies_each_class_distinctly():
-    # The seam carries the signals into the decision: distinct signal in => distinct
-    # decision out (a test double that ignored the signals would fail this).
-    assert _decide(MERGE) == "MERGE"
-    assert _decide(RELATE) == "RELATE"
-    assert _decide(CONFLICT) == "CONFLICT"
-    assert _decide(NO_RELATION) == "NO_RELATION"
+def _rep(bid="b"):
+    return replica(bid, encoder=driver.ENCODER, nli=driver.NLI)
 
 
-def test_publish_ack_shape_carries_identity_and_does_not_mutate_status():
-    status = {}
-    ack = process_delta(dict(MERGE, nonce="abc"), CFG, status, "hpc", 12.5)
-    assert ack["nonce"] == "abc" and ack["brain"] == "hpc" and ack["claim_id"] == "c1"
-    assert ack["op"] == "publish" and ack["eff_status"] == "ACTIVE" and ack["t_recv"] == 12.5
-    assert status == {}, "a publish must not mutate the status CRDT"
+def _run(msgs, rep=None):
+    rep = rep or _rep()
+    return {n: process_delta(json.loads(m), rep, "b", 0.0) for n, m in msgs}, rep
 
 
-def test_overrule_sets_status_and_mutates_state_in_place():
-    status = {}
-    ack = process_delta({"op": "overrule", "claim_id": "c2", "link_id": "L_ovr", "nonce": "o"},
-                        CFG, status, "b", 0.0)
-    assert ack["decision"] is None and ack["op"] == "overrule"
-    assert ack["eff_status"] == "OVERRULED"
-    assert "c2" in status and effective(status, "c2") == "OVERRULED"
+def test_running_example_decides_each_class_distinctly_under_an_epoch():
+    from meld.config import load_epoch
+    acks, _ = _run([("epoch", driver.epoch_message(load_epoch(epoch_file())))]
+                   + driver.running_example())
+    assert {n: acks[n]["decision"] for n in ("seed", "merge", "relate", "conflict")} == {
+        "seed": "INSERT", "merge": "MERGE", "relate": "RELATE", "conflict": "CONFLICT"}
+    assert acks["deprecate"]["eff_status"] == "DEPRECATED"
+    assert acks["overrule"]["eff_status"] == "OVERRULED" and acks["overrule"]["claim_id"] == driver.C2_ID
+    # without the epoch the paraphrase abstains: no default operating point
+    bare, _ = _run(driver.running_example())
+    assert bare["merge"]["decision"] == "RELATE"
 
 
-def test_deprecate_sets_deprecated():
-    status = {}
-    ack = process_delta({"op": "deprecate", "claim_id": "c2", "link_id": "L_dep", "nonce": "d"},
-                        CFG, status, "b", 0.0)
-    assert ack["eff_status"] == "DEPRECATED" and effective(status, "c2") == "DEPRECATED"
+def test_ack_shape_carries_identity_and_a_publish_writes_no_authored_effect():
+    (n, m), = driver.running_example()[:1]
+    acks, rep = _run([(n, m)])
+    ack = acks[n]
+    assert ack["nonce"] == "seed" and ack["brain"] == "b" and ack["op"] == "publish"
+    assert ack["eff_status"] == "ACTIVE" and ack["t_recv"] == 0.0
+    assert rep.store.objects.ids("A", "agent") == ()
 
 
-def test_join_is_order_independent_both_orders_converge_to_overruled():
-    # The empirical face of the status-CRDT: a claim deprecated by one peer and
-    # overruled by another converges to OVERRULED regardless of delivery order.
-    dep = {"op": "deprecate", "claim_id": "c2", "link_id": "L_dep", "nonce": "d"}
-    ovr = {"op": "overrule", "claim_id": "c2", "link_id": "L_ovr", "nonce": "o"}
-
-    s1 = {}
-    process_delta(dep, CFG, s1, "b", 0.0)
-    a1 = process_delta(ovr, CFG, s1, "b", 0.0)
-
-    s2 = {}
-    process_delta(ovr, CFG, s2, "b", 0.0)
-    a2 = process_delta(dep, CFG, s2, "b", 0.0)
-
-    assert a1["eff_status"] == "OVERRULED" == a2["eff_status"]
-    assert effective(s1, "c2") == effective(s2, "c2") == "OVERRULED"
+def test_authored_effects_join_order_independently():
+    dep, ovr = driver.effect_message("d", "SUPERSEDE"), driver.effect_message("o", "OVERRULE")
+    c2 = driver.c2_message()
+    a1, _ = _run([("c2", c2), ("d", dep), ("o", ovr)])
+    a2, _ = _run([("c2", c2), ("o", ovr), ("d", dep)])
+    assert a1["o"]["eff_status"] == a2["d"]["eff_status"] == "OVERRULED"
+    assert a1["d"]["op"] == "supersede" and a1["o"]["op"] == "overrule"
 
 
-def test_idempotent_redelivery_of_same_link_is_a_noop():
-    status = {}
-    d = {"op": "overrule", "claim_id": "c2", "link_id": "L_ovr", "nonce": "o"}
-    process_delta(d, CFG, status, "b", 0.0)
-    process_delta(d, CFG, status, "b", 0.0)  # re-deliver (a partition heal would)
-    assert effective(status, "c2") == "OVERRULED"
-    assert len(status["c2"].links) == 1, "re-adding the same link id must not grow the set"
+def test_idempotent_redelivery_decides_once():
+    msgs = driver.running_example()[:2]
+    rep = _rep()
+    first, _ = _run(msgs, rep)
+    again, _ = _run(msgs, rep)
+    assert first["seed"]["decision"] == "INSERT" and again["seed"]["decision"] is None
+    assert len(rep.store.objects.ids("D", "agent")) == 2 and len(rep.decisions) == 2
 
 
-def test_unknown_op_returns_none():
-    assert process_delta({"op": "subscribe", "claim_id": "c1", "nonce": "n"}, CFG, {}, "b", 0.0) is None
-
-
-def effective(status, cid):
-    from meld.merge.status_crdt import effective_status
-    return effective_status(status[cid])
+def test_brain_core_refuses_an_unverified_or_malformed_message():
+    # 04 finding 10: unsigned, forged, tampered and wrong-key objects are dropped (None, no
+    # ack) before anything is read; MAC verification precedes admission.
+    good = json.loads(driver.effect_message("o", "OVERRULE"))
+    forged = json.loads(signed_json(driver._effect("OVERRULE"), "o", key=b"another-key"))
+    tampered = dict(good, o=good["o"].replace('"author":"driver"', '"author":"mallory"'))
+    for bad in (dict(good, m=""), dict(good, m="00" * 32), forged, tampered,
+                {"nonce": "o"}, dict(good, o=1), [1], None, "x"):
+        rep = _rep()
+        assert process_delta(bad, rep, "b", 0.0) is None
+        assert len(rep.store.objects) == 0
+    rep = _rep()
+    process_delta(json.loads(driver.c2_message()), rep, "b", 0.0)
+    assert process_delta(good, rep, "b", 0.0)["eff_status"] == "OVERRULED"
 
 
 if __name__ == "__main__":
@@ -114,3 +115,16 @@ if __name__ == "__main__":
                 fails += 1; print("FAIL", name, "->", repr(e)[:200])
     print("=== %d failure(s) ===" % fails)
     sys.exit(1 if fails else 0)
+
+
+def test_wan_trial_messages_are_signed_objects_the_brains_admit_and_join():
+    # the partition-heal WAN script publishes, per trial, a fresh claim delta and two signed
+    # authored effects on it (never the retired unsigned {"op": ...} payloads, which are dropped)
+    t = driver.trial_messages(3)
+    acks, rep = _run([("d", t["delta"]), ("dep", t["deprecate"])])
+    assert acks["d"]["decision"] == "INSERT" and acks["d"]["claim_id"] == t["claim_id"]
+    assert acks["dep"]["claim_id"] == t["claim_id"] and acks["dep"]["eff_status"] == "DEPRECATED"
+    ack = process_delta(json.loads(t["overrule"]), rep, "b", 0.0)
+    assert ack["eff_status"] == "OVERRULED"
+    assert driver.trial_messages(4)["claim_id"] != t["claim_id"]
+    assert process_delta({"nonce": "x", "op": "deprecate", "claim_id": t["claim_id"]}, rep, "b", 0.0) is None

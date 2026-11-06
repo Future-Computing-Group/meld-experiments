@@ -1,0 +1,14 @@
+PH-10 E2-P2 burden m* under the card criterion (scripts/run_wp6e_burden_card.py; meld.eval.wp6e)
+git 69d7280dd7186c0ee29f0b8bfb2b2527a8c9596c dirty False  NLI cross-encoder/nli-deberta-v3-small  hw arm64  alpha 0.02; P2 source rows sha256 per cell in card-mstar.json
+fullF1 = full-draw replayed macro-F1; oF1/oFM/m* = unconstrained oracle; cF1/cFM/c-m* = oracle under FM <= alpha; proxy = the digest's proxy m*; gap = max |replayed - realised| macro-F1 over draws
+
+cell                 pairs  fullF1     oF1    oFM     m*     cF1    cFM   c-m*  proxy     gap
+minilm-paws           1599   0.450   0.791  0.220   None   0.481  0.020   None    200  0.0029
+minilm-sick           2760   0.667   0.923  0.049   None   0.901  0.020   None    100  0.0005
+minilm-vitaminc       2416   0.460   0.915  0.094   None   0.697  0.020   None    100  0.0008
+minilm-l12-paws       1599   0.460   0.789  0.231   None   0.496  0.020   None    200  0.0023
+minilm-l12-sick       2746   0.769   0.922  0.061   None   0.899  0.020   None    100  0.0000
+minilm-l12-vitaminc   2424   0.460   0.915  0.094   None   0.703  0.020   None    100  0.0008
+mpnet-paws            1609   0.449   0.801  0.212   None   0.495  0.019   None    200  0.0028
+mpnet-sick            2684   0.685   0.923  0.060   None   0.898  0.020   None    100  0.0005
+mpnet-vitaminc        2531   0.484   0.918  0.087   None   0.715  0.019   None    100  0.0007

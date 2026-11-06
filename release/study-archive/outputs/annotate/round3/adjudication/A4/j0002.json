@@ -1,0 +1,391 @@
+{
+ "batch_id": "j0002",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "b48474320bf7d7370aafd82d4582a1b78c9bffd6115d4d811402282c705d6152",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"73779d46fb1ab4eb\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Jumping off the fountain side and jumping on it are different actions in an otherwise identical scene.\"},\n{\"item_id\": \"0e0db7512c35082a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both deny a man feeding a mouse to a snake, one adding the manner cautiously.\"},\n{\"item_id\": \"a508535731208042\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The garbled phrase about other pilasters on a double pillar can be read as a reordering or as a role swap.\"},\n{\"item_id\": \"867ecf1a80cc6a24\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One specifies that the new stand was the southern one.\"},\n{\"item_id\": \"9063ff859018e727\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Gray to kitz versus gray to fawn is either a garbled synonym or a different colour range, and the texts do not settle it.\"},\n{\"item_id\": \"026deb48b1b5de37\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the cat is little and the milk fresh.\"},\n{\"item_id\": \"427f83625670c41f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Calling the House Blend role the first acting role versus the first major role changes the claim, but both can hold.\"},\n{\"item_id\": \"a8145e8734c3e431\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same onion cutting, one specifying a man and a single onion.\"},\n{\"item_id\": \"dd7bce0eb97cc928\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Nobody folding the paper is a broader denial than one person not folding it.\"},\n{\"item_id\": \"3b0af89caf453fc8\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Slicing and cutting are synonyms in the same negation.\"},\n{\"item_id\": \"b8801fc9ada593aa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the formation year and the band's labels to the James Murphy claim.\"},\n{\"item_id\": \"43fc1cf08e30e97a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same egg cracking, with compatible details of mixer and bowl.\"},\n{\"item_id\": \"bdb95dfd11ffd9f4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the band's recognition rankings to the same deaths.\"},\n{\"item_id\": \"8a6f0d78a8178658\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same airborne bicycle trick, with fearlessly and man as added details.\"},\n{\"item_id\": \"80d41236b0f36b69\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible negated activities of the same brown dog, one adding that it is furry.\"},\n{\"item_id\": \"2dd487b9d195f720\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man mixing a bowl's content, one specifying a few ingredients.\"},\n{\"item_id\": \"912b31d894715aec\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Performing with the guitar adds a performance context to playing it.\"},\n{\"item_id\": \"1aca5dbe93d7871a\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Same census area sentence differing only in grammar.\"},\n{\"item_id\": \"da4d02b0dcbb294e\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Current manager versus former trainer is a status that changes over time.\"},\n{\"item_id\": \"b6af9c3efe044473\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Latvia and Auri Parish swap places, placing the planning region inside the parish.\"},\n{\"item_id\": \"6a58039df96a32f8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Beating eggs, with strongly and the bowl as added details.\"},\n{\"item_id\": \"1e057c4902a7098b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same garlic cutting, with compatible details of a woman and a knife.\"},\n{\"item_id\": \"9978b71efc1d9ced\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both deny a band playing, one adding the stage.\"},\n{\"item_id\": \"8c0f889444b9df85\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same squirting into a dog's mouth, one adding water and the dog's colour.\"},\n{\"item_id\": \"6139995259ea8665\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the band played at the venue.\"},\n{\"item_id\": \"b8a818395a8c98ec\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same negation over nobody versus a young boy.\"},\n{\"item_id\": \"a59b591196c0c3cd\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the piano is played beautifully.\"},\n{\"item_id\": \"9becaf20713b1786\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible denials of a man playing guitar intensely or loudly.\"},\n{\"item_id\": \"23d653cfcfd7ff7f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Compatible details about a man playing guitar on stage before an audience.\"},\n{\"item_id\": \"d070deeca03b8e76\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies the flute player is a man.\"},\n{\"item_id\": \"057b1585b6da7ef3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the cheese is shredded and sprinkled.\"},\n{\"item_id\": \"08d9c757c39d25cd\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same claim that Kronecker rejected Weierstrass's function, in two garbled wordings.\"},\n{\"item_id\": \"9f4d573d24238fec\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies the rider as a man and the animal as a horse.\"},\n{\"item_id\": \"1a6d49d552a2fc45\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same denial of fist fighting over nobody versus the men.\"},\n{\"item_id\": \"a7d8fee249ea25a1\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same negated onion slicing, one specifying a woman.\"},\n{\"item_id\": \"9337fdec6fe37d0a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Dicing is a specific kind of cutting garlic.\"},\n{\"item_id\": \"c567d597fce33585\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Compatible denials of playing a keyboard instrument, one specifying a man and a piano.\"},\n{\"item_id\": \"025ffcc8af27622c\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Reading and checking the email are near synonyms here.\"},\n{\"item_id\": \"40069fcc73e71ae1\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The same denial of horse riding over a girl versus a woman.\"},\n{\"item_id\": \"626c6b683b31fd6b\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Performing a bicycle jump and flying through the air on the bicycle describe the same event.\"},\n{\"item_id\": \"d0682fde8cbba5aa\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Feeding the snake with a mouse and feeding a mouse to the snake are the same.\"},\n{\"item_id\": \"d4049003bfbb7dba\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Much higher and considerably higher rural coverage are synonymous.\"},\n{\"item_id\": \"3e8afdacb38d5137\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible denials of cutting garlic with differing details.\"},\n{\"item_id\": \"2786d8744b79b9f9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the girl is young.\"},\n{\"item_id\": \"d22b94432737b4cf\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Historical buildings versus historical objects with the same bell and paintings reads either as a garbled synonym or a changed entity.\"},\n{\"item_id\": \"2f286da644a0fd93\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same bowl mixing, one specifying a man.\"},\n{\"item_id\": \"c89c1dfc6ed7309e\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible negations of onion cutting, one specifying a man.\"}\n]}\n"
+ ],
+ "labels": {
+  "73779d46fb1ab4eb": {
+   "item_id": "73779d46fb1ab4eb",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Jumping off the fountain side and jumping on it are different actions in an otherwise identical scene."
+  },
+  "0e0db7512c35082a": {
+   "item_id": "0e0db7512c35082a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny a man feeding a mouse to a snake, one adding the manner cautiously."
+  },
+  "a508535731208042": {
+   "item_id": "a508535731208042",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The garbled phrase about other pilasters on a double pillar can be read as a reordering or as a role swap."
+  },
+  "867ecf1a80cc6a24": {
+   "item_id": "867ecf1a80cc6a24",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One specifies that the new stand was the southern one."
+  },
+  "9063ff859018e727": {
+   "item_id": "9063ff859018e727",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Gray to kitz versus gray to fawn is either a garbled synonym or a different colour range, and the texts do not settle it."
+  },
+  "026deb48b1b5de37": {
+   "item_id": "026deb48b1b5de37",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the cat is little and the milk fresh."
+  },
+  "427f83625670c41f": {
+   "item_id": "427f83625670c41f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Calling the House Blend role the first acting role versus the first major role changes the claim, but both can hold."
+  },
+  "a8145e8734c3e431": {
+   "item_id": "a8145e8734c3e431",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same onion cutting, one specifying a man and a single onion."
+  },
+  "dd7bce0eb97cc928": {
+   "item_id": "dd7bce0eb97cc928",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Nobody folding the paper is a broader denial than one person not folding it."
+  },
+  "3b0af89caf453fc8": {
+   "item_id": "3b0af89caf453fc8",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Slicing and cutting are synonyms in the same negation."
+  },
+  "b8801fc9ada593aa": {
+   "item_id": "b8801fc9ada593aa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the formation year and the band's labels to the James Murphy claim."
+  },
+  "43fc1cf08e30e97a": {
+   "item_id": "43fc1cf08e30e97a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same egg cracking, with compatible details of mixer and bowl."
+  },
+  "bdb95dfd11ffd9f4": {
+   "item_id": "bdb95dfd11ffd9f4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the band's recognition rankings to the same deaths."
+  },
+  "8a6f0d78a8178658": {
+   "item_id": "8a6f0d78a8178658",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same airborne bicycle trick, with fearlessly and man as added details."
+  },
+  "80d41236b0f36b69": {
+   "item_id": "80d41236b0f36b69",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible negated activities of the same brown dog, one adding that it is furry."
+  },
+  "2dd487b9d195f720": {
+   "item_id": "2dd487b9d195f720",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man mixing a bowl's content, one specifying a few ingredients."
+  },
+  "912b31d894715aec": {
+   "item_id": "912b31d894715aec",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Performing with the guitar adds a performance context to playing it."
+  },
+  "1aca5dbe93d7871a": {
+   "item_id": "1aca5dbe93d7871a",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Same census area sentence differing only in grammar."
+  },
+  "da4d02b0dcbb294e": {
+   "item_id": "da4d02b0dcbb294e",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Current manager versus former trainer is a status that changes over time."
+  },
+  "b6af9c3efe044473": {
+   "item_id": "b6af9c3efe044473",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Latvia and Auri Parish swap places, placing the planning region inside the parish."
+  },
+  "6a58039df96a32f8": {
+   "item_id": "6a58039df96a32f8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Beating eggs, with strongly and the bowl as added details."
+  },
+  "1e057c4902a7098b": {
+   "item_id": "1e057c4902a7098b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same garlic cutting, with compatible details of a woman and a knife."
+  },
+  "9978b71efc1d9ced": {
+   "item_id": "9978b71efc1d9ced",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both deny a band playing, one adding the stage."
+  },
+  "8c0f889444b9df85": {
+   "item_id": "8c0f889444b9df85",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same squirting into a dog's mouth, one adding water and the dog's colour."
+  },
+  "6139995259ea8665": {
+   "item_id": "6139995259ea8665",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the band played at the venue."
+  },
+  "b8a818395a8c98ec": {
+   "item_id": "b8a818395a8c98ec",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same negation over nobody versus a young boy."
+  },
+  "a59b591196c0c3cd": {
+   "item_id": "a59b591196c0c3cd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the piano is played beautifully."
+  },
+  "9becaf20713b1786": {
+   "item_id": "9becaf20713b1786",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible denials of a man playing guitar intensely or loudly."
+  },
+  "23d653cfcfd7ff7f": {
+   "item_id": "23d653cfcfd7ff7f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Compatible details about a man playing guitar on stage before an audience."
+  },
+  "d070deeca03b8e76": {
+   "item_id": "d070deeca03b8e76",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies the flute player is a man."
+  },
+  "057b1585b6da7ef3": {
+   "item_id": "057b1585b6da7ef3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the cheese is shredded and sprinkled."
+  },
+  "08d9c757c39d25cd": {
+   "item_id": "08d9c757c39d25cd",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same claim that Kronecker rejected Weierstrass's function, in two garbled wordings."
+  },
+  "9f4d573d24238fec": {
+   "item_id": "9f4d573d24238fec",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies the rider as a man and the animal as a horse."
+  },
+  "1a6d49d552a2fc45": {
+   "item_id": "1a6d49d552a2fc45",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same denial of fist fighting over nobody versus the men."
+  },
+  "a7d8fee249ea25a1": {
+   "item_id": "a7d8fee249ea25a1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same negated onion slicing, one specifying a woman."
+  },
+  "9337fdec6fe37d0a": {
+   "item_id": "9337fdec6fe37d0a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Dicing is a specific kind of cutting garlic."
+  },
+  "c567d597fce33585": {
+   "item_id": "c567d597fce33585",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Compatible denials of playing a keyboard instrument, one specifying a man and a piano."
+  },
+  "025ffcc8af27622c": {
+   "item_id": "025ffcc8af27622c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Reading and checking the email are near synonyms here."
+  },
+  "40069fcc73e71ae1": {
+   "item_id": "40069fcc73e71ae1",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The same denial of horse riding over a girl versus a woman."
+  },
+  "626c6b683b31fd6b": {
+   "item_id": "626c6b683b31fd6b",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Performing a bicycle jump and flying through the air on the bicycle describe the same event."
+  },
+  "d0682fde8cbba5aa": {
+   "item_id": "d0682fde8cbba5aa",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Feeding the snake with a mouse and feeding a mouse to the snake are the same."
+  },
+  "d4049003bfbb7dba": {
+   "item_id": "d4049003bfbb7dba",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Much higher and considerably higher rural coverage are synonymous."
+  },
+  "3e8afdacb38d5137": {
+   "item_id": "3e8afdacb38d5137",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible denials of cutting garlic with differing details."
+  },
+  "2786d8744b79b9f9": {
+   "item_id": "2786d8744b79b9f9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the girl is young."
+  },
+  "d22b94432737b4cf": {
+   "item_id": "d22b94432737b4cf",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Historical buildings versus historical objects with the same bell and paintings reads either as a garbled synonym or a changed entity."
+  },
+  "2f286da644a0fd93": {
+   "item_id": "2f286da644a0fd93",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same bowl mixing, one specifying a man."
+  },
+  "c89c1dfc6ed7309e": {
+   "item_id": "c89c1dfc6ed7309e",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible negations of onion cutting, one specifying a man."
+  }
+ },
+ "errors": []
+}

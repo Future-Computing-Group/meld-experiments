@@ -1,27 +1,23 @@
-"""M-2: merge-classification quality on a labeled claim-pair gold set.
+"""M-2: pair-classification metrics on a labeled claim-pair gold set.
 
-The four-way PAIR-ADJUDICATION classifier (kappa/sigma/chi + Context gate ->
-MERGE / RELATE / CONFLICT / NO_RELATION) is the paper's Contribution 2. M-2
-measures it: per-class precision/recall/F1 and the load-bearing FALSE-MERGE RATE
-(the dangerous error a merge protocol must avoid, Section 4.3) -- the fraction of
-pairs that should NOT merge (RELATE/CONFLICT/NO_RELATION gold) that the procedure
-nonetheless classified MERGE. The protocol-level outcomes INSERT (novel, no pair
-to score) and REJECT (the admission gate) are NOT scored here; INSERT is out of
-this experiment's scope by construction, REJECT is exercised separately in the
-gate ablation.
+The submitted paper's four-way pair classifier is retired (T6b): the protocol decides
+by the fold's step under a calibrated epoch (protocol/fold.py). What stays here is the
+scoring (sigma, chi per pair), the metrics, the ROC over a similarity threshold and the
+key-only / embedding-only baselines. The metrics are per-class precision/recall/F1 and
+the FALSE-MERGE RATE over pairs presented pairwise -- the fraction of pairs that should
+NOT merge (RELATE/CONFLICT/NO_RELATION gold) that a predictor classified MERGE. The
+protocol-level outcomes INSERT and REJECT are not scored here.
 
 The gold set is a small, deliberately CLEAR set of same-frame claim pairs spanning
 the four outcomes (the full M-2 set should expand it). All pairs have distinct
 content-addressed claim keys (kappa=0) so the SIGMA/CHI path is what is tested;
 sigma uses all-MiniLM-L6-v2, chi uses the cross-encoder NLI (lexical chi cannot
-adjudicate contradictions reliably). Reproduced by tests/test_m2_eval.py.
+adjudicate contradictions reliably). Covered by tests/test_m2_eval.py.
 """
 from __future__ import annotations
 
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
-from meld.config import Thresholds
-from meld.merge.classifier import classify
 from meld.merge.signals import EmbeddingSimilarity, chi
 
 # The pair-adjudication classifier's four verdicts (NOT the protocol's five
@@ -97,22 +93,6 @@ def classification_metrics(gold: List[str], pred: List[str]) -> Dict:
             "confusion": confusion, "n": len(gold)}
 
 
-def evaluate_m2(pairs, *, encoder: str, nli: str, cfg: Thresholds) -> Dict:
-    """Run the four-way classifier on labeled pairs (ctx_ok=True, kappa=0) and
-    return classification_metrics. sigma re-embeds each text with ``encoder``."""
-    es = EmbeddingSimilarity(encoder=encoder)
-    gold, pred = [], []
-    for gold_dec, a, b in pairs:
-        sigma = es.sigma(a, b)
-        chi_val = chi(a, b, model=nli)
-        dec = classify(cfg=cfg, kappa=0, sigma=sigma, chi=chi_val, ctx_ok=True)
-        gold.append(gold_dec)
-        pred.append(dec)
-    m = classification_metrics(gold, pred)
-    m["predictions"] = list(zip([g for g, _, _ in pairs], pred))
-    return m
-
-
 # --------------------------------------------------------------------------- #
 # E1: scoring, ROC over theta_merge, baselines, bootstrap CIs
 # --------------------------------------------------------------------------- #
@@ -139,14 +119,6 @@ def score_pairs(pairs, *, encoder: str, nli: str):
     return [(g, es.sigma(a, b), chi(a, b, model=nli)) for g, a, b in pairs]
 
 
-def decisions_full(scored, *, theta: float, sigma_lo: float) -> List[str]:
-    """Full four-way procedure decisions for pre-scored (gold, sigma, chi) rows
-    (kappa=0, ctx_ok=True). r_min/tau are immaterial here (gate not exercised)."""
-    cfg = Thresholds(theta_merge=theta, sigma_lo=sigma_lo, r_min=0.0, tau=0.0)
-    return [classify(cfg=cfg, kappa=0, sigma=s, chi=c, ctx_ok=True)
-            for _, s, c in scored]
-
-
 def decisions_embedding_only(scored, *, theta: float) -> List[str]:
     """Embedding-only baseline: MERGE iff sigma>=theta, with NO contradiction
     (chi/NLI) guard -- so high-similarity contradictions leak through as merges."""
@@ -159,7 +131,7 @@ def roc_over_theta(scored, *, sigma_lo: float, n_points: int = 51):
 
     Returns (points, auc) where points = [(theta, fpr, tpr)] sorted by ascending
     theta. Sweeping the OPEN interval above sigma_lo fixes the m-E-1 crash
-    (Thresholds forbids theta_merge<=sigma_lo, in particular theta_merge=0)."""
+    (a theta at or below sigma_lo leaves the old RELATE band empty)."""
     gold = [g for g, _, _ in scored]
     n_pos = sum(1 for g in gold if g == "MERGE")
     n_neg = len(gold) - n_pos
@@ -205,25 +177,24 @@ def bootstrap_metric_ci(gold, pred, *, metric: str = "macro_f1",
 
 
 def evaluate_baseline(pairs, *, mode: str, encoder: str = "minilm",
-                      nli: str = "mnli-cross-encoder", theta: float = 0.65,
-                      sigma_lo: float = 0.05) -> Dict:
+                      theta: Optional[float] = None) -> Dict:
     """Baseline classifiers over labeled pairs.
 
     mode="key_only"      -> MERGE iff exact normalized-text key match (kappa);
                             needs no encoder. Distinct-key paraphrases never merge.
-    mode="embedding_only"-> MERGE iff sigma>=theta, no NLI guard (encoder needed).
-    mode="full"          -> the full four-way procedure (encoder + nli needed).
+    mode="embedding_only"-> MERGE iff sigma>=theta, no NLI guard (encoder and an explicit
+                            theta needed: there is no default operating point).
+    The protocol's own decisions come from the fold (protocol/fold.py), not from here.
     """
     gold = [g for g, _, _ in pairs]
     if mode == "key_only":
         pred = ["MERGE" if _kappa_textual(a, b) else "NO_RELATION"
                 for _, a, b in pairs]
     elif mode == "embedding_only":
+        if theta is None:
+            raise ValueError("embedding_only needs an explicit theta")
         scored = score_pairs(pairs, encoder=encoder, nli="lexical")
         pred = decisions_embedding_only(scored, theta=theta)
-    elif mode == "full":
-        scored = score_pairs(pairs, encoder=encoder, nli=nli)
-        pred = decisions_full(scored, theta=theta, sigma_lo=sigma_lo)
     else:
         raise ValueError(f"unknown baseline mode {mode!r}")
     m = classification_metrics(gold, pred)
@@ -232,7 +203,7 @@ def evaluate_baseline(pairs, *, mode: str, encoder: str = "minilm",
     return m
 
 
-__all__ = ["M2_GOLD", "DECISIONS", "classification_metrics", "evaluate_m2",
-           "score_pairs", "decisions_full", "decisions_embedding_only",
+__all__ = ["M2_GOLD", "DECISIONS", "classification_metrics",
+           "score_pairs", "decisions_embedding_only",
            "roc_over_theta", "bootstrap_metric_ci", "evaluate_baseline",
            "_kappa_textual"]

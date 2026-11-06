@@ -3,7 +3,7 @@
 Two modes:
   - LOCAL WIRING SMOKE (default): a deterministic ORACLE MockLLM drives the
     ReAct agent over a tiny GAIA-shaped fixture. Each task's clues are written
-    through the MELD merge path (PUBLISH -> merge-on-receive -> Patch); the agent
+    through the MELD merge path (PUBLISH -> admission); the agent
     recalls them via the brain's graph-walk read and answers. This proves the
     harness + MELD-brain integration RUNS and the scorer + gate work. It is NOT a
     GAIA result -- the oracle just exercises the wiring end-to-end.
@@ -28,10 +28,6 @@ from meld.agent.memory import SMPMemory
 from meld.agent.react_agent import ReActAgent
 from meld.agent.registry import make_agent
 from meld.agent.tools import FinalAnswerTool, RecallTool
-# Single source of truth for the encoder-matched, calibrated thresholds (the
-# duplicate inverted-0.5/0.55 copy that used to live here is gone -- it tripped the
-# Thresholds ordering invariant and decoupled the GAIA gate from the calibration).
-from meld.agent.run_hotpot_gate import _calibrated_cfg
 
 
 def _oracle_script(task: GaiaTask) -> List[str]:
@@ -52,7 +48,7 @@ def _run_one_baseline(baseline: str, tasks: List[GaiaTask], *, encoder: str,
     for t in tasks:
         # Fresh brain per task (a GAIA task is independent; the integration we
         # exercise is agent<->brain<->tools, not cross-task memory).
-        mem = SMPMemory(encoder=encoder, nli=nli, cfg=_calibrated_cfg(encoder))
+        mem = SMPMemory(encoder=encoder, nli=nli)     # wiring smoke: no epoch needed
         agent = make_agent(baseline, llm=MockLLM(_oracle_script(t)), memory=mem,
                            tools=[RecallTool(mem), FinalAnswerTool()],
                            max_steps=len(t.clues) + 4)
@@ -65,10 +61,9 @@ def _run_one_baseline(baseline: str, tasks: List[GaiaTask], *, encoder: str,
         integration.append({
             "task_id": t.task_id,
             "n_steps": result.n_steps,
-            "n_patches": len(mem.brain.audit_log),
-            "decisions": [p.decision for p in mem.brain.audit_log],
-            "brain_units": sum(1 for u in mem.brain.extract_delta()
-                               if getattr(u, "claims", None)),
+            "n_patches": len(mem.decisions),
+            "decisions": [p.decision for p in mem.decisions],
+            "brain_units": mem.footprint()["stored"],
         })
     return {"scored": score_predictions(preds),
             "gate": competence_gate(preds, bar=bar),

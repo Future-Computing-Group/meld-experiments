@@ -64,7 +64,7 @@ def _unit(text: str) -> MemoryUnit:
     # drift from the live write path's (default cell, §4.1).
     return MemoryUnit(
         id=_cid(text),
-        relevance_magnitude=1.0,
+        retention=1.0,
         status="ACTIVE",
         claims=[Claim(claim_key=claim_key(text), text=text, confidence=0.9,
                       claim_status="ACTIVE")],

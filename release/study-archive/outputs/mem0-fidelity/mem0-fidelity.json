@@ -1,0 +1,829 @@
+{
+ "summary": {
+  "cases": 20,
+  "prompt_equal": 10,
+  "events_compared": 10,
+  "events_equal": 3,
+  "multi_fact_cases": 0,
+  "no_update_call": 10,
+  "http_calls_vendored": 10
+ },
+ "rows": [
+  {
+   "id": "geo-paris-p",
+   "new": "The capital city of France is Paris",
+   "old": [
+    {
+     "uuid": "123cdf21-c677-4141-be57-06572dbc0eee",
+     "id": "0",
+     "text": "Paris is the capital of France"
+    },
+    {
+     "uuid": "51c474e3-54c6-4784-8d84-1b12cb9d1000",
+     "id": "1",
+     "text": "France is a country in western Europe"
+    }
+   ],
+   "facts": [
+    "The capital city of France is Paris"
+   ],
+   "prompt": "You are a smart memory manager which controls the memory of a system.\nYou can perform four operations: (1) add into the memory, (2) update the memory, (3) delete from the memory, and (4) no change.\n\nBased on the above four operations, the memory will change.\n\nCompare newly retrieved facts with the existing memory. For each new fact, decide whether to:\n- ADD: Add it to the memory as a new element\n- UPDATE: Update an existing memory element\n- DELETE: Delete an existing memory element\n- NONE: Make no change (if the fact is already present or irrelevant)\n\nThere are specific guidelines to select which operation to perform:\n\n1. **Add**: If the retrieved facts contain new information not present in the memory, then you have to add it by generating a new ID in the id field.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"User is a software engineer\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n            \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"ADD\"\n                }\n            ]\n\n        }\n\n2. **Update**: If the retrieved facts contain information that is already present in the memory but the information is totally different, then you have to update it. \nIf the retrieved fact contains information that conveys the same thing as the elements present in the memory, then you have to keep the fact which has the most information. \nExample (a) -- if the memory contains \"User likes to play cricket\" and the retrieved fact is \"Loves to play cricket with friends\", then update the memory with the retrieved facts.\nExample (b) -- if the memory contains \"Likes cheese pizza\" and the retrieved fact is \"Loves cheese pizza\", then you do not need to update it because they convey the same information.\nIf the direction is to update the memory, then you have to update it.\nPlease keep in mind while updating you have to keep the same ID.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"I really like cheese pizza\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"User is a software engineer\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"User likes to play cricket\"\n            }\n        ]\n    - Retrieved facts: [\"Loves chicken pizza\", \"Loves to play cricket with friends\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Loves cheese and chicken pizza\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"I really like cheese pizza\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"2\",\n                    \"text\" : \"Loves to play cricket with friends\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"User likes to play cricket\"\n                }\n            ]\n        }\n\n\n3. **Delete**: If the retrieved facts contain information that contradicts the information present in the memory, then you have to delete it. Or if the direction is to delete the memory, then you have to delete it.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Dislikes cheese pizza\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"DELETE\"\n                }\n        ]\n        }\n\n4. **No Change**: If the retrieved facts contain information that is already present in the memory, then you do not need to make any changes.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"NONE\"\n                }\n            ]\n        }\n\n\n    \n    Below is the current content of my memory which I have collected till now. You have to update it in the following format only:\n\n    ```\n    [{'id': '0', 'text': 'Paris is the capital of France'}, {'id': '1', 'text': 'France is a country in western Europe'}]\n    ```\n\n    \n\n    The new retrieved facts are mentioned in the triple backticks. You have to analyze the new retrieved facts and determine whether these facts should be added, updated, or deleted in the memory.\n\n    ```\n    ['The capital city of France is Paris']\n    ```\n\n    You must return your response in the following JSON structure only:\n\n    {\n        \"memory\" : [\n            {\n                \"id\" : \"<ID of the memory>\",                # Use existing ID for updates/deletes, or new ID for additions\n                \"text\" : \"<Content of the memory>\",         # Content of the memory\n                \"event\" : \"<Operation to be performed>\",    # Must be \"ADD\", \"UPDATE\", \"DELETE\", or \"NONE\"\n                \"old_memory\" : \"<Old memory content>\"       # Required only if the event is \"UPDATE\"\n            },\n            ...\n        ]\n    }\n\n    Follow the instruction mentioned below:\n    - Do not return anything from the custom few shot prompts provided above.\n    - If the current memory is empty, then you have to add the new retrieved facts to the memory.\n    - You should return the updated memory in only JSON format as shown below. The memory key should be the same if no changes are made.\n    - If there is an addition, generate a new key and add the new memory corresponding to it.\n    - If there is a deletion, the memory key-value pair should be removed from the memory.\n    - If there is an update, the ID key should remain the same and only the value needs to be updated.\n\n    Do not return anything except the JSON format.\n    ",
+   "results": [
+    {
+     "id": "123cdf21-c677-4141-be57-06572dbc0eee",
+     "memory": "Paris is the capital of France",
+     "event": "UPDATE"
+    }
+   ],
+   "replies": [
+    "{\"facts\" : [\"The capital city of France is Paris\"]}",
+    "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Paris is the capital of France\",\n            \"event\" : \"UPDATE\",\n            \"old_memory\" : \"Paris is the capital of France\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"France is a country in western Europe\",\n            \"event\" : \"NONE\"\n        }\n    ]\n}"
+   ],
+   "update_reply_parsed": {
+    "memory": [
+     {
+      "id": "0",
+      "text": "Paris is the capital of France",
+      "event": "UPDATE",
+      "old_memory": "Paris is the capital of France"
+     },
+     {
+      "id": "1",
+      "text": "France is a country in western Europe",
+      "event": "NONE"
+     }
+    ]
+   },
+   "check": {
+    "prompt_equal": true,
+    "n_facts": 1,
+    "events_equal": false,
+    "vendored": [
+     [],
+     []
+    ],
+    "mem0": [
+     [
+      0
+     ],
+     [
+      "Paris is the capital of France"
+     ]
+    ],
+    "vendored_event": "NONE",
+    "parse_fail": 0
+   }
+  },
+  {
+   "id": "geo-paris-x",
+   "new": "Paris is the capital of Italy",
+   "results": [],
+   "old": [],
+   "facts": [],
+   "prompt": null,
+   "replies": [
+    "{\"facts\" : []}"
+   ],
+   "update_reply_parsed": null,
+   "check": {
+    "prompt_equal": null,
+    "events_equal": null
+   }
+  },
+  {
+   "id": "geo-everest-p",
+   "new": "Earth's highest mountain is Mount Everest",
+   "results": [],
+   "old": [],
+   "facts": [],
+   "prompt": null,
+   "replies": [
+    "{\"facts\" : []}"
+   ],
+   "update_reply_parsed": null,
+   "check": {
+    "prompt_equal": null,
+    "events_equal": null
+   }
+  },
+  {
+   "id": "geo-everest-x",
+   "new": "K2 is the tallest mountain on Earth",
+   "results": [],
+   "old": [],
+   "facts": [],
+   "prompt": null,
+   "replies": [
+    "{\"facts\" : []}"
+   ],
+   "update_reply_parsed": null,
+   "check": {
+    "prompt_equal": null,
+    "events_equal": null
+   }
+  },
+  {
+   "id": "lit-1984-p",
+   "new": "George Orwell is the author of the novel 1984",
+   "old": [
+    {
+     "uuid": "f13155b9-5b94-4905-9551-689bc02e1006",
+     "id": "0",
+     "text": "The novel 1984 was written by George Orwell"
+    },
+    {
+     "uuid": "bbee7ba1-60b0-4224-8b54-8a87f4964c84",
+     "id": "1",
+     "text": "1984 is a dystopian novel about surveillance"
+    }
+   ],
+   "facts": [
+    "George Orwell is the author of the novel 1984"
+   ],
+   "prompt": "You are a smart memory manager which controls the memory of a system.\nYou can perform four operations: (1) add into the memory, (2) update the memory, (3) delete from the memory, and (4) no change.\n\nBased on the above four operations, the memory will change.\n\nCompare newly retrieved facts with the existing memory. For each new fact, decide whether to:\n- ADD: Add it to the memory as a new element\n- UPDATE: Update an existing memory element\n- DELETE: Delete an existing memory element\n- NONE: Make no change (if the fact is already present or irrelevant)\n\nThere are specific guidelines to select which operation to perform:\n\n1. **Add**: If the retrieved facts contain new information not present in the memory, then you have to add it by generating a new ID in the id field.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"User is a software engineer\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n            \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"ADD\"\n                }\n            ]\n\n        }\n\n2. **Update**: If the retrieved facts contain information that is already present in the memory but the information is totally different, then you have to update it. \nIf the retrieved fact contains information that conveys the same thing as the elements present in the memory, then you have to keep the fact which has the most information. \nExample (a) -- if the memory contains \"User likes to play cricket\" and the retrieved fact is \"Loves to play cricket with friends\", then update the memory with the retrieved facts.\nExample (b) -- if the memory contains \"Likes cheese pizza\" and the retrieved fact is \"Loves cheese pizza\", then you do not need to update it because they convey the same information.\nIf the direction is to update the memory, then you have to update it.\nPlease keep in mind while updating you have to keep the same ID.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"I really like cheese pizza\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"User is a software engineer\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"User likes to play cricket\"\n            }\n        ]\n    - Retrieved facts: [\"Loves chicken pizza\", \"Loves to play cricket with friends\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Loves cheese and chicken pizza\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"I really like cheese pizza\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"2\",\n                    \"text\" : \"Loves to play cricket with friends\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"User likes to play cricket\"\n                }\n            ]\n        }\n\n\n3. **Delete**: If the retrieved facts contain information that contradicts the information present in the memory, then you have to delete it. Or if the direction is to delete the memory, then you have to delete it.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Dislikes cheese pizza\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"DELETE\"\n                }\n        ]\n        }\n\n4. **No Change**: If the retrieved facts contain information that is already present in the memory, then you do not need to make any changes.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"NONE\"\n                }\n            ]\n        }\n\n\n    \n    Below is the current content of my memory which I have collected till now. You have to update it in the following format only:\n\n    ```\n    [{'id': '0', 'text': 'The novel 1984 was written by George Orwell'}, {'id': '1', 'text': '1984 is a dystopian novel about surveillance'}]\n    ```\n\n    \n\n    The new retrieved facts are mentioned in the triple backticks. You have to analyze the new retrieved facts and determine whether these facts should be added, updated, or deleted in the memory.\n\n    ```\n    ['George Orwell is the author of the novel 1984']\n    ```\n\n    You must return your response in the following JSON structure only:\n\n    {\n        \"memory\" : [\n            {\n                \"id\" : \"<ID of the memory>\",                # Use existing ID for updates/deletes, or new ID for additions\n                \"text\" : \"<Content of the memory>\",         # Content of the memory\n                \"event\" : \"<Operation to be performed>\",    # Must be \"ADD\", \"UPDATE\", \"DELETE\", or \"NONE\"\n                \"old_memory\" : \"<Old memory content>\"       # Required only if the event is \"UPDATE\"\n            },\n            ...\n        ]\n    }\n\n    Follow the instruction mentioned below:\n    - Do not return anything from the custom few shot prompts provided above.\n    - If the current memory is empty, then you have to add the new retrieved facts to the memory.\n    - You should return the updated memory in only JSON format as shown below. The memory key should be the same if no changes are made.\n    - If there is an addition, generate a new key and add the new memory corresponding to it.\n    - If there is a deletion, the memory key-value pair should be removed from the memory.\n    - If there is an update, the ID key should remain the same and only the value needs to be updated.\n\n    Do not return anything except the JSON format.\n    ",
+   "results": [
+    {
+     "id": "f13155b9-5b94-4905-9551-689bc02e1006",
+     "memory": "The novel 1984 was written by George Orwell",
+     "event": "UPDATE"
+    }
+   ],
+   "replies": [
+    "{\"facts\" : [\"George Orwell is the author of the novel 1984\"]}",
+    "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"The novel 1984 was written by George Orwell\",\n            \"event\" : \"UPDATE\",\n            \"old_memory\" : \"The novel 1984 was written by George Orwell\"\n        }\n    ]\n}"
+   ],
+   "update_reply_parsed": {
+    "memory": [
+     {
+      "id": "0",
+      "text": "The novel 1984 was written by George Orwell",
+      "event": "UPDATE",
+      "old_memory": "The novel 1984 was written by George Orwell"
+     }
+    ]
+   },
+   "check": {
+    "prompt_equal": true,
+    "n_facts": 1,
+    "events_equal": false,
+    "vendored": [
+     [],
+     []
+    ],
+    "mem0": [
+     [
+      0
+     ],
+     [
+      "The novel 1984 was written by George Orwell"
+     ]
+    ],
+    "vendored_event": "NONE",
+    "parse_fail": 0
+   }
+  },
+  {
+   "id": "lit-1984-x",
+   "new": "The novel 1984 was written by Aldous Huxley",
+   "results": [],
+   "old": [],
+   "facts": [],
+   "prompt": null,
+   "replies": [
+    "{\"facts\" : []}"
+   ],
+   "update_reply_parsed": null,
+   "check": {
+    "prompt_equal": null,
+    "events_equal": null
+   }
+  },
+  {
+   "id": "chem-water-p",
+   "new": "At sea level, the boiling point of water is 100 degrees Celsius",
+   "old": [
+    {
+     "uuid": "0e3e4dd3-3fd3-48e4-8d3c-17c395646b07",
+     "id": "0",
+     "text": "Water boils at 100 degrees Celsius at sea level"
+    },
+    {
+     "uuid": "66d135c6-6338-4358-b277-5191ed30c721",
+     "id": "1",
+     "text": "Water freezes at 0 degrees Celsius at sea level"
+    }
+   ],
+   "facts": [
+    "At sea level, the boiling point of water is 100 degrees Celsius"
+   ],
+   "prompt": "You are a smart memory manager which controls the memory of a system.\nYou can perform four operations: (1) add into the memory, (2) update the memory, (3) delete from the memory, and (4) no change.\n\nBased on the above four operations, the memory will change.\n\nCompare newly retrieved facts with the existing memory. For each new fact, decide whether to:\n- ADD: Add it to the memory as a new element\n- UPDATE: Update an existing memory element\n- DELETE: Delete an existing memory element\n- NONE: Make no change (if the fact is already present or irrelevant)\n\nThere are specific guidelines to select which operation to perform:\n\n1. **Add**: If the retrieved facts contain new information not present in the memory, then you have to add it by generating a new ID in the id field.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"User is a software engineer\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n            \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"ADD\"\n                }\n            ]\n\n        }\n\n2. **Update**: If the retrieved facts contain information that is already present in the memory but the information is totally different, then you have to update it. \nIf the retrieved fact contains information that conveys the same thing as the elements present in the memory, then you have to keep the fact which has the most information. \nExample (a) -- if the memory contains \"User likes to play cricket\" and the retrieved fact is \"Loves to play cricket with friends\", then update the memory with the retrieved facts.\nExample (b) -- if the memory contains \"Likes cheese pizza\" and the retrieved fact is \"Loves cheese pizza\", then you do not need to update it because they convey the same information.\nIf the direction is to update the memory, then you have to update it.\nPlease keep in mind while updating you have to keep the same ID.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"I really like cheese pizza\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"User is a software engineer\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"User likes to play cricket\"\n            }\n        ]\n    - Retrieved facts: [\"Loves chicken pizza\", \"Loves to play cricket with friends\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Loves cheese and chicken pizza\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"I really like cheese pizza\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"2\",\n                    \"text\" : \"Loves to play cricket with friends\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"User likes to play cricket\"\n                }\n            ]\n        }\n\n\n3. **Delete**: If the retrieved facts contain information that contradicts the information present in the memory, then you have to delete it. Or if the direction is to delete the memory, then you have to delete it.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Dislikes cheese pizza\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"DELETE\"\n                }\n        ]\n        }\n\n4. **No Change**: If the retrieved facts contain information that is already present in the memory, then you do not need to make any changes.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"NONE\"\n                }\n            ]\n        }\n\n\n    \n    Below is the current content of my memory which I have collected till now. You have to update it in the following format only:\n\n    ```\n    [{'id': '0', 'text': 'Water boils at 100 degrees Celsius at sea level'}, {'id': '1', 'text': 'Water freezes at 0 degrees Celsius at sea level'}]\n    ```\n\n    \n\n    The new retrieved facts are mentioned in the triple backticks. You have to analyze the new retrieved facts and determine whether these facts should be added, updated, or deleted in the memory.\n\n    ```\n    ['At sea level, the boiling point of water is 100 degrees Celsius']\n    ```\n\n    You must return your response in the following JSON structure only:\n\n    {\n        \"memory\" : [\n            {\n                \"id\" : \"<ID of the memory>\",                # Use existing ID for updates/deletes, or new ID for additions\n                \"text\" : \"<Content of the memory>\",         # Content of the memory\n                \"event\" : \"<Operation to be performed>\",    # Must be \"ADD\", \"UPDATE\", \"DELETE\", or \"NONE\"\n                \"old_memory\" : \"<Old memory content>\"       # Required only if the event is \"UPDATE\"\n            },\n            ...\n        ]\n    }\n\n    Follow the instruction mentioned below:\n    - Do not return anything from the custom few shot prompts provided above.\n    - If the current memory is empty, then you have to add the new retrieved facts to the memory.\n    - You should return the updated memory in only JSON format as shown below. The memory key should be the same if no changes are made.\n    - If there is an addition, generate a new key and add the new memory corresponding to it.\n    - If there is a deletion, the memory key-value pair should be removed from the memory.\n    - If there is an update, the ID key should remain the same and only the value needs to be updated.\n\n    Do not return anything except the JSON format.\n    ",
+   "results": [
+    {
+     "id": "0e3e4dd3-3fd3-48e4-8d3c-17c395646b07",
+     "memory": "Water boils at 100 degrees Celsius at sea level",
+     "event": "UPDATE"
+    }
+   ],
+   "replies": [
+    "{\"facts\" : [\"At sea level, the boiling point of water is 100 degrees Celsius\"]}",
+    "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Water boils at 100 degrees Celsius at sea level\",\n            \"event\" : \"UPDATE\",\n            \"old_memory\" : \"Water boils at 100 degrees Celsius at sea level\"\n        }\n    ]\n}"
+   ],
+   "update_reply_parsed": {
+    "memory": [
+     {
+      "id": "0",
+      "text": "Water boils at 100 degrees Celsius at sea level",
+      "event": "UPDATE",
+      "old_memory": "Water boils at 100 degrees Celsius at sea level"
+     }
+    ]
+   },
+   "check": {
+    "prompt_equal": true,
+    "n_facts": 1,
+    "events_equal": false,
+    "vendored": [
+     [],
+     []
+    ],
+    "mem0": [
+     [
+      0
+     ],
+     [
+      "Water boils at 100 degrees Celsius at sea level"
+     ]
+    ],
+    "vendored_event": "NONE",
+    "parse_fail": 0
+   }
+  },
+  {
+   "id": "chem-water-x",
+   "new": "Water boils at 90 degrees Celsius at sea level",
+   "results": [],
+   "old": [],
+   "facts": [],
+   "prompt": null,
+   "replies": [
+    "{\"facts\" : []}"
+   ],
+   "update_reply_parsed": null,
+   "check": {
+    "prompt_equal": null,
+    "events_equal": null
+   }
+  },
+  {
+   "id": "astro-sun-p",
+   "new": "Hydrogen and helium make up most of the Sun's mass",
+   "old": [
+    {
+     "uuid": "874b0bf7-9944-434f-9939-3c97c267f815",
+     "id": "0",
+     "text": "The Sun is primarily composed of hydrogen and helium"
+    },
+    {
+     "uuid": "60ca1ca6-be12-4a72-86b1-5ba6c55b426b",
+     "id": "1",
+     "text": "The Sun is the star at the centre of the Solar System"
+    }
+   ],
+   "facts": [
+    "Hydrogen and helium make up most of the Sun's mass"
+   ],
+   "prompt": "You are a smart memory manager which controls the memory of a system.\nYou can perform four operations: (1) add into the memory, (2) update the memory, (3) delete from the memory, and (4) no change.\n\nBased on the above four operations, the memory will change.\n\nCompare newly retrieved facts with the existing memory. For each new fact, decide whether to:\n- ADD: Add it to the memory as a new element\n- UPDATE: Update an existing memory element\n- DELETE: Delete an existing memory element\n- NONE: Make no change (if the fact is already present or irrelevant)\n\nThere are specific guidelines to select which operation to perform:\n\n1. **Add**: If the retrieved facts contain new information not present in the memory, then you have to add it by generating a new ID in the id field.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"User is a software engineer\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n            \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"ADD\"\n                }\n            ]\n\n        }\n\n2. **Update**: If the retrieved facts contain information that is already present in the memory but the information is totally different, then you have to update it. \nIf the retrieved fact contains information that conveys the same thing as the elements present in the memory, then you have to keep the fact which has the most information. \nExample (a) -- if the memory contains \"User likes to play cricket\" and the retrieved fact is \"Loves to play cricket with friends\", then update the memory with the retrieved facts.\nExample (b) -- if the memory contains \"Likes cheese pizza\" and the retrieved fact is \"Loves cheese pizza\", then you do not need to update it because they convey the same information.\nIf the direction is to update the memory, then you have to update it.\nPlease keep in mind while updating you have to keep the same ID.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"I really like cheese pizza\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"User is a software engineer\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"User likes to play cricket\"\n            }\n        ]\n    - Retrieved facts: [\"Loves chicken pizza\", \"Loves to play cricket with friends\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Loves cheese and chicken pizza\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"I really like cheese pizza\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"2\",\n                    \"text\" : \"Loves to play cricket with friends\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"User likes to play cricket\"\n                }\n            ]\n        }\n\n\n3. **Delete**: If the retrieved facts contain information that contradicts the information present in the memory, then you have to delete it. Or if the direction is to delete the memory, then you have to delete it.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Dislikes cheese pizza\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"DELETE\"\n                }\n        ]\n        }\n\n4. **No Change**: If the retrieved facts contain information that is already present in the memory, then you do not need to make any changes.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"NONE\"\n                }\n            ]\n        }\n\n\n    \n    Below is the current content of my memory which I have collected till now. You have to update it in the following format only:\n\n    ```\n    [{'id': '0', 'text': 'The Sun is primarily composed of hydrogen and helium'}, {'id': '1', 'text': 'The Sun is the star at the centre of the Solar System'}]\n    ```\n\n    \n\n    The new retrieved facts are mentioned in the triple backticks. You have to analyze the new retrieved facts and determine whether these facts should be added, updated, or deleted in the memory.\n\n    ```\n    [\"Hydrogen and helium make up most of the Sun's mass\"]\n    ```\n\n    You must return your response in the following JSON structure only:\n\n    {\n        \"memory\" : [\n            {\n                \"id\" : \"<ID of the memory>\",                # Use existing ID for updates/deletes, or new ID for additions\n                \"text\" : \"<Content of the memory>\",         # Content of the memory\n                \"event\" : \"<Operation to be performed>\",    # Must be \"ADD\", \"UPDATE\", \"DELETE\", or \"NONE\"\n                \"old_memory\" : \"<Old memory content>\"       # Required only if the event is \"UPDATE\"\n            },\n            ...\n        ]\n    }\n\n    Follow the instruction mentioned below:\n    - Do not return anything from the custom few shot prompts provided above.\n    - If the current memory is empty, then you have to add the new retrieved facts to the memory.\n    - You should return the updated memory in only JSON format as shown below. The memory key should be the same if no changes are made.\n    - If there is an addition, generate a new key and add the new memory corresponding to it.\n    - If there is a deletion, the memory key-value pair should be removed from the memory.\n    - If there is an update, the ID key should remain the same and only the value needs to be updated.\n\n    Do not return anything except the JSON format.\n    ",
+   "results": [
+    {
+     "id": "874b0bf7-9944-434f-9939-3c97c267f815",
+     "memory": "The Sun is primarily composed of hydrogen and helium",
+     "event": "UPDATE"
+    }
+   ],
+   "replies": [
+    "{\"facts\" : [\"Hydrogen and helium make up most of the Sun's mass\"]}",
+    "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"The Sun is primarily composed of hydrogen and helium\",\n            \"event\" : \"UPDATE\",\n            \"old_memory\" : \"The Sun is primarily composed of hydrogen and helium\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"The Sun is the star at the centre of the Solar System\",\n            \"event\" : \"NONE\"\n        }\n    ]\n}"
+   ],
+   "update_reply_parsed": {
+    "memory": [
+     {
+      "id": "0",
+      "text": "The Sun is primarily composed of hydrogen and helium",
+      "event": "UPDATE",
+      "old_memory": "The Sun is primarily composed of hydrogen and helium"
+     },
+     {
+      "id": "1",
+      "text": "The Sun is the star at the centre of the Solar System",
+      "event": "NONE"
+     }
+    ]
+   },
+   "check": {
+    "prompt_equal": true,
+    "n_facts": 1,
+    "events_equal": false,
+    "vendored": [
+     [],
+     []
+    ],
+    "mem0": [
+     [
+      0
+     ],
+     [
+      "The Sun is primarily composed of hydrogen and helium"
+     ]
+    ],
+    "vendored_event": "NONE",
+    "parse_fail": 0
+   }
+  },
+  {
+   "id": "astro-sun-x",
+   "new": "Most of the Sun's mass consists of carbon",
+   "old": [
+    {
+     "uuid": "8003ebd4-c625-4438-a759-6f6dab7da384",
+     "id": "0",
+     "text": "The Sun is primarily composed of hydrogen and helium"
+    },
+    {
+     "uuid": "5a352d8d-d3f2-4fde-8366-c6417a5b053c",
+     "id": "1",
+     "text": "The Sun is the star at the centre of the Solar System"
+    }
+   ],
+   "facts": [
+    "Most of the Sun's mass consists of carbon"
+   ],
+   "prompt": "You are a smart memory manager which controls the memory of a system.\nYou can perform four operations: (1) add into the memory, (2) update the memory, (3) delete from the memory, and (4) no change.\n\nBased on the above four operations, the memory will change.\n\nCompare newly retrieved facts with the existing memory. For each new fact, decide whether to:\n- ADD: Add it to the memory as a new element\n- UPDATE: Update an existing memory element\n- DELETE: Delete an existing memory element\n- NONE: Make no change (if the fact is already present or irrelevant)\n\nThere are specific guidelines to select which operation to perform:\n\n1. **Add**: If the retrieved facts contain new information not present in the memory, then you have to add it by generating a new ID in the id field.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"User is a software engineer\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n            \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"ADD\"\n                }\n            ]\n\n        }\n\n2. **Update**: If the retrieved facts contain information that is already present in the memory but the information is totally different, then you have to update it. \nIf the retrieved fact contains information that conveys the same thing as the elements present in the memory, then you have to keep the fact which has the most information. \nExample (a) -- if the memory contains \"User likes to play cricket\" and the retrieved fact is \"Loves to play cricket with friends\", then update the memory with the retrieved facts.\nExample (b) -- if the memory contains \"Likes cheese pizza\" and the retrieved fact is \"Loves cheese pizza\", then you do not need to update it because they convey the same information.\nIf the direction is to update the memory, then you have to update it.\nPlease keep in mind while updating you have to keep the same ID.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"I really like cheese pizza\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"User is a software engineer\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"User likes to play cricket\"\n            }\n        ]\n    - Retrieved facts: [\"Loves chicken pizza\", \"Loves to play cricket with friends\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Loves cheese and chicken pizza\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"I really like cheese pizza\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"2\",\n                    \"text\" : \"Loves to play cricket with friends\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"User likes to play cricket\"\n                }\n            ]\n        }\n\n\n3. **Delete**: If the retrieved facts contain information that contradicts the information present in the memory, then you have to delete it. Or if the direction is to delete the memory, then you have to delete it.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Dislikes cheese pizza\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"DELETE\"\n                }\n        ]\n        }\n\n4. **No Change**: If the retrieved facts contain information that is already present in the memory, then you do not need to make any changes.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"NONE\"\n                }\n            ]\n        }\n\n\n    \n    Below is the current content of my memory which I have collected till now. You have to update it in the following format only:\n\n    ```\n    [{'id': '0', 'text': 'The Sun is primarily composed of hydrogen and helium'}, {'id': '1', 'text': 'The Sun is the star at the centre of the Solar System'}]\n    ```\n\n    \n\n    The new retrieved facts are mentioned in the triple backticks. You have to analyze the new retrieved facts and determine whether these facts should be added, updated, or deleted in the memory.\n\n    ```\n    [\"Most of the Sun's mass consists of carbon\"]\n    ```\n\n    You must return your response in the following JSON structure only:\n\n    {\n        \"memory\" : [\n            {\n                \"id\" : \"<ID of the memory>\",                # Use existing ID for updates/deletes, or new ID for additions\n                \"text\" : \"<Content of the memory>\",         # Content of the memory\n                \"event\" : \"<Operation to be performed>\",    # Must be \"ADD\", \"UPDATE\", \"DELETE\", or \"NONE\"\n                \"old_memory\" : \"<Old memory content>\"       # Required only if the event is \"UPDATE\"\n            },\n            ...\n        ]\n    }\n\n    Follow the instruction mentioned below:\n    - Do not return anything from the custom few shot prompts provided above.\n    - If the current memory is empty, then you have to add the new retrieved facts to the memory.\n    - You should return the updated memory in only JSON format as shown below. The memory key should be the same if no changes are made.\n    - If there is an addition, generate a new key and add the new memory corresponding to it.\n    - If there is a deletion, the memory key-value pair should be removed from the memory.\n    - If there is an update, the ID key should remain the same and only the value needs to be updated.\n\n    Do not return anything except the JSON format.\n    ",
+   "results": [
+    {
+     "id": "e555b3d3-bf4e-4753-ba4b-4394c6045e91",
+     "memory": "Most of the Sun's mass consists of carbon",
+     "event": "ADD"
+    }
+   ],
+   "replies": [
+    "{\n  \"facts\" : [\"Most of the Sun's mass consists of carbon\"]\n}",
+    "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"The Sun is primarily composed of hydrogen and helium\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"The Sun is the star at the centre of the Solar System\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"Most of the Sun's mass consists of carbon\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}"
+   ],
+   "update_reply_parsed": {
+    "memory": [
+     {
+      "id": "0",
+      "text": "The Sun is primarily composed of hydrogen and helium",
+      "event": "NONE"
+     },
+     {
+      "id": "1",
+      "text": "The Sun is the star at the centre of the Solar System",
+      "event": "NONE"
+     },
+     {
+      "id": "2",
+      "text": "Most of the Sun's mass consists of carbon",
+      "event": "ADD"
+     }
+    ]
+   },
+   "check": {
+    "prompt_equal": true,
+    "n_facts": 1,
+    "events_equal": true,
+    "vendored": [
+     [],
+     [
+      "Most of the Sun's mass consists of carbon"
+     ]
+    ],
+    "mem0": [
+     [],
+     [
+      "Most of the Sun's mass consists of carbon"
+     ]
+    ],
+    "vendored_event": "ADD",
+    "parse_fail": 0
+   }
+  },
+  {
+   "id": "hist-ww2-p",
+   "new": "The year 1945 marked the end of World War II",
+   "old": [
+    {
+     "uuid": "ab7255c7-9a9b-4078-a266-70e79dff7fb4",
+     "id": "0",
+     "text": "World War II ended in 1945"
+    },
+    {
+     "uuid": "e1e47a70-8c31-4abc-b05b-b0da7eba02c7",
+     "id": "1",
+     "text": "World War II involved many countries across the globe"
+    }
+   ],
+   "facts": [
+    "The year 1945 marked the end of World War II"
+   ],
+   "prompt": "You are a smart memory manager which controls the memory of a system.\nYou can perform four operations: (1) add into the memory, (2) update the memory, (3) delete from the memory, and (4) no change.\n\nBased on the above four operations, the memory will change.\n\nCompare newly retrieved facts with the existing memory. For each new fact, decide whether to:\n- ADD: Add it to the memory as a new element\n- UPDATE: Update an existing memory element\n- DELETE: Delete an existing memory element\n- NONE: Make no change (if the fact is already present or irrelevant)\n\nThere are specific guidelines to select which operation to perform:\n\n1. **Add**: If the retrieved facts contain new information not present in the memory, then you have to add it by generating a new ID in the id field.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"User is a software engineer\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n            \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"ADD\"\n                }\n            ]\n\n        }\n\n2. **Update**: If the retrieved facts contain information that is already present in the memory but the information is totally different, then you have to update it. \nIf the retrieved fact contains information that conveys the same thing as the elements present in the memory, then you have to keep the fact which has the most information. \nExample (a) -- if the memory contains \"User likes to play cricket\" and the retrieved fact is \"Loves to play cricket with friends\", then update the memory with the retrieved facts.\nExample (b) -- if the memory contains \"Likes cheese pizza\" and the retrieved fact is \"Loves cheese pizza\", then you do not need to update it because they convey the same information.\nIf the direction is to update the memory, then you have to update it.\nPlease keep in mind while updating you have to keep the same ID.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"I really like cheese pizza\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"User is a software engineer\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"User likes to play cricket\"\n            }\n        ]\n    - Retrieved facts: [\"Loves chicken pizza\", \"Loves to play cricket with friends\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Loves cheese and chicken pizza\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"I really like cheese pizza\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"2\",\n                    \"text\" : \"Loves to play cricket with friends\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"User likes to play cricket\"\n                }\n            ]\n        }\n\n\n3. **Delete**: If the retrieved facts contain information that contradicts the information present in the memory, then you have to delete it. Or if the direction is to delete the memory, then you have to delete it.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Dislikes cheese pizza\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"DELETE\"\n                }\n        ]\n        }\n\n4. **No Change**: If the retrieved facts contain information that is already present in the memory, then you do not need to make any changes.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"NONE\"\n                }\n            ]\n        }\n\n\n    \n    Below is the current content of my memory which I have collected till now. You have to update it in the following format only:\n\n    ```\n    [{'id': '0', 'text': 'World War II ended in 1945'}, {'id': '1', 'text': 'World War II involved many countries across the globe'}]\n    ```\n\n    \n\n    The new retrieved facts are mentioned in the triple backticks. You have to analyze the new retrieved facts and determine whether these facts should be added, updated, or deleted in the memory.\n\n    ```\n    ['The year 1945 marked the end of World War II']\n    ```\n\n    You must return your response in the following JSON structure only:\n\n    {\n        \"memory\" : [\n            {\n                \"id\" : \"<ID of the memory>\",                # Use existing ID for updates/deletes, or new ID for additions\n                \"text\" : \"<Content of the memory>\",         # Content of the memory\n                \"event\" : \"<Operation to be performed>\",    # Must be \"ADD\", \"UPDATE\", \"DELETE\", or \"NONE\"\n                \"old_memory\" : \"<Old memory content>\"       # Required only if the event is \"UPDATE\"\n            },\n            ...\n        ]\n    }\n\n    Follow the instruction mentioned below:\n    - Do not return anything from the custom few shot prompts provided above.\n    - If the current memory is empty, then you have to add the new retrieved facts to the memory.\n    - You should return the updated memory in only JSON format as shown below. The memory key should be the same if no changes are made.\n    - If there is an addition, generate a new key and add the new memory corresponding to it.\n    - If there is a deletion, the memory key-value pair should be removed from the memory.\n    - If there is an update, the ID key should remain the same and only the value needs to be updated.\n\n    Do not return anything except the JSON format.\n    ",
+   "results": [
+    {
+     "id": "ab7255c7-9a9b-4078-a266-70e79dff7fb4",
+     "memory": "World War II ended in 1945",
+     "event": "UPDATE"
+    }
+   ],
+   "replies": [
+    "{\"facts\" : [\"The year 1945 marked the end of World War II\"]}",
+    "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"World War II ended in 1945\",\n            \"event\" : \"UPDATE\",\n            \"old_memory\" : \"World War II ended in 1945\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"World War II involved many countries across the globe\",\n            \"event\" : \"NONE\"\n        }\n    ]\n}"
+   ],
+   "update_reply_parsed": {
+    "memory": [
+     {
+      "id": "0",
+      "text": "World War II ended in 1945",
+      "event": "UPDATE",
+      "old_memory": "World War II ended in 1945"
+     },
+     {
+      "id": "1",
+      "text": "World War II involved many countries across the globe",
+      "event": "NONE"
+     }
+    ]
+   },
+   "check": {
+    "prompt_equal": true,
+    "n_facts": 1,
+    "events_equal": false,
+    "vendored": [
+     [],
+     []
+    ],
+    "mem0": [
+     [
+      0
+     ],
+     [
+      "World War II ended in 1945"
+     ]
+    ],
+    "vendored_event": "NONE",
+    "parse_fail": 0
+   }
+  },
+  {
+   "id": "hist-ww2-x",
+   "new": "World War II ended in 1939",
+   "results": [],
+   "old": [],
+   "facts": [],
+   "prompt": null,
+   "replies": [
+    "{\"facts\" : []}"
+   ],
+   "update_reply_parsed": null,
+   "check": {
+    "prompt_equal": null,
+    "events_equal": null
+   }
+  },
+  {
+   "id": "bio-photosynth-p",
+   "new": "In plants, light energy is transformed into chemical energy through photosynthesis",
+   "old": [
+    {
+     "uuid": "cea5a05c-c5a1-4aec-a515-e6bb65cd90ff",
+     "id": "0",
+     "text": "Photosynthesis converts sunlight into chemical energy in plants"
+    },
+    {
+     "uuid": "483e0209-45cd-4a87-9510-7160fa01f8d1",
+     "id": "1",
+     "text": "Photosynthesis releases oxygen as a byproduct"
+    }
+   ],
+   "facts": [
+    "In plants, light energy is transformed into chemical energy through photosynthesis"
+   ],
+   "prompt": "You are a smart memory manager which controls the memory of a system.\nYou can perform four operations: (1) add into the memory, (2) update the memory, (3) delete from the memory, and (4) no change.\n\nBased on the above four operations, the memory will change.\n\nCompare newly retrieved facts with the existing memory. For each new fact, decide whether to:\n- ADD: Add it to the memory as a new element\n- UPDATE: Update an existing memory element\n- DELETE: Delete an existing memory element\n- NONE: Make no change (if the fact is already present or irrelevant)\n\nThere are specific guidelines to select which operation to perform:\n\n1. **Add**: If the retrieved facts contain new information not present in the memory, then you have to add it by generating a new ID in the id field.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"User is a software engineer\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n            \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"ADD\"\n                }\n            ]\n\n        }\n\n2. **Update**: If the retrieved facts contain information that is already present in the memory but the information is totally different, then you have to update it. \nIf the retrieved fact contains information that conveys the same thing as the elements present in the memory, then you have to keep the fact which has the most information. \nExample (a) -- if the memory contains \"User likes to play cricket\" and the retrieved fact is \"Loves to play cricket with friends\", then update the memory with the retrieved facts.\nExample (b) -- if the memory contains \"Likes cheese pizza\" and the retrieved fact is \"Loves cheese pizza\", then you do not need to update it because they convey the same information.\nIf the direction is to update the memory, then you have to update it.\nPlease keep in mind while updating you have to keep the same ID.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"I really like cheese pizza\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"User is a software engineer\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"User likes to play cricket\"\n            }\n        ]\n    - Retrieved facts: [\"Loves chicken pizza\", \"Loves to play cricket with friends\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Loves cheese and chicken pizza\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"I really like cheese pizza\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"2\",\n                    \"text\" : \"Loves to play cricket with friends\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"User likes to play cricket\"\n                }\n            ]\n        }\n\n\n3. **Delete**: If the retrieved facts contain information that contradicts the information present in the memory, then you have to delete it. Or if the direction is to delete the memory, then you have to delete it.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Dislikes cheese pizza\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"DELETE\"\n                }\n        ]\n        }\n\n4. **No Change**: If the retrieved facts contain information that is already present in the memory, then you do not need to make any changes.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"NONE\"\n                }\n            ]\n        }\n\n\n    \n    Below is the current content of my memory which I have collected till now. You have to update it in the following format only:\n\n    ```\n    [{'id': '0', 'text': 'Photosynthesis converts sunlight into chemical energy in plants'}, {'id': '1', 'text': 'Photosynthesis releases oxygen as a byproduct'}]\n    ```\n\n    \n\n    The new retrieved facts are mentioned in the triple backticks. You have to analyze the new retrieved facts and determine whether these facts should be added, updated, or deleted in the memory.\n\n    ```\n    ['In plants, light energy is transformed into chemical energy through photosynthesis']\n    ```\n\n    You must return your response in the following JSON structure only:\n\n    {\n        \"memory\" : [\n            {\n                \"id\" : \"<ID of the memory>\",                # Use existing ID for updates/deletes, or new ID for additions\n                \"text\" : \"<Content of the memory>\",         # Content of the memory\n                \"event\" : \"<Operation to be performed>\",    # Must be \"ADD\", \"UPDATE\", \"DELETE\", or \"NONE\"\n                \"old_memory\" : \"<Old memory content>\"       # Required only if the event is \"UPDATE\"\n            },\n            ...\n        ]\n    }\n\n    Follow the instruction mentioned below:\n    - Do not return anything from the custom few shot prompts provided above.\n    - If the current memory is empty, then you have to add the new retrieved facts to the memory.\n    - You should return the updated memory in only JSON format as shown below. The memory key should be the same if no changes are made.\n    - If there is an addition, generate a new key and add the new memory corresponding to it.\n    - If there is a deletion, the memory key-value pair should be removed from the memory.\n    - If there is an update, the ID key should remain the same and only the value needs to be updated.\n\n    Do not return anything except the JSON format.\n    ",
+   "results": [
+    {
+     "id": "cea5a05c-c5a1-4aec-a515-e6bb65cd90ff",
+     "memory": "Photosynthesis converts sunlight into chemical energy in plants",
+     "event": "UPDATE"
+    },
+    {
+     "id": "3405f733-3fe9-4a46-8ed9-fb7d3454a56c",
+     "memory": "In plants, light energy is transformed into chemical energy through photosynthesis",
+     "event": "ADD"
+    }
+   ],
+   "replies": [
+    "{\"facts\" : [\"In plants, light energy is transformed into chemical energy through photosynthesis\"]}",
+    "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Photosynthesis converts sunlight into chemical energy in plants\",\n            \"event\" : \"UPDATE\",\n            \"old_memory\" : \"Photosynthesis converts sunlight into chemical energy in plants\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"Photosynthesis releases oxygen as a byproduct\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"In plants, light energy is transformed into chemical energy through photosynthesis\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}"
+   ],
+   "update_reply_parsed": {
+    "memory": [
+     {
+      "id": "0",
+      "text": "Photosynthesis converts sunlight into chemical energy in plants",
+      "event": "UPDATE",
+      "old_memory": "Photosynthesis converts sunlight into chemical energy in plants"
+     },
+     {
+      "id": "1",
+      "text": "Photosynthesis releases oxygen as a byproduct",
+      "event": "NONE"
+     },
+     {
+      "id": "2",
+      "text": "In plants, light energy is transformed into chemical energy through photosynthesis",
+      "event": "ADD"
+     }
+    ]
+   },
+   "check": {
+    "prompt_equal": true,
+    "n_facts": 1,
+    "events_equal": false,
+    "vendored": [
+     [],
+     [
+      "In plants, light energy is transformed into chemical energy through photosynthesis"
+     ]
+    ],
+    "mem0": [
+     [
+      0
+     ],
+     [
+      "Photosynthesis converts sunlight into chemical energy in plants",
+      "In plants, light energy is transformed into chemical energy through photosynthesis"
+     ]
+    ],
+    "vendored_event": "ADD",
+    "parse_fail": 0
+   }
+  },
+  {
+   "id": "bio-photosynth-x",
+   "new": "In plants, photosynthesis turns chemical energy back into sunlight",
+   "results": [],
+   "old": [],
+   "facts": [],
+   "prompt": null,
+   "replies": [
+    "{\n  \"facts\" : []\n}"
+   ],
+   "update_reply_parsed": null,
+   "check": {
+    "prompt_equal": null,
+    "events_equal": null
+   }
+  },
+  {
+   "id": "tech-http-p",
+   "new": "Web pages are transferred using the HTTP protocol",
+   "results": [],
+   "old": [],
+   "facts": [],
+   "prompt": null,
+   "replies": [
+    "{\"facts\" : []}"
+   ],
+   "update_reply_parsed": null,
+   "check": {
+    "prompt_equal": null,
+    "events_equal": null
+   }
+  },
+  {
+   "id": "tech-http-x",
+   "new": "HTTP is a protocol used to encrypt hard drives",
+   "results": [],
+   "old": [],
+   "facts": [],
+   "prompt": null,
+   "replies": [
+    "{\n  \"facts\": []\n}"
+   ],
+   "update_reply_parsed": null,
+   "check": {
+    "prompt_equal": null,
+    "events_equal": null
+   }
+  },
+  {
+   "id": "math-prime-p",
+   "new": "A prime number is divisible only by one and itself",
+   "old": [
+    {
+     "uuid": "a5886769-7676-496b-84cd-33a8326c8af8",
+     "id": "0",
+     "text": "Two is the smallest prime number"
+    },
+    {
+     "uuid": "4fb18278-7b34-4c5c-95cc-af28c2ca8afc",
+     "id": "1",
+     "text": "A prime number has exactly two distinct positive divisors"
+    }
+   ],
+   "facts": [
+    "A prime number is divisible only by one and itself"
+   ],
+   "prompt": "You are a smart memory manager which controls the memory of a system.\nYou can perform four operations: (1) add into the memory, (2) update the memory, (3) delete from the memory, and (4) no change.\n\nBased on the above four operations, the memory will change.\n\nCompare newly retrieved facts with the existing memory. For each new fact, decide whether to:\n- ADD: Add it to the memory as a new element\n- UPDATE: Update an existing memory element\n- DELETE: Delete an existing memory element\n- NONE: Make no change (if the fact is already present or irrelevant)\n\nThere are specific guidelines to select which operation to perform:\n\n1. **Add**: If the retrieved facts contain new information not present in the memory, then you have to add it by generating a new ID in the id field.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"User is a software engineer\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n            \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"ADD\"\n                }\n            ]\n\n        }\n\n2. **Update**: If the retrieved facts contain information that is already present in the memory but the information is totally different, then you have to update it. \nIf the retrieved fact contains information that conveys the same thing as the elements present in the memory, then you have to keep the fact which has the most information. \nExample (a) -- if the memory contains \"User likes to play cricket\" and the retrieved fact is \"Loves to play cricket with friends\", then update the memory with the retrieved facts.\nExample (b) -- if the memory contains \"Likes cheese pizza\" and the retrieved fact is \"Loves cheese pizza\", then you do not need to update it because they convey the same information.\nIf the direction is to update the memory, then you have to update it.\nPlease keep in mind while updating you have to keep the same ID.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"I really like cheese pizza\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"User is a software engineer\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"User likes to play cricket\"\n            }\n        ]\n    - Retrieved facts: [\"Loves chicken pizza\", \"Loves to play cricket with friends\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Loves cheese and chicken pizza\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"I really like cheese pizza\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"2\",\n                    \"text\" : \"Loves to play cricket with friends\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"User likes to play cricket\"\n                }\n            ]\n        }\n\n\n3. **Delete**: If the retrieved facts contain information that contradicts the information present in the memory, then you have to delete it. Or if the direction is to delete the memory, then you have to delete it.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Dislikes cheese pizza\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"DELETE\"\n                }\n        ]\n        }\n\n4. **No Change**: If the retrieved facts contain information that is already present in the memory, then you do not need to make any changes.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"NONE\"\n                }\n            ]\n        }\n\n\n    \n    Below is the current content of my memory which I have collected till now. You have to update it in the following format only:\n\n    ```\n    [{'id': '0', 'text': 'Two is the smallest prime number'}, {'id': '1', 'text': 'A prime number has exactly two distinct positive divisors'}]\n    ```\n\n    \n\n    The new retrieved facts are mentioned in the triple backticks. You have to analyze the new retrieved facts and determine whether these facts should be added, updated, or deleted in the memory.\n\n    ```\n    ['A prime number is divisible only by one and itself']\n    ```\n\n    You must return your response in the following JSON structure only:\n\n    {\n        \"memory\" : [\n            {\n                \"id\" : \"<ID of the memory>\",                # Use existing ID for updates/deletes, or new ID for additions\n                \"text\" : \"<Content of the memory>\",         # Content of the memory\n                \"event\" : \"<Operation to be performed>\",    # Must be \"ADD\", \"UPDATE\", \"DELETE\", or \"NONE\"\n                \"old_memory\" : \"<Old memory content>\"       # Required only if the event is \"UPDATE\"\n            },\n            ...\n        ]\n    }\n\n    Follow the instruction mentioned below:\n    - Do not return anything from the custom few shot prompts provided above.\n    - If the current memory is empty, then you have to add the new retrieved facts to the memory.\n    - You should return the updated memory in only JSON format as shown below. The memory key should be the same if no changes are made.\n    - If there is an addition, generate a new key and add the new memory corresponding to it.\n    - If there is a deletion, the memory key-value pair should be removed from the memory.\n    - If there is an update, the ID key should remain the same and only the value needs to be updated.\n\n    Do not return anything except the JSON format.\n    ",
+   "results": [
+    {
+     "id": "63d030e5-8919-41ac-be82-c14b3d8f539f",
+     "memory": "A prime number is divisible only by one and itself",
+     "event": "ADD"
+    }
+   ],
+   "replies": [
+    "{\n  \"facts\": [\"A prime number is divisible only by one and itself\"]\n}",
+    "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"Two is the smallest prime number\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"A prime number has exactly two distinct positive divisors\",\n            \"event\" : \"NONE\"\n        },\n        {\n            \"id\" : \"2\",\n            \"text\" : \"A prime number is divisible only by one and itself\",\n            \"event\" : \"ADD\"\n        }\n    ]\n}"
+   ],
+   "update_reply_parsed": {
+    "memory": [
+     {
+      "id": "0",
+      "text": "Two is the smallest prime number",
+      "event": "NONE"
+     },
+     {
+      "id": "1",
+      "text": "A prime number has exactly two distinct positive divisors",
+      "event": "NONE"
+     },
+     {
+      "id": "2",
+      "text": "A prime number is divisible only by one and itself",
+      "event": "ADD"
+     }
+    ]
+   },
+   "check": {
+    "prompt_equal": true,
+    "n_facts": 1,
+    "events_equal": true,
+    "vendored": [
+     [],
+     [
+      "A prime number is divisible only by one and itself"
+     ]
+    ],
+    "mem0": [
+     [],
+     [
+      "A prime number is divisible only by one and itself"
+     ]
+    ],
+    "vendored_event": "ADD",
+    "parse_fail": 0
+   }
+  },
+  {
+   "id": "math-prime-x",
+   "new": "A prime number has exactly three distinct positive divisors",
+   "old": [
+    {
+     "uuid": "d787f0cf-f0cd-45de-93be-642fb3d1f709",
+     "id": "0",
+     "text": "A prime number has exactly two distinct positive divisors"
+    },
+    {
+     "uuid": "064e7475-ae62-478f-858e-46d1fbad67fa",
+     "id": "1",
+     "text": "Two is the smallest prime number"
+    }
+   ],
+   "facts": [
+    "A prime number has exactly three distinct positive divisors"
+   ],
+   "prompt": "You are a smart memory manager which controls the memory of a system.\nYou can perform four operations: (1) add into the memory, (2) update the memory, (3) delete from the memory, and (4) no change.\n\nBased on the above four operations, the memory will change.\n\nCompare newly retrieved facts with the existing memory. For each new fact, decide whether to:\n- ADD: Add it to the memory as a new element\n- UPDATE: Update an existing memory element\n- DELETE: Delete an existing memory element\n- NONE: Make no change (if the fact is already present or irrelevant)\n\nThere are specific guidelines to select which operation to perform:\n\n1. **Add**: If the retrieved facts contain new information not present in the memory, then you have to add it by generating a new ID in the id field.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"User is a software engineer\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n            \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"ADD\"\n                }\n            ]\n\n        }\n\n2. **Update**: If the retrieved facts contain information that is already present in the memory but the information is totally different, then you have to update it. \nIf the retrieved fact contains information that conveys the same thing as the elements present in the memory, then you have to keep the fact which has the most information. \nExample (a) -- if the memory contains \"User likes to play cricket\" and the retrieved fact is \"Loves to play cricket with friends\", then update the memory with the retrieved facts.\nExample (b) -- if the memory contains \"Likes cheese pizza\" and the retrieved fact is \"Loves cheese pizza\", then you do not need to update it because they convey the same information.\nIf the direction is to update the memory, then you have to update it.\nPlease keep in mind while updating you have to keep the same ID.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"I really like cheese pizza\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"User is a software engineer\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"User likes to play cricket\"\n            }\n        ]\n    - Retrieved facts: [\"Loves chicken pizza\", \"Loves to play cricket with friends\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Loves cheese and chicken pizza\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"I really like cheese pizza\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"2\",\n                    \"text\" : \"Loves to play cricket with friends\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"User likes to play cricket\"\n                }\n            ]\n        }\n\n\n3. **Delete**: If the retrieved facts contain information that contradicts the information present in the memory, then you have to delete it. Or if the direction is to delete the memory, then you have to delete it.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Dislikes cheese pizza\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"DELETE\"\n                }\n        ]\n        }\n\n4. **No Change**: If the retrieved facts contain information that is already present in the memory, then you do not need to make any changes.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"NONE\"\n                }\n            ]\n        }\n\n\n    \n    Below is the current content of my memory which I have collected till now. You have to update it in the following format only:\n\n    ```\n    [{'id': '0', 'text': 'A prime number has exactly two distinct positive divisors'}, {'id': '1', 'text': 'Two is the smallest prime number'}]\n    ```\n\n    \n\n    The new retrieved facts are mentioned in the triple backticks. You have to analyze the new retrieved facts and determine whether these facts should be added, updated, or deleted in the memory.\n\n    ```\n    ['A prime number has exactly three distinct positive divisors']\n    ```\n\n    You must return your response in the following JSON structure only:\n\n    {\n        \"memory\" : [\n            {\n                \"id\" : \"<ID of the memory>\",                # Use existing ID for updates/deletes, or new ID for additions\n                \"text\" : \"<Content of the memory>\",         # Content of the memory\n                \"event\" : \"<Operation to be performed>\",    # Must be \"ADD\", \"UPDATE\", \"DELETE\", or \"NONE\"\n                \"old_memory\" : \"<Old memory content>\"       # Required only if the event is \"UPDATE\"\n            },\n            ...\n        ]\n    }\n\n    Follow the instruction mentioned below:\n    - Do not return anything from the custom few shot prompts provided above.\n    - If the current memory is empty, then you have to add the new retrieved facts to the memory.\n    - You should return the updated memory in only JSON format as shown below. The memory key should be the same if no changes are made.\n    - If there is an addition, generate a new key and add the new memory corresponding to it.\n    - If there is a deletion, the memory key-value pair should be removed from the memory.\n    - If there is an update, the ID key should remain the same and only the value needs to be updated.\n\n    Do not return anything except the JSON format.\n    ",
+   "results": [
+    {
+     "id": "d787f0cf-f0cd-45de-93be-642fb3d1f709",
+     "memory": "A prime number has exactly two distinct positive divisors",
+     "event": "DELETE"
+    }
+   ],
+   "replies": [
+    "{\n  \"facts\": [\"A prime number has exactly three distinct positive divisors\"]\n}",
+    "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"A prime number has exactly two distinct positive divisors\",\n            \"event\" : \"DELETE\",\n            \"old_memory\" : \"A prime number has exactly three distinct positive divisors\"\n        }\n    ]\n}"
+   ],
+   "update_reply_parsed": {
+    "memory": [
+     {
+      "id": "0",
+      "text": "A prime number has exactly two distinct positive divisors",
+      "event": "DELETE",
+      "old_memory": "A prime number has exactly three distinct positive divisors"
+     }
+    ]
+   },
+   "check": {
+    "prompt_equal": true,
+    "n_facts": 1,
+    "events_equal": true,
+    "vendored": [
+     [
+      0
+     ],
+     []
+    ],
+    "mem0": [
+     [
+      0
+     ],
+     []
+    ],
+    "vendored_event": "DELETE",
+    "parse_fail": 0
+   }
+  },
+  {
+   "id": "geo-nile-p",
+   "new": "Among the world's rivers, the Nile ranks among the longest",
+   "old": [
+    {
+     "uuid": "673b16a3-c3c2-4b12-84f2-2da1bb7994a1",
+     "id": "0",
+     "text": "The Nile is one of the longest rivers in the world"
+    },
+    {
+     "uuid": "6ebf62ce-58c0-4098-8933-1272f5b04e04",
+     "id": "1",
+     "text": "The Nile flows through Egypt into the Mediterranean Sea"
+    }
+   ],
+   "facts": [
+    "Among the world's rivers, the Nile ranks among the longest"
+   ],
+   "prompt": "You are a smart memory manager which controls the memory of a system.\nYou can perform four operations: (1) add into the memory, (2) update the memory, (3) delete from the memory, and (4) no change.\n\nBased on the above four operations, the memory will change.\n\nCompare newly retrieved facts with the existing memory. For each new fact, decide whether to:\n- ADD: Add it to the memory as a new element\n- UPDATE: Update an existing memory element\n- DELETE: Delete an existing memory element\n- NONE: Make no change (if the fact is already present or irrelevant)\n\nThere are specific guidelines to select which operation to perform:\n\n1. **Add**: If the retrieved facts contain new information not present in the memory, then you have to add it by generating a new ID in the id field.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"User is a software engineer\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n            \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"ADD\"\n                }\n            ]\n\n        }\n\n2. **Update**: If the retrieved facts contain information that is already present in the memory but the information is totally different, then you have to update it. \nIf the retrieved fact contains information that conveys the same thing as the elements present in the memory, then you have to keep the fact which has the most information. \nExample (a) -- if the memory contains \"User likes to play cricket\" and the retrieved fact is \"Loves to play cricket with friends\", then update the memory with the retrieved facts.\nExample (b) -- if the memory contains \"Likes cheese pizza\" and the retrieved fact is \"Loves cheese pizza\", then you do not need to update it because they convey the same information.\nIf the direction is to update the memory, then you have to update it.\nPlease keep in mind while updating you have to keep the same ID.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"I really like cheese pizza\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"User is a software engineer\"\n            },\n            {\n                \"id\" : \"2\",\n                \"text\" : \"User likes to play cricket\"\n            }\n        ]\n    - Retrieved facts: [\"Loves chicken pizza\", \"Loves to play cricket with friends\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Loves cheese and chicken pizza\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"I really like cheese pizza\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"User is a software engineer\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"2\",\n                    \"text\" : \"Loves to play cricket with friends\",\n                    \"event\" : \"UPDATE\",\n                    \"old_memory\" : \"User likes to play cricket\"\n                }\n            ]\n        }\n\n\n3. **Delete**: If the retrieved facts contain information that contradicts the information present in the memory, then you have to delete it. Or if the direction is to delete the memory, then you have to delete it.\nPlease note to return the IDs in the output from the input IDs only and do not generate any new ID.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Dislikes cheese pizza\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"DELETE\"\n                }\n        ]\n        }\n\n4. **No Change**: If the retrieved facts contain information that is already present in the memory, then you do not need to make any changes.\n- **Example**:\n    - Old Memory:\n        [\n            {\n                \"id\" : \"0\",\n                \"text\" : \"Name is John\"\n            },\n            {\n                \"id\" : \"1\",\n                \"text\" : \"Loves cheese pizza\"\n            }\n        ]\n    - Retrieved facts: [\"Name is John\"]\n    - New Memory:\n        {\n        \"memory\" : [\n                {\n                    \"id\" : \"0\",\n                    \"text\" : \"Name is John\",\n                    \"event\" : \"NONE\"\n                },\n                {\n                    \"id\" : \"1\",\n                    \"text\" : \"Loves cheese pizza\",\n                    \"event\" : \"NONE\"\n                }\n            ]\n        }\n\n\n    \n    Below is the current content of my memory which I have collected till now. You have to update it in the following format only:\n\n    ```\n    [{'id': '0', 'text': 'The Nile is one of the longest rivers in the world'}, {'id': '1', 'text': 'The Nile flows through Egypt into the Mediterranean Sea'}]\n    ```\n\n    \n\n    The new retrieved facts are mentioned in the triple backticks. You have to analyze the new retrieved facts and determine whether these facts should be added, updated, or deleted in the memory.\n\n    ```\n    [\"Among the world's rivers, the Nile ranks among the longest\"]\n    ```\n\n    You must return your response in the following JSON structure only:\n\n    {\n        \"memory\" : [\n            {\n                \"id\" : \"<ID of the memory>\",                # Use existing ID for updates/deletes, or new ID for additions\n                \"text\" : \"<Content of the memory>\",         # Content of the memory\n                \"event\" : \"<Operation to be performed>\",    # Must be \"ADD\", \"UPDATE\", \"DELETE\", or \"NONE\"\n                \"old_memory\" : \"<Old memory content>\"       # Required only if the event is \"UPDATE\"\n            },\n            ...\n        ]\n    }\n\n    Follow the instruction mentioned below:\n    - Do not return anything from the custom few shot prompts provided above.\n    - If the current memory is empty, then you have to add the new retrieved facts to the memory.\n    - You should return the updated memory in only JSON format as shown below. The memory key should be the same if no changes are made.\n    - If there is an addition, generate a new key and add the new memory corresponding to it.\n    - If there is a deletion, the memory key-value pair should be removed from the memory.\n    - If there is an update, the ID key should remain the same and only the value needs to be updated.\n\n    Do not return anything except the JSON format.\n    ",
+   "results": [
+    {
+     "id": "673b16a3-c3c2-4b12-84f2-2da1bb7994a1",
+     "memory": "The Nile is one of the longest rivers in the world",
+     "event": "UPDATE"
+    }
+   ],
+   "replies": [
+    "{\n  \"facts\": [\"Among the world's rivers, the Nile ranks among the longest\"]\n}",
+    "{\n    \"memory\" : [\n        {\n            \"id\" : \"0\",\n            \"text\" : \"The Nile is one of the longest rivers in the world\",\n            \"event\" : \"UPDATE\",\n            \"old_memory\" : \"The Nile is one of the longest rivers in the world\"\n        },\n        {\n            \"id\" : \"1\",\n            \"text\" : \"The Nile flows through Egypt into the Mediterranean Sea\",\n            \"event\" : \"NONE\"\n        }\n    ]\n}"
+   ],
+   "update_reply_parsed": {
+    "memory": [
+     {
+      "id": "0",
+      "text": "The Nile is one of the longest rivers in the world",
+      "event": "UPDATE",
+      "old_memory": "The Nile is one of the longest rivers in the world"
+     },
+     {
+      "id": "1",
+      "text": "The Nile flows through Egypt into the Mediterranean Sea",
+      "event": "NONE"
+     }
+    ]
+   },
+   "check": {
+    "prompt_equal": true,
+    "n_facts": 1,
+    "events_equal": false,
+    "vendored": [
+     [],
+     []
+    ],
+    "mem0": [
+     [
+      0
+     ],
+     [
+      "The Nile is one of the longest rivers in the world"
+     ]
+    ],
+    "vendored_event": "NONE",
+    "parse_fail": 0
+   }
+  },
+  {
+   "id": "geo-nile-x",
+   "new": "The Nile is one of the shortest rivers in the world",
+   "results": [],
+   "old": [],
+   "facts": [],
+   "prompt": null,
+   "replies": [
+    "{\"facts\" : []}"
+   ],
+   "update_reply_parsed": null,
+   "check": {
+    "prompt_equal": null,
+    "events_equal": null
+   }
+  }
+ ]
+}

@@ -28,9 +28,12 @@ def _skip_if_no_broker():
 
 
 def test_kafka_end_to_end_three_brains_converge():
+    # a dev-signed hashing/lexical epoch (test_brain_core.epoch_file), so a broker with no
+    # SMP_EPOCH set does not fail the MERGE beat
     _skip_if_no_broker()
     import kafka_xtier
-    rc = kafka_xtier._local_end_to_end()
+    from test_brain_core import epoch_file
+    rc = kafka_xtier._local_end_to_end(epoch_file())
     assert rc == 0, "Kafka end-to-end did not PASS (every brain acks 10 probes + " \
                     "MERGE/RELATE/CONFLICT/OVERRULED on all three); rc=%r" % rc
 

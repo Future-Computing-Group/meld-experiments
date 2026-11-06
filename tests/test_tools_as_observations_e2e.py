@@ -13,14 +13,10 @@ from meld.agent.memory import SMPMemory
 from meld.agent.registry import make_agent
 from meld.agent.tools import (CalculatorTool, FileReaderTool, FinalAnswerTool,
                              OfflineWebSearchTool, RecallTool)
-from meld.config import Thresholds, load_thresholds
 
 
 def _mem():
-    # canonical encoder-matched calibrated thresholds (was an inline inverted
-    # 0.5/0.55 pair that tripped the Thresholds ordering invariant)
-    from meld.agent.run_hotpot_gate import _calibrated_cfg
-    return SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg("hashing"))
+    return SMPMemory(encoder="hashing", nli="lexical")
 
 
 def test_agent_answers_from_a_file_via_brain_observation(tmp_path):
@@ -42,7 +38,7 @@ def test_agent_answers_from_a_file_via_brain_observation(tmp_path):
     assert result.answer == "Helsinki"
     # the file content traversed the MELD merge path (not just a raw tool string)
     assert any(p.decision in ("INSERT", "MERGE", "RELATE", "CONFLICT")
-               for p in mem.brain.audit_log)
+               for p in mem.decisions)
 
 
 def test_agent_answers_from_web_cache_via_brain_observation():
@@ -59,7 +55,7 @@ def test_agent_answers_from_web_cache_via_brain_observation():
                        max_steps=6)
     result = agent.run("What is the capital of France?")
     assert result.answer == "Paris"
-    assert len(mem.brain.audit_log) >= 1
+    assert len(mem.decisions) >= 1
 
 
 def test_agent_uses_calculator_for_a_numeric_l2_step():

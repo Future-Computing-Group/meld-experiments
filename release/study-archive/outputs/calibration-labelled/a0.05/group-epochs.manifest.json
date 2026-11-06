@@ -1,0 +1,32 @@
+{
+ "key_fingerprint": "133ffccfdf7b4c4d",
+ "epochs": [
+  {
+   "source": "paws-seed-a0.05.epoch.json",
+   "file": "paws-seed-a0.05.group.epoch.json",
+   "epoch_id": "e004d119027f74be29c8990f092cff38",
+   "scope": "paws",
+   "alpha": 50000,
+   "body_sha256": "e004d119027f74be29c8990f092cff385bcc3e87421a954fabae9a78ac1208d7",
+   "key_fingerprint": "133ffccfdf7b4c4d"
+  },
+  {
+   "source": "sick-seed-a0.05.epoch.json",
+   "file": "sick-seed-a0.05.group.epoch.json",
+   "epoch_id": "11f0fc0a34fc633a3bf6b611e62ee31c",
+   "scope": "sick",
+   "alpha": 50000,
+   "body_sha256": "11f0fc0a34fc633a3bf6b611e62ee31c20ed904a810a313e84871944c748d899",
+   "key_fingerprint": "133ffccfdf7b4c4d"
+  },
+  {
+   "source": "vitaminc-seed-a0.05.epoch.json",
+   "file": "vitaminc-seed-a0.05.group.epoch.json",
+   "epoch_id": "dddbdf38e42de312879ffb5d9fcd00e3",
+   "scope": "vitaminc",
+   "alpha": 50000,
+   "body_sha256": "dddbdf38e42de312879ffb5d9fcd00e3fd25ec0ee69df391853b642373e8d19b",
+   "key_fingerprint": "133ffccfdf7b4c4d"
+  }
+ ]
+}

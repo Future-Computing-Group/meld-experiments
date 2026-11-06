@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0015",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "9277b4df655d377797385492d3f5df1662e4534fbcdc36469c58e2e95228b0b0",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"9068b39673e555b6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both report the same two deaths; one adds an evening victim and the other a running total, which are compatible.\"},\n{\"item_id\": \"150d36751e28bf3e\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Folk-music versus country genre labels may clash or may both apply to one band, and the rubric does not decide.\"},\n{\"item_id\": \"24867aab4c4f64a6\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both reveal that the same three people, Charlie, Lionel and Nana, were killed, listed in a different order.\"},\n{\"item_id\": \"a4b62a991e0e351e\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Whether the team still exists is a status that changes over time (are versus were).\"},\n{\"item_id\": \"8064c71c64b3be9a\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A young girl is a specific kind of kid, so one adds the child's gender.\"},\n{\"item_id\": \"59f8935d08855dd6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"The cover list is identical except that one also names Nana Mouskouri.\"},\n{\"item_id\": \"07b3a16cd8b92cbb\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Cockalist is a typo for vocalist; the proposition is the same.\"},\n{\"item_id\": \"edc54eb941cc5940\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The publication dates of the sequels differ, and these are fixed facts.\"},\n{\"item_id\": \"d808c8f50e4ba856\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both concern a WWE wrestler tied to the UK brand and add compatible details.\"},\n{\"item_id\": \"d5fcf62a5f9603a5\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The roster lists match, but one adds John Rice and Oliver Namouv.\"},\n{\"item_id\": \"23624cd8602eac1b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds the network AMC and the series years.\"},\n{\"item_id\": \"38103544a9351023\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds romance to the film's genre list, which is compatible.\"},\n{\"item_id\": \"687550bc15b2006b\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Denying a dog in blowing sand and denying white dogs running on a beach describe different scenes.\"},\n{\"item_id\": \"d48e46ad8242d545\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The follower count is 500 last week and 600 now, a value that changes over time.\"},\n{\"item_id\": \"2f5208d3b39615a4\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Two dogs in snow could be one scene with clashing colours or two unrelated scenes.\"},\n{\"item_id\": \"ba459d129812efdb\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"A boy playing on a toy and a delighted child playing with toys outdoors are compatible details.\"},\n{\"item_id\": \"db7cd1c685a9f372\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Both describe the same New Orleans group with Lil Wayne, Juvenile and B.G., adding compatible facts.\"},\n{\"item_id\": \"c0f8bb87570e07a6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Noah Cross is identified as the wife's father in one and as Evelyn's father in the other, which is compatible.\"},\n{\"item_id\": \"7fc29d07352ebbce\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"The garbled wording may be a paraphrase or may change who left whom, and the texts do not decide.\"},\n{\"item_id\": \"42c29e999fdfae3d\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the verb agreement differs (loom versus looms).\"},\n{\"item_id\": \"d260fc95e4d43cc9\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Running down the road and running on the road are equivalent here.\"},\n{\"item_id\": \"89974e56d97a6952\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Repnin is second only to Suvorov in one and the most successful commander, by Suvorov's account, in the other.\"},\n{\"item_id\": \"7a8b8b7591323857\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds his Samoan heritage.\"},\n{\"item_id\": \"0629e2b911f02adf\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"One specifies that the person not playing the piano is a man.\"},\n{\"item_id\": \"6183a0d3b097b962\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One names Becker as the person who resumed the music.\"},\n{\"item_id\": \"20698281f7b91c6c\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The fixed distance to Wrexham is ten miles in one and nine in the other.\"},\n{\"item_id\": \"1f7d191e8c905806\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The lists match except that one adds Ben Platt.\"},\n{\"item_id\": \"351c11add6a87ef3\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same negated horse-riding claim is made about a woman and about a girl.\"},\n{\"item_id\": \"cc6e9929e2602560\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Acrobatics is a more specific kind of snowboard trick.\"},\n{\"item_id\": \"e856d2b47c0708ef\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Naming England instead of the United Kingdom may be a loose synonym or a changed entity, and the rubric does not decide.\"},\n{\"item_id\": \"c8582eed9954de33\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man playing drums and a man playing piano are different scenes with different instruments.\"},\n{\"item_id\": \"4cc462b5a8069b0b\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"In the same scene, the kid cannot be jumping both out of and into the pool.\"},\n{\"item_id\": \"f5f0b3d67e85051f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that people are not dancing.\"},\n{\"item_id\": \"acecc959bb54eb31\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The only difference is a dropped 'of' in one song title, which is a typo.\"},\n{\"item_id\": \"126db062357388f6\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The descriptors popular and British are swapped between the two guests, but both can apply.\"},\n{\"item_id\": \"c5d5e1cab82333d2\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A talented man and a man playing skillfully assert the same thing.\"},\n{\"item_id\": \"bd356e6fb98d16d1\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A chef drying oil from a pan and a woman pouring oil into a skillet describe different scenes.\"},\n{\"item_id\": \"059f189f2c80d01f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Both concern the Holodomor as a genocide, adding compatible facts about its memorial and its recognition.\"},\n{\"item_id\": \"db4966c5155edf81\", \"verdict\": \"NO_RELATION\", \"subtype\": null, \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The two describe different snail species using nearly the same wording.\"},\n{\"item_id\": \"9a4fdc4d9ada1934\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Slicing one tomato versus several changes the quantity, but both can describe the same scene.\"},\n{\"item_id\": \"7cd8f81cd7b646ce\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The composer's return is announced as future in one and as completed in the other, a status that changes over time.\"},\n{\"item_id\": \"5b9296895a8bb1f3\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that the parents are Ashkenazi Jews.\"},\n{\"item_id\": \"ccbf604df16a3d66\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the dog runs quickly and uphill.\"},\n{\"item_id\": \"8415ca4d978eee11\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds fever as an example of sickness.\"},\n{\"item_id\": \"d53d97b40356273a\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"What he took and what he became are swapped.\"},\n{\"item_id\": \"b19b0af8f47d16c1\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The Raptors' playoff status changes over time, from trailing the 76ers to reaching the Finals.\"},\n{\"item_id\": \"814c0df530b8355f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Peeling and eating a banana are compatible actions on the same kind of object.\"},\n{\"item_id\": \"6c6c73cef479f15c\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only the verb number differs (was versus were).\"},\n{\"item_id\": \"ade69ad43d0cf876\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies that the keyboard player is a man and adds a dancing woman.\"},\n{\"item_id\": \"d366a98bb862a849\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"One adds that Dost became one of the league's best scorers.\"}\n]}\n"
+ ],
+ "labels": {
+  "9068b39673e555b6": {
+   "item_id": "9068b39673e555b6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both report the same two deaths; one adds an evening victim and the other a running total, which are compatible."
+  },
+  "150d36751e28bf3e": {
+   "item_id": "150d36751e28bf3e",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Folk-music versus country genre labels may clash or may both apply to one band, and the rubric does not decide."
+  },
+  "24867aab4c4f64a6": {
+   "item_id": "24867aab4c4f64a6",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both reveal that the same three people, Charlie, Lionel and Nana, were killed, listed in a different order."
+  },
+  "a4b62a991e0e351e": {
+   "item_id": "a4b62a991e0e351e",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Whether the team still exists is a status that changes over time (are versus were)."
+  },
+  "8064c71c64b3be9a": {
+   "item_id": "8064c71c64b3be9a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A young girl is a specific kind of kid, so one adds the child's gender."
+  },
+  "59f8935d08855dd6": {
+   "item_id": "59f8935d08855dd6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "The cover list is identical except that one also names Nana Mouskouri."
+  },
+  "07b3a16cd8b92cbb": {
+   "item_id": "07b3a16cd8b92cbb",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Cockalist is a typo for vocalist; the proposition is the same."
+  },
+  "edc54eb941cc5940": {
+   "item_id": "edc54eb941cc5940",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The publication dates of the sequels differ, and these are fixed facts."
+  },
+  "d808c8f50e4ba856": {
+   "item_id": "d808c8f50e4ba856",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both concern a WWE wrestler tied to the UK brand and add compatible details."
+  },
+  "d5fcf62a5f9603a5": {
+   "item_id": "d5fcf62a5f9603a5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The roster lists match, but one adds John Rice and Oliver Namouv."
+  },
+  "23624cd8602eac1b": {
+   "item_id": "23624cd8602eac1b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds the network AMC and the series years."
+  },
+  "38103544a9351023": {
+   "item_id": "38103544a9351023",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds romance to the film's genre list, which is compatible."
+  },
+  "687550bc15b2006b": {
+   "item_id": "687550bc15b2006b",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Denying a dog in blowing sand and denying white dogs running on a beach describe different scenes."
+  },
+  "d48e46ad8242d545": {
+   "item_id": "d48e46ad8242d545",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The follower count is 500 last week and 600 now, a value that changes over time."
+  },
+  "2f5208d3b39615a4": {
+   "item_id": "2f5208d3b39615a4",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Two dogs in snow could be one scene with clashing colours or two unrelated scenes."
+  },
+  "ba459d129812efdb": {
+   "item_id": "ba459d129812efdb",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "A boy playing on a toy and a delighted child playing with toys outdoors are compatible details."
+  },
+  "db7cd1c685a9f372": {
+   "item_id": "db7cd1c685a9f372",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both describe the same New Orleans group with Lil Wayne, Juvenile and B.G., adding compatible facts."
+  },
+  "c0f8bb87570e07a6": {
+   "item_id": "c0f8bb87570e07a6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Noah Cross is identified as the wife's father in one and as Evelyn's father in the other, which is compatible."
+  },
+  "7fc29d07352ebbce": {
+   "item_id": "7fc29d07352ebbce",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "The garbled wording may be a paraphrase or may change who left whom, and the texts do not decide."
+  },
+  "42c29e999fdfae3d": {
+   "item_id": "42c29e999fdfae3d",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the verb agreement differs (loom versus looms)."
+  },
+  "d260fc95e4d43cc9": {
+   "item_id": "d260fc95e4d43cc9",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Running down the road and running on the road are equivalent here."
+  },
+  "89974e56d97a6952": {
+   "item_id": "89974e56d97a6952",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Repnin is second only to Suvorov in one and the most successful commander, by Suvorov's account, in the other."
+  },
+  "7a8b8b7591323857": {
+   "item_id": "7a8b8b7591323857",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds his Samoan heritage."
+  },
+  "0629e2b911f02adf": {
+   "item_id": "0629e2b911f02adf",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One specifies that the person not playing the piano is a man."
+  },
+  "6183a0d3b097b962": {
+   "item_id": "6183a0d3b097b962",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One names Becker as the person who resumed the music."
+  },
+  "20698281f7b91c6c": {
+   "item_id": "20698281f7b91c6c",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The fixed distance to Wrexham is ten miles in one and nine in the other."
+  },
+  "1f7d191e8c905806": {
+   "item_id": "1f7d191e8c905806",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The lists match except that one adds Ben Platt."
+  },
+  "351c11add6a87ef3": {
+   "item_id": "351c11add6a87ef3",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same negated horse-riding claim is made about a woman and about a girl."
+  },
+  "cc6e9929e2602560": {
+   "item_id": "cc6e9929e2602560",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Acrobatics is a more specific kind of snowboard trick."
+  },
+  "e856d2b47c0708ef": {
+   "item_id": "e856d2b47c0708ef",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Naming England instead of the United Kingdom may be a loose synonym or a changed entity, and the rubric does not decide."
+  },
+  "c8582eed9954de33": {
+   "item_id": "c8582eed9954de33",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man playing drums and a man playing piano are different scenes with different instruments."
+  },
+  "4cc462b5a8069b0b": {
+   "item_id": "4cc462b5a8069b0b",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "In the same scene, the kid cannot be jumping both out of and into the pool."
+  },
+  "f5f0b3d67e85051f": {
+   "item_id": "f5f0b3d67e85051f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that people are not dancing."
+  },
+  "acecc959bb54eb31": {
+   "item_id": "acecc959bb54eb31",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The only difference is a dropped 'of' in one song title, which is a typo."
+  },
+  "126db062357388f6": {
+   "item_id": "126db062357388f6",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The descriptors popular and British are swapped between the two guests, but both can apply."
+  },
+  "c5d5e1cab82333d2": {
+   "item_id": "c5d5e1cab82333d2",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A talented man and a man playing skillfully assert the same thing."
+  },
+  "bd356e6fb98d16d1": {
+   "item_id": "bd356e6fb98d16d1",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A chef drying oil from a pan and a woman pouring oil into a skillet describe different scenes."
+  },
+  "059f189f2c80d01f": {
+   "item_id": "059f189f2c80d01f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both concern the Holodomor as a genocide, adding compatible facts about its memorial and its recognition."
+  },
+  "db4966c5155edf81": {
+   "item_id": "db4966c5155edf81",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The two describe different snail species using nearly the same wording."
+  },
+  "9a4fdc4d9ada1934": {
+   "item_id": "9a4fdc4d9ada1934",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Slicing one tomato versus several changes the quantity, but both can describe the same scene."
+  },
+  "7cd8f81cd7b646ce": {
+   "item_id": "7cd8f81cd7b646ce",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The composer's return is announced as future in one and as completed in the other, a status that changes over time."
+  },
+  "5b9296895a8bb1f3": {
+   "item_id": "5b9296895a8bb1f3",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that the parents are Ashkenazi Jews."
+  },
+  "ccbf604df16a3d66": {
+   "item_id": "ccbf604df16a3d66",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the dog runs quickly and uphill."
+  },
+  "8415ca4d978eee11": {
+   "item_id": "8415ca4d978eee11",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds fever as an example of sickness."
+  },
+  "d53d97b40356273a": {
+   "item_id": "d53d97b40356273a",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "What he took and what he became are swapped."
+  },
+  "b19b0af8f47d16c1": {
+   "item_id": "b19b0af8f47d16c1",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The Raptors' playoff status changes over time, from trailing the 76ers to reaching the Finals."
+  },
+  "814c0df530b8355f": {
+   "item_id": "814c0df530b8355f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Peeling and eating a banana are compatible actions on the same kind of object."
+  },
+  "6c6c73cef479f15c": {
+   "item_id": "6c6c73cef479f15c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the verb number differs (was versus were)."
+  },
+  "ade69ad43d0cf876": {
+   "item_id": "ade69ad43d0cf876",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies that the keyboard player is a man and adds a dancing woman."
+  },
+  "d366a98bb862a849": {
+   "item_id": "d366a98bb862a849",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One adds that Dost became one of the league's best scorers."
+  }
+ },
+ "errors": []
+}

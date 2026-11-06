@@ -15,10 +15,8 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from meld.config import load_thresholds
 from meld.eval.sink_load import summarize_sink_load, sink_load_row
 
-_MINILM = os.path.join(REPO, "src", "meld", "config", "thresholds-minilm.yaml")
 
 
 def test_summarize_sink_load_ratios():
@@ -31,13 +29,12 @@ def test_summarize_sink_load_ratios():
 
 
 def test_merge_sink_stays_corpus_sized_as_replication_grows():
-    cfg = load_thresholds(_MINILM)
     corpus = ["paris is the capital of france",
               "the heart pumps blood through the body",
               "water boils at one hundred degrees celsius"]
-    base = sink_load_row(1, corpus, encoder="hashing", nli="lexical", cfg=cfg)
-    rep8 = sink_load_row(8, corpus, encoder="hashing", nli="lexical", cfg=cfg)
-    # naive union would grow 8x; the merge sink consolidates the re-publications
+    base = sink_load_row(1, corpus, encoder="hashing", nli="lexical", epoch=None)
+    rep8 = sink_load_row(8, corpus, encoder="hashing", nli="lexical", epoch=None)
+    # naive union would grow 8x; re-publications are exact copies, one node each
     assert rep8["union_live"] == 8 * len(corpus)
     assert rep8["merge_live"] <= base["merge_live"] + 1      # flat in N (no growth)
     assert rep8["merge_live"] < rep8["union_live"]           # strictly compacter

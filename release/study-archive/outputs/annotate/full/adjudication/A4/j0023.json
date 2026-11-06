@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0023",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "dd43d73b07a95cadce34e188682585c97ed973b2e4d7a02fd1366aae8a4f4067",
+ "raw": [
+  "{\"labels\": [\n{\"item_id\": \"9aa9ed0f18c5cdea\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Same language list; the version saying most languages and adding the original intent is a stronger compatible claim than the one saying some.\"},\n{\"item_id\": \"0fcc42abbf98577f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Racing is a specific kind of running, adding detail to the running horse.\"},\n{\"item_id\": \"0e26ab4f06c04175\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible facts about different Rascal Flatts releases.\"},\n{\"item_id\": \"09188d5ef7dbcaf4\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same denial over guitars in general versus electric guitars only; both can hold.\"},\n{\"item_id\": \"a5ee47fa9e970c4c\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Regarded by many is a stronger, compatible version of regarded by some.\"},\n{\"item_id\": \"cb2815c9c1f3dee0\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Antivirus software versus products is a near-synonymous rewording of the same claim.\"},\n{\"item_id\": \"60bfce7cba10ced8\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same flexible-scheduling claim over Weeks 9-17 versus Weeks 15 and 17.\"},\n{\"item_id\": \"64007e8b2f95d7a9\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Swapping medieval and fictional between plot and kingdoms gives compatible descriptions of the same plot.\"},\n{\"item_id\": \"869b56c5162f61b8\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that Ian Walker shared the finest-goalkeeper regard.\"},\n{\"item_id\": \"c973f0eff3334431\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One specifies that the guitar the woman plays is electric.\"},\n{\"item_id\": \"99c2326c5c5c1bfb\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The wheel project is planned in one and abandoned in the other, a status that changes over time.\"},\n{\"item_id\": \"d93d158312355d9f\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds French descent and descent from John Alden.\"},\n{\"item_id\": \"01d66b8764104e8d\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Daley not hearing the bell and denying hitting Koscheck are compatible claims about the same conversation.\"},\n{\"item_id\": \"9efe8356e46f8264\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Peeling and slicing a potato may be incompatible simultaneous actions or compatible steps of one task.\"},\n{\"item_id\": \"b4a226ffb2382368\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds international and businessman to RedOne's description.\"},\n{\"item_id\": \"ba53d0fdd416d012\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Right Here will be released versus was released is a release status that changes over time.\"},\n{\"item_id\": \"9667e0789b7e5fbc\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible details (fee and shirt number) about the same signing announcement.\"},\n{\"item_id\": \"a2a2f2b05b027ee4\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Putting away a guitar is a more specific action than putting it down; both can describe the scene.\"},\n{\"item_id\": \"c26564d879a14962\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"UTF-8 support is a more specific form of unicode support.\"},\n{\"item_id\": \"1924449fe5fa5cdd\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"A stated 17.5M fee clashes with an undisclosed fee for the same transfer.\"},\n{\"item_id\": \"4930b09cd4fc2218\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"The same denial over any person versus over a man.\"},\n{\"item_id\": \"cfe24cd9817e2225\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The same five-country list as of 31 March versus 1 April; both can hold.\"},\n{\"item_id\": \"1693372827912123\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Lewis and Levy jointly control 100 percent versus 52 percent of ENIC after the same buyout.\"},\n{\"item_id\": \"1ba190497b62bb71\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Had not versus has not may be a mere tense edit of the same proposition or a status at different times.\"},\n{\"item_id\": \"a16e98a04b8807fa\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible details (white markings, green grass) about a dog running through tall grass.\"},\n{\"item_id\": \"21ead599e6c9903a\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Marching may count as exercising, making the denials related, or they may concern unrelated activities.\"},\n{\"item_id\": \"e8df8abc779b269b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"A man mixing a bowl's content is compatible with no man wiping its edge.\"},\n{\"item_id\": \"67073bf58ef01832\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only verb agreement differs.\"},\n{\"item_id\": \"6d77ca8967960106\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Langmaid is versus was the other half of La Roux, a membership status over time.\"},\n{\"item_id\": \"a13297b8cf0c3ca0\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Same heading for the variable lyrics, reworded.\"},\n{\"item_id\": \"da691b674f0e059b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds a woman who is also speaking.\"},\n{\"item_id\": \"93ccc4289d73d60e\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Confirmed case counts dated 23 March and 4 April can both hold at their own dates.\"},\n{\"item_id\": \"00e0faf8c668f863\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Rockets and Houston Rockets name the same team.\"},\n{\"item_id\": \"3120a65bdfe2046b\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the verdict date and the TV and radio interviews.\"},\n{\"item_id\": \"47053813637e253f\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"The trees produce fruit versus balls, a changed entity.\"},\n{\"item_id\": \"c0489ba05466f064\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"The dog is stopping versus running in the same scene.\"},\n{\"item_id\": \"e4d6e4afcb560be7\", \"verdict\": \"CONFLICT\", \"subtype\": \"CORRECTION\", \"overlap_flag\": true, \"confidence\": 3, \"rationale\": \"Sadar Bazar and North Delhi swap containing roles in the station's location.\"},\n{\"item_id\": \"5e1493ac74a2d389\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds the stylised name, the other the seventh-generation detail.\"},\n{\"item_id\": \"76c6592568097ef7\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Free agent versus playing for the 49ers is a current status that changes over time.\"},\n{\"item_id\": \"e678a507cec3d94e\", \"verdict\": \"AMBIGUOUS\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 2, \"rationale\": \"Training with New York Red Bulls may replace free-agent status or coexist with it as a trial.\"},\n{\"item_id\": \"800f20df157413df\", \"verdict\": \"MERGE\", \"subtype\": null, \"overlap_flag\": false, \"confidence\": 5, \"rationale\": \"Only a stray pronoun differs.\"},\n{\"item_id\": \"3d926b6c2dadd266\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 3, \"rationale\": \"Cutting and squeezing a lemon are compatible actions on the same lemon.\"},\n{\"item_id\": \"1ae3fd0292c5247c\", \"verdict\": \"RELATE\", \"subtype\": \"SCOPE\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"The same denial over motorcycle riding anywhere versus through the town.\"},\n{\"item_id\": \"b2d41532abb19f95\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds Celtic as a supported club.\"},\n{\"item_id\": \"f4d8172fde373111\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds David Bradley to the list of final appearances.\"},\n{\"item_id\": \"cbf737d35ba1ef87\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One adds that the fall is abrupt.\"},\n{\"item_id\": \"7aaac3529e8f3798\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible details about the same artist's gothic rock and folk sound.\"},\n{\"item_id\": \"7d59670c6a2bb459\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"One list additionally names Bandulu Dub.\"},\n{\"item_id\": \"96e1acee53ed2cc3\", \"verdict\": \"CONFLICT\", \"subtype\": \"SUPERSESSION\", \"overlap_flag\": true, \"confidence\": 4, \"rationale\": \"Playing for QPR versus released and a free agent is a status over time.\"},\n{\"item_id\": \"8bfcadf9193f5dec\", \"verdict\": \"RELATE\", \"subtype\": \"ELABORATION\", \"overlap_flag\": false, \"confidence\": 4, \"rationale\": \"Compatible genre descriptions of the same band.\"}\n]}\n"
+ ],
+ "labels": {
+  "9aa9ed0f18c5cdea": {
+   "item_id": "9aa9ed0f18c5cdea",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same language list; the version saying most languages and adding the original intent is a stronger compatible claim than the one saying some."
+  },
+  "0fcc42abbf98577f": {
+   "item_id": "0fcc42abbf98577f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Racing is a specific kind of running, adding detail to the running horse."
+  },
+  "0e26ab4f06c04175": {
+   "item_id": "0e26ab4f06c04175",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible facts about different Rascal Flatts releases."
+  },
+  "09188d5ef7dbcaf4": {
+   "item_id": "09188d5ef7dbcaf4",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same denial over guitars in general versus electric guitars only; both can hold."
+  },
+  "a5ee47fa9e970c4c": {
+   "item_id": "a5ee47fa9e970c4c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Regarded by many is a stronger, compatible version of regarded by some."
+  },
+  "cb2815c9c1f3dee0": {
+   "item_id": "cb2815c9c1f3dee0",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Antivirus software versus products is a near-synonymous rewording of the same claim."
+  },
+  "60bfce7cba10ced8": {
+   "item_id": "60bfce7cba10ced8",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same flexible-scheduling claim over Weeks 9-17 versus Weeks 15 and 17."
+  },
+  "64007e8b2f95d7a9": {
+   "item_id": "64007e8b2f95d7a9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Swapping medieval and fictional between plot and kingdoms gives compatible descriptions of the same plot."
+  },
+  "869b56c5162f61b8": {
+   "item_id": "869b56c5162f61b8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that Ian Walker shared the finest-goalkeeper regard."
+  },
+  "c973f0eff3334431": {
+   "item_id": "c973f0eff3334431",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One specifies that the guitar the woman plays is electric."
+  },
+  "99c2326c5c5c1bfb": {
+   "item_id": "99c2326c5c5c1bfb",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The wheel project is planned in one and abandoned in the other, a status that changes over time."
+  },
+  "d93d158312355d9f": {
+   "item_id": "d93d158312355d9f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds French descent and descent from John Alden."
+  },
+  "01d66b8764104e8d": {
+   "item_id": "01d66b8764104e8d",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Daley not hearing the bell and denying hitting Koscheck are compatible claims about the same conversation."
+  },
+  "9efe8356e46f8264": {
+   "item_id": "9efe8356e46f8264",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Peeling and slicing a potato may be incompatible simultaneous actions or compatible steps of one task."
+  },
+  "b4a226ffb2382368": {
+   "item_id": "b4a226ffb2382368",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds international and businessman to RedOne's description."
+  },
+  "ba53d0fdd416d012": {
+   "item_id": "ba53d0fdd416d012",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Right Here will be released versus was released is a release status that changes over time."
+  },
+  "9667e0789b7e5fbc": {
+   "item_id": "9667e0789b7e5fbc",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible details (fee and shirt number) about the same signing announcement."
+  },
+  "a2a2f2b05b027ee4": {
+   "item_id": "a2a2f2b05b027ee4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Putting away a guitar is a more specific action than putting it down; both can describe the scene."
+  },
+  "c26564d879a14962": {
+   "item_id": "c26564d879a14962",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "UTF-8 support is a more specific form of unicode support."
+  },
+  "1924449fe5fa5cdd": {
+   "item_id": "1924449fe5fa5cdd",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "A stated 17.5M fee clashes with an undisclosed fee for the same transfer."
+  },
+  "4930b09cd4fc2218": {
+   "item_id": "4930b09cd4fc2218",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same denial over any person versus over a man."
+  },
+  "cfe24cd9817e2225": {
+   "item_id": "cfe24cd9817e2225",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The same five-country list as of 31 March versus 1 April; both can hold."
+  },
+  "1693372827912123": {
+   "item_id": "1693372827912123",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Lewis and Levy jointly control 100 percent versus 52 percent of ENIC after the same buyout."
+  },
+  "1ba190497b62bb71": {
+   "item_id": "1ba190497b62bb71",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Had not versus has not may be a mere tense edit of the same proposition or a status at different times."
+  },
+  "a16e98a04b8807fa": {
+   "item_id": "a16e98a04b8807fa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible details (white markings, green grass) about a dog running through tall grass."
+  },
+  "21ead599e6c9903a": {
+   "item_id": "21ead599e6c9903a",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Marching may count as exercising, making the denials related, or they may concern unrelated activities."
+  },
+  "e8df8abc779b269b": {
+   "item_id": "e8df8abc779b269b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A man mixing a bowl's content is compatible with no man wiping its edge."
+  },
+  "67073bf58ef01832": {
+   "item_id": "67073bf58ef01832",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only verb agreement differs."
+  },
+  "6d77ca8967960106": {
+   "item_id": "6d77ca8967960106",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Langmaid is versus was the other half of La Roux, a membership status over time."
+  },
+  "a13297b8cf0c3ca0": {
+   "item_id": "a13297b8cf0c3ca0",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Same heading for the variable lyrics, reworded."
+  },
+  "da691b674f0e059b": {
+   "item_id": "da691b674f0e059b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds a woman who is also speaking."
+  },
+  "93ccc4289d73d60e": {
+   "item_id": "93ccc4289d73d60e",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Confirmed case counts dated 23 March and 4 April can both hold at their own dates."
+  },
+  "00e0faf8c668f863": {
+   "item_id": "00e0faf8c668f863",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Rockets and Houston Rockets name the same team."
+  },
+  "3120a65bdfe2046b": {
+   "item_id": "3120a65bdfe2046b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the verdict date and the TV and radio interviews."
+  },
+  "47053813637e253f": {
+   "item_id": "47053813637e253f",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "The trees produce fruit versus balls, a changed entity."
+  },
+  "c0489ba05466f064": {
+   "item_id": "c0489ba05466f064",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The dog is stopping versus running in the same scene."
+  },
+  "e4d6e4afcb560be7": {
+   "item_id": "e4d6e4afcb560be7",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Sadar Bazar and North Delhi swap containing roles in the station's location."
+  },
+  "5e1493ac74a2d389": {
+   "item_id": "5e1493ac74a2d389",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds the stylised name, the other the seventh-generation detail."
+  },
+  "76c6592568097ef7": {
+   "item_id": "76c6592568097ef7",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Free agent versus playing for the 49ers is a current status that changes over time."
+  },
+  "e678a507cec3d94e": {
+   "item_id": "e678a507cec3d94e",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Training with New York Red Bulls may replace free-agent status or coexist with it as a trial."
+  },
+  "800f20df157413df": {
+   "item_id": "800f20df157413df",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only a stray pronoun differs."
+  },
+  "3d926b6c2dadd266": {
+   "item_id": "3d926b6c2dadd266",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Cutting and squeezing a lemon are compatible actions on the same lemon."
+  },
+  "1ae3fd0292c5247c": {
+   "item_id": "1ae3fd0292c5247c",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The same denial over motorcycle riding anywhere versus through the town."
+  },
+  "b2d41532abb19f95": {
+   "item_id": "b2d41532abb19f95",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds Celtic as a supported club."
+  },
+  "f4d8172fde373111": {
+   "item_id": "f4d8172fde373111",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds David Bradley to the list of final appearances."
+  },
+  "cbf737d35ba1ef87": {
+   "item_id": "cbf737d35ba1ef87",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One adds that the fall is abrupt."
+  },
+  "7aaac3529e8f3798": {
+   "item_id": "7aaac3529e8f3798",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible details about the same artist's gothic rock and folk sound."
+  },
+  "7d59670c6a2bb459": {
+   "item_id": "7d59670c6a2bb459",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One list additionally names Bandulu Dub."
+  },
+  "96e1acee53ed2cc3": {
+   "item_id": "96e1acee53ed2cc3",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "Playing for QPR versus released and a free agent is a status over time."
+  },
+  "8bfcadf9193f5dec": {
+   "item_id": "8bfcadf9193f5dec",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Compatible genre descriptions of the same band."
+  }
+ },
+ "errors": []
+}

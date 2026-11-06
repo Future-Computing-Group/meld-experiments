@@ -1,0 +1,415 @@
+{
+ "batch_id": "j0009",
+ "annotator": "A4",
+ "backend": {
+  "backend": "subagent",
+  "model": "claude-opus-5-5"
+ },
+ "prompt_sha256": "822c06a75092125b0a419f29cb247523c89827cf265b4b2dcb2ffa08c5611b5e",
+ "raw": [
+  "{\n \"labels\": [\n  {\n   \"item_id\": \"cd97fdb4e278b952\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 5,\n   \"rationale\": \"One statement adds the Kinks single as another use of the name.\"\n  },\n  {\n   \"item_id\": \"796b0f6ce14e5f13\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 4,\n   \"rationale\": \"One statement adds that the song was successful to the shared chart position.\"\n  },\n  {\n   \"item_id\": \"4d70a812fbd19246\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 5,\n   \"rationale\": \"One statement prepends an extra claim about equal rights to the shared constitutional sentence.\"\n  },\n  {\n   \"item_id\": \"fee4d9f9ec5057ab\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 5,\n   \"rationale\": \"One statement adds singer and fashion model to the shared occupations.\"\n  },\n  {\n   \"item_id\": \"cbaaba37cc1a99a4\",\n   \"verdict\": \"MERGE\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 4,\n   \"rationale\": \"Both say the installation suited only the largest ships and was fitted on three, in garbled synonymous wording.\"\n  },\n  {\n   \"item_id\": \"97c621df495ed3e0\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 5,\n   \"rationale\": \"One statement lists two more street names for 2C-B.\"\n  },\n  {\n   \"item_id\": \"7203d146987cf221\",\n   \"verdict\": \"CONFLICT\",\n   \"subtype\": \"CORRECTION\",\n   \"overlap_flag\": true,\n   \"confidence\": 4,\n   \"rationale\": \"The modifiers unexpected and unstoppable are swapped between the effect and the boarding.\"\n  },\n  {\n   \"item_id\": \"49f780ebf9c6028c\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"SCOPE\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"The same issue is claimed for some ATI cards versus ATI cards generally.\"\n  },\n  {\n   \"item_id\": \"6c5b48dce209c787\",\n   \"verdict\": \"MERGE\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"Same reviewer and same verdict, with the adjective order and time/period being synonymous rewordings.\"\n  },\n  {\n   \"item_id\": \"59a404aba933e17b\",\n   \"verdict\": \"MERGE\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"Slicing and cutting are synonyms and both deny a woman cutting onion.\"\n  },\n  {\n   \"item_id\": \"49a673d163839aca\",\n   \"verdict\": \"MERGE\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 4,\n   \"rationale\": \"Invited and chosen are used interchangeably for the same 1992 Barbarians selection.\"\n  },\n  {\n   \"item_id\": \"6f598e0361e27f95\",\n   \"verdict\": \"CONFLICT\",\n   \"subtype\": \"CORRECTION\",\n   \"overlap_flag\": true,\n   \"confidence\": 4,\n   \"rationale\": \"The same child is running in one statement and resting in the other.\"\n  },\n  {\n   \"item_id\": \"b23d1770bb4581df\",\n   \"verdict\": \"AMBIGUOUS\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 2,\n   \"rationale\": \"Both are garbled so it is unclear whether they state the same township change or different ones.\"\n  },\n  {\n   \"item_id\": \"57a97856daf2cb6c\",\n   \"verdict\": \"MERGE\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 4,\n   \"rationale\": \"The average rating 3.2 is the rounded 3.17, so nothing else differs.\"\n  },\n  {\n   \"item_id\": \"03daba29994b850b\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"Putting on lipstick is a specific way of applying makeup, compatible with the same scene.\"\n  },\n  {\n   \"item_id\": \"fe250e25db1f2f51\",\n   \"verdict\": \"AMBIGUOUS\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 2,\n   \"rationale\": \"Both denials can hold, but whether a girl and a man not playing a flute share a topic is undecided by the rubric.\"\n  },\n  {\n   \"item_id\": \"62b0ed364605a0dd\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 4,\n   \"rationale\": \"One gives the exact count of 22 company-owned stores where the other says several.\"\n  },\n  {\n   \"item_id\": \"c90f6b8d5c91617c\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 5,\n   \"rationale\": \"One statement adds that Showtune was produced by Jennifer Strome.\"\n  },\n  {\n   \"item_id\": \"2984b6de515858d4\",\n   \"verdict\": \"CONFLICT\",\n   \"subtype\": \"SUPERSESSION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"The count of tops bought so far grows from three to five.\"\n  },\n  {\n   \"item_id\": \"82c6c45563080778\",\n   \"verdict\": \"CONFLICT\",\n   \"subtype\": \"SCOPE\",\n   \"overlap_flag\": true,\n   \"confidence\": 3,\n   \"rationale\": \"Thirteen championships including two shared versus eleven may differ only in whether shared titles count.\"\n  },\n  {\n   \"item_id\": \"dc6687917d3d9cca\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"Very cold intensifies cold and both can hold.\"\n  },\n  {\n   \"item_id\": \"b5deb58d04d6a321\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"Breaking eggs into a bowl and mixing eggs are compatible steps of the same activity.\"\n  },\n  {\n   \"item_id\": \"3aeec2c1d99d915a\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 5,\n   \"rationale\": \"One statement adds that the deal was for one year.\"\n  },\n  {\n   \"item_id\": \"fb604863ec1b5cc8\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"Running towards a toy and playing with it are compatible actions of a dog.\"\n  },\n  {\n   \"item_id\": \"f1f5cbebec6e79a9\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 5,\n   \"rationale\": \"One statement adds private properties as installation sites for pipe organs.\"\n  },\n  {\n   \"item_id\": \"156be6976fbdba0f\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"A piano is a specific keyboard instrument, so both can describe the boy.\"\n  },\n  {\n   \"item_id\": \"7f66e40f562dd14c\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 4,\n   \"rationale\": \"One statement adds that the recognition dates from 2006.\"\n  },\n  {\n   \"item_id\": \"58d11765af685df1\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"Breaking eggs into a bowl is a specific way of a woman putting ingredients into a bowl.\"\n  },\n  {\n   \"item_id\": \"205a57626f21d9a2\",\n   \"verdict\": \"MERGE\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 5,\n   \"rationale\": \"Only the article an versus a differs.\"\n  },\n  {\n   \"item_id\": \"36190c56a9332256\",\n   \"verdict\": \"CONFLICT\",\n   \"subtype\": \"CORRECTION\",\n   \"overlap_flag\": true,\n   \"confidence\": 3,\n   \"rationale\": \"A later date with fewer cumulative views cannot both be right, so one figure is wrong.\"\n  },\n  {\n   \"item_id\": \"fe9755f855d4d6d0\",\n   \"verdict\": \"AMBIGUOUS\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 2,\n   \"rationale\": \"Came to admire versus wanted to admire may be a rewording or a changed claim, and the rubric does not settle which.\"\n  },\n  {\n   \"item_id\": \"de1d86d9e2d5c77f\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 4,\n   \"rationale\": \"One statement adds that Barton-on-Sea is in southwest Hampshire.\"\n  },\n  {\n   \"item_id\": \"e0d9a37c51d60b73\",\n   \"verdict\": \"CONFLICT\",\n   \"subtype\": \"CORRECTION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"The wall the person jumps off is tall in one statement and low in the other.\"\n  },\n  {\n   \"item_id\": \"6bd48c706a4c75e4\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"A flip over a snow mound and jumping off a snowy hill are compatible descriptions of the snowboarder.\"\n  },\n  {\n   \"item_id\": \"461e29cad7cbd2e5\",\n   \"verdict\": \"CONFLICT\",\n   \"subtype\": \"CORRECTION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"The film's co-star is Channing Tatum in one statement and Jeff in the other.\"\n  },\n  {\n   \"item_id\": \"4baa7907a36a7be9\",\n   \"verdict\": \"NO_RELATION\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 4,\n   \"rationale\": \"The engagements are in different years and places with nothing tying them to the same couple.\"\n  },\n  {\n   \"item_id\": \"13bd65740e49c561\",\n   \"verdict\": \"AMBIGUOUS\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 2,\n   \"rationale\": \"Shuffled modifiers about evolution and naming could be a garbled rewording or a changed claim.\"\n  },\n  {\n   \"item_id\": \"328ca9fe75e07e33\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"A teenager getting a hand tattoo from a woman in a white sweater is compatible with a young woman getting a hand tattoo.\"\n  },\n  {\n   \"item_id\": \"adc97bd9bdb0bb47\",\n   \"verdict\": \"CONFLICT\",\n   \"subtype\": \"SUPERSESSION\",\n   \"overlap_flag\": true,\n   \"confidence\": 4,\n   \"rationale\": \"The population figure differs and changes over time.\"\n  },\n  {\n   \"item_id\": \"15f0f393ad35a025\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"Both deny the lady cracking eggs, with different compatible details of mixer versus bowl.\"\n  },\n  {\n   \"item_id\": \"a9170eea9056a271\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 5,\n   \"rationale\": \"One statement adds Burning Inside to the bands Christy drummed for.\"\n  },\n  {\n   \"item_id\": \"000c6373cf272039\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"Same anecdote, with one attributing it to Al's own account and the other adding that it was his first attempt.\"\n  },\n  {\n   \"item_id\": \"815c15e2f6ec36fa\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"One denial adds into pieces, changing what is denied while both can hold.\"\n  },\n  {\n   \"item_id\": \"81d7239dbef32601\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 4,\n   \"rationale\": \"One statement adds award counts and the Primetime qualifier.\"\n  },\n  {\n   \"item_id\": \"42135a335d5cd731\",\n   \"verdict\": \"CONFLICT\",\n   \"subtype\": \"CORRECTION\",\n   \"overlap_flag\": true,\n   \"confidence\": 4,\n   \"rationale\": \"The modifiers many large and local are swapped between the stones and the trees.\"\n  },\n  {\n   \"item_id\": \"fc87b4a5f12de5e5\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"One carrot versus several carrots being sliced by a woman are compatible but not identical.\"\n  },\n  {\n   \"item_id\": \"363d4b9d86756178\",\n   \"verdict\": \"AMBIGUOUS\",\n   \"subtype\": null,\n   \"overlap_flag\": false,\n   \"confidence\": 2,\n   \"rationale\": \"Melbourne Croatia and the Knights may be the same club or a conflicting home club, and the texts do not decide.\"\n  },\n  {\n   \"item_id\": \"2d9df9b225b4d2c2\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 3,\n   \"rationale\": \"Both describe a dog running with respect to a ball, with compatible differing details.\"\n  },\n  {\n   \"item_id\": \"de82d8d185521c4c\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"SCOPE\",\n   \"overlap_flag\": false,\n   \"confidence\": 2,\n   \"rationale\": \"First-week sales and US sales to date are sales claims over different ranges that can both hold.\"\n  },\n  {\n   \"item_id\": \"8d5dfc8ab6bbdd7b\",\n   \"verdict\": \"RELATE\",\n   \"subtype\": \"ELABORATION\",\n   \"overlap_flag\": false,\n   \"confidence\": 4,\n   \"rationale\": \"One statement specifies rhythm guitarist where the other says guitarist.\"\n  }\n ]\n}"
+ ],
+ "labels": {
+  "cd97fdb4e278b952": {
+   "item_id": "cd97fdb4e278b952",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One statement adds the Kinks single as another use of the name."
+  },
+  "796b0f6ce14e5f13": {
+   "item_id": "796b0f6ce14e5f13",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One statement adds that the song was successful to the shared chart position."
+  },
+  "4d70a812fbd19246": {
+   "item_id": "4d70a812fbd19246",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One statement prepends an extra claim about equal rights to the shared constitutional sentence."
+  },
+  "fee4d9f9ec5057ab": {
+   "item_id": "fee4d9f9ec5057ab",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One statement adds singer and fashion model to the shared occupations."
+  },
+  "cbaaba37cc1a99a4": {
+   "item_id": "cbaaba37cc1a99a4",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Both say the installation suited only the largest ships and was fitted on three, in garbled synonymous wording."
+  },
+  "97c621df495ed3e0": {
+   "item_id": "97c621df495ed3e0",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One statement lists two more street names for 2C-B."
+  },
+  "7203d146987cf221": {
+   "item_id": "7203d146987cf221",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The modifiers unexpected and unstoppable are swapped between the effect and the boarding."
+  },
+  "49f780ebf9c6028c": {
+   "item_id": "49f780ebf9c6028c",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The same issue is claimed for some ATI cards versus ATI cards generally."
+  },
+  "6c5b48dce209c787": {
+   "item_id": "6c5b48dce209c787",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same reviewer and same verdict, with the adjective order and time/period being synonymous rewordings."
+  },
+  "59a404aba933e17b": {
+   "item_id": "59a404aba933e17b",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Slicing and cutting are synonyms and both deny a woman cutting onion."
+  },
+  "49a673d163839aca": {
+   "item_id": "49a673d163839aca",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "Invited and chosen are used interchangeably for the same 1992 Barbarians selection."
+  },
+  "6f598e0361e27f95": {
+   "item_id": "6f598e0361e27f95",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The same child is running in one statement and resting in the other."
+  },
+  "b23d1770bb4581df": {
+   "item_id": "b23d1770bb4581df",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both are garbled so it is unclear whether they state the same township change or different ones."
+  },
+  "57a97856daf2cb6c": {
+   "item_id": "57a97856daf2cb6c",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The average rating 3.2 is the rounded 3.17, so nothing else differs."
+  },
+  "03daba29994b850b": {
+   "item_id": "03daba29994b850b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Putting on lipstick is a specific way of applying makeup, compatible with the same scene."
+  },
+  "fe250e25db1f2f51": {
+   "item_id": "fe250e25db1f2f51",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Both denials can hold, but whether a girl and a man not playing a flute share a topic is undecided by the rubric."
+  },
+  "62b0ed364605a0dd": {
+   "item_id": "62b0ed364605a0dd",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One gives the exact count of 22 company-owned stores where the other says several."
+  },
+  "c90f6b8d5c91617c": {
+   "item_id": "c90f6b8d5c91617c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One statement adds that Showtune was produced by Jennifer Strome."
+  },
+  "2984b6de515858d4": {
+   "item_id": "2984b6de515858d4",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The count of tops bought so far grows from three to five."
+  },
+  "82c6c45563080778": {
+   "item_id": "82c6c45563080778",
+   "verdict": "CONFLICT",
+   "subtype": "SCOPE",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "Thirteen championships including two shared versus eleven may differ only in whether shared titles count."
+  },
+  "dc6687917d3d9cca": {
+   "item_id": "dc6687917d3d9cca",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Very cold intensifies cold and both can hold."
+  },
+  "b5deb58d04d6a321": {
+   "item_id": "b5deb58d04d6a321",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Breaking eggs into a bowl and mixing eggs are compatible steps of the same activity."
+  },
+  "3aeec2c1d99d915a": {
+   "item_id": "3aeec2c1d99d915a",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One statement adds that the deal was for one year."
+  },
+  "fb604863ec1b5cc8": {
+   "item_id": "fb604863ec1b5cc8",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Running towards a toy and playing with it are compatible actions of a dog."
+  },
+  "f1f5cbebec6e79a9": {
+   "item_id": "f1f5cbebec6e79a9",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One statement adds private properties as installation sites for pipe organs."
+  },
+  "156be6976fbdba0f": {
+   "item_id": "156be6976fbdba0f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A piano is a specific keyboard instrument, so both can describe the boy."
+  },
+  "7f66e40f562dd14c": {
+   "item_id": "7f66e40f562dd14c",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One statement adds that the recognition dates from 2006."
+  },
+  "58d11765af685df1": {
+   "item_id": "58d11765af685df1",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Breaking eggs into a bowl is a specific way of a woman putting ingredients into a bowl."
+  },
+  "205a57626f21d9a2": {
+   "item_id": "205a57626f21d9a2",
+   "verdict": "MERGE",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "Only the article an versus a differs."
+  },
+  "36190c56a9332256": {
+   "item_id": "36190c56a9332256",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 3,
+   "rationale": "A later date with fewer cumulative views cannot both be right, so one figure is wrong."
+  },
+  "fe9755f855d4d6d0": {
+   "item_id": "fe9755f855d4d6d0",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Came to admire versus wanted to admire may be a rewording or a changed claim, and the rubric does not settle which."
+  },
+  "de1d86d9e2d5c77f": {
+   "item_id": "de1d86d9e2d5c77f",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One statement adds that Barton-on-Sea is in southwest Hampshire."
+  },
+  "e0d9a37c51d60b73": {
+   "item_id": "e0d9a37c51d60b73",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The wall the person jumps off is tall in one statement and low in the other."
+  },
+  "6bd48c706a4c75e4": {
+   "item_id": "6bd48c706a4c75e4",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A flip over a snow mound and jumping off a snowy hill are compatible descriptions of the snowboarder."
+  },
+  "461e29cad7cbd2e5": {
+   "item_id": "461e29cad7cbd2e5",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "The film's co-star is Channing Tatum in one statement and Jeff in the other."
+  },
+  "4baa7907a36a7be9": {
+   "item_id": "4baa7907a36a7be9",
+   "verdict": "NO_RELATION",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "The engagements are in different years and places with nothing tying them to the same couple."
+  },
+  "13bd65740e49c561": {
+   "item_id": "13bd65740e49c561",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Shuffled modifiers about evolution and naming could be a garbled rewording or a changed claim."
+  },
+  "328ca9fe75e07e33": {
+   "item_id": "328ca9fe75e07e33",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "A teenager getting a hand tattoo from a woman in a white sweater is compatible with a young woman getting a hand tattoo."
+  },
+  "adc97bd9bdb0bb47": {
+   "item_id": "adc97bd9bdb0bb47",
+   "verdict": "CONFLICT",
+   "subtype": "SUPERSESSION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The population figure differs and changes over time."
+  },
+  "15f0f393ad35a025": {
+   "item_id": "15f0f393ad35a025",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both deny the lady cracking eggs, with different compatible details of mixer versus bowl."
+  },
+  "a9170eea9056a271": {
+   "item_id": "a9170eea9056a271",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 5,
+   "rationale": "One statement adds Burning Inside to the bands Christy drummed for."
+  },
+  "000c6373cf272039": {
+   "item_id": "000c6373cf272039",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Same anecdote, with one attributing it to Al's own account and the other adding that it was his first attempt."
+  },
+  "815c15e2f6ec36fa": {
+   "item_id": "815c15e2f6ec36fa",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One denial adds into pieces, changing what is denied while both can hold."
+  },
+  "81d7239dbef32601": {
+   "item_id": "81d7239dbef32601",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One statement adds award counts and the Primetime qualifier."
+  },
+  "42135a335d5cd731": {
+   "item_id": "42135a335d5cd731",
+   "verdict": "CONFLICT",
+   "subtype": "CORRECTION",
+   "overlap_flag": true,
+   "confidence": 4,
+   "rationale": "The modifiers many large and local are swapped between the stones and the trees."
+  },
+  "fc87b4a5f12de5e5": {
+   "item_id": "fc87b4a5f12de5e5",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "One carrot versus several carrots being sliced by a woman are compatible but not identical."
+  },
+  "363d4b9d86756178": {
+   "item_id": "363d4b9d86756178",
+   "verdict": "AMBIGUOUS",
+   "subtype": null,
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "Melbourne Croatia and the Knights may be the same club or a conflicting home club, and the texts do not decide."
+  },
+  "2d9df9b225b4d2c2": {
+   "item_id": "2d9df9b225b4d2c2",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 3,
+   "rationale": "Both describe a dog running with respect to a ball, with compatible differing details."
+  },
+  "de82d8d185521c4c": {
+   "item_id": "de82d8d185521c4c",
+   "verdict": "RELATE",
+   "subtype": "SCOPE",
+   "overlap_flag": false,
+   "confidence": 2,
+   "rationale": "First-week sales and US sales to date are sales claims over different ranges that can both hold."
+  },
+  "8d5dfc8ab6bbdd7b": {
+   "item_id": "8d5dfc8ab6bbdd7b",
+   "verdict": "RELATE",
+   "subtype": "ELABORATION",
+   "overlap_flag": false,
+   "confidence": 4,
+   "rationale": "One statement specifies rhythm guitarist where the other says guitarist."
+  }
+ },
+ "errors": []
+}

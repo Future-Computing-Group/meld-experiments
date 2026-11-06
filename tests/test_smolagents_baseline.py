@@ -23,18 +23,12 @@ from meld.agent.memory import SMPMemory
 from meld.agent.react_agent import AgentResult
 from meld.agent.registry import make_agent
 from meld.agent.tools import FinalAnswerTool, RecallTool
-from meld.config import Thresholds, load_thresholds
 
 
-def _calibrated_cfg() -> Thresholds:
-    # delegate to the canonical encoder-matched calibrated thresholds (was a
-    # duplicated inverted-0.5/0.55 copy that tripped the ordering invariant)
-    from meld.agent.run_hotpot_gate import _calibrated_cfg as _canonical
-    return _canonical("hashing")
 
 
 def _mem() -> SMPMemory:
-    return SMPMemory(encoder="hashing", nli="lexical", cfg=_calibrated_cfg())
+    return SMPMemory(encoder="hashing", nli="lexical")
 
 
 def _scripted_toolcalls():
@@ -68,9 +62,9 @@ def test_smolagents_baseline_writes_through_the_meld_brain():
                        llm=MockLLM(_scripted_toolcalls()), memory=mem,
                        tools=[RecallTool(mem), FinalAnswerTool()], max_steps=6)
     agent.run("What is the capital of France?")
-    assert len(mem.brain.audit_log) >= 1, "smolagents wrote no Patch"
+    assert len(mem.decisions) >= 1, "smolagents wrote no Patch"
     assert any(p.decision in ("INSERT", "MERGE", "RELATE", "CONFLICT")
-               for p in mem.brain.audit_log)
+               for p in mem.decisions)
 
 
 def test_smolagents_uses_the_real_framework_class():

@@ -11,14 +11,11 @@ partition->heal) stays in eval.crdt_convergence; this driver does NOT redefine i
 from __future__ import annotations
 
 
-def _cfg():
-    from meld.agent.run_hotpot_gate import _calibrated_cfg
-    return _calibrated_cfg("hashing")
 
 
 def _node(nid):
     from meld.sync.node import BrainNode
-    return BrainNode(nid, encoder="hashing", nli="lexical", cfg=_cfg())
+    return BrainNode(nid, encoder="hashing", nli="lexical")
 
 
 def test_broadcast_full_mesh_converges_and_delivers_to_all_peers():
@@ -83,3 +80,21 @@ def test_semantic_uses_fewer_deliveries_than_broadcast():
     bc_total = sum(len(d) for d in bc.delivered.values())
     sm_total = sum(len(d) for d in sm.delivered.values())
     assert sm_total < bc_total                           # the routing win: fewer deliveries
+
+
+def test_run_sync_records_every_delta_per_sender_and_forwards_rules():
+    # two senders publish the same text: `delivered` (keyed by text) keeps one, `deliveries`
+    # keeps both (src, text, peers) records; margin/gap reach the router.
+    from meld.sync.experiment import run_sync
+    a, b, c = _node("A"), _node("B"), _node("C")
+    a.ingest("Paris is the capital of France")
+    b.ingest("Paris is the capital of France")
+    c.ingest("Everest mountain Himalaya climbing altitude snow")
+    nodes = {"A": a, "B": b, "C": c}
+    peers = {"A": ["B", "C"], "B": ["A", "C"], "C": []}
+    res = run_sync(nodes, peers, routing_mode="semantic", encoder="hashing",
+                   sigma_lo=0.0, margin=1e-6, clock=lambda: 0.0)
+    recs = sorted((s, t, frozenset(p)) for s, t, p in res.deliveries)
+    assert recs == [("A", "Paris is the capital of France", frozenset({"B"})),
+                    ("B", "Paris is the capital of France", frozenset({"A"})),
+                    ("C", "Everest mountain Himalaya climbing altitude snow", frozenset())]

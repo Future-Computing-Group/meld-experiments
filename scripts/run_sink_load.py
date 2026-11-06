@@ -7,7 +7,10 @@ The empirical state-side of "sink load grows with the rate of novel claims, not 
 brains." Local, no LLM, no cost. Companion to M1 (the sink's compute knee) and S-3 (per-claim
 delivery overhead).
 
-Run:  PYTHONPATH=src .venv/bin/python scripts/run_sink_load.py
+Rows carry topology.stamps.
+
+Run:  PYTHONPATH=src .venv/bin/python scripts/run_sink_load.py --encoder minilm --nli mnli-cross-encoder \
+          --epoch EPOCH.json
 """
 import argparse, json, os, sys
 
@@ -15,35 +18,41 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(REPO, "src"))
 
-from meld.config import load_thresholds              # noqa: E402
+from meld.eval.runner_args import add_key_file, runner_key  # noqa: E402
+from meld.config import read_epoch              # noqa: E402
 from meld.merge.m2_gold import M2_GOLD_V2            # noqa: E402
 from meld.eval.sink_load import sink_load_row        # noqa: E402
+from meld.eval.topology import stamps                # noqa: E402
 
-MINILM = os.path.join(REPO, "src", "meld", "config", "thresholds-minilm.yaml")
 
 
-def main():
+def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--smoke", action="store_true")
     ap.add_argument("--ns", default="1,2,4,8,16,32")
-    ap.add_argument("--encoder", default="minilm")
+    ap.add_argument("--encoder", required=True)
+    ap.add_argument("--nli", required=True)
     ap.add_argument("--out", default=os.path.join(REPO, "outputs", "sink-load.json"))
-    a = ap.parse_args()
-    cfg = load_thresholds(MINILM)
+    ap.add_argument("--cache-dir", default=os.path.join(REPO, "outputs", "emb-cache-sinkload"))
+    ap.add_argument("--epoch", default=None, help="signed epoch file (config.read_epoch); "
+                    "without one no similarity merge happens")
+    add_key_file(ap)
+    a = ap.parse_args(argv)
+    epoch = read_epoch(a.epoch, runner_key(a.key_file)) if a.epoch else None
     # a fixed corpus of distinct novel facts (the curated M-2 fact bank, left side of each pair)
     corpus = sorted({str(t[1]).strip() for t in M2_GOLD_V2 if str(t[1]).strip()})
     Ns = [1, 2, 4] if a.smoke else [int(x) for x in a.ns.split(",")]
-    cache = os.path.join(REPO, "outputs", "emb-cache-sinkload")
 
     rows = []
     for n in Ns:
-        r = sink_load_row(n, corpus, encoder=a.encoder, nli="lexical", cfg=cfg, cache_dir=cache)
+        r = {**sink_load_row(n, corpus, encoder=a.encoder, nli=a.nli, epoch=epoch, cache_dir=a.cache_dir),
+             **stamps(a.encoder, a.nli, epoch)}
         rows.append(r)
         print(f"[sink-load] N={n:>3} | merge_live {r['merge_live']:>4} "
               f"({r['merge_over_corpus']:.2f}x corpus) | union_live {r['union_live']:>5} "
               f"({r['union_over_corpus']:.0f}x)", flush=True)
 
-    out = {"n_corpus": len(corpus), "ns": Ns, "encoder": a.encoder, "rows": rows}
+    out = {"n_corpus": len(corpus), "ns": Ns, "rows": rows}
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
     with open(a.out, "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=2)

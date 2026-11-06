@@ -1,0 +1,24 @@
+{
+  "n_trials": 2,
+  "n_converged": 2,
+  "reconvergence_success_fraction": 1.0,
+  "heal_ms_p50": 2403.45,
+  "heal_ms_p95": 3359.44,
+  "heal_ms_mean": 2881.44,
+  "all_diverged_first": true,
+  "trials": [
+    {
+      "seed": 1,
+      "converged": true,
+      "heal_ms": 2403.45,
+      "diverged_first": true
+    },
+    {
+      "seed": 2,
+      "converged": true,
+      "heal_ms": 3359.44,
+      "diverged_first": true
+    }
+  ],
+  "transport": "localhost:19092 tiers=edge local edge=B encoder=minilm nli=mnli-cross-encoder"
+}

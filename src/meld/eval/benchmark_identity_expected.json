@@ -8,5 +8,9 @@
     "name": "GAIA",
     "arxiv_id": "2311.12983",
     "identity_sha256": "9ed8cb4bbd06a32de3734c0590d8cfd870685c34c41fc441560dd578e7d78744"
+  },
+  "meld_claimpair": {
+    "name": "MELD claim-pair benchmark",
+    "manifest_sha256": "60694a496287644c6020009ee2b699b3fe6ad9f2c5fbf5ee3d78881a959462b6"
   }
 }

@@ -115,3 +115,14 @@ def test_verify_delay_reads_tc_show():
     w = WanShaper(r, iface="enp1s0")
     assert w.verify_delay("hostA") is True
     assert w.verify_delay("hostB") is False
+
+
+def test_shape_multi_keeps_every_peer_filter_under_one_root():
+    # shaping a host toward several peers one call at a time del-roots and keeps only the last
+    from meld.sync.wan import WanShaper
+    r = FakeRunner()
+    WanShaper(r, iface="enp1s0").shape_multi("h", ["10.0.0.2", "10.0.0.3"], delay_ms=10)
+    seq = _seq(r.calls, "h")
+    assert sum("del" in c and "root" in c for c in seq) == 1
+    assert [c for c in seq if "filter add" in c and "10.0.0.2/32" in c] and \
+           [c for c in seq if "filter add" in c and "10.0.0.3/32" in c]
