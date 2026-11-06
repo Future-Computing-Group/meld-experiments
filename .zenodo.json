@@ -32,5 +32,13 @@
     "semantic merge",
     "computing continuum"
   ],
-  "version": "2.0.0"
+  "version": "2.0.0",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.21878274",
+      "relation": "isNewVersionOf",
+      "scheme": "doi",
+      "resource_type": "software"
+    }
+  ]
 }

@@ -57,4 +57,4 @@ Code: Apache License 2.0; see `LICENSE`. Study archive: per file, as listed in `
 
 ## Citation
 
-See `CITATION.cff`. All versions: DOI [10.5281/zenodo.21878274](https://doi.org/10.5281/zenodo.21878274).
+See `CITATION.cff`. Version 2.0.0 and later: DOI [10.5281/zenodo.24009240](https://doi.org/10.5281/zenodo.24009240) (all versions), version 2.0.0 [10.5281/zenodo.24009241](https://doi.org/10.5281/zenodo.24009241). Versions 1.0.0 to 1.0.6, of the earlier protocol: DOI [10.5281/zenodo.21878274](https://doi.org/10.5281/zenodo.21878274).
